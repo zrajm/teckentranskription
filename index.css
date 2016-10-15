@@ -82,10 +82,10 @@ span.art-ion:before {     /* artikulation */
     content: "ART-ION";
 }
 img {
-    //border: 1px solid black;
-        height: 2em;
-        width: 2em;
-        background: #333;
+    /* border: 1px solid black; */
+    height: 2em;
+    width: 2em;
+    background: #333;
 }
 .fixme {
     background: #660;
@@ -106,17 +106,13 @@ table.input td.ovan {
 table.input td.handform {
     height: 2.5em;
     width: 2em;
-    background-image: url("pic/A_Truetrans1.svg");
     background-position: left 0 top -1.5em;
-    Xbackground-image: url("pic/V_Truetrans1.svg");
 }
 table.input td.riktning {
     width: 2em;
-    background-image: url("pic/T_Truetrans1.svg");
     background-position: left 0 top -1.3em;
 }
 table.input td.vridning {
-    background-image: url("pic/V_Truetrans1.svg");
     background-position: left 0 top -2.75em;
 }
 

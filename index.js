@@ -1,8 +1,12 @@
 /* */
 function makeGlyphSelector(spec){
-    var selected = 0, glyphs = spec.glyphs;
+    var selected = spec.current || 0,
+        glyphs = spec.glyphs,
+        jqelement = spec.element;
+    function setGlyph(file) {
+        jqelement.css("background-image", "url('" + file + "')");
+    }
     function handle_handform(event) {
-        var targetElement = $(event.target);
         switch (event.key) {
         case "ArrowLeft":
             selected -= 1;
@@ -16,14 +20,16 @@ function makeGlyphSelector(spec){
             console.log(event.key);
         }
         console.log(selected + ": " + glyphs[selected]);
-        targetElement.css("background-image", "url('" + glyphs[selected] + "')");
+        setGlyph(glyphs[selected]);
     }
-    return {
-        handler: handle_handform,
-    };
+    setGlyph(glyphs[selected]);
+    jqelement.keydown(handle_handform);
+    return {};
 }
 
 var handshape = makeGlyphSelector({
+    element: $('.handform'),
+    current: 15,
     glyphs: [
         "pic/space_Truetrans2.svg", "pic/C_Truetrans1.svg", "pic/c_Truetrans1.svg",
         "pic/F_Truetrans1.svg", "pic/j_Truetrans1.svg", "pic/h_Truetrans1.svg",
@@ -42,6 +48,30 @@ var handshape = makeGlyphSelector({
     ]
 });
 
-$('.handform').keydown(handshape.handler);
+var direction = makeGlyphSelector({
+    element: $('.riktning'),
+    current: 4,
+    glyphs: [
+        "pic/r_Truetrans1.svg",
+        "pic/s_Truetrans1.svg",
+        "pic/S_Truetrans1.svg",
+        "pic/t_Truetrans1.svg",
+        "pic/T_Truetrans1.svg",
+        "pic/u_Truetrans1.svg",
+    ]
+});
+
+var twist = makeGlyphSelector({
+    element: $('.vridning'),
+    current: 2,
+    glyphs: [
+        "pic/U_Truetrans1.svg",
+        "pic/v_Truetrans1.svg",
+        "pic/V_Truetrans1.svg",
+        "pic/w_Truetrans1.svg",
+        "pic/W_Truetrans1.svg",
+        "pic/x_Truetrans1.svg",
+    ]
+});
 
 /*[eof]*/
