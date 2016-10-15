@@ -1,34 +1,27 @@
-
-
-
+/* */
 function makeGlyphSelector(spec){
-    var selected = 0,
-        glyphs = spec.glyphs || [];
-
+    var selected = 0, glyphs = spec.glyphs;
     function handle_handform(event) {
-        if (event.key === "ArrowLeft") {
+        var targetElement = $(event.target);
+        switch (event.key) {
+        case "ArrowLeft":
             selected -= 1;
-            if (selected < 0) {
-                selected =  glyphs.length - 1;
-            }
-        } else if (event.key === "ArrowRight") {
-            selected += 1;
-            if (selected >= glyphs.length) {
-                selected = 0;
-            }
-        } else {
+            if (selected < 0) { selected += glyphs.length; }
+            break;
+        case "ArrowRight":
+            selected = selected + 1;
+            if (selected >= glyphs.length) { selected -= glyphs.length; }
+            break;
+        default:
             console.log(event.key);
         }
         console.log(selected + ": " + glyphs[selected]);
-        $(this).css("background-image", "url('" + glyphs[selected] + "')");
+        targetElement.css("background-image", "url('" + glyphs[selected] + "')");
     }
-
     return {
         handler: handle_handform,
     };
 }
-
-
 
 var handshape = makeGlyphSelector({
     glyphs: [
@@ -51,4 +44,4 @@ var handshape = makeGlyphSelector({
 
 $('.handform').keydown(handshape.handler);
 
-// //[eof]
+/*[eof]*/
