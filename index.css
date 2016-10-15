@@ -1,0 +1,123 @@
+html {
+    background: black;
+    color: white;
+}
+* { padding: 0; margin: 0 }
+
+body { padding: 1em }
+
+.biggy {
+    position: relative;
+    background: blue;
+    display: block;
+}
+.biggy img {
+    height: 4em;
+    width: 4em;
+}
+
+.biggy img.h {
+    outline: 1px solid black;
+}
+.biggy img.ar,
+.biggy img.av {
+    position: absolute;
+    left: 2em;
+    //top: -1px;
+    /* background: rgba(0,0,0,.1); */
+    background: transparent;
+}
+.biggy img.ar {
+    top: .6em;
+}
+.biggy img.av {
+    left: 2.2em;
+}
+
+table {
+    border-spacing: 0;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+table[border="0"] {
+    border: 0;
+}
+table[border="0"] td {
+    vertical-align: top;
+}
+table[border="0"] td td {
+    vertical-align: middle;
+    text-align: left;
+}
+table[border="8"] {
+    border: 8px solid #333;
+}
+table[border="8"] td {
+    border: 8px solid #333;
+}
+table td {
+    text-align: center;
+}
+span.a:before {           /* artikulationsställe */
+    content: "A";
+    font-size: 3em;
+}
+span.r:before {           /* relationsart */
+    content: "R";
+}
+span.h:before {           /* handform */
+    content: "H";
+    font-size: 3em;
+}
+span.ar:before {          /* attitydsriktning */
+    content: "AR";
+}
+span.av:before {          /* attitydsvridning */
+    content: "AV";
+}
+span.i:before {           /* interaktionsart */
+    content: "I";
+}
+span.art-ion:before {     /* artikulation */
+    content: "ART-ION";
+}
+img {
+    //border: 1px solid black;
+        height: 2em;
+        width: 2em;
+        background: #333;
+}
+.fixme {
+    background: #660;
+}
+
+table.input {
+    margin: 1em 0;
+    background: #333;
+}
+table.input td {
+    border: 1px solid transparent;
+    background-size: 4em 4em;
+}
+
+table.input td.ovan {
+    height: 1.5em;
+}
+table.input td.handform {
+    height: 2.5em;
+    width: 2em;
+    background-image: url("pic/A_Truetrans1.svg");
+    background-position: left 0 top -1.5em;
+    Xbackground-image: url("pic/V_Truetrans1.svg");
+}
+table.input td.riktning {
+    width: 2em;
+    background-image: url("pic/T_Truetrans1.svg");
+    background-position: left 0 top -1.3em;
+}
+table.input td.vridning {
+    background-image: url("pic/V_Truetrans1.svg");
+    background-position: left 0 top -2.75em;
+}
+
+/*eof*/
