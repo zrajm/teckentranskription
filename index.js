@@ -2,9 +2,13 @@
 function makeGlyphSelector(spec){
     var selected = spec.current || 0,
         glyphs = spec.glyphs,
-        jqelement = spec.element;
-    function setGlyph(file) {
+        jqelement = spec.element,
+        status_callback = spec.status_callback,
+        status_prefix = spec.prefix // "";
+    function setGlyph(glyph) {
+        var file = glyph[0], message = glyph[1];
         jqelement.css("background-image", "url('" + file + "')");
+        status_callback(status_prefix + message);
     }
     function handle_handform(event) {
         switch (event.key) {
@@ -27,50 +31,88 @@ function makeGlyphSelector(spec){
     return {};
 }
 
+var statusElement = $('.status');
+function status(message) {
+    statusElement.html(message);
+}
+
 var handshape = makeGlyphSelector({
     element: $('.handform'),
     current: 15,
+    status_callback: status,
+    prefix: "Handform (H): ",
     glyphs: [
-        "pic/space_Truetrans2.svg", "pic/C_Truetrans1.svg", "pic/c_Truetrans1.svg",
-        "pic/F_Truetrans1.svg", "pic/j_Truetrans1.svg", "pic/h_Truetrans1.svg",
-        "pic/space_Truetrans2.svg", "pic/H_Truetrans1.svg", "pic/l_Truetrans1.svg",
-        "pic/f_Truetrans1.svg", "pic/space_Truetrans2.svg", "pic/E_Truetrans1.svg",
-        "pic/Q_Truetrans1.svg", "pic/P_Truetrans1.svg", "pic/p_Truetrans1.svg",
-        "pic/A_Truetrans1.svg", "pic/a_Truetrans1.svg", "pic/I_Truetrans1.svg",
-        "pic/m_Truetrans1.svg", "pic/g_Truetrans1.svg", "pic/G_Truetrans1.svg",
-        "pic/o_Truetrans1.svg", "pic/k_Truetrans1.svg", "pic/e_Truetrans1.svg",
-        "pic/space_Truetrans2.svg", "pic/r_Truetrans2.svg", "pic/d_Truetrans1.svg",
-        "pic/D_Truetrans1.svg", "pic/i_Truetrans1.svg", "pic/J_Truetrans1.svg",
-        "pic/U_Truetrans2.svg", "pic/N_Truetrans1.svg", "pic/L_Truetrans1.svg",
-        "pic/M_Truetrans1.svg", "pic/B_Truetrans1.svg", "pic/w_Truetrans2.svg",
-        "pic/R_Truetrans1.svg", "pic/Z_Truetrans2.svg", "pic/b_Truetrans1.svg",
-        "pic/q_Truetrans1.svg", "pic/aring_Truetrans1.svg",
+        ["pic/space_Truetrans2.svg", "4-handen FIXME"],
+        ["pic/C_Truetrans1.svg", "A-handen"],
+        ["pic/c_Truetrans1.svg", "Tumvinkelhanden"],
+        ["pic/F_Truetrans1.svg", "Tumhanden"],
+        ["pic/j_Truetrans1.svg", "Måtthanden"],
+        ["pic/h_Truetrans1.svg", "Raka måtthanden"],
+        ["pic/space_Truetrans2.svg", "D-handen FIXME"],
+        ["pic/H_Truetrans1.svg", "Nyphanden"],
+        ["pic/l_Truetrans1.svg", "Lilla O-handen"],
+        ["pic/f_Truetrans1.svg", "E-handen"],
+        ["pic/space_Truetrans2.svg", "F-handenFIXME"],
+        ["pic/E_Truetrans1.svg", "Knutna handen"],
+        ["pic/Q_Truetrans1.svg", "Stora nyphanden"],
+        ["pic/P_Truetrans1.svg", "Lillfingret"],
+        ["pic/p_Truetrans1.svg", "Flyghanden"],
+        ["pic/A_Truetrans1.svg", "Flata handen"],
+        ["pic/a_Truetrans1.svg", "Flata tumhanden"],
+        ["pic/I_Truetrans1.svg", "Krokfingret"],
+        ["pic/m_Truetrans1.svg", "K-handen"],
+        ["pic/g_Truetrans1.svg", "Pekfingret"],
+        ["pic/G_Truetrans1.svg", "L-handen"],
+        ["pic/o_Truetrans1.svg", "M-handen"],
+        ["pic/k_Truetrans1.svg", "N-handen"],
+        ["pic/e_Truetrans1.svg", "O-handen"],
+        ["pic/space_Truetrans2.svg", "Q-handen FIXME"],
+        ["pic/r_Truetrans2.svg", "Långfingret"],
+        ["pic/d_Truetrans1.svg", "S-handen"],
+        ["pic/D_Truetrans1.svg", "Klohanden"],
+        ["pic/i_Truetrans1.svg", "T-handen"],
+        ["pic/J_Truetrans1.svg", "Hållhanden"],
+        ["pic/U_Truetrans2.svg", "Dubbelkroken"],
+        ["pic/N_Truetrans1.svg", "Böjda tupphanden"],
+        ["pic/L_Truetrans1.svg", "V-handen"],
+        ["pic/M_Truetrans1.svg", "Tupphanden"],
+        ["pic/B_Truetrans1.svg", "Vinkelhanden"],
+        ["pic/w_Truetrans2.svg", "W-handen"],
+        ["pic/R_Truetrans1.svg", "X-handen"],
+        // ["pic/Z_Truetrans2.svg", "X-handen"],
+        ["pic/b_Truetrans1.svg", "Sprethanden"],
+        ["pic/q_Truetrans1.svg", "Stora långfingret"],
+        ["pic/aring_Truetrans1.svg", "Runda långfingret"],
     ]
 });
 
 var direction = makeGlyphSelector({
     element: $('.riktning'),
     current: 4,
+    status_callback: status,
+    prefix: "Attitydsriktning (AR): ",
     glyphs: [
-        "pic/r_Truetrans1.svg",
-        "pic/s_Truetrans1.svg",
-        "pic/S_Truetrans1.svg",
-        "pic/t_Truetrans1.svg",
-        "pic/T_Truetrans1.svg",
-        "pic/u_Truetrans1.svg",
+        ["pic/r_Truetrans1.svg", "Vänster"],
+        ["pic/s_Truetrans1.svg", "Höger"],
+        ["pic/S_Truetrans1.svg", "Fram"],
+        ["pic/t_Truetrans1.svg", "In"],
+        ["pic/T_Truetrans1.svg", "Upp"],
+        ["pic/u_Truetrans1.svg", "Ner"],
     ]
 });
 
 var twist = makeGlyphSelector({
     element: $('.vridning'),
     current: 2,
+    status_callback: status,
+    prefix: "Attitydsvridning (AV): ",
     glyphs: [
-        "pic/U_Truetrans1.svg",
-        "pic/v_Truetrans1.svg",
-        "pic/V_Truetrans1.svg",
-        "pic/w_Truetrans1.svg",
-        "pic/W_Truetrans1.svg",
-        "pic/x_Truetrans1.svg",
+        ["pic/U_Truetrans1.svg", "Vänster"],
+        ["pic/v_Truetrans1.svg", "Höger"],
+        ["pic/V_Truetrans1.svg", "Fram"],
+        ["pic/w_Truetrans1.svg", "In"],
+        ["pic/W_Truetrans1.svg", "Upp"],
+        ["pic/x_Truetrans1.svg", "Ner"],
     ]
 });
 

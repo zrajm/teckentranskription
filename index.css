@@ -116,4 +116,12 @@ table.input td.vridning {
     outline: 2px solid rgba(0, 0, 255, .25);
 }
 
+.status {
+    border: 1px solid black;
+    min-height:1em;
+    width: 20em;
+    margin: 1em 0;
+    padding: .25em;
+    background: #ddd;
+}
 /*eof*/
