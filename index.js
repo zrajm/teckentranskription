@@ -74,4 +74,6 @@ var twist = makeGlyphSelector({
     ]
 });
 
+$('.handform').focus();
+
 /*[eof]*/

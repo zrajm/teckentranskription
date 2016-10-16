@@ -1,7 +1,3 @@
-html {
-    background: black;
-    color: white;
-}
 * { padding: 0; margin: 0 }
 
 body { padding: 1em }
@@ -50,10 +46,10 @@ table[border="0"] td td {
     text-align: left;
 }
 table[border="8"] {
-    border: 8px solid #333;
+    border: 8px solid #ddd;
 }
 table[border="8"] td {
-    border: 8px solid #333;
+    border: 8px solid #ddd;
 }
 table td {
     text-align: center;
@@ -85,15 +81,15 @@ img {
     /* border: 1px solid black; */
     height: 2em;
     width: 2em;
-    background: #333;
+    background: #ddd;
 }
 .fixme {
-    background: #660;
+    background: #ff0;
 }
 
 table.input {
     margin: 1em 0;
-    background: #333;
+    background: #ddd;
 }
 table.input td {
     border: 1px solid transparent;
@@ -114,6 +110,10 @@ table.input td.riktning {
 }
 table.input td.vridning {
     background-position: left 0 top -2.75em;
+}
+
+:focus {
+    outline: 2px solid rgba(0, 0, 255, .25);
 }
 
 /*eof*/
