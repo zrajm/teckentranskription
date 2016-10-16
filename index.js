@@ -22,9 +22,11 @@ function makeGlyphSelector(spec){
             break;
         default:
             console.log(event.key);
+            return true;
         }
         console.log(selected + ": " + glyphs[selected]);
         setGlyph(glyphs[selected]);
+        return false;
     }
     setGlyph(glyphs[selected]);
     jqelement.keydown(handle_handform);
@@ -35,6 +37,48 @@ var statusElement = $('.status');
 function status(message) {
     statusElement.html(message);
 }
+
+var handshape = makeGlyphSelector({
+    element: $('.lagen'),
+    //current: 15,
+    status_callback: status,
+    prefix: "Artikulationsställe (A): ",
+    glyphs: [
+        ["pic/space_Truetrans2.svg", "Neutrala läget"],
+        ["pic/exclam_Truetrans1.svg", "Hjässan"],
+        ["pic/parenright_Truetrans1.svg", "Ansiktet, huvudhöjd"],
+        ["pic/numbersign_Truetrans1.svg", "Ansiktet, övre del"],
+        ["pic/sterling_Truetrans1.svg", "Ansiktet, nedre del"],
+        ["pic/dollar_Truetrans1.svg", "Pannan"],
+        ["pic/sterling_Truetrans2.svg", "Ögat"],
+        ["pic/percent_Truetrans1.svg", "Ögonen"],
+        ["pic/bracketleft_Truetrans1.svg", "Näsan"],
+        ["pic/bracketright_Truetrans1.svg", "Sidorna av huvudet, öronen"],
+        ["pic/asterisk_Truetrans1.svg", "Sidan av huvudet, örat, höger"],
+        ["pic/plus_Truetrans1.svg", "Sidan av huvudet, örat, vänster"],
+        ["pic/comma_Truetrans1.svg", "Kinderna"],
+        ["pic/hyphen_Truetrans1.svg", "Kinden, höger"],
+        ["pic/period_Truetrans1.svg", "Kinden, vänster"],
+        ["pic/slash_Truetrans1.svg", "Munnen"],
+        ["pic/colon_Truetrans1.svg", "Hakan"],
+        ["pic/semicolon_Truetrans1.svg", "Nacken"],
+        ["pic/less_Truetrans1.svg", "Halsen"],
+        ["pic/greater_Truetrans1.svg", "Axlarna"],
+        ["pic/question_Truetrans1.svg", "Axeln, höger"],
+        ["pic/underscore_Truetrans1.svg", "Axeln, vänster"],
+        ["pic/zero_Truetrans1.svg", "Överarmen"],
+        ["pic/one_Truetrans1.svg", "Underarmen"],
+        ["pic/asciitilde_Truetrans1.svg", "Armen"],
+        ["pic/two_Truetrans1.svg", "Bröstet"],
+        ["pic/three_Truetrans1.svg", "Bröstet, höger sida"],
+        ["pic/four_Truetrans1.svg", "Bröstet, vänster sida"],
+        ["pic/five_Truetrans1.svg", "Magen, mellangärdet"],
+        ["pic/six_Truetrans1.svg", "Höfterna"],
+        ["pic/seven_Truetrans1.svg", "Höften, höger"],
+        ["pic/eight_Truetrans1.svg", "Höften, vänster"],
+        ["pic/nine_Truetrans1.svg", "Benet"],
+    ]
+});
 
 var handshape = makeGlyphSelector({
     element: $('.handform'),

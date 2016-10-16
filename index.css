@@ -93,27 +93,34 @@ img {
 
 table.input {
     margin: 1em 0;
+}
+table.input table {
     background: #ddd;
 }
 table.input td {
-    border: 1px solid transparent;
     background-size: 4em 4em;
 }
 
 table.input td.ovan {
-    height: 1.5em;
+    height: 1.2em;
+}
+table.input td.lagen {
+    height: 2.8em;
+    width: 2.25em;
+    background-position: left 0 top -1.25em;
 }
 table.input td.handform {
-    height: 2.5em;
+    height: 2.8em;
     width: 2em;
-    background-position: left 0 top -1.5em;
+    background-position: left 0 top -1.25em;
 }
 table.input td.riktning {
-    width: 2em;
-    background-position: left 0 top -1.3em;
+    height: 1.4em;
+    width: 1.6em;
+    background-position: left 0 top -1.15em;
 }
 table.input td.vridning {
-    background-position: left 0 top -2.75em;
+    background-position: left 0 top -2.7em;
 }
 
 :focus {
