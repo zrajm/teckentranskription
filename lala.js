@@ -4,12 +4,6 @@ var addButtonElement  = $("button#add"),
     dumpButtonElement = $("button#dump"),
     inputElement = $("div");
 
-function incElement() {
-    var elem = $(this);
-    var x = parseInt(elem.text(), 10);
-    elem.text(x + 1);
-}
-
 function makeGlyphA(inElement, glyph) {
     var html = "<table border=1>" +
         "<tr><td class=a rowspan=2><td class=b>" +
