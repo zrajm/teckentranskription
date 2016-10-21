@@ -2,13 +2,7 @@ var addButtonElement  = $("button#add"),
     loadButtonElement = $("button#load"),
     saveButtonElement = $("button#save"),
     dumpButtonElement = $("button#dump"),
-    inputElement = $("div"),
-    glyphs = [];
-
-addButtonElement.click(addGlyph);
-loadButtonElement.click(loadGlyphs);
-saveButtonElement.click(saveGlyphs);
-dumpButtonElement.click(buttonDump);
+    inputElement = $("div");
 
 function incElement() {
     var elem = $(this);
@@ -56,46 +50,59 @@ function makeGlyph(inElement, glyph, html, classes) {
 
 
 ////////////////////////////////////////////////////////////////////////////////
-//
-// TODO
-//   * Put global list into object of its own
-//   * Delete glyph from global list
-//   * Different type of glyphs
+
+function makeGlyphs() {
+    var glyphs = [];
+
+    function getGlyphs() {
+        return glyphs.map(function (value) {
+            return value.dump();
+        });
+    }
+
+    function setGlyphs(values) {
+        inputElement.html("");
+        glyphs = values.map(function (glyph) {
+            return makeGlyphA(inputElement, glyph);
+        });
+    }
+
+    function loadGlyphs() {
+        var loadedGlyphs = JSON.parse(localStorage.getItem('glyphs'));
+        setGlyphs(loadedGlyphs);
+    }
+
+    function saveGlyphs() {
+        localStorage.setItem('glyphs', JSON.stringify(getGlyphs()));
+    }
+
+    function addGlyph() {
+        glyphs.push(makeGlyphA(inputElement, {}));
+    }
+
+    return {
+        add: addGlyph,
+        get: getGlyphs,
+        load: loadGlyphs,
+        save: saveGlyphs,
+        set: setGlyphs,
+    };
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 
-function getGlyphs() {
-    return glyphs.map(function (value) {
-        return value.dump();
-    });
-}
+var glyphs = makeGlyphs();
 
-function setGlyphs(values) {
-    inputElement.html("");
-    glyphs = values.map(function (glyph) {
-        return makeGlyphA(inputElement, glyph);
-    });
-}
+addButtonElement.click(glyphs.add);
+loadButtonElement.click(glyphs.load);
+saveButtonElement.click(glyphs.save);
+dumpButtonElement.click(buttonDump);
 
-function loadGlyphs() {
-    var loadedGlyphs = JSON.parse(localStorage.getItem('glyphs'));
-    setGlyphs(loadedGlyphs);
-}
 
-function saveGlyphs() {
-    localStorage.setItem('glyphs', JSON.stringify(getGlyphs()));
-}
-
-function addGlyph() {
-    glyphs.push(makeGlyphA(inputElement, {}));
-}
-
-////////////////////////////////////////////////////////////////////////////////
-
-loadGlyphs();
+glyphs.load();
 
 function buttonDump() {
-    console.log(JSON.stringify(getGlyphs(), null, 2));
+    console.log(JSON.stringify(glyphs.get(), null, 2));
 }
 
 //[eof]
