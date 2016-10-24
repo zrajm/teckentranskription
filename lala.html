@@ -1,17 +1,83 @@
 <!doctype html>
 <head>
   <meta charset="UTF-8">
-  <title>XXXXXXXXXXXX</title>
+  <title>Teckentranskription</title>
   <link rel=stylesheet href="lala.css">
 </head>
 <body>
   <main>
-    <div id=status></div>
-    <button id=add>Add</button>
-    <button id=load>Load</button>
-    <button id=save>Save</button>
-    <button id=dump>Dump</button>
+
     <div id=input>Loading glyphs... (requires Javascript)</div>
+    <div id=status></div>
+
+    <table border=1>
+      <caption>I. Artikulationsställe</caption>
+      <tr><td style="padding:.25em .5em">
+          <button id=ia>
+            <table border=0>
+              <tr><td>R
+              <tr><td class=big>A
+            </table>
+          </button>
+          <button id=ib>
+            <table border=0>
+              <tr><td>R
+              <tr>
+                <td rowspan=2 class=big>H
+                <td>AR
+              <tr><td>AV
+            </table>
+          </button>
+    </table>
+
+    <table border=1>
+      <caption>II. Artikulator</caption>
+      <tr><td style="padding:.25em .5em">
+          <button id=iia>
+            <table border=0>
+              <tr>
+                <td>
+                <td>R
+                <td style="position:relative;top:.6em">I
+              <tr>
+                <td>AR
+                <td rowspan=2 class=big>H
+              <tr>
+                <td>AV
+                <td>  
+            </table>
+          </button>
+          <button id=iib>
+            <table border=0>
+              <tr><td colspan=2> 
+              <tr>
+                <td rowspan=2 class=big>H
+                <td>AR
+              <tr><td>AV
+            </table>
+          </button>
+    </table>
+
+    <table border=1>
+      <caption>III. Artikulation</caption>
+      <tr><td style="padding:.25em .5em">
+          <button id=iii>
+            <table border=0>
+              <tr><td colspan=2> 
+              <tr>
+                <td rowspan=2 class=big style="max-width:0;overflow: hidden"> 
+                <td>ART-ION
+              <tr><td> 
+            </table>
+          </button>
+    </table>
+
+    <br><table border=1>
+      <tr><td style="padding:.25em .5em">
+          <button id=load>Load</button>
+          <button id=save>Save</button>
+          <button id=dump>Dump</button>
+    </table>
   </main>
     <script src="jquery-3.1.1.js"></script>
     <script src="lala.js"></script>

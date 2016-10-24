@@ -6,19 +6,45 @@
 body { padding: .5em .25em; }
 
 :focus {
-    outline: 2px solid rgba(0, 0, 255, .25);
+    outline: 3px solid rgba(0, 0, 255, 0.5);
 }
 
-div {
-    margin: .5em -.15em;
+div#input { margin: .5em -.15em; }
+div#status {
+    padding: .5em .5em;
+    margin: .5em 0;
+    border: 1px inset #fff;
+    background: #eee;
 }
 
-table, table td { border: 0px solid rgba(0,0,0,.1); }
+.big { font-size: 3em; }
+
+table[border="1"] {
+    border-collapse: collapse;
+    border: 1px solid black;
+    text-align: center;
+}
+table[border="1"] button {
+    margin: .125em;
+    padding: .25em .5em;
+}
+
+table, table td, table th { border: 0px solid rgba(0,0,0,.1); }
 table {
     display: inline-block;
     border-collapse: separate;
     border-spacing: .125em;
     margin: 0 .125em;
+}
+
+/* tables in buttons */
+button table .big { font-size: 3em; }
+button table {
+    display: block;
+    border-collapse: collapse;
+
+    line-height: .9;
+    font-family: serif;
 }
 
 div#input table td { height: 1.4em; }
@@ -37,13 +63,11 @@ table caption.controls {
     position: absolute;
     right: 0;
 
-    border: 1px solid rgba(200, 200, 200, .5);
-    border-radius: .1em;
     color: rgba(0, 0, 0, .5);
-
     font-weight: bold;
 }
 table:hover caption.controls { display: block; }
+div#input table:hover,
 table caption.controls             { background: rgba(200, 200, 200, .5); }
 table caption.controls span        { border: .125em solid transparent; }
 table caption.controls span:hover  { background: rgba(100, 100, 100, .5); }

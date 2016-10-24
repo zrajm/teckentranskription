@@ -1,4 +1,9 @@
 var addButtonElement  = $("button#add"),
+    addIaButtonElement = $("button#ia")
+    addIbButtonElement = $("button#ib")
+    addIIaButtonElement = $("button#iia")
+    addIIbButtonElement = $("button#iib")
+    addIIIButtonElement = $("button#iii")
     loadButtonElement = $("button#load"),
     saveButtonElement = $("button#save"),
     dumpButtonElement = $("button#dump"),
@@ -52,7 +57,7 @@ var lists = {
 };
 
 function makeGlyphIa(spec) {
-    spec.html = "<table class=ia border=1>" +
+    spec.html = "<table class=ia>" +
         "<tr><td class=r tabindex=1>" +
         '<tr><td class=a tabindex=1>' +
         "</table>";
@@ -196,7 +201,7 @@ function makeGlyphs(element) {
 
 var glyphs = makeGlyphs(inputElement);
 
-addButtonElement.click(buttonAdd);
+addIaButtonElement.click(buttonAdd);
 loadButtonElement.click(buttonLoad);
 saveButtonElement.click(buttonSave);
 dumpButtonElement.click(buttonDump);
