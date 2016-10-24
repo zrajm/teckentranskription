@@ -4,7 +4,7 @@ var addButtonElement  = $("button#add"),
     dumpButtonElement = $("button#dump"),
     inputElement = $("div");
 
-function makeGlyphA(inElement, glyph, remove_cb, prev_cb, next_cb) {
+function makeGlyphA(inElement, glyph, remove_cb, prev_cb) {
     var html = "<table border=1>" +
         "<tr><td class=a rowspan=2><td class=b>" +
         "<tr><td class=c>" +
@@ -13,10 +13,10 @@ function makeGlyphA(inElement, glyph, remove_cb, prev_cb, next_cb) {
     [ "a", "b", "c"].forEach(function (name) {
         glyph[name] = glyph[name] || 0;
     });
-    return makeGlyph(inElement, glyph, html, remove_cb, prev_cb, next_cb);
+    return makeGlyph(inElement, glyph, html, remove_cb, prev_cb);
 }
 
-function makeGlyph(inElement, glyph, html, remove_cb, prev_cb, next_cb) {
+function makeGlyph(inElement, glyph, html, remove_cb, prev_cb) {
     var state = {}, element = {}, html = $(html),
         html_controls = $("<caption class=controls><nobr>" +
                           "<span class=prev>◄</span>" +
@@ -61,7 +61,6 @@ function makeGlyph(inElement, glyph, html, remove_cb, prev_cb, next_cb) {
     html.append(html_controls);
     inElement.append(html);
     return {
-        redraw: redraw,
         get: get,
         set: set,
         setNext: setNext,
@@ -70,80 +69,68 @@ function makeGlyph(inElement, glyph, html, remove_cb, prev_cb, next_cb) {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-function makeGlyphs() {
+function makeGlyphs(element) {
     var glyphs = [];
-    function getGlyphs() {
+    function get() {
         return glyphs.map(function (value) {
             return value.get();
         });
     }
-    function setGlyphs(values) {
-        inputElement.html("");
+    function set(values) {
+        element.html("");
         glyphs = [];
-        values.forEach(addGlyph);
-    }
-    function loadGlyphs() {
-        var loadedGlyphs = JSON.parse(localStorage.getItem('glyphs'));
-        setGlyphs(loadedGlyphs);
-    }
-    function saveGlyphs() {
-        localStorage.setItem('glyphs', JSON.stringify(getGlyphs()));
+        values.forEach(add);
     }
     function redraw() {
-        console.log("redraw");
-        setGlyphs(getGlyphs());
+        set(get());
     }
-    function dumpGlyphs() {
-        return JSON.stringify(getGlyphs());
-    }
-    function removeGlyph(num) {
-        console.log(num);
+    function remove(num) {
         glyphs.splice(num, 1);
         redraw();
     }
-    function swapGlyphs(x, y) {
-        if (y >= 0 && y < glyphs.length) {
-            var tmp = glyphs[y];
-            glyphs[y] = glyphs[x];
-            glyphs[x] = tmp;
-            redraw();
-        }
+    function swap(x, y) {
+        var tmp = glyphs[y];
+        glyphs[y] = glyphs[x];
+        glyphs[x] = tmp;
+        redraw();
     }
-    function addGlyph(glyph) {
+    function add(glyph) {
         var glyph = glyph || {};
-        var num = glyphs.length;
-        var remove_cb = function () { removeGlyph(num); };
-        var prev_cb = num < 1 ? null : function () { swapGlyphs(num, num - 1); };
-        glyphs.push(makeGlyphA(inputElement, glyph, remove_cb, prev_cb, null));
+        var num   = glyphs.length;
+        var remove_cb = function () { remove(num); };
+        var prev_cb   = num < 1 ? null : function () { swap(num, num - 1); };
+        glyphs.push(makeGlyphA(element, glyph, remove_cb, prev_cb));
         if (num > 0) {                         // set '>' for previous glyph
-            glyphs[num - 1].setNext(function () { swapGlyphs(num - 1, num); });
+            glyphs[num - 1].setNext(function () { swap(num - 1, num); });
         }
-        return glyphs[num];
     }
     return {
-        add: addGlyph,
-        remove: removeGlyph,
-        get: getGlyphs,
-        load: loadGlyphs,
-        save: saveGlyphs,
-        set: setGlyphs,
-        dump: dumpGlyphs,
-        swap: swapGlyphs,
+        add: add,
+        get: get,
+        set: set,
     };
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 
-var glyphs = makeGlyphs();
+var glyphs = makeGlyphs(inputElement);
 
-addButtonElement.click(glyphs.add);
-loadButtonElement.click(glyphs.load);
-saveButtonElement.click(glyphs.save);
+addButtonElement.click(buttonAdd);
+loadButtonElement.click(buttonLoad);
+saveButtonElement.click(buttonSave);
 dumpButtonElement.click(buttonDump);
 
+buttonLoad();
 
-glyphs.load();
-
+function buttonAdd() {
+    glyphs.add();
+}
+function buttonLoad() {
+    glyphs.set(JSON.parse(localStorage.getItem('glyphs')));
+}
+function buttonSave() {
+    localStorage.setItem('glyphs', JSON.stringify(glyphs.get()));
+}
 function buttonDump() {
     console.log(JSON.stringify(glyphs.get(), null, 2));
 }
