@@ -1,9 +1,20 @@
 -*- org -*-
 
-* [1/3] List of glyphs to which can be added/removed
-** TODO Delete glyph from global list
-** TODO Different type of glyphs
+* [2/3] List of glyphs to which can be added/removed
+** TODO Ability to add different type of glyphs
+** DONE Delete glyph from global list
+   CLOSED: [2016-10-24 Mon 02:54]
 ** DONE Put global list into object of its own
    CLOSED: [2016-10-21 Fri 18:34]
+* [0/3] Fix bad glyphs
+** TODO "Läge – Höfterna" is to wide
+   pic/six_Truetrans1.svg
+
+   Compare this with "Läge – Axlarna" [pic/greater_Truetrans1.svg] (same
+   symbol, but upside down) which is centered better.
+** TODO "Läge – Ögat" should be lowered
+   pic/five_Truetrans2.svg
+** TODO "Relation – Brevid" should be centered
+    pic/Y_Truetrans1.svg
 
 * [eof]
