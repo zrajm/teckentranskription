@@ -1,5 +1,26 @@
-
 table {
     display: inline-block;
     background: red;
 }
+
+table { position: relative; }
+table caption.controls {
+    display: none;
+    z-index: 1;
+    position: absolute;
+    right: 0;
+
+    border: 1px solid rgba(200, 200, 200, .5);
+    border-radius: .1em;
+    color: rgba(0, 0, 0, .5);
+
+    font-weight: bold;
+}
+table:hover caption.controls { display: block; }
+table caption.controls             { background: rgba(200, 200, 200, .5); }
+table caption.controls span        { border: .125em solid transparent; }
+table caption.controls span:hover  { background: rgba(100, 100, 100, .5); }
+table caption.controls span:active { background: rgba( 50,  50,  50, .5); }
+table caption.controls span[disabled] { background: inherit; color: rgba(0, 0, 0, .2) }
+
+/*[eof]*/
