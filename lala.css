@@ -9,27 +9,23 @@ body { padding: .5em .25em; }
     outline: 3px solid rgba(0, 0, 255, 0.5);
 }
 
-div#input { margin: .5em -.15em; }
-div#status {
+#input { margin: .5em -.15em; }
+#status {
     padding: .5em .5em;
     margin: .5em 0;
-    border: 1px inset #fff;
+    border: 1px inset #eee;
     background: #eee;
 }
 
 .big { font-size: 3em; }
 
+table[border="1"] td { border: none; }
 table[border="1"] {
     border-collapse: collapse;
     border: 1px solid black;
     text-align: center;
 }
-table[border="1"] button {
-    margin: .125em;
-    padding: .25em .5em;
-}
 
-table, table td, table th { border: 0px solid rgba(0,0,0,.1); }
 table {
     display: inline-block;
     border-collapse: separate;
@@ -38,23 +34,40 @@ table {
 }
 
 /* tables in buttons */
+button {
+    margin: .125em;
+    padding: .25em .5em;
+}
 button table .big { font-size: 3em; }
 button table {
     display: block;
     border-collapse: collapse;
-
     line-height: .9;
     font-family: serif;
 }
 
-div#input table td { height: 1.4em; }
-div#input table td {
-    background-size: 4em 4em;
-    height: 2.8em;
-    width: 2em;
-    background-position: left -.075em top -1.25em;
-}
-div#input table td.r { height: 1.4em; background-position: left .124em top 0; }
+/******************************************************************************/
+#input table { border-collapse: collapse; }
+#input td    { background-size: 4em 4em; }
+
+/* background position */
+#input td.r  { background-position: left  .125em top  -.8em;  }
+#input td.a,
+#input td.h  { background-position: left -.075em top -1.25em; }
+#input td.ar { background-position: left -.1em   top -1.1em;  }
+#input td.av { background-position: left -.1em   top -2.7em;  }
+#input td.i  { background-position: left -.15em   top -.95em;  }
+
+/* width & height */
+#input td[colspan],
+#input td.r  { height: .6em; } /* always above H or A, no width needed */
+#input td.i  { height: 1.4em; width: 1.85em; }
+#input td.av,
+#input td.ar { height: 1.4em; width: 1.4em; }
+#input td.a,
+#input td.h  { height: 2.8em; width: 2em;   }
+
+/******************************************************************************/
 
 table { position: relative; }
 table caption.controls {
@@ -67,7 +80,7 @@ table caption.controls {
     font-weight: bold;
 }
 table:hover caption.controls { display: block; }
-div#input table:hover,
+#input table:hover,
 table caption.controls             { background: rgba(200, 200, 200, .5); }
 table caption.controls span        { border: .125em solid transparent; }
 table caption.controls span:hover  { background: rgba(100, 100, 100, .5); }
