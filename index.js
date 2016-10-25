@@ -1,12 +1,12 @@
 /* */
-function makeGlyphSelector(spec){
+function makeSignSelector(spec){
     var selected = spec.current || 0,
-        glyphs = spec.glyphs,
+        signs = spec.signs,
         jqelement = spec.element,
         status_callback = spec.status_callback,
         status_prefix = spec.prefix // "";
-    function setGlyph(glyph) {
-        var file = glyph[0], message = glyph[1];
+    function setSign(sign) {
+        var file = sign[0], message = sign[1];
         jqelement.css("background-image", "url('" + file + "')");
         status_callback(status_prefix + message);
     }
@@ -14,21 +14,21 @@ function makeGlyphSelector(spec){
         switch (event.key) {
         case "ArrowLeft":
             selected -= 1;
-            if (selected < 0) { selected += glyphs.length; }
+            if (selected < 0) { selected += signs.length; }
             break;
         case "ArrowRight":
             selected = selected + 1;
-            if (selected >= glyphs.length) { selected -= glyphs.length; }
+            if (selected >= signs.length) { selected -= signs.length; }
             break;
         default:
             console.log(event.key);
             return true;
         }
-        console.log(selected + ": " + glyphs[selected]);
-        setGlyph(glyphs[selected]);
+        console.log(selected + ": " + signs[selected]);
+        setSign(signs[selected]);
         return false;
     }
-    setGlyph(glyphs[selected]);
+    setSign(signs[selected]);
     jqelement.keydown(handle_handform);
     return {};
 }
@@ -38,12 +38,12 @@ function status(message) {
     statusElement.html(message);
 }
 
-var handshape = makeGlyphSelector({
+var handshape = makeSignSelector({
     element: $('.lagen'),
     //current: 15,
     status_callback: status,
     prefix: "Artikulationsställe (A): ",
-    glyphs: [
+    signs: [
         ["pic/space_Truetrans2.svg", "Neutrala läget"],
         ["pic/exclam_Truetrans1.svg", "Hjässan"],
         ["pic/parenright_Truetrans1.svg", "Ansiktet, huvudhöjd"],
@@ -80,12 +80,12 @@ var handshape = makeGlyphSelector({
     ]
 });
 
-var handshape = makeGlyphSelector({
+var handshape = makeSignSelector({
     element: $('.handform'),
     current: 15,
     status_callback: status,
     prefix: "Handform (H): ",
-    glyphs: [
+    signs: [
         ["pic/space_Truetrans2.svg", "4-handen FIXME"],
         ["pic/C_Truetrans1.svg", "A-handen"],
         ["pic/c_Truetrans1.svg", "Tumvinkelhanden"],
@@ -130,12 +130,12 @@ var handshape = makeGlyphSelector({
     ]
 });
 
-var direction = makeGlyphSelector({
+var direction = makeSignSelector({
     element: $('.riktning'),
     current: 4,
     status_callback: status,
     prefix: "Attitydsriktning (AR): ",
-    glyphs: [
+    signs: [
         ["pic/r_Truetrans1.svg", "Vänster"],
         ["pic/s_Truetrans1.svg", "Höger"],
         ["pic/S_Truetrans1.svg", "Fram"],
@@ -145,12 +145,12 @@ var direction = makeGlyphSelector({
     ]
 });
 
-var twist = makeGlyphSelector({
+var twist = makeSignSelector({
     element: $('.vridning'),
     current: 2,
     status_callback: status,
     prefix: "Attitydsvridning (AV): ",
-    glyphs: [
+    signs: [
         ["pic/U_Truetrans1.svg", "Vänster"],
         ["pic/v_Truetrans1.svg", "Höger"],
         ["pic/V_Truetrans1.svg", "Fram"],

@@ -56,21 +56,21 @@ var lists = {
     ],
 };
 
-function makeGlyphIa(spec) {
+function makeSignIa(spec) {
     spec.html = "<table class=ia>" +
         "<tr><td class=r tabindex=1>" +
         '<tr><td class=a tabindex=1>' +
         "</table>";
-    // All fields must have value for makeGlyph() to work.
-    [ "r", "a"].forEach(function (name) {
-        spec.glyph[name] = spec.glyph[name] || 0;
+    // All fields must have value for makeSign() to work.
+    ["r", "a"].forEach(function (name) {
+        spec.sign[name] = spec.sign[name] || 0;
     });
-    //spec.glyph.type = "Ia";
-    return makeGlyph(spec);
+    spec.sign.type = "ia";
+    return makeSign(spec);
 }
 
-function makeGlyph(spec) {
-    var inElement = spec.element,   glyph   = spec.glyph,
+function makeSign(spec) {
+    var inElement = spec.element,   sign   = spec.sign,
         remove_cb = spec.remove_cb, prev_cb = spec.prev_cb,
         html      = $(spec.html),   pics    = spec.pics;
     var state = {}, element = {},
@@ -107,9 +107,9 @@ function makeGlyph(spec) {
         $(".next", html_controls).attr("disabled", false).click(callback);
     }
 
-    Object.keys(glyph).forEach(function (name) {
+    Object.keys(sign).forEach(function (name) {
         element[name] = $("." + name, html);   // get DOM element
-        set(name, glyph[name]);                //   set value & update DOM
+        set(name, sign[name]);                //   set value & update DOM
         element[name].keydown(function() {     //   attach click function
             var value = get(name), max = pics[name].length;
             switch (event.key) {
@@ -149,36 +149,36 @@ function makeGlyph(spec) {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-function makeGlyphs(element) {
-    var glyphs = [];
+function makeSigns(element) {
+    var signs = [];
     function get() {
-        return glyphs.map(function (value) {
+        return signs.map(function (value) {
             return value.get();
         });
     }
     function set(values) {
         element.html("");
-        glyphs = [];
+        signs = [];
         values.forEach(add);
     }
     function redraw() {
         set(get());
     }
     function remove(num) {
-        glyphs.splice(num, 1);
+        signs.splice(num, 1);
         redraw();
     }
     function swap(x, y) {
-        var tmp = glyphs[y];
-        glyphs[y] = glyphs[x];
-        glyphs[x] = tmp;
+        var tmp = signs[y];
+        signs[y] = signs[x];
+        signs[x] = tmp;
         redraw();
     }
-    function add(glyph) {
-        var num = glyphs.length;
-        glyphs.push(makeGlyphIa({
+    function add(sign) {
+        var num = signs.length;
+        signs.push(makeSignIa({
             element:   element,
-            glyph:     (glyph || {}),
+            sign:     (sign || {}),
             remove_cb: (                 function () { remove(num);        }),
             prev_cb:   (num < 1 ? null : function () { swap(num, num - 1); }),
             pics: {
@@ -186,8 +186,8 @@ function makeGlyphs(element) {
                 a: lists["Ia-a"],
             },
         }));
-        if (num > 0) {                         // set '>' for previous glyph
-            glyphs[num - 1].setNext(function () { swap(num - 1, num); });
+        if (num > 0) {                         // set '>' for previous sign
+            signs[num - 1].setNext(function () { swap(num - 1, num); });
         }
     }
     return {
@@ -199,7 +199,7 @@ function makeGlyphs(element) {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-var glyphs = makeGlyphs(inputElement);
+var signs = makeSigns(inputElement);
 
 addIaButtonElement.click(buttonAdd);
 loadButtonElement.click(buttonLoad);
@@ -210,16 +210,16 @@ buttonLoad();
 $("div table tr:first-child td:first-child").focus();
 
 function buttonAdd() {
-    glyphs.add();
+    signs.add();
 }
 function buttonLoad() {
-    glyphs.set(JSON.parse(localStorage.getItem('glyphs')));
+    signs.set(JSON.parse(localStorage.getItem('signs')));
 }
 function buttonSave() {
-    localStorage.setItem('glyphs', JSON.stringify(glyphs.get()));
+    localStorage.setItem('signs', JSON.stringify(signs.get()));
 }
 function buttonDump() {
-    console.log(JSON.stringify(glyphs.get(), null, 2));
+    console.log(JSON.stringify(signs.get(), null, 2));
 }
 
 //[eof]

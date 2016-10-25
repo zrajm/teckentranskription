@@ -1,8 +1,8 @@
 -*- org -*-
 
-* [2/3] List of glyphs to which can be added/removed
-** TODO Ability to add different type of glyphs
-** DONE Delete glyph from global list
+* [2/3] List of signs to which can be added/removed
+** TODO Ability to add different type of signs
+** DONE Delete sign from global list
    CLOSED: [2016-10-24 Mon 02:54]
 ** DONE Put global list into object of its own
    CLOSED: [2016-10-21 Fri 18:34]
