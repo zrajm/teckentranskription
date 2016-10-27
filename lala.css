@@ -59,11 +59,15 @@ button table {
 #input td.h  { background-position: left -.075em top -1.25em; }
 #input td.ar { background-position: left -.1em   top -1.1em;  }
 #input td.av { background-position: left -.1em   top -2.7em;  }
+#input td.artion1 { background-position: left -.1em   top -.77em;  }
+#input td.artion2 { background-position: left -.1em   top -2.7em;  }
 #input td.i  { background-position: left -.15em   top -.95em;  }
 
 /* width & height */
 #input td[colspan],
 #input td.r  { height: .6em; } /* always above H or A, no width needed */
+#input td.artion1,
+#input td.artion2,
 #input td.i  { height: 1.4em; width: 1.85em; }
 #input td.av,
 #input td.ar { height: 1.4em; width: 1.4em; }

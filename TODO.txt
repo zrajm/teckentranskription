@@ -1,7 +1,33 @@
 -*- org -*-
 
-* [2/3] List of signs to which can be added/removed
-** TODO Ability to add different type of signs
+* [0/1] Simple articulation field
+** TODO Three buttons
+   |-----|
+   | ART |
+   | ION |
+   |-----|
+
+   = Two glyphs, one above the other.
+
+   |---------|
+   | ART-ION |
+   |         |
+   |---------|
+
+   = Single glyph, full height.
+
+   and
+
+   |---|
+   | : |
+   |   |
+   |---|
+
+   = Narrower version for 'repeated articulation' and 'marks sequential
+   articulation' symbols.
+* [3/3] List of signs to which can be added/removed
+** DONE Ability to add different type of signs
+   CLOSED: [2016-10-25 Tue 20:25]
 ** DONE Delete sign from global list
    CLOSED: [2016-10-24 Mon 02:54]
 ** DONE Put global list into object of its own

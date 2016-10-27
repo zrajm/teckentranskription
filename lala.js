@@ -116,17 +116,37 @@ var addIaButtonElement  = $("#ia")
             ["pic/three_Truetrans2.svg",      "Interaktionsart – Vinkel"],
             ["pic/zero_Truetrans2.svg",       "Interaktionsart – Hakning"],
         ],
-        "art_ion": [
-            ["pic/b_Truetrans2.svg",          "Interaktionsart – Växelvis"],
-            ["pic/underscore_Truetrans2.svg", "Interaktionsart – Konvergerar"],
-            ["pic/question_Truetrans2.svg",   "Interaktionsart – Divergerar"],
-            ["pic/one_Truetrans2.svg",        "Interaktionsart – Byte"],
-            ["pic/asciitilde_Truetrans2.svg", "Interaktionsart – Kors"],
-            ["pic/three_Truetrans2.svg",      "Interaktionsart – Vinkel"],
-            ["pic/zero_Truetrans2.svg",       "Interaktionsart – Hakning"],
-            ["pic/two_Truetrans2.svg",        "Interaktionsart – Entré"],
-            ["pic/equal_Truetrans1.svg",      "Interaktionsart – Kontakt"],
-            ["pic/numbersign_Truetrans2.svg", "Interaktionsart – Medial kontakt"],
+        "artion": [
+            ["pic/dollar_Truetrans2.svg",       "Rörelseriktning – Vänster"],
+            ["pic/percent_Truetrans2.svg",      "Rörelseriktning – Höger"],
+            ["pic/ampersand_Truetrans2.svg",    "Rörelseriktning – Vänster–höger"],
+            ["pic/bracketleft_Truetrans2.svg",  "Rörelseriktning – Fram"],
+            ["pic/bracketright_Truetrans2.svg", "Rörelseriktning – In"],
+            ["pic/asterisk_Truetrans2.svg",     "Rörelseriktning – Fram–in"],
+            ["pic/plus_Truetrans2.svg",         "Rörelseriktning – Upp"],
+            ["pic/comma_Truetrans2.svg",        "Rörelseriktning – Ner"],
+            ["pic/hyphen_Truetrans2.svg",       "Rörelseriktning – Upp–ner"],
+            ["pic/four_Truetrans2.svg",         "Rörelseart – Båge"],
+            ["pic/five_Truetrans2.svg",         "Rörelseart – Cirkel"],
+            ["pic/seven_Truetrans2.svg",        "Rörelseart – Vrids"],
+            ["pic/six_Truetrans2.svg",          "Rörelseart – Slås"],
+            ["pic/eight_Truetrans2.svg",        "Rörelseart – Spelar"],
+            ["pic/a_Truetrans2.svg",            "Rörelseart – Förändras"],
+            ["pic/nine_Truetrans2.svg",         "Rörelseart – Strör"],
+            ["pic/A_Truetrans2.svg",            "Rörelseart – Vinklar"],
+            ["pic/egen-bojs.svg",               "Rörelseart – Böjs"],
+            ["pic/b_Truetrans2.svg",            "Interaktionsart – Växelvis"],
+            ["pic/underscore_Truetrans2.svg",   "Interaktionsart – Konvergerar"],
+            ["pic/question_Truetrans2.svg",     "Interaktionsart – Divergerar"],
+            ["pic/one_Truetrans2.svg",          "Interaktionsart – Byte"],
+            ["pic/asciitilde_Truetrans2.svg",   "Interaktionsart – Kors"],
+            ["pic/three_Truetrans2.svg",        "Interaktionsart – Vinkel"],
+            ["pic/zero_Truetrans2.svg",         "Interaktionsart – Hakning"],
+            ["pic/two_Truetrans2.svg",          "Interaktionsart – Entré"],
+            ["pic/equal_Truetrans1.svg",        "Interaktionsart – Kontakt"],
+            ["pic/numbersign_Truetrans2.svg",   "Interaktionsart – Medial kontakt"],
+            ["pic/B_Truetrans2.svg",            "Upprepad artikulation"],
+            ["pic/C_Truetrans2.svg",            "Markerar sekventiell artikulation"],
         ],
     },
     dom_stuff = {
@@ -185,13 +205,14 @@ var addIaButtonElement  = $("#ia")
         },
         iii: {
             html: '<table class=iii>' +
-                '<tr><td colspan=2> ' +
-                '<tr><td rowspan=2 style="max-width:0;overflow:hidden"> <td class=art-ion>' +
-                '<tr><td> ' +
+                '<tr><td colspan=2>' +
+                '<tr><td tabindex=1 class=artion1>' +
+                '<tr><td tabindex=1 class=artion2>' +
                 '</table>',
-            fields: [ 'art-ion' ],
+            fields: [ 'artion1', 'artion2' ],
             glyphs: {
-                'art-ion': glyphs["art-ion"],
+                'artion1': glyphs.artion,
+                'artion2': glyphs.artion,
             },
         },
     };
