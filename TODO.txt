@@ -6,7 +6,7 @@
    CLOSED: [2016-10-24 Mon 02:54]
 ** DONE Put global list into object of its own
    CLOSED: [2016-10-21 Fri 18:34]
-* [0/3] Fix bad glyphs
+* [1/3] Fix bad glyphs
 ** TODO "Läge – Höfterna" is to wide
    pic/six_Truetrans1.svg
 
@@ -14,7 +14,8 @@
    symbol, but upside down) which is centered better.
 ** TODO "Läge – Ögat" should be lowered
    pic/five_Truetrans2.svg
-** TODO "Relation – Brevid" should be centered
-    pic/Y_Truetrans1.svg
+** DONE "Relation – Brevid" should be centered
+   CLOSED: [2016-10-27 Thu 10:55]
+   pic/Y_Truetrans1.svg
 
 * [eof]

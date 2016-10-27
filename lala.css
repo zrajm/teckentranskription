@@ -5,6 +5,9 @@
 
 body { padding: .5em .25em; }
 
+/* DEBUG: Border for glyph tables. */
+/* table, td { outline: 1px solid rgba(0,0,0,.3); } */
+
 :focus {
     outline: 3px solid rgba(0, 0, 255, 0.5);
 }
@@ -51,7 +54,7 @@ button table {
 #input td    { background-size: 4em 4em; }
 
 /* background position */
-#input td.r  { background-position: left  .125em top  -.8em;  }
+#input td.r  { background-position: left  .2em top  -.8em;  }
 #input td.a,
 #input td.h  { background-position: left -.075em top -1.25em; }
 #input td.ar { background-position: left -.1em   top -1.1em;  }
