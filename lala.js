@@ -12,7 +12,7 @@ var addIaButtonElement  = $("#ia")
     inputElement        = $("#input"),
     statusElement       = $("#status"),
     glyphs = {
-        "r": [ // Relation
+        r: [ // Relation
             ["pic/space_Truetrans2.svg", "Relation – Ingen"],
             ["pic/X_Truetrans1.svg",     "Relation – Över"],
             ["pic/y_Truetrans1.svg",     "Relation – Under"],
@@ -20,7 +20,7 @@ var addIaButtonElement  = $("#ia")
             ["pic/z_Truetrans1.svg",     "Relation – Framför"],
             ["pic/Z_Truetrans1.svg",     "Relation – Bakom"],
         ],
-        "a": [ // Artikulationsställe
+        a: [ // Artikulationsställe
             //["pic/space_Truetrans2.svg",        "Läge – Neutrala läget"],
             ["pic/exclam_Truetrans1.svg",       "Läge – Hjässan"],
             ["pic/parenright_Truetrans1.svg",   "Läge – Ansiktet, huvudhöjd"],
@@ -55,7 +55,7 @@ var addIaButtonElement  = $("#ia")
             ["pic/eight_Truetrans1.svg",        "Läge – Höften, vänster"],
             ["pic/nine_Truetrans1.svg",         "Läge – Benet"],
         ],
-        "h": [
+        h: [
             //["pic/space_Truetrans2.svg", "Handform – 4-handen FIXME"],
             ["pic/C_Truetrans1.svg",     "Handform – A-handen"],
             ["pic/c_Truetrans1.svg",     "Handform – Tumvinkelhanden"],
@@ -98,7 +98,7 @@ var addIaButtonElement  = $("#ia")
             ["pic/q_Truetrans1.svg",     "Handform – Stora långfingret"],
             ["pic/aring_Truetrans1.svg", "Handform – Runda långfingret"],
         ],
-        "ar": [
+        ar: [
             ["pic/r_Truetrans1.svg", "Attitydsriktning – Vänster"],
             ["pic/s_Truetrans1.svg", "Attitydsriktning – Höger"],
             ["pic/S_Truetrans1.svg", "Attitydsriktning – Fram"],
@@ -106,7 +106,7 @@ var addIaButtonElement  = $("#ia")
             ["pic/T_Truetrans1.svg", "Attitydsriktning – Upp"],
             ["pic/u_Truetrans1.svg", "Attitydsriktning – Ner"],
         ],
-        "av": [
+        av: [
             ["pic/U_Truetrans1.svg", "Attitydsvridning – Vänster"],
             ["pic/v_Truetrans1.svg", "Attitydsvridning – Höger"],
             ["pic/V_Truetrans1.svg", "Attitydsvridning – Fram"],
@@ -114,7 +114,7 @@ var addIaButtonElement  = $("#ia")
             ["pic/W_Truetrans1.svg", "Attitydsvridning – Upp"],
             ["pic/x_Truetrans1.svg", "Attitydsvridning – Ner"],
         ],
-        "i": [
+        i: [
             ["pic/asciitilde_Truetrans2.svg", "Interaktionsart – Kors"],
             ["pic/three_Truetrans2.svg",      "Interaktionsart – Vinkel"],
             ["pic/zero_Truetrans2.svg",       "Interaktionsart – Hakning"],
@@ -164,8 +164,8 @@ var addIaButtonElement  = $("#ia")
             ["pic/H_Truetrans2.svg", "Rörelseriktning – FIXME"],
         ],
         artion_sep: [
-            ["pic/B_Truetrans2.svg",            "Upprepad artikulation"],
-            ["pic/C_Truetrans2.svg",            "Markerar sekventiell artikulation"],
+            ["pic/B_Truetrans2.svg", "Upprepad artikulation"],
+            ["pic/C_Truetrans2.svg", "Markerar sekventiell artikulation"],
         ],
     },
     dom_stuff = {
@@ -174,11 +174,7 @@ var addIaButtonElement  = $("#ia")
                 '<tr><td tabindex=1 class=r>' +
                 '<tr><td tabindex=1 class=a>' +
                 '</table>',
-            fields: ['r', 'a'],
-            glyphs: {
-                r: glyphs["r"],
-                a: glyphs["a"],
-            },
+            glyphs: { r: glyphs.r, a: glyphs.a },
         },
         ib: {
             html: '<table class=ib>' +
@@ -186,12 +182,11 @@ var addIaButtonElement  = $("#ia")
                 '<tr><td tabindex=1 class=h rowspan=2><td tabindex=1 class=ar>' +
                 '<tr><td tabindex=1 class=av>' +
                 '</table>',
-            fields: ['r', 'h', 'ar', 'av'],
             glyphs: {
-                r:  glyphs["r"],
-                h:  glyphs["h"],
-                ar: glyphs["ar"],
-                av: glyphs["av"],
+                r:  glyphs.r,
+                h:  glyphs.h,
+                ar: glyphs.ar,
+                av: glyphs.av,
             },
         },
         iia: {
@@ -200,13 +195,12 @@ var addIaButtonElement  = $("#ia")
                 '<tr><td tabindex=1 class=ar><td tabindex=1 class=h rowspan=2><td tabindex=1 class=i>' +
                 '<tr><td tabindex=1 class=av><td>  ' +
                 '</table>',
-            fields: ['ar', 'av', 'r', 'h', 'i'],
             glyphs: {
-                ar: glyphs["ar"],
-                av: glyphs["av"],
-                r:  glyphs["r"],
-                h:  glyphs["h"],
-                i:  glyphs["i"],
+                ar: glyphs.ar,
+                av: glyphs.av,
+                r:  glyphs.r,
+                h:  glyphs.h,
+                i:  glyphs.i,
             },
         },
         iib: {
@@ -215,11 +209,10 @@ var addIaButtonElement  = $("#ia")
                 '<tr><td tabindex=1 class=h rowspan=2><td tabindex=1 class=ar>' +
                 '<tr><td tabindex=1 class=av>' +
                 '</table>',
-            fields: ['h', 'ar', 'av'],
             glyphs: {
-                h:  glyphs["h"],
-                ar: glyphs["ar"],
-                av: glyphs["av"],
+                h:  glyphs.h,
+                ar: glyphs.ar,
+                av: glyphs.av,
             },
         },
         iiia: {
@@ -227,10 +220,7 @@ var addIaButtonElement  = $("#ia")
                 '<tr><td colspan=2>' +
                 '<tr><td tabindex=1 class=artion_tall>' +
                 '</table>',
-            fields: [ 'artion_tall' ],
-            glyphs: {
-                'artion_tall': glyphs.artion_tall,
-            },
+            glyphs: { artion_tall: glyphs.artion_tall },
         },
         iiib: {
             html: '<table class=iiib>' +
@@ -238,10 +228,9 @@ var addIaButtonElement  = $("#ia")
                 '<tr><td tabindex=1 class=artion_high>' +
                 '<tr><td tabindex=1 class=artion_low>' +
                 '</table>',
-            fields: [ 'artion_high', 'artion_low' ],
             glyphs: {
                 artion_high: glyphs.artion_high,
-                artion_low: glyphs.artion_low,
+                artion_low : glyphs.artion_low,
             },
         },
         iiic: {
@@ -249,7 +238,6 @@ var addIaButtonElement  = $("#ia")
                 '<tr><td colspan=2>' +
                 '<tr><td tabindex=1 class=artion_sep>' +
                 '</table>',
-            fields: [ 'artion_sep' ],
             glyphs: { artion_sep: glyphs.artion_sep },
         },
         iiid: {
@@ -257,21 +245,18 @@ var addIaButtonElement  = $("#ia")
                 '<tr><td colspan=2>' +
                 '<tr><td tabindex=1 class=h>' +
                 '</table>',
-            fields: [ 'h' ],
             glyphs: { h: glyphs.h },
         },
     };
 
 function makeSign(spec) {
-    console.log(JSON.stringify(spec, null, 4));
     var inElement = spec.element,   sign    = spec.sign,
         remove_cb = spec.remove_cb, prev_cb = spec.prev_cb,
         pics      =   dom_stuff[sign.type].glyphs,
         html      = $(dom_stuff[sign.type].html);
 
-    // Set any empty values in 'sign' to zero.
-    dom_stuff[sign.type].fields.forEach(function (name) {
-        console.log(name);
+    Object.keys(dom_stuff[sign.type].glyphs).forEach(function (name) {
+        // Set empty values in 'sign' to zero.
         sign[name] = sign[name] || 0;
     });
     var state = {}, element = {},
@@ -376,7 +361,6 @@ function makeSigns(element) {
         redraw();
     }
     function add(sign) {
-        console.log(JSON.stringify(sign, null, 4));
         var num = signs.length;
         signs.push(makeSign({
             element:   element,
