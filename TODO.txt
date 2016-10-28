@@ -1,7 +1,14 @@
 -*- org -*-
 
-* [0/1] Simple articulation field
-** TODO Three buttons
+* [1/2] Simple articulation field
+** TODO Move 'medial contact'(?) and 'contact' symbols to separator
+   'Medial contact' and 'contact' are dots and therefore narrower and would go
+   better with the separator button (for typographical reasons).
+
+   Is 'medial contact' meant to be wider? I.e. have space on each sides? If so,
+   retain it where it currently is.
+** DONE Three buttons
+   CLOSED: [2016-10-27 Thu 11:39]
    |-----|
    | ART |
    | ION |

@@ -2,7 +2,10 @@ var addIaButtonElement  = $("#ia")
     addIbButtonElement  = $("#ib")
     addIIaButtonElement = $("#iia")
     addIIbButtonElement = $("#iib")
-    addIIIButtonElement = $("#iii")
+    addIIIaButtonElement = $("#iiia")
+    addIIIbButtonElement = $("#iiib")
+    addIIIcButtonElement = $("#iiic")
+    addIIIdButtonElement = $("#iiid")
     loadButtonElement   = $("#load"),
     saveButtonElement   = $("#save"),
     dumpButtonElement   = $("#dump"),
@@ -116,7 +119,7 @@ var addIaButtonElement  = $("#ia")
             ["pic/three_Truetrans2.svg",      "Interaktionsart – Vinkel"],
             ["pic/zero_Truetrans2.svg",       "Interaktionsart – Hakning"],
         ],
-        "artion": [
+        artion_tall: [
             ["pic/dollar_Truetrans2.svg",       "Rörelseriktning – Vänster"],
             ["pic/percent_Truetrans2.svg",      "Rörelseriktning – Höger"],
             ["pic/ampersand_Truetrans2.svg",    "Rörelseriktning – Vänster–höger"],
@@ -126,10 +129,6 @@ var addIaButtonElement  = $("#ia")
             ["pic/plus_Truetrans2.svg",         "Rörelseriktning – Upp"],
             ["pic/comma_Truetrans2.svg",        "Rörelseriktning – Ner"],
             ["pic/hyphen_Truetrans2.svg",       "Rörelseriktning – Upp–ner"],
-            ["pic/four_Truetrans2.svg",         "Rörelseart – Båge"],
-            ["pic/five_Truetrans2.svg",         "Rörelseart – Cirkel"],
-            ["pic/seven_Truetrans2.svg",        "Rörelseart – Vrids"],
-            ["pic/six_Truetrans2.svg",          "Rörelseart – Slås"],
             ["pic/eight_Truetrans2.svg",        "Rörelseart – Spelar"],
             ["pic/a_Truetrans2.svg",            "Rörelseart – Förändras"],
             ["pic/nine_Truetrans2.svg",         "Rörelseart – Strör"],
@@ -145,6 +144,26 @@ var addIaButtonElement  = $("#ia")
             ["pic/two_Truetrans2.svg",          "Interaktionsart – Entré"],
             ["pic/equal_Truetrans1.svg",        "Interaktionsart – Kontakt"],
             ["pic/numbersign_Truetrans2.svg",   "Interaktionsart – Medial kontakt"],
+        ],
+        artion_high: [
+            ["pic/four_Truetrans2.svg",  "Rörelseart – Båge"],
+            ["pic/five_Truetrans2.svg",  "Rörelseart – Cirkel"],
+            ["pic/seven_Truetrans2.svg", "Rörelseart – Vrids"],
+            ["pic/six_Truetrans2.svg",   "Rörelseart – Slås"],
+        ],
+        artion_low: [
+            ["pic/c_Truetrans2.svg", "Rörelseriktning – Vänster"],
+            ["pic/D_Truetrans2.svg", "Rörelseriktning – Höger"],
+            ["pic/d_Truetrans2.svg", "Rörelseriktning – Vänster–höger"],
+            ["pic/E_Truetrans2.svg", "Rörelseriktning – Fram"],
+            ["pic/e_Truetrans2.svg", "Rörelseriktning – In"],
+            ["pic/f_Truetrans2.svg", "Rörelseriktning – Fram–in"],
+            ["pic/F_Truetrans2.svg", "Rörelseriktning – Upp"],
+            ["pic/G_Truetrans2.svg", "Rörelseriktning – Ner"],
+            ["pic/g_Truetrans2.svg", "Rörelseriktning – Upp–ner"],
+            ["pic/H_Truetrans2.svg", "Rörelseriktning – FIXME"],
+        ],
+        artion_sep: [
             ["pic/B_Truetrans2.svg",            "Upprepad artikulation"],
             ["pic/C_Truetrans2.svg",            "Markerar sekventiell artikulation"],
         ],
@@ -203,17 +222,43 @@ var addIaButtonElement  = $("#ia")
                 av: glyphs["av"],
             },
         },
-        iii: {
-            html: '<table class=iii>' +
+        iiia: {
+            html: '<table class="FIXME iiia">' +
                 '<tr><td colspan=2>' +
-                '<tr><td tabindex=1 class=artion1>' +
-                '<tr><td tabindex=1 class=artion2>' +
+                '<tr><td tabindex=1 class=artion_tall>' +
                 '</table>',
-            fields: [ 'artion1', 'artion2' ],
+            fields: [ 'artion_tall' ],
             glyphs: {
-                'artion1': glyphs.artion,
-                'artion2': glyphs.artion,
+                'artion_tall': glyphs.artion_tall,
             },
+        },
+        iiib: {
+            html: '<table class=iiib>' +
+                '<tr><td colspan=2>' +
+                '<tr><td tabindex=1 class=artion_high>' +
+                '<tr><td tabindex=1 class=artion_low>' +
+                '</table>',
+            fields: [ 'artion_high', 'artion_low' ],
+            glyphs: {
+                artion_high: glyphs.artion_high,
+                artion_low: glyphs.artion_low,
+            },
+        },
+        iiic: {
+            html: '<table class=iiic>' +
+                '<tr><td colspan=2>' +
+                '<tr><td tabindex=1 class=artion_sep>' +
+                '</table>',
+            fields: [ 'artion_sep' ],
+            glyphs: { artion_sep: glyphs.artion_sep },
+        },
+        iiid: {
+            html: '<table class=iiid>' +
+                '<tr><td colspan=2>' +
+                '<tr><td tabindex=1 class=h>' +
+                '</table>',
+            fields: [ 'h' ],
+            glyphs: { h: glyphs.h },
         },
     };
 
@@ -357,7 +402,10 @@ addIaButtonElement.click( function() { signs.add({ type: 'ia'  }) });
 addIbButtonElement.click( function() { signs.add({ type: 'ib'  }) });
 addIIaButtonElement.click(function() { signs.add({ type: 'iia' }) });
 addIIbButtonElement.click(function() { signs.add({ type: 'iib' }) });
-addIIIButtonElement.click(function() { signs.add({ type: 'iii' }) });
+addIIIaButtonElement.click(function() { signs.add({ type: 'iiia' }) });
+addIIIbButtonElement.click(function() { signs.add({ type: 'iiib' }) });
+addIIIcButtonElement.click(function() { signs.add({ type: 'iiic' }) });
+addIIIdButtonElement.click(function() { signs.add({ type: 'iiid' }) });
 loadButtonElement.click(buttonLoad);
 saveButtonElement.click(buttonSave);
 dumpButtonElement.click(buttonDump);

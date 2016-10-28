@@ -12,6 +12,10 @@ body { padding: .5em .25em; }
     outline: 3px solid rgba(0, 0, 255, 0.5);
 }
 
+.FIXME {
+    background: red;
+}
+
 #input { margin: .5em -.15em; }
 #status {
     padding: .5em .5em;
@@ -59,18 +63,22 @@ button table {
 #input td.h  { background-position: left -.075em top -1.25em; }
 #input td.ar { background-position: left -.1em   top -1.1em;  }
 #input td.av { background-position: left -.1em   top -2.7em;  }
-#input td.artion1 { background-position: left -.1em   top -.77em;  }
-#input td.artion2 { background-position: left -.1em   top -2.7em;  }
+#input td.artion_tall { background-position: left -.1em   top -.77em;  }
+#input td.artion_sep { background-position: left -.1em   top -.9em;  }
+#input td.artion_high { background-position: left -.15em   top -.9em;  }
+#input td.artion_low  { background-position: left -.15em   top -2.55em;  }
 #input td.i  { background-position: left -.15em   top -.95em;  }
 
 /* width & height */
 #input td[colspan],
 #input td.r  { height: .6em; } /* always above H or A, no width needed */
-#input td.artion1,
-#input td.artion2,
+#input td.artion_sep  { height: 2.8em; width: .75em;   }
+#input td.artion_high,
+#input td.artion_low,
 #input td.i  { height: 1.4em; width: 1.85em; }
 #input td.av,
 #input td.ar { height: 1.4em; width: 1.4em; }
+#input td.artion_tall,
 #input td.a,
 #input td.h  { height: 2.8em; width: 2em;   }
 
