@@ -56,7 +56,7 @@ var addIaButtonElement  = $("#ia")
             ["pic/nine_Truetrans1.svg",         "Läge – Benet"],
         ],
         h: [
-            //["pic/space_Truetrans2.svg", "Handform – 4-handen FIXME"],
+            ["pic/space_Truetrans2.svg", "Handform – 4-handen FIXME"],
             ["pic/C_Truetrans1.svg",     "Handform – A-handen"],
             ["pic/c_Truetrans1.svg",     "Handform – Tumvinkelhanden"],
             ["pic/F_Truetrans1.svg",     "Handform – Tumhanden"],
@@ -66,7 +66,7 @@ var addIaButtonElement  = $("#ia")
             ["pic/H_Truetrans1.svg",     "Handform – Nyphanden"],
             ["pic/l_Truetrans1.svg",     "Handform – Lilla O-handen"],
             ["pic/f_Truetrans1.svg",     "Handform – E-handen"],
-            ["pic/space_Truetrans2.svg", "Handform – F-handenFIXME"],
+            ["pic/space_Truetrans2.svg", "Handform – F-handen FIXME"],
             ["pic/E_Truetrans1.svg",     "Handform – Knutna handen"],
             ["pic/Q_Truetrans1.svg",     "Handform – Stora nyphanden"],
             ["pic/P_Truetrans1.svg",     "Handform – Lillfingret"],
