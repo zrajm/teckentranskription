@@ -3,6 +3,8 @@
     padding: 0;
 }
 
+img { max-height: 7em; }
+
 body { padding: .5em .25em; }
 
 /* DEBUG: Border for glyph tables. */
