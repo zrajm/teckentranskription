@@ -62,7 +62,7 @@ button table {
 /* background position */
 #input td.r  { background-position: left  .2em top  -.8em;  }
 #input td.a,
-#input td.h  { background-position: left -.075em top -1.25em; }
+#input td.h  { background-position: left -.01em top -1.25em; }
 #input td.ar { background-position: left -.1em   top -1.1em;  }
 #input td.av { background-position: left -.1em   top -2.7em;  }
 #input td.artion_tall { background-position: left -.1em   top -.77em;  }
