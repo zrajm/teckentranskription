@@ -247,6 +247,19 @@ var addIaButtonElement  = $("#ia")
                 '</table>',
             glyphs: { h: glyphs.h },
         },
+    },
+    storage = {
+        set: function (name, object) {
+            localStorage.setItem(name, JSON.stringify(object));
+        },
+        get: function (name) {
+            return JSON.parse(localStorage.getItem(name));
+        },
+        list: function () {
+            return Object.keys(localStorage).map(function(key) {
+                return localStorage.key(key);
+            });
+        }
     };
 
 function makeSign(spec) {
@@ -399,13 +412,16 @@ buttonLoad();
 $("div table tr:first-child td:first-child").focus();
 
 function buttonLoad() {
-    signs.set(JSON.parse(localStorage.getItem('signs')));
+    signs.set(storage.get('signs'));
 }
 function buttonSave() {
-    localStorage.setItem('signs', JSON.stringify(signs.get()));
+    storage.set('signs', signs.get());
 }
 function buttonDump() {
-    console.log(JSON.stringify(signs.get(), null, 2));
+    storage.list().forEach(function (name) {
+        var obj = storage.get(name);
+        console.log(JSON.stringify(obj, null, 2));
+    });
 }
 
 //[eof]
