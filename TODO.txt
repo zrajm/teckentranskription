@@ -1,7 +1,12 @@
 -*- org -*-
 
 * TODO Remember last saved
+  On reload, the transcription loaded before the reload should be the one
+  displayed.
 * TODO Delete function
+  For erasing a saved transcription.
+* TODO 'Clear' button
+  For clearing the current transcription.
 * TODO Import/export saved data
 * [1/2] Simple articulation field
 ** TODO Move 'medial contact'(?) and 'contact' symbols to separator
