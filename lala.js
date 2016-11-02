@@ -7,7 +7,9 @@ var addIaButtonElement  = $("#ia")
     addIIIcButtonElement = $("#iiic")
     addIIIdButtonElement = $("#iiid")
     loadButtonElement   = $("#load"),
+    loadInputElement    = $("#load-input"),
     saveButtonElement   = $("#save"),
+    saveInputElement    = $("#save-input"),
     dumpButtonElement   = $("#dump"),
     inputElement        = $("#input"),
     statusElement       = $("#status"),
@@ -250,15 +252,17 @@ var addIaButtonElement  = $("#ia")
     },
     storage = {
         set: function (name, object) {
-            localStorage.setItem(name, JSON.stringify(object));
+            return localStorage.setItem(name, JSON.stringify(object));
         },
         get: function (name) {
             return JSON.parse(localStorage.getItem(name));
         },
         list: function () {
-            return Object.keys(localStorage).map(function(key) {
-                return localStorage.key(key);
-            });
+            var i, list = [];
+            for (i = 0; i < localStorage.length; i += 1) {
+                list.push(localStorage.key(i));
+            }
+            return list;
         }
     };
 
@@ -395,6 +399,20 @@ function makeSigns(element) {
 
 ////////////////////////////////////////////////////////////////////////////////
 
+function updateLoadList() {
+    loadInputElement.html(
+        storage.list().map(function (name) {
+            return "<option>" + name
+        }).join("")
+    );
+}
+
+updateLoadList();
+(function () {
+    var thingy = storage.list()[0];
+    saveInputElement.val(thingy);
+}());
+
 var signs = makeSigns(inputElement);
 addIaButtonElement.click( function() { signs.add({ type: 'ia'  }) });
 addIbButtonElement.click( function() { signs.add({ type: 'ib'  }) });
@@ -412,16 +430,21 @@ buttonLoad();
 $("div td[tabindex]").focus();
 
 function buttonLoad() {
-    signs.set(storage.get('signs'));
+    var name = loadInputElement.val();
+    signs.set(storage.get(name));
+    saveInputElement.val(name);
 }
 function buttonSave() {
-    storage.set('signs', signs.get());
+    var name = saveInputElement.val();
+    storage.set(name, signs.get());
+    updateLoadList();
 }
 function buttonDump() {
+    var superobj = {};
     storage.list().forEach(function (name) {
-        var obj = storage.get(name);
-        console.log(JSON.stringify(obj, null, 2));
+        superobj[name] = storage.get(name);
     });
+    console.log(JSON.stringify(superobj, null, 4));
 }
 
 //[eof]

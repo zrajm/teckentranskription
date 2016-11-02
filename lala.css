@@ -43,7 +43,7 @@ table {
 }
 
 /* tables in buttons */
-button {
+button, select, input {
     margin: .125em;
     padding: .25em .5em;
 }
@@ -72,6 +72,11 @@ button table {
 #input td.i  { background-position: left -.15em   top -.95em;  }
 
 /* width & height */
+select#load-input,
+input#save-input { width: 10em; }
+button#load,
+button#save,
+button#dump { width: 4em; }
 #input td[colspan],
 #input td.r  { height: .6em; } /* always above H or A, no width needed */
 #input td.artion_sep  { height: 2.8em; width: .75em;   }
