@@ -260,7 +260,8 @@ var addIaButtonElement  = $("#ia")
         list: function () {
             var i, list = [];
             for (i = 0; i < localStorage.length; i += 1) {
-                list.push(localStorage.key(i));
+                var name = localStorage.key(i);
+                if (name[0] !== '_') { list.push(name); }
             }
             return list;
         }
@@ -313,7 +314,7 @@ function makeSign(spec) {
 
     Object.keys(sign).forEach(function (name) {
         element[name] = $("." + name, html);   // get DOM element
-        set(name, sign[name]);                //   set value & update DOM
+        set(name, sign[name]);                 //   set value & update DOM
         element[name].keydown(function() {     //   attach click function
             var value = get(name), max = pics[name].length;
             switch (event.key) {
@@ -363,7 +364,9 @@ function makeSigns(element) {
     function set(values) {
         element.html("");
         signs = [];
-        values.forEach(add);
+        if (values) {
+            values.forEach(add);
+        }
     }
     function redraw() {
         set(get());
@@ -400,17 +403,19 @@ function makeSigns(element) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function updateLoadList() {
+    var selected = storage.get('_selected');
     loadInputElement.html(
         storage.list().map(function (name) {
-            return "<option>" + name
+            return "<option" + (name === selected ? " selected" : "") +
+                ">" + name
         }).join("")
     );
 }
 
 updateLoadList();
 (function () {
-    var thingy = storage.list()[0];
-    saveInputElement.val(thingy);
+    var selected = storage.get('_selected');
+    saveInputElement.val(selected);
 }());
 
 var signs = makeSigns(inputElement);
@@ -432,11 +437,19 @@ $("div td[tabindex]").focus();
 function buttonLoad() {
     var name = loadInputElement.val();
     signs.set(storage.get(name));
+    storage.set('_selected', name);
     saveInputElement.val(name);
 }
 function buttonSave() {
     var name = saveInputElement.val();
+    if (name === '') {
+        throw Error("Cannot save transcription unless you give it a name");
+    }
+    if (name[0] === '_') {
+        throw Error("Transcription name may not begin with underscore");
+    }
     storage.set(name, signs.get());
+    storage.set('_selected', name);
     updateLoadList();
 }
 function buttonDump() {

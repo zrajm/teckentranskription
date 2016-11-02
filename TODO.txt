@@ -1,8 +1,5 @@
 -*- org -*-
 
-* TODO Remember last saved
-  On reload, the transcription loaded before the reload should be the one
-  displayed.
 * TODO Delete function
   For erasing a saved transcription.
 * TODO 'Clear' button
@@ -59,6 +56,10 @@
 ** DONE "Relation – Brevid" should be centered
    CLOSED: [2016-10-27 Thu 10:55]
    pic/Y_Truetrans1.svg
+* DONE Remember last saved
+  CLOSED: [2016-11-02 Wed 22:33]
+  On reload, the transcription loaded before the reload should be the one
+  displayed.
 * DONE Named saves
   CLOSED: [2016-11-02 Wed 14:44]
   Should allow for saving of multiple transcriptions with different names, so
