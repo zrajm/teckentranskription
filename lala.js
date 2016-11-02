@@ -409,7 +409,7 @@ saveButtonElement.click(buttonSave);
 dumpButtonElement.click(buttonDump);
 
 buttonLoad();
-$("div table tr:first-child td:first-child").focus();
+$("div td[tabindex]").focus();
 
 function buttonLoad() {
     signs.set(storage.get('signs'));
