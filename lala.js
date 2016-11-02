@@ -443,10 +443,14 @@ function buttonLoad() {
 function buttonSave() {
     var name = saveInputElement.val();
     if (name === '') {
-        throw Error("Cannot save transcription unless you give it a name");
+        alert("Cannot save transcription unless you give it a name!");
+        saveInputElement.focus();
+        return false;
     }
     if (name[0] === '_') {
-        throw Error("Transcription name may not begin with underscore");
+        alert("Transcription name may not begin with an underscore!");
+        saveInputElement.focus();
+        return false;
     }
     storage.set(name, signs.get());
     storage.set('_selected', name);
