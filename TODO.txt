@@ -11,14 +11,15 @@
   but as proper images with the <img> tag -- that way the HTML tables can
   adjust automatically to each glyph's size and we'll get a (much?) prettier
   layout of each transcribed sign.
-* [1/7] Give glyph SVG files descriptive names
+* [2/7] Give glyph SVG files descriptive names
   Instead of the pseudo-random names they inherited from the typefaces.
-** TODO Rename 'a' (position) glyphs
 ** TODO Rename 'r' (relation) glyphs
 ** TODO Rename 'av' (attitude direction) glyphs
 ** TODO Rename 'ar' (attitude twist) glyphs
 ** TODO Rename 'i' (interaction kind) glyphs
 ** TODO Rename 'art-ion' (articulation) glyphs
+** DONE Rename 'a' (position) glyphs
+   CLOSED: [2016-11-03 Thu 22:33]
 ** DONE Rename 'h' (hand shape) glyphs
    CLOSED: [2016-11-03 Thu 21:07]
 * TODO Delete function
