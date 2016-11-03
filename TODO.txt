@@ -1,5 +1,18 @@
 -*- org -*-
 
+* TODO Display optional 'interaction kind' component of IIa better
+  It should only take up space in the glyph when it is actually used.
+* TODO Shortcuts for hand shape glyphs
+* TODO Focusing glyph should update status box
+  Displaying the information about that glyph.
+* TODO Resize image bounding boxes
+  The size of each image should be just enough for the glyph to fit, and then
+  each image should be included in the DOM not as background images using CSS,
+  but as proper images with the <img> tag -- that way the HTML tables can
+  adjust automatically to each glyph's size and we'll get a (much?) prettier
+  layout of each transcribed sign.
+* TODO Rename images to something logical
+  Instead of the pseudo-random names they inherited from the typefaces.
 * TODO Delete function
   For erasing a saved transcription.
 * TODO 'Clear' button
@@ -56,6 +69,9 @@
 ** DONE "Relation – Brevid" should be centered
    CLOSED: [2016-10-27 Thu 10:55]
    pic/Y_Truetrans1.svg
+* TODO 'Interaction kind' component of IIa should be optional
+  CLOSED: [2016-11-03 Thu 11:19]
+  Double articulation cluster IIa should have an optional interaction kind.
 * DONE Remember last saved
   CLOSED: [2016-11-02 Wed 22:33]
   On reload, the transcription loaded before the reload should be the one
@@ -71,5 +87,4 @@
    CLOSED: [2016-10-24 Mon 02:54]
 ** DONE Put global list into object of its own
    CLOSED: [2016-10-21 Fri 18:34]
-
 * [eof]

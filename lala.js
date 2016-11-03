@@ -120,6 +120,7 @@ var addIaButtonElement  = $("#ia")
             ["pic/asciitilde_Truetrans2.svg", "Interaktionsart – Kors"],
             ["pic/three_Truetrans2.svg",      "Interaktionsart – Vinkel"],
             ["pic/zero_Truetrans2.svg",       "Interaktionsart – Hakning"],
+            ["pic/space_Truetrans2.svg",      "Interaktionsart – FIXME"],
         ],
         artion_tall: [
             ["pic/dollar_Truetrans2.svg",       "Rörelseriktning – Vänster"],
