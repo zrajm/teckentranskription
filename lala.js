@@ -116,9 +116,9 @@ var addIaButtonElement  = $("#ia")
             ["pic/av-ner.svg",     "Attitydsvridning – Ner"    ],
         ],
         i: [
-            ["pic/asciitilde_Truetrans2.svg", "Interaktionsart – Kors"],
-            ["pic/three_Truetrans2.svg",      "Interaktionsart – Vinkel"],
-            ["pic/zero_Truetrans2.svg",       "Interaktionsart – Hakning"],
+            ["pic/i-kors.svg",    "Interaktionsart – Kors"   ],
+            ["pic/i-vinkel.svg",  "Interaktionsart – Vinkel" ],
+            ["pic/i-hakning.svg", "Interaktionsart – Hakning"],
         ],
         artion_tall: [
             ["pic/bracketleft_Truetrans2.svg",  "Rörelseriktning – Fram"],
