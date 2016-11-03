@@ -16,12 +16,12 @@ var addIaButtonElement  = $("#ia")
     statusElement       = $("#status"),
     glyphs = {
         r: [ // Relation
-            ["pic/space_Truetrans2.svg", "Relation – Ingen"],
-            ["pic/X_Truetrans1.svg",     "Relation – Över"],
-            ["pic/y_Truetrans1.svg",     "Relation – Under"],
-            ["pic/Y_Truetrans1.svg",     "Relation – Bredvid"],
-            ["pic/z_Truetrans1.svg",     "Relation – Framför"],
-            ["pic/Z_Truetrans1.svg",     "Relation – Bakom"],
+            ["pic/r-ingen.svg",   "Relation – Ingen"  ],
+            ["pic/r-over.svg",    "Relation – Över"   ],
+            ["pic/r-under.svg",   "Relation – Under"  ],
+            ["pic/r-bredvid.svg", "Relation – Bredvid"],
+            ["pic/r-framfor.svg", "Relation – Framför"],
+            ["pic/r-bakom.svg",   "Relation – Bakom"  ],
         ],
         a: [ // Artikulationsställe
             ["pic/hjassan.svg",         "Läge – Hjässan"                        ],
