@@ -1,5 +1,8 @@
 -*- org -*-
 
+* TODO Hand position glyphs should rotate clockwards
+  'AR' and 'AV' glyphs should be reordered so that they rotate clockwards as
+  one steps through them.
 * TODO Shortcuts for hand shape glyphs
 * TODO Focusing glyph should update status box
   Displaying the information about that glyph.
