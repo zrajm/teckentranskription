@@ -1,6 +1,8 @@
 -*- org -*-
 
 * TODO Shortcuts for hand shape glyphs
+  Pressing an alphabetic key should jump to the glyph most similar i
+  appearance = Faster navigation!
 * TODO Focusing glyph should update status box
   Displaying the information about that glyph.
 * TODO Resize image bounding boxes
@@ -9,8 +11,16 @@
   but as proper images with the <img> tag -- that way the HTML tables can
   adjust automatically to each glyph's size and we'll get a (much?) prettier
   layout of each transcribed sign.
-* TODO Rename images to something logical
+* [1/7] Give glyph SVG files descriptive names
   Instead of the pseudo-random names they inherited from the typefaces.
+** TODO Rename 'a' (position) glyphs
+** TODO Rename 'r' (relation) glyphs
+** TODO Rename 'av' (attitude direction) glyphs
+** TODO Rename 'ar' (attitude twist) glyphs
+** TODO Rename 'i' (interaction kind) glyphs
+** TODO Rename 'art-ion' (articulation) glyphs
+** DONE Rename 'h' (hand shape) glyphs
+   CLOSED: [2016-11-03 Thu 21:07]
 * TODO Delete function
   For erasing a saved transcription.
 * TODO 'Clear' button
@@ -48,7 +58,7 @@
 
    = Narrower version for 'repeated articulation' and 'marks sequential
    articulation' symbols.
-* [5/7] Fix bad/missing glyphs
+* [5/8] Fix bad/missing glyphs
 ** TODO "Läge – Höfterna" is to wide
    pic/six_Truetrans1.svg
 
@@ -56,6 +66,9 @@
    symbol, but upside down) which is centered better.
 ** TODO "Läge – Ögat" should be lowered
    pic/five_Truetrans2.svg
+** TODO "Handform – Krokfingret" should not have thinner lines
+   Currently this glyph has thinner lines than all the other glyphs. That
+   doesn't look nice. :(
 ** DONE Add missing "4-handen" glyph
    CLOSED: [2016-11-01 Tue 01:13]
 ** DONE Add missing "D-handen" glyph
@@ -67,7 +80,7 @@
 ** DONE "Relation – Brevid" should be centered
    CLOSED: [2016-10-27 Thu 10:55]
    pic/Y_Truetrans1.svg
-* TODO 'Interaction kind' component of IIa should be optional
+* DONE 'Interaction kind' component of IIa should be optional
   CLOSED: [2016-11-03 Thu 11:19]
   Double articulation cluster IIa should have an optional interaction kind.
 * DONE Hand position glyphs should rotate clockwards
