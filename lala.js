@@ -100,12 +100,12 @@ var addIaButtonElement  = $("#ia")
             ["pic/x-handen.svg",         "Handform – X-handen",         "pic/hand/x-handen.jpg"         ],
         ],
         ar: [
-            ["pic/S_Truetrans1.svg", "Attitydsriktning – Fram"],
-            ["pic/s_Truetrans1.svg", "Attitydsriktning – Höger"],
-            ["pic/t_Truetrans1.svg", "Attitydsriktning – In"],
-            ["pic/r_Truetrans1.svg", "Attitydsriktning – Vänster"],
-            ["pic/T_Truetrans1.svg", "Attitydsriktning – Upp"],
-            ["pic/u_Truetrans1.svg", "Attitydsriktning – Ner"],
+            ["pic/ar-fram.svg",    "Attitydsriktning – Fram"   ],
+            ["pic/ar-hoger.svg",   "Attitydsriktning – Höger"  ],
+            ["pic/ar-in.svg",      "Attitydsriktning – In"     ],
+            ["pic/ar-vanster.svg", "Attitydsriktning – Vänster"],
+            ["pic/ar-upp.svg",     "Attitydsriktning – Upp"    ],
+            ["pic/ar-ner.svg",     "Attitydsriktning – Ner"    ],
         ],
         av: [
             ["pic/V_Truetrans1.svg", "Attitydsvridning – Fram"],
