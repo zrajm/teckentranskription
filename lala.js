@@ -108,12 +108,12 @@ var addIaButtonElement  = $("#ia")
             ["pic/ar-ner.svg",     "Attitydsriktning – Ner"    ],
         ],
         av: [
-            ["pic/V_Truetrans1.svg", "Attitydsvridning – Fram"],
-            ["pic/v_Truetrans1.svg", "Attitydsvridning – Höger"],
-            ["pic/w_Truetrans1.svg", "Attitydsvridning – In"],
-            ["pic/U_Truetrans1.svg", "Attitydsvridning – Vänster"],
-            ["pic/W_Truetrans1.svg", "Attitydsvridning – Upp"],
-            ["pic/x_Truetrans1.svg", "Attitydsvridning – Ner"],
+            ["pic/av-fram.svg",    "Attitydsvridning – Fram"   ],
+            ["pic/av-hoger.svg",   "Attitydsvridning – Höger"  ],
+            ["pic/av-in.svg",      "Attitydsvridning – In"     ],
+            ["pic/av-vanster.svg", "Attitydsvridning – Vänster"],
+            ["pic/av-upp.svg",     "Attitydsvridning – Upp"    ],
+            ["pic/av-ner.svg",     "Attitydsvridning – Ner"    ],
         ],
         i: [
             ["pic/asciitilde_Truetrans2.svg", "Interaktionsart – Kors"],
