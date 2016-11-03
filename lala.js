@@ -2,6 +2,7 @@ var addIaButtonElement  = $("#ia")
     addIbButtonElement  = $("#ib")
     addIIaButtonElement = $("#iia")
     addIIbButtonElement = $("#iib")
+    addIIcButtonElement = $("#iic")
     addIIIaButtonElement = $("#iiia")
     addIIIbButtonElement = $("#iiib")
     addIIIcButtonElement = $("#iiic")
@@ -120,7 +121,6 @@ var addIaButtonElement  = $("#ia")
             ["pic/asciitilde_Truetrans2.svg", "Interaktionsart – Kors"],
             ["pic/three_Truetrans2.svg",      "Interaktionsart – Vinkel"],
             ["pic/zero_Truetrans2.svg",       "Interaktionsart – Hakning"],
-            ["pic/space_Truetrans2.svg",      "Interaktionsart – FIXME"],
         ],
         artion_tall: [
             ["pic/dollar_Truetrans2.svg",       "Rörelseriktning – Vänster"],
@@ -194,9 +194,9 @@ var addIaButtonElement  = $("#ia")
         },
         iia: {
             html: '<table class=iia>' +
-                '<tr><td><td tabindex=1 class=r><td>' +
-                '<tr><td tabindex=1 class=ar><td tabindex=1 class=h rowspan=2><td tabindex=1 class=i>' +
-                '<tr><td tabindex=1 class=av><td>  ' +
+                '<tr><td><td tabindex=1 class=r>' +
+                '<tr><td tabindex=1 class=ar><td tabindex=1 class=h rowspan=2>' +
+                '<tr><td tabindex=1 class=av>' +
                 '</table>',
             glyphs: {
                 ar: glyphs.ar,
@@ -207,6 +207,16 @@ var addIaButtonElement  = $("#ia")
             },
         },
         iib: {
+            html: '<table class=iib>' +
+                '<tr><td style=width:0><td class=r>' +
+                '<tr><td style=width:0 class=h rowspan=2><td tabindex=1 class=i>' +
+                '<tr><td>  ' +
+                '</table>',
+            glyphs: {
+                i:  glyphs.i,
+            },
+        },
+        iic: {
             html: '<table class=iib>' +
                 '<tr><td colspan=2>' +
                 '<tr><td tabindex=1 class=h rowspan=2><td tabindex=1 class=ar>' +
@@ -424,6 +434,7 @@ addIaButtonElement.click( function() { signs.add({ type: 'ia'  }) });
 addIbButtonElement.click( function() { signs.add({ type: 'ib'  }) });
 addIIaButtonElement.click(function() { signs.add({ type: 'iia' }) });
 addIIbButtonElement.click(function() { signs.add({ type: 'iib' }) });
+addIIcButtonElement.click(function() { signs.add({ type: 'iic' }) });
 addIIIaButtonElement.click(function() { signs.add({ type: 'iiia' }) });
 addIIIbButtonElement.click(function() { signs.add({ type: 'iiib' }) });
 addIIIcButtonElement.click(function() { signs.add({ type: 'iiic' }) });

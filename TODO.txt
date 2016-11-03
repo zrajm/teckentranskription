@@ -1,7 +1,5 @@
 -*- org -*-
 
-* TODO Display optional 'interaction kind' component of IIa better
-  It should only take up space in the glyph when it is actually used.
 * TODO Shortcuts for hand shape glyphs
 * TODO Focusing glyph should update status box
   Displaying the information about that glyph.
@@ -72,6 +70,9 @@
 * TODO 'Interaction kind' component of IIa should be optional
   CLOSED: [2016-11-03 Thu 11:19]
   Double articulation cluster IIa should have an optional interaction kind.
+* DONE Display optional 'interaction kind' component of IIa better
+  CLOSED: [2016-11-03 Thu 12:03]
+  It should only take up space in the glyph when it is actually used.
 * DONE Remember last saved
   CLOSED: [2016-11-02 Wed 22:33]
   On reload, the transcription loaded before the reload should be the one
