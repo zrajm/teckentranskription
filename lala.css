@@ -64,15 +64,16 @@ button table {
 #input td    { background-size: 80px 80px; }
 
 /* background position */
+#input td.r           { position: relative; top: 4px; }
 #input td.r           { background-position: left  4px top -16px; }
 #input td.a           { background-position: left -0px top -24px; }
 #input td.h           { background-position: left -0px top -24px; }
 #input td.ar          { background-position: left -2px top -21px; }
 #input td.av          { background-position: left -2px top -52px; }
-#input td.artion_tall { background-position: left -2px top -15px; }
-#input td.artion_sep  { background-position: left -2px top -19px; }
-#input td.artion_high { background-position: left -3px top -18px; }
-#input td.artion_low  { background-position: left -3px top -51px; }
+#input td.artion_tall { background-position: left -2px top -12px; }
+#input td.artion_high { background-position: left -3px top -8px; }
+#input td.artion_sep  { background-position: left -2px top -12px; }
+#input td.artion_low  { background-position: left -3px top -49px; }
 #input td.i           { background-position: left -3px top -19px; }
 
 /* width */
@@ -85,16 +86,16 @@ select#load-input, input#save-input                      { width: 200px; }
 
 /* height */
 #input td[colspan],
-#input td.r          { height: 12px; } /* always above H or A, no width needed */
-#input td.artion_high,
-#input td.artion_low,
+#input td.r           { height: 12px; } /* always above H or A, no width needed */
+#input td.artion_low  { height: 30px; }
 #input td.i,
 #input td.av,
-#input td.ar         { height: 28px; }
-#input td.artion_tall,
+#input td.ar          { height: 28px; }
+#input td.artion_high { height: 38px; }
 #input td.a,
-#input td.h,
-#input td.artion_sep { height: 56px; }
+#input td.h           { height: 56px; }
+#input td.artion_tall,
+#input td.artion_sep  { height: 68px; }
 
 
 /******************************************************************************/

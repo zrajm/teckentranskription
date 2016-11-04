@@ -228,14 +228,12 @@ var addIaButtonElement  = $("#ia")
         },
         iiia: {
             html: '<table class="FIXME iiia">' +
-                '<tr><td colspan=2>' +
                 '<tr><td tabindex=1 class=artion_tall>' +
                 '</table>',
             glyphs: { artion_tall: glyphs.artion_tall },
         },
         iiib: {
             html: '<table class=iiib>' +
-                '<tr><td colspan=2>' +
                 '<tr><td tabindex=1 class=artion_high>' +
                 '<tr><td tabindex=1 class=artion_low>' +
                 '</table>',
@@ -246,7 +244,6 @@ var addIaButtonElement  = $("#ia")
         },
         iiic: {
             html: '<table class=iiic>' +
-                '<tr><td colspan=2>' +
                 '<tr><td tabindex=1 class=artion_sep>' +
                 '</table>',
             glyphs: { artion_sep: glyphs.artion_sep },

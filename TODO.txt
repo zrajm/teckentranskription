@@ -1,9 +1,5 @@
 -*- org -*-
 
-* TODO 'Articulation' should be as high as 'relation'
-  All articulations (including separator and repetition) should be higher on
-  the line, so as to be clearly distinguishable. In fact the top of these
-  should align with the top of 'R' (relation).
 * TODO Shortcuts for hand shape glyphs
   Pressing an alphabetic key should jump to the glyph most similar i
   appearance = Faster navigation!
@@ -76,6 +72,11 @@
 ** DONE "Relation – Brevid" should be centered
    CLOSED: [2016-10-27 Thu 10:55]
    pic/Y_Truetrans1.svg
+* DONE 'Articulation' should be as high as 'relation'
+  CLOSED: [2016-11-04 Fri 19:13]
+  All articulations (including separator and repetition) should be higher on
+  the line, so as to be clearly distinguishable. In fact the top of these
+  should align with the top of 'R' (relation).
 * DONE Change CSS unit 'em' -> 'px'
   CLOSED: [2016-11-04 Fri 17:33]
   There are rounding errors causing some ugliness and uneven sizes of stuff.
