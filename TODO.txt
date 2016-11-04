@@ -11,21 +11,6 @@
   but as proper images with the <img> tag -- that way the HTML tables can
   adjust automatically to each glyph's size and we'll get a (much?) prettier
   layout of each transcribed sign.
-* [6/7] Give glyph SVG files descriptive names
-  Instead of the pseudo-random names they inherited from the typefaces.
-** TODO Rename 'art-ion' (articulation) glyphs
-** DONE Rename 'r' (relation) glyphs
-   CLOSED: [2016-11-03 Thu 23:12]
-** DONE Rename 'i' (interaction kind) glyphs
-   CLOSED: [2016-11-03 Thu 23:00]
-** DONE Rename 'av' (attitude twist) glyphs
-   CLOSED: [2016-11-03 Thu 22:57]
-** DONE Rename 'ar' (attitude direction) glyphs
-   CLOSED: [2016-11-03 Thu 22:52]
-** DONE Rename 'a' (position) glyphs
-   CLOSED: [2016-11-03 Thu 22:33]
-** DONE Rename 'h' (hand shape) glyphs
-   CLOSED: [2016-11-03 Thu 21:07]
 * TODO Delete function
   For erasing a saved transcription.
 * TODO 'Clear' button
@@ -63,17 +48,19 @@
 
    = Narrower version for 'repeated articulation' and 'marks sequential
    articulation' symbols.
-* [5/8] Fix bad/missing glyphs
+* [6/9] Fix bad/missing glyphs
+** TODO What to do with the (so far) unused glyphs?
+   Files matching `pic/**/*Truetrans*.svg`.
 ** TODO "Läge – Höfterna" is to wide
    pic/six_Truetrans1.svg
 
    Compare this with "Läge – Axlarna" [pic/greater_Truetrans1.svg] (same
    symbol, but upside down) which is centered better.
-** TODO "Läge – Ögat" should be lowered
-   pic/five_Truetrans2.svg
-** TODO "Handform – Krokfingret" should not have thinner lines
+** TODO "Handform – Krokfingret" should have thicker lines
    Currently this glyph has thinner lines than all the other glyphs. That
    doesn't look nice. :(
+** DONE "Läge – Ögat" should be lowered
+   CLOSED: [2016-11-04 Fri 01:32]
 ** DONE Add missing "4-handen" glyph
    CLOSED: [2016-11-01 Tue 01:13]
 ** DONE Add missing "D-handen" glyph
@@ -85,6 +72,22 @@
 ** DONE "Relation – Brevid" should be centered
    CLOSED: [2016-10-27 Thu 10:55]
    pic/Y_Truetrans1.svg
+* [7/7] Give glyph SVG files descriptive names
+  Instead of the pseudo-random names they inherited from the typefaces.
+** DONE Rename 'art-ion' (articulation) glyphs
+   CLOSED: [2016-11-04 Fri 01:25]
+** DONE Rename 'r' (relation) glyphs
+   CLOSED: [2016-11-03 Thu 23:12]
+** DONE Rename 'i' (interaction kind) glyphs
+   CLOSED: [2016-11-03 Thu 23:00]
+** DONE Rename 'av' (attitude twist) glyphs
+   CLOSED: [2016-11-03 Thu 22:57]
+** DONE Rename 'ar' (attitude direction) glyphs
+   CLOSED: [2016-11-03 Thu 22:52]
+** DONE Rename 'a' (position) glyphs
+   CLOSED: [2016-11-03 Thu 22:33]
+** DONE Rename 'h' (hand shape) glyphs
+   CLOSED: [2016-11-03 Thu 21:07]
 * DONE 'Interaction kind' component of IIa should be optional
   CLOSED: [2016-11-03 Thu 11:19]
   Double articulation cluster IIa should have an optional interaction kind.
