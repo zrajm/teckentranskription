@@ -75,23 +75,27 @@ button table {
 #input td.artion_low  { background-position: left -3px top -51px; }
 #input td.i           { background-position: left -3px top -19px; }
 
-/* width & height */
-select#load-input,
-input#save-input { width: 200px; }
-button#load,
-button#save,
-button#dump { width: 80px; }
+/* width */
+#input td.artion_sep                                     { width:  15px; }
+#input td.av, #input td.ar                               { width:  28px; }
+#input td.artion_high, #input td.artion_low, #input td.i { width:  37px; }
+#input td.artion_tall, #input td.a, #input td.h          { width:  40px; }
+button#load, button#save, button#dump                    { width:  80px; }
+select#load-input, input#save-input                      { width: 200px; }
+
+/* height */
 #input td[colspan],
-#input td.r  { height: 12px; } /* always above H or A, no width needed */
-#input td.artion_sep  { height: 54px; width: 15px;   }
+#input td.r          { height: 12px; } /* always above H or A, no width needed */
 #input td.artion_high,
 #input td.artion_low,
-#input td.i  { height: 28px; width: 37px; }
+#input td.i,
 #input td.av,
-#input td.ar { height: 28px; width: 28px; }
+#input td.ar         { height: 28px; }
 #input td.artion_tall,
 #input td.a,
-#input td.h  { height: 56px; width: 40px;   }
+#input td.h,
+#input td.artion_sep { height: 56px; }
+
 
 /******************************************************************************/
 
