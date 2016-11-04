@@ -133,7 +133,7 @@ var addIaButtonElement  = $("#ia")
             ["pic/ra-spelar.svg",       "Rörelseart – Spelar"             ],
             ["pic/ra-forandras.svg",    "Rörelseart – Förändras"          ],
             ["pic/ra-stror.svg",        "Rörelseart – Strör"              ],
-            ["pic/ra-vinklar.svg",      "Rörelseart – Vinklar"            ],
+            ["pic/ra-vinkar.svg",       "Rörelseart – Vinkar"             ],
             ["pic/ra-bojs.svg",         "Rörelseart – Böjs"               ],
             ["pic/i-vaxelvis.svg",      "Interaktionsart – Växelvis"      ],
             ["pic/i-konvergerar.svg",   "Interaktionsart – Konvergerar"   ],
