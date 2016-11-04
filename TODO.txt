@@ -1,5 +1,9 @@
 -*- org -*-
 
+* TODO 'Articulation' should be as high as 'relation'
+  All articulations (including separator and repetition) should be higher on
+  the line, so as to be clearly distinguishable. In fact the top of these
+  should align with the top of 'R' (relation).
 * TODO Shortcuts for hand shape glyphs
   Pressing an alphabetic key should jump to the glyph most similar i
   appearance = Faster navigation!
@@ -72,6 +76,9 @@
 ** DONE "Relation – Brevid" should be centered
    CLOSED: [2016-10-27 Thu 10:55]
    pic/Y_Truetrans1.svg
+* DONE Change CSS unit 'em' -> 'px'
+  CLOSED: [2016-11-04 Fri 17:33]
+  There are rounding errors causing some ugliness and uneven sizes of stuff.
 * DONE I. Add 'Place of articulation' symbols at beginning
   CLOSED: [2016-11-04 Fri 03:40]
   The I type buttons should add their symbol at the beginning of the
