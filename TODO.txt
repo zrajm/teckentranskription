@@ -72,6 +72,10 @@
 ** DONE "Relation – Brevid" should be centered
    CLOSED: [2016-10-27 Thu 10:55]
    pic/Y_Truetrans1.svg
+* DONE I. Add 'Place of articulation' symbols at beginning
+  CLOSED: [2016-11-04 Fri 03:40]
+  The I type buttons should add their symbol at the beginning of the
+  transcript, rather than at the end.
 * [7/7] Give glyph SVG files descriptive names
   Instead of the pseudo-random names they inherited from the typefaces.
 ** DONE Rename 'art-ion' (articulation) glyphs

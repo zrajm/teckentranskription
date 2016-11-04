@@ -353,7 +353,7 @@ function makeSign(spec) {
     $(".remove", html_controls).click(remove_cb);
 
     html.append(html_controls);
-    inElement.append(html);
+    inElement[spec.prepend ? 'prepend' : 'append'](html);
     return {
         get: get,
         set: set,
@@ -391,15 +391,21 @@ function makeSigns(element) {
         redraw();
     }
     function add(sign) {
-        var num = signs.length;
-        signs.push(makeSign({
+        var num = signs.length, prepend = sign.prepend;
+        delete sign.prepend;
+        signs[prepend ? 'unshift' : 'push'](makeSign({
+            prepend:   prepend,
             element:   element,
             sign:     (sign || {}),
             remove_cb: (                 function () { remove(num);        }),
             prev_cb:   (num < 1 ? null : function () { swap(num, num - 1); }),
         }));
-        if (num > 0) {                         // set '>' for previous sign
-            signs[num - 1].setNext(function () { swap(num - 1, num); });
+        if (prepend) {
+            redraw();
+        } else {
+            if (num > 0) {                         // set '>' for previous sign
+                signs[num - 1].setNext(function () { swap(num - 1, num); });
+            }
         }
     }
     return {
@@ -428,8 +434,8 @@ updateLoadList();
 }());
 
 var signs = makeSigns(inputElement);
-addIaButtonElement.click( function() { signs.add({ type: 'ia'  }) });
-addIbButtonElement.click( function() { signs.add({ type: 'ib'  }) });
+addIaButtonElement.click( function() { signs.add({ type: 'ia', prepend: true }) });
+addIbButtonElement.click( function() { signs.add({ type: 'ib', prepend: true }) });
 addIIaButtonElement.click(function() { signs.add({ type: 'iia' }) });
 addIIbButtonElement.click(function() { signs.add({ type: 'iib' }) });
 addIIcButtonElement.click(function() { signs.add({ type: 'iic' }) });
