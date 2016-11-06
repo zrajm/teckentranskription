@@ -495,6 +495,7 @@ function buttonSave() {
     storage.set(name, signs.get());
     storage.set('_selected', name);
     updateLoadList();
+    loadInputElement.val(name);
 }
 function buttonClear() {
     var name = "";
