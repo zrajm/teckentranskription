@@ -503,11 +503,13 @@ function buttonClear() {
     saveInputElement.val("");
 }
 function buttonDump() {
-    var superobj = {};
-    storage.list().forEach(function (name) {
-        superobj[name] = storage.get(name);
-    });
-    console.log(JSON.stringify(superobj, null, 4));
+    var i, key, value, obj = {};
+    for (i = 0; i < localStorage.length; i += 1) {
+        var key = localStorage.key(i);
+        var value = JSON.parse(localStorage.getItem(key));
+        obj[key] = value;
+    }
+    console.log(JSON.stringify(obj, null, 4));
 }
 function buttonDelete() {
     var name = loadInputElement.val(), newName;
