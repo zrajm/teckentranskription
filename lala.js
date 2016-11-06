@@ -12,6 +12,7 @@ var addIaButtonElement  = $("#ia")
     saveButtonElement   = $("#save"),
     saveInputElement    = $("#save-input"),
     dumpButtonElement   = $("#dump"),
+    clearButtonElement  = $("#clear"),
     inputElement        = $("#input"),
     statusElement       = $("#status"),
     glyphs = {
@@ -442,6 +443,7 @@ addIIIcButtonElement.click(function() { signs.add({ type: 'iiic' }) });
 addIIIdButtonElement.click(function() { signs.add({ type: 'iiid' }) });
 loadButtonElement.click(buttonLoad);
 saveButtonElement.click(buttonSave);
+clearButtonElement.click(buttonClear);
 dumpButtonElement.click(buttonDump);
 
 buttonLoad();
@@ -468,6 +470,13 @@ function buttonSave() {
     storage.set(name, signs.get());
     storage.set('_selected', name);
     updateLoadList();
+}
+function buttonClear() {
+    console.log("clear");
+    var name = "";
+    signs.set([]);
+    storage.set('_selected', name);
+    saveInputElement.val("");
 }
 function buttonDump() {
     var superobj = {};

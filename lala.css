@@ -81,7 +81,7 @@ button table {
 #input td.av, #input td.ar                               { width:  28px; }
 #input td.artion_high, #input td.artion_low, #input td.i { width:  37px; }
 #input td.artion_tall, #input td.a, #input td.h          { width:  40px; }
-button#load, button#save, button#dump                    { width:  80px; }
+button.ui                                                { width:  80px; }
 select#load-input, input#save-input                      { width: 200px; }
 
 /* height */

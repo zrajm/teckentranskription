@@ -13,8 +13,6 @@
   layout of each transcribed sign.
 * TODO Delete function
   For erasing a saved transcription.
-* TODO 'Clear' button
-  For clearing the current transcription.
 * TODO Import/export saved data
 * [1/2] Simple articulation field
 ** TODO Move 'medial contact'(?) and 'contact' symbols to separator
@@ -72,6 +70,9 @@
 ** DONE "Relation – Brevid" should be centered
    CLOSED: [2016-10-27 Thu 10:55]
    pic/Y_Truetrans1.svg
+* DONE 'Clear' button
+  CLOSED: [2016-11-06 Sun 17:29]
+  For clearing the current transcription.
 * DONE 'Articulation' should be as high as 'relation'
   CLOSED: [2016-11-04 Fri 19:13]
   All articulations (including separator and repetition) should be higher on
