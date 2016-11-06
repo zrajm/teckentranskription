@@ -258,34 +258,50 @@ var addIaButtonElement  = $("#ia")
             glyphs: { h: glyphs.h },
         },
     },
-    storage = {
-        set: function (name, object) {
-            return localStorage.setItem(name, JSON.stringify(object));
-        },
-        get: function (name) {
-            return JSON.parse(localStorage.getItem(name));
-        },
-        remove: function (name) {
-            var loadList = this.list(),
-                selected = loadList.findIndex(function (name2) {
-                    if (name2 === name) { return true; }
-                });
-            localStorage.removeItem(name);
-            loadList.splice(selected, 1);
-            if (selected >= loadList.length) {
-                selected = loadList.length - 1;
-            }
-            return (selected === -1) ? "" : loadList[selected];
-        },
-        list: function () {
-            var i, list = [];
-            for (i = 0; i < localStorage.length; i += 1) {
-                var name = localStorage.key(i);
-                if (name[0] !== '_') { list.push(name); }
-            }
-            return list;
+    storage = (function () {
+        function set(name, object) {
+            localStorage.setItem(name, JSON.stringify(object));
         }
-    };
+        function get(name) {
+            return JSON.parse(localStorage.getItem(name));
+        }
+        return {
+            getCurrentName: function () {
+                return get(name) || '';
+            },
+            exist: function (name) {
+                return (localStorage.getItem(name) === null) ? false : true;
+            },
+            set: function (name, object) {
+                set('_selected', name);
+                set(name, object);
+            },
+            get: function (name) {
+                set('_selected', name);
+                return get(name);
+            },
+            remove: function (name) {
+                var loadList = this.list(),
+                    selected = loadList.findIndex(function (name2) {
+                        if (name2 === name) { return true; }
+                    });
+                localStorage.removeItem(name);
+                loadList.splice(selected, 1);
+                if (selected >= loadList.length) {
+                    selected = loadList.length - 1;
+                }
+                set('_selected', loadList[selected]);
+            },
+            list: function () {
+                var i, list = [];
+                for (i = 0; i < localStorage.length; i += 1) {
+                    var name = localStorage.key(i);
+                    if (name[0] !== '_') { list.push(name); }
+                }
+                return list;
+            }
+        };
+    }());
 
 function makeSign(spec) {
     var inElement = spec.element,   sign    = spec.sign,
@@ -429,7 +445,7 @@ function makeSigns(element) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function updateLoadList() {
-    var selected = storage.get('_selected'),
+    var selected = storage.getCurrentName(),
         names    = storage.list();
     loadInputElement.html(
         names.map(function (name) {
@@ -451,7 +467,7 @@ function updateLoadList() {
 
 updateLoadList();
 (function () {
-    var selected = storage.get('_selected');
+    var selected = storage.getCurrentName();
     saveInputElement.val(selected);
 }());
 
@@ -477,7 +493,6 @@ $("div td[tabindex]").focus();
 function buttonLoad() {
     var name = loadInputElement.val();
     signs.set(storage.get(name));
-    storage.set('_selected', name);
     saveInputElement.val(name);
 }
 function buttonSave() {
@@ -492,15 +507,18 @@ function buttonSave() {
         saveInputElement.focus();
         return false;
     }
+    if (storage.exist(name)) {
+        if (!confirm("Overwrite existing transcript ‘" + name + "’?")) {
+            return;
+        }
+    }
     storage.set(name, signs.get());
-    storage.set('_selected', name);
     updateLoadList();
     loadInputElement.val(name);
 }
 function buttonClear() {
     var name = "";
     signs.set([]);
-    storage.set('_selected', name);
     saveInputElement.val("");
 }
 function buttonDump() {
@@ -514,10 +532,10 @@ function buttonDump() {
 }
 function buttonDelete() {
     var name = loadInputElement.val(), newName;
-    if (confirm("Delete transcript '" + name + "'?")) {
-        newName = storage.remove(name);      // delete transcript
-        storage.set('_selected', newName);   // update last loaded
-        signs.set(storage.get(newName));     // load next available
+    if (confirm("Delete transcript ‘" + name + "’?")) {
+        storage.remove(name);
+        newName = storage.getCurrentName();
+        signs.set(storage.get(newName));
         saveInputElement.val(newName);
         updateLoadList();
     }
