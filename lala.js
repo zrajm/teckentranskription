@@ -13,6 +13,7 @@ var addIaButtonElement  = $("#ia")
     saveInputElement    = $("#save-input"),
     dumpButtonElement   = $("#dump"),
     clearButtonElement  = $("#clear"),
+    deleteButtonElement = $("#delete"),
     inputElement        = $("#input"),
     statusElement       = $("#status"),
     glyphs = {
@@ -264,6 +265,18 @@ var addIaButtonElement  = $("#ia")
         get: function (name) {
             return JSON.parse(localStorage.getItem(name));
         },
+        remove: function (name) {
+            var loadList = this.list(),
+                selected = loadList.findIndex(function (name2) {
+                    if (name2 === name) { return true; }
+                });
+            localStorage.removeItem(name);
+            loadList.splice(selected, 1);
+            if (selected >= loadList.length) {
+                selected = loadList.length - 1;
+            }
+            return (selected === -1) ? "" : loadList[selected];
+        },
         list: function () {
             var i, list = [];
             for (i = 0; i < localStorage.length; i += 1) {
@@ -416,13 +429,24 @@ function makeSigns(element) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function updateLoadList() {
-    var selected = storage.get('_selected');
+    var selected = storage.get('_selected'),
+        names    = storage.list();
     loadInputElement.html(
-        storage.list().map(function (name) {
+        names.map(function (name) {
             return "<option" + (name === selected ? " selected" : "") +
                 ">" + name
         }).join("")
     );
+    if (names.length === 0) {
+        loadInputElement.html('<option value="">Load name..');
+        loadButtonElement.prop('disabled', true);
+        deleteButtonElement.prop('disabled', true);
+        loadInputElement.prop('disabled', true);
+    } else {
+        loadButtonElement.prop('disabled', false);
+        deleteButtonElement.prop('disabled', false);
+        loadInputElement.prop('disabled', false);
+    }
 }
 
 updateLoadList();
@@ -445,6 +469,7 @@ loadButtonElement.click(buttonLoad);
 saveButtonElement.click(buttonSave);
 clearButtonElement.click(buttonClear);
 dumpButtonElement.click(buttonDump);
+deleteButtonElement.click(buttonDelete);
 
 buttonLoad();
 $("div td[tabindex]").focus();
@@ -472,7 +497,6 @@ function buttonSave() {
     updateLoadList();
 }
 function buttonClear() {
-    console.log("clear");
     var name = "";
     signs.set([]);
     storage.set('_selected', name);
@@ -484,6 +508,16 @@ function buttonDump() {
         superobj[name] = storage.get(name);
     });
     console.log(JSON.stringify(superobj, null, 4));
+}
+function buttonDelete() {
+    var name = loadInputElement.val(), newName;
+    if (confirm("Delete transcript '" + name + "'?")) {
+        newName = storage.remove(name);      // delete transcript
+        storage.set('_selected', newName);   // update last loaded
+        signs.set(storage.get(newName));     // load next available
+        saveInputElement.val(newName);
+        updateLoadList();
+    }
 }
 
 //[eof]

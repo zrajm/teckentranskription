@@ -11,8 +11,6 @@
   but as proper images with the <img> tag -- that way the HTML tables can
   adjust automatically to each glyph's size and we'll get a (much?) prettier
   layout of each transcribed sign.
-* TODO Delete function
-  For erasing a saved transcription.
 * TODO Import/export saved data
 * [1/2] Simple articulation field
 ** TODO Move 'medial contact'(?) and 'contact' symbols to separator
@@ -70,6 +68,9 @@
 ** DONE "Relation – Brevid" should be centered
    CLOSED: [2016-10-27 Thu 10:55]
    pic/Y_Truetrans1.svg
+* DONE 'Delete' button
+  CLOSED: [2016-11-06 Sun 20:17]
+  For erasing a saved transcription.
 * DONE 'Clear' button
   CLOSED: [2016-11-06 Sun 17:29]
   For clearing the current transcription.

@@ -103,9 +103,12 @@
 
     <br><table border=1>
       <tr><td style="padding:.25em .5em; text-align:left">
-          <button class=ui id=load>Load</button><select id=load-input></select>
-          <br><button class=ui id=save>Save</button><input id=save-input>
-          <br><button class=ui id=clear>Clear</button><button class=ui id=dump>Dump</button>
+          <button class=ui id=load disabled>Load</button
+            ><select id=load-input disabled></select
+            ><button class=ui id=delete disabled>Delete</button>
+          <br><button class=ui id=save>Save</button><input id=save-input placeholder="Save name…">
+          <br><button class=ui id=dump>Dump</button
+            ><button class=ui id=clear>Clear</button>
     </table>
   </main>
     <script src="jquery-3.1.1.js"></script>
