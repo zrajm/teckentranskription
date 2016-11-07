@@ -267,7 +267,7 @@ var addIaButtonElement  = $("#ia")
         }
         return {
             getCurrentName: function () {
-                return get(name) || '';
+                return get('_selected') || '';
             },
             exist: function (name) {
                 return (localStorage.getItem(name) === null) ? false : true;
