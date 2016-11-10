@@ -73,16 +73,31 @@ button table {
 #input td.artion_tall { background-position: left -2.5px top -15px; }
 #input td.artion_high { background-position: left -3.75px top -10px; }
 #input td.artion_sep  { background-position: left -2.5px top -15px; }
-#input td.artion_low  { background-position: left -3.75px top -61.25px; }
 #input td.i           { background-position: left -3.75px top -23.75px; }
+
+#input td.new.artion_low  { vertical-align: bottom; }
+#input td.new.artion_tall { vertical-align: top;    }
+
+/* Push SVGs 10px downwards. */
+#input td.new.artion_tall img { padding-top: 10px; }
 
 /* width */
 #input td.artion_sep                                     { width:  18.75px; }
 #input td.av, #input td.ar                               { width:  35px; }
-#input td.artion_high, #input td.artion_low, #input td.i { width:  46.25px; }
+#input td.artion_high, #input td.i                       { width:  46.25px; }
 #input td.artion_tall, #input td.a, #input td.h          { width:  50px; }
 button.ui                                                { width:  100px; }
 select#load-input, input#save-input                      { width: 250px; }
+#input td.new                                            { width: auto; }
+
+#input td.artion_low img {
+    display: block;
+    margin: 0 auto;
+}
+#input td.artion_low {
+    vertical-align: bottom;
+    height: 37.5px;
+}
 
 /* height */
 #input td[colspan],

@@ -337,8 +337,19 @@ function makeSign(spec) {
                         (background[2] ? '<br><img src="' + background[2] + '">' : '');
                 statusElement.html(desc || "");
                 if (file) {
-                    element[name].css("background-image", "url('" + file + "')");
-                    return;
+                    if (file.match(/^pic\/rr-.*\.svg$/)) {
+                        element[name].
+                            addClass('new').
+                            css('background-image', 'none').
+                            html('<img src="' + file + '">');
+                        return;
+                    } else {
+                        element[name].
+                            removeClass('new').
+                            empty().
+                            css('background-image', 'url("' + file + '")');
+                        return;
+                    }
                 }
             }
             element[name].html(value);
