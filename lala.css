@@ -71,15 +71,16 @@ button table {
 #input td.ar          { background-position: left -2.5px top -26.25px; }
 #input td.av          { background-position: left -2.5px top -65px; }
 #input td.artion_tall { background-position: left -2.5px top -15px; }
-#input td.artion_high { background-position: left -3.75px top -10px; }
 #input td.artion_sep  { background-position: left -2.5px top -15px; }
 #input td.i           { background-position: left -3.75px top -23.75px; }
 
 #input td.new.artion_low  { vertical-align: bottom; }
+#input td.new.artion_high,
 #input td.new.artion_tall { vertical-align: top;    }
 
 /* Push SVGs 10px downwards. */
-#input td.new.artion_tall img { padding-top: 10px; }
+#input td.new.artion_high,
+#input td.new.artion_tall img { padding-top: 8px; }
 
 /* width */
 #input td.artion_sep                                     { width:  18.75px; }
@@ -90,7 +91,7 @@ button.ui                                                { width:  100px; }
 select#load-input, input#save-input                      { width: 250px; }
 #input td.new                                            { width: auto; }
 
-#input td.artion_low img {
+#input td img {
     display: block;
     margin: 0 auto;
 }
@@ -102,13 +103,12 @@ select#load-input, input#save-input                      { width: 250px; }
 /* height */
 #input td[colspan],
 #input td.r           { height: 15px; } /* always above H or A, no width needed */
-#input td.artion_low  { height: 37.5px; }
 #input td.i,
 #input td.av,
 #input td.ar          { height: 35px; }
-#input td.artion_high { height: 47.5px; }
 #input td.a,
 #input td.h           { height: 70px; }
+#input td.vspacer,
 #input td.artion_tall,
 #input td.artion_sep  { height: 85px; }
 

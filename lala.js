@@ -236,7 +236,7 @@ var addIaButtonElement  = $("#ia")
         },
         iiib: {
             html: '<table class=iiib>' +
-                '<tr><td tabindex=1 class=artion_high>' +
+                '<tr><td rowspan=2 class=vspacer><td tabindex=1 class=artion_high>' +
                 '<tr><td tabindex=1 class=artion_low>' +
                 '</table>',
             glyphs: {
@@ -337,7 +337,7 @@ function makeSign(spec) {
                         (background[2] ? '<br><img src="' + background[2] + '">' : '');
                 statusElement.html(desc || "");
                 if (file) {
-                    if (file.match(/^pic\/rr-.*\.svg$/)) {
+                    if (file.match(/\/(ra|rr)-[^\/]*\.svg$/)) {
                         element[name].
                             addClass('new').
                             css('background-image', 'none').

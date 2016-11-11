@@ -8,9 +8,9 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    version="1.1"
-   width="100"
-   height="100"
-   viewBox="0 -200 1000 1000"
+   width="60.099998"
+   height="18.799999"
+   viewBox="0 -200 600.99998 187.99999"
    id="svg3037">
   <metadata
      id="metadata3047">
@@ -27,7 +27,7 @@
   <defs
      id="defs3045" />
   <g
-     transform="matrix(1,0,0,-1,0,800)"
+     transform="matrix(1,0,0,-1,-38,558)"
      id="g3039">
     <path
        d="M 316,714 H 142 L 232,600 200,570 38,758 H 639 L 477,570 445,600 534,714 H 360 V 580 h -44 v 134 z"
