@@ -207,10 +207,8 @@ var addIaButtonElement  = $("#ia")
             },
         },
         iib: {
-            html: '<table class=iib>' +
-                '<tr><td style=width:0><td class=r>' +
-                '<tr><td style=width:0 class=h rowspan=2><td tabindex=1 class=i>' +
-                '<tr><td>  ' +
+            html: '<table class="iib">' +
+                '<tr><td tabindex=1 class=i>' +
                 '</table>',
             glyphs: {
                 i:  glyphs.i,
@@ -337,11 +335,16 @@ function makeSign(spec) {
                         (background[2] ? '<br><img src="' + background[2] + '">' : '');
                 statusElement.html(desc || "");
                 if (file) {
-                    if (file.match(/\/(ra|rr)-[^\/]*\.svg$/)) {
+                    if (file.match(/\/(i|ra|rr)-[^\/]*\.svg$/)) {
                         element[name].
                             addClass('new').
                             css('background-image', 'none').
                             html('<img src="' + file + '">');
+                        if (file.match(/medial-kontakt\.svg$/)) {
+                            element[name].addClass('low');
+                        } else {
+                            element[name].removeClass('low');
+                        }
                         return;
                     } else {
                         element[name].

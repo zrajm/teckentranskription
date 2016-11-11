@@ -70,23 +70,30 @@ button table {
 #input td.h           { background-position: left -0px top -30px; }
 #input td.ar          { background-position: left -2.5px top -26.25px; }
 #input td.av          { background-position: left -2.5px top -65px; }
-#input td.artion_tall { background-position: left -2.5px top -15px; }
 #input td.artion_sep  { background-position: left -2.5px top -15px; }
-#input td.i           { background-position: left -3.75px top -23.75px; }
 
 #input td.new.artion_low  { vertical-align: bottom; }
+#input td.new.i,
 #input td.new.artion_high,
 #input td.new.artion_tall { vertical-align: top;    }
 
-/* Push SVGs 10px downwards. */
-#input td.new.artion_high,
+/* SVGs aligned to top should be pushed 10px downwards. */
+#input td.new.i           img,
+#input td.new.artion_high img,
 #input td.new.artion_tall img { padding-top: 8px; }
+
+/* SVGs aligned to bottom should be pushed 10px upwards. */
+#input td.low     { vertical-align: bottom !important; }
+#input td.low img {
+    padding-bottom: 8px;
+    padding-top: 0px !important;
+}
 
 /* width */
 #input td.artion_sep                                     { width:  18.75px; }
 #input td.av, #input td.ar                               { width:  35px; }
-#input td.artion_high, #input td.i                       { width:  46.25px; }
-#input td.artion_tall, #input td.a, #input td.h          { width:  50px; }
+#input td.artion_high                                    { width:  46.25px; }
+#input td.a, #input td.h                                 { width:  50px; }
 button.ui                                                { width:  100px; }
 select#load-input, input#save-input                      { width: 250px; }
 #input td.new                                            { width: auto; }
@@ -103,11 +110,11 @@ select#load-input, input#save-input                      { width: 250px; }
 /* height */
 #input td[colspan],
 #input td.r           { height: 15px; } /* always above H or A, no width needed */
-#input td.i,
 #input td.av,
 #input td.ar          { height: 35px; }
 #input td.a,
 #input td.h           { height: 70px; }
+#input td.i,
 #input td.vspacer,
 #input td.artion_tall,
 #input td.artion_sep  { height: 85px; }
