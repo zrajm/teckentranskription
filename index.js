@@ -5,7 +5,6 @@ var addIaButtonElement  = $("#ia")
     addIIcButtonElement = $("#iic")
     addIIIaButtonElement = $("#iiia")
     addIIIbButtonElement = $("#iiib")
-    addIIIcButtonElement = $("#iiic")
     addIIIdButtonElement = $("#iiid")
     loadButtonElement   = $("#load"),
     loadInputElement    = $("#load-input"),
@@ -147,6 +146,8 @@ var addIaButtonElement  = $("#ia")
             ["pic/i-entre.svg",         "Interaktionsart – Entré"         ],
             ["pic/i-kontakt.svg",       "Interaktionsart – Kontakt"       ],
             ["pic/i-medial-kontakt.svg","Interaktionsart – Medial kontakt"],
+            ["pic/x-upprepning.svg",    "Upprepad artikulation"           ],
+            ["pic/x-separator.svg",     "Markerar sekventiell artikulation"],
         ],
         artion_high: [ // Artikulation
             ["pic/ra-bage.svg",   "Rörelseart – Båge"  ],
@@ -165,10 +166,6 @@ var addIaButtonElement  = $("#ia")
             ["pic/rr-upp2.svg",           "Rörelseriktning – Upp"          ],
             ["pic/rr-ner2.svg",           "Rörelseriktning – Ner"          ],
             ["pic/rr-upp-ner2.svg",       "Rörelseriktning – Upp–ner"      ],
-        ],
-        artion_sep: [ // Övriga tecken
-            ["pic/upprepning.svg", "Upprepad artikulation"            ],
-            ["pic/separator.svg",  "Markerar sekventiell artikulation"],
         ],
     },
     dom_stuff = {
@@ -241,12 +238,6 @@ var addIaButtonElement  = $("#ia")
                 artion_high: glyphs.artion_high,
                 artion_low : glyphs.artion_low,
             },
-        },
-        iiic: {
-            html: '<table class=iiic>' +
-                '<tr><td tabindex=1 class=artion_sep>' +
-                '</table>',
-            glyphs: { artion_sep: glyphs.artion_sep },
         },
         iiid: {
             html: '<table class=iiid>' +
@@ -335,12 +326,12 @@ function makeSign(spec) {
                         (background[2] ? '<br><img src="' + background[2] + '">' : '');
                 statusElement.html(desc || "");
                 if (file) {
-                    if (file.match(/\/(i|ra|rr)-[^\/]*\.svg$/)) {
+                    if (file.match(/\/(i|ra|rr|x)-[^\/]*\.svg$/)) {
                         element[name].
                             addClass('new').
                             css('background-image', 'none').
                             html('<img src="' + file + '">');
-                        if (file.match(/medial-kontakt\.svg$/)) {
+                        if (file.match(/(medial-kontakt|x-separator)\.svg$/)) {
                             element[name].addClass('low');
                         } else {
                             element[name].removeClass('low');
@@ -500,7 +491,6 @@ addIIbButtonElement.click(function() { signs.add({ type: 'iib' }) });
 addIIcButtonElement.click(function() { signs.add({ type: 'iic' }) });
 addIIIaButtonElement.click(function() { signs.add({ type: 'iiia' }) });
 addIIIbButtonElement.click(function() { signs.add({ type: 'iiib' }) });
-addIIIcButtonElement.click(function() { signs.add({ type: 'iiic' }) });
 addIIIdButtonElement.click(function() { signs.add({ type: 'iiid' }) });
 loadButtonElement.click(buttonLoad);
 saveButtonElement.click(buttonSave);
