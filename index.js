@@ -458,13 +458,20 @@ function makeSigns(element) {
 
 ////////////////////////////////////////////////////////////////////////////////
 
+function escapeHtml(text) {
+    'use strict';
+    return text.replace(/[\"&<>]/g, function (a) {
+        return { '"': '&quot;', '&': '&amp;', '<': '&lt;', '>': '&gt;' }[a];
+    });
+}
+
 function updateLoadList() {
     var selected = storage.getCurrentName(),
         names    = storage.list();
     loadInputElement.html(
         names.map(function (name) {
             return "<option" + (name === selected ? " selected" : "") +
-                ">" + name
+                ">" + escapeHtml(name)
         }).join("")
     );
     if (names.length === 0) {
