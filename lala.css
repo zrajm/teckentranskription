@@ -65,6 +65,7 @@ button table {
 
 /* background position */
 #input td.r           { position: relative; top: 5px; }
+#input td.ar          { position: relative; top: -6px; }
 #input td.r           { background-position: left  5px top -20px; }
 #input td.a           { background-position: left -0px top -30px; }
 #input td.h           { background-position: left -0px top -30px; }
