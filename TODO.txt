@@ -1,5 +1,19 @@
 -*- org -*-
 
+* TODO Transkription beskriven av länk
+  En URL ska kunna innehålla allt som behövs för att kunna visa en
+  transkription.
+* TODO Drag-and-drop clusters to reorder them
+* TODO Focus the a new cluster upon creation
+  When one clicks a button to create a new glyph cluster, that cluster should
+  be focused.
+* TODO Change glyphs by selecting from table
+  Instead of using <- and -> to change glyphs, should press enter (or click) to
+  get a chart from which one can select a glyph. -- This would also make this
+  work on cell phones.
+* TODO Preload all images
+  Load them using HTML, rather than ajax, if possible (as it would work on the
+  file:// protocol, too). Maybe just a large hidden HTML element will do?
 * TODO Shortcuts for hand shape glyphs
   Pressing an alphabetic key should jump to the glyph most similar i
   appearance = Faster navigation!
