@@ -5,7 +5,7 @@ var addIaButtonElement  = $("#ia")
     addIIcButtonElement = $("#iic")
     addIIIaButtonElement = $("#iiia")
     addIIIbButtonElement = $("#iiib")
-    addIIIdButtonElement = $("#iiid")
+    addIIIcButtonElement = $("#iiic")
     loadButtonElement   = $("#load"),
     loadInputElement    = $("#load-input"),
     saveButtonElement   = $("#save"),
@@ -239,8 +239,8 @@ var addIaButtonElement  = $("#ia")
                 artion_low : glyphs.artion_low,
             },
         },
-        iiid: {
-            html: '<table class=iiid>' +
+        iiic: {
+            html: '<table class=iiic>' +
                 '<tr><td colspan=2>' +
                 '<tr><td tabindex=1 class=h>' +
                 '</table>',
@@ -491,7 +491,7 @@ addIIbButtonElement.click(function() { signs.add({ type: 'iib' }) });
 addIIcButtonElement.click(function() { signs.add({ type: 'iic' }) });
 addIIIaButtonElement.click(function() { signs.add({ type: 'iiia' }) });
 addIIIbButtonElement.click(function() { signs.add({ type: 'iiib' }) });
-addIIIdButtonElement.click(function() { signs.add({ type: 'iiid' }) });
+addIIIcButtonElement.click(function() { signs.add({ type: 'iiic' }) });
 loadButtonElement.click(buttonLoad);
 saveButtonElement.click(buttonSave);
 clearButtonElement.click(buttonClear);
