@@ -1,8 +1,24 @@
 -*- org -*-
 
-* TODO Transkription beskriven av länk
-  En URL ska kunna innehålla allt som behövs för att kunna visa en
-  transkription.
+* TODO Sign transcript should be inside another table
+  With one <td> for I, one for II and one for II fields.
+* TODO Buttons should reflect possible clusters
+  I buttons should be disabled if one of them has been used (since only one
+  place of articulation is possible).
+
+  Ib should be disabled if IIa is in use (they're mutually exclusive).
+
+  IIa should be disabled if Ib is in use (they're mutually exclusive).
+
+  IIb should be disabled unless IIa is in use.
+* TODO Use infinite undo paradigm
+  Instead of ok/cancel requesters. All changes should be automatically written
+  to localStorage.
+* TODO Modified/unmodified detection on load/save
+* TODO Add separator between transcriptions
+* TODO 'Share' URLs with all transcript information
+  The URL should contain all information required to build a transcript (so
+  that one may link to them).
 * TODO Drag-and-drop clusters to reorder them
 * TODO Change glyphs by selecting from table
   Instead of using <- and -> to change glyphs, should press enter (or click) to
@@ -11,45 +27,19 @@
 * TODO Shortcuts for hand shape glyphs
   Pressing an alphabetic key should jump to the glyph most similar i
   appearance = Faster navigation!
-* TODO Resize image bounding boxes
+* [1/5] Resize image bounding boxes
   The size of each image should be just enough for the glyph to fit, and then
   each image should be included in the DOM not as background images using CSS,
   but as proper images with the <img> tag -- that way the HTML tables can
   adjust automatically to each glyph's size and we'll get a (much?) prettier
   layout of each transcribed sign.
+** TODO Place of articulation glyphs ('A')
+** TODO Attitude direction glyphs ('AR')
+** TODO Attitude twist glyphs ('AV')
+** TODO Relation glyphs ('R')
+** DONE Hand shape glyphs ('H')
+   CLOSED: [2016-11-14 Mon 21:41]
 * TODO Import/export saved data
-* [1/2] Simple articulation field
-** TODO Move 'medial contact'(?) and 'contact' symbols to separator
-   'Medial contact' and 'contact' are dots and therefore narrower and would go
-   better with the separator button (for typographical reasons).
-
-   Is 'medial contact' meant to be wider? I.e. have space on each sides? If so,
-   retain it where it currently is.
-** DONE Three buttons
-   CLOSED: [2016-10-27 Thu 11:39]
-   |-----|
-   | ART |
-   | ION |
-   |-----|
-
-   = Two glyphs, one above the other.
-
-   |---------|
-   | ART-ION |
-   |         |
-   |---------|
-
-   = Single glyph, full height.
-
-   and
-
-   |---|
-   | : |
-   |   |
-   |---|
-
-   = Narrower version for 'repeated articulation' and 'marks sequential
-   articulation' symbols.
 * [6/9] Fix bad/missing glyphs
 ** TODO What to do with the (so far) unused glyphs?
    Files matching `pic/**/*Truetrans*.svg`.
@@ -141,6 +131,31 @@
   CLOSED: [2016-11-02 Wed 14:44]
   Should allow for saving of multiple transcriptions with different names, so
   that we can transcribe a buncha stuff and see what works.
+* DONE Three articulation buttons
+  CLOSED: [2016-10-27 Thu 11:39]
+  |-----|
+  | ART |
+  | ION |
+  |-----|
+
+  = Two glyphs, one above the other.
+
+  |---------|
+  | ART-ION |
+  |         |
+  |---------|
+
+  = Single glyph, full height.
+
+  and
+
+  |---|
+  | : |
+  |   |
+  |---|
+
+  = Narrower version for 'repeated articulation' and 'marks sequential
+  articulation' symbols.
 * [3/3] List of signs to which can be added/removed
 ** DONE Ability to add different type of signs
    CLOSED: [2016-10-25 Tue 20:25]
