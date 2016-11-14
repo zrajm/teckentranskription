@@ -294,6 +294,19 @@ var addIaButtonElement  = $("#ia")
         };
     }());
 
+// Make sure all images are cached (so that script works even offline).
+function preloadImages(glyphs) {
+    var html = '';
+    Object.keys(glyphs).forEach(function (name) {
+        glyphs[name].forEach(function (glyph) {
+            if (glyph[0]) { html += '<img src="' + glyph[0] + '">'; }
+            if (glyph[2]) { html += '<img src="' + glyph[2] + '">'; }
+        });
+    });
+    html = $(html).css('display', 'none');
+    $('body').append(html);
+}
+
 function makeSign(spec) {
     var inElement = spec.element,   sign    = spec.sign,
         remove_cb = spec.remove_cb, prev_cb = spec.prev_cb,
@@ -480,6 +493,7 @@ function updateLoadList() {
     }
 }
 
+preloadImages(glyphs);
 updateLoadList();
 (function () {
     var selected = storage.getCurrentName();

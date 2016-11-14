@@ -8,9 +8,6 @@
   Instead of using <- and -> to change glyphs, should press enter (or click) to
   get a chart from which one can select a glyph. -- This would also make this
   work on cell phones.
-* TODO Preload all images
-  Load them using HTML, rather than ajax, if possible (as it would work on the
-  file:// protocol, too). Maybe just a large hidden HTML element will do?
 * TODO Shortcuts for hand shape glyphs
   Pressing an alphabetic key should jump to the glyph most similar i
   appearance = Faster navigation!
@@ -79,6 +76,10 @@
 ** DONE "Relation – Brevid" should be centered
    CLOSED: [2016-10-27 Thu 10:55]
    pic/Y_Truetrans1.svg
+* DONE Preload all images
+  CLOSED: [2016-11-14 Mon 11:31]
+  Load them using HTML, rather than ajax, if possible (as it would work on the
+  file:// protocol, too). Maybe just a large hidden HTML element will do?
 * DONE Focus the a new cluster upon creation
   CLOSED: [2016-11-14 Mon 11:04]
   BUG: Implementation doesn't work when adding prepended type I field, if other
