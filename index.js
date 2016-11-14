@@ -388,6 +388,7 @@ function makeSign(spec) {
 
     html.append(html_controls);
     inElement[spec.prepend ? 'prepend' : 'append'](html);
+    $("td[tabindex]", html).first().focus();
     return {
         get: get,
         set: set,
