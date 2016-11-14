@@ -64,9 +64,7 @@ button table {
 #input td    { background-size: 100px 100px; }
 
 /* background position */
-#input td.r           { position: relative; top: 5px; }
 #input td.ar          { position: relative; top: -6px; }
-#input td.r           { background-position: left  5px   top -20px; }
 #input td.a           { background-position: left -0px   top -30px; }
 #input td.ar          { background-position: left -2.5px top -26.25px; }
 #input td.av          { background-position: left -2.5px top -65px; }
@@ -111,7 +109,7 @@ select#load-input, input#save-input { width: 250px;   }
 
 /* height */
 #input td[colspan],
-#input td.r           { height: 15px; } /* always above H or A, no width needed */
+#input td.r           { height: 15px; }
 #input td.av,
 #input td.ar          { height: 35px; }
 #input td.a,

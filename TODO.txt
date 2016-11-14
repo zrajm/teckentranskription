@@ -27,7 +27,7 @@
 * TODO Shortcuts for hand shape glyphs
   Pressing an alphabetic key should jump to the glyph most similar i
   appearance = Faster navigation!
-* [1/5] Resize image bounding boxes
+* [2/5] Resize image bounding boxes
   The size of each image should be just enough for the glyph to fit, and then
   each image should be included in the DOM not as background images using CSS,
   but as proper images with the <img> tag -- that way the HTML tables can
@@ -36,7 +36,8 @@
 ** TODO Place of articulation glyphs ('A')
 ** TODO Attitude direction glyphs ('AR')
 ** TODO Attitude twist glyphs ('AV')
-** TODO Relation glyphs ('R')
+** DONE Relation glyphs ('R')
+   CLOSED: [2016-11-14 Mon 21:55]
 ** DONE Hand shape glyphs ('H')
    CLOSED: [2016-11-14 Mon 21:41]
 * TODO Import/export saved data

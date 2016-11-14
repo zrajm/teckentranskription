@@ -341,7 +341,7 @@ function makeSign(spec) {
                         (background[2] ? '<br><img src="' + background[2] + '">' : '');
                 statusElement.html(desc || "");
                 if (file) {
-                    if (file.match(/\/(h|i|ra|rr|x)-[^\/]*\.svg$/)) {
+                    if (file.match(/\/(h|i|ra|r|rr|x)-[^\/]*\.svg$/)) {
                         element[name].
                             addClass('new').
                             css('background-image', 'none').
