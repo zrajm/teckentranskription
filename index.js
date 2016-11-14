@@ -386,7 +386,7 @@ function makeSign(spec) {
                 return true;
             }
             set(name, value);
-        });
+        }).focus(function () { redraw(name); });
     });
 
     /* previous / next / remove buttons */

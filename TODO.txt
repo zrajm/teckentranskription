@@ -11,8 +11,6 @@
 * TODO Shortcuts for hand shape glyphs
   Pressing an alphabetic key should jump to the glyph most similar i
   appearance = Faster navigation!
-* TODO Focusing glyph should update status box
-  Displaying the information about that glyph.
 * TODO Resize image bounding boxes
   The size of each image should be just enough for the glyph to fit, and then
   each image should be included in the DOM not as background images using CSS,
@@ -76,6 +74,9 @@
 ** DONE "Relation – Brevid" should be centered
    CLOSED: [2016-10-27 Thu 10:55]
    pic/Y_Truetrans1.svg
+* DONE Focusing glyph should update status box
+  CLOSED: [2016-11-14 Mon 18:07]
+  Displaying the information about that glyph.
 * DONE Preload all images
   CLOSED: [2016-11-14 Mon 11:31]
   Load them using HTML, rather than ajax, if possible (as it would work on the
