@@ -493,31 +493,6 @@ function updateLoadList() {
     }
 }
 
-preloadImages(glyphs);
-updateLoadList();
-(function () {
-    var selected = storage.getCurrentName();
-    saveInputElement.val(selected);
-}());
-
-var signs = makeSigns(inputElement);
-addIaButtonElement.  click(function() { signs.add({ type: 'ia', prepend: true }) });
-addIbButtonElement.  click(function() { signs.add({ type: 'ib', prepend: true }) });
-addIIaButtonElement. click(function() { signs.add({ type: 'iia'               }) });
-addIIbButtonElement. click(function() { signs.add({ type: 'iib'               }) });
-addIIcButtonElement. click(function() { signs.add({ type: 'iic'               }) });
-addIIIaButtonElement.click(function() { signs.add({ type: 'iiia'              }) });
-addIIIbButtonElement.click(function() { signs.add({ type: 'iiib'              }) });
-addIIIcButtonElement.click(function() { signs.add({ type: 'iiic'              }) });
-loadButtonElement.click(buttonLoad);
-saveButtonElement.click(buttonSave);
-clearButtonElement.click(buttonClear);
-dumpButtonElement.click(buttonDump);
-deleteButtonElement.click(buttonDelete);
-
-buttonLoad();
-$("div td[tabindex]").focus();
-
 function buttonLoad() {
     var name = loadInputElement.val();
     signs.set(storage.get(name));
@@ -568,5 +543,32 @@ function buttonDelete() {
         updateLoadList();
     }
 }
+
+////////////////////////////////////////////////////////////////////////////////
+
+preloadImages(glyphs);
+updateLoadList();
+(function () {
+    var selected = storage.getCurrentName();
+    saveInputElement.val(selected);
+}());
+
+var signs = makeSigns(inputElement);
+addIaButtonElement.  click(function() { signs.add({ type: 'ia', prepend: true }) });
+addIbButtonElement.  click(function() { signs.add({ type: 'ib', prepend: true }) });
+addIIaButtonElement. click(function() { signs.add({ type: 'iia'               }) });
+addIIbButtonElement. click(function() { signs.add({ type: 'iib'               }) });
+addIIcButtonElement. click(function() { signs.add({ type: 'iic'               }) });
+addIIIaButtonElement.click(function() { signs.add({ type: 'iiia'              }) });
+addIIIbButtonElement.click(function() { signs.add({ type: 'iiib'              }) });
+addIIIcButtonElement.click(function() { signs.add({ type: 'iiic'              }) });
+loadButtonElement.click(buttonLoad);
+saveButtonElement.click(buttonSave);
+clearButtonElement.click(buttonClear);
+dumpButtonElement.click(buttonDump);
+deleteButtonElement.click(buttonDelete);
+
+buttonLoad();
+$("div td[tabindex]").focus();
 
 //[eof]
