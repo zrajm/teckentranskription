@@ -66,9 +66,9 @@ button table {
 /* background position */
 #input td.ar          { position: relative; top: -6px; }
 #input td.ar          { background-position: left -2.5px top -26.25px; }
-#input td.av          { background-position: left -2.5px top -65px; }
 
 #input td.a,
+#input td.av,
 #input td.h,
 #input td.new.artion_low  { vertical-align: bottom; }
 #input td.new.i,
@@ -91,7 +91,7 @@ button table {
 #input td img[src="pic/x-separator.svg"] { padding: 0px 6px; }
 
 /* width */
-#input td.av, #input td.ar          { width: 35px;    }
+#input td.ar                        { width: 35px;    }
 #input td.artion_high               { width: 46.25px; }
 button.ui                           { width: 100px;   }
 select#load-input, input#save-input { width: 250px;   }
@@ -109,7 +109,6 @@ select#load-input, input#save-input { width: 250px;   }
 /* height */
 #input td[colspan],
 #input td.r           { height: 15px; }
-#input td.av,
 #input td.ar          { height: 35px; }
 #input td.a,
 #input td.h           { height: 70px; }
