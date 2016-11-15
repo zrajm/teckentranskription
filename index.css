@@ -65,10 +65,10 @@ button table {
 
 /* background position */
 #input td.ar          { position: relative; top: -6px; }
-#input td.a           { background-position: left -0px   top -30px; }
 #input td.ar          { background-position: left -2.5px top -26.25px; }
 #input td.av          { background-position: left -2.5px top -65px; }
 
+#input td.a,
 #input td.h,
 #input td.new.artion_low  { vertical-align: bottom; }
 #input td.new.i,
@@ -93,7 +93,6 @@ button table {
 /* width */
 #input td.av, #input td.ar          { width: 35px;    }
 #input td.artion_high               { width: 46.25px; }
-#input td.a                         { width: 50px;    }
 button.ui                           { width: 100px;   }
 select#load-input, input#save-input { width: 250px;   }
 #input td.new                       { width: auto;    }

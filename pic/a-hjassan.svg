@@ -8,12 +8,12 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    version="1.1"
-   width="100"
-   height="100"
-   viewBox="0 -200 1000 1000"
-   id="svg3001">
+   width="49.5"
+   height="67.200821"
+   viewBox="0 -200 495.00001 672.00821"
+   id="svg3049">
   <metadata
-     id="metadata3011">
+     id="metadata3059">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -25,9 +25,9 @@
     </rdf:RDF>
   </metadata>
   <defs
-     id="defs3009" />
+     id="defs3057" />
   <g
-     transform="matrix(1,0,0,-1,0,800)"
+     transform="matrix(1,0,0,-1,-10,477.99999)"
      id="g3003">
     <path
        d="m 251,678 q 51,-82 73,-85 l 127,-20 q 43,-7 48.5,-10 5.5,-3 5.5,-34 v -86 h -49 v 86 q 0,3 -5,4 l -127,20 q -38,6 -71,39 -37,-34 -68,-39 L 63,533 q -5,-1 -5,-4 V 443 H 10 v 86 q 0,22 9,30 9,8 44,14 l 122,20 q 22,4 66,85 z"
