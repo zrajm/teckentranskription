@@ -27,21 +27,6 @@
 * TODO Shortcuts for hand shape glyphs
   Pressing an alphabetic key should jump to the glyph most similar i
   appearance = Faster navigation!
-* [4/5] Resize image bounding boxes
-  The size of each image should be just enough for the glyph to fit, and then
-  each image should be included in the DOM not as background images using CSS,
-  but as proper images with the <img> tag -- that way the HTML tables can
-  adjust automatically to each glyph's size and we'll get a (much?) prettier
-  layout of each transcribed sign.
-** TODO Attitude direction glyphs ('AR')
-** DONE Attitude twist glyphs ('AV')
-   CLOSED: [2016-11-15 Tue 18:17]
-** DONE Place of articulation glyphs ('A')
-   CLOSED: [2016-11-15 Tue 11:27]
-** DONE Relation glyphs ('R')
-   CLOSED: [2016-11-14 Mon 21:55]
-** DONE Hand shape glyphs ('H')
-   CLOSED: [2016-11-14 Mon 21:41]
 * TODO Import/export saved data
 * [6/9] Fix bad/missing glyphs
 ** TODO What to do with the (so far) unused glyphs?
@@ -67,6 +52,22 @@
 ** DONE "Relation – Brevid" should be centered
    CLOSED: [2016-10-27 Thu 10:55]
    pic/Y_Truetrans1.svg
+* [5/5] Resize image bounding boxes
+  The size of each image should be just enough for the glyph to fit, and then
+  each image should be included in the DOM not as background images using CSS,
+  but as proper images with the <img> tag -- that way the HTML tables can
+  adjust automatically to each glyph's size and we'll get a (much?) prettier
+  layout of each transcribed sign.
+** DONE Attitude direction glyphs ('AR')
+   CLOSED: [2016-11-15 Tue 18:30]
+** DONE Attitude twist glyphs ('AV')
+   CLOSED: [2016-11-15 Tue 18:17]
+** DONE Place of articulation glyphs ('A')
+   CLOSED: [2016-11-15 Tue 11:27]
+** DONE Relation glyphs ('R')
+   CLOSED: [2016-11-14 Mon 21:55]
+** DONE Hand shape glyphs ('H')
+   CLOSED: [2016-11-14 Mon 21:41]
 * DONE Focusing glyph should update status box
   CLOSED: [2016-11-14 Mon 18:07]
   Displaying the information about that glyph.
