@@ -28,17 +28,15 @@
   Pressing an alphabetic key should jump to the glyph most similar i
   appearance = Faster navigation!
 * TODO Import/export saved data
-* [6/9] Fix bad/missing glyphs
+* [7/9] Fix bad/missing glyphs
 ** TODO What to do with the (so far) unused glyphs?
    Files matching `pic/**/*Truetrans*.svg`.
-** TODO "Läge – Höfterna" is to wide
-   pic/six_Truetrans1.svg
-
-   Compare this with "Läge – Axlarna" [pic/greater_Truetrans1.svg] (same
-   symbol, but upside down) which is centered better.
 ** TODO "Handform – Krokfingret" should have thicker lines
    Currently this glyph has thinner lines than all the other glyphs. That
    doesn't look nice. :(
+** DONE "Läge – Höfterna" is to wide                                :WONTFIX:
+   CLOSED: [2016-11-17 Thu 18:42]
+   Now works quite well when using proportional glyphs.
 ** DONE "Läge – Ögat" should be lowered
    CLOSED: [2016-11-04 Fri 01:32]
 ** DONE Add missing "4-handen" glyph
@@ -52,12 +50,14 @@
 ** DONE "Relation – Brevid" should be centered
    CLOSED: [2016-10-27 Thu 10:55]
    pic/Y_Truetrans1.svg
-* [5/5] Resize image bounding boxes
+* [6/6] Resize image bounding boxes
   The size of each image should be just enough for the glyph to fit, and then
   each image should be included in the DOM not as background images using CSS,
   but as proper images with the <img> tag -- that way the HTML tables can
   adjust automatically to each glyph's size and we'll get a (much?) prettier
   layout of each transcribed sign.
+** DONE Cleanup of code used for old glyphs
+   CLOSED: [2016-11-17 Thu 18:41]
 ** DONE Attitude direction glyphs ('AR')
    CLOSED: [2016-11-15 Tue 18:30]
 ** DONE Attitude twist glyphs ('AV')

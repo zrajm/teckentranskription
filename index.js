@@ -341,24 +341,13 @@ function makeSign(spec) {
                         (background[2] ? '<br><img src="' + background[2] + '">' : '');
                 statusElement.html(desc || "");
                 if (file) {
-                    if (file.match(/\/(a|ar|av|h|i|ra|r|rr|x)-[^\/]*\.svg$/)) {
-                        element[name].
-                            addClass('new').
-                            css('background-image', 'none').
-                            html('<img src="' + file + '">');
-                        if (file.match(/(medial-kontakt|x-separator)\.svg$/)) {
-                            element[name].addClass('low');
-                        } else {
-                            element[name].removeClass('low');
-                        }
-                        return;
+                    element[name].html('<img src="' + file + '">');
+                    if (file.match(/(medial-kontakt|x-separator)\.svg$/)) {
+                        element[name].addClass('low');
                     } else {
-                        element[name].
-                            removeClass('new').
-                            empty().
-                            css('background-image', 'url("' + file + '")');
-                        return;
+                        element[name].removeClass('low');
                     }
+                    return;
                 }
             }
             element[name].html(value);

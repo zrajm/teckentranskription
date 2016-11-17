@@ -68,16 +68,16 @@ button table {
 #input td.a,
 #input td.av,
 #input td.h,
-#input td.new.artion_low  { vertical-align: bottom; }
+#input td.artion_low  { vertical-align: bottom; }
 #input td.ar,
-#input td.new.i,
-#input td.new.artion_high,
-#input td.new.artion_tall { vertical-align: top;    }
+#input td.i,
+#input td.artion_high,
+#input td.artion_tall { vertical-align: top;    }
 
 /* SVGs aligned to top should be pushed 10px downwards. */
-#input td.new.i           img,
-#input td.new.artion_high img,
-#input td.new.artion_tall img { padding-top: 8px; }
+#input td.i           img,
+#input td.artion_high img,
+#input td.artion_tall img { padding-top: 8px; }
 
 /* SVGs aligned to bottom should be pushed 10px upwards. */
 #input td.low     { vertical-align: bottom !important; }
@@ -93,7 +93,7 @@ button table {
 #input td.artion_high               { width: 46.25px; }
 button.ui                           { width: 100px;   }
 select#load-input, input#save-input { width: 250px;   }
-#input td.new                       { width: auto;    }
+#input td                           { width: auto;    }
 
 #input td img {
     display: block;
