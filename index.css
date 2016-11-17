@@ -6,26 +6,26 @@
 img { max-height: 175px; }
 
 body {
-    padding: 12.5px 6.25px;
-    font-size: 22.5px;
+    padding: 12px 6px;
+    font-size: 22px;
 }
 
 /* DEBUG: Border for glyph tables. */
-/* table, td { outline: 1.25px solid rgba(0,0,0,.3); } */
+/* table, td { outline: 1px solid rgba(0,0,0,.3); } */
 
 :focus {
-    outline: 3.75px solid rgba(0, 0, 255, 0.5);
+    outline: 4px solid rgba(0, 0, 255, 0.5);
 }
 
 .FIXME {
     /* background: red; */
 }
 
-#input { margin: 12.5px -3.75px; }
+#input { margin: 13px -4px; }
 #status {
-    padding: 12.5px 12.5px;
-    margin: 12.5px 0;
-    border: 1.25px inset #eee;
+    padding: 13px 13px;
+    margin: 13px 0;
+    border: 1px inset #eee;
     background: #eee;
 }
 
@@ -34,22 +34,22 @@ body {
 table[border="1"] td { border: none; }
 table[border="1"] {
     border-collapse: collapse;
-    border: 1.25px solid black;
+    border: 1px solid black;
     text-align: center;
 }
 
 table {
     display: inline-block;
     border-collapse: separate;
-    border-spacing: 2.5px;
-    margin: 0 2.5px;
+    border-spacing: 3px;
+    margin: 0 3px;
 }
 
 /* tables in buttons */
 button, select, input {
     font-size: inherit;
-    margin: 2.5px;
-    padding: 6.25px 12.5px;
+    margin: 3px;
+    padding: 6px 13px;
 }
 button table .big { font-size: 75px; }
 button table {
@@ -90,7 +90,7 @@ button table {
 #input td img[src="pic/x-separator.svg"] { padding: 0px 6px; }
 
 /* width */
-#input td.artion_high               { width: 46.25px; }
+#input td.artion_high               { width: 46px; }
 button.ui                           { width: 100px;   }
 select#load-input, input#save-input { width: 250px;   }
 #input td                           { width: auto;    }
@@ -101,7 +101,7 @@ select#load-input, input#save-input { width: 250px;   }
 }
 #input td.artion_low {
     vertical-align: bottom;
-    height: 37.5px;
+    height: 38px;
 }
 
 /* height */
@@ -129,7 +129,7 @@ table caption.controls {
 table:hover caption.controls { display: block; }
 #input table:hover,
 table caption.controls             { background: rgba(200, 200, 200, .5); }
-table caption.controls span        { border: 2.5px solid transparent; }
+table caption.controls span        { border: 3px solid transparent; }
 table caption.controls span:hover  { background: rgba(100, 100, 100, .5); }
 table caption.controls span:active { background: rgba( 50,  50,  50, .5); }
 table caption.controls span[disabled] { background: inherit; color: rgba(0, 0, 0, .2) }

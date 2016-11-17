@@ -1,5 +1,6 @@
 -*- org -*-
 
+* TODO IIIc should have the arrow inside the button
 * TODO Sign transcript should be inside another table
   With one <td> for I, one for II and one for II fields.
 * TODO Buttons should reflect possible clusters
@@ -31,6 +32,11 @@
 * [7/9] Fix bad/missing glyphs
 ** TODO What to do with the (so far) unused glyphs?
    Files matching `pic/**/*Truetrans*.svg`.
+
+   Haven't found much documentation about what these glyphs actually mean, or
+   if they're used, but some of them occur in the Swedish Sign Language
+   dictionary, and there's very brief descriptions of them in the compendium of
+   the sign language typeface.
 ** TODO "Handform – Krokfingret" should have thicker lines
    Currently this glyph has thinner lines than all the other glyphs. That
    doesn't look nice. :(
@@ -50,6 +56,8 @@
 ** DONE "Relation – Brevid" should be centered
    CLOSED: [2016-10-27 Thu 10:55]
    pic/Y_Truetrans1.svg
+* DONE Round off CCS pixel to integers
+  CLOSED: [2016-11-17 Thu 19:03]
 * [6/6] Resize image bounding boxes
   The size of each image should be just enough for the glyph to fit, and then
   each image should be included in the DOM not as background images using CSS,
