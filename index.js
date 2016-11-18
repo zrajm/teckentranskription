@@ -173,15 +173,15 @@ var addIaButtonElement  = $("#ia")
     dom_stuff = {
         ia: {
             html: '<table class=ia>' +
-                '<tr><td tabindex=1 class=r>' +
-                '<tr><td tabindex=1 class=a>' +
+                '<tr><td tabindex=1 class="r high">' +
+                '<tr><td tabindex=1 class="a text">' +
                 '</table>',
             glyphs: { r: glyphs.r, a: glyphs.a },
         },
         ib: {
             html: '<table class=ib>' +
-                '<tr><td tabindex=1 class=r>' +
-                '<tr><td tabindex=1 class=h rowspan=2><td tabindex=1 class=ar>' +
+                '<tr><td tabindex=1 class="r high">' +
+                '<tr><td tabindex=1 class="h text" rowspan=2><td tabindex=1 class=ar>' +
                 '<tr><td tabindex=1 class=av>' +
                 '</table>',
             glyphs: {
@@ -193,8 +193,8 @@ var addIaButtonElement  = $("#ia")
         },
         iia: {
             html: '<table class=iia>' +
-                '<tr><td><td tabindex=1 class=r>' +
-                '<tr><td tabindex=1 class=ar><td tabindex=1 class=h rowspan=2>' +
+                '<tr><td><td tabindex=1 class="r high">' +
+                '<tr><td tabindex=1 class=ar><td tabindex=1 class="h text" rowspan=2>' +
                 '<tr><td tabindex=1 class=av>' +
                 '</table>',
             glyphs: {
@@ -207,7 +207,7 @@ var addIaButtonElement  = $("#ia")
         },
         iib: {
             html: '<table class="iib">' +
-                '<tr><td tabindex=1 class=i>' +
+                '<tr><td tabindex=1 class="i full">' +
                 '</table>',
             glyphs: {
                 i:  glyphs.i,
@@ -215,8 +215,8 @@ var addIaButtonElement  = $("#ia")
         },
         iic: {
             html: '<table class=iic>' +
-                '<tr><td colspan=2>' +
-                '<tr><td tabindex=1 class=h rowspan=2><td tabindex=1 class=ar>' +
+                '<tr><td colspan=2 class=high>' +
+                '<tr><td tabindex=1 class="h text" rowspan=2><td tabindex=1 class=ar>' +
                 '<tr><td tabindex=1 class=av>' +
                 '</table>',
             glyphs: {
@@ -227,13 +227,13 @@ var addIaButtonElement  = $("#ia")
         },
         iiia: {
             html: '<table class="FIXME iiia">' +
-                '<tr><td tabindex=1 class=artion_tall>' +
+                '<tr><td tabindex=1 class="artion_tall full">' +
                 '</table>',
             glyphs: { artion_tall: glyphs.artion_tall },
         },
         iiib: {
             html: '<table class=iiib>' +
-                '<tr><td rowspan=2 class=vspacer><td tabindex=1 class=artion_high>' +
+                '<tr><td rowspan=2 class=full><td tabindex=1 class=artion_high>' +
                 '<tr><td tabindex=1 class=artion_low>' +
                 '</table>',
             glyphs: {
@@ -244,7 +244,7 @@ var addIaButtonElement  = $("#ia")
         iiic: {
             html: '<table class=iiic>' +
                 '<tr><td rowspan=2 class=top><img src="pic/ra-forandras.svg"><td class=high>' +
-                '<tr><td tabindex=1 class=h>' +
+                '<tr><td tabindex=1 class="h text">' +
                 '</table>',
             glyphs: { h: glyphs.h },
         },

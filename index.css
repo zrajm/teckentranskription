@@ -65,9 +65,8 @@ button table {
 
 #input td.ar { position: relative; top: -2px; }
 
-#input td.a,
 #input td.av,
-#input td.h,
+#input td.text,
 #input td.artion_low  { vertical-align: bottom; }
 #input td.ar,
 #input td.i,
@@ -107,16 +106,10 @@ select#load-input, input#save-input { width: 250px;   }
 }
 
 /* height */
-/* high, mid, low = Input table row position. */
-#input td.high,
-#input td[colspan],
-#input td.r           { height: 15px; }
-#input td.a,
-#input td.h           { height: 70px; }
-#input td.i,
-#input td.vspacer,
-#input td.artion_tall { height: 85px; }
-
+/* high, mid, low, text, full = Input table row position. */
+#input td.high        { height: 15px; }
+#input td.text        { height: 70px; }
+#input td.full        { height: 85px; }
 
 /******************************************************************************/
 
