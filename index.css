@@ -71,11 +71,13 @@ button table {
 #input td.artion_low  { vertical-align: bottom; }
 #input td.ar,
 #input td.i,
+#input td.top,
 #input td.artion_high,
 #input td.artion_tall { vertical-align: top;    }
 
-/* SVGs aligned to top should be pushed 10px downwards. */
+/* SVGs aligned to top should be pushed slightly downwards. */
 #input td.i           img,
+#input td.top         img,
 #input td.artion_high img,
 #input td.artion_tall img { padding-top: 8px; }
 
@@ -105,6 +107,8 @@ select#load-input, input#save-input { width: 250px;   }
 }
 
 /* height */
+/* high, mid, low = Input table row position. */
+#input td.high,
 #input td[colspan],
 #input td.r           { height: 15px; }
 #input td.a,

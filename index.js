@@ -214,7 +214,7 @@ var addIaButtonElement  = $("#ia")
             },
         },
         iic: {
-            html: '<table class=iib>' +
+            html: '<table class=iic>' +
                 '<tr><td colspan=2>' +
                 '<tr><td tabindex=1 class=h rowspan=2><td tabindex=1 class=ar>' +
                 '<tr><td tabindex=1 class=av>' +
@@ -243,7 +243,7 @@ var addIaButtonElement  = $("#ia")
         },
         iiic: {
             html: '<table class=iiic>' +
-                '<tr><td colspan=2>' +
+                '<tr><td rowspan=2 class=top><img src="pic/ra-forandras.svg"><td class=high>' +
                 '<tr><td tabindex=1 class=h>' +
                 '</table>',
             glyphs: { h: glyphs.h },

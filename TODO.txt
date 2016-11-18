@@ -1,6 +1,5 @@
 -*- org -*-
 
-* TODO IIIc should have the arrow inside the button
 * TODO Sign transcript should be inside another table
   With one <td> for I, one for II and one for II fields.
 * TODO Buttons should reflect possible clusters
@@ -21,10 +20,10 @@
   The URL should contain all information required to build a transcript (so
   that one may link to them).
 * TODO Drag-and-drop clusters to reorder them
-* TODO Change glyphs by selecting from table
+* TODO Cell phone friendly glyph selector
   Instead of using <- and -> to change glyphs, should press enter (or click) to
-  get a chart from which one can select a glyph. -- This would also make this
-  work on cell phones.
+  get a dropdown from which one can select a glyph. -- This would also make
+  this work on cell phones.
 * TODO Shortcuts for hand shape glyphs
   Pressing an alphabetic key should jump to the glyph most similar i
   appearance = Faster navigation!
@@ -56,6 +55,8 @@
 ** DONE "Relation – Brevid" should be centered
    CLOSED: [2016-10-27 Thu 10:55]
    pic/Y_Truetrans1.svg
+* DONE IIIc should have the arrow inside the button
+  CLOSED: [2016-11-18 Fri 10:24]
 * DONE Round off CCS pixel to integers
   CLOSED: [2016-11-17 Thu 19:03]
 * [6/6] Resize image bounding boxes
