@@ -146,8 +146,6 @@ table caption.controls span[disabled] { background: inherit; color: rgba(0, 0, 0
     background: rgba(0,0,0,.25);
 }
 
-/******************************************************************************/
-
 #overlay {
     overflow: hidden;
     position: absolute;
@@ -158,6 +156,7 @@ table caption.controls span[disabled] { background: inherit; color: rgba(0, 0, 0
     background: rgba(0, 0, 0, .5);
     display: none;
     text-align: center;
+    min-height: 100%;
 }
 
 #overlay table {
