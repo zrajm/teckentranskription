@@ -13,6 +13,7 @@ var addIaButtonElement  = $("#ia")
     dumpButtonElement   = $("#dump"),
     clearButtonElement  = $("#clear"),
     deleteButtonElement = $("#delete"),
+    overlayElement      = $("#overlay"),
     inputElement        = $("#input"),
     statusElement       = $("#status"),
     glyphs = {
@@ -360,32 +361,11 @@ function makeSign(spec) {
     Object.keys(sign).forEach(function (name) {
         element[name] = $("." + name, html);   // get DOM element
         set(name, sign[name]);                 //   set value & update DOM
-        if (name === 'a') {
-            // new style menu
-            element[name].click(function () {
-                selectGlyph("overlay1", 0, function (value) {
-                    set(name, value);
-                });
-            });
-        } else {
-            // old style arrow left/right
-            element[name].keydown(function() {
-                var value = get(name), max = pics[name].length;
-                switch (event.key) {
-                case "ArrowLeft":
-                    value -= 1;
-                    while (value < 0) { value += max; }
-                    break;
-                case "ArrowRight":
-                    value = (value + 1) % max;
-                    break;
-                default:
-                    console.log(event.key);
-                    return true;
-                }
+        element[name].click(function () {
+            selectGlyph(glyphs[name], 0, function (value) {
                 set(name, value);
-            }).focus(function () { redraw(name); });
-        }
+            });
+        });
     });
 
     /* previous / next / remove buttons */
@@ -543,21 +523,35 @@ function buttonDelete() {
     }
 }
 
-function selectGlyph(overlayName, selectedValue, callback) {
-    var overlayElement = $(".overlay");
-    function removeSelector() {
+function selectGlyph(menu, selectedValue, callback) {
+    var tableElement = $('table', overlayElement);
+
+    function destroyMenu() {
         overlayElement.css('display', 'none');
-        $('table tr', overlayElement).off('click');
+        tableElement.empty();
     }
-    overlayElement.css('display', 'block');
-    $(overlayElement).click(function () {      // cancel (clicked outside)
-        removeSelector();
-    });
-    $('table tr', overlayElement).click(function () { // something selected
-        var value = $(this).data('value');
-        removeSelector();
-        callback(value);
-    });
+
+    function createMenu(menu) {
+        var html = menu.map(function (value, key) {
+            var glyph = value[0], text = value[1], image = value[2];
+            return '<tr data-value=' + key + '>' +
+                '<td><img src="' + glyph + '">' +
+                (image ? '<td><img src="' + image + '">' : '') +
+                '<td>' + text;
+        }).join('\n');
+        tableElement.html(html);
+        // Clicking outside table on overlay = Cancel.
+        $(overlayElement).click(destroyMenu);
+        // Clicking a menu row selects that alternative.
+        $('tr', tableElement).click(function () {
+            var value = $(this).data('value');
+            destroyMenu();
+            callback(value);
+        });
+        overlayElement.css('display', 'block');
+    }
+
+    createMenu(menu);
 }
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -133,22 +133,22 @@ table caption.controls span[disabled] { background: inherit; color: rgba(0, 0, 0
 
 /******************************************************************************/
 
-table.selector { border-collapse: collapse; }
-table.selector td {
+#overlay table { border-collapse: collapse; }
+#overlay table td {
     border: 1px solid black;
     text-align: center;
     height: 70px;
     vertical-align: bottom;
 }
-table.selector td + td { vertical-align: middle; }
+#overlay table td + td { vertical-align: middle; }
 
-table.selector tr:hover {
+#overlay table tr:hover {
     background: rgba(0,0,0,.25);
 }
 
 /******************************************************************************/
 
-.overlay {
+#overlay {
     overflow: hidden;
     position: absolute;
     top: 0;
@@ -160,13 +160,19 @@ table.selector tr:hover {
     text-align: center;
 }
 
-.overlay table {
+#overlay table {
     display: inline-block;
     background: white;
 }
 
-.overlay table td {
+#overlay table td {
     padding: 4px;
+}
+
+#overlay table td + td img {
+    height: 100%;
+    display: block;
+    margin: auto;
 }
 
 /*[eof]*/
