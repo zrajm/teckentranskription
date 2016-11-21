@@ -360,22 +360,32 @@ function makeSign(spec) {
     Object.keys(sign).forEach(function (name) {
         element[name] = $("." + name, html);   // get DOM element
         set(name, sign[name]);                 //   set value & update DOM
-        element[name].keydown(function() {     //   attach click function
-            var value = get(name), max = pics[name].length;
-            switch (event.key) {
-            case "ArrowLeft":
-                value -= 1;
-                while (value < 0) { value += max; }
-                break;
-            case "ArrowRight":
-                value = (value + 1) % max;
-                break;
-            default:
-                console.log(event.key);
-                return true;
-            }
-            set(name, value);
-        }).focus(function () { redraw(name); });
+        if (name === 'a') {
+            // new style menu
+            element[name].click(function () {
+                selectGlyph("overlay1", 0, function (value) {
+                    set(name, value);
+                });
+            });
+        } else {
+            // old style arrow left/right
+            element[name].keydown(function() {
+                var value = get(name), max = pics[name].length;
+                switch (event.key) {
+                case "ArrowLeft":
+                    value -= 1;
+                    while (value < 0) { value += max; }
+                    break;
+                case "ArrowRight":
+                    value = (value + 1) % max;
+                    break;
+                default:
+                    console.log(event.key);
+                    return true;
+                }
+                set(name, value);
+            }).focus(function () { redraw(name); });
+        }
     });
 
     /* previous / next / remove buttons */
@@ -531,6 +541,23 @@ function buttonDelete() {
         saveInputElement.val(newName);
         updateLoadList();
     }
+}
+
+function selectGlyph(overlayName, selectedValue, callback) {
+    var overlayElement = $(".overlay");
+    function removeSelector() {
+        overlayElement.css('display', 'none');
+        $('table tr', overlayElement).off('click');
+    }
+    overlayElement.css('display', 'block');
+    $(overlayElement).click(function () {      // cancel (clicked outside)
+        removeSelector();
+    });
+    $('table tr', overlayElement).click(function () { // something selected
+        var value = $(this).data('value');
+        removeSelector();
+        callback(value);
+    });
 }
 
 ////////////////////////////////////////////////////////////////////////////////

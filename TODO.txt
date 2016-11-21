@@ -1,5 +1,7 @@
 -*- org -*-
 
+* TODO Add '/' sign
+* TODO Remove '=>' arrow from IIIa list of glyphs
 * TODO Sign transcript should be inside another table
   With one <td> for I, one for II and one for II fields.
 * TODO Buttons should reflect possible clusters
@@ -20,10 +22,25 @@
   The URL should contain all information required to build a transcript (so
   that one may link to them).
 * TODO Drag-and-drop clusters to reorder them
-* TODO Cell phone friendly glyph selector
+* [1/13] Cell phone friendly glyph selector
   Instead of using <- and -> to change glyphs, should press enter (or click) to
   get a dropdown from which one can select a glyph. -- This would also make
   this work on cell phones.
+** TODO Replace 'H' field with menu
+** TODO Replace 'R' field with menu
+** TODO Replace 'AR' field with menu
+** TODO Replace 'AV' field with menu
+** TODO Replace 'ART-ION' field with menu
+** TODO Replace 'ART' field with menu
+** TODO Replace 'ION' field with menu
+** TODO Generate menu from javascript
+** TODO Current glyph should be highlighted in menu
+** TODO Modified glyph should focused after changing
+** TODO Keyboard shortcuts in menu
+   ArrowUp/Down/Enter/Esc to navigate menu
+** TODO Keyboard shortcuts to invoke menu
+** DONE Replace 'A' field with menu
+   CLOSED: [2016-11-21 Mon 10:51]
 * TODO Shortcuts for hand shape glyphs
   Pressing an alphabetic key should jump to the glyph most similar i
   appearance = Faster navigation!

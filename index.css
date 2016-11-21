@@ -131,4 +131,42 @@ table caption.controls span:hover  { background: rgba(100, 100, 100, .5); }
 table caption.controls span:active { background: rgba( 50,  50,  50, .5); }
 table caption.controls span[disabled] { background: inherit; color: rgba(0, 0, 0, .2) }
 
+/******************************************************************************/
+
+table.selector { border-collapse: collapse; }
+table.selector td {
+    border: 1px solid black;
+    text-align: center;
+    height: 70px;
+    vertical-align: bottom;
+}
+table.selector td + td { vertical-align: middle; }
+
+table.selector tr:hover {
+    background: rgba(0,0,0,.25);
+}
+
+/******************************************************************************/
+
+.overlay {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 10;
+    right: 0;
+    background: rgba(0, 0, 0, .5);
+    display: none;
+    text-align: center;
+}
+
+.overlay table {
+    display: inline-block;
+    background: white;
+}
+
+.overlay table td {
+    padding: 4px;
+}
+
 /*[eof]*/
