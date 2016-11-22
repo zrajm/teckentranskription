@@ -365,6 +365,18 @@ function makeSign(spec) {
             selectGlyph(glyphs[name], 0, function (value) {
                 set(name, value);
             });
+        }).keydown(function () {
+            var value = get(name);
+            switch (event.key) {
+            case "Enter":                      // change glyph
+                selectGlyph(glyphs[name], 0, function (value) {
+                    set(name, value);
+                });
+                break;
+            default:
+                console.log(event.key);
+                return true;
+            }
         });
     });
 

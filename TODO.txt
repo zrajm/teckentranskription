@@ -41,12 +41,13 @@
   Is this possible? Maybe composing an SVG based on the individual glyphs plus
   their relative coordinates taken from the DOM might be possible using some
   Javascript SVG library.
-* [12/14] Cell phone friendly glyph selector
+* [13/14] Cell phone friendly glyph selector
   Instead of using <- and -> to change glyphs, should press enter (or click) to
   get a dropdown from which one can select a glyph. -- This would also make
   this work on cell phones.
 ** TODO Current glyph should be highlighted/selected in menu
-** TODO Keyboard shortcut to invoke menu
+** DONE Keyboard shortcut to invoke menu
+   CLOSED: [2016-11-22 Tue 20:34]
 ** DONE Modified glyph should focused after changing
    CLOSED: [2016-11-22 Tue 11:34]
 ** DONE Keyboard shortcuts in menu
