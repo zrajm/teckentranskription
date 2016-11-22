@@ -27,8 +27,15 @@
   appearance = Faster navigation!
 * TODO Import/export saved data
 * TODO CSS class indicating top/bottom alignment in input
-* TODO Cell phone friendly CSS
-  Responsive GUI when zooming in on cell phone.
+* TODO Vertical alignment of glyphs in glyph selector
+* TODO Glyph selector mobile cancel
+  Use page history to allow the 'Back' button to cancel.
+* TODO Glyph selector order
+  Should reflect the order in 'Teckentranskription' (rather than be in an order
+  convenient when stepping through the glyphs one by one, as before).
+* TODO BUGFIX: Cluster buttons on top of glyph selector
+  The cluster move/delete buttons should now show up on top of the glyph
+  selector menu.
 * TODO Position of 'contact'/'medial contact' glyphs in selector
 * TODO Export transcription as SVG (?)                           :FAR_FUTURE:
   Is this possible? Maybe composing an SVG based on the individual glyphs plus
@@ -96,6 +103,18 @@
 ** DONE "Relation – Brevid" should be centered
    CLOSED: [2016-10-27 Thu 10:55]
    pic/Y_Truetrans1.svg
+* DONE Glyph selector shouldn't split rows with borders
+  CLOSED: [2016-11-22 Tue 20:30]
+  When showing the glyph selector on a cell phone, the fact that one selects an
+  entire table row is not obvious (one could get the impression that one can
+  select table *cells*).
+
+  Should remove the vertical lines (vertical table cell borders) inside the
+  table, so at to emphasize that the description on each line is denotes one
+  possible glyph (and not several alternatives).
+* DONE Cell phone friendly CSS
+  CLOSED: [2016-11-22 Tue 19:52]
+  Responsive GUI when zooming in on cell phone.
 * DONE IIIc should have the arrow inside the button
   CLOSED: [2016-11-18 Fri 10:24]
 * DONE Round off CCS pixel to integers

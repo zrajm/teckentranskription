@@ -535,7 +535,7 @@ function selectGlyph(menu, selectedValue, callback) {
                 return '<tr tabindex=1 data-value=' + key + '>' +
                     '<td><img src="' + glyph + '">' +
                     (image ? '<td><img src="' + image + '">' : '') +
-                    '<td>' + text;
+                    '<td class=left>' + text;
             }).join('\n')
         );
         rowElements = $('tr', tableElement);
