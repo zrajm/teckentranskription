@@ -524,31 +524,66 @@ function buttonDelete() {
 }
 
 function selectGlyph(menu, selectedValue, callback) {
-    var tableElement = $('table', overlayElement);
-
-    function destroyMenu() {
-        overlayElement.css('display', 'none');
-        tableElement.empty();
-    }
+    var tableElement    = $('table', overlayElement),
+        selectedElement = $(document.activeElement),
+        rowElements;
 
     function createMenu(menu) {
-        var html = menu.map(function (value, key) {
-            var glyph = value[0], text = value[1], image = value[2];
-            return '<tr data-value=' + key + '>' +
-                '<td><img src="' + glyph + '">' +
-                (image ? '<td><img src="' + image + '">' : '') +
-                '<td>' + text;
-        }).join('\n');
-        tableElement.html(html);
-        // Clicking outside table on overlay = Cancel.
-        $(overlayElement).click(destroyMenu);
-        // Clicking a menu row selects that alternative.
-        $('tr', tableElement).click(function () {
-            var value = $(this).data('value');
+        tableElement.html(
+            menu.map(function (value, key) {
+                var glyph = value[0], text = value[1], image = value[2];
+                return '<tr tabindex=1 data-value=' + key + '>' +
+                    '<td><img src="' + glyph + '">' +
+                    (image ? '<td><img src="' + image + '">' : '') +
+                    '<td>' + text;
+            }).join('\n')
+        );
+        rowElements = $('tr', tableElement);
+        $(overlayElement).keydown(handleMenuKeys).click(handleMenuClick);
+        overlayElement.css('display', 'block')
+        // FIXME: Focus the correct element, not first one.
+        console.log(selectedValue);
+        rowElements[0].focus();
+    }
+
+    function destroyMenu() {
+        overlayElement.off().css('display', 'none');
+        tableElement.empty();
+        selectedElement.focus();               // reselect previously focused
+    }
+
+    function handleMenuClick(event) {
+        var element = $(event.target),
+            value   = element.closest('tr').data('value');
+        destroyMenu();
+        if (value !== undefined) { callback(value); }
+        return false;
+    }
+
+    function handleMenuKeys(event) {
+        var element = $(event.target),
+            value   = element.data('value');
+        switch (event.key) {
+        case "Escape":
+            destroyMenu();
+            return false;
+        case "ArrowUp":
+            value -= 1;
+            if (value < 0) { value = 0; }
+            rowElements[value].focus();
+            return false;
+        case "ArrowDown":
+            value += 1;
+            if (value >= rowElements.length) { value = rowElements.length - 1; }
+            rowElements[value].focus();
+            return false;
+        case "Enter":
             destroyMenu();
             callback(value);
-        });
-        overlayElement.css('display', 'block');
+            return false;
+        default:
+            console.log("Menu keypress: " + event.key);
+        }
     }
 
     createMenu(menu);

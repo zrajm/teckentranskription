@@ -22,15 +22,28 @@
   The URL should contain all information required to build a transcript (so
   that one may link to them).
 * TODO Drag-and-drop clusters to reorder them
-* [10/14] Cell phone friendly glyph selector
+* TODO Shortcuts for hand shape glyphs
+  Pressing an alphabetic key should jump to the glyph most similar i
+  appearance = Faster navigation!
+* TODO Import/export saved data
+* TODO CSS class indicating top/bottom alignment in input
+* TODO Cell phone friendly CSS
+  Responsive GUI when zooming in on cell phone.
+* TODO Export transcription as SVG (?)                           :FAR_FUTURE:
+  Is this possible? Maybe composing an SVG based on the individual glyphs plus
+  their relative coordinates taken from the DOM might be possible using some
+  Javascript SVG library.
+* [12/14] Cell phone friendly glyph selector
   Instead of using <- and -> to change glyphs, should press enter (or click) to
   get a dropdown from which one can select a glyph. -- This would also make
   this work on cell phones.
-** TODO Current glyph should be highlighted in menu
-** TODO Modified glyph should focused after changing
-** TODO Keyboard shortcuts in menu
+** TODO Current glyph should be highlighted/selected in menu
+** TODO Keyboard shortcut to invoke menu
+** DONE Modified glyph should focused after changing
+   CLOSED: [2016-11-22 Tue 11:34]
+** DONE Keyboard shortcuts in menu
+   CLOSED: [2016-11-22 Tue 11:31]
    ArrowUp/Down/Enter/Esc to navigate menu
-** TODO Keyboard shortcuts to invoke menu
 ** DONE Reduce size of hand shape pictures
    CLOSED: [2016-11-21 Mon 11:58]
 ** DONE Generate menu from Javascript
@@ -50,11 +63,6 @@
    CLOSED: [2016-11-21 Mon 11:51]
 ** DONE Replace 'A' field with menu
    CLOSED: [2016-11-21 Mon 10:51]
-* TODO Shortcuts for hand shape glyphs
-  Pressing an alphabetic key should jump to the glyph most similar i
-  appearance = Faster navigation!
-* TODO Import/export saved data
-* TODO CSS class indicating top/bottom alignment in input
 * [1/3] CSS class indicating table cell position in input
 ** DONE 'high'/'mid'/'low' - For small symbols in high/mid/low position.
    CLOSED: [2016-11-18 Fri 10:51]
