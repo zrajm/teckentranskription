@@ -1,5 +1,10 @@
 -*- org -*-
 
+* TODO Link to readme
+  Using strapdown.js to produce a nice and readable README?
+* TODO Link to GitHub repo
+* TODO Link to GitHub issue tracker
+* TODO Link to License
 * TODO Add '/' sign
 * TODO Remove '=>' arrow from IIIa list of glyphs
 * TODO Sign transcript should be inside another table
@@ -21,6 +26,64 @@
 * TODO 'Share' URLs with all transcript information
   The URL should contain all information required to build a transcript (so
   that one may link to them).
+
+  Cluster separator: '.'
+  Transcription separator: '/' ?
+
+  Example: #oOE.OUH0AOHU.OUHho/oeh.A2Oc.ShuE0o
+
+  .,_-
+
+  Use: [A-Za-z] (52 possible; [A-Za-z0-9+/] is base64)
+
+  * Encode each list as [A-Za-z]
+
+  Pseudo code:
+
+        if three components
+            process 1st (place of articulation)
+        fi
+        process remaining two
+
+
+  I: Place of articulation is one of:
+
+      R        H       AR      AV
+      [A-Za-z]?[A-Za-z][A-Za-z][A-Za-z]
+
+  (3 or 4 bytes.)
+
+  or
+
+      R        A
+      [A-Za-z]?[A-Za-z]
+
+  (1 or 2 bytes.)
+
+  II: Articulator
+
+      (optional left hand)
+      R        H       AR      AV
+      [A-Za-z]?[A-Za-z][A-Za-z][A-Za-z]
+
+  (0 or 3-4 bytes.)
+
+      (optional interaction)
+      I
+      0[A-Za-z]?
+
+  (0 or 2 bytes.)
+
+      H       AR      AV
+      [A-Za-z][A-Za-z][A-Za-z]
+
+  (3 bytes.)
+
+  III: Articulation
+  Any number of [A-Za-z] plus [0-5][A-Za-z].
+
+  - 0 is '=>', followed by 'H' glyph
+  - 1-4 is 'båge/cirkel/vrids/slås' followed by A-Za-z
 * TODO Drag-and-drop clusters to reorder them
 * TODO Shortcuts for hand shape glyphs
   Pressing an alphabetic key should jump to the glyph most similar i
