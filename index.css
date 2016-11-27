@@ -15,9 +15,8 @@ body {
 /* DEBUG: Border for glyph tables. */
 /* table, td { outline: 1px solid rgba(0,0,0,.3); } */
 
-:focus {
-    outline: 4px solid rgba(0, 0, 255, 0.5);
-}
+#input:hover td[tabindex] { outline: 1px dotted rgba(0, 0, 255, 0.5); }
+:focus                    { outline: 4px solid  rgba(0, 0, 255, 0.5) !important; }
 
 .FIXME {
     /* background: red; */
@@ -127,7 +126,9 @@ table caption.controls {
 }
 table:hover caption.controls { display: block; }
 #input table:hover,
-table caption.controls             { background: rgba(200, 200, 200, .5); }
+#input table td:hover,
+#overlay table tr:hover,
+table caption.controls             { background: rgba(0, 0, 0, .2); }
 table caption.controls span        { border: 3px solid transparent; }
 table caption.controls span:hover  { background: rgba(100, 100, 100, .5); }
 table caption.controls span:active { background: rgba( 50,  50,  50, .5); }
@@ -143,10 +144,6 @@ table caption.controls span[disabled] { background: inherit; color: rgba(0, 0, 0
     vertical-align: bottom;
 }
 #overlay table td + td { vertical-align: middle; }
-
-#overlay table tr:hover {
-    background: rgba(0,0,0,.25);
-}
 
 #overlay {
     overflow: hidden;
