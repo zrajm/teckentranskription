@@ -1,3 +1,5 @@
+/* Copyright 2016 by zrajm. Released under GPLv3 license. */
+
 * {
     margin: 0;
     padding: 0;
@@ -133,6 +135,14 @@ table caption.controls span        { border: 3px solid transparent; }
 table caption.controls span:hover  { background: rgba(100, 100, 100, .5); }
 table caption.controls span:active { background: rgba( 50,  50,  50, .5); }
 table caption.controls span[disabled] { background: inherit; color: rgba(0, 0, 0, .2) }
+
+footer {
+    opacity: .75;
+    font-size: 80%;
+    margin: .5em 0;
+    font-family: sans-serif;
+    text-align: center;
+}
 
 /******************************************************************************/
 

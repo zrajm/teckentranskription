@@ -1,3 +1,5 @@
+/* Copyright 2016 by zrajm. Released under GPLv3 license. */
+
 var addIaButtonElement  = $("#ia")
     addIbButtonElement  = $("#ib")
     addIIaButtonElement = $("#iia")

@@ -1,10 +1,5 @@
 -*- org -*-
 
-* TODO Link to readme
-  Using strapdown.js to produce a nice and readable README?
-* TODO Link to GitHub repo
-* TODO Link to GitHub issue tracker
-* TODO Link to License
 * TODO Add '/' sign
 * TODO Remove '=>' arrow from IIIa list of glyphs
 * TODO Sign transcript should be inside another table
@@ -104,6 +99,12 @@
   Is this possible? Maybe composing an SVG based on the individual glyphs plus
   their relative coordinates taken from the DOM might be possible using some
   Javascript SVG library.
+* TODO Cleanup terminology in source code
+  + Glyph = One symbol used.
+  + Cluster (of glyphs) = A collection of glyphs which always go together. (In
+    the GUI there is a button for each cluster.)
+  + Sign = A complete transcription for one sign.
+  + Transcript = One or more signs make up a full transcript.
 * [13/14] Cell phone friendly glyph selector
   Instead of using <- and -> to change glyphs, should press enter (or click) to
   get a dropdown from which one can select a glyph. -- This would also make
@@ -167,6 +168,16 @@
 ** DONE "Relation – Brevid" should be centered
    CLOSED: [2016-10-27 Thu 10:55]
    pic/Y_Truetrans1.svg
+* DONE Link to GitHub README
+  CLOSED: [2016-11-27 Sun 21:48]
+  Using strapdown.js to produce a nice and readable README?
+  -- Naah. Linked to the GitHub version of the README instead.
+* DONE Link to GitHub repo
+  CLOSED: [2016-11-27 Sun 21:48]
+* DONE Link to GitHub issue tracker
+  CLOSED: [2016-11-27 Sun 21:48]
+* DONE Add license + link to the license
+  CLOSED: [2016-11-27 Sun 21:48]
 * DONE Glyph selector shouldn't split rows with borders
   CLOSED: [2016-11-22 Tue 20:30]
   When showing the glyph selector on a cell phone, the fact that one selects an
