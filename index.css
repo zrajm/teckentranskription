@@ -148,7 +148,6 @@ footer {
 
 #overlay table { border-collapse: collapse; }
 #overlay table td {
-    border: 1px solid black;
     text-align: center;
     height: 70px;
     vertical-align: bottom;
@@ -174,11 +173,10 @@ footer {
 }
 #overlay table td {
     padding: 4px;
-    border: none;
 }
 
-#overlay table    { border:     1px solid black; }
-#overlay table td { border-top: 1px solid black; }
+#overlay table td { border: none; }
+#overlay table tr { border: 1px solid black; }
 
 #overlay table td + td img {
     height: 100%;
