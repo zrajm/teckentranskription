@@ -364,14 +364,14 @@ function makeSign(spec) {
         element[name] = $("." + name, html);   // get DOM element
         set(name, sign[name]);                 //   set value & update DOM
         element[name].click(function () {
-            selectGlyph(glyphs[name], 0, function (value) {
+            selectGlyph(glyphs[name], get(name), function (value) {
                 set(name, value);
             });
         }).keydown(function () {
             var value = get(name);
             switch (event.key) {
             case "Enter":                      // change glyph
-                selectGlyph(glyphs[name], 0, function (value) {
+                selectGlyph(glyphs[name], get(name), function (value) {
                     set(name, value);
                 });
                 break;
@@ -546,7 +546,8 @@ function selectGlyph(menu, selectedValue, callback) {
         tableElement.html(
             menu.map(function (value, key) {
                 var glyph = value[0], text = value[1], image = value[2];
-                return '<tr tabindex=1 data-value=' + key + '>' +
+                return '<tr tabindex=1 data-value=' + key +
+                    (selectedValue === key ? ' class=selected' : '') + '>' +
                     '<td><img src="' + glyph + '">' +
                     (image ? '<td><img src="' + image + '">' : '') +
                     '<td class=left>' + text;
@@ -555,9 +556,7 @@ function selectGlyph(menu, selectedValue, callback) {
         rowElements = $('tr', tableElement);
         $(overlayElement).keydown(handleMenuKeys).click(handleMenuClick);
         overlayElement.css('display', 'block')
-        // FIXME: Focus the correct element, not first one.
-        console.log(selectedValue);
-        rowElements[0].focus();
+        rowElements[selectedValue].focus();
     }
 
     function destroyMenu() {

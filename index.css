@@ -184,4 +184,9 @@ footer {
     margin: auto;
 }
 
+#overlay table tr.selected {
+    /* Same color as the :focus outline, but twice as transparent. */
+    background: rgba(0, 0, 255, 0.25);
+}
+
 /*[eof]*/

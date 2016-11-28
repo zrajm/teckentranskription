@@ -105,37 +105,6 @@
     the GUI there is a button for each cluster.)
   + Sign = A complete transcription for one sign.
   + Transcript = One or more signs make up a full transcript.
-* [13/14] Cell phone friendly glyph selector
-  Instead of using <- and -> to change glyphs, should press enter (or click) to
-  get a dropdown from which one can select a glyph. -- This would also make
-  this work on cell phones.
-** TODO Current glyph should be highlighted/selected in menu
-** DONE Keyboard shortcut to invoke menu
-   CLOSED: [2016-11-22 Tue 20:34]
-** DONE Modified glyph should focused after changing
-   CLOSED: [2016-11-22 Tue 11:34]
-** DONE Keyboard shortcuts in menu
-   CLOSED: [2016-11-22 Tue 11:31]
-   ArrowUp/Down/Enter/Esc to navigate menu
-** DONE Reduce size of hand shape pictures
-   CLOSED: [2016-11-21 Mon 11:58]
-** DONE Generate menu from Javascript
-** DONE Replace 'H' field with menu
-   CLOSED: [2016-11-21 Mon 11:51]
-** DONE Replace 'R' field with menu
-   CLOSED: [2016-11-21 Mon 11:51]
-** DONE Replace 'AR' field with menu
-   CLOSED: [2016-11-21 Mon 11:51]
-** DONE Replace 'AV' field with menu
-   CLOSED: [2016-11-21 Mon 11:51]
-** DONE Replace 'ART-ION' field with menu
-   CLOSED: [2016-11-21 Mon 11:51]
-** DONE Replace 'ART' field with menu
-   CLOSED: [2016-11-21 Mon 11:51]
-** DONE Replace 'ION' field with menu
-   CLOSED: [2016-11-21 Mon 11:51]
-** DONE Replace 'A' field with menu
-   CLOSED: [2016-11-21 Mon 10:51]
 * [1/3] CSS class indicating table cell position in input
 ** DONE 'high'/'mid'/'low' - For small symbols in high/mid/low position.
    CLOSED: [2016-11-18 Fri 10:51]
@@ -168,6 +137,38 @@
 ** DONE "Relation – Brevid" should be centered
    CLOSED: [2016-10-27 Thu 10:55]
    pic/Y_Truetrans1.svg
+* [14/14] Cell phone friendly glyph selector
+  Instead of using <- and -> to change glyphs, should press enter (or click) to
+  get a dropdown from which one can select a glyph. -- This would also make
+  this work on cell phones.
+** DONE Current glyph should be highlighted/selected in menu
+   CLOSED: [2016-11-28 Mon 10:06]
+** DONE Keyboard shortcut to invoke menu
+   CLOSED: [2016-11-22 Tue 20:34]
+** DONE Modified glyph should focused after changing
+   CLOSED: [2016-11-22 Tue 11:34]
+** DONE Keyboard shortcuts in menu
+   CLOSED: [2016-11-22 Tue 11:31]
+   ArrowUp/Down/Enter/Esc to navigate menu
+** DONE Reduce size of hand shape pictures
+   CLOSED: [2016-11-21 Mon 11:58]
+** DONE Generate menu from Javascript
+** DONE Replace 'H' field with menu
+   CLOSED: [2016-11-21 Mon 11:51]
+** DONE Replace 'R' field with menu
+   CLOSED: [2016-11-21 Mon 11:51]
+** DONE Replace 'AR' field with menu
+   CLOSED: [2016-11-21 Mon 11:51]
+** DONE Replace 'AV' field with menu
+   CLOSED: [2016-11-21 Mon 11:51]
+** DONE Replace 'ART-ION' field with menu
+   CLOSED: [2016-11-21 Mon 11:51]
+** DONE Replace 'ART' field with menu
+   CLOSED: [2016-11-21 Mon 11:51]
+** DONE Replace 'ION' field with menu
+   CLOSED: [2016-11-21 Mon 11:51]
+** DONE Replace 'A' field with menu
+   CLOSED: [2016-11-21 Mon 10:51]
 * DONE Link to GitHub README
   CLOSED: [2016-11-27 Sun 21:48]
   Using strapdown.js to produce a nice and readable README?
