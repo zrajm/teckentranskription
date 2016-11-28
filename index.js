@@ -8,6 +8,7 @@ var addIaButtonElement  = $("#ia")
     addIIIaButtonElement = $("#iiia")
     addIIIbButtonElement = $("#iiib")
     addIIIcButtonElement = $("#iiic")
+    windowElement       = $(window),
     loadButtonElement   = $("#load"),
     loadInputElement    = $("#load-input"),
     saveButtonElement   = $("#save"),
@@ -543,6 +544,8 @@ function selectGlyph(menu, selectedValue, callback) {
         rowElements;
 
     function createMenu(menu) {
+        windowElement.on('popstate', destroyMenu);
+        history.pushState('', document.title + ": Select Glyph", "#select-glyph");
         tableElement.html(
             menu.map(function (value, key) {
                 var glyph = value[0], text = value[1], image = value[2];
@@ -559,7 +562,9 @@ function selectGlyph(menu, selectedValue, callback) {
         rowElements[selectedValue].focus();
     }
 
-    function destroyMenu() {
+    function destroyMenu(backButtonEvent) {
+        if (!backButtonEvent) { history.back(); }
+        windowElement.off('popstate');
         overlayElement.off().css('display', 'none');
         tableElement.empty();
         selectedElement.focus();               // reselect previously focused

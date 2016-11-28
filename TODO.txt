@@ -86,8 +86,6 @@
 * TODO Import/export saved data
 * TODO CSS class indicating top/bottom alignment in input
 * TODO Vertical alignment of glyphs in glyph selector
-* TODO Glyph selector mobile cancel
-  Use page history to allow the 'Back' button to cancel.
 * TODO Glyph selector order
   Should reflect the order in 'Teckentranskription' (rather than be in an order
   convenient when stepping through the glyphs one by one, as before).
@@ -137,6 +135,9 @@
 ** DONE "Relation – Brevid" should be centered
    CLOSED: [2016-10-27 Thu 10:55]
    pic/Y_Truetrans1.svg
+* DONE Glyph selector mobile cancel
+  CLOSED: [2016-11-28 Mon 19:04]
+  Use page history to allow the 'Back' button to cancel.
 * [14/14] Cell phone friendly glyph selector
   Instead of using <- and -> to change glyphs, should press enter (or click) to
   get a dropdown from which one can select a glyph. -- This would also make
