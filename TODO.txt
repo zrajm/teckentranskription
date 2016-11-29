@@ -85,9 +85,6 @@
 * TODO Import/export saved data
 * TODO CSS class indicating top/bottom alignment in input
 * TODO Vertical alignment of glyphs in glyph selector
-* TODO BUGFIX: Cluster buttons on top of glyph selector
-  The cluster move/delete buttons should now show up on top of the glyph
-  selector menu.
 * TODO Position of 'contact'/'medial contact' glyphs in selector
 * TODO Export transcription as SVG (?)                           :FAR_FUTURE:
   Is this possible? Maybe composing an SVG based on the individual glyphs plus
@@ -135,6 +132,14 @@
 ** DONE "Relation – Brevid" should be centered
    CLOSED: [2016-10-27 Thu 10:55]
    pic/Y_Truetrans1.svg
+* DONE BUGFIX: Cluster buttons on top of glyph selector
+  CLOSED: [2016-11-29 Tue 10:23]
+  Fixed this by adding the class 'overlay' to the <body> tag when displaying
+  the overlay, and then having a CSS rule hiding the move/delete buttons if the
+  overlay class is applied to body.
+
+  The cluster move/delete buttons should now show up on top of the glyph
+  selector menu.
 * DONE Glyph selector order
   CLOSED: [2016-11-29 Tue 10:13]
   Should reflect the order in 'Teckentranskription' (rather than be in an order

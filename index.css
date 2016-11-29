@@ -127,6 +127,7 @@ table caption.controls {
     font-weight: bold;
 }
 table:hover caption.controls { display: block; }
+body.overlay table:hover caption.controls { display: none; }
 #input table:hover,
 #input table td:hover,
 #overlay table tr:hover,

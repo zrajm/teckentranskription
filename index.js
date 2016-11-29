@@ -8,6 +8,7 @@ var addIaButtonElement  = $("#ia")
     addIIIaButtonElement = $("#iiia")
     addIIIbButtonElement = $("#iiib")
     addIIIcButtonElement = $("#iiic")
+    bodyElement         = $(document.body),
     windowElement       = $(window),
     loadButtonElement   = $("#load"),
     loadInputElement    = $("#load-input"),
@@ -543,6 +544,7 @@ function selectGlyph(menu, selectedValue, callback) {
         rowElements;
 
     function createMenu(menu) {
+        bodyElement.addClass('overlay');
         windowElement.on('popstate', destroyMenu);
         history.pushState('', document.title + ": Select Glyph", "#select-glyph");
         tableElement.html(
@@ -563,6 +565,7 @@ function selectGlyph(menu, selectedValue, callback) {
 
     function destroyMenu(backButtonEvent) {
         if (!backButtonEvent) { history.back(); }
+        bodyElement.removeClass('overlay');
         windowElement.off('popstate');
         overlayElement.off().css('display', 'none');
         tableElement.empty();
