@@ -138,7 +138,6 @@ var addIaButtonElement  = $("#ia")
             ["pic/rr-kort-ner.svg",     "Rörelseriktning – Kort ner"      ],
             ["pic/rr-upp-ner.svg",      "Rörelseriktning – Upp–ner"       ],
             ["pic/ra-spelar.svg",       "Rörelseart – Spelar"             ],
-            ["pic/ra-forandras.svg",    "Rörelseart – Förändras"          ],
             ["pic/ra-stror.svg",        "Rörelseart – Strör"              ],
             ["pic/ra-vinkar.svg",       "Rörelseart – Vinkar"             ],
             ["pic/ra-bojs.svg",         "Rörelseart – Böjs"               ],

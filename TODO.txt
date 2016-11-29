@@ -1,7 +1,6 @@
 -*- org -*-
 
 * TODO Add '/' sign
-* TODO Remove '=>' arrow from IIIa list of glyphs
 * TODO Sign transcript should be inside another table
   With one <td> for I, one for II and one for II fields.
 * TODO Buttons should reflect possible clusters
@@ -135,6 +134,8 @@
 ** DONE "Relation – Brevid" should be centered
    CLOSED: [2016-10-27 Thu 10:55]
    pic/Y_Truetrans1.svg
+* DONE Remove '=>' arrow from IIIa list of glyphs
+  CLOSED: [2016-11-29 Tue 09:41]
 * DONE Glyph selector mobile cancel
   CLOSED: [2016-11-28 Mon 19:04]
   Use page history to allow the 'Back' button to cancel.
