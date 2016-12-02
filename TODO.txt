@@ -1,6 +1,13 @@
 -*- org -*-
 
+* TODO Update 'status' field when hovering on glyph
 * TODO Add '/' sign
+* TODO GUI prettifications
+** TODO Hovering on cluster should hilite corresponding button
+** TODO Hovering on button should display effects of button
+   E.g. if button insert something into transcript, this should be displayed
+   but grayed out, if button is clicked this grayed out image should solidify
+   and remain.
 * TODO Sign transcript should be inside another table
   With one <td> for I, one for II and one for II fields.
 * TODO Buttons should reflect possible clusters
@@ -91,15 +98,25 @@
   their relative coordinates taken from the DOM might be possible using some
   Javascript SVG library.
 * TODO Cleanup terminology in source code
-  + Glyph = One symbol used.
-  + Cluster (of glyphs) = A collection of glyphs which always go together. (In
-    the GUI there is a button for each cluster.)
-  + Sign = A complete transcription for one sign.
-  + Transcript = One or more signs make up a full transcript.
+  + 'glyph' = One symbol used.
+  + 'cluster' (of glyphs) = A collection of glyphs which always go together.
+    (In the GUI there is a button for each cluster.)
+  + 'sign' = A complete transcription for one sign.
+  + 'transcript' = One or more signs make up a full transcript.
 * TODO Direction of movement above medial contact symbol
   "Medial contact must be combined with a direction of movement. The direction
   symbol is placed above the symbol for medial contact." [Teckentranskription,
   p.10]
+* TODO Inline all SVG
+  Allows for:
+  + Using CSS to control SVG color (yay!) and
+  + Fewer requests to fetch the app.
+
+  Concatenate all SVGs into one HTML blob, and inline them in the main HTML in
+  a <div style="display:none">.
+
+  The class name of each SVG should be the same as the current file name, then
+  use some jQuery magic to extract it and inserting it in the relevant place.
 * [1/3] CSS class indicating table cell position in input
 ** DONE 'high'/'mid'/'low' - For small symbols in high/mid/low position.
    CLOSED: [2016-11-18 Fri 10:51]
