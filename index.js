@@ -206,7 +206,6 @@ var addIaButtonElement  = $("#ia")
                 av: glyphs.av,
                 r:  glyphs.r,
                 h:  glyphs.h,
-                i:  glyphs.i,
             },
         },
         iib: {
