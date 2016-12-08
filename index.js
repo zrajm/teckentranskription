@@ -18,8 +18,8 @@ var addIaButtonElement  = $("#ia")
     clearButtonElement  = $("#clear"),
     deleteButtonElement = $("#delete"),
     overlayElement      = $("#overlay"),
-    inputElement        = $("#input"),
     statusElement       = $("#status"),
+    transcript          = makeTranscript($("#input")),
     glyphs = {
         r: [ // Relation
             ["pic/r-ingen.svg",   "Relation – Ingen"  ],
@@ -298,28 +298,29 @@ var addIaButtonElement  = $("#ia")
     }());
 
 // Make sure all images are cached (so that script works even offline).
-function preloadImages(glyphs) {
+function preloadImages(imageList) {
     var html = '';
-    Object.keys(glyphs).forEach(function (name) {
-        glyphs[name].forEach(function (glyph) {
-            if (glyph[0]) { html += '<img src="' + glyph[0] + '">'; }
-            if (glyph[2]) { html += '<img src="' + glyph[2] + '">'; }
+    Object.keys(imageList).forEach(function (name) {
+        imageList[name].forEach(function (image) {
+            if (image[0]) { html += '<img src="' + image[0] + '">'; }
+            if (image[2]) { html += '<img src="' + image[2] + '">'; }
         });
     });
     html = $(html).css('display', 'none');
     $('body').append(html);
 }
 
-function makeSign(spec) {
-    var inElement = spec.element,   sign    = spec.sign,
-        remove_cb = spec.remove_cb, prev_cb = spec.prev_cb,
-        pics      =   dom_stuff[sign.type].glyphs,
-        html      = $(dom_stuff[sign.type].html);
+function makeCluster(spec) {
+    var inElement = spec.element,  cluster = spec.cluster,
+        removeCb  = spec.removeCb, prevCb = spec.prevCb,
+        imageType = dom_stuff[cluster.type].glyphs,
+        html      = $(dom_stuff[cluster.type].html);
 
-    Object.keys(dom_stuff[sign.type].glyphs).forEach(function (name) {
-        // Set empty values in 'sign' to zero.
-        sign[name] = sign[name] || 0;
+    // Make sure that no glyph value is undefined.
+    Object.keys(imageType).forEach(function (name) {
+        cluster[name] = cluster[name] || 0;
     });
+
     var state = {}, element = {},
         html_controls = $("<caption class=controls><nobr>" +
                           "<span class=prev>◄</span>" +
@@ -337,8 +338,8 @@ function makeSign(spec) {
         var loop = (name === undefined) ? Object.keys(state) : [name];
         loop.forEach(function (name) {
             var value = state[name];
-            if (pics[name] && pics[name][value]) {
-                var background = pics[name][value],
+            if (imageType[name] && imageType[name][value]) {
+                var background = imageType[name][value],
                     file = background[0],
                     desc = background[1] +
                         (background[2] ? '<br><img src="' + background[2] + '">' : '');
@@ -360,9 +361,9 @@ function makeSign(spec) {
         $(".next", html_controls).attr("disabled", false).click(callback);
     }
 
-    Object.keys(sign).forEach(function (name) {
+    Object.keys(cluster).forEach(function (name) {
         element[name] = $("." + name, html);   // get DOM element
-        set(name, sign[name]);                 //   set value & update DOM
+        set(name, cluster[name]);              //   set value & update DOM
         element[name].click(function () {
             selectGlyph(glyphs[name], get(name), function (value) {
                 set(name, value);
@@ -384,13 +385,13 @@ function makeSign(spec) {
 
     /* previous / next / remove buttons */
     var prev = $(".prev", html_controls);
-    if (prev_cb) {
-        prev.click(prev_cb);
+    if (prevCb) {
+        prev.click(prevCb);
     } else {
         prev.attr("disabled", true);
     }
     $(".next", html_controls).attr("disabled", true);
-    $(".remove", html_controls).click(remove_cb);
+    $(".remove", html_controls).click(removeCb);
 
     html.append(html_controls);
     inElement[spec.prepend ? 'prepend' : 'append'](html);
@@ -404,16 +405,16 @@ function makeSign(spec) {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-function makeSigns(element) {
-    var signs = [];
+function makeTranscript(element) {
+    var clusters = [];
     function get() {
-        return signs.map(function (value) {
-            return value.get();
+        return clusters.map(function (cluster) {
+            return cluster.get();
         });
     }
     function set(values) {
         element.html("");
-        signs = [];
+        clusters = [];
         if (values) {
             values.forEach(add);
         }
@@ -422,30 +423,30 @@ function makeSigns(element) {
         set(get());
     }
     function remove(num) {
-        signs.splice(num, 1);
+        clusters.splice(num, 1);
         redraw();
     }
     function swap(x, y) {
-        var tmp = signs[y];
-        signs[y] = signs[x];
-        signs[x] = tmp;
+        var tmp = clusters[y];
+        clusters[y] = clusters[x];
+        clusters[x] = tmp;
         redraw();
     }
-    function add(sign) {
-        var num = signs.length, prepend = sign.prepend;
-        delete sign.prepend;
-        signs[prepend ? 'unshift' : 'push'](makeSign({
-            prepend:   prepend,
-            element:   element,
-            sign:     (sign || {}),
-            remove_cb: (                 function () { remove(num);        }),
-            prev_cb:   (num < 1 ? null : function () { swap(num, num - 1); }),
+    function add(cluster) {
+        var num = clusters.length, prepend = cluster.prepend;
+        delete cluster.prepend;
+        clusters[prepend ? 'unshift' : 'push'](makeCluster({
+            prepend:  prepend,
+            element:  element,
+            cluster:  (cluster || {}),
+            removeCb: (                 function () { remove(num);        }),
+            prevCb:   (num < 1 ? null : function () { swap(num, num - 1); }),
         }));
         if (prepend) {
             redraw();
         } else {
-            if (num > 0) {                         // set '>' for previous sign
-                signs[num - 1].setNext(function () { swap(num - 1, num); });
+            if (num > 0) {                         // set '>' for prev cluster
+                clusters[num - 1].setNext(function () { swap(num - 1, num); });
             }
         }
     }
@@ -488,7 +489,7 @@ function updateLoadList() {
 
 function buttonLoad() {
     var name = loadInputElement.val();
-    signs.set(storage.get(name));
+    transcript.set(storage.get(name));
     saveInputElement.val(name);
 }
 function buttonSave() {
@@ -508,13 +509,13 @@ function buttonSave() {
             return;
         }
     }
-    storage.set(name, signs.get());
+    storage.set(name, transcript.get());
     updateLoadList();
     loadInputElement.val(name);
 }
 function buttonClear() {
     var name = "";
-    signs.set([]);
+    transcript.set([]);
     saveInputElement.val("");
 }
 function buttonDump() {
@@ -531,7 +532,7 @@ function buttonDelete() {
     if (confirm("Delete transcript ‘" + name + "’?")) {
         storage.remove(name);
         newName = storage.getCurrentName();
-        signs.set(storage.get(newName));
+        transcript.set(storage.get(newName));
         saveInputElement.val(newName);
         updateLoadList();
     }
@@ -617,15 +618,14 @@ updateLoadList();
     saveInputElement.val(selected);
 }());
 
-var signs = makeSigns(inputElement);
-addIaButtonElement.  click(function() { signs.add({ type: 'ia', prepend: true }) });
-addIbButtonElement.  click(function() { signs.add({ type: 'ib', prepend: true }) });
-addIIaButtonElement. click(function() { signs.add({ type: 'iia'               }) });
-addIIbButtonElement. click(function() { signs.add({ type: 'iib'               }) });
-addIIcButtonElement. click(function() { signs.add({ type: 'iic'               }) });
-addIIIaButtonElement.click(function() { signs.add({ type: 'iiia'              }) });
-addIIIbButtonElement.click(function() { signs.add({ type: 'iiib'              }) });
-addIIIcButtonElement.click(function() { signs.add({ type: 'iiic'              }) });
+addIaButtonElement.  click(function() { transcript.add({ type: 'ia', prepend: true }) });
+addIbButtonElement.  click(function() { transcript.add({ type: 'ib', prepend: true }) });
+addIIaButtonElement. click(function() { transcript.add({ type: 'iia'               }) });
+addIIbButtonElement. click(function() { transcript.add({ type: 'iib'               }) });
+addIIcButtonElement. click(function() { transcript.add({ type: 'iic'               }) });
+addIIIaButtonElement.click(function() { transcript.add({ type: 'iiia'              }) });
+addIIIbButtonElement.click(function() { transcript.add({ type: 'iiib'              }) });
+addIIIcButtonElement.click(function() { transcript.add({ type: 'iiic'              }) });
 loadButtonElement.click(buttonLoad);
 saveButtonElement.click(buttonSave);
 clearButtonElement.click(buttonClear);
