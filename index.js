@@ -19,7 +19,9 @@ var addIaButtonElement  = $("#ia")
     deleteButtonElement = $("#delete"),
     overlayElement      = $("#overlay"),
     statusElement       = $("#status"),
-    transcript          = makeTranscript($("#input")),
+    transcript          = makeTranscript({
+        i: $('#input td.i'), ii: $('#input td.ii'), iii: $('#input td.iii'),
+    }),
     glyphs = {
         r: [ // Relation
             ["pic/r-ingen.svg",   "Relation – Ingen"  ],
@@ -312,21 +314,16 @@ function preloadImages(imageList) {
 
 function makeCluster(spec) {
     var inElement = spec.element,  cluster = spec.cluster,
-        removeCb  = spec.removeCb, prevCb = spec.prevCb,
+        removeCb  = spec.removeCb, prevCb  = spec.prevCb,
         imageType = dom_stuff[cluster.type].glyphs,
-        html      = $(dom_stuff[cluster.type].html);
+        html      = $(dom_stuff[cluster.type].html),
+        state = {}, element = {}, html_controls = undefined;
 
     // Make sure that no glyph value is undefined.
     Object.keys(imageType).forEach(function (name) {
         cluster[name] = cluster[name] || 0;
     });
 
-    var state = {}, element = {},
-        html_controls = $("<caption class=controls><nobr>" +
-                          "<span class=prev>◄</span>" +
-                          "<span class=next>►</span>" +
-                          "<span class=remove>✖</span>" +
-                          "</nobr></caption>");
     function get(name) {
         return (name === undefined) ? state : state[name];
     }
@@ -358,7 +355,9 @@ function makeCluster(spec) {
         });
     }
     function setNext(callback) {
-        $(".next", html_controls).attr("disabled", false).click(callback);
+        if (html_controls) {
+            $(".next", html_controls).attr("disabled", false).click(callback);
+        }
     }
 
     Object.keys(cluster).forEach(function (name) {
@@ -384,17 +383,23 @@ function makeCluster(spec) {
     });
 
     /* previous / next / remove buttons */
-    var prev = $(".prev", html_controls);
-    if (prevCb) {
-        prev.click(prevCb);
-    } else {
-        prev.attr("disabled", true);
+    if (cluster.type.match(/^iii[a-z]$/)) {
+        html_controls = $("<caption class=controls><nobr>" +
+                          "<span class=prev>◄</span>" +
+                          "<span class=next>►</span>" +
+                          "<span class=remove>✖</span>" +
+                          "</nobr></caption>");
+        var prev = $(".prev", html_controls);
+        if (prevCb) {
+            prev.click(prevCb);
+        } else {
+            prev.attr("disabled", true);
+        }
+        $(".next", html_controls).attr("disabled", true);
+        $(".remove", html_controls).click(removeCb);
+        html.append(html_controls);
     }
-    $(".next", html_controls).attr("disabled", true);
-    $(".remove", html_controls).click(removeCb);
-
-    html.append(html_controls);
-    inElement[spec.prepend ? 'prepend' : 'append'](html);
+    inElement.append(html);
     $("td[tabindex]", html).first().focus();
     return {
         get: get,
@@ -413,11 +418,18 @@ function makeTranscript(element) {
         });
     }
     function set(values) {
-        element.html("");
-        clusters = [];
-        if (values) {
-            values.forEach(add);
-        }
+        element.i.html('');
+        element.ii.html('');
+        element.iii.html('');
+        clusters = values.map(function (cluster, num) {
+            var type = cluster.type.replace(/[^i]+/, ''); // 'i', 'ii' or 'iii'
+            return makeCluster({
+                element:  element[type],
+                cluster:  (cluster || {}),
+                removeCb: (                 function () { remove(num);        }),
+                prevCb:   (num < 1 ? null : function () { swap(num, num - 1); }),
+            });
+        });
     }
     function redraw() {
         set(get());
@@ -432,23 +444,80 @@ function makeTranscript(element) {
         clusters[x] = tmp;
         redraw();
     }
+
+    // Remove all clusters of specified type.
+    function removeCluster(clusters, clusterType) {
+        var i = 0;
+        while (i < clusters.length) {
+            if (clusters[i].get('type') === clusterType) {
+                clusters.splice(i, 1);
+                continue;
+            }
+            i += 1;
+        }
+    }
+
+    // Insert cluster into transcript. Clusters are sorted by type name, new
+    // clusters is inserted in the appropriate place. If a cluster with the
+    // same type name already exist, do nothing. Return true if cluster was
+    // inserted, false otherwise.
+    function insertCluster(clusters, cluster) {
+        var i = 0, findType = cluster.get('type');
+        while (i < clusters.length && clusters[i].get('type') < findType) {
+            i += 1;
+        }
+        if (clusters[i].get('type') !== findType) {
+            clusters.splice(i, 0, cluster);
+            return true;
+        }
+        return false;
+    }
+
     function add(cluster) {
-        var num = clusters.length, prepend = cluster.prepend;
-        delete cluster.prepend;
-        clusters[prepend ? 'unshift' : 'push'](makeCluster({
-            prepend:  prepend,
-            element:  element,
-            cluster:  (cluster || {}),
-            removeCb: (                 function () { remove(num);        }),
-            prevCb:   (num < 1 ? null : function () { swap(num, num - 1); }),
-        }));
-        if (prepend) {
-            redraw();
-        } else {
+        var num  = clusters.length, otherType,
+            type = cluster.type.replace(/[^i]+/, ''); // 'i', 'ii' or 'iii'
+            newCluster = makeCluster({
+                element:  element[type],
+                cluster:  (cluster || {}),
+                removeCb: (                 function () { remove(num);        }),
+                prevCb:   (num < 1 ? null : function () { swap(num, num - 1); }),
+            });
+
+        switch (cluster.type) {
+        case 'ia':
+        case 'ib':
+            otherType = cluster.type === 'ia' ? 'ib' : 'ia';
+            insertCluster(clusters, newCluster) ||
+                removeCluster(clusters, cluster.type);
+            removeCluster(clusters, otherType);
+            break;
+        case 'iia':
+            insertCluster(clusters, newCluster) ||
+                removeCluster(clusters, cluster.type);
+            removeCluster(clusters, 'iib');
+            break;
+        case 'iib':
+            insertCluster(clusters, makeCluster({
+                element:  element[type],
+                cluster:  { type: 'iia'},
+            }));
+            insertCluster(clusters, newCluster) ||
+                removeCluster(clusters, cluster.type);
+            break;
+        case 'iic':
+            removeCluster(clusters, 'iia');
+            removeCluster(clusters, 'iib');
+            break;
+        case 'iiia':
+        case 'iiib':
+        case 'iiic':
+            clusters.push(newCluster);
             if (num > 0) {                         // set '>' for prev cluster
                 clusters[num - 1].setNext(function () { swap(num - 1, num); });
             }
+            break;
         }
+        redraw();
     }
     return {
         add: add,
@@ -618,14 +687,14 @@ updateLoadList();
     saveInputElement.val(selected);
 }());
 
-addIaButtonElement.  click(function() { transcript.add({ type: 'ia', prepend: true }) });
-addIbButtonElement.  click(function() { transcript.add({ type: 'ib', prepend: true }) });
-addIIaButtonElement. click(function() { transcript.add({ type: 'iia'               }) });
-addIIbButtonElement. click(function() { transcript.add({ type: 'iib'               }) });
-addIIcButtonElement. click(function() { transcript.add({ type: 'iic'               }) });
-addIIIaButtonElement.click(function() { transcript.add({ type: 'iiia'              }) });
-addIIIbButtonElement.click(function() { transcript.add({ type: 'iiib'              }) });
-addIIIcButtonElement.click(function() { transcript.add({ type: 'iiic'              }) });
+addIaButtonElement.  click(function() { transcript.add({ type: 'ia'   }) });
+addIbButtonElement.  click(function() { transcript.add({ type: 'ib'   }) });
+addIIaButtonElement. click(function() { transcript.add({ type: 'iia'  }) });
+addIIbButtonElement. click(function() { transcript.add({ type: 'iib'  }) });
+addIIcButtonElement. click(function() { transcript.add({ type: 'iic'  }) });
+addIIIaButtonElement.click(function() { transcript.add({ type: 'iiia' }) });
+addIIIbButtonElement.click(function() { transcript.add({ type: 'iiib' }) });
+addIIIcButtonElement.click(function() { transcript.add({ type: 'iiic' }) });
 loadButtonElement.click(buttonLoad);
 saveButtonElement.click(buttonSave);
 clearButtonElement.click(buttonClear);

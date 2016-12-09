@@ -1,5 +1,6 @@
 -*- org -*-
 
+* TODO Fix '<' '>' and 'x' buttons for III glyphs
 * TODO Update 'status' field when hovering on glyph
 * TODO Add '/' sign
 * TODO GUI prettifications
@@ -8,8 +9,6 @@
    E.g. if button insert something into transcript, this should be displayed
    but grayed out, if button is clicked this grayed out image should solidify
    and remain.
-* TODO Sign transcript should be inside another table
-  With one <td> for I, one for II and one for II fields.
 * TODO Buttons should reflect possible clusters
   I buttons should be disabled if one of them has been used (since only one
   place of articulation is possible).
@@ -143,6 +142,9 @@
 ** DONE "Relation – Brevid" should be centered
    CLOSED: [2016-10-27 Thu 10:55]
    pic/Y_Truetrans1.svg
+* DONE Sign transcript should be inside another table
+  CLOSED: [2016-12-09 Fri 07:13]
+  With one <td> for I, one for II and one for II fields.
 * DONE Cleanup terminology in source code
   CLOSED: [2016-12-08 Thu 15:53]
   + 'image' = Refers to one SVG (or other) image (which usually contains a
