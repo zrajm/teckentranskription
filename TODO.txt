@@ -1,14 +1,19 @@
 -*- org -*-
 
 * TODO Fix '<' '>' and 'x' buttons for III glyphs
+* TODO Ib should preclude IIa and IIb
+* TODO Creating new cluster should focus glyph in that cluster
 * TODO Update 'status' field when hovering on glyph
 * TODO Add '/' sign
-* TODO GUI prettifications
-** TODO Hovering on cluster should hilite corresponding button
-** TODO Hovering on button should display effects of button
-   E.g. if button insert something into transcript, this should be displayed
-   but grayed out, if button is clicked this grayed out image should solidify
-   and remain.
+* TODO When glyph is focused, hilite other glyphs in cluster             :UX:
+  When hovering on a cluster, the glyphs of that cluster is hilited to show
+  their presence, when a glyph is focused the other glyphs of that cluster
+  should be hilited in the same way.
+* TODO Hovering on cluster should hilite corresponding button            :UX:
+* TODO Hovering on button should display effects of button               :UX:
+  E.g. if button insert something into transcript, this should be displayed
+  but grayed out, if button is clicked this grayed out image should solidify
+  and remain.
 * TODO Buttons should reflect possible clusters
   I buttons should be disabled if one of them has been used (since only one
   place of articulation is possible).
@@ -142,6 +147,8 @@
 ** DONE "Relation – Brevid" should be centered
    CLOSED: [2016-10-27 Thu 10:55]
    pic/Y_Truetrans1.svg
+* DONE Hovering on transcript should show cluster field numbers          :UX:
+  CLOSED: [2016-12-09 Fri 18:51]
 * DONE Sign transcript should be inside another table
   CLOSED: [2016-12-09 Fri 07:13]
   With one <td> for I, one for II and one for II fields.
