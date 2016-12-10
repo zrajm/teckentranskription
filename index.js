@@ -594,7 +594,7 @@ function buttonSave() {
 }
 function buttonClear() {
     var name = "";
-    transcript.set([]);
+    transcript.set([{ "type": "iic" }]);
     saveInputElement.val("");
 }
 function buttonDump() {
