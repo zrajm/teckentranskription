@@ -259,14 +259,24 @@ var addIaButtonElement  = $("#ia")
             localStorage.setItem(name, JSON.stringify(object));
         }
         function get(name) {
-            return JSON.parse(localStorage.getItem(name));
+            var json = localStorage.getItem(name);
+            try {
+                return JSON.parse(json);
+            } catch (error) {
+                if (error.constructor === SyntaxError) {
+                    console.warn("Syntax error in localStorage " +
+                                 "JSON item '" + name + "'");
+                    return null;
+                }
+                throw error;
+            }
         }
         return {
             getCurrentName: function () {
                 return get('_selected') || '';
             },
             exist: function (name) {
-                return (localStorage.getItem(name) === null) ? false : true;
+                return (get(name) == null) ? false : true;
             },
             set: function (name, object) {
                 set('_selected', name);

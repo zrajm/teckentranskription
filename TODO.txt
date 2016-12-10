@@ -5,6 +5,8 @@
 * TODO Creating new cluster should focus glyph in that cluster
 * TODO Update 'status' field when hovering on glyph
 * TODO Add '/' sign
+* TODO Clear button should clear everything + add IIc                    :UX:
+  IIc should never be removed (as IIc is always required).
 * TODO When glyph is focused, hilite other glyphs in cluster             :UX:
   When hovering on a cluster, the glyphs of that cluster is hilited to show
   their presence, when a glyph is focused the other glyphs of that cluster
@@ -147,6 +149,8 @@
 ** DONE "Relation – Brevid" should be centered
    CLOSED: [2016-10-27 Thu 10:55]
    pic/Y_Truetrans1.svg
+* DONE Storage module should be able to cope with stored bad JSON       :BUG:
+  CLOSED: [2016-12-10 Sat 17:20]
 * DONE Hovering on transcript should show cluster field numbers          :UX:
   CLOSED: [2016-12-09 Fri 18:51]
 * DONE Sign transcript should be inside another table
