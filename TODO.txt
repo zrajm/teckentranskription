@@ -147,7 +147,8 @@
 ** DONE "Relation – Brevid" should be centered
    CLOSED: [2016-10-27 Thu 10:55]
    pic/Y_Truetrans1.svg
-* TODO Adding I or II at end of transcription should work               :BUG:
+* DONE Adding I or II cluster at end of transcription should work       :BUG:
+  CLOSED: [2016-12-11 Sun 17:25]
 * DONE Dump button should work even with bad JSON in localStorage       :BUG:
   CLOSED: [2016-12-11 Sun 17:06]
   Dump button now also uses the internal storage module.

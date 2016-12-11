@@ -476,7 +476,8 @@ function makeTranscript(element) {
         while (i < clusters.length && clusters[i].get('type') < findType) {
             i += 1;
         }
-        if (clusters[i].get('type') !== findType) {
+        // Insert cluster before cluster of different type or last in list.
+        if (clusters[i] === undefined || clusters[i].get('type') !== findType) {
             clusters.splice(i, 0, cluster);
             return true;
         }
