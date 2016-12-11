@@ -147,6 +147,10 @@
 ** DONE "Relation – Brevid" should be centered
    CLOSED: [2016-10-27 Thu 10:55]
    pic/Y_Truetrans1.svg
+* TODO Adding I or II at end of transcription should work               :BUG:
+* DONE Dump button should work even with bad JSON in localStorage       :BUG:
+  CLOSED: [2016-12-11 Sun 17:06]
+  Dump button now also uses the internal storage module.
 * DONE Clear button should clear everything + add IIc                    :UX:
   CLOSED: [2016-12-10 Sat 17:23]
   IIc should never be removed (as IIc is always required).

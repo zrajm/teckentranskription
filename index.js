@@ -598,12 +598,10 @@ function buttonClear() {
     saveInputElement.val("");
 }
 function buttonDump() {
-    var i, key, value, obj = {};
-    for (i = 0; i < localStorage.length; i += 1) {
-        var key = localStorage.key(i);
-        var value = JSON.parse(localStorage.getItem(key));
-        obj[key] = value;
-    }
+    var obj = {};
+    storage.list().forEach(function (name) {
+        obj[name] = storage.get(name);
+    });
     console.log(JSON.stringify(obj, null, 4));
 }
 function buttonDelete() {
