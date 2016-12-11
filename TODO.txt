@@ -1,12 +1,6 @@
 -*- org -*-
 
-* TODO IIb input field erroneously gets own border + 'I' label          :BUG:
-  If present the IIb cluster erroneously gets its own little 'input field'
-  bolder when one hovers over #input, so that there is an 'input field inside
-  an input field'. Not good.
-* TODO Field I should be vertically aligned with field II and III
-* TODO 'AR' glyph should have same placement in Ib and IIa              :CCS:
-* TODO Fix '<' '>' and 'x' buttons for III glyphs
+* TODO Fix '<' '>' and 'x' buttons for III glyphs                       :BUG:
 * TODO Creating new cluster should focus glyph in that cluster
 * TODO Update 'status' field when hovering on glyph
 * TODO Add '/' sign
@@ -164,6 +158,15 @@
   existing) clusters.
 
   .set() should maybe also use .add()/insertCluster()?
+* DONE 'AR' glyph should have same placement in Ib and IIa              :BUG:
+  CLOSED: [2016-12-11 Sun 23:44]
+* DONE Field I should be vertically aligned with field II and III       :BUG:
+  CLOSED: [2016-12-11 Sun 23:44]
+* DONE IIb input field erroneously gets own border + 'I' label          :BUG:
+  CLOSED: [2016-12-11 Sun 23:44]
+  If present the IIb cluster erroneously gets its own little 'input field'
+  bolder when one hovers over #input, so that there is an 'input field inside
+  an input field'. Not good.
 * DONE Hovering on input field should hilite button group + vice versa   :UX:
   CLOSED: [2016-12-11 Sun 23:08]
 * DONE makeTranscript.set() should be able to deal with bad input       :BUG:

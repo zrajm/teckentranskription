@@ -85,13 +85,13 @@ button table {
 #input td.text,
 #input td.artion_low  { vertical-align: bottom; }
 #input td.ar,
-#input td.i,
+#input td.ina,
 #input td.top,
 #input td.artion_high,
 #input td.artion_tall { vertical-align: top;    }
 
 /* SVGs aligned to top should be pushed slightly downwards. */
-#input td.i           img,
+#input td.ina         img,
 #input td.top         img,
 #input td.artion_high img,
 #input td.artion_tall img { padding-top: 8px; }

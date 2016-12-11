@@ -123,7 +123,7 @@ var addIaButtonElement  = $("#ia")
             ["pic/av-upp.svg",     "Attitydsvridning – Upp"    ],
             ["pic/av-ner.svg",     "Attitydsvridning – Ner"    ],
         ],
-        i: [ // Interaktionsart
+        ina: [ // Interaktionsart
             ["pic/i-kors.svg",    "Interaktionsart – Kors"   ],
             ["pic/i-vinkel.svg",  "Interaktionsart – Vinkel" ],
             ["pic/i-hakning.svg", "Interaktionsart – Hakning"],
@@ -212,10 +212,10 @@ var addIaButtonElement  = $("#ia")
         },
         iib: {
             html: '<table class="iib">' +
-                '<tr><td tabindex=1 class="i full">' +
+                '<tr><td tabindex=1 class="ina full">' +
                 '</table>',
             glyphs: {
-                i:  glyphs.i,
+                ina:  glyphs.ina,
             },
         },
         iic: {
