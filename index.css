@@ -126,7 +126,9 @@ select#load-input, input#save-input { width: 250px;   }
 #input td.high        { height: 15px; }
 #input td.text        { height: 70px; }
 #input td.full        { height: 85px; }
-#input td.i:empty, #input td.iii:empty { display: none; }
+#input   td.i:empty,
+#input  td.ii:empty,
+#input td.iii:empty { display: none; }
 
 /******************************************************************************/
 
