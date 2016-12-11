@@ -1,7 +1,6 @@
 -*- org -*-
 
 * TODO Fix '<' '>' and 'x' buttons for III glyphs
-* TODO Ib should preclude IIa and IIb
 * TODO Creating new cluster should focus glyph in that cluster
 * TODO Update 'status' field when hovering on glyph
 * TODO Add '/' sign
@@ -147,6 +146,10 @@
 ** DONE "Relation – Brevid" should be centered
    CLOSED: [2016-10-27 Thu 10:55]
    pic/Y_Truetrans1.svg
+* DONE Clusters Ib and IIa + IIb should be mutually exclusive
+  CLOSED: [2016-12-11 Sun 17:51]
+  Adding Ib now removes IIa + IIb (if existing), and adding IIa or IIa + IIb
+  should removes any Ib.
 * DONE All cluster add buttons should make sure IIc cluster exists
   CLOSED: [2016-12-11 Sun 17:46]
 * DONE Adding I or II cluster at end of transcription should work       :BUG:

@@ -506,13 +506,19 @@ function makeTranscript(element) {
             insertCluster(clusters, newCluster) ||
                 removeCluster(clusters, cluster.type);
             removeCluster(clusters, otherType);
+            if (cluster.type === 'ib') {
+                removeCluster(clusters, 'iia');
+                removeCluster(clusters, 'iib');
+            }
             break;
         case 'iia':
+            removeCluster(clusters, 'ib');
             insertCluster(clusters, newCluster) ||
                 removeCluster(clusters, cluster.type);
             removeCluster(clusters, 'iib');
             break;
         case 'iib':
+            removeCluster(clusters, 'ib');
             insertCluster(clusters, makeCluster({
                 element:  element[type],
                 cluster:  { type: 'iia'},
