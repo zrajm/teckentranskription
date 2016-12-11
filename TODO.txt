@@ -1,5 +1,6 @@
 -*- org -*-
 
+* TODO 'AR' glyph should have same placement in Ib and IIa              :CCS:
 * TODO Fix '<' '>' and 'x' buttons for III glyphs
 * TODO Creating new cluster should focus glyph in that cluster
 * TODO Update 'status' field when hovering on glyph
@@ -146,6 +147,22 @@
 ** DONE "Relation – Brevid" should be centered
    CLOSED: [2016-10-27 Thu 10:55]
    pic/Y_Truetrans1.svg
+* TODO Refactor makeTranscript()
+  If .add() does the insertion currently done by insertCluster() and also
+  invokes makeCluster(), makeTranscript could be made quite a bit cleaner.
+
+  .add() would need to handle clusters of field type III separately (always
+  just appending those) from field types I and II (which should replace
+  existing) clusters.
+
+  .set() should maybe also use .add()/insertCluster()?
+* DONE makeTranscript.set() should be able to deal with bad input       :BUG:
+  CLOSED: [2016-12-11 Sun 21:37]
+  If input isn't an array (i.e. if localStorage contains valid JSON, which is
+  something else than an array, and this get passed to the transcript .set()
+  function) then setting the transcript fails.
+
+  It now gives a console.warn() + sets an empty transcript.
 * DONE Clusters Ib and IIa + IIb should be mutually exclusive
   CLOSED: [2016-12-11 Sun 17:51]
   Adding Ib now removes IIa + IIb (if existing), and adding IIa or IIa + IIb

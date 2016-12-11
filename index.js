@@ -263,7 +263,7 @@ var addIaButtonElement  = $("#ia")
             try {
                 return JSON.parse(json);
             } catch (error) {
-                if (error.constructor === SyntaxError) {
+                if (error instanceof SyntaxError) {
                     console.warn("Syntax error in localStorage " +
                                  "JSON item '" + name + "'");
                     return null;
@@ -428,6 +428,10 @@ function makeTranscript(element) {
         });
     }
     function set(values) {
+        if (!(values instanceof Array)) {
+            console.warn("makeTranscript.set(): Argument is not an array");
+            values = [];
+        }
         element.i.html('');
         element.ii.html('');
         element.iii.html('');
