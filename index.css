@@ -126,9 +126,6 @@ select#load-input, input#save-input { width: 250px;   }
 #input td.high        { height: 15px; }
 #input td.text        { height: 70px; }
 #input td.full        { height: 85px; }
-#input   td.i:empty,
-#input  td.ii:empty,
-#input td.iii:empty { display: none; }
 
 /******************************************************************************/
 
@@ -208,6 +205,10 @@ footer {
 
 /******************************************************************************/
 
+#input   td.i:empty,
+#input  td.ii:empty,
+#input td.iii:empty { display: none; }
+
 #input   td.i,
 #input  td.ii,
 #input td.iii {
@@ -216,6 +217,9 @@ footer {
 }
 
 /* Show transcription field labels when hovering on #input. */
+#input   td.i:before { content: "I"; }
+#input  td.ii:before { content: "II"; }
+#input td.iii:before { content: "III"; }
 #input   td.i:before,
 #input  td.ii:before,
 #input td.iii:before {
@@ -228,9 +232,6 @@ footer {
     text-align: center;
     line-height: 1em;
 }
-#input   td.i:before { content: "I"; }
-#input  td.ii:before { content: "II"; }
-#input td.iii:before { content: "III"; }
 #input:hover   td.i:before,
 #input:hover  td.ii:before,
 #input:hover td.iii:before { display: block; }
