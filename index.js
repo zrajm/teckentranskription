@@ -494,6 +494,11 @@ function makeTranscript(element) {
                 prevCb:   (num < 1 ? null : function () { swap(num, num - 1); }),
             });
 
+        // Make sure there's *always* an IIc cluster in transcript.
+        insertCluster(clusters, makeCluster({
+            element:  element['ii'],
+            cluster:  { type: 'iic'},
+        }));
         switch (cluster.type) {
         case 'ia':
         case 'ib':

@@ -147,6 +147,8 @@
 ** DONE "Relation – Brevid" should be centered
    CLOSED: [2016-10-27 Thu 10:55]
    pic/Y_Truetrans1.svg
+* DONE All cluster add buttons should make sure IIc cluster exists
+  CLOSED: [2016-12-11 Sun 17:46]
 * DONE Adding I or II cluster at end of transcription should work       :BUG:
   CLOSED: [2016-12-11 Sun 17:25]
 * DONE Dump button should work even with bad JSON in localStorage       :BUG:
