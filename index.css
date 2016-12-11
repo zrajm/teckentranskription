@@ -29,8 +29,8 @@ noscript {
 /* DEBUG: Border for glyph tables. */
 /* table, td { outline: 1px solid rgba(0,0,0,.3); } */
 
-#input td:hover table.iiic,
-#input td:hover td[tabindex] { outline: 1px solid rgba(0, 0, 255, 0.25); }
+#input:hover table.iiic,
+#input:hover td[tabindex] { outline: 1px solid rgba(0, 0, 255, 0.25); }
 :focus                    { outline: 4px solid  rgba(0, 0, 255, 0.5) !important; }
 
 .FIXME {
