@@ -197,6 +197,18 @@ footer {
     display: block;
     margin: auto;
 }
+#input         td.i.hover:before,
+#input        td.ii.hover:before,
+#input       td.iii.hover:before,
+#input         td.i:hover:before,
+#input        td.ii:hover:before,
+#input       td.iii:hover:before,
+  table.i.hover,
+ table.ii.hover,
+table.iii.hover,
+  table.i:hover,
+ table.ii:hover,
+table.iii:hover { background: rgba(0, 0, 255, 0.15); }
 
 #overlay table tr.selected {
     /* Same color as the :focus outline, but twice as transparent. */
@@ -232,6 +244,10 @@ footer {
     text-align: center;
     line-height: 1em;
 }
+
+#input.hover   td.i:before,
+#input.hover  td.ii:before,
+#input.hover td.iii:before,
 #input:hover   td.i:before,
 #input:hover  td.ii:before,
 #input:hover td.iii:before { display: block; }

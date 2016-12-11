@@ -728,4 +728,42 @@ deleteButtonElement.click(buttonDelete);
 buttonLoad();
 $("div td[tabindex]").focus();
 
+(function () {
+    var input    = $('#input'),
+        inputI   = $('td.i', input),
+        inputII  = $('td.ii', input),
+        inputIII = $('td.iii', input),
+        buttonsI = $('table.i'),
+        buttonsII = $('table.ii'),
+        buttonsIII = $('table.iii');
+
+    /* Hilite input fields when hovering on corresponding button groups. */
+    buttonsI.hover(
+        function () { input.add(inputI).   addClass('hover'); },
+        function () { input.add(inputI).removeClass('hover'); }
+    );
+    buttonsII.hover(
+        function () { input.add(inputII).   addClass('hover'); },
+        function () { input.add(inputII).removeClass('hover'); }
+    );
+    buttonsIII.hover(
+        function () { input.add(inputIII).   addClass('hover'); },
+        function () { input.add(inputIII).removeClass('hover'); }
+    );
+
+    /* Hilite corresponding button groups when hovering on input fields. */
+    inputI.hover(
+        function () { buttonsI.   addClass('hover'); },
+        function () { buttonsI.removeClass('hover'); }
+    );
+    inputII.hover(
+        function () { buttonsII.   addClass('hover'); },
+        function () { buttonsII.removeClass('hover'); }
+    );
+    inputIII.hover(
+        function () { buttonsIII.   addClass('hover'); },
+        function () { buttonsIII.removeClass('hover'); }
+    );
+}());
+
 //[eof]
