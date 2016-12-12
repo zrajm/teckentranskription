@@ -201,7 +201,7 @@ footer {
 #input td.field.hover:before,
 #input td.field:hover:before,
 table.uigroup.buttons.hover,
-table.uigroup.buttons:hover { background: rgba(0, 0, 255, 0.15); }
+table.uigroup.buttons:hover { background: rgba(0, 0, 255, 0.25); }
 
 #overlay table tr.selected {
     /* Same color as the :focus outline, but twice as transparent. */
@@ -283,7 +283,7 @@ button:not([disabled]).active.hover:before {
 
 [disabled], .disabled {
     color: black;
-    opacity: .3;
+    opacity: .5;
 }
 
 .cluster.disabled {
