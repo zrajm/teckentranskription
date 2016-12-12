@@ -58,8 +58,9 @@ table {
     border-spacing: 3px;
 }
 
-/* tables in buttons */
 table.uigroup, table.cluster { display: inline-block; }
+
+/* Button margins & layout. */
 button, select, input {
     font-size: inherit;
     margin: 3px;
@@ -206,7 +207,6 @@ table.uigroup.buttons:hover { background: rgba(0, 0, 255, 0.15); }
     /* Same color as the :focus outline, but twice as transparent. */
     background: rgba(0, 0, 255, 0.25);
 }
-button.selected { outline: 5px solid rgba(0, 0, 255, 0.25); }
 
 /******************************************************************************/
 
@@ -234,5 +234,68 @@ button.selected { outline: 5px solid rgba(0, 0, 255, 0.25); }
 }
 #input > table { margin-top: 1.1em; } /* compensate for negative margin-top */
 #input.hover td.field:before, #input:hover td.field:before { display: block; }
+
+/******************************************************************************/
+
+/* Button selection colors. */
+button, select {
+    background: #aaa;
+    border: none;
+    border-radius: 2px;
+    position: relative;
+}
+
+button.hover, button:hover {
+    box-shadow: insert 0 0 8px #fff;
+}
+
+button:before {
+    display: block;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    content: '';
+    border-radius: 2px;
+    background: transparent;
+    box-shadow: none;
+}
+
+button:not([disabled]).hover:before,
+button:not([disabled]):hover:before {
+    display: block;
+    border: 1px solid #000;
+    background: rgba(0, 0, 0, .2);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, .3);
+}
+
+button:not([disabled]).active:before,
+button:not([disabled]):active:before {
+    display: block;
+    background: rgba(0, 0, 0, .2);
+    box-shadow: inset 0 5px 30px 5px rgba(0, 0, 0, .2);
+}
+
+button:not([disabled]).active:hover:before,
+button:not([disabled]).active.hover:before {
+    background: rgba(0, 0, 0, .35);
+    box-shadow:       0 5px 5px      rgba(0, 0, 0, .3),
+                inset 0 5px 30px 5px rgba(0, 0, 0, .3);
+}
+
+[disabled], .disabled {
+    color: black;
+    opacity: .3;
+}
+
+.cluster.disabled {
+    opacity: .75;
+    border-radius: 2px;
+    background: repeating-linear-gradient(
+        -45deg,
+        rgba(255, 0, 0, .75),
+        rgba(255, 0, 0, .75) 5px,
+        transparent 5px,
+        transparent 10px
+    );
+}
 
 /*[eof]*/

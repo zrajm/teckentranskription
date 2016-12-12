@@ -422,6 +422,19 @@ function makeCluster(spec) {
 
 function makeTranscript(element, redrawCallback) {
     var clusters = [];
+    function exist(type) {
+        var i = 0, a;
+        while (i < clusters.length) {
+            a = clusters[i].get('type');
+            if (a === type) {
+                return true;
+            } else if (a > type) {
+                return false;
+            }
+            i += 1;
+        }
+        return false;
+    }
     function get() {
         return clusters.map(function (cluster) {
             return cluster.get();
@@ -548,6 +561,7 @@ function makeTranscript(element, redrawCallback) {
         redraw();
     }
     return {
+        exist: exist,
         add: add,
         get: get,
         set: set,
@@ -585,12 +599,16 @@ function updateLoadList() {
 }
 
 function updateOnRedraw(clusters) {
-    var className = 'selected';
+    var className = 'active', i = 0;
     $('button').removeClass(className);
-    clusters.forEach(function (cluster) {
-        var type = cluster.get('type');
+    $('.uigroup.buttons').removeClass('hover');
+    while (i < clusters.length) {
+        var type = clusters[i].get('type');
+        console.log(type);
+        if (type > 'iii') { break; }
         $('button#' + type).addClass(className);
-    });
+        i += 1;
+    }
 }
 
 function buttonLoad() {
@@ -774,6 +792,90 @@ $("div td[tabindex]").focus();
     inputIII.hover(
         function () { buttonsIII.   addClass('hover'); },
         function () { buttonsIII.removeClass('hover'); }
+    );
+
+    /* Hilite disable buttons relevant buttons when hovering on button. */
+    addIaButtonElement.hover(
+        function () {
+            $('.cluster.ia', input).addClass('disabled');
+            $('.cluster.ib', input).addClass('disabled');
+        },
+        function () {
+            $('.cluster.ia', input).removeClass('disabled');
+            $('.cluster.ib', input).removeClass('disabled');
+        }
+    );
+    addIbButtonElement.hover(
+        function () {
+            $('.cluster.ia', input).addClass('disabled');
+            $('.cluster.iia', input).addClass('disabled');
+            $('.cluster.iib', input).addClass('disabled');
+            if (transcript.exist('ia')) {
+                addIaButtonElement.addClass('hover');
+            }
+            if (transcript.exist('iia')) {
+                addIIaButtonElement.addClass('hover');
+            }
+            if (transcript.exist('iib')) {
+                addIIbButtonElement.addClass('hover');
+            }
+        },
+        function () {
+            $('.cluster.ia', input).removeClass('disabled');
+            $('.cluster.iia', input).removeClass('disabled');
+            $('.cluster.iib', input).removeClass('disabled');
+            addIaButtonElement.removeClass('hover');
+            addIIaButtonElement.removeClass('hover');
+            addIIbButtonElement.removeClass('hover');
+        }
+    );
+    addIIaButtonElement.hover(
+        function () {
+            $('.cluster.ib', input).addClass('disabled');
+            $('.cluster.iia', input).addClass('disabled');
+            $('.cluster.iib', input).addClass('disabled');
+            if (transcript.exist('iib')) {
+                addIIbButtonElement.addClass('hover');
+            }
+        },
+        function () {
+            $('.cluster.ib', input).removeClass('disabled');
+            $('.cluster.iia', input).removeClass('disabled');
+            $('.cluster.iib', input).removeClass('disabled');
+            addIIbButtonElement.removeClass('hover');
+        }
+    );
+    addIIbButtonElement.hover(
+        function () {
+            $('.cluster.ib', input).addClass('disabled');
+            $('.cluster.iib', input).addClass('disabled');
+            if (!transcript.exist('iia')) {
+                addIIaButtonElement.addClass('hover');
+            }
+        },
+        function () {
+            $('.cluster.ib', input).removeClass('disabled');
+            $('.cluster.iib', input).removeClass('disabled');
+            addIIaButtonElement.removeClass('hover');
+        }
+    );
+    addIIcButtonElement.hover(
+        function () {
+            $('.cluster.iia', input).addClass('disabled');
+            $('.cluster.iib', input).addClass('disabled');
+            if (transcript.exist('iia')) {
+                addIIaButtonElement.addClass('hover');
+            }
+            if (transcript.exist('iib')) {
+                addIIbButtonElement.addClass('hover');
+            }
+        },
+        function () {
+            $('.cluster.iia', input).removeClass('disabled');
+            $('.cluster.iib', input).removeClass('disabled');
+            addIIaButtonElement.removeClass('hover');
+            addIIbButtonElement.removeClass('hover');
+        }
     );
 }());
 

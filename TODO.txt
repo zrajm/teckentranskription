@@ -9,13 +9,10 @@
   their presence, when a glyph is focused the other glyphs of that cluster
   should be hilited in the same way.
 * TODO Hovering on cluster should hilite button + vice versa             :UX:
-* TODO Hovering on button should display effects of button               :UX:
+* TODO Hovering on button should show clusters which would be inserted   :UX:
   E.g. if button insert something into transcript, this should be displayed
   but grayed out, if button is clicked this grayed out image should solidify
   and remain.
-
-  Glyphs which would be removed if button is pressed should be crossed out (or
-  maybe their buttons should?).
 * TODO Use infinite undo paradigm
   Instead of ok/cancel requesters. All changes should be automatically written
   to localStorage.
@@ -147,6 +144,12 @@
   existing) clusters.
 
   .set() should maybe also use .add()/insertCluster()?
+* DONE Hovering on button should show clusters to add/erase on click     :UX:
+  CLOSED: [2016-12-12 Mon 07:14]
+  + Glyphs which are to be removed are marked now with diagonal red stripes
+    (and slightly grayed out).
+  + If a button will add additional clusters then the buttons for those
+    clusters are highlighted as well.
 * DONE Buttons should show which clusters are currently used             :UI:
   CLOSED: [2016-12-12 Mon 01:43]
 * DONE 'AR' glyph should have same placement in Ib and IIa              :BUG:
