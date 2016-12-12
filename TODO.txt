@@ -8,7 +8,6 @@
   When hovering on a cluster, the glyphs of that cluster is hilited to show
   their presence, when a glyph is focused the other glyphs of that cluster
   should be hilited in the same way.
-* TODO Hovering on cluster should hilite button + vice versa             :UX:
 * TODO Hovering on button should show clusters which would be inserted   :UX:
   E.g. if button insert something into transcript, this should be displayed
   but grayed out, if button is clicked this grayed out image should solidify
@@ -78,7 +77,7 @@
 
   - 0 is '=>', followed by 'H' glyph
   - 1-4 is 'båge/cirkel/vrids/slås' followed by A-Za-z
-* TODO Drag-and-drop clusters to reorder them
+* TODO Drag-and-drop IIIc clusters to reorder them
 * TODO Shortcuts for hand shape glyph selector
   Pressing an alphabetic key should jump to the glyph most similar i
   appearance = Faster navigation!
@@ -144,6 +143,8 @@
   existing) clusters.
 
   .set() should maybe also use .add()/insertCluster()?
+* DONE Hovering on cluster should hilite corresponding button            :UX:
+  CLOSED: [2016-12-12 Mon 07:48]
 * DONE Hovering on button should show clusters to add/erase on click     :UX:
   CLOSED: [2016-12-12 Mon 07:14]
   + Glyphs which are to be removed are marked now with diagonal red stripes

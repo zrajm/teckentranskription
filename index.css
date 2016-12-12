@@ -31,7 +31,7 @@ noscript {
 
 #input:hover table.cluster.iiic,
 #input:hover td[tabindex] { outline: 1px solid rgba(0, 0, 255, 0.25); }
-:focus                    { outline: 4px solid  rgba(0, 0, 255, 0.5) !important; }
+:focus                    { outline: 4px solid rgba(0, 0, 255, 0.5) !important; }
 
 .FIXME {
     /* background: red; */
@@ -296,6 +296,11 @@ button:not([disabled]).active.hover:before {
         transparent 5px,
         transparent 10px
     );
+}
+
+button.hilite:before {
+    border: 1px solid #000;
+    background: rgba(0, 0, 255, 0.3) !important;
 }
 
 /*[eof]*/

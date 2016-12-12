@@ -411,6 +411,10 @@ function makeCluster(spec) {
     }
     inElement.append(html);
     $("td[tabindex]", html).first().focus();
+    html.hover(
+        function () { $('button#' + cluster.type).   addClass('hilite'); },
+        function () { $('button#' + cluster.type).removeClass('hilite'); }
+    );
     return {
         get: get,
         set: set,
@@ -794,7 +798,7 @@ $("div td[tabindex]").focus();
         function () { buttonsIII.removeClass('hover'); }
     );
 
-    /* Hilite disable buttons relevant buttons when hovering on button. */
+    /* Hilite glyphs to be removed when hovering on button. */
     addIaButtonElement.hover(
         function () {
             $('.cluster.ia', input).addClass('disabled');
@@ -837,12 +841,16 @@ $("div td[tabindex]").focus();
             if (transcript.exist('iib')) {
                 addIIbButtonElement.addClass('hover');
             }
+            if (!transcript.exist('iic')) {
+                addIIcButtonElement.addClass('hover');
+            }
         },
         function () {
             $('.cluster.ib', input).removeClass('disabled');
             $('.cluster.iia', input).removeClass('disabled');
             $('.cluster.iib', input).removeClass('disabled');
             addIIbButtonElement.removeClass('hover');
+            addIIcButtonElement.removeClass('hover');
         }
     );
     addIIbButtonElement.hover(
@@ -852,11 +860,15 @@ $("div td[tabindex]").focus();
             if (!transcript.exist('iia')) {
                 addIIaButtonElement.addClass('hover');
             }
+            if (!transcript.exist('iic')) {
+                addIIcButtonElement.addClass('hover');
+            }
         },
         function () {
             $('.cluster.ib', input).removeClass('disabled');
             $('.cluster.iib', input).removeClass('disabled');
             addIIaButtonElement.removeClass('hover');
+            addIIcButtonElement.removeClass('hover');
         }
     );
     addIIcButtonElement.hover(
