@@ -563,6 +563,8 @@ function makeTranscript(element, redrawCallback) {
             break;
         }
         redraw();
+        // Select first glyph in last cluster of type 'cluster.type'.
+        $('[tabindex]', $('.cluster.' + cluster.type).last()).first().focus();
     }
     return {
         exist: exist,
@@ -608,7 +610,6 @@ function updateOnRedraw(clusters) {
     $('.uigroup.buttons').removeClass('hover');
     while (i < clusters.length) {
         var type = clusters[i].get('type');
-        console.log(type);
         if (type > 'iii') { break; }
         $('button#' + type).addClass(className);
         i += 1;

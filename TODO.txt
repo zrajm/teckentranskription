@@ -1,7 +1,6 @@
 -*- org -*-
 
 * TODO Fix '<' '>' and 'x' buttons for III glyphs                       :BUG:
-* TODO Creating new cluster should focus glyph in that cluster
 * TODO Update 'status' field when hovering on glyph
 * TODO Add '/' sign
 * TODO When glyph is focused, hilite other glyphs in cluster             :UX:
@@ -143,6 +142,8 @@
   existing) clusters.
 
   .set() should maybe also use .add()/insertCluster()?
+* DONE Creating new cluster should focus first glyph in that cluster     :UX:
+  CLOSED: [2016-12-12 Mon 08:06]
 * DONE Hovering on cluster should hilite corresponding button            :UX:
   CLOSED: [2016-12-12 Mon 07:48]
 * DONE Hovering on button should show clusters to add/erase on click     :UX:
