@@ -16,15 +16,6 @@
 
   Glyphs which would be removed if button is pressed should be crossed out (or
   maybe their buttons should?).
-* TODO Buttons should reflect possible clusters
-  I buttons should be disabled if one of them has been used (since only one
-  place of articulation is possible).
-
-  Ib should be disabled if IIa is in use (they're mutually exclusive).
-
-  IIa should be disabled if Ib is in use (they're mutually exclusive).
-
-  IIb should be disabled unless IIa is in use.
 * TODO Use infinite undo paradigm
   Instead of ok/cancel requesters. All changes should be automatically written
   to localStorage.
@@ -156,6 +147,8 @@
   existing) clusters.
 
   .set() should maybe also use .add()/insertCluster()?
+* DONE Buttons should show which clusters are currently used             :UI:
+  CLOSED: [2016-12-12 Mon 01:43]
 * DONE 'AR' glyph should have same placement in Ib and IIa              :BUG:
   CLOSED: [2016-12-11 Sun 23:44]
 * DONE Field I should be vertically aligned with field II and III       :BUG:

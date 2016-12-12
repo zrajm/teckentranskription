@@ -206,6 +206,7 @@ table.uigroup.buttons:hover { background: rgba(0, 0, 255, 0.15); }
     /* Same color as the :focus outline, but twice as transparent. */
     background: rgba(0, 0, 255, 0.25);
 }
+button.selected { outline: 5px solid rgba(0, 0, 255, 0.25); }
 
 /******************************************************************************/
 

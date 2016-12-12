@@ -21,7 +21,7 @@ var addIaButtonElement  = $("#ia")
     statusElement       = $("#status"),
     transcript          = makeTranscript({
         i: $('#input td.i'), ii: $('#input td.ii'), iii: $('#input td.iii'),
-    }),
+    }, updateOnRedraw),
     glyphs = {
         r: [ // Relation
             ["pic/r-ingen.svg",   "Relation – Ingen"  ],
@@ -420,7 +420,7 @@ function makeCluster(spec) {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-function makeTranscript(element) {
+function makeTranscript(element, redrawCallback) {
     var clusters = [];
     function get() {
         return clusters.map(function (cluster) {
@@ -444,9 +444,11 @@ function makeTranscript(element) {
                 prevCb:   (num < 1 ? null : function () { swap(num, num - 1); }),
             });
         });
+        redrawCallback(clusters);
     }
     function redraw() {
         set(get());
+        redrawCallback(clusters);
     }
     function remove(num) {
         clusters.splice(num, 1);
@@ -580,6 +582,15 @@ function updateLoadList() {
         deleteButtonElement.prop('disabled', false);
         loadInputElement.prop('disabled', false);
     }
+}
+
+function updateOnRedraw(clusters) {
+    var className = 'selected';
+    $('button').removeClass(className);
+    clusters.forEach(function (cluster) {
+        var type = cluster.get('type');
+        $('button#' + type).addClass(className);
+    });
 }
 
 function buttonLoad() {
