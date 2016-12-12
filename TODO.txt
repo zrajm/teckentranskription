@@ -29,7 +29,6 @@
   Instead of ok/cancel requesters. All changes should be automatically written
   to localStorage.
 * TODO Modified/unmodified detection on load/save
-* TODO Add separator between transcriptions
 * TODO 'Share' URLs with all transcript information
   The URL should contain all information required to build a transcript (so
   that one may link to them).
@@ -92,13 +91,12 @@
   - 0 is '=>', followed by 'H' glyph
   - 1-4 is 'båge/cirkel/vrids/slås' followed by A-Za-z
 * TODO Drag-and-drop clusters to reorder them
-* TODO Shortcuts for hand shape glyphs
+* TODO Shortcuts for hand shape glyph selector
   Pressing an alphabetic key should jump to the glyph most similar i
   appearance = Faster navigation!
 * TODO Import/export saved data
-* TODO CSS class indicating top/bottom alignment in input
 * TODO Vertical alignment of glyphs in glyph selector
-* TODO Position of 'contact'/'medial contact' glyphs in selector
+* TODO Position of 'contact'/'medial contact' in glyph selector
 * TODO Export transcription as SVG (?)                           :FAR_FUTURE:
   Is this possible? Maybe composing an SVG based on the individual glyphs plus
   their relative coordinates taken from the DOM might be possible using some
@@ -199,12 +197,16 @@
   With one <td> for I, one for II and one for II fields.
 * DONE Cleanup terminology in source code
   CLOSED: [2016-12-08 Thu 15:53]
+  + 'transcript' = A complete transcript for a single sign.
+  + 'field' = There are three possible fields in a transcript: I, II and III
+    (though field I and III are optional).
+  + 'cluster' (of glyphs) = A collection of glyphs which always go together (in
+    the GUI there is a button for each cluster). The clusters are named after
+    their field + a letter, e.g. IIa, IIc. The cluster IIc is special in that
+    it is required in all transcripts.
+  + 'glyph' = One symbol (or squiggle) used.
   + 'image' = Refers to one SVG (or other) image (which usually contains a
     single glyph).
-  + 'glyph' = One symbol (or squiggle) used.
-  + 'cluster' (of glyphs) = A collection of glyphs which always go together.
-    (In the GUI there is a button for each cluster.)
-  + 'transcript' = A complete transcript for a single sign.
 * DONE BUGFIX: Cluster buttons on top of glyph selector
   CLOSED: [2016-11-29 Tue 10:23]
   Fixed this by adding the class 'overlay' to the <body> tag when displaying

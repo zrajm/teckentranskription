@@ -178,14 +178,14 @@ var addIaButtonElement  = $("#ia")
     },
     dom_stuff = {
         ia: {
-            html: '<table class=ia>' +
+            html: '<table class="cluster ia">' +
                 '<tr><td tabindex=1 class="r high">' +
                 '<tr><td tabindex=1 class="a text">' +
                 '</table>',
             glyphs: { r: glyphs.r, a: glyphs.a },
         },
         ib: {
-            html: '<table class=ib>' +
+            html: '<table class="cluster ib">' +
                 '<tr><td tabindex=1 class="r high">' +
                 '<tr><td tabindex=1 class="h text" rowspan=2><td tabindex=1 class=ar>' +
                 '<tr><td tabindex=1 class=av>' +
@@ -198,7 +198,7 @@ var addIaButtonElement  = $("#ia")
             },
         },
         iia: {
-            html: '<table class=iia>' +
+            html: '<table class="cluster iia">' +
                 '<tr><td><td tabindex=1 class="r high">' +
                 '<tr><td tabindex=1 class=ar><td tabindex=1 class="h text" rowspan=2>' +
                 '<tr><td tabindex=1 class=av>' +
@@ -211,7 +211,7 @@ var addIaButtonElement  = $("#ia")
             },
         },
         iib: {
-            html: '<table class="iib">' +
+            html: '<table class="cluster iib">' +
                 '<tr><td tabindex=1 class="ina full">' +
                 '</table>',
             glyphs: {
@@ -219,7 +219,7 @@ var addIaButtonElement  = $("#ia")
             },
         },
         iic: {
-            html: '<table class=iic>' +
+            html: '<table class="cluster iic">' +
                 '<tr><td colspan=2 class=high>' +
                 '<tr><td tabindex=1 class="h text" rowspan=2><td tabindex=1 class=ar>' +
                 '<tr><td tabindex=1 class=av>' +
@@ -231,13 +231,13 @@ var addIaButtonElement  = $("#ia")
             },
         },
         iiia: {
-            html: '<table class="FIXME iiia">' +
+            html: '<table class="cluster iiia">' +
                 '<tr><td tabindex=1 class="artion_tall full">' +
                 '</table>',
             glyphs: { artion_tall: glyphs.artion_tall },
         },
         iiib: {
-            html: '<table class=iiib>' +
+            html: '<table class="cluster iiib">' +
                 '<tr><td rowspan=2 class=full><td tabindex=1 class=artion_high>' +
                 '<tr><td tabindex=1 class=artion_low>' +
                 '</table>',
@@ -247,7 +247,7 @@ var addIaButtonElement  = $("#ia")
             },
         },
         iiic: {
-            html: '<table class=iiic>' +
+            html: '<table class="cluster iiic">' +
                 '<tr><td rowspan=2 class=top><img src="pic/ra-forandras.svg"><td class=high>' +
                 '<tr><td tabindex=1 class="h text">' +
                 '</table>',
@@ -729,9 +729,9 @@ buttonLoad();
 $("div td[tabindex]").focus();
 
 (function () {
-    var input    = $('#input'),
-        inputI   = $('td.i', input),
-        inputII  = $('td.ii', input),
+    var input = $('#input'),
+        inputI = $('td.i', input),
+        inputII = $('td.ii', input),
         inputIII = $('td.iii', input),
         buttonsI = $('table.i'),
         buttonsII = $('table.ii'),

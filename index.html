@@ -8,16 +8,14 @@
   <link rel=license href="LICENSE.txt">
 </head>
 <body>
+  <noscript>Javascript required.</noscript>
   <main>
-    <noscript>Javascript required.</noscript>
-
     <div id=input>
-      <table><tr><td class=i><td class=ii><td class=iii></table>
+      <table><tr><td class="field i"><td class="field ii"><td class="field iii"></table>
+      <div id=status></div>
     </div>
 
-    <div id=status></div>
-
-    <table class=i border=1 title="Artikulationsställe = Läget där där artikulationen realiseras.">
+    <table class="uigroup buttons i" border=1 title="Artikulationsställe = Läget där där artikulationen realiseras.">
       <caption>I. Artikulationsställe</caption>
       <tr><td style="padding:.25em .5em">
           <button id=ia title="Ia. Kroppsläge">
@@ -37,7 +35,7 @@
           </button>
     </table>
 
-    <table class=ii border=1 title="Artikulator = Den hand som agerar / den aktiva handen.">
+    <table class="uigroup buttons ii" border=1 title="Artikulator = Den hand som agerar / den aktiva handen.">
       <caption>II. Artikulator</caption>
       <tr><td style="padding:.25em .5em">
           <button id=iia title="IIa. Vänster/aktiv hand vid dubbelartikulation">
@@ -72,7 +70,7 @@
           </button>
     </table>
 
-    <table class=iii border=1 title="Artikulation = Hur artikulatorn agerar (rörelseriktning, rörelseart och interaktionsart).">
+    <table class="uigroup buttons iii" border=1 title="Artikulation = Hur artikulatorn agerar (rörelseriktning, rörelseart och interaktionsart).">
       <caption>III. Artikulation</caption>
       <tr><td style="padding:.25em .5em">
           <!-- FIXME: Flytta 'kontakt' + 'medial kontakt'(?) till separator? -->
@@ -104,7 +102,7 @@
           </button>
     </table>
 
-    <br><table border=1>
+    <table class=uigroup border=1>
       <tr><td style="padding:.25em .5em; text-align:left">
           <button class=ui id=load disabled>Load</button
             ><select id=load-input disabled></select

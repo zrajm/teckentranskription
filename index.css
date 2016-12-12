@@ -8,7 +8,7 @@
 img { max-height: 175px; }
 
 body {
-    padding: 12px 6px;
+    padding: .25em 1em;
     font-size: 22px;
 }
 
@@ -29,7 +29,7 @@ noscript {
 /* DEBUG: Border for glyph tables. */
 /* table, td { outline: 1px solid rgba(0,0,0,.3); } */
 
-#input:hover table.iiic,
+#input:hover table.cluster.iiic,
 #input:hover td[tabindex] { outline: 1px solid rgba(0, 0, 255, 0.25); }
 :focus                    { outline: 4px solid  rgba(0, 0, 255, 0.5) !important; }
 
@@ -37,10 +37,9 @@ noscript {
     /* background: red; */
 }
 
-#input { margin: 13px -4px; }
 #status {
     padding: 13px 13px;
-    margin: 13px 0;
+    margin: 6px 0 13px 0;
     border: 1px inset #eee;
     background: #eee;
 }
@@ -55,13 +54,12 @@ table[border="1"] {
 }
 
 table {
-    display: inline-block;
     border-collapse: separate;
     border-spacing: 3px;
-    margin: 0 3px;
 }
 
 /* tables in buttons */
+table.uigroup, table.cluster { display: inline-block; }
 button, select, input {
     font-size: inherit;
     margin: 3px;
@@ -76,6 +74,8 @@ button table {
 }
 
 /******************************************************************************/
+
+#input table table { margin: 0 3px; }  /* margin between clusters */
 #input table { border-collapse: collapse; }
 #input td    { background-size: 100px 100px; }
 
@@ -197,18 +197,10 @@ footer {
     display: block;
     margin: auto;
 }
-#input         td.i.hover:before,
-#input        td.ii.hover:before,
-#input       td.iii.hover:before,
-#input         td.i:hover:before,
-#input        td.ii:hover:before,
-#input       td.iii:hover:before,
-  table.i.hover,
- table.ii.hover,
-table.iii.hover,
-  table.i:hover,
- table.ii:hover,
-table.iii:hover { background: rgba(0, 0, 255, 0.15); }
+#input td.field.hover:before,
+#input td.field:hover:before,
+table.uigroup.buttons.hover,
+table.uigroup.buttons:hover { background: rgba(0, 0, 255, 0.15); }
 
 #overlay table tr.selected {
     /* Same color as the :focus outline, but twice as transparent. */
@@ -217,24 +209,19 @@ table.iii:hover { background: rgba(0, 0, 255, 0.15); }
 
 /******************************************************************************/
 
-#input   td.i:empty,
-#input  td.ii:empty,
-#input td.iii:empty { display: none; }
+/* Hide empty transcription fields. */
+#input td.field:empty { display: none; }
 
-#input   td.i,
-#input  td.ii,
-#input td.iii {
-    border-right: .25em solid transparent; /* padding between clusters */
-    position: relative;
-}
+/* Padding between transcription fields. */
+#input td.field            { border-right: .25em solid transparent; }
+#input td.field:last-child { border-right: 0; } /* after last field */
 
 /* Show transcription field labels when hovering on #input. */
-#input   td.i:before { content: "I"; }
-#input  td.ii:before { content: "II"; }
-#input td.iii:before { content: "III"; }
-#input   td.i:before,
-#input  td.ii:before,
-#input td.iii:before {
+#input td.field { position: relative; }
+#input td.field.i:before { content: "I"; }
+#input td.field.ii:before { content: "II"; }
+#input td.field.iii:before { content: "III"; }
+#input td.field:before {
     display: none;
     position: absolute;
     top: 0; left: 0; bottom: 0; right: 0;
@@ -244,12 +231,7 @@ table.iii:hover { background: rgba(0, 0, 255, 0.15); }
     text-align: center;
     line-height: 1em;
 }
-
-#input.hover   td.i:before,
-#input.hover  td.ii:before,
-#input.hover td.iii:before,
-#input:hover   td.i:before,
-#input:hover  td.ii:before,
-#input:hover td.iii:before { display: block; }
+#input > table { margin-top: 1.1em; } /* compensate for negative margin-top */
+#input.hover td.field:before, #input:hover td.field:before { display: block; }
 
 /*[eof]*/
