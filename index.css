@@ -10,6 +10,7 @@ img { max-height: 175px; }
 body {
     padding: .25em 1em;
     font-size: 22px;
+    font-family: sans-serif;
 }
 
 noscript {
@@ -25,6 +26,7 @@ noscript {
 }
 
 .left { text-align: left !important; }
+.right { text-align: right !important; }
 
 /* DEBUG: Border for glyph tables. */
 /* table, td { outline: 1px solid rgba(0,0,0,.3); } */
@@ -281,6 +283,11 @@ button:not([disabled]).active.hover:before {
                 inset 0 5px 30px 5px rgba(0, 0, 0, .3);
 }
 
+.shortkey {
+    font-size: smaller;
+    color: black;
+    opacity: .4;
+}
 [disabled], .disabled {
     color: black;
     opacity: .5;
