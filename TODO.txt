@@ -120,7 +120,7 @@
   As an alternative to pressing <Enter> then choosing from the glyph selector
   menu user should also be able to just press the desired shortkey directly
   (without displaying a menu).
-* [1/9] Make selectGlyph() menus prettier                             :MINOR:
+* [2/9] Make selectGlyph() menus prettier                             :MINOR:
 ** TODO Mouse & keyboard should coexist better
    Mouse should use same focusing as keyboard. I.e. instead of having one mouse
    selection (grey background) and one keyboard selection (blue border) there
@@ -139,7 +139,9 @@
 ** TODO Hide shortkey on mobile devices                              :MOBILE:
    A mobile device presumably doesn't have a keyboard. And what use are
    shortkeys without keyboard?
-** TODO IIIa shortkeys
+** DONE IIIa shortkeys
+   CLOSED: [2016-12-13 Tue 11:07]
+   Added better shortkeys mostly based on glyph shapes.
 ** DONE Default shortkeys
    CLOSED: [2016-12-13 Tue 11:03]
    All menus should have shortkeys. Use simple 1234567890abc...ABC.. sequence
