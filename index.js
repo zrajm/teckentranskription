@@ -683,8 +683,8 @@ function buttonDelete() {
 function selectGlyph(menu, selectedValue, callback) {
     var tableElement    = $('table', overlayElement),
         selectedElement = $(document.activeElement),
-        rowElements;
-
+        rowElements, defaultShortkeys =
+        '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     function createMenu(menu) {
         var shortkeys = {}, tableHtml = "";
         bodyElement.addClass('overlay');
@@ -692,14 +692,13 @@ function selectGlyph(menu, selectedValue, callback) {
         history.pushState('', document.title + ": Select Glyph", "#select-glyph");
 
         menu.forEach(function (value, index) {
-            var glyph = value[0], text = value[1], shortkey = value[2],
-                image = value[3], shortkeyHtml = '';
-            if (shortkey) {
-                shortkeys[shortkey] = index;
-                shortkeyHtml = '<td class="right shortkey">' +
-                    (shortkey.match(/^[A-Z]$/) ? 'Shift+' : '') +
-                    shortkey.toUpperCase()
-            }
+            var glyph    = value[0], text = value[1],
+                shortkey = value[2] || defaultShortkeys[index],
+                image    = value[3], shortkeyHtml = '';
+            shortkeys[shortkey] = index;
+            shortkeyHtml = '<td class="right shortkey">' +
+                (shortkey.match(/^[A-Z]$/) ? 'Shift+' : '') +
+                shortkey.toUpperCase()
             tableHtml += '<tr tabindex=1 data-value=' + index +
                 (selectedValue === index ? ' class=selected' : '') + '>' +
                 '<td><img src="' + glyph + '">' +
