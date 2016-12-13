@@ -1,7 +1,7 @@
 -*- org -*-
 
 * TODO Fix '<' '>' and 'x' buttons for III glyphs                       :BUG:
-* TODO Update 'status' field when hovering on glyph
+* TODO Update 'status' field when hovering/focusing on glyph
 * TODO Add '/' sign
 * TODO When glyph is focused, hilite other glyphs in cluster             :UX:
   When hovering on a cluster, the glyphs of that cluster is hilited to show
@@ -97,11 +97,29 @@
 
   The class name of each SVG should be the same as the current file name, then
   use some jQuery magic to extract it and inserting it in the relevant place.
+* [0/4] Input shortkeys
+** TODO Home/End: Select first/last cluster
+** TODO Move IIIc cluster
+   Ctrl + ArrowLeft/ArrowRight should move IIIc clusters within the field.
+
+   (We use Ctrl here and reserve Shift + arrow keys for some distant future
+   copy/paste feature.)
+** TODO Move Ib <-> IIa cluster(?)
+   + Ctrl + ArrowRight: Convert Ib -> IIa.
+   + Ctrl + ArrowLeft: Convert IIa -> Ib.
+** TODO Move focus to next cluster
+   ArrowLeft/ArrowRight - Move to 1st glyph(?) of next cluster.
+
+   Awesomest would be if one could retain which glyph number is selected when
+   moving. (So that ArrowRight followed by ArrowLeft always leaves you with the
+   same glyph focused that was focused to begin with.)
 * TODO Shortkeys should work when glyph is hilited, not require menu     :UI:
   As an alternative to pressing <Enter> then choosing from the glyph selector
   menu user should also be able to just press the desired shortkey directly
   (without displaying a menu).
-* [0/4] Make selectGlyph() menus prettier                             :MINOR:
+* [0/6] Make selectGlyph() menus prettier                             :MINOR:
+** TODO PgUp/PgDn should work in menu
+** TODO Home/End go to beginning/end of menu
 ** TODO Vertical alignment of glyphs in glyph selector
 ** TODO Add menu header
    'Handform'/'Läge'/'Relation' etc should be menu header (at least one menu

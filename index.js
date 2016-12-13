@@ -81,46 +81,46 @@ var addIaButtonElement  = $("#ia")
             //   Yy - Strikethrough Y (uppercase = vertical strikethrough too).
             //   Z  - Strikethrough Z (there is no lower case/plain z).
             //
-            ["pic/h-flata-handen.svg",     "Handform – Flata handen",     "pic/hand/flata-handen.jpg",     "j"],
-            ["pic/h-flata-tumhanden.svg",  "Handform – Flata tumhanden",  "pic/hand/flata-tumhanden.jpg",  "J"],
-            ["pic/h-sprethanden.svg",      "Handform – Sprethanden",      "pic/hand/sprethanden.jpg",      "y"],
-            ["pic/h-4-handen.svg",         "Handform – 4-handen",         "pic/hand/4-handen.jpg",         "D"],
-            ["pic/h-d-handen.svg",         "Handform – D-handen",         "pic/hand/d-handen.jpg",         "d"],
-            ["pic/h-f-handen.svg",         "Handform – F-handen",         "pic/hand/f-handen.jpg",         "f"],
-            ["pic/h-vinkelhanden.svg",     "Handform – Vinkelhanden",     "pic/hand/vinkelhanden.jpg",     "F"],
-            ["pic/h-tumvinkelhanden.svg",  "Handform – Tumvinkelhanden",  "pic/hand/tumvinkelhanden.jpg",  "A"],
-            ["pic/h-a-handen.svg",         "Handform – A-handen",         "pic/hand/a-handen.jpg",         "a"],
-            ["pic/h-s-handen.svg",         "Handform – S-handen",         "pic/hand/s-handen.jpg",         "s"],
-            ["pic/h-klohanden.svg",        "Handform – Klohanden",        "pic/hand/klohanden.jpg",        "S"],
-            ["pic/h-o-handen.svg",         "Handform – O-handen",         "pic/hand/o-handen.jpg",         "o"],
-            ["pic/h-knutna-handen.svg",    "Handform – Knutna handen",    "pic/hand/knutna-handen.jpg",    "g"],
-            ["pic/h-e-handen.svg",         "Handform – E-handen",         "pic/hand/e-handen.jpg",         "e"],
-            ["pic/h-tumhanden.svg",        "Handform – Tumhanden",        "pic/hand/tumhanden.jpg",        "b"],
-            ["pic/h-q-handen.svg",         "Handform – Q-handen",         "pic/hand/q-handen.jpg",         "q"],
-            ["pic/h-pekfingret.svg",       "Handform – Pekfingret",       "pic/hand/pekfingret.jpg",       "l"],
-            ["pic/h-l-handen.svg",         "Handform – L-handen",         "pic/hand/l-handen.jpg",         "L"],
-            ["pic/h-raka-matthanden.svg",  "Handform – Raka måtthanden",  "pic/hand/raka-matthanden.jpg",  "C"],
-            ["pic/h-nyphanden.svg",        "Handform – Nyphanden",        "pic/hand/nyphanden.jpg",        "P"],
-            ["pic/h-t-handen.svg",         "Handform – T-handen",         "pic/hand/t-handen.jpg",         "t"],
-            ["pic/h-krokfingret.svg",      "Handform – Krokfingret",      "pic/hand/krokfingret.jpg",      "R"],
-            ["pic/h-matthanden.svg",       "Handform – Måtthanden",       "pic/hand/matthanden.jpg",       "c"],
-            ["pic/h-hallhanden.svg",       "Handform – Hållhanden",       "pic/hand/hallhanden.jpg",       "O"],
-            ["pic/h-langfingret.svg",      "Handform – Långfingret",      "pic/hand/langfingret.jpg",      "r"],
-            ["pic/h-n-handen.svg",         "Handform – N-handen",         "pic/hand/n-handen.jpg",         "n"],
-            ["pic/h-lilla-o-handen.svg",   "Handform – Lilla O-handen",   "pic/hand/lilla-o-handen.jpg",   "p"],
-            ["pic/h-v-handen.svg",         "Handform – V-handen",         "pic/hand/v-handen.jpg",         "v"],
-            ["pic/h-tupphanden.svg",       "Handform – Tupphanden",       "pic/hand/tupphanden.jpg",       "V"],
-            ["pic/h-k-handen.svg",         "Handform – K-handen",         "pic/hand/k-handen.jpg",         "k"],
-            ["pic/h-dubbelkroken.svg",     "Handform – Dubbelkroken",     "pic/hand/dubbelkroken.jpg",     "u"],
-            ["pic/h-bojda-tupphanden.svg", "Handform – Böjda tupphanden", "pic/hand/bojda-tupphanden.jpg", "U"],
-            ["pic/h-m-handen.svg",         "Handform – M-handen",         "pic/hand/m-handen.jpg",         "m"],
-            ["pic/h-w-handen.svg",         "Handform – W-handen",         "pic/hand/w-handen.jpg",         "w"],
-            ["pic/h-lillfingret.svg",      "Handform – Lillfingret",      "pic/hand/lillfingret.jpg",      "i"],
-            ["pic/h-flyghanden.svg",       "Handform – Flyghanden",       "pic/hand/flyghanden.jpg",       "I"],
-            ["pic/h-stora-langfingret.svg","Handform – Stora långfingret","pic/hand/stora-langfingret.jpg","Y"],
-            ["pic/h-runda-langfingret.svg","Handform – Runda långfingret","pic/hand/runda-langfingret.jpg","Z"],
-            ["pic/h-stora-nyphanden.svg",  "Handform – Stora nyphanden",  "pic/hand/stora-nyphanden.jpg",  "h"],
-            ["pic/h-x-handen.svg",         "Handform – X-handen",         "pic/hand/x-handen.jpg",         "x"],
+            ["pic/h-flata-handen.svg",     "Handform – Flata handen",     "j", "pic/hand/flata-handen.jpg"     ],
+            ["pic/h-flata-tumhanden.svg",  "Handform – Flata tumhanden",  "J", "pic/hand/flata-tumhanden.jpg"  ],
+            ["pic/h-sprethanden.svg",      "Handform – Sprethanden",      "y", "pic/hand/sprethanden.jpg"      ],
+            ["pic/h-4-handen.svg",         "Handform – 4-handen",         "D", "pic/hand/4-handen.jpg"         ],
+            ["pic/h-d-handen.svg",         "Handform – D-handen",         "d", "pic/hand/d-handen.jpg"         ],
+            ["pic/h-f-handen.svg",         "Handform – F-handen",         "f", "pic/hand/f-handen.jpg"         ],
+            ["pic/h-vinkelhanden.svg",     "Handform – Vinkelhanden",     "F", "pic/hand/vinkelhanden.jpg"     ],
+            ["pic/h-tumvinkelhanden.svg",  "Handform – Tumvinkelhanden",  "A", "pic/hand/tumvinkelhanden.jpg"  ],
+            ["pic/h-a-handen.svg",         "Handform – A-handen",         "a", "pic/hand/a-handen.jpg"         ],
+            ["pic/h-s-handen.svg",         "Handform – S-handen",         "s", "pic/hand/s-handen.jpg"         ],
+            ["pic/h-klohanden.svg",        "Handform – Klohanden",        "S", "pic/hand/klohanden.jpg"        ],
+            ["pic/h-o-handen.svg",         "Handform – O-handen",         "o", "pic/hand/o-handen.jpg"         ],
+            ["pic/h-knutna-handen.svg",    "Handform – Knutna handen",    "g", "pic/hand/knutna-handen.jpg"    ],
+            ["pic/h-e-handen.svg",         "Handform – E-handen",         "e", "pic/hand/e-handen.jpg"         ],
+            ["pic/h-tumhanden.svg",        "Handform – Tumhanden",        "b", "pic/hand/tumhanden.jpg"        ],
+            ["pic/h-q-handen.svg",         "Handform – Q-handen",         "q", "pic/hand/q-handen.jpg"         ],
+            ["pic/h-pekfingret.svg",       "Handform – Pekfingret",       "l", "pic/hand/pekfingret.jpg"       ],
+            ["pic/h-l-handen.svg",         "Handform – L-handen",         "L", "pic/hand/l-handen.jpg"         ],
+            ["pic/h-raka-matthanden.svg",  "Handform – Raka måtthanden",  "C", "pic/hand/raka-matthanden.jpg"  ],
+            ["pic/h-nyphanden.svg",        "Handform – Nyphanden",        "P", "pic/hand/nyphanden.jpg"        ],
+            ["pic/h-t-handen.svg",         "Handform – T-handen",         "t", "pic/hand/t-handen.jpg"         ],
+            ["pic/h-krokfingret.svg",      "Handform – Krokfingret",      "R", "pic/hand/krokfingret.jpg"      ],
+            ["pic/h-matthanden.svg",       "Handform – Måtthanden",       "c", "pic/hand/matthanden.jpg"       ],
+            ["pic/h-hallhanden.svg",       "Handform – Hållhanden",       "O", "pic/hand/hallhanden.jpg"       ],
+            ["pic/h-langfingret.svg",      "Handform – Långfingret",      "r", "pic/hand/langfingret.jpg"      ],
+            ["pic/h-n-handen.svg",         "Handform – N-handen",         "n", "pic/hand/n-handen.jpg"         ],
+            ["pic/h-lilla-o-handen.svg",   "Handform – Lilla O-handen",   "p", "pic/hand/lilla-o-handen.jpg"   ],
+            ["pic/h-v-handen.svg",         "Handform – V-handen",         "v", "pic/hand/v-handen.jpg"         ],
+            ["pic/h-tupphanden.svg",       "Handform – Tupphanden",       "V", "pic/hand/tupphanden.jpg"       ],
+            ["pic/h-k-handen.svg",         "Handform – K-handen",         "k", "pic/hand/k-handen.jpg"         ],
+            ["pic/h-dubbelkroken.svg",     "Handform – Dubbelkroken",     "u", "pic/hand/dubbelkroken.jpg"     ],
+            ["pic/h-bojda-tupphanden.svg", "Handform – Böjda tupphanden", "U", "pic/hand/bojda-tupphanden.jpg" ],
+            ["pic/h-m-handen.svg",         "Handform – M-handen",         "m", "pic/hand/m-handen.jpg"         ],
+            ["pic/h-w-handen.svg",         "Handform – W-handen",         "w", "pic/hand/w-handen.jpg"         ],
+            ["pic/h-lillfingret.svg",      "Handform – Lillfingret",      "i", "pic/hand/lillfingret.jpg"      ],
+            ["pic/h-flyghanden.svg",       "Handform – Flyghanden",       "I", "pic/hand/flyghanden.jpg"       ],
+            ["pic/h-stora-langfingret.svg","Handform – Stora långfingret","Y", "pic/hand/stora-langfingret.jpg"],
+            ["pic/h-runda-langfingret.svg","Handform – Runda långfingret","Z", "pic/hand/runda-langfingret.jpg"],
+            ["pic/h-stora-nyphanden.svg",  "Handform – Stora nyphanden",  "h", "pic/hand/stora-nyphanden.jpg"  ],
+            ["pic/h-x-handen.svg",         "Handform – X-handen",         "x", "pic/hand/x-handen.jpg"         ],
         ],
         ar: [ // Attitydsriktning
             ["pic/ar-vanster.svg", "Attitydsriktning – Vänster"],
@@ -330,7 +330,7 @@ function preloadImages(imageList) {
     Object.keys(imageList).forEach(function (name) {
         imageList[name].forEach(function (image) {
             if (image[0]) { html += '<img src="' + image[0] + '">'; }
-            if (image[2]) { html += '<img src="' + image[2] + '">'; }
+            if (image[3]) { html += '<img src="' + image[3] + '">'; }
         });
     });
     html = $(html).css('display', 'none');
@@ -364,7 +364,7 @@ function makeCluster(spec) {
                 var background = imageType[name][value],
                     file = background[0],
                     desc = background[1] +
-                        (background[2] ? '<br><img src="' + background[2] + '">' : '');
+                        (background[3] ? '<br><img src="' + background[3] + '">' : '');
                 statusElement.html(desc || "");
                 if (file) {
                     element[name].html('<img src="' + file + '">');
@@ -692,8 +692,8 @@ function selectGlyph(menu, selectedValue, callback) {
         history.pushState('', document.title + ": Select Glyph", "#select-glyph");
 
         menu.forEach(function (value, index) {
-            var glyph    = value[0], text = value[1], image = value[2],
-                shortkey = value[3], shortkeyHtml = '';
+            var glyph = value[0], text = value[1], shortkey = value[2],
+                image = value[3], shortkeyHtml = '';
             if (shortkey) {
                 shortkeys[shortkey] = index;
                 shortkeyHtml = '<td class="right shortkey">' +
