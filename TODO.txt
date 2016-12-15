@@ -1,6 +1,51 @@
 -*- org -*-
 
+* TODO Change GUI update architecture                              :UX:MAJOR:
+* TODO Change internal state format
+    [ia, ib, iia, iib, iic, iii[abc]...]
+
+    |      |   | 1   | 2      | 3  | 4  |
+    | Ia   | D | R   | A      |    |    |
+    | Ib   | D | R   | H      | AR | AV |
+    | IIa  | D | R   | H      | AR | AV |
+    | IIb  | D | .   | I      |    |    |
+    | IIc  | D | .   | H      | AR | AV |
+    | IIIa | D | .   | ARTION |    |    |
+    | IIIb | D | ART | ION    |    |    |
+    | IIIc | D | .   | H      |    |    |
+
+D is 0/1 shown/unshown.
+
+Where subunits have the following syntaxes (D = displayed, 0/1 = shown/unshown; F
+
+  * ia:   (D)(R)(A)          2
+  * ib:   (D)(R)(H)(AR)(AV)  4
+  * IIa:  (D)(R)(H)(AR)(AV)  4
+  * IIb:  (D)(.)(I)          2
+  * IIc:  (D)(.)(H)(AR)(AV)  4
+  * IIIa: (D)(.)(ARTION)     2
+  * IIIb: (D)(ART)(ION)      2
+  * IIIc: (D)(.)(H)          2
+
+Ia  Ib    IIa   IIb IIc  IIIa IIIb IIIc
+:AA :AAAA :AAAA :A  :AAA :1A  :2AA :3A
+
+Internal:
+
+    +AA-AAAA+AAAA-A+AAA+1A+2AA+3A
+    +AA-AAAA+AAAA-A+AAA+1A+2AA+3A/+AA-AAAA+AAAA-A+AAA+1A+2AA+3A
+
+External (strips away unshown state):
+
+(FIXME verify feasibility of these)
+
+    #AA-AAAA-AAA-1A-2AA-3A
+    #AA-AAAA-AAA-1A-2AA-3A/AA-AAAA-AAA-1A-2AA-3A
+* TODO Button group should not remain blue when deleting III cluster :UX:BUG:
 * TODO Fix '<' '>' and 'x' buttons for III glyphs                       :BUG:
+  (Drag-and-drop reordering would eliminate the need for this.)
+* TODO Drag-and-drop reordering of IIIc clusters                     :MOBILE:
+* TODO Drag-and-drop deleting?                                       :MOBILE:
 * TODO Update 'status' field when hovering/focusing on glyph
 * TODO Add '/' sign
 * TODO When glyph is focused, hilite other glyphs in cluster             :UX:
@@ -11,9 +56,41 @@
   E.g. if button insert something into transcript, this should be displayed
   but grayed out, if button is clicked this grayed out image should solidify
   and remain.
-* TODO Use infinite undo paradigm
-  Instead of ok/cancel requesters. All changes should be automatically written
+* TODO Use infinite undo paradigm                             :MAJOR:COMPLEX:
+  Instead of OK/cancel requesters. All changes should be automatically written
   to localStorage.
+
+  Idea: Use share URL fragment strings in localStorage, and for each change
+  transcript save the new fragment string in a stack. Undos would then just
+  become a matter of popping the last fragment string and reverting to the
+  previous one.
+
+  Storage module should also listen to localStorage changes, and automatically
+  apply these in the GUI (if relevant). Thus making the app work nicely with
+  multiple tabs open an the same time.
+
+  Use the undo/redo of typical software, or something more Emacs-y?
+
+  CAVEATS:
+
+  * Listening to localStorage events does not capture events caused by one's
+    own tab, therefore these events will have to be created by the storage
+    module itself.
+
+  * Pushing to a JSON encoded stack (which would have to be unencoded and then
+    reencoded for each push) in localStorage would be inefficient. Therefore
+    each item would have to be stored using a new (sequentially named)
+    localStorage key. This means we'll prolly want to:
+
+    + Store an index of items. (Or create one in memory to be able to add
+      remove stuff from the load <select> list whenever a new transcript is
+      added by some tab somewhere. -- scanning through [possibly thousands] of
+      localStorage item names might be too inefficient.)
+
+    + Compress and garbage collect old entries as new entries accumulate? If we
+      want to retain history forever we could prolly lump older changes
+      together and store them in (a possibly compressed version) for longer
+      periods.
 * TODO Modified/unmodified detection on load/save
 * TODO 'Share' URLs with all transcript information
   For encoding handshape, use the shortkeys. For all other glyphs use simple
@@ -79,7 +156,6 @@
 
   - 0 is '=>', followed by 'H' glyph
   - 1-4 is 'båge/cirkel/vrids/slås' followed by A-Za-z
-* TODO Drag-and-drop IIIc clusters to reorder them
 * TODO Import/export saved data
 * TODO Position of 'contact'/'medial contact' in glyph selector
 * TODO Export transcription as SVG (?)                           :FAR_FUTURE:
@@ -90,6 +166,9 @@
   "Medial contact must be combined with a direction of movement. The direction
   symbol is placed above the symbol for medial contact." [Teckentranskription,
   p.10]
+* TODO Add links to KTH sign language transcription page              :MINOR:
+  A link to the page containing the sign language typeface used for
+  transcription + the 'Teckentranskription' essay.
 * TODO Inline all SVG
   Allows for:
   + Using CSS to control SVG color (yay!) and
@@ -100,8 +179,48 @@
 
   The class name of each SVG should be the same as the current file name, then
   use some jQuery magic to extract it and inserting it in the relevant place.
+* TODO Word breaking of transcript                                       :UX:
+  If the transcript is wider than the screen it should be broken off in the
+  same way text is.
+
+  Easy/ugly fix: Disable line breaking for fields I and II, and top align text
+  inside the field tables. This will mostly look file, but somewhat ugly on
+  screens small enough that a transcript should be line broken when there are
+  only field I & II clusters present.
+
+  Fancy fix: Field tables should prolly not be tables but a `display: inline`
+  type object that gets line broken automatically. Since clusters never should
+  be broken up, only these could be inside tables.
+* TODO Firefox: Button text not black                      :COSMETIC:FIREFOX:
+  Not explicitly set in CSS maybe?
+* TODO Firefox: Shortkeys not working in input            :FIREFOX:MINOR:BUG:
+  Shortkeys works just fine in the selectGlyph menu, but when a glyph is
+  focused and one press enter nothing happens.
+* TODO Don't scroll background when scrolling overlay              :COSMETIC:
+* TODO Disable HTML elements should be striped                     :COSMETIC:
+  The same kind of stripes used for indicating removal of cluster, but
+  transparent rather than red, should be a good disabledness indicator (make
+  sure text on disabled buttons is legible, though).
+
+  This is relevant for the 'Load' button and the selector when there are no
+  saved transcripts (yet).
+* TODO Add textarea for notes to a transcription               :NICE:FEATURE:
+  This is for free text notes to a transcription, and should be loaded/saved
+  with the transcription. (This would not, at least initially not, be included
+  when sharing a transcription -- maybe later this could be added with some
+  suitable compression [and URL escaping] or something.)
+* TODO Multiple tabs?                                                  :TEST:
+  How well does the transcription work with multiple tabs open in the same
+  browser? What happens if you edit the same glyph?
+* TODO Test with Explorer                                      :WINDOWS:TEST:
+* TODO Test with Safari                                            :MAC:TEST:
+* TODO Add dictionary                                               :FEATURE:
+  Matching dictionary entries (with their Swedish translation) should be listed
+  when writing a transcript. Initially display all words for which the
+  currently entered transcript is a subset.(?)
 * [0/4] Input shortkeys
 ** TODO Home/End: Select first/last cluster
+   Ctrl+A/Ctrl+E should also work.
 ** TODO Move IIIc cluster
    Ctrl + ArrowLeft/ArrowRight should move IIIc clusters within the field.
 
@@ -116,10 +235,10 @@
    Awesomest would be if one could retain which glyph number is selected when
    moving. (So that ArrowRight followed by ArrowLeft always leaves you with the
    same glyph focused that was focused to begin with.)
-* TODO Shortkeys should work when glyph is hilited, not require menu     :UI:
-  As an alternative to pressing <Enter> then choosing from the glyph selector
-  menu user should also be able to just press the desired shortkey directly
-  (without displaying a menu).
+** TODO Change glyph without menu                                        :UI:
+   As an alternative to pressing <Enter> then choosing from the glyph selector
+   menu user should also be able to just press the desired shortkey directly
+   (without displaying a menu).
 * [2/9] Make selectGlyph() menus prettier                             :MINOR:
 ** TODO Mouse & keyboard should coexist better
    Mouse should use same focusing as keyboard. I.e. instead of having one mouse
@@ -128,6 +247,7 @@
    pointer, but also be controllable by keyboard.
 ** TODO PgUp/PgDn should work in menu
 ** TODO Home/End go to beginning/end of menu
+   Ctrl+A/Ctrl+E should also work.
 ** TODO Vertical alignment of glyphs in glyph selector
 ** TODO Add menu header
    'Handform'/'Läge'/'Relation' etc should be menu header (at least one menu
