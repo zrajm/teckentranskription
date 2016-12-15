@@ -179,18 +179,6 @@ External (strips away unshown state):
 
   The class name of each SVG should be the same as the current file name, then
   use some jQuery magic to extract it and inserting it in the relevant place.
-* TODO Word breaking of transcript                                       :UX:
-  If the transcript is wider than the screen it should be broken off in the
-  same way text is.
-
-  Easy/ugly fix: Disable line breaking for fields I and II, and top align text
-  inside the field tables. This will mostly look file, but somewhat ugly on
-  screens small enough that a transcript should be line broken when there are
-  only field I & II clusters present.
-
-  Fancy fix: Field tables should prolly not be tables but a `display: inline`
-  type object that gets line broken automatically. Since clusters never should
-  be broken up, only these could be inside tables.
 * TODO Firefox: Button text not black                      :COSMETIC:FIREFOX:
   Not explicitly set in CSS maybe?
 * TODO Firefox: Shortkeys not working in input            :FIREFOX:MINOR:BUG:
@@ -307,6 +295,22 @@ External (strips away unshown state):
   existing) clusters.
 
   .set() should maybe also use .add()/insertCluster()?
+* TODO Fancy/good fix for transcript line breaking                       :UX:
+  If the transcript is wider than the screen it should be broken off in the
+  same way text is.
+
+  Fancy fix: Field tables should prolly be `display: inline`, and cluster
+  tables `display: inline-table`. Some kind of clearfix is prolly also needed
+  so that the cluster tables won't protrude outside the inline containers.
+* DONE Simple/ugly fix for transcript line breaking                      :UX:
+  CLOSED: [2016-12-15 Thu 22:09]
+  If the transcript is wider than the screen it should be broken off in the
+  same way text is.
+
+  Easy/ugly fix: Disable line breaking for fields I and II, and top align text
+  inside the field tables. This will mostly look file, but somewhat ugly on
+  screens small enough that a transcript should be line broken when there are
+  only field I & II clusters present.
 * DONE Keyboard shortcuts (shortkeys) for handshape glyph selector
   CLOSED: [2016-12-13 Tue 10:04]
   Pressing an alphabetic key should jump to the glyph most similar i
