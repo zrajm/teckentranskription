@@ -200,8 +200,8 @@ footer {
     display: block;
     margin: auto;
 }
-#input td.field.hover:before,
-#input td.field:hover:before,
+#input .field.hover:before,
+#input .field:hover:before,
 table.uigroup.buttons.hover,
 table.uigroup.buttons:hover { background: rgba(0, 0, 255, 0.25); }
 
@@ -213,24 +213,24 @@ table.uigroup.buttons:hover { background: rgba(0, 0, 255, 0.25); }
 /******************************************************************************/
 
 /* Hide empty transcription fields. */
-#input td.field:empty { display: none; }
+#input .field:empty { display: none; }
 
 /* Padding between transcription fields. */
-#input td.field            { border-right: .25em solid transparent; }
-#input td.field:last-child { border-right: 0; } /* after last field */
+#input .field            { border-right: .25em solid transparent; }
+#input .field:last-child { border-right: 0; } /* after last field */
 
 /* Make linebreaking behave somewhat. */
-#input td.field.i, #input td.field.ii {
+#input .field.i, #input .field.ii {
     vertical-align: top;
     white-space: nowrap;
 }
 
 /* Show transcription field labels when hovering on #input. */
-#input td.field { position: relative; }
-#input td.field.i:before { content: "I"; }
-#input td.field.ii:before { content: "II"; }
-#input td.field.iii:before { content: "III"; }
-#input td.field:before {
+#input .field { position: relative; }
+#input .field.i:before { content: "I"; }
+#input .field.ii:before { content: "II"; }
+#input .field.iii:before { content: "III"; }
+#input .field:before {
     display: none;
     position: absolute;
     top: 0; left: 0; bottom: 0; right: 0;
@@ -241,7 +241,7 @@ table.uigroup.buttons:hover { background: rgba(0, 0, 255, 0.25); }
     line-height: 1em;
 }
 #input > table { margin-top: 1.1em; } /* compensate for negative margin-top */
-#input.hover td.field:before, #input:hover td.field:before { display: block; }
+#input.hover .field:before, #input:hover .field:before { display: block; }
 
 /******************************************************************************/
 
