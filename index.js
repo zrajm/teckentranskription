@@ -122,21 +122,21 @@ var addIaButtonElement  = $("#ia")
             ["pic/h-stora-nyphanden.svg",  "Handform – Stora nyphanden",  "h", "pic/hand/stora-nyphanden.jpg"  ],
             ["pic/h-x-handen.svg",         "Handform – X-handen",         "x", "pic/hand/x-handen.jpg"         ],
         ],
-        ar: [ // Attitydsriktning
-            ["pic/ar-vanster.svg", "Attitydsriktning – Vänster"],
-            ["pic/ar-hoger.svg",   "Attitydsriktning – Höger"  ],
-            ["pic/ar-fram.svg",    "Attitydsriktning – Fram"   ],
-            ["pic/ar-in.svg",      "Attitydsriktning – In"     ],
-            ["pic/ar-upp.svg",     "Attitydsriktning – Upp"    ],
-            ["pic/ar-ner.svg",     "Attitydsriktning – Ner"    ],
+        ar: [ // Attitydsriktning                                        // Cannot be combined with:
+            ["pic/ar-vanster.svg", "Attitydsriktning – Vänsterriktad" ], //   höger- & vänstervänd
+            ["pic/ar-hoger.svg",   "Attitydsriktning – Högerriktad"   ], //   -"-
+            ["pic/ar-fram.svg",    "Attitydsriktning – Framåtriktad"  ], //   framåt- & inåtriktad
+            ["pic/ar-in.svg",      "Attitydsriktning – Inåtriktad"    ], //   -"-
+            ["pic/ar-upp.svg",     "Attitydsriktning – Uppåtriktad"   ], //   uppåt- & nedåtvänd
+            ["pic/ar-ner.svg",     "Attitydsriktning – Nedåtriktad"   ], //   -"-
         ],
-        av: [ // Attitydsvridning
-            ["pic/av-vanster.svg", "Attitydsvridning – Vänster"],
-            ["pic/av-hoger.svg",   "Attitydsvridning – Höger"  ],
-            ["pic/av-fram.svg",    "Attitydsvridning – Fram"   ],
-            ["pic/av-in.svg",      "Attitydsvridning – In"     ],
-            ["pic/av-upp.svg",     "Attitydsvridning – Upp"    ],
-            ["pic/av-ner.svg",     "Attitydsvridning – Ner"    ],
+        av: [ // Attitydsvridning                                        // Cannot be combined with:
+            ["pic/av-vanster.svg", "Attitydsvridning – Vänstervänd" ],   //   höger- & vänsterriktad
+            ["pic/av-hoger.svg",   "Attitydsvridning – Högervänd"   ],   //   -"-
+            ["pic/av-fram.svg",    "Attitydsvridning – Framåtvänd"  ],   //   framåt- & inåtriktad
+            ["pic/av-in.svg",      "Attitydsvridning – Inåtvänd"    ],   //   -"-
+            ["pic/av-upp.svg",     "Attitydsvridning – Uppåtvänd"   ],   //   uppåt- & nedåtriktad
+            ["pic/av-ner.svg",     "Attitydsvridning – Nedåtvänd"   ],   //   -"-
         ],
         ina: [ // Interaktionsart
             ["pic/i-kors.svg",    "Interaktionsart – Kors"   ],
