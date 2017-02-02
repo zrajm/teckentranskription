@@ -122,73 +122,73 @@ var addIaButtonElement  = $("#ia")
             ["pic/h-stora-nyphanden.svg",  "Handform – Stora nyphanden",  "h", "pic/hand/stora-nyphanden.jpg"  ],
             ["pic/h-x-handen.svg",         "Handform – X-handen",         "x", "pic/hand/x-handen.jpg"         ],
         ],
-        ar: [ // Attitydsriktning                                        // Cannot be combined with:
-            ["pic/ar-vanster.svg", "Attitydsriktning – Vänsterriktad" ], //   höger- & vänstervänd
-            ["pic/ar-hoger.svg",   "Attitydsriktning – Högerriktad"   ], //   -"-
-            ["pic/ar-fram.svg",    "Attitydsriktning – Framåtriktad"  ], //   framåt- & inåtriktad
-            ["pic/ar-in.svg",      "Attitydsriktning – Inåtriktad"    ], //   -"-
-            ["pic/ar-upp.svg",     "Attitydsriktning – Uppåtriktad"   ], //   uppåt- & nedåtvänd
-            ["pic/ar-ner.svg",     "Attitydsriktning – Nedåtriktad"   ], //   -"-
+        ar: [ // Attitydsriktning                                            // Cannot be combined with:
+            ["pic/ar-vanster.svg", "Attitydsriktning – Vänsterriktad", "v"], //   höger- & vänstervänd
+            ["pic/ar-hoger.svg",   "Attitydsriktning – Högerriktad",   "h"], //   -"-
+            ["pic/ar-fram.svg",    "Attitydsriktning – Framåtriktad",  "f"], //   framåt- & inåtriktad
+            ["pic/ar-in.svg",      "Attitydsriktning – Inåtriktad",    "i"], //   -"-
+            ["pic/ar-upp.svg",     "Attitydsriktning – Uppåtriktad",   "u"], //   uppåt- & nedåtvänd
+            ["pic/ar-ner.svg",     "Attitydsriktning – Nedåtriktad",   "r"], //   -"-
         ],
-        av: [ // Attitydsvridning                                        // Cannot be combined with:
-            ["pic/av-vanster.svg", "Attitydsvridning – Vänstervänd" ],   //   höger- & vänsterriktad
-            ["pic/av-hoger.svg",   "Attitydsvridning – Högervänd"   ],   //   -"-
-            ["pic/av-fram.svg",    "Attitydsvridning – Framåtvänd"  ],   //   framåt- & inåtriktad
-            ["pic/av-in.svg",      "Attitydsvridning – Inåtvänd"    ],   //   -"-
-            ["pic/av-upp.svg",     "Attitydsvridning – Uppåtvänd"   ],   //   uppåt- & nedåtriktad
-            ["pic/av-ner.svg",     "Attitydsvridning – Nedåtvänd"   ],   //   -"-
+        av: [ // Attitydsvridning                                            // Cannot be combined with:
+            ["pic/av-vanster.svg", "Attitydsvridning – Vänstervänd", "v"],   //   höger- & vänsterriktad
+            ["pic/av-hoger.svg",   "Attitydsvridning – Högervänd",   "h"],   //   -"-
+            ["pic/av-fram.svg",    "Attitydsvridning – Framåtvänd",  "f"],   //   framåt- & inåtriktad
+            ["pic/av-in.svg",      "Attitydsvridning – Inåtvänd",    "i"],   //   -"-
+            ["pic/av-upp.svg",     "Attitydsvridning – Uppåtvänd",   "u"],   //   uppåt- & nedåtriktad
+            ["pic/av-ner.svg",     "Attitydsvridning – Nedåtvänd",   "r"],   //   -"-
         ],
         ina: [ // Interaktionsart
-            ["pic/i-kors.svg",    "Interaktionsart – Kors"   ],
-            ["pic/i-vinkel.svg",  "Interaktionsart – Vinkel" ],
-            ["pic/i-hakning.svg", "Interaktionsart – Hakning"],
+            ["pic/i-kors.svg",    "Interaktionsart – Kors",    "x"],
+            ["pic/i-vinkel.svg",  "Interaktionsart – Vinkel",  "w"],
+            ["pic/i-hakning.svg", "Interaktionsart – Hakning", "X"],
         ],
         artion_tall: [ // Artikulation
-            ["pic/rr-vanster.svg",      "Rörelseriktning – Vänster",         "v"],
-            ["pic/rr-hoger.svg",        "Rörelseriktning – Höger",           "h"],
-            ["pic/rr-vanster-hoger.svg","Rörelseriktning – Vänster–höger",   "V"],
-            ["pic/rr-fram.svg",         "Rörelseriktning – Fram",            "f"],
-            ["pic/rr-in.svg",           "Rörelseriktning – In",              "i"],
-            ["pic/rr-fram-in.svg",      "Rörelseriktning – Fram–in",         "F"],
-            ["pic/rr-upp.svg",          "Rörelseriktning – Upp",             "u"],
-            ["pic/rr-ner.svg",          "Rörelseriktning – Ner",             "n"],
-            ["pic/rr-upp-ner.svg",      "Rörelseriktning – Upp–ner",         "U"],
-            ["pic/rr-kort-upp.svg",     "Rörelseriktning – Kort upp",        "k"],
-            ["pic/rr-kort-ner.svg",     "Rörelseriktning – Kort ner",        "K"],
-            ["pic/ra-spelar.svg",       "Rörelseart – Spelar",               "~"],
-            ["pic/ra-stror.svg",        "Rörelseart – Strör",                "@"],
-            ["pic/ra-vinkar.svg",       "Rörelseart – Vinkar",               "#"],
-            ["pic/ra-bojs.svg",         "Rörelseart – Böjs",                 '"'],
-            ["pic/i-vaxelvis.svg",      "Interaktionsart – Växelvis",        "="],
-            ["pic/i-konvergerar.svg",   "Interaktionsart – Konvergerar",     ">"],
-            ["pic/i-divergerar.svg",    "Interaktionsart – Divergerar",      "<"],
-            ["pic/i-byte.svg",          "Interaktionsart – Byte",            "'"],
-            ["pic/i-kors.svg",          "Interaktionsart – Kors",            "x"],
-            ["pic/i-vinkel.svg",        "Interaktionsart – Vinkel",          "w"],
-            ["pic/i-hakning.svg",       "Interaktionsart – Hakning",         "%"],
-            ["pic/i-entre.svg",         "Interaktionsart – Entré",           "e"],
-            ["pic/i-kontakt.svg",       "Interaktionsart – Kontakt",         "."],
-            ["pic/i-medial-kontakt.svg","Interaktionsart – Medial kontakt",  ","],
-            ["pic/x-upprepning.svg",    "Upprepad artikulation",             ":"],
-            ["pic/x-separator.svg",     "Markerar sekventiell artikulation", "|"],
+            ["pic/rr-vanster.svg",      "Rörelseriktning – Föres åt vänster",             "v"],
+            ["pic/rr-hoger.svg",        "Rörelseriktning – Föres åt höger",               "h"],
+            ["pic/rr-vanster-hoger.svg","Rörelseriktning – Föres vänster–höger (sidled)", "s"],
+            ["pic/rr-fram.svg",         "Rörelseriktning – Föres framåt",                 "f"],
+            ["pic/rr-in.svg",           "Rörelseriktning – Föres inåt",                   "i"],
+            ["pic/rr-fram-in.svg",      "Rörelseriktning – Föres framåt–inåt (djupled)",  "d"],
+            ["pic/rr-upp.svg",          "Rörelseriktning – Föres uppåt",                  "u"],
+            ["pic/rr-ner.svg",          "Rörelseriktning – Föres nedåt",                  "n"],
+            ["pic/rr-upp-ner.svg",      "Rörelseriktning – Föres uppåt–nedåt (höjdled)",  "j"],
+            ["pic/rr-kort-upp.svg",     "Rörelseriktning – Föres kort uppåt",             "U"],
+            ["pic/rr-kort-ner.svg",     "Rörelseriktning – Föres kort nedåt",             "N"],
+            ["pic/ra-spelar.svg",       "Rörelseart – Spelar",                            "~"],
+            ["pic/ra-stror.svg",        "Rörelseart – Strör",                             "@"],
+            ["pic/ra-vinkar.svg",       "Rörelseart – Vinkar",                            "#"],
+            ["pic/ra-bojs.svg",         "Rörelseart – Böjs",                              '"'],
+            ["pic/i-vaxelvis.svg",      "Interaktionsart – Växelvis",                     "="],
+            ["pic/i-konvergerar.svg",   "Interaktionsart – Konvergerar",                  ">"],
+            ["pic/i-divergerar.svg",    "Interaktionsart – Divergerar",                   "<"],
+            ["pic/i-byte.svg",          "Interaktionsart – Byte",                         "'"],
+            ["pic/i-kors.svg",          "Interaktionsart – Kors",                         "x"],
+            ["pic/i-vinkel.svg",        "Interaktionsart – Vinkel",                       "w"],
+            ["pic/i-hakning.svg",       "Interaktionsart – Hakning",                      "X"],
+            ["pic/i-entre.svg",         "Interaktionsart – Entré",                        "e"],
+            ["pic/i-kontakt.svg",       "Interaktionsart – Kontakt",                      "."],
+            ["pic/i-medial-kontakt.svg","Interaktionsart – Medial kontakt",               ","],
+            ["pic/x-upprepning.svg",    "Övrigt – Upprepad artikulation",                 ":"],
+            ["pic/x-separator.svg",     "Övrigt – Markerar sekventiell artikulation",     "|"],
         ],
         artion_high: [ // Artikulation
-            ["pic/ra-bage.svg",   "Rörelseart – Båge"  ],
-            ["pic/ra-cirkel.svg", "Rörelseart – Cirkel"],
-            ["pic/ra-vrids.svg",  "Rörelseart – Vrids" ],
-            ["pic/ra-slas.svg",   "Rörelseart – Slås"  ],
+            ["pic/ra-bage.svg",   "Rörelseart – Båge",   "b"],
+            ["pic/ra-cirkel.svg", "Rörelseart – Cirkel", "c"],
+            ["pic/ra-vrids.svg",  "Rörelseart – Vrids",  "v"],
+            ["pic/ra-slas.svg",   "Rörelseart – Slås",   "s"],
         ],
         artion_low: [ // Artikulation
-            ["pic/rr-fram2.svg",          "Rörelseriktning – Fram"         ],
-            ["pic/rr-hoger2.svg",         "Rörelseriktning – Höger"        ],
-            ["pic/rr-in2.svg",            "Rörelseriktning – In"           ],
-            ["pic/rr-vanster2.svg",       "Rörelseriktning – Vänster"      ],
-            ["pic/rr-fram-in2.svg",       "Rörelseriktning – Fram–in"      ],
-            ["pic/rr-vanster-hoger2.svg", "Rörelseriktning – Vänster–höger"],
-            ["pic/rr-fixme.svg",          "Rörelseriktning – FIXME"        ],
-            ["pic/rr-upp2.svg",           "Rörelseriktning – Upp"          ],
-            ["pic/rr-ner2.svg",           "Rörelseriktning – Ner"          ],
-            ["pic/rr-upp-ner2.svg",       "Rörelseriktning – Upp–ner"      ],
+            ["pic/rr-vanster2.svg",       "Rörelseriktning – Åt vänster",             "v"],
+            ["pic/rr-hoger2.svg",         "Rörelseriktning – Åt höger",               "h"],
+            ["pic/rr-vanster-hoger2.svg", "Rörelseriktning – Vänster–höger (sidled)", "s"],
+            ["pic/rr-fram2.svg",          "Rörelseriktning – Framåt",                 "f"],
+            ["pic/rr-in2.svg",            "Rörelseriktning – Inåt",                   "i"],
+            ["pic/rr-fram-in2.svg",       "Rörelseriktning – Framåt–inåt (djupled)",  "d"],
+            ["pic/rr-fixme.svg",          "Rörelseriktning – FIXME",                  "m"],
+            ["pic/rr-upp2.svg",           "Rörelseriktning – Uppåt",                  "u"],
+            ["pic/rr-ner2.svg",           "Rörelseriktning – Nedåt",                  "n"],
+            ["pic/rr-upp-ner2.svg",       "Rörelseriktning – Uppåt–nedåt (höjdled)",  "j"],
         ],
     },
     dom_stuff = {
