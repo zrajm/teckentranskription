@@ -128,7 +128,7 @@ var addIaButtonElement  = $("#ia")
             ["pic/ar-fram.svg",    "Attitydsriktning – Framåtriktad",  "f"], //   framåt- & inåtriktad
             ["pic/ar-in.svg",      "Attitydsriktning – Inåtriktad",    "i"], //   -"-
             ["pic/ar-upp.svg",     "Attitydsriktning – Uppåtriktad",   "u"], //   uppåt- & nedåtvänd
-            ["pic/ar-ner.svg",     "Attitydsriktning – Nedåtriktad",   "r"], //   -"-
+            ["pic/ar-ner.svg",     "Attitydsriktning – Nedåtriktad",   "n"], //   -"-
         ],
         av: [ // Attitydsvridning                                            // Cannot be combined with:
             ["pic/av-vanster.svg", "Attitydsvridning – Vänstervänd", "v"],   //   höger- & vänsterriktad
@@ -136,7 +136,7 @@ var addIaButtonElement  = $("#ia")
             ["pic/av-fram.svg",    "Attitydsvridning – Framåtvänd",  "f"],   //   framåt- & inåtriktad
             ["pic/av-in.svg",      "Attitydsvridning – Inåtvänd",    "i"],   //   -"-
             ["pic/av-upp.svg",     "Attitydsvridning – Uppåtvänd",   "u"],   //   uppåt- & nedåtriktad
-            ["pic/av-ner.svg",     "Attitydsvridning – Nedåtvänd",   "r"],   //   -"-
+            ["pic/av-ner.svg",     "Attitydsvridning – Nedåtvänd",   "n"],   //   -"-
         ],
         ina: [ // Interaktionsart
             ["pic/i-kors.svg",    "Interaktionsart – Kors",    "x"],

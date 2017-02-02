@@ -176,8 +176,8 @@ footer {
     position: absolute;
     top: 0;
     left: 0;
-    bottom: 10;
     right: 0;
+    padding-top: 4px;
     background: rgba(0, 0, 0, .5);
     display: none;
     text-align: center;
