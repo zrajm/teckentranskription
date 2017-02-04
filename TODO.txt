@@ -302,6 +302,13 @@ External (strips away unshown state):
   Fancy fix: Field tables should prolly be `display: inline`, and cluster
   tables `display: inline-table`. Some kind of clearfix is prolly also needed
   so that the cluster tables won't protrude outside the inline containers.
+* DONE Simplify focusing in glyph selector                               :UX:
+  CLOSED: [2017-02-04 Sat 13:04]
+  Moving the mouse pointer onto a glyph selector item should focus that item
+  (using the blue border), and using the arrow up/down should move the same
+  focus, instead of the two different focusing mechanisms currently used
+  (greying out an item when focused by mouse, and blue border when selecting
+  with keyboard).
 * DONE Simple/ugly fix for transcript line breaking                      :UX:
   CLOSED: [2016-12-15 Thu 22:09]
   If the transcript is wider than the screen it should be broken off in the

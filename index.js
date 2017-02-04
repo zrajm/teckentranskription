@@ -707,9 +707,27 @@ function selectGlyph(menu, selectedValue, callback) {
         });
         tableElement.html(tableHtml);
         rowElements = $('tr', tableElement);
-        $(overlayElement).
+        overlayElement.
             keydown(handleMenuKeys(shortkeys)).
             click(handleMenuClick);
+
+        // Focus items in menu on hover (but ignore false hover events caused
+        // by page scrolling moving mouse pointer relative to the page itself).
+        (function () {
+            var mouseActive = false, lastY = 0;
+            overlayElement.
+                keydown(function () { mouseActive = false; }).
+                mousemove(function (event) {
+                    if (mouseActive === false && lastY !== event.screenY) {
+                        mouseActive = true;
+                    }
+                    lastY = event.screenY;
+                }).find('tr').hover(function () {
+                    if (mouseActive === true) {
+                        $(this).focus();
+                    }
+                });
+        }());
         overlayElement.css('display', 'block')
         rowElements[selectedValue].focus();
     }
@@ -718,7 +736,8 @@ function selectGlyph(menu, selectedValue, callback) {
         if (!backButtonEvent) { history.back(); }
         bodyElement.removeClass('overlay');
         windowElement.off('popstate');
-        overlayElement.off().css('display', 'none');
+        overlayElement.off().css('display', 'none').
+            find('tr').off();
         tableElement.empty();
         selectedElement.focus();               // reselect previously focused
     }

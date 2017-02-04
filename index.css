@@ -146,7 +146,6 @@ table:hover > caption.controls { display: block; }
 body.overlay table:hover caption.controls { display: none; }
 
 #input table td[tabindex]:hover,
-#overlay table tr:hover,
 table caption.controls             { background: rgba(0, 0, 0, .2); }
 table caption.controls span        { border: 3px solid transparent; }
 table caption.controls span:hover  { background: rgba(100, 100, 100, .5); }
