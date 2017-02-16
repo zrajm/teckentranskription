@@ -1,4 +1,4 @@
-/* Copyright 2016 by zrajm. Released under GPLv3 license. */
+/* Copyright 2016-2017 by zrajm. Released under GPLv3 license. */
 
 var addIaButtonElement  = $("#ia")
     addIbButtonElement  = $("#ib")
@@ -15,13 +15,14 @@ var addIaButtonElement  = $("#ia")
     saveButtonElement   = $("#save"),
     saveInputElement    = $("#save-input"),
     dumpButtonElement   = $("#dump"),
+    dumpThisButtonElement = $("#this"),
     clearButtonElement  = $("#clear"),
     deleteButtonElement = $("#delete"),
     overlayElement      = $("#overlay"),
     statusElement       = $("#status"),
     transcript          = makeTranscript({
         i: $('#input td.i'), ii: $('#input td.ii'), iii: $('#input td.iii'),
-    }, updateOnRedraw),
+    }),
     glyphs = {
         r: [ // Relation
             ["pic/r-ingen.svg",   "Relation – Ingen"  ],
@@ -191,87 +192,27 @@ var addIaButtonElement  = $("#ia")
             ["pic/rr-upp-ner2.svg",       "Rörelseriktning – Uppåt–nedåt (höjdled)",  "j"],
         ],
     },
-    dom_stuff = {
-        ia: {
-            html: '<table class="cluster ia">' +
-                '<tr><td tabindex=1 class="r high">' +
-                '<tr><td tabindex=1 class="a text">' +
-                '</table>',
-            glyphs: { r: glyphs.r, a: glyphs.a },
-        },
-        ib: {
-            html: '<table class="cluster ib">' +
-                '<tr><td tabindex=1 class="r high">' +
-                '<tr><td tabindex=1 class="h text" rowspan=2><td tabindex=1 class=ar>' +
-                '<tr><td tabindex=1 class=av>' +
-                '</table>',
-            glyphs: {
-                r:  glyphs.r,
-                h:  glyphs.h,
-                ar: glyphs.ar,
-                av: glyphs.av,
-            },
-        },
-        iia: {
-            html: '<table class="cluster iia">' +
-                '<tr><td><td tabindex=1 class="r high">' +
-                '<tr><td tabindex=1 class=ar><td tabindex=1 class="h text" rowspan=2>' +
-                '<tr><td tabindex=1 class=av>' +
-                '</table>',
-            glyphs: {
-                ar: glyphs.ar,
-                av: glyphs.av,
-                r:  glyphs.r,
-                h:  glyphs.h,
-            },
-        },
-        iib: {
-            html: '<table class="cluster iib">' +
-                '<tr><td tabindex=1 class="ina full">' +
-                '</table>',
-            glyphs: {
-                ina:  glyphs.ina,
-            },
-        },
-        iic: {
-            html: '<table class="cluster iic">' +
-                '<tr><td colspan=2 class=high>' +
-                '<tr><td tabindex=1 class="h text" rowspan=2><td tabindex=1 class=ar>' +
-                '<tr><td tabindex=1 class=av>' +
-                '</table>',
-            glyphs: {
-                h:  glyphs.h,
-                ar: glyphs.ar,
-                av: glyphs.av,
-            },
-        },
-        iiia: {
-            html: '<table class="cluster iiia">' +
-                '<tr><td tabindex=1 class="artion_tall full">' +
-                '</table>',
-            glyphs: { artion_tall: glyphs.artion_tall },
-        },
-        iiib: {
-            html: '<table class="cluster iiib">' +
-                '<tr><td rowspan=2 class=full><td tabindex=1 class=artion_high>' +
-                '<tr><td tabindex=1 class=artion_low>' +
-                '</table>',
-            glyphs: {
-                artion_high: glyphs.artion_high,
-                artion_low : glyphs.artion_low,
-            },
-        },
-        iiic: {
-            html: '<table class="cluster iiic">' +
-                '<tr><td rowspan=2 class=top><img src="pic/ra-forandras.svg"><td class=high>' +
-                '<tr><td tabindex=1 class="h text">' +
-                '</table>',
-            glyphs: { h: glyphs.h },
-        },
-    },
+    gui = makeClusterGui($('.sign'), glyphs),
     storage = (function () {
         function set(name, object) {
-            localStorage.setItem(name, JSON.stringify(object));
+            //console.log("storage.set() -- >>" + JSON.stringify(object, null, 4) + "<<");
+
+            // FIXME: Storage module should NOT clean up data when saving.
+            // (This belongs elsewhere.)
+            var newObject = typeof object === "string" ?
+                object :                       // string
+                object.map(function (value) {  // list of objects
+                    return Object.keys(value).reduce(function (acc, name) {
+                        console.log('  NAME: ' + name);
+                        // Clean away all jQuery element values from object.
+                        if (!(value[name] instanceof jQuery)) {
+                            console.log('    ' + name + ' is jquery value');
+                            acc[name] = value[name];
+                        }
+                        return acc;
+                    }, {});
+                });
+            localStorage.setItem(name, JSON.stringify(newObject));
         }
         function get(name) {
             var json = localStorage.getItem(name);
@@ -337,109 +278,36 @@ function preloadImages(imageList) {
     $('body').append(html);
 }
 
-function makeCluster(spec) {
-    var inElement = spec.element,  cluster = spec.cluster,
-        removeCb  = spec.removeCb, prevCb  = spec.prevCb,
-        imageType = dom_stuff[cluster.type].glyphs,
-        html      = $(dom_stuff[cluster.type].html),
-        state = {}, element = {}, html_controls = undefined;
-
-    // Make sure that no glyph value is undefined.
-    Object.keys(imageType).forEach(function (name) {
-        cluster[name] = cluster[name] || 0;
-    });
+function makeCluster(clusterSpec) {
+    var self = { get: get, set: set },
+        clusterState = {
+            type   : clusterSpec.type,
+            element: gui.init(clusterSpec.type)
+        };
 
     function get(name) {
-        return (name === undefined) ? state : state[name];
-    }
-    function set(name, value) {
-        state[name] = value;
-        redraw(name);
-    }
-    function redraw(name) {
-        var loop = (name === undefined) ? Object.keys(state) : [name];
-        loop.forEach(function (name) {
-            var value = state[name];
-            if (imageType[name] && imageType[name][value]) {
-                var background = imageType[name][value],
-                    file = background[0],
-                    desc = background[1] +
-                        (background[3] ? '<br><img src="' + background[3] + '">' : '');
-                statusElement.html(desc || "");
-                if (file) {
-                    element[name].html('<img src="' + file + '">');
-                    if (file.match(/(medial-kontakt|x-separator)\.svg$/)) {
-                        element[name].addClass('low');
-                    } else {
-                        element[name].removeClass('low');
-                    }
-                    return;
-                }
-            }
-            element[name].html(value);
-        });
-    }
-    function setNext(callback) {
-        if (html_controls) {
-            $(".next", html_controls).attr("disabled", false).click(callback);
-        }
+        return (name === undefined) ? clusterState : clusterState[name];
     }
 
-    Object.keys(cluster).forEach(function (name) {
-        element[name] = $("." + name, html);   // get DOM element
-        set(name, cluster[name]);              //   set value & update DOM
-        element[name].click(function () {
-            selectGlyph(glyphs[name], get(name), function (value) {
-                set(name, value);
-            });
-        }).keydown(function () {
-            var value = get(name);
-            switch (event.key) {
-            case "Enter":                      // change glyph
-                selectGlyph(glyphs[name], get(name), function (value) {
-                    set(name, value);
-                });
-                break;
-            default:
-                console.log(event.key);
-                return true;
-            }
-        });
-    });
-
-    /* previous / next / remove buttons */
-    if (cluster.type.match(/^iii[a-z]$/)) {
-        html_controls = $("<caption class=controls><nobr>" +
-                          "<span class=prev>◄</span>" +
-                          "<span class=next>►</span>" +
-                          "<span class=remove>✖</span>" +
-                          "</nobr></caption>");
-        var prev = $(".prev", html_controls);
-        if (prevCb) {
-            prev.click(prevCb);
+    function set(clusterSpec, value) {
+        if (arguments.length === 2) {
+            clusterState[clusterSpec] = value;
         } else {
-            prev.attr("disabled", true);
+            Object.keys(clusterSpec).forEach(function (glyphType) {
+                clusterState[glyphType] = clusterSpec[glyphType];
+            });
         }
-        $(".next", html_controls).attr("disabled", true);
-        $(".remove", html_controls).click(removeCb);
-        html.append(html_controls);
+        gui.set(clusterState); //, self);
+        gui.show(self);
     }
-    inElement.append(html);
-    $("td[tabindex]", html).first().focus();
-    html.hover(
-        function () { $('button#' + cluster.type).   addClass('hilite'); },
-        function () { $('button#' + cluster.type).removeClass('hilite'); }
-    );
-    return {
-        get: get,
-        set: set,
-        setNext: setNext,
-    }
+
+    set(clusterSpec);
+    return self;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 
-function makeTranscript(element, redrawCallback) {
+function makeTranscript(element) {
     var clusters = [];
     function exist(type) {
         var i = 0, a;
@@ -459,28 +327,18 @@ function makeTranscript(element, redrawCallback) {
             return cluster.get();
         });
     }
-    function set(values) {
-        if (!(values instanceof Array)) {
+    function set(clusterSpecs) {
+        if (!(clusterSpecs instanceof Array)) {
             console.warn("makeTranscript.set(): Argument is not an array");
-            values = [];
+            clusterSpecs = [];
         }
-        element.i.html('');
-        element.ii.html('');
-        element.iii.html('');
-        clusters = values.map(function (cluster, num) {
-            var type = cluster.type.replace(/[^i]+/, ''); // 'i', 'ii' or 'iii'
-            return makeCluster({
-                element:  element[type],
-                cluster:  (cluster || {}),
-                removeCb: (                 function () { remove(num);        }),
-                prevCb:   (num < 1 ? null : function () { swap(num, num - 1); }),
-            });
+        gui.clear();
+        clusters = clusterSpecs.map(function (clusterSpec) {
+            return makeCluster(clusterSpec);
         });
-        redrawCallback(clusters);
     }
     function redraw() {
         set(get());
-        redrawCallback(clusters);
     }
     function remove(num) {
         clusters.splice(num, 1);
@@ -495,9 +353,11 @@ function makeTranscript(element, redrawCallback) {
 
     // Remove all clusters of specified type.
     function removeCluster(clusters, clusterType) {
-        var i = 0;
+        var i = 0, cluster;
         while (i < clusters.length) {
-            if (clusters[i].get('type') === clusterType) {
+            cluster = clusters[i];
+            if (cluster.get('type') === clusterType) {
+                gui.hide(cluster.get('element'));
                 clusters.splice(i, 1);
                 continue;
             }
@@ -505,64 +365,61 @@ function makeTranscript(element, redrawCallback) {
         }
     }
 
-    // Insert cluster into transcript. Clusters are sorted by type name, new
-    // clusters is inserted in the appropriate place. If a cluster with the
-    // same type name already exist, do nothing. Return true if cluster was
-    // inserted, false otherwise.
-    function insertCluster(clusters, cluster) {
-        var i = 0, findType = cluster.get('type');
+    // Turns `clusterSpec` into cluster object and inserts that into
+    // transcript. Clusters are sorted by type name, new clusters is inserted
+    // in the appropriate place. If a cluster with the same type name already
+    // exist, do nothing. Return true if a cluster was inserted, false
+    // otherwise.
+    function insertCluster(clusters, clusterSpec) {
+        var i = 0, findType = clusterSpec.type;
         while (i < clusters.length && clusters[i].get('type') < findType) {
             i += 1;
         }
-        // Insert cluster before cluster of different type or last in list.
+        // Insert cluster before cluster of different type (or last in list).
         if (clusters[i] === undefined || clusters[i].get('type') !== findType) {
-            clusters.splice(i, 0, cluster);
+            clusters.splice(i, 0, makeCluster(clusterSpec));
             return true;
         }
         return false;
     }
 
-    function add(cluster) {
-        var num  = clusters.length, otherType,
-            type = cluster.type.replace(/[^i]+/, ''); // 'i', 'ii' or 'iii'
-            newCluster = makeCluster({
-                element:  element[type],
-                cluster:  (cluster || {}),
-                removeCb: (                 function () { remove(num);        }),
-                prevCb:   (num < 1 ? null : function () { swap(num, num - 1); }),
-            });
+    // Turns `clusterSpec` into cluster object and appends that to end of
+    // transcript, regardless of whether the same cluster already exist or not
+    // (should be used for clusters of field III). Return true if a cluster was
+    // inserted, false otherwise.
+    function appendCluster(clusters, clusterSpec) {
+        clusters.push(makeCluster(clusterSpec));
+    }
+
+    function add(clusterSpec) {
+        var otherType;
 
         // Make sure there's *always* an IIc cluster in transcript.
-        insertCluster(clusters, makeCluster({
-            element:  element['ii'],
-            cluster:  { type: 'iic'},
-        }));
-        switch (cluster.type) {
+        insertCluster(clusters, { type: 'iic' });
+
+        switch (clusterSpec.type) {
         case 'ia':
         case 'ib':
-            otherType = cluster.type === 'ia' ? 'ib' : 'ia';
-            insertCluster(clusters, newCluster) ||
-                removeCluster(clusters, cluster.type);
+            insertCluster(clusters, clusterSpec) ||
+                removeCluster(clusters, clusterSpec.type);
+            otherType = clusterSpec.type === 'ia' ? 'ib' : 'ia';
             removeCluster(clusters, otherType);
-            if (cluster.type === 'ib') {
+            if (clusterSpec.type === 'ib') {
                 removeCluster(clusters, 'iia');
                 removeCluster(clusters, 'iib');
             }
             break;
         case 'iia':
             removeCluster(clusters, 'ib');
-            insertCluster(clusters, newCluster) ||
-                removeCluster(clusters, cluster.type);
+            insertCluster(clusters, clusterSpec) ||
+                removeCluster(clusters, clusterSpec.type);
             removeCluster(clusters, 'iib');
             break;
         case 'iib':
             removeCluster(clusters, 'ib');
-            insertCluster(clusters, makeCluster({
-                element:  element[type],
-                cluster:  { type: 'iia'},
-            }));
-            insertCluster(clusters, newCluster) ||
-                removeCluster(clusters, cluster.type);
+            insertCluster(clusters, { type: 'iia'});
+            insertCluster(clusters, clusterSpec) ||
+                removeCluster(clusters, clusterSpec.type);
             break;
         case 'iic':
             removeCluster(clusters, 'iia');
@@ -571,15 +428,12 @@ function makeTranscript(element, redrawCallback) {
         case 'iiia':
         case 'iiib':
         case 'iiic':
-            clusters.push(newCluster);
-            if (num > 0) {                         // set '>' for prev cluster
-                clusters[num - 1].setNext(function () { swap(num - 1, num); });
-            }
+            appendCluster(clusters, clusterSpec);
             break;
         }
-        redraw();
-        // Select first glyph in last cluster of type 'cluster.type'.
-        $('[tabindex]', $('.cluster.' + cluster.type).last()).first().focus();
+
+        // Focus the first glyph (of last cluster of the type added).
+        $('.cluster.' + clusterSpec.type).last().find('[tabindex]').first().focus();
     }
     return {
         exist: exist,
@@ -616,18 +470,6 @@ function updateLoadList() {
         loadButtonElement.prop('disabled', false);
         deleteButtonElement.prop('disabled', false);
         loadInputElement.prop('disabled', false);
-    }
-}
-
-function updateOnRedraw(clusters) {
-    var className = 'active', i = 0;
-    $('button').removeClass(className);
-    $('.uigroup.buttons').removeClass('hover');
-    while (i < clusters.length) {
-        var type = clusters[i].get('type');
-        if (type > 'iii') { break; }
-        $('button#' + type).addClass(className);
-        i += 1;
     }
 }
 
@@ -669,6 +511,18 @@ function buttonDump() {
     });
     console.log(JSON.stringify(obj, null, 4));
 }
+function buttonDumpThis() {
+    var prettyClusterSpecs = transcript.get().map(function (clusterSpec) {
+        // Return copy of object (with jQuery values removed).
+        return Object.keys(clusterSpec).reduce(function (acc, propName) {
+            acc[propName] = clusterSpec[propName] instanceof jQuery ?
+                '<jQuery element>' : clusterSpec[propName];
+            return acc;
+        }, {});
+    });
+    console.log("TRANSCRIPT NAME: >>" + storage.getCurrentName() + "<<");
+    console.log(JSON.stringify(prettyClusterSpecs, null, 4));
+}
 function buttonDelete() {
     var name = loadInputElement.val(), newName;
     if (confirm("Delete transcript ‘" + name + "’?")) {
@@ -683,8 +537,10 @@ function buttonDelete() {
 function selectGlyph(menu, selectedValue, callback) {
     var tableElement    = $('table', overlayElement),
         selectedElement = $(document.activeElement),
+        selectedValue   = selectedValue || 0,
         rowElements, defaultShortkeys =
         '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
     function createMenu(menu) {
         var shortkeys = {}, tableHtml = "";
         bodyElement.addClass('overlay');
@@ -729,7 +585,13 @@ function selectGlyph(menu, selectedValue, callback) {
                 });
         }());
         overlayElement.css('display', 'block')
-        rowElements[selectedValue].focus();
+        console.log('selectedValue: ' + selectedValue);
+
+        if (selectedValue === undefined) {
+            overlayElement.focus();
+        } else {
+            rowElements[selectedValue].focus();
+        }
     }
 
     function destroyMenu(backButtonEvent) {
@@ -781,7 +643,8 @@ function selectGlyph(menu, selectedValue, callback) {
                 callback(itemNum);
                 return false;
             default:
-                console.log("Menu keypress: " + event.key);
+                console.log("Menu keypress: >" + event.key + "<");
+                return true;
             }
         }
     }
@@ -810,6 +673,7 @@ loadButtonElement.click(buttonLoad);
 saveButtonElement.click(buttonSave);
 clearButtonElement.click(buttonClear);
 dumpButtonElement.click(buttonDump);
+dumpThisButtonElement.click(buttonDumpThis);
 deleteButtonElement.click(buttonDelete);
 
 buttonLoad();
@@ -824,7 +688,7 @@ $("div td[tabindex]").focus();
         buttonsII = $('table.ii'),
         buttonsIII = $('table.iii');
 
-    /* Hilite input fields when hovering on corresponding button groups. */
+    /* Hilite: Cluster button group -> transcript field. */
     buttonsI.hover(
         function () { input.add(inputI).   addClass('hover'); },
         function () { input.add(inputI).removeClass('hover'); }
@@ -838,7 +702,7 @@ $("div td[tabindex]").focus();
         function () { input.add(inputIII).removeClass('hover'); }
     );
 
-    /* Hilite corresponding button groups when hovering on input fields. */
+    /* Hilite: Transcript field -> cluster button group. */
     inputI.hover(
         function () { buttonsI.   addClass('hover'); },
         function () { buttonsI.removeClass('hover'); }
@@ -852,96 +716,94 @@ $("div td[tabindex]").focus();
         function () { buttonsIII.removeClass('hover'); }
     );
 
-    /* Hilite glyphs to be removed when hovering on button. */
+    /* Hilite: Cluster button -> transcript clusters to be added/removed. */
     addIaButtonElement.hover(
-        function () {
-            $('.cluster.ia', input).addClass('disabled');
-            $('.cluster.ib', input).addClass('disabled');
-        },
-        function () {
-            $('.cluster.ia', input).removeClass('disabled');
-            $('.cluster.ib', input).removeClass('disabled');
-        }
+        function () { gui.cueShow('ia').cueHide('ib'); },
+        function () { gui.uncue(); }
     );
     addIbButtonElement.hover(
         function () {
-            $('.cluster.ia', input).addClass('disabled');
-            $('.cluster.iia', input).addClass('disabled');
-            $('.cluster.iib', input).addClass('disabled');
-            if (transcript.exist('ia')) {
-                addIaButtonElement.addClass('hover');
-            }
-            if (transcript.exist('iia')) {
-                addIIaButtonElement.addClass('hover');
-            }
-            if (transcript.exist('iib')) {
-                addIIbButtonElement.addClass('hover');
-            }
+            gui.cueShow('ib').cueHide('ia').cueHide('iia').cueHide('iib');
+            // if (transcript.exist('ia')) {
+            //     console.log('should hilite button Ia');
+            //     addIaButtonElement.addClass('hover');
+            // }
+            // if (transcript.exist('iia')) {
+            //     console.log('should hilite button IIa');
+            //     addIIaButtonElement.addClass('hover');
+            // }
+            // if (transcript.exist('iib')) {
+            //     console.log('should hilite button IIb');
+            //     addIIbButtonElement.addClass('hover');
+            // }
         },
         function () {
-            $('.cluster.ia', input).removeClass('disabled');
-            $('.cluster.iia', input).removeClass('disabled');
-            $('.cluster.iib', input).removeClass('disabled');
-            addIaButtonElement.removeClass('hover');
-            addIIaButtonElement.removeClass('hover');
-            addIIbButtonElement.removeClass('hover');
+            gui.uncue();
+            // addIaButtonElement.removeClass('hover');
+            // addIIaButtonElement.removeClass('hover');
+            // addIIbButtonElement.removeClass('hover');
         }
     );
     addIIaButtonElement.hover(
         function () {
-            $('.cluster.ib', input).addClass('disabled');
-            $('.cluster.iia', input).addClass('disabled');
-            $('.cluster.iib', input).addClass('disabled');
-            if (transcript.exist('iib')) {
-                addIIbButtonElement.addClass('hover');
-            }
-            if (!transcript.exist('iic')) {
-                addIIcButtonElement.addClass('hover');
-            }
+            gui.cueShow('iia').cueHide('ib').cueHide('iib');
+            // if (transcript.exist('iib')) {
+            //     addIIbButtonElement.addClass('hover');
+            // }
+            // if (!transcript.exist('iic')) {
+            //     addIIcButtonElement.addClass('hover');
+            // }
         },
         function () {
-            $('.cluster.ib', input).removeClass('disabled');
-            $('.cluster.iia', input).removeClass('disabled');
-            $('.cluster.iib', input).removeClass('disabled');
-            addIIbButtonElement.removeClass('hover');
-            addIIcButtonElement.removeClass('hover');
+            gui.uncue();
+            // addIIbButtonElement.removeClass('hover');
+            // addIIcButtonElement.removeClass('hover');
         }
     );
     addIIbButtonElement.hover(
         function () {
-            $('.cluster.ib', input).addClass('disabled');
-            $('.cluster.iib', input).addClass('disabled');
-            if (!transcript.exist('iia')) {
-                addIIaButtonElement.addClass('hover');
-            }
-            if (!transcript.exist('iic')) {
-                addIIcButtonElement.addClass('hover');
-            }
+            gui.cueShow('iib').cueHide('ib');
+            if (gui.isHidden('iia')) { gui.cueShow('iia'); }
+            // if (!transcript.exist('iia')) {
+            //     addIIaButtonElement.addClass('hover');
+            // }
+            // if (!transcript.exist('iic')) {
+            //     addIIcButtonElement.addClass('hover');
+            // }
         },
         function () {
-            $('.cluster.ib', input).removeClass('disabled');
-            $('.cluster.iib', input).removeClass('disabled');
-            addIIaButtonElement.removeClass('hover');
-            addIIcButtonElement.removeClass('hover');
+            gui.uncue();
+            // addIIaButtonElement.removeClass('hover');
+            // addIIcButtonElement.removeClass('hover');
         }
     );
     addIIcButtonElement.hover(
         function () {
-            $('.cluster.iia', input).addClass('disabled');
-            $('.cluster.iib', input).addClass('disabled');
-            if (transcript.exist('iia')) {
-                addIIaButtonElement.addClass('hover');
-            }
-            if (transcript.exist('iib')) {
-                addIIbButtonElement.addClass('hover');
-            }
+            gui.cueHide('iia').cueHide('iib');
+            // if (transcript.exist('iia')) {
+            //     addIIaButtonElement.addClass('hover');
+            // }
+            // if (transcript.exist('iib')) {
+            //     addIIbButtonElement.addClass('hover');
+            // }
         },
         function () {
-            $('.cluster.iia', input).removeClass('disabled');
-            $('.cluster.iib', input).removeClass('disabled');
-            addIIaButtonElement.removeClass('hover');
-            addIIbButtonElement.removeClass('hover');
+            gui.uncue();
+            // addIIaButtonElement.removeClass('hover');
+            // addIIbButtonElement.removeClass('hover');
         }
+    );
+    addIIIaButtonElement.hover(
+        function () { gui.cueShow('iiia'); },
+        function () { gui.uncue();         }
+    );
+    addIIIbButtonElement.hover(
+        function () { gui.cueShow('iiib'); },
+        function () { gui.uncue();         }
+    );
+    addIIIcButtonElement.hover(
+        function () { gui.cueShow('iiic'); },
+        function () { gui.uncue();         }
     );
 }());
 

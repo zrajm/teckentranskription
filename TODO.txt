@@ -1,6 +1,70 @@
 -*- org -*-
 
-* TODO Change GUI update architecture                              :UX:MAJOR:
+* [5/12] Change GUI update architecture                            :UX:MAJOR:
+** TODO Move cluster image preload into makeClusterGui module
+   Together with the 'glyphs' data structure.
+** TODO GUI module should use cluster objects, not clusterSpecs
+    .show() method already does this
+** TODO Cluster button hilite when hovering on button
+** TODO Cluster button hilite should reflect transcript
+** TODO Remove clusters in field III of transcript
+   By dragging and dropping them outside their field?
+** TODO Reorder clusters in field III of transcript
+   By means of drag-and-drop.
+** DONE Change glyphs in cluster
+   CLOSED: [2017-02-14 Tue 11:04]
+** DONE Cluster buttons to add/remove clusters from transcript
+   CLOSED: [2017-02-09 Thu 03:20]
+** DONE Cluster button hover cues
+   CLOSED: [2017-01-31 Mon]
+   Hovering on a cluster button should show cues (in the transcript) displaying
+   what would be inserted/removed from the transcript when clicking on the
+   button. Moving mouse pointer off of the cluster button the cue should remove
+   the cues.
+** DONE Loading whole transcript
+   CLOSED: [2017-01-30 Mon]
+   Loading a new transcript (by means of `makeTranscript.set()`) should
+   automatically update the GUI.
+** DONE New GUI module with .uncue() function
+   CLOSED: [2017-01-31 Mon]
+* TODO Don't filter data content in storage module
+* TODO It should be possible to remove IIc cluster(?)
+  To allow for searching for a word without specifying IIc.
+* TODO Ia cluster margin in GUI                                    :COSMETIC:
+  When cluster type 'Ia' is displayed the margin between field I & II is too
+  narrow (but when displaying cluster type 'Ib' it looks good).
+* TODO Animated cues is GUI                                           :MINOR:
+  Clusters that are about to be removed should have a red 'X' across them
+  (fading in in about a second?)
+
+  Clusters that are about to be inserted should slide in (in about a second?)
+  widening until they have their full width, possibly using?
+
+      ----------------------------------------
+      transform: scaleX(0.5);
+      ----------------------------------------
+
+  Some CSS tried out when experimenting:
+
+      ----------------------------------------
+      .cluster.hide {
+          display: inline-block !important;
+          overflow: hidden;
+          width: 0;
+          background: green;
+          transform: scaleX(.1);
+          Xwidth: auto;
+          outline: 2px solid blue;
+      }
+      .cluster {
+          transform: scaleX(1);
+          Xwidth: 100%;
+          -webkit-transition: width 1s ease-in-out;
+          -moz-transition: width 1s ease-in-out;
+          -o-transition: width 1s ease-in-out;
+          transition: width 1s ease-in-out;
+      }
+      ----------------------------------------
 * TODO Change internal state format
     [ia, ib, iia, iib, iic, iii[abc]...]
 
