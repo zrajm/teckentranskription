@@ -1,8 +1,6 @@
 -*- org -*-
 
-* [5/12] Change GUI update architecture                            :UX:MAJOR:
-** TODO Move cluster image preload into makeClusterGui module
-   Together with the 'glyphs' data structure.
+* [6/11] Change GUI update architecture                            :UX:MAJOR:
 ** TODO GUI module should use cluster objects, not clusterSpecs
     .show() method already does this
 ** TODO Cluster button hilite when hovering on button
@@ -11,6 +9,9 @@
    By dragging and dropping them outside their field?
 ** TODO Reorder clusters in field III of transcript
    By means of drag-and-drop.
+** DONE Move cluster image preload into makeClusterGui module
+   CLOSED: [2017-02-16 Thu 09:40]
+   Together with the 'glyphs' data structure.
 ** DONE Change glyphs in cluster
    CLOSED: [2017-02-14 Tue 11:04]
 ** DONE Cluster buttons to add/remove clusters from transcript

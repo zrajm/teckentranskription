@@ -23,176 +23,7 @@ var addIaButtonElement  = $("#ia")
     transcript          = makeTranscript({
         i: $('#input td.i'), ii: $('#input td.ii'), iii: $('#input td.iii'),
     }),
-    glyphs = {
-        r: [ // Relation
-            ["pic/r-ingen.svg",   "Relation – Ingen"  ],
-            ["pic/r-over.svg",    "Relation – Över"   ],
-            ["pic/r-under.svg",   "Relation – Under"  ],
-            ["pic/r-bredvid.svg", "Relation – Bredvid"],
-            ["pic/r-framfor.svg", "Relation – Framför"],
-            ["pic/r-bakom.svg",   "Relation – Bakom"  ],
-        ],
-        a: [ // Artikulationsställe
-            ["pic/a-hjassan.svg",         "Läge – Hjässan"                        ],
-            ["pic/a-ansiktet.svg",        "Läge – Ansiktet, huvudhöjd"            ],
-            ["pic/a-ansiktet-upptill.svg","Läge – Ansiktet, övre del"             ],
-            ["pic/a-ansiktet-nertill.svg","Läge – Ansiktet, nedre del"            ],
-            ["pic/a-pannan.svg",          "Läge – Pannan"                         ],
-            ["pic/a-ogonen.svg",          "Läge – Ögonen"                         ],
-            ["pic/a-ogat.svg",            "Läge – Ögat"                           ],
-            ["pic/a-nasan.svg",           "Läge – Näsan"                          ],
-            ["pic/a-oronen.svg",          "Läge – Sidorna av huvudet, öronen"     ],
-            ["pic/a-orat-hoger.svg",      "Läge – Sidan av huvudet, örat, höger"  ],
-            ["pic/a-orat-vanster.svg",    "Läge – Sidan av huvudet, örat, vänster"],
-            ["pic/a-kinderna.svg",        "Läge – Kinderna"                       ],
-            ["pic/a-kinden-hoger.svg",    "Läge – Kinden, höger"                  ],
-            ["pic/a-kinden-vanster.svg",  "Läge – Kinden, vänster"                ],
-            ["pic/a-munnen.svg",          "Läge – Munnen"                         ],
-            ["pic/a-hakan.svg",           "Läge – Hakan"                          ],
-            ["pic/a-nacken.svg",          "Läge – Nacken"                         ],
-            ["pic/a-halsen.svg",          "Läge – Halsen"                         ],
-            ["pic/a-axlarna.svg",         "Läge – Axlarna"                        ],
-            ["pic/a-axeln-hoger.svg",     "Läge – Axeln, höger"                   ],
-            ["pic/a-axeln-vanster.svg",   "Läge – Axeln, vänster"                 ],
-            ["pic/a-armen.svg",           "Läge – Armen"                          ],
-            ["pic/a-overarmen.svg",       "Läge – Överarmen"                      ],
-            ["pic/a-underarmen.svg",      "Läge – Underarmen"                     ],
-            ["pic/a-brostet.svg",         "Läge – Bröstet"                        ],
-            ["pic/a-brostet-hoger.svg",   "Läge – Bröstet, höger sida"            ],
-            ["pic/a-brostet-vanster.svg", "Läge – Bröstet, vänster sida"          ],
-            ["pic/a-magen.svg",           "Läge – Magen, mellangärdet"            ],
-            ["pic/a-hofterna.svg",        "Läge – Höfterna"                       ],
-            ["pic/a-hoften-hoger.svg",    "Läge – Höften, höger"                  ],
-            ["pic/a-hoften-vanster.svg",  "Läge – Höften, vänster"                ],
-            ["pic/a-benet.svg",           "Läge – Benet"                          ],
-        ],
-        h: [ // Handform
-            //
-            // Keyboard shortcuts resembles glyphs (no digits). Lower case
-            // letters (except c, p, u, y and z) give the same letter (and
-            // handshape for that letter in Swedish sign language). Same upper
-            // case letter is usually related (commonly with horizontal
-            // strikethrough) but some are more farfetched:
-            //
-            //   Cc - Reversed C (uppercase = angular version thereof).
-            //   D  - '4' (4th in alphabet, also handshape similar to 'd').
-            //   Pp - Delta (uppercase = vertical strikethrough).
-            //   R  - Reversed lower case 'r' (or upside-down J).
-            //   Uu - Upside-down U (uppercase = strikethrough).
-            //   Yy - Strikethrough Y (uppercase = vertical strikethrough too).
-            //   Z  - Strikethrough Z (there is no lower case/plain z).
-            //
-            ["pic/h-flata-handen.svg",     "Handform – Flata handen",     "j", "pic/hand/flata-handen.jpg"     ],
-            ["pic/h-flata-tumhanden.svg",  "Handform – Flata tumhanden",  "J", "pic/hand/flata-tumhanden.jpg"  ],
-            ["pic/h-sprethanden.svg",      "Handform – Sprethanden",      "y", "pic/hand/sprethanden.jpg"      ],
-            ["pic/h-4-handen.svg",         "Handform – 4-handen",         "D", "pic/hand/4-handen.jpg"         ],
-            ["pic/h-d-handen.svg",         "Handform – D-handen",         "d", "pic/hand/d-handen.jpg"         ],
-            ["pic/h-f-handen.svg",         "Handform – F-handen",         "f", "pic/hand/f-handen.jpg"         ],
-            ["pic/h-vinkelhanden.svg",     "Handform – Vinkelhanden",     "F", "pic/hand/vinkelhanden.jpg"     ],
-            ["pic/h-tumvinkelhanden.svg",  "Handform – Tumvinkelhanden",  "A", "pic/hand/tumvinkelhanden.jpg"  ],
-            ["pic/h-a-handen.svg",         "Handform – A-handen",         "a", "pic/hand/a-handen.jpg"         ],
-            ["pic/h-s-handen.svg",         "Handform – S-handen",         "s", "pic/hand/s-handen.jpg"         ],
-            ["pic/h-klohanden.svg",        "Handform – Klohanden",        "S", "pic/hand/klohanden.jpg"        ],
-            ["pic/h-o-handen.svg",         "Handform – O-handen",         "o", "pic/hand/o-handen.jpg"         ],
-            ["pic/h-knutna-handen.svg",    "Handform – Knutna handen",    "g", "pic/hand/knutna-handen.jpg"    ],
-            ["pic/h-e-handen.svg",         "Handform – E-handen",         "e", "pic/hand/e-handen.jpg"         ],
-            ["pic/h-tumhanden.svg",        "Handform – Tumhanden",        "b", "pic/hand/tumhanden.jpg"        ],
-            ["pic/h-q-handen.svg",         "Handform – Q-handen",         "q", "pic/hand/q-handen.jpg"         ],
-            ["pic/h-pekfingret.svg",       "Handform – Pekfingret",       "l", "pic/hand/pekfingret.jpg"       ],
-            ["pic/h-l-handen.svg",         "Handform – L-handen",         "L", "pic/hand/l-handen.jpg"         ],
-            ["pic/h-raka-matthanden.svg",  "Handform – Raka måtthanden",  "C", "pic/hand/raka-matthanden.jpg"  ],
-            ["pic/h-nyphanden.svg",        "Handform – Nyphanden",        "P", "pic/hand/nyphanden.jpg"        ],
-            ["pic/h-t-handen.svg",         "Handform – T-handen",         "t", "pic/hand/t-handen.jpg"         ],
-            ["pic/h-krokfingret.svg",      "Handform – Krokfingret",      "R", "pic/hand/krokfingret.jpg"      ],
-            ["pic/h-matthanden.svg",       "Handform – Måtthanden",       "c", "pic/hand/matthanden.jpg"       ],
-            ["pic/h-hallhanden.svg",       "Handform – Hållhanden",       "O", "pic/hand/hallhanden.jpg"       ],
-            ["pic/h-langfingret.svg",      "Handform – Långfingret",      "r", "pic/hand/langfingret.jpg"      ],
-            ["pic/h-n-handen.svg",         "Handform – N-handen",         "n", "pic/hand/n-handen.jpg"         ],
-            ["pic/h-lilla-o-handen.svg",   "Handform – Lilla O-handen",   "p", "pic/hand/lilla-o-handen.jpg"   ],
-            ["pic/h-v-handen.svg",         "Handform – V-handen",         "v", "pic/hand/v-handen.jpg"         ],
-            ["pic/h-tupphanden.svg",       "Handform – Tupphanden",       "V", "pic/hand/tupphanden.jpg"       ],
-            ["pic/h-k-handen.svg",         "Handform – K-handen",         "k", "pic/hand/k-handen.jpg"         ],
-            ["pic/h-dubbelkroken.svg",     "Handform – Dubbelkroken",     "u", "pic/hand/dubbelkroken.jpg"     ],
-            ["pic/h-bojda-tupphanden.svg", "Handform – Böjda tupphanden", "U", "pic/hand/bojda-tupphanden.jpg" ],
-            ["pic/h-m-handen.svg",         "Handform – M-handen",         "m", "pic/hand/m-handen.jpg"         ],
-            ["pic/h-w-handen.svg",         "Handform – W-handen",         "w", "pic/hand/w-handen.jpg"         ],
-            ["pic/h-lillfingret.svg",      "Handform – Lillfingret",      "i", "pic/hand/lillfingret.jpg"      ],
-            ["pic/h-flyghanden.svg",       "Handform – Flyghanden",       "I", "pic/hand/flyghanden.jpg"       ],
-            ["pic/h-stora-langfingret.svg","Handform – Stora långfingret","Y", "pic/hand/stora-langfingret.jpg"],
-            ["pic/h-runda-langfingret.svg","Handform – Runda långfingret","Z", "pic/hand/runda-langfingret.jpg"],
-            ["pic/h-stora-nyphanden.svg",  "Handform – Stora nyphanden",  "h", "pic/hand/stora-nyphanden.jpg"  ],
-            ["pic/h-x-handen.svg",         "Handform – X-handen",         "x", "pic/hand/x-handen.jpg"         ],
-        ],
-        ar: [ // Attitydsriktning                                            // Cannot be combined with:
-            ["pic/ar-vanster.svg", "Attitydsriktning – Vänsterriktad", "v"], //   höger- & vänstervänd
-            ["pic/ar-hoger.svg",   "Attitydsriktning – Högerriktad",   "h"], //   -"-
-            ["pic/ar-fram.svg",    "Attitydsriktning – Framåtriktad",  "f"], //   framåt- & inåtriktad
-            ["pic/ar-in.svg",      "Attitydsriktning – Inåtriktad",    "i"], //   -"-
-            ["pic/ar-upp.svg",     "Attitydsriktning – Uppåtriktad",   "u"], //   uppåt- & nedåtvänd
-            ["pic/ar-ner.svg",     "Attitydsriktning – Nedåtriktad",   "n"], //   -"-
-        ],
-        av: [ // Attitydsvridning                                            // Cannot be combined with:
-            ["pic/av-vanster.svg", "Attitydsvridning – Vänstervänd", "v"],   //   höger- & vänsterriktad
-            ["pic/av-hoger.svg",   "Attitydsvridning – Högervänd",   "h"],   //   -"-
-            ["pic/av-fram.svg",    "Attitydsvridning – Framåtvänd",  "f"],   //   framåt- & inåtriktad
-            ["pic/av-in.svg",      "Attitydsvridning – Inåtvänd",    "i"],   //   -"-
-            ["pic/av-upp.svg",     "Attitydsvridning – Uppåtvänd",   "u"],   //   uppåt- & nedåtriktad
-            ["pic/av-ner.svg",     "Attitydsvridning – Nedåtvänd",   "n"],   //   -"-
-        ],
-        ina: [ // Interaktionsart
-            ["pic/i-kors.svg",    "Interaktionsart – Kors",    "x"],
-            ["pic/i-vinkel.svg",  "Interaktionsart – Vinkel",  "w"],
-            ["pic/i-hakning.svg", "Interaktionsart – Hakning", "X"],
-        ],
-        artion_tall: [ // Artikulation
-            ["pic/rr-vanster.svg",      "Rörelseriktning – Föres åt vänster",             "v"],
-            ["pic/rr-hoger.svg",        "Rörelseriktning – Föres åt höger",               "h"],
-            ["pic/rr-vanster-hoger.svg","Rörelseriktning – Föres vänster–höger (sidled)", "s"],
-            ["pic/rr-fram.svg",         "Rörelseriktning – Föres framåt",                 "f"],
-            ["pic/rr-in.svg",           "Rörelseriktning – Föres inåt",                   "i"],
-            ["pic/rr-fram-in.svg",      "Rörelseriktning – Föres framåt–inåt (djupled)",  "d"],
-            ["pic/rr-upp.svg",          "Rörelseriktning – Föres uppåt",                  "u"],
-            ["pic/rr-ner.svg",          "Rörelseriktning – Föres nedåt",                  "n"],
-            ["pic/rr-upp-ner.svg",      "Rörelseriktning – Föres uppåt–nedåt (höjdled)",  "j"],
-            ["pic/rr-kort-upp.svg",     "Rörelseriktning – Föres kort uppåt",             "U"],
-            ["pic/rr-kort-ner.svg",     "Rörelseriktning – Föres kort nedåt",             "N"],
-            ["pic/ra-spelar.svg",       "Rörelseart – Spelar",                            "~"],
-            ["pic/ra-stror.svg",        "Rörelseart – Strör",                             "@"],
-            ["pic/ra-vinkar.svg",       "Rörelseart – Vinkar",                            "#"],
-            ["pic/ra-bojs.svg",         "Rörelseart – Böjs",                              '"'],
-            ["pic/i-vaxelvis.svg",      "Interaktionsart – Växelvis",                     "="],
-            ["pic/i-konvergerar.svg",   "Interaktionsart – Konvergerar",                  ">"],
-            ["pic/i-divergerar.svg",    "Interaktionsart – Divergerar",                   "<"],
-            ["pic/i-byte.svg",          "Interaktionsart – Byte",                         "'"],
-            ["pic/i-kors.svg",          "Interaktionsart – Kors",                         "x"],
-            ["pic/i-vinkel.svg",        "Interaktionsart – Vinkel",                       "w"],
-            ["pic/i-hakning.svg",       "Interaktionsart – Hakning",                      "X"],
-            ["pic/i-entre.svg",         "Interaktionsart – Entré",                        "e"],
-            ["pic/i-kontakt.svg",       "Interaktionsart – Kontakt",                      "."],
-            ["pic/i-medial-kontakt.svg","Interaktionsart – Medial kontakt",               ","],
-            ["pic/x-upprepning.svg",    "Övrigt – Upprepad artikulation",                 ":"],
-            ["pic/x-separator.svg",     "Övrigt – Markerar sekventiell artikulation",     "|"],
-        ],
-        artion_high: [ // Artikulation
-            ["pic/ra-bage.svg",   "Rörelseart – Båge",   "b"],
-            ["pic/ra-cirkel.svg", "Rörelseart – Cirkel", "c"],
-            ["pic/ra-vrids.svg",  "Rörelseart – Vrids",  "v"],
-            ["pic/ra-slas.svg",   "Rörelseart – Slås",   "s"],
-        ],
-        artion_low: [ // Artikulation
-            ["pic/rr-vanster2.svg",       "Rörelseriktning – Åt vänster",             "v"],
-            ["pic/rr-hoger2.svg",         "Rörelseriktning – Åt höger",               "h"],
-            ["pic/rr-vanster-hoger2.svg", "Rörelseriktning – Vänster–höger (sidled)", "s"],
-            ["pic/rr-fram2.svg",          "Rörelseriktning – Framåt",                 "f"],
-            ["pic/rr-in2.svg",            "Rörelseriktning – Inåt",                   "i"],
-            ["pic/rr-fram-in2.svg",       "Rörelseriktning – Framåt–inåt (djupled)",  "d"],
-            ["pic/rr-fixme.svg",          "Rörelseriktning – FIXME",                  "m"],
-            ["pic/rr-upp2.svg",           "Rörelseriktning – Uppåt",                  "u"],
-            ["pic/rr-ner2.svg",           "Rörelseriktning – Nedåt",                  "n"],
-            ["pic/rr-upp-ner2.svg",       "Rörelseriktning – Uppåt–nedåt (höjdled)",  "j"],
-        ],
-    },
-    gui = makeClusterGui($('.sign'), glyphs),
+    gui = makeClusterGui($('.sign')),
     storage = (function () {
         function set(name, object) {
             //console.log("storage.set() -- >>" + JSON.stringify(object, null, 4) + "<<");
@@ -264,19 +95,6 @@ var addIaButtonElement  = $("#ia")
             }
         };
     }());
-
-// Make sure all images are cached (so that script works even offline).
-function preloadImages(imageList) {
-    var html = '';
-    Object.keys(imageList).forEach(function (name) {
-        imageList[name].forEach(function (image) {
-            if (image[0]) { html += '<img src="' + image[0] + '">'; }
-            if (image[3]) { html += '<img src="' + image[3] + '">'; }
-        });
-    });
-    html = $(html).css('display', 'none');
-    $('body').append(html);
-}
 
 function makeCluster(clusterSpec) {
     var self = { get: get, set: set },
@@ -557,8 +375,8 @@ function selectGlyph(menu, selectedValue, callback) {
                 shortkey.toUpperCase()
             tableHtml += '<tr tabindex=1 data-value=' + index +
                 (selectedValue === index ? ' class=selected' : '') + '>' +
-                '<td><img src="' + glyph + '">' +
-                (image ? '<td><img src="' + image + '">' : '') +
+                '<td><img src="pic/' + glyph + '">' +
+                (image ? '<td><img src="pic/' + image + '">' : '') +
                 '<td class=left>' + text + shortkeyHtml;
         });
         tableElement.html(tableHtml);
@@ -654,7 +472,6 @@ function selectGlyph(menu, selectedValue, callback) {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-preloadImages(glyphs);
 updateLoadList();
 (function () {
     var selected = storage.getCurrentName();
