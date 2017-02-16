@@ -26,24 +26,7 @@ var addIaButtonElement  = $("#ia")
     gui = makeClusterGui($('.sign')),
     storage = (function () {
         function set(name, object) {
-            //console.log("storage.set() -- >>" + JSON.stringify(object, null, 4) + "<<");
-
-            // FIXME: Storage module should NOT clean up data when saving.
-            // (This belongs elsewhere.)
-            var newObject = typeof object === "string" ?
-                object :                       // string
-                object.map(function (value) {  // list of objects
-                    return Object.keys(value).reduce(function (acc, name) {
-                        console.log('  NAME: ' + name);
-                        // Clean away all jQuery element values from object.
-                        if (!(value[name] instanceof jQuery)) {
-                            console.log('    ' + name + ' is jquery value');
-                            acc[name] = value[name];
-                        }
-                        return acc;
-                    }, {});
-                });
-            localStorage.setItem(name, JSON.stringify(newObject));
+            localStorage.setItem(name, JSON.stringify(object));
         }
         function get(name) {
             var json = localStorage.getItem(name);
@@ -99,12 +82,20 @@ var addIaButtonElement  = $("#ia")
 function makeCluster(clusterSpec) {
     var self = { get: get, set: set },
         clusterState = {
-            type   : clusterSpec.type,
-            element: gui.init(clusterSpec.type)
+            type    : clusterSpec.type,
+            _element: gui.init(clusterSpec.type)
         };
 
+    // Return named cluster property or, if no property is named, an object
+    // with all properties except the ones beginning with '_' (= hidden
+    // properties).
     function get(name) {
-        return (name === undefined) ? clusterState : clusterState[name];
+        return name === undefined ?
+            Object.keys(clusterState).reduce(function (acc, prop) {
+                if (prop[0] !== '_') { acc[prop] = clusterState[prop]; }
+                return acc;
+            }, {}) :
+            clusterState[name];
     }
 
     function set(clusterSpec, value) {
@@ -175,7 +166,7 @@ function makeTranscript(element) {
         while (i < clusters.length) {
             cluster = clusters[i];
             if (cluster.get('type') === clusterType) {
-                gui.hide(cluster.get('element'));
+                gui.hide(cluster.get('_element'));
                 clusters.splice(i, 1);
                 continue;
             }

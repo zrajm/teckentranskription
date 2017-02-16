@@ -28,7 +28,6 @@
    automatically update the GUI.
 ** DONE New GUI module with .uncue() function
    CLOSED: [2017-01-31 Mon]
-* TODO Don't filter data content in storage module
 * TODO It should be possible to remove IIc cluster(?)
   To allow for searching for a word without specifying IIc.
 * TODO Ia cluster margin in GUI                                    :COSMETIC:
@@ -367,6 +366,11 @@ External (strips away unshown state):
   Fancy fix: Field tables should prolly be `display: inline`, and cluster
   tables `display: inline-table`. Some kind of clearfix is prolly also needed
   so that the cluster tables won't protrude outside the inline containers.
+* DONE Don't filter data content in storage module
+  CLOSED: [2017-02-16 Thu 10:32]
+  Cluster module now does filtering, by treating 'hidden' properties
+  (properties with names beginning with '_') separately -- not returning any
+  hidden properties when `.get()` the whole cluster object.
 * DONE Simplify focusing in glyph selector                               :UX:
   CLOSED: [2017-02-04 Sat 13:04]
   Moving the mouse pointer onto a glyph selector item should focus that item

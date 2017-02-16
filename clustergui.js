@@ -266,8 +266,8 @@ function makeClusterGui(transcriptElement) {
     function clear() {
         Object.keys(fieldNameOf).forEach(function (clusterType) {
             set({
-                type   : clusterType,
-                element: domElement(clusterType)
+                type    : clusterType,
+                _element: domElement(clusterType)
             });
         });
         domElement('i')  .children('.cluster').addClass('hide');
@@ -279,11 +279,11 @@ function makeClusterGui(transcriptElement) {
     // Populate specified cluster table (in DOM) with values.
     function set(clusterSpec) { //, cluster) {
         var clusterType    = clusterSpec.type,
-            clusterElement = clusterSpec.element,
+            clusterElement = clusterSpec._element,
             glyphTypes     = Object.keys(clusterGlyphs[clusterType]);
 
         if (clusterElement === undefined) {
-            throw TypeError("Missing 'element' property in clusterSpec");
+            throw TypeError("Missing '_element' property in clusterSpec");
         }
         if (clusterType === undefined) {
             throw TypeError("Missing 'type' property in clusterSpec");
@@ -305,7 +305,7 @@ function makeClusterGui(transcriptElement) {
     // CSS classes 'cuehide'/'cueshow' are used to indicate the cue modes.
     function show(cluster) {
         var clusterType    = cluster.get('type'),
-            clusterElement = cluster.get('element'),
+            clusterElement = cluster.get('_element'),
             glyphTypes     = Object.keys(clusterGlyphs[clusterType]);
 
         uncue();
