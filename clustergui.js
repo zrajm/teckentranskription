@@ -246,16 +246,15 @@ function makeClusterGui(transcriptElement) {
         return glyphImages;
     }
 
-    // Create DOM element for a new clusterType without displaying it in the
+    // Return jQuery element for a new clusterType without displaying it in the
     // GUI. DOM elements for clusters in field I & II are reused, while
     // elements for clusters in field III are added.
     function initGlyph(clusterType) {
         var element, fieldType = fieldNameOf[clusterType];
         if (fieldType === 'i' || fieldType === 'ii') {
             return domElement(clusterType);    // reuse existing DOM element
-        } else if (fieldType === 'iii') {
-            element = domElement(clusterType). // create new DOM element
-                clone(); // .addClass('hide');
+        } else if (fieldType === 'iii') {      // create new DOM element
+            element = domElement(clusterType).clone();
             domElement('iii').append(element);
             return element;
         }
@@ -264,10 +263,13 @@ function makeClusterGui(transcriptElement) {
 
     // Set all glyphs to first value in glyph list.
     function clear() {
-        Object.keys(fieldNameOf).forEach(function (clusterType) {
-            set({
-                type    : clusterType,
-                _element: domElement(clusterType)
+        var clusterTypes = Object.keys(fieldNameOf);
+        clusterTypes.forEach(function (clusterType) {
+            var glyphTypes = Object.keys(clusterGlyphs[clusterType]);
+            glyphTypes.forEach(function (glyphType) {
+                var glyphHtml      = glyphImages[glyphType][0],
+                    clusterElement = domElement(clusterType);
+                $('.' + glyphType, clusterElement).html(glyphHtml);
             });
         });
         domElement('i')  .children('.cluster').addClass('hide');
@@ -277,27 +279,28 @@ function makeClusterGui(transcriptElement) {
     }
 
     // Populate specified cluster table (in DOM) with values.
-    function set(clusterSpec) { //, cluster) {
-        var clusterType    = clusterSpec.type,
-            clusterElement = clusterSpec._element,
+    function set(cluster) {
+        var clusterType    = cluster.get('type'),
+            clusterElement = cluster.get('_element'),
             glyphTypes     = Object.keys(clusterGlyphs[clusterType]);
 
         if (clusterElement === undefined) {
-            throw TypeError("Missing '_element' property in clusterSpec");
+            throw TypeError("Missing '_element' property in cluster");
         }
         if (clusterType === undefined) {
-            throw TypeError("Missing 'type' property in clusterSpec");
+            throw TypeError("Missing 'type' property in cluster");
         }
         if (clusterGlyphs[clusterType] === undefined) {
             throw TypeError("Invalid cluster type '" + clusterType + "'");
         }
 
         glyphTypes.forEach(function (glyphType) {
-            var value = clusterSpec[glyphType] || 0,
+            var value = cluster.get(glyphType) || 0,
                 html  = glyphImages[glyphType][value] || value;
             $('.' + glyphType, clusterElement).html(html);
         });
-        return clusterSpec;
+
+        return self;                           // chainable
     }
 
     // Show cluster in GUI. Return jQuery element for the shown cluster.

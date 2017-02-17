@@ -106,8 +106,7 @@ function makeCluster(clusterSpec) {
                 clusterState[glyphType] = clusterSpec[glyphType];
             });
         }
-        gui.set(clusterState); //, self);
-        gui.show(self);
+        gui.set(self).show(self);
     }
 
     set(clusterSpec);

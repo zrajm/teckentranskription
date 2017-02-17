@@ -1,8 +1,6 @@
 -*- org -*-
 
-* [6/11] Change GUI update architecture                            :UX:MAJOR:
-** TODO GUI module should use cluster objects, not clusterSpecs
-    .show() method already does this
+* [7/12] Change GUI update architecture                            :UX:MAJOR:
 ** TODO Cluster button hilite when hovering on button
 ** TODO Cluster button hilite should reflect transcript
 ** TODO Remove clusters in field III of transcript
@@ -366,6 +364,14 @@ External (strips away unshown state):
   Fancy fix: Field tables should prolly be `display: inline`, and cluster
   tables `display: inline-table`. Some kind of clearfix is prolly also needed
   so that the cluster tables won't protrude outside the inline containers.
+* TODO GUI `.cue()` method should use cluster object, not spec
+  `.show()` + `.set()` method already does this. -- `.cue()` needs to be done
+  before `.hide()` since `.hide()` is called from inside `.cue()`.
+
+  This might be too complicated to be worth it.
+* DONE GUI `.set()` method should use cluster object, not spec
+  CLOSED: [2017-01-16 Thu 18:59]
+  `.show()` method already does this
 * DONE Don't filter data content in storage module
   CLOSED: [2017-02-16 Thu 10:32]
   Cluster module now does filtering, by treating 'hidden' properties
