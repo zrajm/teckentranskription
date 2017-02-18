@@ -33,8 +33,8 @@ noscript {
 /* table, td { outline: 1px solid rgba(0,0,0,.3); } */
 
 #input:hover table.cluster.iiic,
-#input:hover td[tabindex] { outline: 1px solid rgba(0, 0, 255, 0.25); }
-:focus                    { outline: 4px solid rgba(0, 0, 255, 0.5) !important; }
+#input:hover .glyph { outline: 1px solid rgba(0, 0, 255, 0.25); }
+:focus              { outline: 4px solid rgba(0, 0, 255, 0.5) !important; }
 
 .FIXME {
     /* background: red; */
@@ -147,7 +147,7 @@ table caption.controls {
 table:hover > caption.controls { display: block; }
 body.overlay table:hover caption.controls { display: none; }
 
-#input table td[tabindex]:hover,
+#input table .glyph:hover,
 table caption.controls             { background: rgba(0, 0, 0, .2); }
 table caption.controls span        { border: 3px solid transparent; }
 table caption.controls span:hover  { background: rgba(100, 100, 100, .5); }

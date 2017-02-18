@@ -241,7 +241,7 @@ function makeTranscript(element) {
         }
 
         // Focus the first glyph (of last cluster of the type added).
-        $('.cluster.' + clusterSpec.type).last().find('[tabindex]').first().focus();
+        $('.cluster.' + clusterSpec.type).last().find('.glyph').first().focus();
     }
     return {
         exist: exist,
@@ -484,7 +484,7 @@ dumpThisButtonElement.click(buttonDumpThis);
 deleteButtonElement.click(buttonDelete);
 
 buttonLoad();
-$("div td[tabindex]").focus();
+$('.glyph').focus();
 
 (function () {
     var input = $('#input'),
