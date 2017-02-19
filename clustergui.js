@@ -1,7 +1,7 @@
 /* Copyright 2017 by zrajm. Released under GPLv3 license. */
 
 // This is a singleton module (i.e. should only be invoked once).
-function makeClusterGui(transcriptElement) {
+function makeClusterGui(args) {
     var self = {
             clear   : clear,
             cueHide : cueHide,
@@ -13,6 +13,7 @@ function makeClusterGui(transcriptElement) {
             show    : show,
             uncue   : uncue,
         },
+        transcriptElement = args.inElement,
         glyphData = {
             r: [ // Relation
                 ["r-ingen.svg",   "Relation – Ingen"  ],
@@ -250,15 +251,21 @@ function makeClusterGui(transcriptElement) {
     // GUI. DOM elements for clusters in field I & II are reused, while
     // elements for clusters in field III are added.
     function initGlyph(clusterType) {
-        var element, fieldType = fieldNameOf[clusterType];
+        var element, fieldType = fieldNameOf[clusterType], glyphElements;
         if (fieldType === 'i' || fieldType === 'ii') {
-            return domElement(clusterType);    // reuse existing DOM element
+            element = domElement(clusterType); // reuse existing DOM element
         } else if (fieldType === 'iii') {      // create new DOM element
             element = domElement(clusterType).clone();
             domElement('iii').append(element);
-            return element;
+        } else {
+            throw TypeError("Invalid cluster type '" + clusterType + "'");
         }
-        throw TypeError("Invalid cluster type '" + clusterType + "'");
+        if (args.onGlyphHover || args.onGlyphFocus) {
+            glyphElements = element.find('.glyph').off('hover focus');
+            if (args.onGlyphHover) { glyphElements.hover(args.onGlyphHover); }
+            if (args.onGlyphFocus) { glyphElements.focus(args.onGlyphFocus); }
+        }
+        return element;
     }
 
     // Set all glyphs to first value in glyph list.

@@ -1,11 +1,15 @@
 -*- org -*-
 
-* [7/12] Change GUI update architecture                            :UX:MAJOR:
+* [8/11] Change GUI update architecture                            :UX:MAJOR:
 ** TODO Cluster button hilite when hovering on button
 ** TODO Cluster button hilite should reflect transcript
-** TODO Remove clusters in field III of transcript
-   By dragging and dropping them outside their field?
-** TODO Reorder clusters in field III of transcript
+** TODO Removal of clusters in field I and II
+   By dragging and dropping them outside their field.
+** DONE Removal of clusters in field III
+   CLOSED: [2017-02-19 Sun 01:10]
+   By dragging and dropping them outside their field.
+** DONE Reordering of clusters in field III
+   CLOSED: [2017-02-19 Sun 01:10]
    By means of drag-and-drop.
 ** DONE Move cluster image preload into makeClusterGui module
    CLOSED: [2017-02-16 Thu 09:40]
@@ -26,6 +30,9 @@
    automatically update the GUI.
 ** DONE New GUI module with .uncue() function
    CLOSED: [2017-01-31 Mon]
+* TODO Remove blue field + button group hilite                     :COSMETIC:
+  Its more distracting than useful.
+* TODO Display field around glyphs when drag-and-drop:ing          :COSMETIC:
 * TODO It should be possible to remove IIc cluster(?)
   To allow for searching for a word without specifying IIc.
 * TODO Ia cluster margin in GUI                                    :COSMETIC:

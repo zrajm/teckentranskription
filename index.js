@@ -23,7 +23,22 @@ var addIaButtonElement  = $("#ia")
     transcript          = makeTranscript({
         i: $('#input td.i'), ii: $('#input td.ii'), iii: $('#input td.iii'),
     }),
-    gui = makeClusterGui($('.sign')),
+    gui = makeClusterGui({
+        inElement   : $('.sign'),
+        onGlyphHover: function (event) { $(event.delegateTarget).focus(); },
+        onGlyphFocus: (function () {
+            var prevCluster;
+            return function (event) {
+                var cluster = $(event.delegateTarget).closest('.cluster');
+                if (!cluster.is(prevCluster)) {
+                    if (prevCluster !== undefined) {
+                        prevCluster.removeClass('focus');
+                    }
+                    prevCluster = cluster.addClass('focus');
+                }
+            }
+        }())
+    }),
     storage = (function () {
         function set(name, object) {
             localStorage.setItem(name, JSON.stringify(object));
@@ -148,9 +163,16 @@ function makeTranscript(element) {
     function redraw() {
         set(get());
     }
-    function remove(num) {
-        clusters.splice(num, 1);
-        redraw();
+    function remove(clusterNumber) {
+        // Return element or 'undefined' if not found.
+        return clusters.splice(clusterNumber, 1)[0];
+    }
+    function move(clusterNumber, newPosition) {
+        var cluster = remove(clusterNumber);
+        if (cluster !== undefined) {
+            clusters.splice(newPosition, 0, cluster);
+        }
+        return cluster;
     }
     function swap(x, y) {
         var tmp = clusters[y];
@@ -247,6 +269,9 @@ function makeTranscript(element) {
         exist: exist,
         add: add,
         get: get,
+        length: function () { return clusters.length },
+        move: move,
+        remove: remove,
         set: set,
     };
 }
@@ -613,5 +638,33 @@ $('.glyph').focus();
         function () { gui.uncue();         }
     );
 }());
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Drag-and-Drop Stuff
+//
+dragula($('.field.iii').toArray(), {
+    direction: 'horizontal',
+    removeOnSpill: true,
+}).on('drag', function (element, source) {
+    // Drag start: Put number on each '.cluster' element visible in DOM.
+    $('.cluster:not(.hide)').
+        each(function (i, element) {
+            $(element).data('n', i);
+        });
+}).on('drop', function (element, _, _, sibling) {
+    // Cluster move: Get number from element + sibling element that comes after
+    // it, then move element to the position given by sibling (if no sibling
+    // comes after it move it to last position).
+    var clusterNumber = $(element).data('n'),
+        position      = $(sibling).data('n');
+    if (position === undefined) { position = transcript.length(); }
+    if (position > clusterNumber) { position -= 1; }
+    transcript.move(clusterNumber, position);
+}).on('remove', function (element) {
+    // Cluster remove: Get number from element, then delete that cluster.
+    var clusterNumber = $(element).data('n');
+    transcript.remove(clusterNumber);
+});
 
 //[eof]
