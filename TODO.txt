@@ -117,20 +117,8 @@ External (strips away unshown state):
     #AA-AAAA-AAA-1A-2AA-3A
     #AA-AAAA-AAA-1A-2AA-3A/AA-AAAA-AAA-1A-2AA-3A
 * TODO Button group should not remain blue when deleting III cluster :UX:BUG:
-* TODO Fix '<' '>' and 'x' buttons for III glyphs                       :BUG:
-  (Drag-and-drop reordering would eliminate the need for this.)
-* TODO Drag-and-drop reordering of IIIc clusters                     :MOBILE:
-* TODO Drag-and-drop deleting?                                       :MOBILE:
 * TODO Update 'status' field when hovering/focusing on glyph
 * TODO Add '/' sign
-* TODO When glyph is focused, hilite other glyphs in cluster             :UX:
-  When hovering on a cluster, the glyphs of that cluster is hilited to show
-  their presence, when a glyph is focused the other glyphs of that cluster
-  should be hilited in the same way.
-* TODO Hovering on button should show clusters which would be inserted   :UX:
-  E.g. if button insert something into transcript, this should be displayed
-  but grayed out, if button is clicked this grayed out image should solidify
-  and remain.
 * TODO Use infinite undo paradigm                             :MAJOR:COMPLEX:
   Instead of OK/cancel requesters. All changes should be automatically written
   to localStorage.
