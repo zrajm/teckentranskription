@@ -56,6 +56,7 @@ table[border="1"] {
 }
 
 table {
+    position: relative;
     border-collapse: separate;
     border-spacing: 3px;
 }
@@ -132,25 +133,6 @@ select#load-input, input#save-input { width: 250px;   }
 #input td.full        { height: 85px; }
 
 /******************************************************************************/
-
-table { position: relative; }
-table caption.controls {
-    display: none;
-    z-index: 1;
-    position: absolute;
-    right: 0;
-
-    color: rgba(0, 0, 0, .5);
-    font-weight: bold;
-}
-table:hover > caption.controls { display: block; }
-body.overlay table:hover caption.controls { display: none; }
-
-table caption.controls             { background: rgba(0, 0, 0, .2); }
-table caption.controls span        { border: 3px solid transparent; }
-table caption.controls span:hover  { background: rgba(100, 100, 100, .5); }
-table caption.controls span:active { background: rgba( 50,  50,  50, .5); }
-table caption.controls span[disabled] { background: inherit; color: rgba(0, 0, 0, .2) }
 
 footer {
     opacity: .75;
