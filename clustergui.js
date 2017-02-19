@@ -482,6 +482,7 @@ function makeClusterGui(args) {
         // Cluster remove: Get number from element, then delete that cluster.
         var clusterNumber = $(element).data('n');
         transcript.remove(clusterNumber);
+        hideAllEmptyFieldElements();
     });
 
     ////////////////////////////////////////////////////////////////////////////
