@@ -604,32 +604,4 @@ $('.glyph').focus();
     );
 }());
 
-////////////////////////////////////////////////////////////////////////////////
-//
-// Drag-and-Drop Stuff
-//
-dragula($('.field.iii').toArray(), {
-    direction: 'horizontal',
-    removeOnSpill: true,
-}).on('drag', function (element, source) {
-    // Drag start: Put number on each '.cluster' element visible in DOM.
-    $('.cluster:not(.hide)').
-        each(function (i, element) {
-            $(element).data('n', i);
-        });
-}).on('drop', function (element, _, _, sibling) {
-    // Cluster move: Get number from element + sibling element that comes after
-    // it, then move element to the position given by sibling (if no sibling
-    // comes after it move it to last position).
-    var clusterNumber = $(element).data('n'),
-        position      = $(sibling).data('n');
-    if (position === undefined) { position = transcript.length(); }
-    if (position > clusterNumber) { position -= 1; }
-    transcript.move(clusterNumber, position);
-}).on('remove', function (element) {
-    // Cluster remove: Get number from element, then delete that cluster.
-    var clusterNumber = $(element).data('n');
-    transcript.remove(clusterNumber);
-});
-
 //[eof]

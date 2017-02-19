@@ -1,6 +1,7 @@
 -*- org -*-
 
-* [8/11] Change GUI update architecture                            :UX:MAJOR:
+* [8/12] Change GUI update architecture                            :UX:MAJOR:
+** TODO Removal of last cluster in field should hide field
 ** TODO Cluster button hilite when hovering on button
 ** TODO Cluster button hilite should reflect transcript
 ** TODO Removal of clusters in field I and II
