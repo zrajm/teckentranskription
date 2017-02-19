@@ -16,7 +16,6 @@ function makeClusterGui(args) {
             show    : show,
             uncue   : uncue,
         },
-        transcriptElement = args.inElement,
         glyphData = {
             r: [ // Relation
                 ["r-ingen.svg",   "Relation – Ingen"  ],
@@ -206,17 +205,17 @@ function makeClusterGui(args) {
         domElement = (function () {
             // Function returning jQuery element for cluster or field.
             var elements = {
-                i   : $('.field.i',      transcriptElement),
-                ii  : $('.field.ii',     transcriptElement),
-                iii : $('.field.iii',    transcriptElement),
-                ia  : $('.cluster.ia',   transcriptElement),
-                ib  : $('.cluster.ib',   transcriptElement),
-                iia : $('.cluster.iia',  transcriptElement),
-                iib : $('.cluster.iib',  transcriptElement),
-                iic : $('.cluster.iic',  transcriptElement),
-                iiia: $('.cluster.iiia', transcriptElement).remove(),
-                iiib: $('.cluster.iiib', transcriptElement).remove(),
-                iiic: $('.cluster.iiic', transcriptElement).remove()
+                i   : $('.field.i',      args.inElement),
+                ii  : $('.field.ii',     args.inElement),
+                iii : $('.field.iii',    args.inElement),
+                ia  : $('.cluster.ia',   args.inElement),
+                ib  : $('.cluster.ib',   args.inElement),
+                iia : $('.cluster.iia',  args.inElement),
+                iib : $('.cluster.iib',  args.inElement),
+                iic : $('.cluster.iic',  args.inElement),
+                iiia: $('.cluster.iiia', args.inElement).remove(),
+                iiib: $('.cluster.iiib', args.inElement).remove(),
+                iiic: $('.cluster.iiic', args.inElement).remove()
             };
             return function (clusterOrFieldType) {
                 return elements[clusterOrFieldType];
@@ -325,7 +324,7 @@ function makeClusterGui(args) {
         if (!clusterElement.hasClass('hide')) { return; }
 
         clusterElement.                        // cluster + field element
-            add(clusterElement.closest('.field', transcriptElement)).
+            add(clusterElement.closest('.field', args.inElement)).
             removeClass('cueshow cuehide hide');
 
         function glyphMenu(glyphType) {
@@ -358,7 +357,7 @@ function makeClusterGui(args) {
     // cluster without removing it from the DOM, for clusters of type III the
     // cluster is removed from the DOM.)
     function hide(clusterElement) {
-        var fieldElement = clusterElement.closest('.field', transcriptElement);
+        var fieldElement = clusterElement.closest('.field', args.inElement);
         uncue();
 
         if (fieldElement.length === 0) {       // cluster not in
@@ -378,7 +377,7 @@ function makeClusterGui(args) {
     }
 
     function showParentFieldElement(clusterElement) {
-        var fieldElement = clusterElement.closest('.field', transcriptElement);
+        var fieldElement = clusterElement.closest('.field', args.inElement);
         fieldElement.removeClass('hide');
     }
 
