@@ -181,10 +181,6 @@ footer {
     display: block;
     margin: auto;
 }
-#input .field.hover:before,
-#input .field:hover:before,
-table.uigroup.buttons.hover,
-table.uigroup.buttons:hover { background: rgba(0, 0, 255, 0.25); }
 
 #overlay table tr.selected {
     /* Same color as the :focus outline, but twice as transparent. */

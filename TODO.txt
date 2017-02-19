@@ -30,8 +30,14 @@
    automatically update the GUI.
 ** DONE New GUI module with .uncue() function
    CLOSED: [2017-01-31 Mon]
-* TODO Remove blue field + button group hilite                     :COSMETIC:
-  Its more distracting than useful.
+* TODO Fix cluster unfocusing when focusing non-glyph element  :COSMETIC:BUG:
+  Currently when clicking outside of the current transcript the current glyph
+  is unfocused, but the 'focus' class of the other glyphs in the same cluster
+  remains. :(
+
+  Fix this by attach focusing/unfocusing to <body> instead? That way, whenever
+  focus changes, we can remove the previous 'focus' class (if any) and add it
+  to whatever '.cluster' element can be found above the current target element.
 * TODO Display field around glyphs when drag-and-drop:ing          :COSMETIC:
 * TODO It should be possible to remove IIc cluster(?)
   To allow for searching for a word without specifying IIc.
@@ -376,6 +382,11 @@ External (strips away unshown state):
   before `.hide()` since `.hide()` is called from inside `.cue()`.
 
   This might be too complicated to be worth it.
+* DONE Remove field <-> button group hovering hilite               :COSMETIC:
+  CLOSED: [2017-02-19 Sun 15:41]
+  Hovering over a field hilites the corresponding button group and vice versa,
+  however this has turned out to be more annoying that helpful. Therefore this
+  behavior should be removed.
 * DONE GUI `.set()` method should use cluster object, not spec
   CLOSED: [2017-01-16 Thu 18:59]
   `.show()` method already does this
