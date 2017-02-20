@@ -1,4 +1,4 @@
-/* Copyright 2016 by zrajm. Released under GPLv3 license. */
+/* Copyright 2016-2017 by zrajm. Released under GPLv3 license. */
 
 * {
     margin: 0;
@@ -25,15 +25,15 @@ noscript {
     border: .33em dashed #000;
 }
 
+.hide { display: none !important; }
 .left { text-align: left !important; }
 .right { text-align: right !important; }
 
 /* DEBUG: Border for glyph tables. */
 /* table, td { outline: 1px solid rgba(0,0,0,.3); } */
 
-#input:hover table.cluster.iiic,
-#input:hover td[tabindex] { outline: 1px solid rgba(0, 0, 255, 0.25); }
-:focus                    { outline: 4px solid rgba(0, 0, 255, 0.5) !important; }
+.cluster.focus .glyph { outline: 1px solid rgba(0, 0, 255, 0.25); }
+:focus                { outline: 4px solid rgba(0, 0, 255, 0.5) !important; }
 
 .FIXME {
     /* background: red; */
@@ -56,6 +56,7 @@ table[border="1"] {
 }
 
 table {
+    position: relative;
     border-collapse: separate;
     border-spacing: 3px;
 }
@@ -112,6 +113,7 @@ button table {
 /* width */
 #input td.artion_high               { width: 46px; }
 button.ui                           { width: 100px;   }
+button.ui#this,
 select#load-input, input#save-input { width: 250px;   }
 #input td                           { width: auto;    }
 
@@ -131,26 +133,6 @@ select#load-input, input#save-input { width: 250px;   }
 #input td.full        { height: 85px; }
 
 /******************************************************************************/
-
-table { position: relative; }
-table caption.controls {
-    display: none;
-    z-index: 1;
-    position: absolute;
-    right: 0;
-
-    color: rgba(0, 0, 0, .5);
-    font-weight: bold;
-}
-table:hover > caption.controls { display: block; }
-body.overlay table:hover caption.controls { display: none; }
-
-#input table td[tabindex]:hover,
-table caption.controls             { background: rgba(0, 0, 0, .2); }
-table caption.controls span        { border: 3px solid transparent; }
-table caption.controls span:hover  { background: rgba(100, 100, 100, .5); }
-table caption.controls span:active { background: rgba( 50,  50,  50, .5); }
-table caption.controls span[disabled] { background: inherit; color: rgba(0, 0, 0, .2) }
 
 footer {
     opacity: .75;
@@ -199,10 +181,6 @@ footer {
     display: block;
     margin: auto;
 }
-#input .field.hover:before,
-#input .field:hover:before,
-table.uigroup.buttons.hover,
-table.uigroup.buttons:hover { background: rgba(0, 0, 255, 0.25); }
 
 #overlay table tr.selected {
     /* Same color as the :focus outline, but twice as transparent. */
@@ -313,6 +291,22 @@ button:not([disabled]).active.hover:before {
 button.hilite:before {
     border: 1px solid #000;
     background: rgba(0, 0, 255, 0.3) !important;
+}
+
+.cluster.cuehide {
+    opacity: .5;
+    border-radius: 2px;
+    background: repeating-linear-gradient(
+        -45deg,
+        rgba(255, 0, 0, .75),
+        rgba(255, 0, 0, .75) 5px,
+        transparent 5px,
+        transparent 10px
+    );
+}
+
+.cluster.cueshow {
+    opacity: .5;
 }
 
 /*[eof]*/

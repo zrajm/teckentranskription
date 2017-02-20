@@ -1,6 +1,72 @@
 -*- org -*-
 
-* TODO Change GUI update architecture                              :UX:MAJOR:
+* TODO Can't add field I/II cluster after drag-and-drop removal         :BUG:
+  If one removes the cluster by using one of the buttons everything works as
+  expected, but if you remove it by drag-and-drop (by dragging it outside the
+  field) a reload is needed for the corresponding add button to work again.
+
+  This is because Dragula removes the cluster DOM element, and fields I and II
+  depends on fields being hidden, rather than removed.
+
+  This could be fixed one of the following approaches:
+
+  * Adding the element back (in hidden state) after it has been removed by
+    Dragula (by adding something to the removeCluster() function in
+    `clustergui.js`). -- How does one add the element back in the correct
+    place, though?
+
+  * Changing the architecture so that all cluster DOM element are always
+    removed (probably cleaner, since it causes less interaction with Dragula,
+    but question is still how to know where to add the elements as they are
+    needed).
+* TODO Cluster button hilite when hovering on button
+* TODO Cluster button hilite should reflect transcript
+* TODO Fix cluster unfocusing when focusing non-glyph element  :COSMETIC:BUG:
+  Currently when clicking outside of the current transcript the current glyph
+  is unfocused, but the 'focus' class of the other glyphs in the same cluster
+  remains. :(
+
+  Fix this by attach focusing/unfocusing to <body> instead? That way, whenever
+  focus changes, we can remove the previous 'focus' class (if any) and add it
+  to whatever '.cluster' element can be found above the current target element.
+* TODO Display field around glyphs when drag-and-drop:ing          :COSMETIC:
+* TODO It should be possible to remove IIc cluster(?)
+  To allow for searching for a word without specifying IIc.
+* TODO Ia cluster margin in GUI                                    :COSMETIC:
+  When cluster type 'Ia' is displayed the margin between field I & II is too
+  narrow (but when displaying cluster type 'Ib' it looks good).
+* TODO Animated cues is GUI                                           :MINOR:
+  Clusters that are about to be removed should have a red 'X' across them
+  (fading in in about a second?)
+
+  Clusters that are about to be inserted should slide in (in about a second?)
+  widening until they have their full width, possibly using?
+
+      ----------------------------------------
+      transform: scaleX(0.5);
+      ----------------------------------------
+
+  Some CSS tried out when experimenting:
+
+      ----------------------------------------
+      .cluster.hide {
+          display: inline-block !important;
+          overflow: hidden;
+          width: 0;
+          background: green;
+          transform: scaleX(.1);
+          Xwidth: auto;
+          outline: 2px solid blue;
+      }
+      .cluster {
+          transform: scaleX(1);
+          Xwidth: 100%;
+          -webkit-transition: width 1s ease-in-out;
+          -moz-transition: width 1s ease-in-out;
+          -o-transition: width 1s ease-in-out;
+          transition: width 1s ease-in-out;
+      }
+      ----------------------------------------
 * TODO Change internal state format
     [ia, ib, iia, iib, iic, iii[abc]...]
 
@@ -42,20 +108,8 @@ External (strips away unshown state):
     #AA-AAAA-AAA-1A-2AA-3A
     #AA-AAAA-AAA-1A-2AA-3A/AA-AAAA-AAA-1A-2AA-3A
 * TODO Button group should not remain blue when deleting III cluster :UX:BUG:
-* TODO Fix '<' '>' and 'x' buttons for III glyphs                       :BUG:
-  (Drag-and-drop reordering would eliminate the need for this.)
-* TODO Drag-and-drop reordering of IIIc clusters                     :MOBILE:
-* TODO Drag-and-drop deleting?                                       :MOBILE:
 * TODO Update 'status' field when hovering/focusing on glyph
 * TODO Add '/' sign
-* TODO When glyph is focused, hilite other glyphs in cluster             :UX:
-  When hovering on a cluster, the glyphs of that cluster is hilited to show
-  their presence, when a glyph is focused the other glyphs of that cluster
-  should be hilited in the same way.
-* TODO Hovering on button should show clusters which would be inserted   :UX:
-  E.g. if button insert something into transcript, this should be displayed
-  but grayed out, if button is clicked this grayed out image should solidify
-  and remain.
 * TODO Use infinite undo paradigm                             :MAJOR:COMPLEX:
   Instead of OK/cancel requesters. All changes should be automatically written
   to localStorage.
@@ -302,6 +356,55 @@ External (strips away unshown state):
   Fancy fix: Field tables should prolly be `display: inline`, and cluster
   tables `display: inline-table`. Some kind of clearfix is prolly also needed
   so that the cluster tables won't protrude outside the inline containers.
+* TODO GUI `.cue()` method should use cluster object, not spec
+  `.show()` + `.set()` method already does this. -- `.cue()` needs to be done
+  before `.hide()` since `.hide()` is called from inside `.cue()`.
+
+  This might be too complicated to be worth it.
+* [10/10] Change GUI update architecture                           :UX:MAJOR:
+** DONE Removal of clusters in field I and II
+   CLOSED: [2017-02-20 Mon 12:24]
+   By dragging and dropping them outside their field.
+** DONE Removal of last cluster in field should hide field
+   CLOSED: [2017-02-19 Sun 16:25]
+** DONE Removal of clusters in field III
+   CLOSED: [2017-02-19 Sun 01:10]
+   By dragging and dropping them outside their field.
+** DONE Reordering of clusters in field III
+   CLOSED: [2017-02-19 Sun 01:10]
+   By means of drag-and-drop.
+** DONE Move cluster image preload into makeClusterGui module
+   CLOSED: [2017-02-16 Thu 09:40]
+   Together with the 'glyphs' data structure.
+** DONE Change glyphs in cluster
+   CLOSED: [2017-02-14 Tue 11:04]
+** DONE Cluster buttons to add/remove clusters from transcript
+   CLOSED: [2017-02-09 Thu 03:20]
+** DONE Cluster button hover cues
+   CLOSED: [2017-01-31 Mon]
+   Hovering on a cluster button should show cues (in the transcript) displaying
+   what would be inserted/removed from the transcript when clicking on the
+   button. Moving mouse pointer off of the cluster button the cue should remove
+   the cues.
+** DONE Loading whole transcript
+   CLOSED: [2017-01-30 Mon]
+   Loading a new transcript (by means of `makeTranscript.set()`) should
+   automatically update the GUI.
+** DONE New GUI module with .uncue() function
+   CLOSED: [2017-01-31 Mon]
+* DONE Remove field <-> button group hovering hilite               :COSMETIC:
+  CLOSED: [2017-02-19 Sun 15:41]
+  Hovering over a field hilites the corresponding button group and vice versa,
+  however this has turned out to be more annoying that helpful. Therefore this
+  behavior should be removed.
+* DONE GUI `.set()` method should use cluster object, not spec
+  CLOSED: [2017-01-16 Thu 18:59]
+  `.show()` method already does this
+* DONE Don't filter data content in storage module
+  CLOSED: [2017-02-16 Thu 10:32]
+  Cluster module now does filtering, by treating 'hidden' properties
+  (properties with names beginning with '_') separately -- not returning any
+  hidden properties when `.get()` the whole cluster object.
 * DONE Simplify focusing in glyph selector                               :UX:
   CLOSED: [2017-02-04 Sat 13:04]
   Moving the mouse pointer onto a glyph selector item should focus that item

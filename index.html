@@ -1,17 +1,61 @@
 <!doctype html>
 <head>
-  <!-- Copyright 2016 by zrajm. Released under GPLv3 license. -->
+  <!-- Copyright 2016-2017 by zrajm. Released under GPLv3 license. -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Teckentranskription</title>
   <link rel=stylesheet href="index.css">
+  <link rel=stylesheet href="dragula.css">
   <link rel=license href="LICENSE.txt">
 </head>
 <body>
   <noscript>Javascript required.</noscript>
   <main>
     <div id=input>
-      <table><tr><td class="field i"><td class="field ii"><td class="field iii"></table>
+      <table class=sign>
+        <tr>
+          <td class="field i hide">
+            <table class="cluster ia hide">
+              <tr><td tabindex=1 class="glyph r high">
+              <tr><td tabindex=1 class="glyph a text">
+            </table
+            ><table class="cluster ib hide">
+              <tr><td tabindex=1 class="glyph r high">
+              <tr><td tabindex=1 class="glyph h text" rowspan=2>
+                <td tabindex=1 class="glyph ar">
+              <tr><td tabindex=1 class="glyph av">
+            </table>
+          <td class="field ii hide">
+            <table class="cluster iia hide">
+              <tr><td><td tabindex=1 class="glyph r high">
+              <tr><td tabindex=1 class="glyph ar">
+                <td tabindex=1 class="glyph h text" rowspan=2>
+              <tr><td tabindex=1 class="glyph av">
+            </table
+            ><table class="cluster iib hide">
+              <tr><td tabindex=1 class="glyph ina full">
+            </table
+            ><table class="cluster iic hide">
+              <tr><td colspan=2 class="high">
+              <tr><td tabindex=1 class="glyph h text" rowspan=2>
+                <td tabindex=1 class="glyph ar">
+              <tr><td tabindex=1 class="glyph av">
+            </table>
+          <td class="field iii hide">
+            <table class="cluster iiia hide">
+              <tr><td tabindex=1 class="glyph artion_tall full">
+            </table>
+            <table class="cluster iiib hide">
+              <tr><td rowspan=2 class=full>
+                <td tabindex=1 class="glyph artion_high">
+              <tr><td tabindex=1 class="glyph artion_low">
+            </table>
+            <table class="cluster iiic hide">
+              <tr><td rowspan=2 class=top><img src="pic/ra-forandras.svg">
+                <td class=high>
+              <tr><td tabindex=1 class="glyph h text">
+            </table>
+      </table>
       <div id=status></div>
     </div>
 
@@ -109,6 +153,7 @@
             ><button class=ui id=delete disabled>Delete</button>
           <br><button class=ui id=save>Save</button><input id=save-input placeholder="Save name…">
           <br><button class=ui id=dump>Dump</button
+            ><button class=ui id=this>Dump transcript</button
             ><button class=ui id=clear>Clear</button>
     </table>
     <footer>
@@ -124,7 +169,7 @@
       <a href="LICENSE.txt" rel=license
          title="Released under the GNU General Public License, Version 3 (GPLv3)."
          >License</a>
-      <br>© 2016 zrajm, Uppsala.
+      <br>© 2016–2017 zrajm, Uppsala.
     </footer>
     <div id=overlay>
       <!-- Table values are filled in (as needed) by Javascript. -->
@@ -132,6 +177,8 @@
     </div>
   </main>
   <script src="jquery-3.1.1.js"></script>
+  <script src="dragula.js"></script>
+  <script src="clustergui.js"></script>
   <script src="index.js"></script>
 </body>
 </html>
