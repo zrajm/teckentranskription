@@ -460,30 +460,87 @@ function makeClusterGui(args) {
     //
     // Drag-and-Drop Stuff
     //
-    dragula($('.field.iii').toArray(), {
-        direction: 'horizontal',
-        removeOnSpill: true,
-    }).on('drag', function (element, source) {
-        // Drag start: Put number on each '.cluster' element visible in DOM.
-        $('.cluster:not(.hide)').
-            each(function (i, element) {
-                $(element).data('n', i);
-            });
-    }).on('drop', function (element, _, _, sibling) {
-        // Cluster move: Get number from element + sibling element that comes
+
+    (function () {
+        var startSibling;
+
+        // Drag event: Put number on each '.cluster' element visible in DOM.
+        function enumerateDragElements(element, source) {
+            $('.cluster:not(.hide)').
+                each(function (i, element) {
+                    $(element).data('n', i);
+                    $(element).attr('n', i);
+                });
+        }
+
+        // Drop event: Get number from element + sibling element that comes
         // after it, then move element to the position given by sibling (if no
         // sibling comes after it move it to last position).
-        var clusterNumber = $(element).data('n'),
+        function moveCluster(element, _, _, sibling) {
+            var clusterNumber = $(element).data('n'),
             position      = $(sibling).data('n');
-        if (position === undefined) { position = transcript.length(); }
-        if (position > clusterNumber) { position -= 1; }
-        transcript.move(clusterNumber, position);
-    }).on('remove', function (element) {
-        // Cluster remove: Get number from element, then delete that cluster.
-        var clusterNumber = $(element).data('n');
-        transcript.remove(clusterNumber);
-        hideAllEmptyFieldElements();
-    });
+            if (position === undefined) { position = transcript.length(); }
+            if (position > clusterNumber) { position -= 1; }
+            transcript.move(clusterNumber, position);
+        }
+
+        // Remove event: Get number from element, then delete that cluster.
+        function removeCluster(element) {
+            var clusterNumber = $(element).data('n');
+            transcript.remove(clusterNumber);
+            // FIXME: Put back the removed element if cluster in field I or II
+            hideAllEmptyFieldElements();
+        }
+
+        // Get next jQuery element sibling without 'hide' class.
+        function nextVisible(element) {
+            var element = $(element).next();
+            while (element && element.hasClass('hide')) {
+                element = element.next();
+            }
+            return element[0] || null;
+        }
+
+        function enumerateDragElementsAndRemeberSibling(element, source) {
+            startSibling = nextVisible(element);
+            enumerateDragElements(element, source);
+        }
+
+        function noPositionChange(element, _, _, sibling) {
+            // Dragula erroneously pass the currently dragged element as
+            // 'sibling' sometimes, in which case we need to find out the real
+            // sibling.
+            if (element === sibling) { sibling = nextVisible(sibling); }
+
+            // Only accept drag-and-drop if it results in no change.
+            if (startSibling === sibling) { return true; }
+            return false;
+        }
+
+        dragula($('.field.i', args.inElement).toArray(), {
+            direction: 'horizontal',
+            removeOnSpill: true,
+            accepts: noPositionChange,
+        }).
+            on('drag',   enumerateDragElementsAndRemeberSibling).
+            on('remove', removeCluster);
+
+        dragula($('.field.ii', args.inElement).toArray(), {
+            direction: 'horizontal',
+            removeOnSpill: true,
+            accepts: noPositionChange,
+        }).
+            on('drag',   enumerateDragElementsAndRemeberSibling).
+            on('remove', removeCluster);
+
+        dragula($('.field.iii', args.inElement).toArray(), {
+            direction: 'horizontal',
+            removeOnSpill: true,
+        }).
+            on('drag',   enumerateDragElements).
+            on('remove', removeCluster).
+            on('drop',   moveCluster);
+    }());
 
     ////////////////////////////////////////////////////////////////////////////
 
