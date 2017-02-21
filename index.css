@@ -189,6 +189,10 @@ footer {
 
 /******************************************************************************/
 
+/* Input field should always have a height, otherwise GUI elements jump around
+   when showing cues and transcript is empty. */
+#input .fieldvspace { height: 91px; }
+
 /* Hide empty transcription fields. */
 #input .field:empty { display: none; }
 

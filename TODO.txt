@@ -1,5 +1,8 @@
 -*- org -*-
 
+* TODO Bottom aligned articulation 'separator'           :MINOR:COSMETIC:BUG:
+  The 'Övrigt - Markerar sekventiell artikulation' should be vertically bottom
+  aligned with the hand clusters, not top aligned as it is now.
 * TODO Can't add field I/II cluster after drag-and-drop removal         :BUG:
   If one removes the cluster by using one of the buttons everything works as
   expected, but if you remove it by drag-and-drop (by dragging it outside the
@@ -361,6 +364,16 @@ External (strips away unshown state):
   before `.hide()` since `.hide()` is called from inside `.cue()`.
 
   This might be too complicated to be worth it.
+* DONE Make GUI behave when showing cue in empty transcript
+  CLOSED: [2017-02-21 Tue 18:44]
+  The transcript area should not shrink to zero height when empty as this
+  causes stuff to flicker around when cues are inserted, causing the button one
+  hover over to be pushed down, which causes unhover which causes the cue to
+  disappear, which causes the button to move up under the mouse pointer again
+  and so the cue appear again...
+* DONE It should be possible to remove IIc cluster(?)
+  CLOSED: [2017-02-21 Tue 10:16]
+  To allow for searching for a word without specifying IIc.
 * [10/10] Change GUI update architecture                           :UX:MAJOR:
 ** DONE Removal of clusters in field I and II
    CLOSED: [2017-02-20 Mon 12:24]
