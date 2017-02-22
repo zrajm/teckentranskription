@@ -453,35 +453,35 @@ $('.glyph').focus();
 
 /* Hilite: Cluster button -> transcript clusters to be added/removed. */
 addIaButtonElement.hover(
-    function () { gui.cueShow('ia'); },
+    function () { gui.cue('ia'); },
     function () { gui.uncue(); }
 );
 addIbButtonElement.hover(
-    function () { gui.cueShow('ib'); },
+    function () { gui.cue('ib'); },
     function () { gui.uncue(); }
 );
 addIIaButtonElement.hover(
-    function () { gui.cueShow('iia'); },
+    function () { gui.cue('iia'); },
     function () { gui.uncue(); }
 );
 addIIbButtonElement.hover(
-    function () { gui.cueShow('iib'); },
+    function () { gui.cue('iib'); },
     function () { gui.uncue(); }
 );
 addIIcButtonElement.hover(
-    function () { gui.cueShow('iic'); },
+    function () { gui.cue('iic'); },
     function () { gui.uncue(); }
 );
 addIIIaButtonElement.hover(
-    function () { gui.cueShow('iiia'); },
+    function () { gui.cue('iiia'); },
     function () { gui.uncue(); }
 );
 addIIIbButtonElement.hover(
-    function () { gui.cueShow('iiib'); },
+    function () { gui.cue('iiib'); },
     function () { gui.uncue(); }
 );
 addIIIcButtonElement.hover(
-    function () { gui.cueShow('iiic'); },
+    function () { gui.cue('iiic'); },
     function () { gui.uncue(); }
 );
 

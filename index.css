@@ -297,7 +297,7 @@ button.hilite:before {
     background: rgba(0, 0, 255, 0.3) !important;
 }
 
-.cluster.cueshow {
+.cluster.cue {
     opacity: .5;
 }
 

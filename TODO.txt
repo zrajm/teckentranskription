@@ -333,6 +333,12 @@ External (strips away unshown state):
   before `.hide()` since `.hide()` is called from inside `.cue()`.
 
   This might be too complicated to be worth it.
+* DONE Rename 'cueshow' -> 'cue'                                   :REFACTOR:
+  CLOSED: [2017-02-22 Wed 12:03]
+  Since 'cuehide' was removed there's no need to distinguish between two
+  different cues, so might as well simplify all code + CSS.
+
+  Rename .cueShow() method -> .cue(), and `cueshow` CSS class -> `cue'.
 * DONE Allow invalid transcriptions + remove 'cuehide' state
   CLOSED: [2017-02-22 Wed 11:51]
   Simplify GUI by removing a lot off bling, and also allow invalid combinations
