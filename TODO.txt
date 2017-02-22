@@ -193,9 +193,6 @@ External (strips away unshown state):
   "Medial contact must be combined with a direction of movement. The direction
   symbol is placed above the symbol for medial contact." [Teckentranskription,
   p.10]
-* TODO Add links to KTH sign language transcription page              :MINOR:
-  A link to the page containing the sign language typeface used for
-  transcription + the 'Teckentranskription' essay.
 * TODO Inline all SVG
   Allows for:
   + Using CSS to control SVG color (yay!) and
@@ -333,6 +330,12 @@ External (strips away unshown state):
   before `.hide()` since `.hide()` is called from inside `.cue()`.
 
   This might be too complicated to be worth it.
+* DONE Add links to KTH sign language transcription page              :MINOR:
+  CLOSED: [2017-02-22 Web 15:12]
+  Link already present in the readme file.
+
+  A link to the page containing the sign language typeface used for
+  transcription + the 'Teckentranskription' essay.
 * DONE Rename 'cueshow' -> 'cue'                                   :REFACTOR:
   CLOSED: [2017-02-22 Wed 12:03]
   Since 'cuehide' was removed there's no need to distinguish between two
