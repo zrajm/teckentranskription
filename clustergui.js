@@ -465,13 +465,20 @@ function makeClusterGui(args) {
     (function () {
         var startSibling;
 
-        // Drag event: Put number on each '.cluster' element visible in DOM.
+        // Drag event: Put number on each '.cluster' element visible in DOM and
+        // add 'drag' class to parent field element.
         function enumerateDragElements(element, source) {
+            $(element).closest('.sign').addClass('drag');
             $('.cluster:not(.hide)').
                 each(function (i, element) {
                     $(element).data('n', i);
                     $(element).attr('n', i);
                 });
+        }
+
+        // Drag ended: Remove 'drag' class from parent field element.
+        function removeFieldDragClass(element) {
+            $(element).closest('.sign').removeClass('drag');
         }
 
         // Drop event: Get number from element + sibling element that comes
@@ -524,7 +531,8 @@ function makeClusterGui(args) {
             accepts: noPositionChange,
         }).
             on('drag',   enumerateDragElementsAndRemeberSibling).
-            on('remove', removeCluster);
+            on('remove', removeCluster).
+            on('dragend', removeFieldDragClass);
 
         dragula($('.field.ii', args.inElement).toArray(), {
             direction: 'horizontal',
@@ -532,7 +540,8 @@ function makeClusterGui(args) {
             accepts: noPositionChange,
         }).
             on('drag',   enumerateDragElementsAndRemeberSibling).
-            on('remove', removeCluster);
+            on('remove', removeCluster).
+            on('dragend', removeFieldDragClass);
 
         dragula($('.field.iii', args.inElement).toArray(), {
             direction: 'horizontal',
@@ -540,7 +549,8 @@ function makeClusterGui(args) {
         }).
             on('drag',   enumerateDragElements).
             on('remove', removeCluster).
-            on('drop',   moveCluster);
+            on('drop',   moveCluster).
+            on('dragend', removeFieldDragClass);
     }());
 
     ////////////////////////////////////////////////////////////////////////////

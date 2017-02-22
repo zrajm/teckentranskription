@@ -223,7 +223,9 @@ footer {
     line-height: 1em;
 }
 table.sign { margin-top: 1.1em; } /* compensate for negative margin-top */
+.sign.drag  .field:before,
 .sign.focus .field:before { display: block; }
+.sign.drag  .field { min-width: 25px }
 
 /******************************************************************************/
 

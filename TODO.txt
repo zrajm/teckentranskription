@@ -311,6 +311,8 @@ External (strips away unshown state):
   before `.hide()` since `.hide()` is called from inside `.cue()`.
 
   This might be too complicated to be worth it.
+* DONE Show field borders in GUI during drag-and-drop
+  CLOSED: [2017-02-22 Wed 20:45]
 * DONE Bottom aligned articulation 'separator'           :MINOR:COSMETIC:BUG:
   CLOSED: [2017-02-22 Wed 20:17]
   The 'Övrigt - Markerar sekventiell artikulation' should be vertically bottom
