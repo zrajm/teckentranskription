@@ -297,18 +297,6 @@ button.hilite:before {
     background: rgba(0, 0, 255, 0.3) !important;
 }
 
-.cluster.cuehide {
-    opacity: .5;
-    border-radius: 2px;
-    background: repeating-linear-gradient(
-        -45deg,
-        rgba(255, 0, 0, .75),
-        rgba(255, 0, 0, .75) 5px,
-        transparent 5px,
-        transparent 10px
-    );
-}
-
 .cluster.cueshow {
     opacity: .5;
 }

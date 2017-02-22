@@ -1,5 +1,10 @@
 -*- org -*-
 
+* TODO Glyph selector doesn't work on mobile                  :BUG:MOBILE:UX:
+  It seems like one cannot select items below the first screenful on the
+  selector (i.e. if one has to scroll down a bit to reach a glyph on the menu
+  then that glyph is selectable, but it does not appear in the transcript after
+  selecting it).
 * TODO Bottom aligned articulation 'separator'           :MINOR:COSMETIC:BUG:
   The 'Övrigt - Markerar sekventiell artikulation' should be vertically bottom
   aligned with the hand clusters, not top aligned as it is now.
@@ -32,44 +37,10 @@
   Fix this by attach focusing/unfocusing to <body> instead? That way, whenever
   focus changes, we can remove the previous 'focus' class (if any) and add it
   to whatever '.cluster' element can be found above the current target element.
-* TODO Display field around glyphs when drag-and-drop:ing          :COSMETIC:
-* TODO It should be possible to remove IIc cluster(?)
-  To allow for searching for a word without specifying IIc.
+* TODO Show fields in GUI when any glyph is focused
 * TODO Ia cluster margin in GUI                                    :COSMETIC:
   When cluster type 'Ia' is displayed the margin between field I & II is too
   narrow (but when displaying cluster type 'Ib' it looks good).
-* TODO Animated cues is GUI                                           :MINOR:
-  Clusters that are about to be removed should have a red 'X' across them
-  (fading in in about a second?)
-
-  Clusters that are about to be inserted should slide in (in about a second?)
-  widening until they have their full width, possibly using?
-
-      ----------------------------------------
-      transform: scaleX(0.5);
-      ----------------------------------------
-
-  Some CSS tried out when experimenting:
-
-      ----------------------------------------
-      .cluster.hide {
-          display: inline-block !important;
-          overflow: hidden;
-          width: 0;
-          background: green;
-          transform: scaleX(.1);
-          Xwidth: auto;
-          outline: 2px solid blue;
-      }
-      .cluster {
-          transform: scaleX(1);
-          Xwidth: 100%;
-          -webkit-transition: width 1s ease-in-out;
-          -moz-transition: width 1s ease-in-out;
-          -o-transition: width 1s ease-in-out;
-          transition: width 1s ease-in-out;
-      }
-      ----------------------------------------
 * TODO Change internal state format
     [ia, ib, iia, iib, iic, iii[abc]...]
 
@@ -110,7 +81,6 @@ External (strips away unshown state):
 
     #AA-AAAA-AAA-1A-2AA-3A
     #AA-AAAA-AAA-1A-2AA-3A/AA-AAAA-AAA-1A-2AA-3A
-* TODO Button group should not remain blue when deleting III cluster :UX:BUG:
 * TODO Update 'status' field when hovering/focusing on glyph
 * TODO Add '/' sign
 * TODO Use infinite undo paradigm                             :MAJOR:COMPLEX:
@@ -242,13 +212,7 @@ External (strips away unshown state):
   Shortkeys works just fine in the selectGlyph menu, but when a glyph is
   focused and one press enter nothing happens.
 * TODO Don't scroll background when scrolling overlay              :COSMETIC:
-* TODO Disable HTML elements should be striped                     :COSMETIC:
-  The same kind of stripes used for indicating removal of cluster, but
-  transparent rather than red, should be a good disabledness indicator (make
-  sure text on disabled buttons is legible, though).
-
-  This is relevant for the 'Load' button and the selector when there are no
-  saved transcripts (yet).
+* TODO "Spellchecker"                                                    :UX:
 * TODO Add textarea for notes to a transcription               :NICE:FEATURE:
   This is for free text notes to a transcription, and should be loaded/saved
   with the transcription. (This would not, at least initially not, be included
@@ -263,6 +227,11 @@ External (strips away unshown state):
   Matching dictionary entries (with their Swedish translation) should be listed
   when writing a transcript. Initially display all words for which the
   currently entered transcript is a subset.(?)
+  * Dictionary should display translation + transcript as words are displayed.
+  * Dictionary should allow for more than one transcript per word (e.g. because
+    many words can be transcribed in different ways: with older and newer
+    transcription conventions; and also because some words have different
+    realizations/sign language synonyms).
 * [0/4] Input shortkeys
 ** TODO Home/End: Select first/last cluster
    Ctrl+A/Ctrl+E should also work.
@@ -364,6 +333,12 @@ External (strips away unshown state):
   before `.hide()` since `.hide()` is called from inside `.cue()`.
 
   This might be too complicated to be worth it.
+* DONE Allow invalid transcriptions + remove 'cuehide' state
+  CLOSED: [2017-02-22 Wed 11:51]
+  Simplify GUI by removing a lot off bling, and also allow invalid combinations
+  of clusters. (User should be able to enter invalid transcripts, and [in the
+  future] have some "spellchecker" nudge them in the direction of good, rather
+  than be forced to do good.
 * DONE Make GUI behave when showing cue in empty transcript
   CLOSED: [2017-02-21 Tue 18:44]
   The transcript area should not shrink to zero height when empty as this

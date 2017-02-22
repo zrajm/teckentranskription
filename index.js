@@ -132,19 +132,6 @@ function makeCluster(clusterSpec) {
 
 function makeTranscript(element) {
     var clusters = [];
-    function exist(type) {
-        var i = 0, a;
-        while (i < clusters.length) {
-            a = clusters[i].get('type');
-            if (a === type) {
-                return true;
-            } else if (a > type) {
-                return false;
-            }
-            i += 1;
-        }
-        return false;
-    }
     function get() {
         return clusters.map(function (cluster) {
             return cluster.get();
@@ -160,9 +147,6 @@ function makeTranscript(element) {
             return makeCluster(clusterSpec);
         });
     }
-    function redraw() {
-        set(get());
-    }
     function remove(clusterNumber) {
         // Return element or 'undefined' if not found.
         return clusters.splice(clusterNumber, 1)[0];
@@ -173,26 +157,6 @@ function makeTranscript(element) {
             clusters.splice(newPosition, 0, cluster);
         }
         return cluster;
-    }
-    function swap(x, y) {
-        var tmp = clusters[y];
-        clusters[y] = clusters[x];
-        clusters[x] = tmp;
-        redraw();
-    }
-
-    // Remove all clusters of specified type.
-    function removeCluster(clusters, clusterType) {
-        var i = 0, cluster;
-        while (i < clusters.length) {
-            cluster = clusters[i];
-            if (cluster.get('type') === clusterType) {
-                gui.hide(cluster.get('_element'));
-                clusters.splice(i, 1);
-                continue;
-            }
-            i += 1;
-        }
     }
 
     // Turns `clusterSpec` into cluster object and inserts that into
@@ -222,51 +186,27 @@ function makeTranscript(element) {
     }
 
     function add(clusterSpec) {
-        var otherType;
-
-        // Make sure there's *always* an IIc cluster in transcript.
-        insertCluster(clusters, { type: 'iic' });
-
         switch (clusterSpec.type) {
         case 'ia':
         case 'ib':
-            insertCluster(clusters, clusterSpec) ||
-                removeCluster(clusters, clusterSpec.type);
-            otherType = clusterSpec.type === 'ia' ? 'ib' : 'ia';
-            removeCluster(clusters, otherType);
-            if (clusterSpec.type === 'ib') {
-                removeCluster(clusters, 'iia');
-                removeCluster(clusters, 'iib');
-            }
-            break;
         case 'iia':
-            removeCluster(clusters, 'ib');
-            insertCluster(clusters, clusterSpec) ||
-                removeCluster(clusters, clusterSpec.type);
-            removeCluster(clusters, 'iib');
-            break;
         case 'iib':
-            removeCluster(clusters, 'ib');
-            insertCluster(clusters, { type: 'iia'});
-            insertCluster(clusters, clusterSpec) ||
-                removeCluster(clusters, clusterSpec.type);
-            break;
         case 'iic':
-            removeCluster(clusters, 'iia');
-            removeCluster(clusters, 'iib');
+            insertCluster(clusters, clusterSpec);
             break;
         case 'iiia':
         case 'iiib':
         case 'iiic':
             appendCluster(clusters, clusterSpec);
             break;
+        default:
+            throw TypeError("Invalid cluster type '" + clusterSpec.type + "'");
         }
 
         // Focus the first glyph (of last cluster of the type added).
         $('.cluster.' + clusterSpec.type).last().find('.glyph').first().focus();
     }
     return {
-        exist: exist,
         add: add,
         get: get,
         length: function () { return clusters.length },
@@ -334,7 +274,7 @@ function buttonSave() {
 }
 function buttonClear() {
     var name = "";
-    transcript.set([{ "type": "iic" }]);
+    transcript.set([]);
     saveInputElement.val("");
 }
 function buttonDump() {
@@ -511,97 +451,38 @@ deleteButtonElement.click(buttonDelete);
 buttonLoad();
 $('.glyph').focus();
 
-(function () {
-
-    /* Hilite: Cluster button -> transcript clusters to be added/removed. */
-    addIaButtonElement.hover(
-        function () { gui.cueShow('ia').cueHide('ib'); },
-        function () { gui.uncue(); }
-    );
-    addIbButtonElement.hover(
-        function () {
-            gui.cueShow('ib').cueHide('ia').cueHide('iia').cueHide('iib');
-            // if (transcript.exist('ia')) {
-            //     console.log('should hilite button Ia');
-            //     addIaButtonElement.addClass('hover');
-            // }
-            // if (transcript.exist('iia')) {
-            //     console.log('should hilite button IIa');
-            //     addIIaButtonElement.addClass('hover');
-            // }
-            // if (transcript.exist('iib')) {
-            //     console.log('should hilite button IIb');
-            //     addIIbButtonElement.addClass('hover');
-            // }
-        },
-        function () {
-            gui.uncue();
-            // addIaButtonElement.removeClass('hover');
-            // addIIaButtonElement.removeClass('hover');
-            // addIIbButtonElement.removeClass('hover');
-        }
-    );
-    addIIaButtonElement.hover(
-        function () {
-            gui.cueShow('iia').cueHide('ib').cueHide('iib');
-            // if (transcript.exist('iib')) {
-            //     addIIbButtonElement.addClass('hover');
-            // }
-            // if (!transcript.exist('iic')) {
-            //     addIIcButtonElement.addClass('hover');
-            // }
-        },
-        function () {
-            gui.uncue();
-            // addIIbButtonElement.removeClass('hover');
-            // addIIcButtonElement.removeClass('hover');
-        }
-    );
-    addIIbButtonElement.hover(
-        function () {
-            gui.cueShow('iib').cueHide('ib');
-            if (gui.isHidden('iia')) { gui.cueShow('iia'); }
-            // if (!transcript.exist('iia')) {
-            //     addIIaButtonElement.addClass('hover');
-            // }
-            // if (!transcript.exist('iic')) {
-            //     addIIcButtonElement.addClass('hover');
-            // }
-        },
-        function () {
-            gui.uncue();
-            // addIIaButtonElement.removeClass('hover');
-            // addIIcButtonElement.removeClass('hover');
-        }
-    );
-    addIIcButtonElement.hover(
-        function () {
-            gui.cueHide('iia').cueHide('iib');
-            // if (transcript.exist('iia')) {
-            //     addIIaButtonElement.addClass('hover');
-            // }
-            // if (transcript.exist('iib')) {
-            //     addIIbButtonElement.addClass('hover');
-            // }
-        },
-        function () {
-            gui.uncue();
-            // addIIaButtonElement.removeClass('hover');
-            // addIIbButtonElement.removeClass('hover');
-        }
-    );
-    addIIIaButtonElement.hover(
-        function () { gui.cueShow('iiia'); },
-        function () { gui.uncue();         }
-    );
-    addIIIbButtonElement.hover(
-        function () { gui.cueShow('iiib'); },
-        function () { gui.uncue();         }
-    );
-    addIIIcButtonElement.hover(
-        function () { gui.cueShow('iiic'); },
-        function () { gui.uncue();         }
-    );
-}());
+/* Hilite: Cluster button -> transcript clusters to be added/removed. */
+addIaButtonElement.hover(
+    function () { gui.cueShow('ia'); },
+    function () { gui.uncue(); }
+);
+addIbButtonElement.hover(
+    function () { gui.cueShow('ib'); },
+    function () { gui.uncue(); }
+);
+addIIaButtonElement.hover(
+    function () { gui.cueShow('iia'); },
+    function () { gui.uncue(); }
+);
+addIIbButtonElement.hover(
+    function () { gui.cueShow('iib'); },
+    function () { gui.uncue(); }
+);
+addIIcButtonElement.hover(
+    function () { gui.cueShow('iic'); },
+    function () { gui.uncue(); }
+);
+addIIIaButtonElement.hover(
+    function () { gui.cueShow('iiia'); },
+    function () { gui.uncue(); }
+);
+addIIIbButtonElement.hover(
+    function () { gui.cueShow('iiib'); },
+    function () { gui.uncue(); }
+);
+addIIIcButtonElement.hover(
+    function () { gui.cueShow('iiic'); },
+    function () { gui.uncue(); }
+);
 
 //[eof]

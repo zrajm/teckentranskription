@@ -7,11 +7,9 @@
 function makeClusterGui(args) {
     var self = {
             clear   : clear,
-            cueHide : cueHide,
             cueShow : cueShow,
             hide    : hide,
             init    : initGlyph,
-            isHidden: isHidden,
             set     : set,
             show    : show,
             uncue   : uncue,
@@ -314,7 +312,7 @@ function makeClusterGui(args) {
 
     // Show cluster in GUI. Return jQuery element for the shown cluster.
     //
-    // CSS classes 'cuehide'/'cueshow' are used to indicate the cue modes.
+    // CSS class 'cueshow' are used to indicate the cue mode.
     function show(cluster) {
         var clusterType    = cluster.get('type'),
             clusterElement = cluster.get('_element'),
@@ -325,7 +323,7 @@ function makeClusterGui(args) {
 
         clusterElement.                        // cluster + field element
             add(clusterElement.closest('.field', args.inElement)).
-            removeClass('cueshow cuehide hide');
+            removeClass('cueshow hide');
 
         function glyphMenu(glyphType) {
             var menuSpec     = glyphData[glyphType],
@@ -395,18 +393,17 @@ function makeClusterGui(args) {
         }
     }
 
-    // Cue change to specified cluster. ('cuehide' is only applicable to
-    // clusters of type I and II, while 'cueshow' works with all clusters.)
-    // `cssClass` can be either 'cueshow' or 'cuehide'.
-    function cue(clusterType, cssClass) {
+    // Cue change to specified cluster. (Works with all clusters.)
+    function cueShow(clusterType) {
         var fieldType      = fieldNameOf[clusterType],
             clusterElement = domElement(clusterType),
             isHidden       = clusterElement.hasClass('hide');
 
-        if (fieldType === 'iii' && cssClass === 'cueshow') {
-            var element = gui.init(clusterType).
+        if (fieldType === 'iii') {
+            clusterElement = gui.init(clusterType).
                 addClass('cueshow').removeClass('hide');
-            cueRemove[clusterType] = function () { gui.hide(element); };
+            cueRemove[clusterType] = function () { gui.hide(clusterElement); };
+            showParentFieldElement(clusterElement);
             return self;
         }
 
@@ -415,28 +412,22 @@ function makeClusterGui(args) {
                 "(only type I & II can be previewed)");
         }
 
-        // Hidden = do nada.
-        if (cssClass === 'cuehide' && isHidden) { return self; }
-
-        // Visible = preview for removal.
-        if (cssClass === 'cueshow' && !isHidden) { cssClass = 'cuehide'; }
+        // Visible already = do nada.
+        if (!isHidden) { return self; }
 
         uncue(clusterType);
         cueRemove[clusterType] = isHidden ?    // setup cue removal function
             function () {                      //   hide again + remove cue
-                clusterElement.addClass('hide').removeClass(cssClass);
+                clusterElement.addClass('hide').removeClass('cueshow');
             } :
             function () {                     //    show again + remove cue
-                clusterElement.removeClass('hide ' + cssClass);
+                clusterElement.removeClass('hide cueshow');
             };
 
-        clusterElement.addClass(cssClass).removeClass('hide');
+        clusterElement.addClass('cueshow').removeClass('hide');
         showParentFieldElement(clusterElement);
         return self;
     }
-
-    function cueShow(clusterType) { return cue(clusterType, 'cueshow'); }
-    function cueHide(clusterType) { return cue(clusterType, 'cuehide'); }
 
     function isHidden(clusterType) {
         return domElement(clusterType).hasClass('hide');
