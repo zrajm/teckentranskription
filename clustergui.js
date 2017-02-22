@@ -305,8 +305,16 @@ function makeClusterGui(args) {
 
         glyphTypes.forEach(function (glyphType) {
             var value = cluster.get(glyphType) || 0,
-                html  = glyphImages[glyphType][value] || value;
-            $('.' + glyphType, clusterElement).html(html);
+                html  = glyphImages[glyphType][value] || value,
+                glyph = $('.' + glyphType, clusterElement);
+            glyph.html(html);
+            // Special case for 'medial contact' and 'separator' glyphs.
+            // (Bottom aligned using CSS class 'low'.)
+            if (html.match(/\/(i-medial-kontakt|x-separator)\.svg"/)) {
+                glyph.addClass('low');
+            } else {
+                glyph.removeClass('low');
+            }
         });
 
         return self;                           // chainable

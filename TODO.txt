@@ -5,9 +5,6 @@
   selector (i.e. if one has to scroll down a bit to reach a glyph on the menu
   then that glyph is selectable, but it does not appear in the transcript after
   selecting it).
-* TODO Bottom aligned articulation 'separator'           :MINOR:COSMETIC:BUG:
-  The 'Övrigt - Markerar sekventiell artikulation' should be vertically bottom
-  aligned with the hand clusters, not top aligned as it is now.
 * TODO Can't add field I/II cluster after drag-and-drop removal         :BUG:
   If one removes the cluster by using one of the buttons everything works as
   expected, but if you remove it by drag-and-drop (by dragging it outside the
@@ -314,6 +311,10 @@ External (strips away unshown state):
   before `.hide()` since `.hide()` is called from inside `.cue()`.
 
   This might be too complicated to be worth it.
+* DONE Bottom aligned articulation 'separator'           :MINOR:COSMETIC:BUG:
+  CLOSED: [2017-02-22 Wed 20:17]
+  The 'Övrigt - Markerar sekventiell artikulation' should be vertically bottom
+  aligned with the hand clusters, not top aligned as it is now.
 * DONE Fix cluster unfocusing when focusing non-glyph element  :COSMETIC:BUG:
   CLOSED: [2017-02-22 Wed 19:48]
   Currently when clicking outside of the current transcript the current glyph
