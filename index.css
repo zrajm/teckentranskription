@@ -84,54 +84,54 @@ button table {
 #input table { border-collapse: collapse; }
 #input td    { background-size: 100px 100px; }
 
-#input td.ar { position: relative; top: -2px; }
+.glyph.ar { position: relative; top: -2px; }
 
-#input td.av,
-#input td.text,
-#input td.artion_low  { vertical-align: bottom; }
-#input td.ar,
-#input td.ina,
-#input td.top,
-#input td.artion_high,
-#input td.artion_tall { vertical-align: top;    }
+.glyph.av,
+.glyph.text,
+.glyph.artion_low  { vertical-align: bottom; }
+.glyph.ar,
+.glyph.ina,
+.cluster .top,
+.glyph.artion_high,
+.glyph.artion_tall { vertical-align: top;    }
 
 /* SVGs aligned to top should be pushed slightly downwards. */
-#input td.ina         img,
-#input td.top         img,
-#input td.artion_high img,
-#input td.artion_tall img { padding-top: 8px; }
+.glyph.ina         img,
+.glyph.top         img,
+.glyph.artion_high img,
+.glyph.artion_tall img { padding-top: 8px; }
 
 /* SVGs aligned to bottom should be pushed 10px upwards. */
-#input td.low     { vertical-align: bottom !important; }
-#input td.low img {
+.glyph.low     { vertical-align: bottom !important; }
+.glyph.low img {
     padding-bottom: 8px;
     padding-top: 0px !important;
 }
 
-#input td.h img                          { padding: 0px 4px; }
-#input td img[src="pic/x-separator.svg"] { padding: 0px 6px; }
+.glyph.h img                          { padding: 0px 4px; }
+.glyph img[src="pic/x-separator.svg"] { padding: 0px 6px; }
 
 /* width */
-#input td.artion_high               { width: 46px; }
+.glyph.artion_high               { width: 46px; }
 button.ui                           { width: 100px;   }
 button.ui#this,
 select#load-input, input#save-input { width: 250px;   }
 #input td                           { width: auto;    }
 
-#input td img {
+.glyph img {
     display: block;
     margin: 0 auto;
 }
-#input td.artion_low {
+.glyph.artion_low {
     vertical-align: bottom;
     height: 38px;
 }
 
 /* height */
 /* high, mid, low, text, full = Input table row position. */
-#input td.high        { height: 15px; }
-#input td.text        { height: 70px; }
-#input td.full        { height: 85px; }
+.cluster .high        { height: 15px; }
+.cluster .text        { height: 70px; }
+.cluster .full        { height: 85px; }
 
 /******************************************************************************/
 
@@ -192,27 +192,27 @@ footer {
 
 /* Input field should always have a height, otherwise GUI elements jump around
    when showing cues and transcript is empty. */
-#input .fieldvspace { height: 91px; }
+.sign .fieldvspace { height: 91px; }
 
 /* Hide empty transcription fields. */
-#input .field:empty { display: none; }
+.sign .field:empty { display: none; }
 
 /* Padding between transcription fields. */
-#input .field            { border-right: .25em solid transparent; }
-#input .field:last-child { border-right: 0; } /* after last field */
+.sign .field            { border-right: .25em solid transparent; }
+.sign .field:last-child { border-right: 0; } /* after last field */
 
 /* Make linebreaking behave somewhat. */
-#input .field.i, #input .field.ii {
+.sign .field.i, .sign .field.ii {
     vertical-align: top;
     white-space: nowrap;
 }
 
-/* Show transcription field labels when hovering on #input. */
-#input .field { position: relative; }
-#input .field.i:before { content: "I"; }
-#input .field.ii:before { content: "II"; }
-#input .field.iii:before { content: "III"; }
-#input .field:before {
+/* Show transcription field labels when hovering on '.sign'. */
+.sign .field { position: relative; }
+.sign .field.i:before { content: "I"; }
+.sign .field.ii:before { content: "II"; }
+.sign .field.iii:before { content: "III"; }
+.sign .field:before {
     display: none;
     position: absolute;
     top: 0; left: 0; bottom: 0; right: 0;
@@ -222,8 +222,8 @@ footer {
     text-align: center;
     line-height: 1em;
 }
-#input > table { margin-top: 1.1em; } /* compensate for negative margin-top */
-#input.hover .field:before, #input:hover .field:before { display: block; }
+table.sign { margin-top: 1.1em; } /* compensate for negative margin-top */
+.sign.hover .field:before, .sign:hover .field:before { display: block; }
 
 /******************************************************************************/
 
