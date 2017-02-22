@@ -1,9 +1,10 @@
 /* Copyright 2017 by zrajm. Released under GPLv3 license. */
 
 // This is a singleton module (i.e. should only be invoked once).
-// * inElement -- jQuery element
-// * onGlyphHover -- event function
-// * onGlyphFocus -- event function
+// * args.inElement -- jQuery element
+// * args.onGlyphHover -- event function
+// * args.onGlyphFocus -- event function
+// * args.onGlyphBlur  -- event function
 function makeClusterGui(args) {
     var self = {
             clear: clear,
@@ -261,9 +262,10 @@ function makeClusterGui(args) {
             throw TypeError("Invalid cluster type '" + clusterType + "'");
         }
         if (args.onGlyphHover || args.onGlyphFocus) {
-            glyphElements = element.find('.glyph').off('hover focus');
+            glyphElements = element.find('.glyph').off('hover focus blur');
             if (args.onGlyphHover) { glyphElements.hover(args.onGlyphHover); }
             if (args.onGlyphFocus) { glyphElements.focus(args.onGlyphFocus); }
+            if (args.onGlyphBlur ) { glyphElements.blur (args.onGlyphBlur);  }
         }
         return element;
     }

@@ -32,6 +32,7 @@ noscript {
 /* DEBUG: Border for glyph tables. */
 /* table, td { outline: 1px solid rgba(0,0,0,.3); } */
 
+.cluster.focus        { outline: 1px dashed rgba(0, 0, 255, 0.25); }
 .cluster.focus .glyph { outline: 1px solid rgba(0, 0, 255, 0.25); }
 :focus                { outline: 4px solid rgba(0, 0, 255, 0.5) !important; }
 
@@ -223,7 +224,7 @@ footer {
     line-height: 1em;
 }
 table.sign { margin-top: 1.1em; } /* compensate for negative margin-top */
-.sign.hover .field:before, .sign:hover .field:before { display: block; }
+.sign.focus .field:before { display: block; }
 
 /******************************************************************************/
 

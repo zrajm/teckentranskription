@@ -21,22 +21,33 @@ var addIaButtonElement  = $("#ia")
     overlayElement      = $("#overlay"),
     statusElement       = $("#status"),
     transcript          = makeTranscript(),
-    gui = makeClusterGui({
-        inElement   : $('.sign'),
-        onGlyphHover: function (event) { $(event.delegateTarget).focus(); },
-        onGlyphFocus: (function () {
-            var prevCluster;
-            return function (event) {
+    gui = makeClusterGui(function () {
+        var prevClusterElem = null, prevSignElem = null;
+        return {
+            inElement   : $('.sign'),
+            onGlyphHover: function (event) { $(event.delegateTarget).focus(); },
+            onGlyphFocus: function (event) {
                 var cluster = $(event.delegateTarget).closest('.cluster');
-                if (!cluster.is(prevCluster)) {
-                    if (prevCluster !== undefined) {
-                        prevCluster.removeClass('focus');
-                    }
-                    prevCluster = cluster.addClass('focus');
+                if (prevClusterElem !== null) {
+                    // Moved from glyph to glyph: Unfocus previous glyph.
+                    prevClusterElem.removeClass('focus');
+                } else {
+                    // Moved from outside current sign: Focus sign.
+                    prevSignElem = cluster.closest('.sign').addClass('focus');
                 }
-            }
-        }())
-    }),
+                prevClusterElem = cluster.addClass('focus');
+            },
+            onGlyphBlur: function () {
+                setTimeout(function () {
+                    var focusedElementIsGlyph = $(':focus').hasClass('glyph');
+                    if (!focusedElementIsGlyph) {
+                        prevClusterElem.add(prevSignElem).removeClass('focus');
+                        prevClusterElem = null;
+                    }
+                }, 1);
+            },
+        };
+    }());
     storage = (function () {
         function set(name, object) {
             localStorage.setItem(name, JSON.stringify(object));

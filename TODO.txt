@@ -27,15 +27,6 @@
     removed (probably cleaner, since it causes less interaction with Dragula,
     but question is still how to know where to add the elements as they are
     needed).
-* TODO Fix cluster unfocusing when focusing non-glyph element  :COSMETIC:BUG:
-  Currently when clicking outside of the current transcript the current glyph
-  is unfocused, but the 'focus' class of the other glyphs in the same cluster
-  remains. :(
-
-  Fix this by attach focusing/unfocusing to <body> instead? That way, whenever
-  focus changes, we can remove the previous 'focus' class (if any) and add it
-  to whatever '.cluster' element can be found above the current target element.
-* TODO Show fields in GUI when any glyph is focused
 * TODO Ia cluster margin in GUI                                    :COSMETIC:
   When cluster type 'Ia' is displayed the margin between field I & II is too
   narrow (but when displaying cluster type 'Ib' it looks good).
@@ -323,6 +314,20 @@ External (strips away unshown state):
   before `.hide()` since `.hide()` is called from inside `.cue()`.
 
   This might be too complicated to be worth it.
+* DONE Fix cluster unfocusing when focusing non-glyph element  :COSMETIC:BUG:
+  CLOSED: [2017-02-22 Wed 19:48]
+  Currently when clicking outside of the current transcript the current glyph
+  is unfocused, but the 'focus' class of the other glyphs in the same cluster
+  remains. :(
+
+  Fix this by attach focusing/unfocusing to <body> instead? That way, whenever
+  focus changes, we can remove the previous 'focus' class (if any) and add it
+  to whatever '.cluster' element can be found above the current target element.
+* DONE Show fields borders in GUI whenever a glyph is focused
+  CLOSED: [2017-02-22 Wed 19:48]
+  The field borders showing which clusters belong to which field should be
+  shown whenever a glyph is focused in the GUI, regardless of whether it was
+  focused by mouse or keyboard.
 * DONE Glyph selector failed sometimes                               :UX:BUG:
   CLOSED: [2017-02-22 Wed 16:09]
   After having removed a cluster, and then created it again the glyph selector
