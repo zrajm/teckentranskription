@@ -203,8 +203,6 @@ External (strips away unshown state):
 
   The class name of each SVG should be the same as the current file name, then
   use some jQuery magic to extract it and inserting it in the relevant place.
-* TODO Firefox: Button text not black                      :COSMETIC:FIREFOX:
-  Not explicitly set in CSS maybe?
 * TODO Firefox: Shortkeys not working in input            :FIREFOX:MINOR:BUG:
   Shortkeys works just fine in the selectGlyph menu, but when a glyph is
   focused and one press enter nothing happens.
@@ -330,6 +328,10 @@ External (strips away unshown state):
   before `.hide()` since `.hide()` is called from inside `.cue()`.
 
   This might be too complicated to be worth it.
+* DONE Firefox: Button text not black                      :COSMETIC:FIREFOX:
+  CLOSED: [2017-02-22 Wed 15:19]
+  Not explicitly set in CSS maybe? Fixed by setting 'color: inherit' on
+  <button>, <select> and <input>.
 * DONE Add links to KTH sign language transcription page              :MINOR:
   CLOSED: [2017-02-22 Web 15:12]
   Link already present in the readme file.

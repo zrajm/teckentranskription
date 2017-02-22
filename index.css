@@ -65,6 +65,7 @@ table.uigroup, table.cluster { display: inline-block; }
 
 /* Button margins & layout. */
 button, select, input {
+    color: inherit;
     font-size: inherit;
     margin: 3px;
     padding: 6px 13px;
