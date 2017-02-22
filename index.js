@@ -20,9 +20,7 @@ var addIaButtonElement  = $("#ia")
     deleteButtonElement = $("#delete"),
     overlayElement      = $("#overlay"),
     statusElement       = $("#status"),
-    transcript          = makeTranscript({
-        i: $('#input td.i'), ii: $('#input td.ii'), iii: $('#input td.iii'),
-    }),
+    transcript          = makeTranscript(),
     gui = makeClusterGui({
         inElement   : $('.sign'),
         onGlyphHover: function (event) { $(event.delegateTarget).focus(); },
@@ -130,7 +128,7 @@ function makeCluster(clusterSpec) {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-function makeTranscript(element) {
+function makeTranscript() {
     var clusters = [];
     function get() {
         return clusters.map(function (cluster) {
