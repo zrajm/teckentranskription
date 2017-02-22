@@ -83,7 +83,6 @@ button table {
 
 #input table table { margin: 0 3px; }  /* margin between clusters */
 #input table { border-collapse: collapse; }
-#input td    { background-size: 100px 100px; }
 
 .glyph.ar { position: relative; top: -2px; }
 
