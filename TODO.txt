@@ -27,8 +27,6 @@
     removed (probably cleaner, since it causes less interaction with Dragula,
     but question is still how to know where to add the elements as they are
     needed).
-* TODO Cluster button hilite when hovering on button
-* TODO Cluster button hilite should reflect transcript
 * TODO Fix cluster unfocusing when focusing non-glyph element  :COSMETIC:BUG:
   Currently when clicking outside of the current transcript the current glyph
   is unfocused, but the 'focus' class of the other glyphs in the same cluster
@@ -325,6 +323,10 @@ External (strips away unshown state):
   before `.hide()` since `.hide()` is called from inside `.cue()`.
 
   This might be too complicated to be worth it.
+* DONE Glyph selector failed sometimes                               :UX:BUG:
+  CLOSED: [2017-02-22 Wed 16:09]
+  After having removed a cluster, and then created it again the glyph selector
+  wouldn't work well for glyphs in the new cluster.
 * DONE Firefox: Shortkeys not working in input            :FIREFOX:MINOR:BUG:
   CLOSED: [2017-02-22 Wed 15:34]
   This does not seem to be an issue on Trusty Tahr with Firefox 50.1.0.

@@ -335,6 +335,7 @@ function makeClusterGui(args) {
 
         glyphTypes.forEach(function (glyphType) {
             $('.' + glyphType, clusterElement).
+                off('click keydown').
                 click(function () {
                     glyphMenu(glyphType);
                     return false;

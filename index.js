@@ -337,6 +337,7 @@ function selectGlyph(menu, selectedValue, callback) {
         tableElement.html(tableHtml);
         rowElements = $('tr', tableElement);
         overlayElement.
+            off('keydown click').
             keydown(handleMenuKeys(shortkeys)).
             click(handleMenuClick);
 
