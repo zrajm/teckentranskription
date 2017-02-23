@@ -311,6 +311,9 @@ External (strips away unshown state):
   before `.hide()` since `.hide()` is called from inside `.cue()`.
 
   This might be too complicated to be worth it.
+* DONE Add help about drag-and-dropping
+  CLOSED: [2017-02-23 Thu 09:37]
+  There should be some hint that one can drag-and-drop clusters.
 * DONE Show field borders in GUI during drag-and-drop
   CLOSED: [2017-02-22 Wed 20:45]
 * DONE Bottom aligned articulation 'separator'           :MINOR:COSMETIC:BUG:
