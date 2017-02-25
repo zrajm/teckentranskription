@@ -459,6 +459,133 @@ function makeClusterGui(args) {
 
     ////////////////////////////////////////////////////////////////////////////
     //
+    // Glyph Selector Menu
+    //
+
+    function selectGlyph(menu, selectedValue, callback) {
+        var tableElement    = $('table', overlayElement),
+            selectedElement = $(document.activeElement),
+            selectedValue   = selectedValue || 0,
+            rowElements, defaultShortkeys =
+            '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+        function createMenu(menu) {
+            var shortkeys = {}, tableHtml = "";
+            bodyElement.addClass('overlay');
+            windowElement.on('popstate', destroyMenu);
+            history.pushState('', document.title + ": Select Glyph",
+                              "#select-glyph");
+
+            menu.forEach(function (value, index) {
+                var glyph    = value[0], text = value[1],
+                    shortkey = value[2] || defaultShortkeys[index],
+                    image    = value[3], shortkeyHtml = '';
+                shortkeys[shortkey] = index;
+                shortkeyHtml = '<td class="right shortkey">' +
+                    (shortkey.match(/^[A-Z]$/) ? 'Shift+' : '') +
+                    shortkey.toUpperCase()
+                tableHtml += '<tr tabindex=1 data-value=' + index +
+                    (selectedValue === index ? ' class=selected' : '') + '>' +
+                    '<td><img src="pic/' + glyph + '">' +
+                    (image ? '<td><img src="pic/' + image + '">' : '') +
+                    '<td class=left>' + text + shortkeyHtml;
+            });
+            tableElement.html(tableHtml);
+            rowElements = $('tr', tableElement);
+            overlayElement.
+                off('keydown click').
+                keydown(handleMenuKeys(shortkeys)).
+                click(handleMenuClick);
+
+            // Focus items in menu on hover (but ignore false hover events
+            // caused by page scrolling moving mouse pointer relative to the
+            // page itself).
+            (function () {
+                var mouseActive = false, lastY = 0;
+                overlayElement.
+                    keydown(function () { mouseActive = false; }).
+                    mousemove(function (event) {
+                        if (mouseActive === false && lastY !== event.screenY) {
+                            mouseActive = true;
+                        }
+                        lastY = event.screenY;
+                    }).find('tr').hover(function () {
+                        if (mouseActive === true) {
+                            $(this).focus();
+                        }
+                    });
+            }());
+            overlayElement.css('display', 'block')
+            console.log('selectedValue: ' + selectedValue);
+
+            if (selectedValue === undefined) {
+                overlayElement.focus();
+            } else {
+                rowElements[selectedValue].focus();
+            }
+        }
+
+        function destroyMenu(backButtonEvent) {
+            if (!backButtonEvent) { history.back(); }
+            bodyElement.removeClass('overlay');
+            windowElement.off('popstate');
+            overlayElement.off().css('display', 'none').
+                find('tr').off();
+            tableElement.empty();
+            selectedElement.focus();           // reselect previously focused
+        }
+
+        function handleMenuClick(event) {
+            var element = $(event.target),
+                value   = element.closest('tr').data('value');
+            destroyMenu();
+            if (value !== undefined) { callback(value); }
+            return false;
+        }
+
+        function handleMenuKeys(shortkeys) {
+            shortkeys = shortkeys || {};
+            return function (event) {
+                var element = $(event.target),
+                    itemNum = element.data('value');
+
+                if (shortkeys[event.key] !== undefined) {
+                    itemNum = shortkeys[event.key];
+                    destroyMenu();
+                    callback(itemNum);
+                    return false;
+                }
+                switch (event.key) {
+                case "Escape":
+                    destroyMenu();
+                    return false;
+                case "ArrowUp":
+                    itemNum -= 1;
+                    if (itemNum < 0) { itemNum = 0; }
+                    rowElements[itemNum].focus();
+                    return false;
+                case "ArrowDown":
+                    itemNum += 1;
+                    if (itemNum >= rowElements.length) {
+                        itemNum = rowElements.length - 1;
+                    }
+                    rowElements[itemNum].focus();
+                    return false;
+                case "Enter":
+                    destroyMenu();
+                    callback(itemNum);
+                    return false;
+                default:
+                    console.log("Menu keypress: >" + event.key + "<");
+                    return true;
+                }
+            }
+        }
+        createMenu(menu);
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+    //
     // Drag-and-Drop Stuff
     //
 
