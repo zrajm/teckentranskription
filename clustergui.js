@@ -15,6 +15,7 @@ function makeClusterGui(args) {
             show : show,
             uncue: uncue,
         },
+        overlayActive = false,
         glyphData = {
             r: [ // Relation
                 ["r-ingen.svg",   "Relation – Ingen"  ],
@@ -263,7 +264,11 @@ function makeClusterGui(args) {
         }
         if (args.onGlyphHover || args.onGlyphFocus) {
             glyphElements = element.find('.glyph').off('hover focus blur');
-            if (args.onGlyphHover) { glyphElements.hover(args.onGlyphHover); }
+            if (args.onGlyphHover) {
+                glyphElements.hover(function (event) {
+                    if (!overlayActive) { args.onGlyphHover(event); };
+                });
+            }
             if (args.onGlyphFocus) { glyphElements.focus(args.onGlyphFocus); }
             if (args.onGlyphBlur ) { glyphElements.blur (args.onGlyphBlur);  }
         }
@@ -468,6 +473,7 @@ function makeClusterGui(args) {
             selectedValue   = selectedValue || 0,
             rowElements, defaultShortkeys =
             '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        overlayActive = true;
 
         function createMenu(menu) {
             var shortkeys = {}, tableHtml = "";
@@ -533,6 +539,7 @@ function makeClusterGui(args) {
                 find('tr').off();
             tableElement.empty();
             selectedElement.focus();           // reselect previously focused
+            overlayActive = false;
         }
 
         function handleMenuClick(event) {

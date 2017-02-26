@@ -311,6 +311,12 @@ External (strips away unshown state):
   before `.hide()` since `.hide()` is called from inside `.cue()`.
 
   This might be too complicated to be worth it.
+* DONE Glyph selector focus fails when invoked by clicking           :BUG:UX:
+  CLOSED: [2017-02-26 Sun 21:14]
+  When mouse clicking a glyph to select a new one, the selector failed to focus
+  the correct item, due to interference with the .onGlyphHover() event handler.
+
+  The problem was introduced in commit '3f379223' on 2017-02-19.
 * DONE Add help about drag-and-dropping
   CLOSED: [2017-02-23 Thu 09:37]
   There should be some hint that one can drag-and-drop clusters.
