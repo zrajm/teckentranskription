@@ -523,12 +523,7 @@ function makeClusterGui(args) {
             }());
             overlayElement.css('display', 'block')
             console.log('selectedValue: ' + selectedValue);
-
-            if (selectedValue === undefined) {
-                overlayElement.focus();
-            } else {
-                rowElements[selectedValue].focus();
-            }
+            rowElements[selectedValue].focus();
         }
 
         function destroyMenu(backButtonEvent) {
