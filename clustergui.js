@@ -18,46 +18,46 @@ function makeClusterGui(args) {
         overlayActive = false,
         glyphData = {
             r: [ // Relation
-                ["r-ingen.svg",   "Relation – Ingen"  ],
-                ["r-over.svg",    "Relation – Över"   ],
-                ["r-under.svg",   "Relation – Under"  ],
-                ["r-bredvid.svg", "Relation – Bredvid"],
-                ["r-framfor.svg", "Relation – Framför"],
-                ["r-bakom.svg",   "Relation – Bakom"  ],
+                ["r-ingen.svg",   "Relation – Ingen",   "_"],
+                ["r-over.svg",    "Relation – Över",    "o"],
+                ["r-under.svg",   "Relation – Under",   "u"],
+                ["r-bredvid.svg", "Relation – Bredvid", "s"],
+                ["r-framfor.svg", "Relation – Framför", "f"],
+                ["r-bakom.svg",   "Relation – Bakom",   "b"],
             ],
             a: [ // Artikulationsställe
-                ["a-hjassan.svg",         "Läge – Hjässan"                        ],
-                ["a-ansiktet.svg",        "Läge – Ansiktet, huvudhöjd"            ],
-                ["a-ansiktet-upptill.svg","Läge – Ansiktet, övre del"             ],
-                ["a-ansiktet-nertill.svg","Läge – Ansiktet, nedre del"            ],
-                ["a-pannan.svg",          "Läge – Pannan"                         ],
-                ["a-ogonen.svg",          "Läge – Ögonen"                         ],
-                ["a-ogat.svg",            "Läge – Ögat"                           ],
-                ["a-nasan.svg",           "Läge – Näsan"                          ],
-                ["a-oronen.svg",          "Läge – Sidorna av huvudet, öronen"     ],
-                ["a-orat-hoger.svg",      "Läge – Sidan av huvudet, örat, höger"  ],
-                ["a-orat-vanster.svg",    "Läge – Sidan av huvudet, örat, vänster"],
-                ["a-kinderna.svg",        "Läge – Kinderna"                       ],
-                ["a-kinden-hoger.svg",    "Läge – Kinden, höger"                  ],
-                ["a-kinden-vanster.svg",  "Läge – Kinden, vänster"                ],
-                ["a-munnen.svg",          "Läge – Munnen"                         ],
-                ["a-hakan.svg",           "Läge – Hakan"                          ],
-                ["a-nacken.svg",          "Läge – Nacken"                         ],
-                ["a-halsen.svg",          "Läge – Halsen"                         ],
-                ["a-axlarna.svg",         "Läge – Axlarna"                        ],
-                ["a-axeln-hoger.svg",     "Läge – Axeln, höger"                   ],
-                ["a-axeln-vanster.svg",   "Läge – Axeln, vänster"                 ],
-                ["a-armen.svg",           "Läge – Armen"                          ],
-                ["a-overarmen.svg",       "Läge – Överarmen"                      ],
-                ["a-underarmen.svg",      "Läge – Underarmen"                     ],
-                ["a-brostet.svg",         "Läge – Bröstet"                        ],
-                ["a-brostet-hoger.svg",   "Läge – Bröstet, höger sida"            ],
-                ["a-brostet-vanster.svg", "Läge – Bröstet, vänster sida"          ],
-                ["a-magen.svg",           "Läge – Magen, mellangärdet"            ],
-                ["a-hofterna.svg",        "Läge – Höfterna"                       ],
-                ["a-hoften-hoger.svg",    "Läge – Höften, höger"                  ],
-                ["a-hoften-vanster.svg",  "Läge – Höften, vänster"                ],
-                ["a-benet.svg",           "Läge – Benet"                          ],
+                ["a-hjassan.svg",         "Läge – Hjässan",                        "a"],
+                ["a-ansiktet.svg",        "Läge – Ansiktet, huvudhöjd",            "b"],
+                ["a-ansiktet-upptill.svg","Läge – Ansiktet, övre del",             "c"],
+                ["a-ansiktet-nertill.svg","Läge – Ansiktet, nedre del",            "d"],
+                ["a-pannan.svg",          "Läge – Pannan",                         "e"],
+                ["a-ogonen.svg",          "Läge – Ögonen",                         "f"],
+                ["a-ogat.svg",            "Läge – Ögat",                           "g"],
+                ["a-nasan.svg",           "Läge – Näsan",                          "h"],
+                ["a-oronen.svg",          "Läge – Sidorna av huvudet, öronen",     "i"],
+                ["a-orat-vanster.svg",    "Läge – Sidan av huvudet, örat, vänster","j"],
+                ["a-orat-hoger.svg",      "Läge – Sidan av huvudet, örat, höger",  "k"],
+                ["a-kinderna.svg",        "Läge – Kinderna",                       "l"],
+                ["a-kinden-vanster.svg",  "Läge – Kinden, vänster",                "m"],
+                ["a-kinden-hoger.svg",    "Läge – Kinden, höger",                  "n"],
+                ["a-munnen.svg",          "Läge – Munnen",                         "o"],
+                ["a-hakan.svg",           "Läge – Hakan",                          "p"],
+                ["a-nacken.svg",          "Läge – Nacken",                         "q"],
+                ["a-halsen.svg",          "Läge – Halsen",                         "r"],
+                ["a-axlarna.svg",         "Läge – Axlarna",                        "s"],
+                ["a-axeln-vanster.svg",   "Läge – Axeln, vänster",                 "t"],
+                ["a-axeln-hoger.svg",     "Läge – Axeln, höger",                   "u"],
+                ["a-armen.svg",           "Läge – Armen",                          "v"],
+                ["a-overarmen.svg",       "Läge – Överarmen",                      "w"],
+                ["a-underarmen.svg",      "Läge – Underarmen",                     "x"],
+                ["a-brostet.svg",         "Läge – Bröstet",                        "y"],
+                ["a-brostet-vanster.svg", "Läge – Bröstet, vänster sida",          "z"],
+                ["a-brostet-hoger.svg",   "Läge – Bröstet, höger sida",            "A"],
+                ["a-magen.svg",           "Läge – Magen, mellangärdet",            "B"],
+                ["a-hofterna.svg",        "Läge – Höfterna",                       "C"],
+                ["a-hoften-vanster.svg",  "Läge – Höften, vänster",                "D"],
+                ["a-hoften-hoger.svg",    "Läge – Höften, höger",                  "E"],
+                ["a-benet.svg",           "Läge – Benet",                          "F"],
             ],
             h: [ // Handform
                 //
@@ -116,7 +116,7 @@ function makeClusterGui(args) {
                 ["h-stora-nyphanden.svg",  "Handform – Stora nyphanden",  "h", "hand/stora-nyphanden.jpg"  ],
                 ["h-x-handen.svg",         "Handform – X-handen",         "x", "hand/x-handen.jpg"         ],
             ],
-            ar: [ // Attitydsriktning                                            // Cannot be combined with:
+            ar: [ // Attitydsriktning                                        // Cannot be combined with:
                 ["ar-vanster.svg", "Attitydsriktning – Vänsterriktad", "v"], //   höger- & vänstervänd
                 ["ar-hoger.svg",   "Attitydsriktning – Högerriktad",   "h"], //   -"-
                 ["ar-fram.svg",    "Attitydsriktning – Framåtriktad",  "f"], //   framåt- & inåtriktad
@@ -124,7 +124,7 @@ function makeClusterGui(args) {
                 ["ar-upp.svg",     "Attitydsriktning – Uppåtriktad",   "u"], //   uppåt- & nedåtvänd
                 ["ar-ner.svg",     "Attitydsriktning – Nedåtriktad",   "n"], //   -"-
             ],
-            av: [ // Attitydsvridning                                            // Cannot be combined with:
+            av: [ // Attitydsvridning                                        // Cannot be combined with:
                 ["av-vanster.svg", "Attitydsvridning – Vänstervänd", "v"],   //   höger- & vänsterriktad
                 ["av-hoger.svg",   "Attitydsvridning – Högervänd",   "h"],   //   -"-
                 ["av-fram.svg",    "Attitydsvridning – Framåtvänd",  "f"],   //   framåt- & inåtriktad
@@ -164,7 +164,7 @@ function makeClusterGui(args) {
                 ["i-kontakt.svg",       "Interaktionsart – Kontakt",                      "."],
                 ["i-medial-kontakt.svg","Interaktionsart – Medial kontakt",               ","],
                 ["x-upprepning.svg",    "Övrigt – Upprepad artikulation",                 ":"],
-                ["x-separator.svg",     "Övrigt – Markerar sekventiell artikulation",     "|"],
+                ["x-separator.svg",     "Övrigt – Markerar sekventiell artikulation",     "!"],
             ],
             artion_high: [ // Artikulation
                 ["ra-bage.svg",   "Rörelseart – Båge",   "b"],
@@ -471,8 +471,7 @@ function makeClusterGui(args) {
         var tableElement    = $('table', overlayElement),
             selectedElement = $(document.activeElement),
             selectedValue   = selectedValue || 0,
-            rowElements, defaultShortkeys =
-            '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            rowElements;
         overlayActive = true;
 
         function createMenu(menu) {
@@ -483,9 +482,11 @@ function makeClusterGui(args) {
                               "#select-glyph");
 
             menu.forEach(function (value, index) {
-                var glyph    = value[0], text = value[1],
-                    shortkey = value[2] || defaultShortkeys[index],
-                    image    = value[3], shortkeyHtml = '';
+                var glyph    = value[0],
+                    text     = value[1],
+                    shortkey = value[2],
+                    image    = value[3],
+                    shortkeyHtml = '';
                 shortkeys[shortkey] = index;
                 shortkeyHtml = '<td class="right shortkey">' +
                     (shortkey.match(/^[A-Z]$/) ? 'Shift+' : '') +
