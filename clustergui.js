@@ -616,7 +616,7 @@ function makeClusterGui(args) {
         // sibling comes after it move it to last position).
         function moveCluster(element, _, _, sibling) {
             var clusterNumber = $(element).data('n'),
-            position      = $(sibling).data('n');
+                position      = $(sibling).data('n');
             if (position === undefined) { position = transcript.length(); }
             if (position > clusterNumber) { position -= 1; }
             transcript.move(clusterNumber, position);

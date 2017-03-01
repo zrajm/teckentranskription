@@ -227,7 +227,7 @@ function makeTranscript() {
         add: add,
         changed: changed,
         get: get,
-        length: function () { return clusters.length },
+        length: function () { return clusters.length; },
         move: move,
         remove: remove,
         set: set,
@@ -275,12 +275,12 @@ function buttonLoad() {
 function buttonSave() {
     var name = saveInputElement.val();
     if (name === '') {
-        alert("Cannot save transcription unless you give it a name!");
+        alert("Cannot save transcript unless you give it a name!");
         saveInputElement.focus();
         return false;
     }
     if (name[0] === '_') {
-        alert("Transcription name may not begin with an underscore!");
+        alert("Transcript name may not begin with an underscore!");
         saveInputElement.focus();
         return false;
     }
@@ -310,16 +310,7 @@ function buttonDump() {
     console.log(JSON.stringify(obj, null, 4));
 }
 function buttonDumpThis() {
-    var prettyClusterSpecs = transcript.get().map(function (clusterSpec) {
-        // Return copy of object (with jQuery values removed).
-        return Object.keys(clusterSpec).reduce(function (acc, propName) {
-            acc[propName] = clusterSpec[propName] instanceof jQuery ?
-                '<jQuery element>' : clusterSpec[propName];
-            return acc;
-        }, {});
-    });
-    console.log("TRANSCRIPT NAME: >>" + storage.getCurrentName() + "<<");
-    console.log(JSON.stringify(prettyClusterSpecs, null, 4));
+    console.log(JSON.stringify(transcript.get(), null, 4));
 }
 function buttonDelete() {
     var name = loadInputElement.val(), newName;
