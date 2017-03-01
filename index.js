@@ -103,7 +103,7 @@ var addIaButtonElement  = $("#ia")
         };
     }());
 
-function makeCluster(clusterSpec) {
+function makeCluster(clusterSpec, onSet) {
     var self = { get: get, set: set },
         clusterState = {
             type    : clusterSpec.type,
@@ -131,6 +131,7 @@ function makeCluster(clusterSpec) {
             });
         }
         gui.set(self).show(self);
+        if (onSet) { onSet(true); }
     }
 
     set(clusterSpec);
@@ -140,7 +141,11 @@ function makeCluster(clusterSpec) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function makeTranscript() {
-    var clusters = [];
+    var clusters = [], modified;
+    function changed(value) {
+        if (value === true || value === false) { modified = value; }
+        return modified;
+    }
     function get() {
         return clusters.map(function (cluster) {
             return cluster.get();
@@ -153,11 +158,13 @@ function makeTranscript() {
         }
         gui.clear();
         clusters = clusterSpecs.map(function (clusterSpec) {
-            return makeCluster(clusterSpec);
+            return makeCluster(clusterSpec, changed);
         });
+        changed(false);
     }
     function remove(clusterNumber) {
         // Return element or 'undefined' if not found.
+        changed(true);
         return clusters.splice(clusterNumber, 1)[0];
     }
     function move(clusterNumber, newPosition) {
@@ -165,6 +172,7 @@ function makeTranscript() {
         if (cluster !== undefined) {
             clusters.splice(newPosition, 0, cluster);
         }
+        changed(true);
         return cluster;
     }
 
@@ -180,7 +188,7 @@ function makeTranscript() {
         }
         // Insert cluster before cluster of different type (or last in list).
         if (clusters[i] === undefined || clusters[i].get('type') !== findType) {
-            clusters.splice(i, 0, makeCluster(clusterSpec));
+            clusters.splice(i, 0, makeCluster(clusterSpec, changed));
             return true;
         }
         return false;
@@ -191,7 +199,7 @@ function makeTranscript() {
     // (should be used for clusters of field III). Return true if a cluster was
     // inserted, false otherwise.
     function appendCluster(clusters, clusterSpec) {
-        clusters.push(makeCluster(clusterSpec));
+        clusters.push(makeCluster(clusterSpec, changed));
     }
 
     function add(clusterSpec) {
@@ -217,6 +225,7 @@ function makeTranscript() {
     }
     return {
         add: add,
+        changed: changed,
         get: get,
         length: function () { return clusters.length },
         move: move,
@@ -256,9 +265,12 @@ function updateLoadList() {
 }
 
 function buttonLoad() {
-    var name = loadInputElement.val();
-    transcript.set(storage.get(name));
-    saveInputElement.val(name);
+    var msg = "Transcript is unsaved. – Load new one?";
+    if (!transcript.changed() || confirm(msg)) {
+        var name = loadInputElement.val();
+        transcript.set(storage.get(name));
+        saveInputElement.val(name);
+    }
 }
 function buttonSave() {
     var name = saveInputElement.val();
@@ -278,13 +290,17 @@ function buttonSave() {
         }
     }
     storage.set(name, transcript.get());
+    transcript.changed(false);
     updateLoadList();
     loadInputElement.val(name);
 }
 function buttonClear() {
-    var name = "";
-    transcript.set([]);
-    saveInputElement.val("");
+    var msg = "Transcript is unsaved. – Clear it?";
+    if (!transcript.changed() || confirm(msg)) {
+        var name = "";
+        transcript.set([]);
+        saveInputElement.val("");
+    }
 }
 function buttonDump() {
     var obj = {};

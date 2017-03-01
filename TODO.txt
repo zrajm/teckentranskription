@@ -67,9 +67,6 @@
       want to retain history forever we could prolly lump older changes
       together and store them in (a possibly compressed version) for longer
       periods.
-* TODO Modified/unmodified detection on load/save
-  Keep track of whether the current transcript has been modified since it was
-  last loaded, saved or cleared.
 * TODO 'Share' URLs with all transcript information
   Each cluster is prefixed with a 'magic' number (which also works as a
   separator), followed one character per glyph in the cluster. (And, in the
@@ -245,6 +242,11 @@
   before `.hide()` since `.hide()` is called from inside `.cue()`.
 
   This might be too complicated to be worth it.
+* DONE Modified/unmodified detection on load/save
+  CLOSED: [2017-03-01 Wed 16:28]
+  Keep track of whether the current transcript has been modified since it was
+  last loaded, saved or cleared, then warn user that work will be lost before
+  they load or clear a modified transcript.
 * DONE Fix length of <input> element
   CLOSED: [2017-03-01 Wed 14:29]
   <input> element should have same width as the <select> above it (they already
