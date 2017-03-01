@@ -28,45 +28,8 @@
   When cluster type 'Ia' is displayed the margin between field I & II is too
   narrow (but when displaying cluster type 'Ib' it looks good).
 * TODO Change internal state format
-    [ia, ib, iia, iib, iic, iii[abc]...]
-
-    |      |   | 1   | 2      | 3  | 4  |
-    | Ia   | D | R   | A      |    |    |
-    | Ib   | D | R   | H      | AR | AV |
-    | IIa  | D | R   | H      | AR | AV |
-    | IIb  | D | .   | I      |    |    |
-    | IIc  | D | .   | H      | AR | AV |
-    | IIIa | D | .   | ARTION |    |    |
-    | IIIb | D | ART | ION    |    |    |
-    | IIIc | D | .   | H      |    |    |
-
-D is 0/1 shown/unshown.
-
-Where subunits have the following syntaxes (D = displayed, 0/1 = shown/unshown; F
-
-  * ia:   (D)(R)(A)          2
-  * ib:   (D)(R)(H)(AR)(AV)  4
-  * IIa:  (D)(R)(H)(AR)(AV)  4
-  * IIb:  (D)(.)(I)          2
-  * IIc:  (D)(.)(H)(AR)(AV)  4
-  * IIIa: (D)(.)(ARTION)     2
-  * IIIb: (D)(ART)(ION)      2
-  * IIIc: (D)(.)(H)          2
-
-Ia  Ib    IIa   IIb IIc  IIIa IIIb IIIc
-:AA :AAAA :AAAA :A  :AAA :1A  :2AA :3A
-
-Internal:
-
-    +AA-AAAA+AAAA-A+AAA+1A+2AA+3A
-    +AA-AAAA+AAAA-A+AAA+1A+2AA+3A/+AA-AAAA+AAAA-A+AAA+1A+2AA+3A
-
-External (strips away unshown state):
-
-(FIXME verify feasibility of these)
-
-    #AA-AAAA-AAA-1A-2AA-3A
-    #AA-AAAA-AAA-1A-2AA-3A/AA-AAAA-AAA-1A-2AA-3A
+  The internal state should use the same format as the URL fragment implemented
+  in [['Share' URLs with all transcript information]].
 * TODO Update 'status' field when hovering/focusing on glyph
 * TODO Add '/' sign
 * TODO Use infinite undo paradigm                             :MAJOR:COMPLEX:
@@ -105,70 +68,41 @@ External (strips away unshown state):
       together and store them in (a possibly compressed version) for longer
       periods.
 * TODO Modified/unmodified detection on load/save
+  Keep track of whether the current transcript has been modified since it was
+  last loaded, saved or cleared.
 * TODO 'Share' URLs with all transcript information
-  For encoding handshape, use the shortkeys. For all other glyphs use simple
-  base64 alphabet [A-Za-z0-9+/].
+  Each cluster is prefixed with a 'magic' number (which also works as a
+  separator), followed one character per glyph in the cluster. (And, in the
+  future, multiple signs will be separated by '/').
 
-  The URL should contain all information required to build a transcript (so
-  that one may link to them).
+  Magic numbers implemented in this change will be 1-8 (9 will probably be used
+  for 'medial contact' in the near future) but multiple digit could possibly
+  also be used in the future (if there turn out to be a need for it).
 
-  Cluster separator: '.'
-  Transcription separator: '/' ?
+  The magic numbers allow glyphs to occur in any order, and in invalid
+  positions, this is by design, to keep the maximum possible range and
+  combination of symbols open for future expansion.
 
-  Example: #oOE.OUH0AOHU.OUHho/oeh.A2Oc.ShuE0o
+  Only characters which do not require URL escaping are used, i.e. characters
+  matching the following regex: /[a-zA-Z0-9?/:@._~!$&'()*+,;=-]/
 
-  .,_-
+  + Cluster separator: Cluster's 'magic' number.
+  + Sign separator: '/'
 
-  Use: [A-Za-z] (52 possible; [A-Za-z0-9+/] is base64)
+    |------+---+--------+-----+----+----|
+    | Type | # | 1      | 2   | 3  | 4  |
+    |------+---+--------+-----+----+----|
+    | Ia   | 1 | R      | A   |    |    |
+    | Ib   | 2 | R      | H   | AR | AV |
+    | IIa  | 3 | R      | H   | AR | AV |
+    | IIb  | 4 | I      |     |    |    |
+    | IIc  | 5 | H      | AR  | AV |    |
+    | IIIa | 6 | ARTION |     |    |    |
+    | IIIb | 7 | ART    | ION |    |    |
+    | IIIc | 8 | H      |     |    |    |
+    |------+---+--------+-----+----+----|
 
-  * Encode each list as [A-Za-z]
-
-  Pseudo code:
-
-        if three components
-            process 1st (place of articulation)
-        fi
-        process remaining two
-
-
-  I: Place of articulation is one of:
-
-      R        H       AR      AV
-      [A-Za-z]?[A-Za-z][A-Za-z][A-Za-z]
-
-  (3 or 4 bytes.)
-
-  or
-
-      R        A
-      [A-Za-z]?[A-Za-z]
-
-  (1 or 2 bytes.)
-
-  II: Articulator
-
-      (optional left hand)
-      R        H       AR      AV
-      [A-Za-z]?[A-Za-z][A-Za-z][A-Za-z]
-
-  (0 or 3-4 bytes.)
-
-      (optional interaction)
-      I
-      0[A-Za-z]?
-
-  (0 or 2 bytes.)
-
-      H       AR      AV
-      [A-Za-z][A-Za-z][A-Za-z]
-
-  (3 bytes.)
-
-  III: Articulation
-  Any number of [A-Za-z] plus [0-5][A-Za-z].
-
-  - 0 is '=>', followed by 'H' glyph
-  - 1-4 is 'båge/cirkel/vrids/slås' followed by A-Za-z
+    Example: '3fyui5yui6x6X6~' ('fjäril').
 * TODO Import/export saved data
 * TODO Position of 'contact'/'medial contact' in glyph selector
 * TODO Export transcription as SVG (?)                           :FAR_FUTURE:
@@ -311,6 +245,16 @@ External (strips away unshown state):
   before `.hide()` since `.hide()` is called from inside `.cue()`.
 
   This might be too complicated to be worth it.
+* DONE Fix length of <input> element
+  CLOSED: [2017-03-01 Wed 14:29]
+  <input> element should have same width as the <select> above it (they already
+  have the same set in the CSS).
+
+  Differences in width between <input> and <select> was due to the quirkiness
+  of how 'box-sizing' is applied by default, so rather than letting the browser
+  decide, I took Paul Irish's advice and applied 'box-sizing: border-box' to
+  EVERYTHING. (See "[[https://www.paulirish.com/2012/box-sizing-border-box-ftw/][`* { box-sizing: border-box }` FTW]]" by Paul Irish,
+  2012-02-01).
 * DONE Glyph selector focus fails when invoked by clicking           :BUG:UX:
   CLOSED: [2017-02-26 Sun 21:14]
   When mouse clicking a glyph to select a new one, the selector failed to focus
