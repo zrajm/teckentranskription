@@ -131,7 +131,7 @@ function makeCluster(clusterSpec, onSet) {
             });
         }
         gui.set(self).show(self);
-        if (onSet) { onSet(true); }
+        if (this !== window && onSet) { onSet(true); }
     }
 
     set(clusterSpec);
@@ -143,8 +143,8 @@ function makeCluster(clusterSpec, onSet) {
 function makeTranscript() {
     var clusters = [], modified;
     function changed(value) {
-        if (value === true || value === false) { modified = value; }
-        return modified;
+        if (arguments.length === 0) { return modified; }
+        modified = !!value;
     }
     function get() {
         return clusters.map(function (cluster) {
@@ -163,17 +163,15 @@ function makeTranscript() {
         changed(false);
     }
     function remove(clusterNumber) {
-        // Return element or 'undefined' if not found.
+        clusters.splice(clusterNumber, 1);
         changed(true);
-        return clusters.splice(clusterNumber, 1)[0];
     }
     function move(clusterNumber, newPosition) {
-        var cluster = remove(clusterNumber);
+        var cluster = clusters.splice(clusterNumber, 1)[0];
         if (cluster !== undefined) {
             clusters.splice(newPosition, 0, cluster);
         }
         changed(true);
-        return cluster;
     }
 
     // Turns `clusterSpec` into cluster object and inserts that into
@@ -219,6 +217,7 @@ function makeTranscript() {
         default:
             throw TypeError("Invalid cluster type '" + clusterSpec.type + "'");
         }
+        changed(true);
 
         // Focus the first glyph (of last cluster of the type added).
         $('.cluster.' + clusterSpec.type).last().find('.glyph').first().focus();
