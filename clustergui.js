@@ -160,7 +160,7 @@ function makeClusterGui(args) {
                 ["i-kors.svg",          "Interaktionsart – Kors",                         "x"],
                 ["i-vinkel.svg",        "Interaktionsart – Vinkel",                       "w"],
                 ["i-hakning.svg",       "Interaktionsart – Hakning",                      "X"],
-                ["i-entre.svg",         "Interaktionsart – Entré",                        "e"],
+                ["i-entre.svg",         "Interaktionsart – Entré / mottagning",           "e"],
                 ["i-kontakt.svg",       "Interaktionsart – Kontakt",                      "."],
                 ["i-medial-kontakt.svg","Interaktionsart – Medial kontakt",               ","],
                 ["x-upprepning.svg",    "Övrigt – Upprepad artikulation",                 ":"],
