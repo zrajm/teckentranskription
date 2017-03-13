@@ -20,7 +20,7 @@ var addIaButtonElement  = $("#ia")
     deleteButtonElement = $("#delete"),
     overlayElement      = $("#overlay"),
     statusElement       = $("#status"),
-    transcript          = makeTranscript(),
+    transcript          = makeTranscript(onTranscriptChange),
     gui = makeClusterGui(function () {
         var prevClusterElem = null, prevSignElem = null;
         return {
@@ -123,11 +123,18 @@ function makeCluster(clusterSpec, onSet) {
     }
 
     function set(clusterSpec, value) {
+        var clusterNum, glyphTypes;
         if (arguments.length === 2) {
             clusterState[clusterSpec] = value;
         } else {
-            Object.keys(clusterSpec).forEach(function (glyphType) {
-                clusterState[glyphType] = clusterSpec[glyphType];
+            // `clusterTypes` & `clusterGlyphTypes` defined in `hashchange.js`.
+            clusterNum = clusterTypes[clusterSpec.type];
+            if (clusterNum === undefined) {
+                throw TypeError("Invalid cluster type '" + clusterSpec.type + "'");
+            }
+            glyphTypes = clusterGlyphTypes[clusterNum];
+            glyphTypes.forEach(function (glyphType) {
+                clusterState[glyphType] = clusterSpec[glyphType] || 0;
             });
         }
         gui.set(self).show(self);
@@ -140,18 +147,26 @@ function makeCluster(clusterSpec, onSet) {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-function makeTranscript() {
+function onTranscriptChange(args) {
+    if (args === false) { return; }
+    var fromUrl     = urlFragment.get(),
+        fromStorage = fragmentStringify(transcript.get());
+    if (fromUrl !== fromStorage) { urlFragment.set(fromStorage); }
+}
+
+function makeTranscript(onTranscriptChange) {
     var clusters = [], modified;
-    function changed(value) {
+    function changed(changeStatus, eventArgs) {
         if (arguments.length === 0) { return modified; }
-        modified = !!value;
+        onTranscriptChange(eventArgs);
+        modified = !!changeStatus;
     }
     function get() {
         return clusters.map(function (cluster) {
             return cluster.get();
         });
     }
-    function set(clusterSpecs) {
+    function set(clusterSpecs, eventArgs) {
         if (!(clusterSpecs instanceof Array)) {
             console.warn("makeTranscript.set(): Argument is not an array");
             clusterSpecs = [];
@@ -160,7 +175,7 @@ function makeTranscript() {
         clusters = clusterSpecs.map(function (clusterSpec) {
             return makeCluster(clusterSpec, changed);
         });
-        changed(false);
+        changed(false, eventArgs);
     }
     function remove(clusterNumber) {
         clusters.splice(clusterNumber, 1);
@@ -345,10 +360,12 @@ dumpButtonElement.click(buttonDump);
 dumpThisButtonElement.click(buttonDumpThis);
 deleteButtonElement.click(buttonDelete);
 
-buttonLoad();
-$('.glyph').focus();
+$(function () {
+    if (transcript.get().length === 0) { buttonLoad(); }
+    $('.glyph').focus();
+});
 
-/* Hilite: Cluster button -> transcript clusters to be added/removed. */
+/* Cluster button: Show preview of cluster to be added. */
 addIaButtonElement.hover(
     function () { gui.cue('ia'); },
     function () { gui.uncue(); }

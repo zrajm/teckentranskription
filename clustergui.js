@@ -475,11 +475,11 @@ function makeClusterGui(args) {
         overlayActive = true;
 
         function createMenu(menu) {
-            var shortkeys = {}, tableHtml = "";
+            var shortkeys = {}, tableHtml = "", url = window.location.href;
             bodyElement.addClass('overlay');
             windowElement.on('popstate', destroyMenu);
-            history.pushState('', document.title + ": Select Glyph",
-                              "#select-glyph");
+            history.pushState({}, document.title + ": Select Glyph",
+                              url + (url.match(/#/) ? '' : '#' ) + '?menu');
 
             menu.forEach(function (value, index) {
                 var glyph    = value[0],
@@ -527,7 +527,7 @@ function makeClusterGui(args) {
             rowElements[selectedValue].focus();
         }
 
-        function destroyMenu(backButtonEvent) {
+        function destroyMenu(backButtonEvent, callback) {
             if (!backButtonEvent) { history.back(); }
             bodyElement.removeClass('overlay');
             windowElement.off('popstate');
@@ -536,13 +536,15 @@ function makeClusterGui(args) {
             tableElement.empty();
             selectedElement.focus();           // reselect previously focused
             overlayActive = false;
+            if (callback) { setTimeout(function () { callback(); }, 1); }
         }
 
         function handleMenuClick(event) {
             var element = $(event.target),
                 value   = element.closest('tr').data('value');
-            destroyMenu();
-            if (value !== undefined) { callback(value); }
+            destroyMenu(false, function () {
+                if (value !== undefined) { callback(value); }
+            });
             return false;
         }
 
@@ -554,8 +556,9 @@ function makeClusterGui(args) {
 
                 if (shortkeys[event.key] !== undefined) {
                     itemNum = shortkeys[event.key];
-                    destroyMenu();
-                    callback(itemNum);
+                    destroyMenu(false, function () {
+                        callback(itemNum);
+                    });
                     return false;
                 }
                 switch (event.key) {
@@ -575,8 +578,9 @@ function makeClusterGui(args) {
                     rowElements[itemNum].focus();
                     return false;
                 case "Enter":
-                    destroyMenu();
-                    callback(itemNum);
+                    destroyMenu(false, function () {
+                        callback(itemNum);
+                    });
                     return false;
                 default:
                     console.log("Menu keypress: >" + event.key + "<");
