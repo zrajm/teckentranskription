@@ -554,6 +554,9 @@ function makeClusterGui(args) {
                 var element = $(event.target),
                     itemNum = element.data('value');
 
+                // Let browser handle key combinations with Ctrl or Alt.
+                if (event.altKey || event.ctrlKey) { return true; }
+
                 if (shortkeys[event.key] !== undefined) {
                     itemNum = shortkeys[event.key];
                     destroyMenu(false, function () {
@@ -577,10 +580,30 @@ function makeClusterGui(args) {
                     }
                     rowElements[itemNum].focus();
                     return false;
+                case "End":
+                    itemNum = rowElements.length - 1;
+                    rowElements[itemNum].focus();
+                    return false;
                 case "Enter":
                     destroyMenu(false, function () {
                         callback(itemNum);
                     });
+                    return false;
+                case "Home":
+                    itemNum = 0;
+                    rowElements[itemNum].focus();
+                    return false;
+                case "PageDown":
+                    itemNum += 5;
+                    if (itemNum >= rowElements.length) {
+                        itemNum = rowElements.length - 1;
+                    }
+                    rowElements[itemNum].focus();
+                    return false;
+                case "PageUp":
+                    itemNum -= 5;
+                    if (itemNum < 0) { itemNum = 0; }
+                    rowElements[itemNum].focus();
                     return false;
                 default:
                     console.log("Menu keypress: >" + event.key + "<");

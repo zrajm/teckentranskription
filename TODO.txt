@@ -145,13 +145,7 @@
    As an alternative to pressing <Enter> then choosing from the glyph selector
    menu user should also be able to just press the desired shortkey directly
    (without displaying a menu).
-* [3/10] Make selectGlyph() menus prettier                            :MINOR:
-** TODO Browser shortcuts (Ctrl-<key>) should work
-   Specifically, it's annoying that one can't search the glyph selector menu
-   using the browser 'Find in page...' function (Ctrl-F).
-** TODO PgUp/PgDn should work in menu
-** TODO Home/End go to beginning/end of menu
-   Ctrl+A/Ctrl+E should also work.
+* [6/10] Make selectGlyph() menus prettier                            :MINOR:
 ** TODO Vertical alignment of glyphs in glyph selector
 ** TODO Add menu header
    'Handform'/'Läge'/'Relation' etc should be menu header (at least one menu
@@ -163,6 +157,14 @@
 ** TODO Hide shortkey on mobile devices                              :MOBILE:
    A mobile device presumably doesn't have a keyboard. And what use are
    shortkeys without keyboard?
+** DONE Browser shortcuts (Ctrl-<key>) should work
+   CLOSED: [2017-03-14 Tue 11:24]
+   Specifically, it's annoying that one can't search the glyph selector menu
+   using the browser 'Find in page...' function (Ctrl-F).
+** DONE PgUp/PgDn should work in menu
+   CLOSED: [2017-03-14 Tue 11:15]
+** DONE Home/End go to beginning/end of menu
+   CLOSED: [2017-03-14 Tue 11:15]
 ** DONE Mouse & keyboard should coexist better
    CLOSED: [2017-02-04 Sat 13:04]
    Implemented by [[Simplify focusing in glyph selector]] in commit caca05e.
