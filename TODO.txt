@@ -1,14 +1,13 @@
 -*- org -*-
 
 * TODO Make drag-and-drop help more eye catching
+  The drag-and-drop help text is very discreet. It needs to grab the user's
+  attention better, maybe a red double (left-right) arrow to explain the
+  drag-and-drop aspect of transcript editing. Also explain that a cluster can
+  be removed by dragging it out of the transcript.
 * TODO When adding new cluster to transcript use '?' for glyphs          :UX:
   The idea here is to give the user a hint/affordance that they should click
   the glyphs to change them.
-* TODO Glyph selector doesn't work on mobile                  :BUG:MOBILE:UX:
-  It seems like one cannot select items below the first screenful on the
-  selector (i.e. if one has to scroll down a bit to reach a glyph on the menu
-  then that glyph is selectable, but it does not appear in the transcript after
-  selecting it).
 * TODO Can't add field I/II cluster after drag-and-drop removal         :BUG:
   If one removes the cluster by using one of the buttons everything works as
   expected, but if you remove it by drag-and-drop (by dragging it outside the
@@ -39,8 +38,24 @@
   (which, incidentally, also serves as a poor man's 'undo' function using the
   browser's back & forward functions).
 * TODO Update 'status' field when hovering/focusing on glyph
-* TODO Add '/' sign
-* TODO Use infinite undo paradigm                             :MAJOR:COMPLEX:
+* TODO Add '/' cluster
+* TODO Add medial contact cluster
+  Dot with direction of movement above it.
+
+  "Medial contact must be combined with a direction of movement. The direction
+  symbol is placed above the symbol for medial contact." [Teckentranskription,
+  p.10]
+* TODO Import/export saved data
+* TODO Position of 'contact'/'medial contact' in glyph selector
+* TODO Export transcript as SVG (?)                              :FAR_FUTURE:
+  Is this possible? Maybe composing an SVG based on the individual glyphs plus
+  their relative coordinates taken from the DOM might be possible using some
+  Javascript SVG library.
+* TODO Infinite undo                                             :FAR_FUTURE:
+  NOTE: Need for this feature is somewhat mitigated by the fact that URL
+  fragment provides some small undo capability (with the back and forward
+  buttons in the browser).
+
   Instead of OK/cancel requesters. All changes should be automatically written
   to localStorage.
 
@@ -75,17 +90,7 @@
       want to retain history forever we could prolly lump older changes
       together and store them in (a possibly compressed version) for longer
       periods.
-* TODO Import/export saved data
-* TODO Position of 'contact'/'medial contact' in glyph selector
-* TODO Export transcription as SVG (?)                           :FAR_FUTURE:
-  Is this possible? Maybe composing an SVG based on the individual glyphs plus
-  their relative coordinates taken from the DOM might be possible using some
-  Javascript SVG library.
-* TODO Direction of movement above medial contact symbol
-  "Medial contact must be combined with a direction of movement. The direction
-  symbol is placed above the symbol for medial contact." [Teckentranskription,
-  p.10]
-* TODO Inline all SVG
+* TODO Inline SVGs in HTML
   Allows for:
   + Using CSS to control SVG color (yay!) and
   + Fewer requests to fetch the app.
@@ -95,6 +100,9 @@
 
   The class name of each SVG should be the same as the current file name, then
   use some jQuery magic to extract it and inserting it in the relevant place.
+** TODO Tool for extracting/inserting the SVGs into the HTML body
+   In order to edit the inlined SVGs one would need a simple script that can
+   extract and reinsert the SVGs into the HTML.
 * TODO Don't scroll background when scrolling overlay              :COSMETIC:
 * TODO "Spellchecker"                                                    :UX:
 * TODO Add textarea for notes to a transcription               :NICE:FEATURE:
@@ -102,7 +110,7 @@
   with the transcription. (This would not, at least initially not, be included
   when sharing a transcription -- maybe later this could be added with some
   suitable compression [and URL escaping] or something.)
-* TODO Multiple tabs?                                                  :TEST:
+* TODO Support for multiple browser tabs                               :TEST:
   How well does the transcription work with multiple tabs open in the same
   browser? What happens if you edit the same glyph?
 * TODO Test with Explorer                                      :WINDOWS:TEST:
@@ -137,12 +145,10 @@
    As an alternative to pressing <Enter> then choosing from the glyph selector
    menu user should also be able to just press the desired shortkey directly
    (without displaying a menu).
-* [2/9] Make selectGlyph() menus prettier                             :MINOR:
-** TODO Mouse & keyboard should coexist better
-   Mouse should use same focusing as keyboard. I.e. instead of having one mouse
-   selection (grey background) and one keyboard selection (blue border) there
-   should only be one (blue border) which should move if you move the mouse
-   pointer, but also be controllable by keyboard.
+* [3/10] Make selectGlyph() menus prettier                            :MINOR:
+** TODO Browser shortcuts (Ctrl-<key>) should work
+   Specifically, it's annoying that one can't search the glyph selector menu
+   using the browser 'Find in page...' function (Ctrl-F).
 ** TODO PgUp/PgDn should work in menu
 ** TODO Home/End go to beginning/end of menu
    Ctrl+A/Ctrl+E should also work.
@@ -157,6 +163,14 @@
 ** TODO Hide shortkey on mobile devices                              :MOBILE:
    A mobile device presumably doesn't have a keyboard. And what use are
    shortkeys without keyboard?
+** DONE Mouse & keyboard should coexist better
+   CLOSED: [2017-02-04 Sat 13:04]
+   Implemented by [[Simplify focusing in glyph selector]] in commit caca05e.
+
+   Mouse should use same focusing as keyboard. I.e. instead of having one mouse
+   selection (grey background) and one keyboard selection (blue border) there
+   should only be one (blue border) which should move if you move the mouse
+   pointer, but also be controllable by keyboard.
 ** DONE IIIa shortkeys
    CLOSED: [2016-12-13 Tue 11:07]
    Added better shortkeys mostly based on glyph shapes.
@@ -307,6 +321,15 @@
   decide, I took Paul Irish's advice and applied 'box-sizing: border-box' to
   EVERYTHING. (See "[[https://www.paulirish.com/2012/box-sizing-border-box-ftw/][`* { box-sizing: border-box }` FTW]]" by Paul Irish,
   2012-02-01).
+* DONE Glyph selector doesn't work on mobile                  :BUG:MOBILE:UX:
+  CLOSED: [2017-02-26 Sun 21:14]
+  It seems like one cannot select items below the first screenful on the
+  selector (i.e. if one has to scroll down a bit to reach a glyph on the menu
+  then that glyph is selectable, but it does not appear in the transcript after
+  selecting it).
+
+  Caused by the [[Glyph selector focus fails when invoked by clicking]] issue which
+  was solved in commit e34bcaa.
 * DONE Glyph selector focus fails when invoked by clicking           :BUG:UX:
   CLOSED: [2017-02-26 Sun 21:14]
   When mouse clicking a glyph to select a new one, the selector failed to focus
