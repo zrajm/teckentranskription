@@ -1,5 +1,6 @@
 -*- org -*-
 
+* TODO Make drag-and-drop help more eye catching
 * TODO When adding new cluster to transcript use '?' for glyphs          :UX:
   The idea here is to give the user a hint/affordance that they should click
   the glyphs to change them.
@@ -238,6 +239,16 @@
   way?
 * TODO Add name + description to sharable URL
   HTML form-y syntax (e.g. '?d=texttexttext') added to the URL fragment.
+* DONE Glyph selector table row height bug                     :COSMETIC:BUG:
+  CLOSED: [2017-03-14 Tue 10:34]
+  Table cells for the hand shape images in the glyph selector menu were shorter
+  than the other cells, causing ugly appearance.
+
+  This is caused by the `box-sizing: border-box` being applied to <td>, so
+  minor rewrite of the CSS so as to not apply it to that (but all other)
+  elements.
+
+  Bug was introduced in commit f63116c.
 * DONE 'Share' URLs with all transcript information
   CLOSED: [2017-03-13 Mon 10:04]
   Implementation of shareable transcripts URLs. A transcript URL contain a hash
