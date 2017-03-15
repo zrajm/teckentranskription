@@ -170,7 +170,7 @@ footer {
 
 #overlay table {
     display: inline-block;
-    background: white;
+    background: #fff;
 }
 #overlay table td {
     padding: 4px;
@@ -281,8 +281,7 @@ button:not([disabled]).active.hover:before {
 
 .shortkey {
     font-size: smaller;
-    color: black;
-    opacity: .4;
+    color: rgba(0, 0, 0, .4);
 }
 [disabled], .disabled {
     color: black;
