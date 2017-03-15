@@ -175,6 +175,10 @@ footer {
 #overlay table td {
     padding: 4px;
 }
+#overlay table th {
+    padding: 8px 4px;
+    background: #bbb;
+}
 
 #overlay table td { border: none; }
 #overlay table tr { border: 1px solid black; }

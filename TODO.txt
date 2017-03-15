@@ -145,18 +145,19 @@
    As an alternative to pressing <Enter> then choosing from the glyph selector
    menu user should also be able to just press the desired shortkey directly
    (without displaying a menu).
-* [6/10] Make selectGlyph() menus prettier                            :MINOR:
+* [7/10] Make selectGlyph() menus prettier                            :MINOR:
 ** TODO Vertical alignment of glyphs in glyph selector
-** TODO Add menu header
-   'Handform'/'Läge'/'Relation' etc should be menu header (at least one menu
-   needs multiple headers, i.e. 'rörelseriktning', 'rörelseart' and
-   'interaktionsart') instead of being repeated for each selection choice.
 ** TODO Prettier shortkey description
    The selection shortkey should be (baseline) aligned. Should take up as
    little space as possible. And be pretty. :)
 ** TODO Hide shortkey on mobile devices                              :MOBILE:
    A mobile device presumably doesn't have a keyboard. And what use are
    shortkeys without keyboard?
+** DONE Add menu headings
+   CLOSED: [2017-03-15 Wed 10:14]
+   'Handform'/'Läge'/'Relation' etc should be menu header (at least one menu
+   needs multiple headers, i.e. 'rörelseriktning', 'rörelseart' and
+   'interaktionsart') instead of being repeated for each selection choice.
 ** DONE Browser shortcuts (Ctrl-<key>) should work
    CLOSED: [2017-03-14 Tue 11:24]
    Specifically, it's annoying that one can't search the glyph selector menu
