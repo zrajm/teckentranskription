@@ -145,7 +145,7 @@
    As an alternative to pressing <Enter> then choosing from the glyph selector
    menu user should also be able to just press the desired shortkey directly
    (without displaying a menu).
-* [7/10] Make selectGlyph() menus prettier                            :MINOR:
+* [7/10] Make glyph selector prettier                                 :MINOR:
 ** TODO Vertical alignment of glyphs in glyph selector
 ** TODO Prettier shortkey description
    The selection shortkey should be (baseline) aligned. Should take up as
@@ -246,9 +246,9 @@
   Apparently second (title) argument of history.pushState() doesn't really work
   (in any browser?) -- is it possible to instead the title with another means
   and have that picked up by the history menu?
-* TODO glyphSelector should not wipe future history                      :UX:
-  Forward history is wiped out by the glyphSelector menu. E.g. if user changes
-  a transcript, then uses the back button (thus creating forward history) then
+* TODO Glyph selector should not wipe future history                     :UX:
+  Forward history is wiped out by the glyph selector. E.g. if user changes a
+  transcript, then uses the back button (thus creating forward history) then
   just displaying the glyph menu will wipe forward history.
 
   Could we avoid this by using replaceState(), and aborting the default
@@ -370,8 +370,8 @@
   CLOSED: [2017-02-22 Wed 15:34]
   This does not seem to be an issue on Trusty Tahr with Firefox 50.1.0.
 
-  Shortkeys works just fine in the selectGlyph menu, but when a glyph is
-  focused and one press enter nothing happens.
+  Shortkeys works just fine in the glyph selector, but when a glyph is focused
+  and one press enter nothing happens.
 * DONE Firefox: Height of empty transcription field        :COSMETIC:FIREFOX:
   CLOSED: [2017-02-22 Wed 15:31]
   [[Make GUI behave when showing cue in empty transcript]] for Firefox.
