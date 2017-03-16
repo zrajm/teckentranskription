@@ -145,14 +145,15 @@
    As an alternative to pressing <Enter> then choosing from the glyph selector
    menu user should also be able to just press the desired shortkey directly
    (without displaying a menu).
-* [7/10] Make glyph selector prettier                                 :MINOR:
-** TODO Vertical alignment of glyphs in glyph selector
+* [8/10] Make glyph selector prettier                                 :MINOR:
 ** TODO Prettier shortkey description
    The selection shortkey should be (baseline) aligned. Should take up as
    little space as possible. And be pretty. :)
 ** TODO Hide shortkey on mobile devices                              :MOBILE:
    A mobile device presumably doesn't have a keyboard. And what use are
    shortkeys without keyboard?
+** DONE Vertical alignment of glyphs in glyph selector
+   CLOSED: [2017-03-16 Thu 09:53]
 ** DONE Add menu headings
    CLOSED: [2017-03-15 Wed 10:14]
    'Handform'/'Läge'/'Relation' etc should be menu header (at least one menu

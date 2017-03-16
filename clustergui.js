@@ -19,6 +19,7 @@ function makeClusterGui(args) {
         glyphData = {
             r: [
                 "Relation",
+                '.top',
                 ["r-ingen.svg",   "Ingen",   "_"],
                 ["r-over.svg",    "Över",    "o"],
                 ["r-under.svg",   "Under",   "u"],
@@ -119,6 +120,7 @@ function makeClusterGui(args) {
             ],
             ar: [
                 "Attitydsriktning",                       // Cannot be combined with:
+                '.top',
                 ["ar-vanster.svg", "Vänsterriktad", "v"], //   höger- & vänstervänd
                 ["ar-hoger.svg",   "Högerriktad",   "h"], //   -"-
                 ["ar-fram.svg",    "Framåtriktad",  "f"], //   framåt- & inåtriktad
@@ -137,12 +139,14 @@ function makeClusterGui(args) {
             ],
             ina: [
                 "Interaktionsart",
+                '.top',
                 ["i-kors.svg",    "Kors",    "x"],
                 ["i-vinkel.svg",  "Vinkel",  "w"],
                 ["i-hakning.svg", "Hakning", "X"],
             ],
             artion_tall: [ // Artikulation
                 "Rörelseriktning",
+                '.top',
                 ["rr-vanster.svg",       "Föres åt vänster",              "v"],
                 ["rr-hoger.svg",         "Föres åt höger",                "h"],
                 ["rr-vanster-hoger.svg", "Föres vänster–höger (sidled)",  "s"],
@@ -169,13 +173,16 @@ function makeClusterGui(args) {
                 ["i-hakning.svg",        "Hakning",                       "X"],
                 ["i-entre.svg",          "Entré / mottagning",            "e"],
                 ["i-kontakt.svg",        "Kontakt",                       "."],
+                '.bottom',
                 ["i-medial-kontakt.svg", "Medial kontakt",                ","],
+                '.top',
                 "Övrigt",
                 ["x-upprepning.svg", "Upprepad artikulation",             ":"],
                 ["x-separator.svg",  "Markerar sekventiell artikulation", "!"],
             ],
             artion_high: [ // Artikulation
                 "Rörelseart",
+                '.top',
                 ["ra-bage.svg",   "Båge",   "b"],
                 ["ra-cirkel.svg", "Cirkel", "c"],
                 ["ra-vrids.svg",  "Vrids",  "v"],
@@ -488,7 +495,7 @@ function makeClusterGui(args) {
         overlayActive = true;
 
         function createMenu(menu) {
-            var shortkeys = {}, index = 0,
+            var shortkeys = {}, index = 0, cssClass = 'bottom',
                 tableHtml = "", url   = window.location.href;
             bodyElement.addClass('overlay');
             windowElement.on('popstate', destroyMenu);
@@ -497,20 +504,23 @@ function makeClusterGui(args) {
 
             menu.forEach(function (value) {
                 if (typeof value === 'string') {
-                    tableHtml += '<tr><th colspan=4>' + value;
+                    if (value[0] === '.') {
+                        cssClass = value.substr(1);
+                    } else {
+                        tableHtml += '<tr><th colspan=4>' + value;
+                    }
                 } else {
                     var glyph    = value[0],
                         text     = value[1],
                         shortkey = value[2],
                         image    = value[3],
-                        shortkeyHtml = '';
+                        shortkeyHtml = '<td class="right shortkey">' +
+                            (shortkey.match(/^[A-Z]$/) ? 'Shift+' : '') +
+                            shortkey.toUpperCase()
                     shortkeys[shortkey] = index;
-                    shortkeyHtml = '<td class="right shortkey">' +
-                        (shortkey.match(/^[A-Z]$/) ? 'Shift+' : '') +
-                        shortkey.toUpperCase()
                     tableHtml += '<tr tabindex=1 data-value=' + index +
                         (selectedValue === index ? ' class=selected' : '') + '>' +
-                        '<td><img src="pic/' + glyph + '">' +
+                        '<td class=' + cssClass + '><img src="pic/' + glyph + '">' +
                         (image ? '<td><img src="pic/' + image + '">' : '<td>') +
                         '<td class=left>' + text + shortkeyHtml;
                     index += 1;

@@ -153,6 +153,7 @@ footer {
     height: 70px;
     vertical-align: bottom;
 }
+#overlay table td.top { vertical-align: top; }
 #overlay table td + td { vertical-align: middle; }
 
 #overlay {
@@ -183,7 +184,11 @@ footer {
 #overlay table td { border: none; }
 #overlay table tr { border: 1px solid black; }
 
-#overlay table td + td img {
+#overlay table img {
+    padding: 4px 4px 0 8px;
+}
+#overlay table img[src^="pic/hand/"] {
+    padding: 0;
     height: 100%;
     display: block;
     margin: auto;
