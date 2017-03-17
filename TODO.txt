@@ -99,6 +99,15 @@
    extract and reinsert the SVGs into the HTML.
 * TODO Don't scroll background when scrolling overlay              :COSMETIC:
 * TODO "Spellchecker"                                                    :UX:
+  Invalid transcriptions should be allowed, but marked as incorrect. (Red
+  squiggly underline?)
+
+  Some rules:
+    + Contradictory attitude direction ('AR') and attitude twist ('AV') glyphs
+      should be marked. (When the attitude direction cannot be the same as, or
+      the opposite of, the attitude twist -- as this would be anatomically
+      impossible. E.g. if attitude direction is 'up' then attitude twist can be
+      neither 'up' nor 'down'.)
 * TODO Add textarea for notes to a transcription               :NICE:FEATURE:
   This is for free text notes to a transcription, and should be loaded/saved
   with the transcription. (This would not, at least initially not, be included
