@@ -24,10 +24,10 @@ var glyphData = init(),
     clusterTypes = {
         1: 'ia',   2: 'ib',
         3: 'iia',  4: 'iib',  5: 'iic',
-        6: 'iiia', 7: 'iiib', 8: 'iiic',
+        6: 'iiia', 7: 'iiib', 8: 'iiic', 9: 'iiid',
         ia:   '1', ib:   '2',
         iia:  '3', iib:  '4', iic:  '5',
-        iiia: '6', iiib: '7', iiic: '8',
+        iiia: '6', iiib: '7', iiic: '8', iiid: '9',
     },
     clusterGlyphTypes = {
         1: [ 'r',  'a' ],
@@ -38,6 +38,7 @@ var glyphData = init(),
         6: [ 'artion_tall' ],
         7: [ 'artion_high', 'artion_low' ],
         8: [ 'h' ],
+        9: [ 'artion_low' ],
     },
     urlFragment = makeUrlFragmentTrigger(onHashChange);
 

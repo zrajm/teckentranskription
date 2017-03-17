@@ -104,7 +104,7 @@ button table {
 .glyph.artion_tall img { padding-top: 8px; }
 
 /* SVGs aligned to bottom should be pushed 10px upwards. */
-.glyph.low     { vertical-align: bottom !important; }
+.cluster .low  { vertical-align: bottom; }
 .glyph.low img {
     padding-bottom: 8px;
     padding-top: 0px !important;
@@ -120,7 +120,7 @@ button.ui#this,
 select#load-input, input#save-input { width: 250px;   }
 #input td                           { width: auto;    }
 
-.glyph img {
+.cluster img {
     display: block;
     margin: 0 auto;
 }

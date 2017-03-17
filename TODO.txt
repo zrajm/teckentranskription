@@ -39,12 +39,6 @@
   browser's back & forward functions).
 * TODO Update 'status' field when hovering/focusing on glyph
 * TODO Add '/' cluster
-* TODO Add medial contact cluster
-  Dot with direction of movement above it.
-
-  "Medial contact must be combined with a direction of movement. The direction
-  symbol is placed above the symbol for medial contact." [Teckentranskription,
-  p.10]
 * TODO Import/export saved data
 * TODO Position of 'contact'/'medial contact' in glyph selector
 * TODO Export transcript as SVG (?)                              :FAR_FUTURE:
@@ -257,6 +251,20 @@
   way?
 * TODO Add name + description to sharable URL
   HTML form-y syntax (e.g. '?d=texttexttext') added to the URL fragment.
+* TODO Prettier glyphs for IIIb and IIId clusters              :COSMETIC:BUG:
+  Left and right arrows for IIIb and IIId should probably be the same as used
+  for IIIa? Currently the left and right arrow are the same as for the attitude
+  direction symbols (i.e. they're slightly shorter, not looking so pretty next
+  to the other articulation arrows).
+
+  Compare with transcription examples given in Bergman & Björkstrand (2015).
+* DONE Add medial contact cluster
+  CLOSED: [2017-03-17 Fri 11:26]
+  Dot with direction of movement above it.
+
+  "Medial contact must be combined with a direction of movement. The direction
+  symbol is placed above the symbol for medial contact." [Teckentranskription,
+  p.10]
 * DONE Glyph selector table row height bug                     :COSMETIC:BUG:
   CLOSED: [2017-03-14 Tue 10:34]
   Table cells for the hand shape images in the glyph selector menu were shorter

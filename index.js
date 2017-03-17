@@ -8,6 +8,7 @@ var addIaButtonElement  = $("#ia")
     addIIIaButtonElement = $("#iiia")
     addIIIbButtonElement = $("#iiib")
     addIIIcButtonElement = $("#iiic")
+    addIIIdButtonElement = $("#iiid")
     bodyElement         = $(document.body),
     windowElement       = $(window),
     loadButtonElement   = $("#load"),
@@ -227,6 +228,7 @@ function makeTranscript(onTranscriptChange) {
         case 'iiia':
         case 'iiib':
         case 'iiic':
+        case 'iiid':
             appendCluster(clusters, clusterSpec);
             break;
         default:
@@ -353,6 +355,7 @@ addIIcButtonElement. click(function() { transcript.add({ type: 'iic'  }) });
 addIIIaButtonElement.click(function() { transcript.add({ type: 'iiia' }) });
 addIIIbButtonElement.click(function() { transcript.add({ type: 'iiib' }) });
 addIIIcButtonElement.click(function() { transcript.add({ type: 'iiic' }) });
+addIIIdButtonElement.click(function() { transcript.add({ type: 'iiid' }) });
 loadButtonElement.click(buttonLoad);
 saveButtonElement.click(buttonSave);
 clearButtonElement.click(buttonClear);
@@ -396,6 +399,10 @@ addIIIbButtonElement.hover(
 );
 addIIIcButtonElement.hover(
     function () { gui.cue('iiic'); },
+    function () { gui.uncue(); }
+);
+addIIIdButtonElement.hover(
+    function () { gui.cue('iiid'); },
     function () { gui.uncue(); }
 );
 

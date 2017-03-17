@@ -173,9 +173,6 @@ function makeClusterGui(args) {
                 ["i-hakning.svg",        "Hakning",                       "X"],
                 ["i-entre.svg",          "Entré / mottagning",            "e"],
                 ["i-kontakt.svg",        "Kontakt",                       "."],
-                '.bottom',
-                ["i-medial-kontakt.svg", "Medial kontakt",                ","],
-                '.top',
                 "Övrigt",
                 ["x-upprepning.svg", "Upprepad artikulation",             ":"],
                 ["x-separator.svg",  "Markerar sekventiell artikulation", "!"],
@@ -211,13 +208,14 @@ function makeClusterGui(args) {
             iiia: { artion_tall: glyphData.artion_tall },
             iiib: { artion_high: glyphData.artion_high, artion_low: glyphData.artion_low },
             iiic: { h: glyphData.h },
+            iiid: { artion_low: glyphData.artion_low },
         },
         cueRemove   = {},
         glyphImages = initImages(glyphData),
         fieldNameOf = {
             ia:   'i',   ib:   'i',
             iia:  'ii',  iib:  'ii',  iic:  'ii',
-            iiia: 'iii', iiib: 'iii', iiic: 'iii'
+            iiia: 'iii', iiib: 'iii', iiic: 'iii', iiid: 'iii',
         },
         domElement = (function () {
             // Function returning jQuery element for cluster or field.
@@ -232,7 +230,8 @@ function makeClusterGui(args) {
                 iic : $('.cluster.iic',  args.inElement),
                 iiia: $('.cluster.iiia', args.inElement).remove(),
                 iiib: $('.cluster.iiib', args.inElement).remove(),
-                iiic: $('.cluster.iiic', args.inElement).remove()
+                iiic: $('.cluster.iiic', args.inElement).remove(),
+                iiid: $('.cluster.iiid', args.inElement).remove(),
             };
             return function (clusterOrFieldType) {
                 return elements[clusterOrFieldType];
