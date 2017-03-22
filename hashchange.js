@@ -55,7 +55,7 @@ function init() {
         ar: "vhfiun",                                  // Attitydsriktning
         av: "vhfiun",                                  // Attitydsvridning
         ina: "xwX",                                    // Interaktionsart
-        artion_tall: "vhsfidunjUN~@#\"=><'xwXe.,:!",   // Artikulation
+        artion_tall: "vhsfidunjUN~@#\"=><'xwXe.:!",    // Artikulation
         artion_high: "bcvs",                           // Artikulation
         artion_low: "vhsfidmunj",                      // Artikulation
     };
