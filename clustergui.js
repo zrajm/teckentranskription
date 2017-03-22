@@ -200,45 +200,46 @@ function makeClusterGui(args) {
             ],
         },
         clusterGlyphs = {
-            ia  : { r: glyphData.r, a: glyphData.a },
-            ib  : { r: glyphData.r, h: glyphData.h, ar: glyphData.ar, av: glyphData.av },
-            iia : { ar: glyphData.ar, av: glyphData.av, r: glyphData.r, h: glyphData.h },
-            iib : { ina: glyphData.ina },
-            iic : { h: glyphData.h, ar: glyphData.ar, av: glyphData.av },
-            iiia: { artion_tall: glyphData.artion_tall },
-            iiib: { artion_high: glyphData.artion_high, artion_low: glyphData.artion_low },
-            iiic: { h: glyphData.h },
-            iiid: { artion_low: glyphData.artion_low },
+            1: { r: glyphData.r, a: glyphData.a },
+            2: { r: glyphData.r, h: glyphData.h, ar: glyphData.ar, av: glyphData.av },
+            3: { r: glyphData.r, h: glyphData.h, ar: glyphData.ar, av: glyphData.av },
+            4: { ina: glyphData.ina },
+            5: { h: glyphData.h, ar: glyphData.ar, av: glyphData.av },
+            6: { artion_tall: glyphData.artion_tall },
+            7: { artion_high: glyphData.artion_high, artion_low: glyphData.artion_low },
+            8: { h: glyphData.h },
+            9: { artion_low: glyphData.artion_low },
         },
         cueRemove   = {},
         glyphImages = initImages(glyphData),
+        glyphImages2 = initImages2(glyphData),
         fieldNameOf = {
-            ia:   'i',   ib:   'i',
-            iia:  'ii',  iib:  'ii',  iic:  'ii',
-            iiia: 'iii', iiib: 'iii', iiic: 'iii', iiid: 'iii',
+            '1': 'i',   '2': 'i',
+            '3': 'ii',  '4': 'ii',  '5': 'ii',
+            '6': 'iii', '7': 'iii', '8': 'iii', '9': 'iii',
         },
         domElement = (function () {
             // Function returning jQuery element for cluster or field.
             var elements = {
-                i   : $('.field.i',      args.inElement),
-                ii  : $('.field.ii',     args.inElement),
-                iii : $('.field.iii',    args.inElement),
-                ia  : $('.cluster.ia',   args.inElement),
-                ib  : $('.cluster.ib',   args.inElement),
-                iia : $('.cluster.iia',  args.inElement),
-                iib : $('.cluster.iib',  args.inElement),
-                iic : $('.cluster.iic',  args.inElement),
-                iiia: $('.cluster.iiia', args.inElement).remove(),
-                iiib: $('.cluster.iiib', args.inElement).remove(),
-                iiic: $('.cluster.iiic', args.inElement).remove(),
-                iiid: $('.cluster.iiid', args.inElement).remove(),
+                i   : $('.field.i',   args.inElement),
+                ii  : $('.field.ii',  args.inElement),
+                iii : $('.field.iii', args.inElement),
+                1: $('.cluster.ia',   args.inElement),
+                2: $('.cluster.ib',   args.inElement),
+                3: $('.cluster.iia',  args.inElement),
+                4: $('.cluster.iib',  args.inElement),
+                5: $('.cluster.iic',  args.inElement),
+                6: $('.cluster.iiia', args.inElement).remove(),
+                7: $('.cluster.iiib', args.inElement).remove(),
+                8: $('.cluster.iiic', args.inElement).remove(),
+                9: $('.cluster.iiid', args.inElement).remove(),
             };
             return function (clusterOrFieldType) {
                 return elements[clusterOrFieldType];
             };
         }());
 
-    function initImages(glyphData) {
+    function initImages2(glyphData) {
         var glyphImages = {};
 
         // Preload cluster images (so that script works even offline).
@@ -254,6 +255,31 @@ function makeClusterGui(args) {
                     return html;
                 }).join('') + '</div>');
 
+        // Create lookup object.
+        // Syntax: glyphImages[glyphType][shortkey] = html
+        // {
+        //     r: {
+        //         _: '<img src="pic/r-ingen.svg">',
+        //         o: '<img src="pic/r-over.svg">',
+        //         ... },
+        //     a: { ... },
+        //     ... }
+        Object.keys(glyphData).forEach(function (glyphType) {
+            var glyphList = glyphData[glyphType];
+            glyphImages[glyphType] = {};
+            glyphList.
+                filter(function (value) { return typeof value !== 'string'; }).
+                forEach(function (value, index) {
+                    var file = value[0], shortkey = value[2],
+                        html = '<img src="pic/' + file + '">';
+                    glyphImages[glyphType][shortkey] = html;
+                });
+        });
+        return glyphImages;
+    }
+
+    function initImages(glyphData) {
+        var glyphImages = {};
         Object.keys(glyphData).forEach(function (glyphType) {
             var glyphList = glyphData[glyphType];
             glyphImages[glyphType] = {};
@@ -271,15 +297,15 @@ function makeClusterGui(args) {
     // Return jQuery element for a new clusterType without displaying it in the
     // GUI. DOM elements for clusters in field I & II are reused, while
     // elements for clusters in field III are added.
-    function initGlyph(clusterType) {
-        var element, fieldType = fieldNameOf[clusterType], glyphElements;
+    function initGlyph(clusterNum) {
+        var element, fieldType = fieldNameOf[clusterNum], glyphElements;
         if (fieldType === 'i' || fieldType === 'ii') {
-            element = domElement(clusterType); // reuse existing DOM element
+            element = domElement(clusterNum);  // reuse existing DOM element
         } else if (fieldType === 'iii') {      // create new DOM element
-            element = domElement(clusterType).clone();
+            element = domElement(clusterNum).clone();
             domElement('iii').append(element);
         } else {
-            throw TypeError("Invalid cluster type '" + clusterType + "'");
+            throw TypeError("Invalid cluster type number '" + clusterNum + "'");
         }
         if (args.onGlyphHover || args.onGlyphFocus) {
             glyphElements = element.find('.glyph').off('hover focus blur');
@@ -296,12 +322,13 @@ function makeClusterGui(args) {
 
     // Set all glyphs to first value in glyph list.
     function clear() {
-        var clusterTypes = Object.keys(fieldNameOf);
-        clusterTypes.forEach(function (clusterType) {
-            var glyphTypes = Object.keys(clusterGlyphs[clusterType]);
+        var clusterNums = Object.keys(fieldNameOf);
+        clusterNums.forEach(function (clusterNum) {
+            var glyphTypes = clusterGlyphTypes[clusterNum];
+            // FIXME -- Should this really use glyphType?
             glyphTypes.forEach(function (glyphType) {
-                var glyphHtml      = glyphImages[glyphType][0],
-                    clusterElement = domElement(clusterType);
+                var glyphHtml      = glyphImages[glyphType][0],  // FIXME use glyphImages2 instead(?)
+                    clusterElement = domElement(clusterNum);
                 $('.' + glyphType, clusterElement).html(glyphHtml);
             });
         });
@@ -313,23 +340,23 @@ function makeClusterGui(args) {
 
     // Populate specified cluster table (in DOM) with values.
     function set(cluster) {
-        var clusterType    = cluster.get('type'),
-            clusterElement = cluster.get('_element'),
-            glyphTypes     = Object.keys(clusterGlyphs[clusterType]);
+        var clusterNum     = cluster.getNum(),
+            clusterStr     = cluster.getStr(),
+            clusterElement = cluster.get('_element');
 
         if (clusterElement === undefined) {
             throw TypeError("Missing '_element' property in cluster");
         }
-        if (clusterType === undefined) {
-            throw TypeError("Missing 'type' property in cluster");
-        }
-        if (clusterGlyphs[clusterType] === undefined) {
-            throw TypeError("Invalid cluster type '" + clusterType + "'");
-        }
+        // FIXME
+        // if (clusterGlyphs[clusterNum] === undefined) {
+        //     throw TypeError("Invalid cluster type number '" + clusterNum + "'");
+        // }
 
-        glyphTypes.forEach(function (glyphType) {
-            var value = cluster.get(glyphType) || 0,
-                html  = glyphImages[glyphType][value] || value.toString(),
+        var glyphTypes = clusterGlyphTypes[clusterNum];
+        var glyphChars = clusterStr.substr(1).split('');
+        glyphChars.forEach(function (glyphStr, index) {
+            var glyphType = glyphTypes[index],
+                html  = glyphImages2[glyphType][glyphStr] || glyphStr,
                 glyph = $('.' + glyphType, clusterElement);
             glyph.html(html);
             // Special case for 'medial contact' and 'separator' glyphs.
@@ -347,9 +374,9 @@ function makeClusterGui(args) {
     // Show cluster in GUI. Return jQuery element for the shown cluster. (CSS
     // class 'cue' are used to indicate cue mode.)
     function show(cluster) {
-        var clusterType    = cluster.get('type'),
+        var clusterNum     = cluster.getNum(),
             clusterElement = cluster.get('_element'),
-            glyphTypes     = Object.keys(clusterGlyphs[clusterType]);
+            glyphTypes     = Object.keys(clusterGlyphs[clusterNum]);
 
         uncue();
         if (!clusterElement.hasClass('hide')) { return; }
@@ -360,10 +387,11 @@ function makeClusterGui(args) {
 
         function glyphMenu(glyphType) {
             var menuSpec     = glyphData[glyphType],
-                currentValue = cluster.get(glyphType);
+                glyphNum     = clusterGlyphNums[clusterNum][glyphType],
+                currentValue = cluster.getStr()[glyphNum];
 
             selectGlyph(menuSpec, currentValue, function (value) {
-                cluster.set(glyphType, value);
+                cluster.set(glyphNum, value);
             });
         }
 
@@ -428,33 +456,33 @@ function makeClusterGui(args) {
     }
 
     // Cue change to specified cluster. (Works with all clusters.)
-    function cue(clusterType) {
-        var fieldType      = fieldNameOf[clusterType],
-            clusterElement = domElement(clusterType),
+    function cue(clusterNum) {
+        var fieldType      = fieldNameOf[clusterNum],
+            clusterElement = domElement(clusterNum),
             isHidden       = clusterElement.hasClass('hide');
 
         if (fieldType === 'iii') {
-            clusterElement = gui.init(clusterType).
+            clusterElement = gui.init(clusterNum).
                 addClass('cue').removeClass('hide');
-            cueRemove[clusterType] = function () { gui.hide(clusterElement); };
+            cueRemove[clusterNum] = function () { gui.hide(clusterElement); };
             showParentFieldElement(clusterElement);
             return self;
         }
 
         if (fieldType !== 'i' && fieldType !== 'ii') {
-            throw TypeError("Invalid cluster type '" + clusterType + "' " +
-                "(only type I & II can be previewed)");
+            throw TypeError("Invalid cluster type number '" + clusterNum + "' " +
+                "(only type numer '1' & '2' can be previewed)");
         }
 
         // Visible already = do nada.
         if (!isHidden) { return self; }
 
-        uncue(clusterType);
-        cueRemove[clusterType] = isHidden ?    // setup cue removal function
+        uncue(clusterNum);
+        cueRemove[clusterNum] = isHidden ?     // setup cue removal function
             function () {                      //   hide again + remove cue
                 clusterElement.addClass('hide').removeClass('cue');
             } :
-            function () {                     //    show again + remove cue
+            function () {                      //    show again + remove cue
                 clusterElement.removeClass('hide cue');
             };
 
@@ -463,18 +491,13 @@ function makeClusterGui(args) {
         return self;
     }
 
-    function isHidden(clusterType) {
-        return domElement(clusterType).hasClass('hide');
-    }
-
     // Undo the effects of any currently active cue.
-    function uncue(clusterType) {
-        var clusterTypes = clusterType ?
-            [ clusterType ] : Object.keys(cueRemove);
-        clusterTypes.forEach(function (clusterType) {
-            var f = cueRemove[clusterType];
+    function uncue(clusterNum) {
+        var clusterNums = clusterNum ? [ clusterNum ] : Object.keys(cueRemove);
+        clusterNums.forEach(function (clusterNum) {
+            var f = cueRemove[clusterNum];
             if (typeof f === 'function') {
-                delete cueRemove[clusterType];
+                delete cueRemove[clusterNum];
                 return f();
             }
         });
@@ -486,10 +509,9 @@ function makeClusterGui(args) {
     // Glyph Selector Menu
     //
 
-    function selectGlyph(menu, selectedValue, callback) {
+    function selectGlyph(menu, defaultGlyphStr, callback) {
         var tableElement    = $('table', overlayElement),
             selectedElement = $(document.activeElement),
-            selectedValue   = selectedValue || 0,
             rowElements;
         overlayActive = true;
 
@@ -517,8 +539,9 @@ function makeClusterGui(args) {
                             (shortkey.match(/^[A-Z]$/) ? 'Shift+' : '') +
                             shortkey.toUpperCase()
                     shortkeys[shortkey] = index;
-                    tableHtml += '<tr tabindex=1 data-value=' + index +
-                        (selectedValue === index ? ' class=selected' : '') + '>' +
+                    tableHtml += '<tr tabindex=1 data-num=' + index + ' ' +
+                        'data-value="' + escapeHtml(shortkey) + '"' +
+                        (defaultGlyphStr === shortkey ? ' class=selected' : '') + '>' +
                         '<td class=' + cssClass + '><img src="pic/' + glyph + '">' +
                         (image ? '<td><img src="pic/' + image + '">' : '<td>') +
                         '<td class=left>' + text + shortkeyHtml;
@@ -551,7 +574,7 @@ function makeClusterGui(args) {
                     });
             }());
             overlayElement.css('display', 'block')
-            rowElements[selectedValue].focus();
+            rowElements.filter('.selected').focus();
         }
 
         function destroyMenu(backButtonEvent, callback) {
@@ -579,15 +602,14 @@ function makeClusterGui(args) {
             shortkeys = shortkeys || {};
             return function (event) {
                 var element = $(event.target),
-                    itemNum = element.data('value');
+                    itemNum = element.data('num');
 
                 // Let browser handle key combinations with Ctrl or Alt.
                 if (event.altKey || event.ctrlKey) { return true; }
 
                 if (shortkeys[event.key] !== undefined) {
-                    itemNum = shortkeys[event.key];
                     destroyMenu(false, function () {
-                        callback(itemNum);
+                        callback(event.key);
                     });
                     return false;
                 }
@@ -613,7 +635,7 @@ function makeClusterGui(args) {
                     return false;
                 case "Enter":
                     destroyMenu(false, function () {
-                        callback(itemNum);
+                        callback(element.data('value'));
                     });
                     return false;
                 case "Home":

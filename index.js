@@ -104,54 +104,75 @@ var addIaButtonElement  = $("#ia")
         };
     }());
 
-function makeCluster(clusterSpec, onSet) {
-    var self = { get: get, set: set },
+
+function makeCluster(clusterStr, onSet) {
+    var clusterNum = clusterStr[0];
+    var self = { get: get, getNum: getNum, getStr: getStr, set: set },
         clusterState = {
-            type    : clusterSpec.type,
-            _element: gui.init(clusterSpec.type)
+            _: '',                             // cluster fragment string
+            _element: gui.init(clusterNum),
         };
 
-    // Return named cluster property or, if no property is named, an object
-    // with all properties except the ones beginning with '_' (= hidden
-    // properties).
-    function get(name) {
-        return name === undefined ?
-            Object.keys(clusterState).reduce(function (acc, prop) {
-                if (prop[0] !== '_') { acc[prop] = clusterState[prop]; }
-                return acc;
-            }, {}) :
-            clusterState[name];
+    function getNum() {
+        return clusterState._[0];
     }
 
-    function set(clusterSpec, value) {
-        var clusterNum, glyphTypes;
+    // Return named cluster property.
+    function get(name) {
+        if (name === undefined) {
+            throw TypeError('No cluster property specified');
+        }
+        return clusterState[name];
+    }
+
+    // Return cluster string.
+    function getStr() { return clusterState._; }
+
+    // FIXME: Should fail if chr is not exactly one char? (if this is guarateed
+    // to always be exactly one char by code elswhere then this isn't needed)
+    function replaceChr(str, pos, chr) {
+        return str.substr(0, pos) + chr[0] + str.substr(pos + 1);
+    }
+
+    function set(clusterStr, value) {
+        var clusterNum, glyphTypes, inputChars;
         if (arguments.length === 2) {
-            clusterState[clusterSpec] = value;
+            // .set(POSITION, CHAR) -- Replace character at POSITION in cluster
+            // string with CHAR.
+            clusterState._ = replaceChr(clusterState._, clusterStr, value);
         } else {
-            // `clusterTypes` & `clusterGlyphTypes` defined in `hashchange.js`.
-            clusterNum = clusterTypes[clusterSpec.type];
-            if (clusterNum === undefined) {
-                throw TypeError("Invalid cluster type '" + clusterSpec.type + "'");
-            }
+            // `clusterGlyphTypes` defined in `hashchange.js`.
+            clusterNum = clusterStr[0];
             glyphTypes = clusterGlyphTypes[clusterNum];
-            glyphTypes.forEach(function (glyphType) {
-                clusterState[glyphType] = clusterSpec[glyphType] || 0;
-            });
+            inputChars = clusterStr.slice(1).split('');
+
+            // Create string of all required
+            clusterState._ = clusterNum +
+                glyphTypes.map(function (glyphType, index) {
+                    // FIXME: check validity of inputGlyph
+                    return inputChars[index] || glyphData[glyphType][0];
+                }).join('');
+
+            // FIXME
+            // if (clusterNum === undefined) {
+            //     throw TypeError("Invalid cluster type number '" + clusterNum + "'");
+            // }
         }
         gui.set(self).show(self);
         if (this !== window && onSet) { onSet(true); }
     }
 
-    set(clusterSpec);
+    set(clusterStr);
     return self;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 
+// Called `args = false` to suppress updating of URL fragment.
 function onTranscriptChange(args) {
     if (args === false) { return; }
     var fromUrl     = urlFragment.get(),
-        fromStorage = fragmentStringify(transcript.get());
+        fromStorage = transcript.getStr();
     if (fromUrl !== fromStorage) { urlFragment.set(fromStorage); }
 }
 
@@ -162,19 +183,42 @@ function makeTranscript(onTranscriptChange) {
         onTranscriptChange(eventArgs);
         modified = !!changeStatus;
     }
-    function get() {
+    function getStr() {
         return clusters.map(function (cluster) {
-            return cluster.get();
-        });
+            return cluster.getStr();
+        }).join('');
     }
-    function set(clusterSpecs, eventArgs) {
-        if (!(clusterSpecs instanceof Array)) {
-            console.warn("makeTranscript.set(): Argument is not an array");
-            clusterSpecs = [];
+
+    // Sort (and filter) clusterStrs. -- Clusters of types 1-5 are placed first
+    // and sorted, clusters with numbers > 5 are placed at the end, with their
+    // order retained. Any clusters with number 0 are dropped.
+    function sortClusterStrs(clusterStrs) {
+        var clusterStrsOther = clusterStrs.filter(function (x) {
+            return (x[0] >= 1 && x[0] <= 5) ? true : false;
+        }).sort(function (a, b) { return a < b ? -1 : (a > b ?  1 : 0); }),
+        clusterStrsFieldIII = clusterStrs.filter(function (x) {
+            return (x[0] >= 6) ? true : false;
+        });
+        return clusterStrsOther.concat(clusterStrsFieldIII);
+    }
+
+    // Initial substring is not returned unless it starts with a number. If
+    // given empty string, returns empty list. (Adding of non-digit, plus
+    // stripping off first element after split ensures this.)
+    function fragmentSplit(signStr) {
+        return ('@' + signStr).split(/(?=[0-9])/).splice(1);
+    }
+
+    function set(signStr, eventArgs) {
+        var clusterStrs;
+        if (typeof signStr !== 'string') {
+            console.warn("makeTranscript.set(): Argument is not a string");
+            signStr = '';
         }
         gui.clear();
-        clusters = clusterSpecs.map(function (clusterSpec) {
-            return makeCluster(clusterSpec, changed);
+        clusterStrs = sortClusterStrs(fragmentSplit(signStr));
+        clusters = clusterStrs.map(function (clusterStr) {
+            return makeCluster(clusterStr, changed);
         });
         changed(false, eventArgs);
     }
@@ -190,59 +234,56 @@ function makeTranscript(onTranscriptChange) {
         changed(true);
     }
 
-    // Turns `clusterSpec` into cluster object and inserts that into
-    // transcript. Clusters are sorted by type name, new clusters is inserted
-    // in the appropriate place. If a cluster with the same type name already
-    // exist, do nothing. Return true if a cluster was inserted, false
-    // otherwise.
-    function insertCluster(clusters, clusterSpec) {
-        var i = 0, findType = clusterSpec.type;
-        while (i < clusters.length && clusters[i].get('type') < findType) {
+    // FIXME: Does the careful insertion of a cluster in right place still matter?
+    // Or has some other code obsoleted this?
+
+    // FIXME: should insertCluster return true/false (looks like we're
+    // currently ignoring return value -- make sure! then rewrite)
+
+    // FIXME: description comment
+    // Turns `clusterStr` into cluster object and inserts that into transcript.
+    // Clusters are sorted by type name, new clusters is inserted in the
+    // appropriate place. If a cluster with the same type name already exist,
+    // do nothing. Return true if a cluster was inserted, false otherwise.
+    function insertCluster(clusters, clusterStr) {
+        var i = 0, findNum = clusterStr[0];
+        while (i < clusters.length && clusters[i].getNum() < findNum) {
             i += 1;
         }
         // Insert cluster before cluster of different type (or last in list).
-        if (clusters[i] === undefined || clusters[i].get('type') !== findType) {
-            clusters.splice(i, 0, makeCluster(clusterSpec, changed));
+        if (clusters[i] === undefined || clusters[i].getNum() !== findNum) {
+            clusters.splice(i, 0, makeCluster(clusterStr, changed));
             return true;
         }
         return false;
     }
 
-    // Turns `clusterSpec` into cluster object and appends that to end of
+    // FIXME: description comment
+    // Turns `clusterStr` into cluster object and appends that to end of
     // transcript, regardless of whether the same cluster already exist or not
-    // (should be used for clusters of field III). Return true if a cluster was
-    // inserted, false otherwise.
-    function appendCluster(clusters, clusterSpec) {
-        clusters.push(makeCluster(clusterSpec, changed));
+    // (should be used for clusters of field III).
+    function appendCluster(clusters, clusterStr) {
+        clusters.push(makeCluster(clusterStr, changed));
     }
 
-    function add(clusterSpec) {
-        switch (clusterSpec.type) {
-        case 'ia':
-        case 'ib':
-        case 'iia':
-        case 'iib':
-        case 'iic':
-            insertCluster(clusters, clusterSpec);
-            break;
-        case 'iiia':
-        case 'iiib':
-        case 'iiic':
-        case 'iiid':
-            appendCluster(clusters, clusterSpec);
-            break;
-        default:
-            throw TypeError("Invalid cluster type '" + clusterSpec.type + "'");
+    function add(clusterStr) {
+        var clusterNum = clusterStr[0];
+        if (clusterNum >= 1 && clusterNum <= 5) {
+            insertCluster(clusters, clusterStr);
+        } else if (clusterNum >= 6 && clusterNum <=9) {
+            appendCluster(clusters, clusterStr);
+        } else {
+            throw TypeError("Invalid cluster type number '" + clusterNum + "'");
         }
         changed(true);
 
         // Focus the first glyph (of last cluster of the type added).
-        $('.cluster.' + clusterSpec.type).last().find('.glyph').first().focus();
+        $('.cluster-' + clusterNum).last().find('.glyph').first().focus();
     }
     return {
         add: add,
         changed: changed,
-        get: get,
+        getStr: getStr, // FIXME replace with .get() when done
         length: function () { return clusters.length; },
         move: move,
         remove: remove,
@@ -305,7 +346,7 @@ function buttonSave() {
             return;
         }
     }
-    storage.set(name, transcript.get());
+    storage.set(name, transcript.getStr());
     transcript.changed(false);
     updateLoadList();
     loadInputElement.val(name);
@@ -314,7 +355,7 @@ function buttonClear() {
     var msg = "Transcript is unsaved. – Clear it?";
     if (!transcript.changed() || confirm(msg)) {
         var name = "";
-        transcript.set([]);
+        transcript.set('');
         saveInputElement.val("");
     }
 }
@@ -326,7 +367,7 @@ function buttonDump() {
     console.log(JSON.stringify(obj, null, 4));
 }
 function buttonDumpThis() {
-    console.log(JSON.stringify(transcript.get(), null, 4));
+    console.log("'" + transcript.getStr() + "'");
 }
 function buttonDelete() {
     var name = loadInputElement.val(), newName;
@@ -347,15 +388,15 @@ updateLoadList();
     saveInputElement.val(selected);
 }());
 
-addIaButtonElement.  click(function() { transcript.add({ type: 'ia'   }) });
-addIbButtonElement.  click(function() { transcript.add({ type: 'ib'   }) });
-addIIaButtonElement. click(function() { transcript.add({ type: 'iia'  }) });
-addIIbButtonElement. click(function() { transcript.add({ type: 'iib'  }) });
-addIIcButtonElement. click(function() { transcript.add({ type: 'iic'  }) });
-addIIIaButtonElement.click(function() { transcript.add({ type: 'iiia' }) });
-addIIIbButtonElement.click(function() { transcript.add({ type: 'iiib' }) });
-addIIIcButtonElement.click(function() { transcript.add({ type: 'iiic' }) });
-addIIIdButtonElement.click(function() { transcript.add({ type: 'iiid' }) });
+addIaButtonElement.  click(function() { transcript.add('1') });
+addIbButtonElement.  click(function() { transcript.add('2') });
+addIIaButtonElement. click(function() { transcript.add('3') });
+addIIbButtonElement. click(function() { transcript.add('4') });
+addIIcButtonElement. click(function() { transcript.add('5') });
+addIIIaButtonElement.click(function() { transcript.add('6') });
+addIIIbButtonElement.click(function() { transcript.add('7') });
+addIIIcButtonElement.click(function() { transcript.add('8') });
+addIIIdButtonElement.click(function() { transcript.add('9') });
 loadButtonElement.click(buttonLoad);
 saveButtonElement.click(buttonSave);
 clearButtonElement.click(buttonClear);
@@ -364,45 +405,45 @@ dumpThisButtonElement.click(buttonDumpThis);
 deleteButtonElement.click(buttonDelete);
 
 $(function () {
-    if (transcript.get().length === 0) { buttonLoad(); }
+    if (transcript.getStr() === '') { buttonLoad(); }
     $('.glyph').focus();
 });
 
 /* Cluster button: Show preview of cluster to be added. */
 addIaButtonElement.hover(
-    function () { gui.cue('ia'); },
+    function () { gui.cue('1'); },
     function () { gui.uncue(); }
 );
 addIbButtonElement.hover(
-    function () { gui.cue('ib'); },
+    function () { gui.cue('2'); },
     function () { gui.uncue(); }
 );
 addIIaButtonElement.hover(
-    function () { gui.cue('iia'); },
+    function () { gui.cue('3'); },
     function () { gui.uncue(); }
 );
 addIIbButtonElement.hover(
-    function () { gui.cue('iib'); },
+    function () { gui.cue('4'); },
     function () { gui.uncue(); }
 );
 addIIcButtonElement.hover(
-    function () { gui.cue('iic'); },
+    function () { gui.cue('5'); },
     function () { gui.uncue(); }
 );
 addIIIaButtonElement.hover(
-    function () { gui.cue('iiia'); },
+    function () { gui.cue('6'); },
     function () { gui.uncue(); }
 );
 addIIIbButtonElement.hover(
-    function () { gui.cue('iiib'); },
+    function () { gui.cue('7'); },
     function () { gui.uncue(); }
 );
 addIIIcButtonElement.hover(
-    function () { gui.cue('iiic'); },
+    function () { gui.cue('8'); },
     function () { gui.uncue(); }
 );
 addIIIdButtonElement.hover(
-    function () { gui.cue('iiid'); },
+    function () { gui.cue('9'); },
     function () { gui.uncue(); }
 );
 

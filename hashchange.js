@@ -21,14 +21,7 @@ function makeUrlFragmentTrigger(onHashChange) {
 }
 
 var glyphData = init(),
-    clusterTypes = {
-        1: 'ia',   2: 'ib',
-        3: 'iia',  4: 'iib',  5: 'iic',
-        6: 'iiia', 7: 'iiib', 8: 'iiic', 9: 'iiid',
-        ia:   '1', ib:   '2',
-        iia:  '3', iib:  '4', iic:  '5',
-        iiia: '6', iiib: '7', iiic: '8', iiid: '9',
-    },
+    // FIXME merge 'clusterGlyphTypes' and 'clusterGlyphNums'?
     clusterGlyphTypes = {
         1: [ 'r',  'a' ],
         2: [ 'r',  'h', 'ar', 'av' ],
@@ -40,6 +33,20 @@ var glyphData = init(),
         8: [ 'h' ],
         9: [ 'artion_low' ],
     },
+    // Position of in cluster string of these glyphs (note that this includes
+    // the magic number, i.e. a cluster has a magic number > 9, the count will
+    // have to be increased to accomodate the length of the magic number).
+    clusterGlyphNums = {
+        1: { r: 1,  a: 2 },
+        2: { r: 1,  h: 2, ar: 3, av: 4 },
+        3: { r: 1,  h: 2, ar: 3, av: 4 },
+        4: { ina: 1 },
+        5: { h: 1, ar: 2, av: 3 },
+        6: { artion_tall: 1 },
+        7: { artion_high: 1, artion_low: 2 },
+        8: { h: 1 },
+        9: { artion_low: 1 },
+    },
     urlFragment = makeUrlFragmentTrigger(onHashChange);
 
 ////////////////////////////////////////////////////////////////////////////
@@ -48,6 +55,8 @@ var glyphData = init(),
 // created from above data.
 function init() {
     var glyphKeys = {
+        // FIXME: Autogenerate these from makeClusterGui's glyphData variable
+        // (so that one only need to update in one place)
         // ([a-zA-Z0-9?/:@._~!$&'()*+,;=-]|%[0-9a-fA-F]{2})
         r: "_ousfb",                                   // Relation
         a: "abcdefghijklmnopqrstuvwxyzABCDEF",         // Artikulationsställe
@@ -72,48 +81,10 @@ function init() {
     }, {});
 }
 
-// Convert '3fyui5yui6x6X6~' string into internal cluster format.
-function fragmentParse(signStr) {
-    var signSpec = [];
-    signStr.split(/(?=[0-9])/).forEach(function (clusterStr) {
-        var parseGood   = true,
-            clusterNum  = clusterStr[0],
-            glyphChars  = clusterStr.slice(1).split(''),
-            glyphTypes  = clusterGlyphTypes[clusterNum] || [],
-            clusterSpec;
-        if (clusterTypes[clusterNum]) {
-            clusterSpec = glyphChars.reduce(function (acc, chr, i) {
-                var glyphType = glyphTypes[i],
-                    glyphNum  = (glyphData[glyphType]||{})[chr];
-                if (glyphNum !== undefined) {
-                    acc[glyphType] = glyphNum;
-                } else {
-                    parseGood = false;
-                }
-                return acc;
-            }, { type: clusterTypes[clusterNum] });
-            if (parseGood) { signSpec.push(clusterSpec); }
-        }
-    });
-    return signSpec;
-}
-
-function fragmentStringify(signSpec) {
-    return signSpec.map(function (clusterSpec) {
-        var clusterNum = clusterTypes[clusterSpec.type],
-            glyphTypes = clusterGlyphTypes[clusterNum];
-        return clusterNum + glyphTypes.map(function (glyphType) {
-            var glyphNum  = clusterSpec[glyphType],
-                glyphChar = glyphData[glyphType][glyphNum];
-            return glyphChar;
-        }).join('');
-    }).join('');
-}
-
 // Specifying a URL fragment should be like pressing 'Clear', then
 // entering a transcript.
-function onHashChange (event) {
-    var fromStorage, sign,
+function onHashChange() {
+    var fromStorage,
         fromUrl        = urlFragment.get(),
         fromUrlNoQuery = fromUrl.replace(/\?.*$/, '');
 
@@ -123,14 +94,15 @@ function onHashChange (event) {
     }
 
     if (fromUrl !== '') {
-        fromStorage = fragmentStringify(transcript.get());
+        fromStorage = transcript.getStr();
         if (fromUrl !== fromStorage) {
-            sign = fragmentParse(fromUrl);
-            if (sign.length === 0) {
-                alert('Failed to parse URL fragment into a valid transcript.');
-            } else {
-                transcript.set(sign, false);   // suppress URL hash update
-                saveInputElement.val("");
+            saveInputElement.val("");
+            transcript.set(fromUrl, false);    // suppress URL hash update
+
+            // If fragment changed when storing, update the URL fragment.
+            fromStorage = transcript.getStr();
+            if (fromUrl !== fromStorage) {
+                history.replaceState({}, document.title, '#' + fromStorage);
             }
         }
     }

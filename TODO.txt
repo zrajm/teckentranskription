@@ -30,13 +30,6 @@
 * TODO Ia cluster margin in GUI                                    :COSMETIC:
   When cluster type 'Ia' is displayed the margin between field I & II is too
   narrow (but when displaying cluster type 'Ib' it looks good).
-* TODO Change internal state format
-  The internal state should use the same format as the URL fragment implemented
-  in [['Share' URLs with all transcript information]].
-
-  'Share' button should be replaced with an always up-to-date URL fragment
-  (which, incidentally, also serves as a poor man's 'undo' function using the
-  browser's back & forward functions).
 * TODO Update 'status' field when hovering/focusing on glyph
 * TODO Add '/' cluster
 * TODO Import/export saved data
@@ -242,10 +235,6 @@
   Simply selecting a transcript from the list should be enough to load it (if
   user aborts the load, by pressing cancel in the confirmation dialog, then the
   <select> should not change its value.
-* TODO Error handling in fragment URL:s
-  Defective transcripts should load all valid clusters and rewrite any faulty
-  cluster as best it can (not removing, but put glyph 0 in all places where an
-  unknown glyph was placed).
 * TODO History menu should show transcript string
   Apparently second (title) argument of history.pushState() doesn't really work
   (in any browser?) -- is it possible to instead the title with another means
@@ -267,6 +256,51 @@
   to the other articulation arrows).
 
   Compare with transcription examples given in Bergman & Björkstrand (2015).
+* TODO No alert when saving under same name with no changes
+* TODO Check that all glyph characters work in all browsers
+  '<', '>' and '#' are not allowed in URL fragments, check that they work okay
+  in MSIE, Firefox and Chrome, even though they are never URL encoded.
+
+  Should work:
+
+    + ...when entering a URL with URL fragment to load the page.
+    + ...during the normal updating of glyphs (adding moving etc.)
+
+  Reference: [[http://stackoverflow.com/questions/2849756/][List of valid characters for the fragment identifier in an URL?]]
+  (on Stackoverflow).
+* TODO Keep glyph lookup data in ONE place
+  All the glyphs lookup data should be kept in one data structure, in one place
+  in the code. Currently fieldNameOf, clusterGlyphs, clusterGlyphTypes and
+  clusterGlyphNums contain information that should be condensed into one place
+  (and possibly processed on loading to produce the final table).
+
+  If any such preprocessing is done, put comments in the code explaining what
+  the final lookup table looks like!
+* TODO Replace field and cluster names in HTML/CSS
+  Roman numeral field names (e.g. 'iii') should be replaced with the new style
+  numeric names (e.g. 'field-3'), and the same goes for clusters names (e.g.
+  'iiia' should becode 'cluster-6').
+* [3/8] Change internal data format
+  The internal state should use the same format as the URL fragment implemented
+  in [['Share' URLs with all transcript information]].
+** TODO Keep only one of 'initImages' and 'initImages2'
+** TODO Error handling in URL fragments
+   Invalid glyph letters should be replaced with the character '*', which
+   should display a question mark-type sign in the transcript.
+** TODO Clean up all related FIXMEs in code
+** TODO Clean away unused lookup variables in code
+   E.g. lookup tables, no referenced after the rewrite.
+** TODO Specifying an empty URL fragment should clear transcript
+   Regardless of whether you remove the '#' sign or not.
+** DONE Check all DONEs in code
+   CLOSED: [2017-03-22 Wed 16:16]
+** DONE Invalid URL fragment should fail in better way
+   CLOSED: [2017-03-21 Tue 10:05]
+   + '0' in URL fragment
+   + '987654321' incorrectly sorted cluster strings will do weirdness when
+     later rearranging clusters in field III
+** DONE Rewrite code to use URL fragments internally
+   CLOSED: [2017-03-18 Sat 17:28]
 * DONE Add medial contact cluster
   CLOSED: [2017-03-17 Fri 11:26]
   Dot with direction of movement above it.
