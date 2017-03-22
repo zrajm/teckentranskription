@@ -329,7 +329,7 @@ function makeClusterGui(args) {
 
         glyphTypes.forEach(function (glyphType) {
             var value = cluster.get(glyphType) || 0,
-                html  = glyphImages[glyphType][value] || value,
+                html  = glyphImages[glyphType][value] || value.toString(),
                 glyph = $('.' + glyphType, clusterElement);
             glyph.html(html);
             // Special case for 'medial contact' and 'separator' glyphs.
