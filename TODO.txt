@@ -1,13 +1,16 @@
 -*- org -*-
 
+* TODO Add support chat channel and link to it
+  Solr has a support IRC chat channel on Freenode. Apparently
+  `webchat.freenode.net` can be used to easily access a chat channel (for
+  people who aren't that well versed in IRC). Could I set up a freenode chat
+  channel for 'teckentranskription' AND add a link to it directly from the
+  transcription page?
 * TODO Make drag-and-drop help more eye catching
   The drag-and-drop help text is very discreet. It needs to grab the user's
   attention better, maybe a red double (left-right) arrow to explain the
   drag-and-drop aspect of transcript editing. Also explain that a cluster can
   be removed by dragging it out of the transcript.
-* TODO When adding new cluster to transcript use '?' for glyphs          :UX:
-  The idea here is to give the user a hint/affordance that they should click
-  the glyphs to change them.
 * TODO Can't add field I/II cluster after drag-and-drop removal         :BUG:
   If one removes the cluster by using one of the buttons everything works as
   expected, but if you remove it by drag-and-drop (by dragging it outside the
@@ -280,16 +283,26 @@
   Roman numeral field names (e.g. 'iii') should be replaced with the new style
   numeric names (e.g. 'field-3'), and the same goes for clusters names (e.g.
   'iiia' should becode 'cluster-6').
+* TODO Remove 'Load' button
+  Selecting a saved transcript in the dropdown should be enough to load it. If
+  the current transcript hasn't been saved, and the user cancels the loading,
+  the previously loaded transcript should remain selected.
+* TODO Error handling in URL fragments
+  Invalid glyph letters should be replaced with the character '*', which
+  should display a question mark-type sign in the transcript.
+* TODO When adding new cluster to transcript use '?' for glyphs          :UX:
+  The idea here is to give the user a hint/affordance that they should click
+  the glyphs to change them.
 * [3/8] Change internal data format
   The internal state should use the same format as the URL fragment implemented
   in [['Share' URLs with all transcript information]].
 ** TODO Keep only one of 'initImages' and 'initImages2'
-** TODO Error handling in URL fragments
-   Invalid glyph letters should be replaced with the character '*', which
-   should display a question mark-type sign in the transcript.
 ** TODO Clean up all related FIXMEs in code
 ** TODO Clean away unused lookup variables in code
    E.g. lookup tables, no referenced after the rewrite.
+
+   (Use `git show b444bb2` and look through removed code to see what variable
+   names are candidates for removal.)
 ** TODO Specifying an empty URL fragment should clear transcript
    Regardless of whether you remove the '#' sign or not.
 ** DONE Check all DONEs in code
