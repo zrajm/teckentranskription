@@ -113,9 +113,8 @@ function makeCluster(clusterStr, onSet) {
             _element: gui.init(clusterNum),
         };
 
-    function getNum() {
-        return clusterState._[0];
-    }
+    function getStr() { return clusterState._; }
+    function getNum() { return clusterState._[0]; }
 
     // Return named cluster property.
     function get(name) {
@@ -125,38 +124,40 @@ function makeCluster(clusterStr, onSet) {
         return clusterState[name];
     }
 
-    // Return cluster string.
-    function getStr() { return clusterState._; }
-
     // FIXME: Should fail if chr is not exactly one char? (if this is guarateed
     // to always be exactly one char by code elswhere then this isn't needed)
     function replaceChr(str, pos, chr) {
         return str.substr(0, pos) + chr[0] + str.substr(pos + 1);
     }
 
-    function set(clusterStr, value) {
-        var clusterNum, glyphTypes, inputChars;
-        if (arguments.length === 2) {
-            // .set(POSITION, CHAR) -- Replace character at POSITION in cluster
-            // string with CHAR.
-            clusterState._ = replaceChr(clusterState._, clusterStr, value);
-        } else {
-            // `clusterGlyphTypes` defined in `hashchange.js`.
-            clusterNum = clusterStr[0];
-            glyphTypes = clusterGlyphTypes[clusterNum];
+    // Replace one glyph character in cluster string.
+    function setGlyph(position, glyphChar) {
+        clusterState._ = replaceChr(clusterState._, position, glyphChar);
+    }
+
+    function setCluster(clusterStr) {
+        // `clusterGlyphTypes` defined in `hashchange.js`.
+        var clusterNum = clusterStr[0],
+            glyphTypes = clusterGlyphTypes[clusterNum],
             inputChars = clusterStr.slice(1).split('');
 
-            // Create string of all required
-            clusterState._ = clusterNum +
-                glyphTypes.map(function (glyphType, index) {
-                    // FIXME: check validity of inputGlyph
-                    return inputChars[index] || glyphData[glyphType][0];
-                }).join('');
+        if (glyphTypes === undefined) {
+            throw TypeError("Invalid cluster type number '" + clusterNum + "'");
+        }
 
-            // FIXME
-            // if (clusterNum === undefined) {
-            //     throw TypeError("Invalid cluster type number '" + clusterNum + "'");
-            // }
+        // Create cluster string with one character for each glyph in the
+        // cluster *definition* (= add chars missing in the input).
+        clusterState._ = clusterNum +
+            glyphTypes.map(function (glyphType, index) {
+                return inputChars[index] || glyphData[glyphType][0];
+            }).join('');
+    }
+
+    function set() {
+        if (arguments.length === 2) {
+            setGlyph.apply(this, arguments);
+        } else {
+            setCluster.apply(this, arguments);
         }
         gui.set(self).show(self);
         if (this !== window && onSet) { onSet(true); }
@@ -168,7 +169,7 @@ function makeCluster(clusterStr, onSet) {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-// Called `args = false` to suppress updating of URL fragment.
+// Call with `args = false` to suppress updating of URL fragment.
 function onTranscriptChange(args) {
     if (args === false) { return; }
     var fromUrl     = urlFragment.get(),
@@ -240,7 +241,6 @@ function makeTranscript(onTranscriptChange) {
     // FIXME: should insertCluster return true/false (looks like we're
     // currently ignoring return value -- make sure! then rewrite)
 
-    // FIXME: description comment
     // Turns `clusterStr` into cluster object and inserts that into transcript.
     // Clusters are sorted by type name, new clusters is inserted in the
     // appropriate place. If a cluster with the same type name already exist,
@@ -258,7 +258,6 @@ function makeTranscript(onTranscriptChange) {
         return false;
     }
 
-    // FIXME: description comment
     // Turns `clusterStr` into cluster object and appends that to end of
     // transcript, regardless of whether the same cluster already exist or not
     // (should be used for clusters of field III).
@@ -283,7 +282,7 @@ function makeTranscript(onTranscriptChange) {
     return {
         add: add,
         changed: changed,
-        getStr: getStr, // FIXME replace with .get() when done
+        getStr: getStr,
         length: function () { return clusters.length; },
         move: move,
         remove: remove,
@@ -299,7 +298,6 @@ function escapeHtml(text) {
         return { '"': '&quot;', '&': '&amp;', '<': '&lt;', '>': '&gt;' }[a];
     });
 }
-
 function updateLoadList() {
     var selected = storage.getCurrentName(),
         names    = storage.list();
@@ -356,7 +354,6 @@ function buttonSave() {
 function buttonClear() {
     var msg = "Transcript is unsaved. – Clear it?";
     if (!transcript.changed() || confirm(msg)) {
-        var name = "";
         transcript.set('');
         saveInputElement.val("");
     }

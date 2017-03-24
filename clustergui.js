@@ -199,17 +199,6 @@ function makeClusterGui(args) {
                 ["rr-upp-ner2.svg",       "Uppåt–nedåt (höjdled)",  "j"],
             ],
         },
-        clusterGlyphs = {
-            1: { r: glyphData.r, a: glyphData.a },
-            2: { r: glyphData.r, h: glyphData.h, ar: glyphData.ar, av: glyphData.av },
-            3: { r: glyphData.r, h: glyphData.h, ar: glyphData.ar, av: glyphData.av },
-            4: { ina: glyphData.ina },
-            5: { h: glyphData.h, ar: glyphData.ar, av: glyphData.av },
-            6: { artion_tall: glyphData.artion_tall },
-            7: { artion_high: glyphData.artion_high, artion_low: glyphData.artion_low },
-            8: { h: glyphData.h },
-            9: { artion_low: glyphData.artion_low },
-        },
         cueRemove   = {},
         glyphImages = initImages(glyphData),
         glyphImages2 = initImages2(glyphData),
@@ -218,26 +207,35 @@ function makeClusterGui(args) {
             '3': 'ii',  '4': 'ii',  '5': 'ii',
             '6': 'iii', '7': 'iii', '8': 'iii', '9': 'iii',
         },
-        domElement = (function () {
-            // Function returning jQuery element for cluster or field.
-            var elements = {
-                i   : $('.field.i',   args.inElement),
-                ii  : $('.field.ii',  args.inElement),
-                iii : $('.field.iii', args.inElement),
-                1: $('.cluster.ia',   args.inElement),
-                2: $('.cluster.ib',   args.inElement),
-                3: $('.cluster.iia',  args.inElement),
-                4: $('.cluster.iib',  args.inElement),
-                5: $('.cluster.iic',  args.inElement),
-                6: $('.cluster.iiia', args.inElement).remove(),
-                7: $('.cluster.iiib', args.inElement).remove(),
-                8: $('.cluster.iiic', args.inElement).remove(),
-                9: $('.cluster.iiid', args.inElement).remove(),
-            };
-            return function (clusterOrFieldType) {
-                return elements[clusterOrFieldType];
-            };
-        }());
+        domElement = {
+            i  : $('.field.i',   args.inElement),
+            ii : $('.field.ii',  args.inElement),
+            iii: $('.field.iii', args.inElement),
+            1: $('.cluster.ia',   args.inElement),
+            2: $('.cluster.ib',   args.inElement),
+            3: $('.cluster.iia',  args.inElement),
+            4: $('.cluster.iib',  args.inElement),
+            5: $('.cluster.iic',  args.inElement),
+            6: $('.cluster.iiia', args.inElement).remove(),
+            7: $('.cluster.iiib', args.inElement).remove(),
+            8: $('.cluster.iiic', args.inElement).remove(),
+            9: $('.cluster.iiid', args.inElement).remove(),
+        },
+        // Position of in cluster string of these glyphs (note that this
+        // includes the magic number, i.e. a cluster has a magic number > 9,
+        // the count will have to be increased to accomodate the length of the
+        // magic number).
+        clusterGlyphNums = {
+            1: { r: 1,  a: 2 },
+            2: { r: 1,  h: 2, ar: 3, av: 4 },
+            3: { r: 1,  h: 2, ar: 3, av: 4 },
+            4: { ina: 1 },
+            5: { h: 1, ar: 2, av: 3 },
+            6: { artion_tall: 1 },
+            7: { artion_high: 1, artion_low: 2 },
+            8: { h: 1 },
+            9: { artion_low: 1 },
+        };
 
     function initImages2(glyphData) {
         var glyphImages = {};
@@ -300,10 +298,10 @@ function makeClusterGui(args) {
     function initGlyph(clusterNum) {
         var element, fieldType = fieldNameOf[clusterNum], glyphElements;
         if (fieldType === 'i' || fieldType === 'ii') {
-            element = domElement(clusterNum);  // reuse existing DOM element
+            element = domElement[clusterNum];  // reuse existing DOM element
         } else if (fieldType === 'iii') {      // create new DOM element
-            element = domElement(clusterNum).clone();
-            domElement('iii').append(element);
+            element = domElement[clusterNum].clone();
+            domElement['iii'].append(element);
         } else {
             throw TypeError("Invalid cluster type number '" + clusterNum + "'");
         }
@@ -328,13 +326,13 @@ function makeClusterGui(args) {
             // FIXME -- Should this really use glyphType?
             glyphTypes.forEach(function (glyphType) {
                 var glyphHtml      = glyphImages[glyphType][0],  // FIXME use glyphImages2 instead(?)
-                    clusterElement = domElement(clusterNum);
+                    clusterElement = domElement[clusterNum];
                 $('.' + glyphType, clusterElement).html(glyphHtml);
             });
         });
-        domElement('i')  .children('.cluster').addClass('hide');
-        domElement('ii') .children('.cluster').addClass('hide');
-        domElement('iii').children('.cluster').remove();
+        domElement['i']  .children('.cluster').addClass('hide');
+        domElement['ii'] .children('.cluster').addClass('hide');
+        domElement['iii'].children('.cluster').remove();
         hideAllEmptyFieldElements();
     }
 
@@ -342,18 +340,17 @@ function makeClusterGui(args) {
     function set(cluster) {
         var clusterNum     = cluster.getNum(),
             clusterStr     = cluster.getStr(),
-            clusterElement = cluster.get('_element');
+            clusterElement = cluster.get('_element'),
+            glyphTypes = clusterGlyphTypes[clusterNum],
+            glyphChars = clusterStr.substr(1).split('');
 
+        if (glyphTypes === undefined) {
+            throw TypeError("Invalid cluster type number '" + clusterNum + "'");
+        }
         if (clusterElement === undefined) {
             throw TypeError("Missing '_element' property in cluster");
         }
-        // FIXME
-        // if (clusterGlyphs[clusterNum] === undefined) {
-        //     throw TypeError("Invalid cluster type number '" + clusterNum + "'");
-        // }
 
-        var glyphTypes = clusterGlyphTypes[clusterNum];
-        var glyphChars = clusterStr.substr(1).split('');
         glyphChars.forEach(function (glyphStr, index) {
             var glyphType = glyphTypes[index],
                 html  = glyphImages2[glyphType][glyphStr] || glyphStr,
@@ -376,7 +373,7 @@ function makeClusterGui(args) {
     function show(cluster) {
         var clusterNum     = cluster.getNum(),
             clusterElement = cluster.get('_element'),
-            glyphTypes     = Object.keys(clusterGlyphs[clusterNum]);
+            glyphTypes     = clusterGlyphTypes[clusterNum];
 
         uncue();
         if (!clusterElement.hasClass('hide')) { return; }
@@ -444,7 +441,7 @@ function makeClusterGui(args) {
     // Hide all fields in which no clusters are currently shown.
     function hideAllEmptyFieldElements() {
         ['i', 'ii', 'iii'].forEach(function (fieldType) {
-            hideEmptyFieldElement(domElement(fieldType));
+            hideEmptyFieldElement(domElement[fieldType]);
         });
     }
 
@@ -458,7 +455,7 @@ function makeClusterGui(args) {
     // Cue change to specified cluster. (Works with all clusters.)
     function cue(clusterNum) {
         var fieldType      = fieldNameOf[clusterNum],
-            clusterElement = domElement(clusterNum),
+            clusterElement = domElement[clusterNum],
             isHidden       = clusterElement.hasClass('hide');
 
         if (fieldType === 'iii') {
@@ -599,6 +596,7 @@ function makeClusterGui(args) {
         }
 
         function handleMenuKeys(shortkeys) {
+            // FIXME: Isn't shortkey always be set now? (Throw exception instead?)
             shortkeys = shortkeys || {};
             return function (event) {
                 var element = $(event.target),

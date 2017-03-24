@@ -332,9 +332,11 @@
   Also, there are instances where one wants to parse a string (e.g. to check
   validity) -- it should be possible to do checks of this kind without
   displaying the cluster in the GUI.
-* [4/11] Change internal data format
+* [5/12] Change internal data format
   The internal state should use the same format as the URL fragment implemented
   in [['Share' URLs with all transcript information]].
+** TODO Add .getElem() method to cluster object
+   Instead of using .get('_element').
 ** TODO Rename `*Type` -> `*Name`(?)
 ** TODO Use `glyphChr` and `startGlyphChr`
    + Rename `glyphStr` -> `glyphChr` throughout.
@@ -347,8 +349,10 @@
    `domClusterElements` and `domFieldElements`.
 ** TODO Keep only one of 'initImages' and 'initImages2'
 ** TODO Clean up all related FIXMEs in code
-** TODO Clean away unused lookup variables in code
-   E.g. lookup tables, no referenced after the rewrite.
+** DONE Clean away dead code
+   CLOSED: [2017-03-24 Fri 10:00]
+   E.g. lookup tables, which are no referenced after the rewrite that changed
+   the internal state format.
 
    (Use `git show b444bb2` and look through removed code to see what variable
    names are candidates for removal.)
