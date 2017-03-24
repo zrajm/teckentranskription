@@ -320,13 +320,15 @@ function updateLoadList() {
         loadInputElement.prop('disabled', false);
     }
 }
-
 function buttonLoad() {
     var msg = "Transcript is unsaved. – Load new one?";
     if (!transcript.changed() || confirm(msg)) {
-        var name = loadInputElement.val();
-        transcript.set(storage.get(name));
-        saveInputElement.val(name);
+        var name = loadInputElement.val(),
+            str  = storage.get(name);
+        if (str !== null) {
+            transcript.set(str);
+            saveInputElement.val(name);
+        }
     }
 }
 function buttonSave() {

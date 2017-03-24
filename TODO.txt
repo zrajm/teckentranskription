@@ -1,5 +1,8 @@
 -*- org -*-
 
+* TODO '?debug' mode
+  'Dump' and 'Dump transcript' buttons should not be shown unless user has
+  specified a '?debug' flag at the end of the URL.
 * TODO Add support chat channel and link to it
   Solr has a support IRC chat channel on Freenode. Apparently
   `webchat.freenode.net` can be used to easily access a chat channel (for
@@ -293,9 +296,55 @@
 * TODO When adding new cluster to transcript use '?' for glyphs          :UX:
   The idea here is to give the user a hint/affordance that they should click
   the glyphs to change them.
-* [3/8] Change internal data format
+* TODO Update references to cluster and field names
+  Replace all references to old-style field and cluster names in HTML/CSS/code
+  with the new ones.
+
+  Clusters:
+      ia   -> cluster-1
+      ib   -> cluster-2
+      iia  -> cluster-3
+      iib  -> cluster-4
+      iic  -> cluster-5
+      iiia -> cluster-6
+      iiib -> cluster-7
+      iiic -> cluster-8
+      iiid -> cluster-9
+
+  Fields:
+      i   -> field-1
+      ii  -> field-2
+      iii -> field-3
+* TODO Specifying an empty URL fragment should clear transcript
+  Regardless of whether you remove the '#' sign or not.
+* TODO Move cluster structure data into *one* place
+  Cluster structure lookup data should all be in one place, and callable from
+  there. The following variables (and more?) should go into this place:
+
+    + clusterGlyphTypes
+    + clusterGlyphNums
+    + glyphData
+    + fieldNameOf
+    + domElement   (GUI related)
+    + glyphImages  (GUI related)
+    + glyphImages2 (GUI related)
+
+  Also, there are instances where one wants to parse a string (e.g. to check
+  validity) -- it should be possible to do checks of this kind without
+  displaying the cluster in the GUI.
+* [4/11] Change internal data format
   The internal state should use the same format as the URL fragment implemented
   in [['Share' URLs with all transcript information]].
+** TODO Rename `*Type` -> `*Name`(?)
+** TODO Use `glyphChr` and `startGlyphChr`
+   + Rename `glyphStr` -> `glyphChr` throughout.
+   + Rename `currentValue` and `defaultGlyphStr` -> `startGlyphChr` (in the
+     glyphMenu() and selectGlyph() functions respectively).
+** TODO Rename `data-value` -> `data-chr` in glyph selector
+   The name of the data attribute is far to vague as it is now.
+** TODO Split `domElement` in two (clusters and fields separately)
+   The lookup object `domElements` (in `clustergui.js`) should be split into
+   `domClusterElements` and `domFieldElements`.
 ** TODO Keep only one of 'initImages' and 'initImages2'
 ** TODO Clean up all related FIXMEs in code
 ** TODO Clean away unused lookup variables in code
@@ -303,8 +352,10 @@
 
    (Use `git show b444bb2` and look through removed code to see what variable
    names are candidates for removal.)
-** TODO Specifying an empty URL fragment should clear transcript
-   Regardless of whether you remove the '#' sign or not.
+** DONE Warning when loading page with no saved data              :MINOR:BUG:
+   CLOSED: [2017-03-23 Thu 19:01]
+   Loading the page gives warning on console if there is no saved data in local
+   storage.
 ** DONE Check all DONEs in code
    CLOSED: [2017-03-22 Wed 16:16]
 ** DONE Invalid URL fragment should fail in better way
