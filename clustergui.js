@@ -323,7 +323,6 @@ function makeClusterGui(args) {
         var clusterNums = Object.keys(fieldNameOf);
         clusterNums.forEach(function (clusterNum) {
             var glyphTypes = clusterGlyphTypes[clusterNum];
-            // FIXME -- Should this really use glyphType?
             glyphTypes.forEach(function (glyphType) {
                 var glyphHtml      = glyphImages[glyphType][0],  // FIXME use glyphImages2 instead(?)
                     clusterElement = domElement[clusterNum];
@@ -410,8 +409,8 @@ function makeClusterGui(args) {
         });
     }
 
-    // Hide specified cluster in GUI. (For clusters of type I and II, hide the
-    // cluster without removing it from the DOM, for clusters of type III the
+    // Hide specified cluster in GUI. (For clusters in field I and II, hide the
+    // cluster without removing it from the DOM, for clusters in field III the
     // cluster is removed from the DOM.)
     function hide(clusterElement) {
         var fieldElement = clusterElement.closest('.field', args.inElement);
@@ -596,7 +595,6 @@ function makeClusterGui(args) {
         }
 
         function handleMenuKeys(shortkeys) {
-            // FIXME: Isn't shortkey always be set now? (Throw exception instead?)
             shortkeys = shortkeys || {};
             return function (event) {
                 var element = $(event.target),

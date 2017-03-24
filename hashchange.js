@@ -21,7 +21,6 @@ function makeUrlFragmentTrigger(onHashChange) {
 }
 
 var glyphData = init(),
-    // FIXME merge 'clusterGlyphTypes' and 'clusterGlyphNums'? (in clustergui.js)
     clusterGlyphTypes = {
         1: [ 'r',  'a' ],
         2: [ 'r',  'h', 'ar', 'av' ],
@@ -37,8 +36,9 @@ var glyphData = init(),
 
 ////////////////////////////////////////////////////////////////////////////
 
-// Table for looking up glyph number <-> glyph character (both ways), in each
+// Table for looking up glyph number <-> glyph character (both ways), for each
 // cluster type. Returned data structure format:
+//
 // {
 //     r: { 0: "_", ..., 5 : "b", _: 0, ..., b: 5  },
 //     a: { 0: "a", ..., 31: "F", a: 0, ..., F: 31 },
@@ -46,7 +46,6 @@ var glyphData = init(),
 // }
 function init() {
     var glyphKeys = {
-        // FIXME: Autogenerate these from makeClusterGui's glyphData variable
         // (so that one only need to update in one place)
         // ([a-zA-Z0-9?/:@._~!$&'()*+,;=-]|%[0-9a-fA-F]{2})
         r: "_ousfb",                                   // Relation

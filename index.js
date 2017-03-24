@@ -124,14 +124,15 @@ function makeCluster(clusterStr, onSet) {
         return clusterState[name];
     }
 
-    // FIXME: Should fail if chr is not exactly one char? (if this is guarateed
-    // to always be exactly one char by code elswhere then this isn't needed)
     function replaceChr(str, pos, chr) {
-        return str.substr(0, pos) + chr[0] + str.substr(pos + 1);
+        return str.substr(0, pos) + chr + str.substr(pos + 1);
     }
 
     // Replace one glyph character in cluster string.
     function setGlyph(position, glyphChar) {
+        if (typeof glyphChar !== 'string' || glyphChar.length !== 1) {
+            throw TypeError("Invalid glyph chararacter '" + glyphChar + "'");
+        }
         clusterState._ = replaceChr(clusterState._, position, glyphChar);
     }
 
@@ -190,9 +191,9 @@ function makeTranscript(onTranscriptChange) {
         }).join('');
     }
 
-    // Sort (and filter) clusterStrs. -- Clusters of types 1-5 are placed first
-    // and sorted, clusters with numbers > 5 are placed at the end, with their
-    // order retained. Any clusters with number 0 are dropped.
+    // Sort (and filter) clusterStrs. -- Clusters with type numbers 1-5 are
+    // placed first and sorted, clusters with numbers > 5 are placed at the
+    // end, without any sorting. Any cluster with type number 0 is dropped.
     function sortClusterStrs(clusterStrs) {
         var clusterStrsOther = clusterStrs.filter(function (x) {
             return (x[0] >= 1 && x[0] <= 5) ? true : false;
@@ -235,16 +236,10 @@ function makeTranscript(onTranscriptChange) {
         changed(true);
     }
 
-    // FIXME: Does the careful insertion of a cluster in right place still matter?
-    // Or has some other code obsoleted this?
-
-    // FIXME: should insertCluster return true/false (looks like we're
-    // currently ignoring return value -- make sure! then rewrite)
-
     // Turns `clusterStr` into cluster object and inserts that into transcript.
-    // Clusters are sorted by type name, new clusters is inserted in the
-    // appropriate place. If a cluster with the same type name already exist,
-    // do nothing. Return true if a cluster was inserted, false otherwise.
+    // Clusters are sorted by type number, new clusters is inserted in the
+    // appropriate place. If a cluster with the same type number already exist,
+    // do nothing.
     function insertCluster(clusters, clusterStr) {
         var i = 0, findNum = clusterStr[0];
         while (i < clusters.length && clusters[i].getNum() < findNum) {
@@ -253,14 +248,12 @@ function makeTranscript(onTranscriptChange) {
         // Insert cluster before cluster of different type (or last in list).
         if (clusters[i] === undefined || clusters[i].getNum() !== findNum) {
             clusters.splice(i, 0, makeCluster(clusterStr, changed));
-            return true;
         }
-        return false;
     }
 
     // Turns `clusterStr` into cluster object and appends that to end of
     // transcript, regardless of whether the same cluster already exist or not
-    // (should be used for clusters of field III).
+    // (should be used for clusters in field III).
     function appendCluster(clusters, clusterStr) {
         clusters.push(makeCluster(clusterStr, changed));
     }

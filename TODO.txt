@@ -332,6 +332,9 @@
   Also, there are instances where one wants to parse a string (e.g. to check
   validity) -- it should be possible to do checks of this kind without
   displaying the cluster in the GUI.
+
+  Also look at the `glyphKeys` variable, and the init() function in
+  hashchange.js to see if these can be merged with the other lookup tables.
 * TODO Add .getElem() method to cluster object
   Instead of using .get('_element').
 * TODO Rename `*Type` -> `*Name`(?)
@@ -340,11 +343,12 @@
 * TODO Split `domElement` in two (clusters and fields separately)
   The lookup object `domElements` (in `clustergui.js`) should be split into
   `domClusterElements` and `domFieldElements`.
-* [6/8] Change internal data format
+* [7/8] Change internal data format
   The internal state should use the same format as the URL fragment implemented
   in [['Share' URLs with all transcript information]].
 ** TODO Keep only one of 'initImages' and 'initImages2'
-** TODO Clean up all related FIXMEs in code
+** DONE Clean up all related FIXMEs in code
+   CLOSED: [2017-03-24 Fri 19:00]
 ** DONE Use `glyphChr` and `startGlyphChr`
    CLOSED: [2017-03-24 Fri 10:15]
    + Rename `glyphStr` -> `glyphChr` throughout.
