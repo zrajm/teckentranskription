@@ -351,9 +351,9 @@ function makeClusterGui(args) {
             throw TypeError("Missing '_element' property in cluster");
         }
 
-        glyphChars.forEach(function (glyphStr, index) {
+        glyphChars.forEach(function (glyphChr, index) {
             var glyphType = glyphTypes[index],
-                html  = glyphImages2[glyphType][glyphStr] || glyphStr,
+                html  = glyphImages2[glyphType][glyphChr] || glyphChr,
                 glyph = $('.' + glyphType, clusterElement);
             glyph.html(html);
             // Special case for 'medial contact' and 'separator' glyphs.
@@ -383,11 +383,11 @@ function makeClusterGui(args) {
             removeClass('cue hide');
 
         function glyphMenu(glyphType) {
-            var menuSpec     = glyphData[glyphType],
-                glyphNum     = clusterGlyphNums[clusterNum][glyphType],
-                currentValue = cluster.getStr()[glyphNum];
+            var menuSpec = glyphData[glyphType],
+                glyphNum = clusterGlyphNums[clusterNum][glyphType],
+                startGlyphStr = cluster.getStr()[glyphNum];
 
-            selectGlyph(menuSpec, currentValue, function (value) {
+            selectGlyph(menuSpec, startGlyphStr, function (value) {
                 cluster.set(glyphNum, value);
             });
         }
@@ -506,7 +506,7 @@ function makeClusterGui(args) {
     // Glyph Selector Menu
     //
 
-    function selectGlyph(menu, defaultGlyphStr, callback) {
+    function selectGlyph(menu, startGlyphStr, callback) {
         var tableElement    = $('table', overlayElement),
             selectedElement = $(document.activeElement),
             rowElements;
@@ -538,7 +538,7 @@ function makeClusterGui(args) {
                     shortkeys[shortkey] = index;
                     tableHtml += '<tr tabindex=1 data-num=' + index + ' ' +
                         'data-value="' + escapeHtml(shortkey) + '"' +
-                        (defaultGlyphStr === shortkey ? ' class=selected' : '') + '>' +
+                        (startGlyphStr === shortkey ? ' class=selected' : '') + '>' +
                         '<td class=' + cssClass + '><img src="pic/' + glyph + '">' +
                         (image ? '<td><img src="pic/' + image + '">' : '<td>') +
                         '<td class=left>' + text + shortkeyHtml;

@@ -285,7 +285,7 @@
 * TODO Replace field and cluster names in HTML/CSS
   Roman numeral field names (e.g. 'iii') should be replaced with the new style
   numeric names (e.g. 'field-3'), and the same goes for clusters names (e.g.
-  'iiia' should becode 'cluster-6').
+  'iiia' should become 'cluster-6').
 * TODO Remove 'Load' button
   Selecting a saved transcript in the dropdown should be enough to load it. If
   the current transcript hasn't been saved, and the user cancels the loading,
@@ -332,23 +332,24 @@
   Also, there are instances where one wants to parse a string (e.g. to check
   validity) -- it should be possible to do checks of this kind without
   displaying the cluster in the GUI.
-* [5/12] Change internal data format
+* TODO Add .getElem() method to cluster object
+  Instead of using .get('_element').
+* TODO Rename `*Type` -> `*Name`(?)
+* TODO Rename `data-value` -> `data-chr` in glyph selector
+  The name of the data attribute is far to vague as it is now.
+* TODO Split `domElement` in two (clusters and fields separately)
+  The lookup object `domElements` (in `clustergui.js`) should be split into
+  `domClusterElements` and `domFieldElements`.
+* [6/8] Change internal data format
   The internal state should use the same format as the URL fragment implemented
   in [['Share' URLs with all transcript information]].
-** TODO Add .getElem() method to cluster object
-   Instead of using .get('_element').
-** TODO Rename `*Type` -> `*Name`(?)
-** TODO Use `glyphChr` and `startGlyphChr`
+** TODO Keep only one of 'initImages' and 'initImages2'
+** TODO Clean up all related FIXMEs in code
+** DONE Use `glyphChr` and `startGlyphChr`
+   CLOSED: [2017-03-24 Fri 10:15]
    + Rename `glyphStr` -> `glyphChr` throughout.
    + Rename `currentValue` and `defaultGlyphStr` -> `startGlyphChr` (in the
      glyphMenu() and selectGlyph() functions respectively).
-** TODO Rename `data-value` -> `data-chr` in glyph selector
-   The name of the data attribute is far to vague as it is now.
-** TODO Split `domElement` in two (clusters and fields separately)
-   The lookup object `domElements` (in `clustergui.js`) should be split into
-   `domClusterElements` and `domFieldElements`.
-** TODO Keep only one of 'initImages' and 'initImages2'
-** TODO Clean up all related FIXMEs in code
 ** DONE Clean away dead code
    CLOSED: [2017-03-24 Fri 10:00]
    E.g. lookup tables, which are no referenced after the rewrite that changed
