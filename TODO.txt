@@ -274,14 +274,6 @@
 
   Reference: [[http://stackoverflow.com/questions/2849756/][List of valid characters for the fragment identifier in an URL?]]
   (on Stackoverflow).
-* TODO Keep glyph lookup data in ONE place
-  All the glyphs lookup data should be kept in one data structure, in one place
-  in the code. Currently fieldNameOf, clusterGlyphs, clusterGlyphTypes and
-  clusterGlyphNums contain information that should be condensed into one place
-  (and possibly processed on loading to produce the final table).
-
-  If any such preprocessing is done, put comments in the code explaining what
-  the final lookup table looks like!
 * TODO Replace field and cluster names in HTML/CSS
   Roman numeral field names (e.g. 'iii') should be replaced with the new style
   numeric names (e.g. 'field-3'), and the same goes for clusters names (e.g.
@@ -317,21 +309,24 @@
       iii -> field-3
 * TODO Specifying an empty URL fragment should clear transcript
   Regardless of whether you remove the '#' sign or not.
-* TODO Move cluster structure data into *one* place
+* TODO Decouple cluster checking/parsing from GUI
+  There are instances where one wants to parse a cluster string (e.g. to check
+  validity) without showing it in the GUI.
+* TODO Move glyph lookup data into *one* place
   Cluster structure lookup data should all be in one place, and callable from
   there. The following variables (and more?) should go into this place:
 
-    + clusterGlyphTypes
-    + clusterGlyphNums
-    + glyphData
-    + fieldNameOf
-    + domElement   (GUI related)
-    + glyphImages  (GUI related)
-    + glyphImages2 (GUI related)
+    + clusterGlyphTypes (global; defined in hashchange.js)
+    + glyphNumChrMap    (global; defined in hashchange.js)
+    + clusterGlyphNums  (local; clustergui.js)
+    + fieldNameOf       (local; clustergui.js)
+    + glyphData         (local; clustergui.js)
+    + domElement        (local; clustergui.js)
+    + glyphImages2      (local; clustergui.js)
 
-  Also, there are instances where one wants to parse a string (e.g. to check
-  validity) -- it should be possible to do checks of this kind without
-  displaying the cluster in the GUI.
+  Possibly some preprocessing should be done when loading to produce the final
+  table -- If any such preprocessing is done, put comments in the code
+  explaining what the final lookup table looks like!
 
   Also look at the `glyphKeys` variable, and the init() function in
   hashchange.js to see if these can be merged with the other lookup tables.
@@ -343,10 +338,11 @@
 * TODO Split `domElement` in two (clusters and fields separately)
   The lookup object `domElements` (in `clustergui.js`) should be split into
   `domClusterElements` and `domFieldElements`.
-* [7/8] Change internal data format
+* [8/8] Change internal data format
   The internal state should use the same format as the URL fragment implemented
   in [['Share' URLs with all transcript information]].
-** TODO Keep only one of 'initImages' and 'initImages2'
+** DONE Keep only one of 'initImages' and 'initImages2'
+   CLOSED: [2017-04-02 Sun 18:06]
 ** DONE Clean up all related FIXMEs in code
    CLOSED: [2017-03-24 Fri 19:00]
 ** DONE Use `glyphChr` and `startGlyphChr`

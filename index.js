@@ -150,7 +150,7 @@ function makeCluster(clusterStr, onSet) {
         // cluster *definition* (= add chars missing in the input).
         clusterState._ = clusterNum +
             glyphTypes.map(function (glyphType, index) {
-                return inputChars[index] || glyphData[glyphType][0];
+                return inputChars[index] || glyphNumChrMap[glyphType][0];
             }).join('');
     }
 

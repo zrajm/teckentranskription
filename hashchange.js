@@ -20,7 +20,7 @@ function makeUrlFragmentTrigger(onHashChange) {
     };
 }
 
-var glyphData = init(),
+var glyphNumChrMap = init(),
     clusterGlyphTypes = {
         1: [ 'r',  'a' ],
         2: [ 'r',  'h', 'ar', 'av' ],

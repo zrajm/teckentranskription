@@ -201,7 +201,6 @@ function makeClusterGui(args) {
         },
         cueRemove   = {},
         glyphImages = initImages(glyphData),
-        glyphImages2 = initImages2(glyphData),
         fieldNameOf = {
             '1': 'i',   '2': 'i',
             '3': 'ii',  '4': 'ii',  '5': 'ii',
@@ -237,7 +236,7 @@ function makeClusterGui(args) {
             9: { artion_low: 1 },
         };
 
-    function initImages2(glyphData) {
+    function initImages(glyphData) {
         var glyphImages = {};
 
         // Preload cluster images (so that script works even offline).
@@ -276,22 +275,6 @@ function makeClusterGui(args) {
         return glyphImages;
     }
 
-    function initImages(glyphData) {
-        var glyphImages = {};
-        Object.keys(glyphData).forEach(function (glyphType) {
-            var glyphList = glyphData[glyphType];
-            glyphImages[glyphType] = {};
-            glyphList.
-                filter(function (value) { return typeof value !== 'string'; }).
-                forEach(function (value, index) {
-                    var file = value[0], shortkey = value[2],
-                        html = '<img src="pic/' + file + '">';
-                    glyphImages[glyphType][index] = html;
-                });
-        });
-        return glyphImages;
-    }
-
     // Return jQuery element for a new clusterType without displaying it in the
     // GUI. DOM elements for clusters in field I & II are reused, while
     // elements for clusters in field III are added.
@@ -324,7 +307,8 @@ function makeClusterGui(args) {
         clusterNums.forEach(function (clusterNum) {
             var glyphTypes = clusterGlyphTypes[clusterNum];
             glyphTypes.forEach(function (glyphType) {
-                var glyphHtml      = glyphImages[glyphType][0],  // FIXME use glyphImages2 instead(?)
+                var glyphChr       = glyphNumChrMap[glyphType][0],
+                    glyphHtml      = glyphImages[glyphType][glyphChr],
                     clusterElement = domElement[clusterNum];
                 $('.' + glyphType, clusterElement).html(glyphHtml);
             });
@@ -352,7 +336,7 @@ function makeClusterGui(args) {
 
         glyphChars.forEach(function (glyphChr, index) {
             var glyphType = glyphTypes[index],
-                html  = glyphImages2[glyphType][glyphChr] || glyphChr,
+                html  = glyphImages[glyphType][glyphChr] || glyphChr,
                 glyph = $('.' + glyphType, clusterElement);
             glyph.html(html);
             // Special case for 'medial contact' and 'separator' glyphs.
