@@ -293,23 +293,20 @@ function escapeHtml(text) {
 }
 function updateLoadList() {
     var selected = storage.getCurrentName(),
-        names    = storage.list();
-    loadInputElement.html(
-        names.map(function (name) {
+        names    = storage.list(),
+        disable  = names.length === 0 ? true : false;
+    if (disable) {
+        loadInputElement.html('<option value="">Load name…');
+    } else {
+        loadInputElement.html(names.map(function (name) {
             return "<option" + (name === selected ? " selected" : "") +
                 ">" + escapeHtml(name)
-        }).join("")
-    );
-    if (names.length === 0) {
-        loadInputElement.html('<option value="">Load name..');
-        loadButtonElement.prop('disabled', true);
-        deleteButtonElement.prop('disabled', true);
-        loadInputElement.prop('disabled', true);
-    } else {
-        loadButtonElement.prop('disabled', false);
-        deleteButtonElement.prop('disabled', false);
-        loadInputElement.prop('disabled', false);
+        }).join(""));
     }
+    $().add(deleteButtonElement).
+        add(loadButtonElement).
+        add(loadInputElement).
+        prop('disabled', disable);
 }
 function buttonLoad() {
     var msg = "Transcript is unsaved. – Load new one?";
