@@ -206,10 +206,12 @@ function makeClusterGui(args) {
             '3': 'ii',  '4': 'ii',  '5': 'ii',
             '6': 'iii', '7': 'iii', '8': 'iii', '9': 'iii',
         },
-        domElement = {
+        domFieldElement = {
             i  : $('.field.i',   args.inElement),
             ii : $('.field.ii',  args.inElement),
             iii: $('.field.iii', args.inElement),
+        },
+        domClusterElement = {
             1: $('.cluster.ia',   args.inElement),
             2: $('.cluster.ib',   args.inElement),
             3: $('.cluster.iia',  args.inElement),
@@ -281,10 +283,10 @@ function makeClusterGui(args) {
     function initGlyph(clusterNum) {
         var element, fieldType = fieldNameOf[clusterNum], glyphElements;
         if (fieldType === 'i' || fieldType === 'ii') {
-            element = domElement[clusterNum];  // reuse existing DOM element
+            element = domClusterElement[clusterNum]; // reuse existing DOM element
         } else if (fieldType === 'iii') {      // create new DOM element
-            element = domElement[clusterNum].clone();
-            domElement['iii'].append(element);
+            element = domClusterElement[clusterNum].clone();
+            domFieldElement['iii'].append(element);
         } else {
             throw TypeError("Invalid cluster type number '" + clusterNum + "'");
         }
@@ -309,13 +311,13 @@ function makeClusterGui(args) {
             glyphTypes.forEach(function (glyphType) {
                 var glyphChr       = glyphNumChrMap[glyphType][0],
                     glyphHtml      = glyphImages[glyphType][glyphChr],
-                    clusterElement = domElement[clusterNum];
+                    clusterElement = domClusterElement[clusterNum];
                 $('.' + glyphType, clusterElement).html(glyphHtml);
             });
         });
-        domElement['i']  .children('.cluster').addClass('hide');
-        domElement['ii'] .children('.cluster').addClass('hide');
-        domElement['iii'].children('.cluster').remove();
+        domFieldElement['i']  .children('.cluster').addClass('hide');
+        domFieldElement['ii'] .children('.cluster').addClass('hide');
+        domFieldElement['iii'].children('.cluster').remove();
         hideAllEmptyFieldElements();
     }
 
@@ -424,7 +426,7 @@ function makeClusterGui(args) {
     // Hide all fields in which no clusters are currently shown.
     function hideAllEmptyFieldElements() {
         ['i', 'ii', 'iii'].forEach(function (fieldType) {
-            hideEmptyFieldElement(domElement[fieldType]);
+            hideEmptyFieldElement(domFieldElement[fieldType]);
         });
     }
 
@@ -438,7 +440,7 @@ function makeClusterGui(args) {
     // Cue change to specified cluster. (Works with all clusters.)
     function cue(clusterNum) {
         var fieldType      = fieldNameOf[clusterNum],
-            clusterElement = domElement[clusterNum],
+            clusterElement = domClusterElement[clusterNum],
             isHidden       = clusterElement.hasClass('hide');
 
         if (fieldType === 'iii') {

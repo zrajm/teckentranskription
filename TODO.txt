@@ -321,7 +321,8 @@
     + clusterGlyphNums  (local; clustergui.js)
     + fieldNameOf       (local; clustergui.js)
     + glyphData         (local; clustergui.js)
-    + domElement        (local; clustergui.js)
+    + domFieldElement   (local; clustergui.js)
+    + domClusterElement (local; clustergui.js)
     + glyphImages2      (local; clustergui.js)
 
   Possibly some preprocessing should be done when loading to produce the final
@@ -335,7 +336,8 @@
 * TODO Rename `*Type` -> `*Name`(?)
 * TODO Rename `data-value` -> `data-chr` in glyph selector
   The name of the data attribute is far to vague as it is now.
-* TODO Split `domElement` in two (clusters and fields separately)
+* DONE Split `domElement` in two (clusters and fields separately)
+  CLOSED: [2017-04-03 mån 12:57]
   The lookup object `domElements` (in `clustergui.js`) should be split into
   `domClusterElements` and `domFieldElements`.
 * [8/8] Change internal data format
