@@ -201,26 +201,26 @@ function makeClusterGui(args) {
         },
         cueRemove   = {},
         glyphImages = initImages(glyphData),
-        fieldNameOf = {
-            '1': 'i',   '2': 'i',
-            '3': 'ii',  '4': 'ii',  '5': 'ii',
-            '6': 'iii', '7': 'iii', '8': 'iii', '9': 'iii',
-        },
-        domFieldElement = {
-            i  : $('.field.i',   args.inElement),
-            ii : $('.field.ii',  args.inElement),
-            iii: $('.field.iii', args.inElement),
+        fieldNameOf = {        // cluster number -> field number mapping
+            1: 1, 2: 1,
+            3: 2, 4: 2, 5: 2,
+            6: 3, 7: 3, 8: 3, 9: 3,
         },
         domClusterElement = {
-            1: $('.cluster.ia',   args.inElement),
-            2: $('.cluster.ib',   args.inElement),
-            3: $('.cluster.iia',  args.inElement),
-            4: $('.cluster.iib',  args.inElement),
-            5: $('.cluster.iic',  args.inElement),
-            6: $('.cluster.iiia', args.inElement).remove(),
-            7: $('.cluster.iiib', args.inElement).remove(),
-            8: $('.cluster.iiic', args.inElement).remove(),
-            9: $('.cluster.iiid', args.inElement).remove(),
+            1: $('.cluster-1', args.inElement),
+            2: $('.cluster-2', args.inElement),
+            3: $('.cluster-3', args.inElement),
+            4: $('.cluster-4', args.inElement),
+            5: $('.cluster-5', args.inElement),
+            6: $('.cluster-6', args.inElement).remove(),
+            7: $('.cluster-7', args.inElement).remove(),
+            8: $('.cluster-8', args.inElement).remove(),
+            9: $('.cluster-9', args.inElement).remove(),
+        },
+        domFieldElement = {
+            1: $('.field-1', args.inElement),
+            2: $('.field-2', args.inElement),
+            3: $('.field-3', args.inElement),
         },
         // Position of in cluster string of these glyphs (note that this
         // includes the magic number, i.e. a cluster has a magic number > 9,
@@ -282,11 +282,11 @@ function makeClusterGui(args) {
     // elements for clusters in field III are added.
     function initGlyph(clusterNum) {
         var element, fieldType = fieldNameOf[clusterNum], glyphElements;
-        if (fieldType === 'i' || fieldType === 'ii') {
+        if (fieldType === 1 || fieldType === 2) {
             element = domClusterElement[clusterNum]; // reuse existing DOM element
-        } else if (fieldType === 'iii') {      // create new DOM element
+        } else if (fieldType === 3) {                // create new DOM element
             element = domClusterElement[clusterNum].clone();
-            domFieldElement['iii'].append(element);
+            domFieldElement[3].append(element);
         } else {
             throw TypeError("Invalid cluster type number '" + clusterNum + "'");
         }
@@ -315,9 +315,9 @@ function makeClusterGui(args) {
                 $('.' + glyphType, clusterElement).html(glyphHtml);
             });
         });
-        domFieldElement['i']  .children('.cluster').addClass('hide');
-        domFieldElement['ii'] .children('.cluster').addClass('hide');
-        domFieldElement['iii'].children('.cluster').remove();
+        domFieldElement[1].children('.cluster').addClass('hide');
+        domFieldElement[2].children('.cluster').addClass('hide');
+        domFieldElement[3].children('.cluster').remove();
         hideAllEmptyFieldElements();
     }
 
@@ -405,7 +405,7 @@ function makeClusterGui(args) {
         if (fieldElement.length === 0) {       // cluster not in
             return false;                      //    transcription field
         }
-        if (fieldElement.hasClass('iii')) {    // field III
+        if (fieldElement.hasClass('field-3')) {// field III
             clusterElement.remove();
         } else {                               // field I + II
             if (clusterElement.hasClass('hide')) {
@@ -425,7 +425,7 @@ function makeClusterGui(args) {
 
     // Hide all fields in which no clusters are currently shown.
     function hideAllEmptyFieldElements() {
-        ['i', 'ii', 'iii'].forEach(function (fieldType) {
+        [1, 2, 3].forEach(function (fieldType) {
             hideEmptyFieldElement(domFieldElement[fieldType]);
         });
     }
@@ -443,7 +443,7 @@ function makeClusterGui(args) {
             clusterElement = domClusterElement[clusterNum],
             isHidden       = clusterElement.hasClass('hide');
 
-        if (fieldType === 'iii') {
+        if (fieldType === 3) {
             clusterElement = gui.init(clusterNum).
                 addClass('cue').removeClass('hide');
             cueRemove[clusterNum] = function () { gui.hide(clusterElement); };
@@ -451,7 +451,7 @@ function makeClusterGui(args) {
             return self;
         }
 
-        if (fieldType !== 'i' && fieldType !== 'ii') {
+        if (fieldType !== 1 && fieldType !== 2) {
             throw TypeError("Invalid cluster type number '" + clusterNum + "' " +
                 "(only type numer '1' & '2' can be previewed)");
         }
@@ -713,7 +713,7 @@ function makeClusterGui(args) {
             return false;
         }
 
-        dragula($('.field.i', args.inElement).toArray(), {
+        dragula($('.field-1', args.inElement).toArray(), {
             direction: 'horizontal',
             removeOnSpill: true,
             accepts: noPositionChange,
@@ -722,7 +722,7 @@ function makeClusterGui(args) {
             on('remove', removeCluster).
             on('dragend', removeFieldDragClass);
 
-        dragula($('.field.ii', args.inElement).toArray(), {
+        dragula($('.field-2', args.inElement).toArray(), {
             direction: 'horizontal',
             removeOnSpill: true,
             accepts: noPositionChange,
@@ -731,7 +731,7 @@ function makeClusterGui(args) {
             on('remove', removeCluster).
             on('dragend', removeFieldDragClass);
 
-        dragula($('.field.iii', args.inElement).toArray(), {
+        dragula($('.field-3', args.inElement).toArray(), {
             direction: 'horizontal',
             removeOnSpill: true,
         }).

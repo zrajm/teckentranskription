@@ -288,25 +288,6 @@
 * TODO When adding new cluster to transcript use '?' for glyphs          :UX:
   The idea here is to give the user a hint/affordance that they should click
   the glyphs to change them.
-* TODO Update references to cluster and field names
-  Replace all references to old-style field and cluster names in HTML/CSS/code
-  with the new ones.
-
-  Clusters:
-      ia   -> cluster-1
-      ib   -> cluster-2
-      iia  -> cluster-3
-      iib  -> cluster-4
-      iic  -> cluster-5
-      iiia -> cluster-6
-      iiib -> cluster-7
-      iiic -> cluster-8
-      iiid -> cluster-9
-
-  Fields:
-      i   -> field-1
-      ii  -> field-2
-      iii -> field-3
 * TODO Specifying an empty URL fragment should clear transcript
   Regardless of whether you remove the '#' sign or not.
 * TODO Decouple cluster checking/parsing from GUI
@@ -336,6 +317,26 @@
 * TODO Rename `*Type` -> `*Name`(?)
 * TODO Rename `data-value` -> `data-chr` in glyph selector
   The name of the data attribute is far to vague as it is now.
+* DONE Update references to cluster and field names
+  CLOSED: [2017-04-03 Mon 15:16]
+  Replace all references to old-style field and cluster names in HTML/CSS/code
+  with the new ones.
+
+  Clusters:
+      ia   -> cluster-1
+      ib   -> cluster-2
+      iia  -> cluster-3
+      iib  -> cluster-4
+      iic  -> cluster-5
+      iiia -> cluster-6
+      iiib -> cluster-7
+      iiic -> cluster-8
+      iiid -> cluster-9
+
+  Fields:
+      i   -> field-1
+      ii  -> field-2
+      iii -> field-3
 * DONE Split `domElement` in two (clusters and fields separately)
   CLOSED: [2017-04-03 mån 12:57]
   The lookup object `domElements` (in `clustergui.js`) should be split into
