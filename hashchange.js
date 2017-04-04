@@ -3,12 +3,7 @@
 // ([a-zA-Z0-9?/:@._~!$&'()*+,;=-]|%[0-9a-fA-F]{2})
 
 function makeUrlFragmentTrigger(onHashChange) {
-    var active = true;
     if (onHashChange) { $(window).on('hashchange', onHashChange); }
-
-    // Trigger fragment event on pageload.
-    $(function () { $(window).trigger('hashchange'); });
-
     return {
         get: function () {
             return (window.location.hash || '').replace(/^#/, '');
@@ -32,7 +27,10 @@ var glyphNumChrMap = init(),
         8: [ 'h' ],
         9: [ 'artion_low' ],
     },
-    urlFragment = makeUrlFragmentTrigger(onHashChange);
+    urlFragment = makeUrlFragmentTrigger(function () {
+        loadFragment(urlFragment.get());
+        $('.glyph').focus();
+    });
 
 ////////////////////////////////////////////////////////////////////////////
 
@@ -71,29 +69,28 @@ function init() {
     }, {});
 }
 
-// Specifying a URL fragment should be like pressing 'Clear', then
-// entering a transcript.
-function onHashChange() {
-    var fromStorage,
-        fromUrl        = urlFragment.get(),
-        fromUrlNoQuery = fromUrl.replace(/\?.*$/, '');
-
-    // Remove any query string (e.g. '?menu') without adding to history.
-    if (fromUrl !== fromUrlNoQuery) {
-        history.replaceState({}, document.title, '#' + fromUrlNoQuery);
+// Strip parameters (e.g. '?menu') from URL fragment without adding to history.
+// Return fragment with parameters stripped.
+function stripUrlParam(fragment) {
+    var noParam = (fragment||'').replace(/[?].*$/, '');
+    if (fragment !== noParam) {
+        history.replaceState({}, document.title, '#' + noParam);
     }
+    return noParam;
+}
 
-    if (fromUrl !== '') {
-        fromStorage = transcript.getStr();
-        if (fromUrl !== fromStorage) {
-            saveInputElement.val("");
-            transcript.set(fromUrl, false);    // suppress URL hash update
+function loadFragment(fragment) {
+    var fragment = stripUrlParam(fragment),
+        current  = transcript.getStr();
 
-            // If fragment changed when storing, update the URL fragment.
-            fromStorage = transcript.getStr();
-            if (fromUrl !== fromStorage) {
-                history.replaceState({}, document.title, '#' + fromStorage);
-            }
+    if (fragment !== current) {
+        transcript.set(fragment, false);    // suppress URL fragment update
+        transcript.changed(true);
+
+        // If transcript was modified by storing, write back to URL fragment.
+        current = transcript.getStr();
+        if (fragment !== current) {
+            history.replaceState({}, document.title, '#' + current);
         }
     }
 }

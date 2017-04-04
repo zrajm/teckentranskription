@@ -237,10 +237,6 @@
   before `.hide()` since `.hide()` is called from inside `.cue()`.
 
   This might be too complicated to be worth it.
-* TODO Remove 'load' button                                              :UX:
-  Simply selecting a transcript from the list should be enough to load it (if
-  user aborts the load, by pressing cancel in the confirmation dialog, then the
-  <select> should not change its value.
 * TODO History menu should show transcript string
   Apparently second (title) argument of history.pushState() doesn't really work
   (in any browser?) -- is it possible to instead the title with another means
@@ -278,10 +274,6 @@
   Roman numeral field names (e.g. 'iii') should be replaced with the new style
   numeric names (e.g. 'field-3'), and the same goes for clusters names (e.g.
   'iiia' should become 'cluster-6').
-* TODO Remove 'Load' button
-  Selecting a saved transcript in the dropdown should be enough to load it. If
-  the current transcript hasn't been saved, and the user cancels the loading,
-  the previously loaded transcript should remain selected.
 * TODO Error handling in URL fragments
   Invalid glyph letters should be replaced with the character '*', which
   should display a question mark-type sign in the transcript.
@@ -317,6 +309,11 @@
 * TODO Rename `*Type` -> `*Name`(?)
 * TODO Rename `data-value` -> `data-chr` in glyph selector
   The name of the data attribute is far to vague as it is now.
+* DONE Remove 'Load' button                                              :UX:
+  CLOSED: [2017-04-04 Tue 16:49]
+  Selecting a saved transcript in the dropdown should be enough to load it. If
+  the current transcript hasn't been saved, and the user cancels the loading,
+  the previously loaded transcript should remain selected.
 * DONE Update references to cluster and field names
   CLOSED: [2017-04-03 Mon 15:16]
   Replace all references to old-style field and cluster names in HTML/CSS/code

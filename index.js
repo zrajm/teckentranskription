@@ -11,12 +11,10 @@ var addIaButtonElement  = $("#ia")
     addIIIdButtonElement = $("#iiid")
     bodyElement         = $(document.body),
     windowElement       = $(window),
-    loadButtonElement   = $("#load"),
     loadInputElement    = $("#load-input"),
     saveButtonElement   = $("#save"),
     saveInputElement    = $("#save-input"),
     dumpButtonElement   = $("#dump"),
-    dumpThisButtonElement = $("#this"),
     clearButtonElement  = $("#clear"),
     deleteButtonElement = $("#delete"),
     overlayElement      = $("#overlay"),
@@ -304,20 +302,22 @@ function updateLoadList() {
         }).join(""));
     }
     $().add(deleteButtonElement).
-        add(loadButtonElement).
         add(loadInputElement).
         prop('disabled', disable);
 }
-function buttonLoad() {
-    var msg = "Transcript is unsaved. – Load new one?";
+function loadInputChange(selectedName, previousName) {
+    var msg = "Current transcript is unsaved. – Load new one?";
     if (!transcript.changed() || confirm(msg)) {
         var name = loadInputElement.val(),
             str  = storage.get(name);
         if (str !== null) {
             transcript.set(str);
             saveInputElement.val(name);
+            return selectedName;
         }
     }
+    loadInputElement.val(previousName);
+    return previousName;
 }
 function buttonSave() {
     var name = saveInputElement.val();
@@ -355,9 +355,6 @@ function buttonDump() {
     });
     console.log(JSON.stringify(obj, null, 4));
 }
-function buttonDumpThis() {
-    console.log("'" + transcript.getStr() + "'");
-}
 function buttonDelete() {
     var name = loadInputElement.val(), newName;
     if (confirm("Delete transcript ‘" + name + "’?")) {
@@ -372,11 +369,6 @@ function buttonDelete() {
 ////////////////////////////////////////////////////////////////////////////////
 
 updateLoadList();
-(function () {
-    var selected = storage.getCurrentName();
-    saveInputElement.val(selected);
-}());
-
 addIaButtonElement.  click(function() { transcript.add('1') });
 addIbButtonElement.  click(function() { transcript.add('2') });
 addIIaButtonElement. click(function() { transcript.add('3') });
@@ -386,15 +378,31 @@ addIIIaButtonElement.click(function() { transcript.add('6') });
 addIIIbButtonElement.click(function() { transcript.add('7') });
 addIIIcButtonElement.click(function() { transcript.add('8') });
 addIIIdButtonElement.click(function() { transcript.add('9') });
-loadButtonElement.click(buttonLoad);
+(function () {
+    var prev;
+    // This is to allow the dropdown to restore previous value if loading was
+    // cancelled by the user.
+    loadInputElement.
+        focus (function () { prev = this.value; }).
+        change(function () { prev = loadInputChange(this.value, prev); });
+}());
 saveButtonElement.click(buttonSave);
 clearButtonElement.click(buttonClear);
 dumpButtonElement.click(buttonDump);
-dumpThisButtonElement.click(buttonDumpThis);
 deleteButtonElement.click(buttonDelete);
-
 $(function () {
-    if (transcript.getStr() === '') { buttonLoad(); }
+    var name     = storage.getCurrentName(),
+        str      = storage.get(name) || '',
+        fragment = urlFragment.get();
+
+    saveInputElement.val(name || '');
+    fragment = stripUrlParam(fragment);
+
+    if (fragment === '' || fragment === str) {
+        transcript.set(str);
+    } else {
+        loadFragment(fragment);
+    }
     $('.glyph').focus();
 });
 
