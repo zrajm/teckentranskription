@@ -444,4 +444,6 @@ addIIIdButtonElement.hover(
     function () { gui.uncue(); }
 );
 
+console.info("To show dump button write: $('#dump').removeClass('hide')");
+
 //[eof]

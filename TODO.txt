@@ -1,8 +1,5 @@
 -*- org -*-
 
-* TODO '?debug' mode
-  'Dump' and 'Dump transcript' buttons should not be shown unless user has
-  specified a '?debug' flag at the end of the URL.
 * TODO Add support chat channel and link to it
   Solr has a support IRC chat channel on Freenode. Apparently
   `webchat.freenode.net` can be used to easily access a chat channel (for
@@ -309,6 +306,13 @@
 * TODO Rename `*Type` -> `*Name`(?)
 * TODO Rename `data-value` -> `data-chr` in glyph selector
   The name of the data attribute is far to vague as it is now.
+* DONE Add 'debug mode'
+  CLOSED: [2017-04-04 Tue 16:51]
+  All debug tools should be hidden from the normal user.
+
+  Now output prints a message on the console saying what Javascript command one
+  should use to show the 'Dump' button (currently the only debug tool
+  available).
 * DONE Remove 'Load' button                                              :UX:
   CLOSED: [2017-04-04 Tue 16:49]
   Selecting a saved transcript in the dropdown should be enough to load it. If
