@@ -20,47 +20,47 @@ function makeClusterGui(args) {
             r: [
                 "Relation",
                 '.top',
-                ["r-ingen.svg",   "Ingen",   "_"],
-                ["r-over.svg",    "Över",    "o"],
-                ["r-under.svg",   "Under",   "u"],
-                ["r-bredvid.svg", "Bredvid", "s"],
-                ["r-framfor.svg", "Framför", "f"],
-                ["r-bakom.svg",   "Bakom",   "b"],
+                ["r-ingen",   "Ingen",   "_"],
+                ["r-over",    "Över",    "o"],
+                ["r-under",   "Under",   "u"],
+                ["r-bredvid", "Bredvid", "s"],
+                ["r-framfor", "Framför", "f"],
+                ["r-bakom",   "Bakom",   "b"],
             ],
             a: [ // Artikulationsställe
                 "Läge",
-                ["a-hjassan.svg",         "Hjässan",                        "a"],
-                ["a-ansiktet.svg",        "Ansiktet, huvudhöjd",            "b"],
-                ["a-ansiktet-upptill.svg","Ansiktet, övre del",             "c"],
-                ["a-ansiktet-nertill.svg","Ansiktet, nedre del",            "d"],
-                ["a-pannan.svg",          "Pannan",                         "e"],
-                ["a-ogonen.svg",          "Ögonen",                         "f"],
-                ["a-ogat.svg",            "Ögat",                           "g"],
-                ["a-nasan.svg",           "Näsan",                          "h"],
-                ["a-oronen.svg",          "Sidorna av huvudet, öronen",     "i"],
-                ["a-orat-vanster.svg",    "Sidan av huvudet, örat, vänster","j"],
-                ["a-orat-hoger.svg",      "Sidan av huvudet, örat, höger",  "k"],
-                ["a-kinderna.svg",        "Kinderna",                       "l"],
-                ["a-kinden-vanster.svg",  "Kinden, vänster",                "m"],
-                ["a-kinden-hoger.svg",    "Kinden, höger",                  "n"],
-                ["a-munnen.svg",          "Munnen",                         "o"],
-                ["a-hakan.svg",           "Hakan",                          "p"],
-                ["a-nacken.svg",          "Nacken",                         "q"],
-                ["a-halsen.svg",          "Halsen",                         "r"],
-                ["a-axlarna.svg",         "Axlarna",                        "s"],
-                ["a-axeln-vanster.svg",   "Axeln, vänster",                 "t"],
-                ["a-axeln-hoger.svg",     "Axeln, höger",                   "u"],
-                ["a-armen.svg",           "Armen",                          "v"],
-                ["a-overarmen.svg",       "Överarmen",                      "w"],
-                ["a-underarmen.svg",      "Underarmen",                     "x"],
-                ["a-brostet.svg",         "Bröstet",                        "y"],
-                ["a-brostet-vanster.svg", "Bröstet, vänster sida",          "z"],
-                ["a-brostet-hoger.svg",   "Bröstet, höger sida",            "A"],
-                ["a-magen.svg",           "Magen, mellangärdet",            "B"],
-                ["a-hofterna.svg",        "Höfterna",                       "C"],
-                ["a-hoften-vanster.svg",  "Höften, vänster",                "D"],
-                ["a-hoften-hoger.svg",    "Höften, höger",                  "E"],
-                ["a-benet.svg",           "Benet",                          "F"],
+                ["a-hjassan",         "Hjässan",                        "a"],
+                ["a-ansiktet",        "Ansiktet, huvudhöjd",            "b"],
+                ["a-ansiktet-upptill","Ansiktet, övre del",             "c"],
+                ["a-ansiktet-nertill","Ansiktet, nedre del",            "d"],
+                ["a-pannan",          "Pannan",                         "e"],
+                ["a-ogonen",          "Ögonen",                         "f"],
+                ["a-ogat",            "Ögat",                           "g"],
+                ["a-nasan",           "Näsan",                          "h"],
+                ["a-oronen",          "Sidorna av huvudet, öronen",     "i"],
+                ["a-orat-vanster",    "Sidan av huvudet, örat, vänster","j"],
+                ["a-orat-hoger",      "Sidan av huvudet, örat, höger",  "k"],
+                ["a-kinderna",        "Kinderna",                       "l"],
+                ["a-kinden-vanster",  "Kinden, vänster",                "m"],
+                ["a-kinden-hoger",    "Kinden, höger",                  "n"],
+                ["a-munnen",          "Munnen",                         "o"],
+                ["a-hakan",           "Hakan",                          "p"],
+                ["a-nacken",          "Nacken",                         "q"],
+                ["a-halsen",          "Halsen",                         "r"],
+                ["a-axlarna",         "Axlarna",                        "s"],
+                ["a-axeln-vanster",   "Axeln, vänster",                 "t"],
+                ["a-axeln-hoger",     "Axeln, höger",                   "u"],
+                ["a-armen",           "Armen",                          "v"],
+                ["a-overarmen",       "Överarmen",                      "w"],
+                ["a-underarmen",      "Underarmen",                     "x"],
+                ["a-brostet",         "Bröstet",                        "y"],
+                ["a-brostet-vanster", "Bröstet, vänster sida",          "z"],
+                ["a-brostet-hoger",   "Bröstet, höger sida",            "A"],
+                ["a-magen",           "Magen, mellangärdet",            "B"],
+                ["a-hofterna",        "Höfterna",                       "C"],
+                ["a-hoften-vanster",  "Höften, vänster",                "D"],
+                ["a-hoften-hoger",    "Höften, höger",                  "E"],
+                ["a-benet",           "Benet",                          "F"],
             ],
             h: [
                 // Keyboard shortcuts resembles glyphs (no digits). Lower case
@@ -77,126 +77,126 @@ function makeClusterGui(args) {
                 //   Yy - Strikethrough Y (uppercase = vertical strikethrough too).
                 //   Z  - Strikethrough Z (there is no lower case/plain z).
                 "Handform",
-                ["h-flata-handen.svg",     "Flata handen",     "j", "hand/flata-handen.png"     ],
-                ["h-flata-tumhanden.svg",  "Flata tumhanden",  "J", "hand/flata-tumhanden.png"  ],
-                ["h-sprethanden.svg",      "Sprethanden",      "y", "hand/sprethanden.png"      ],
-                ["h-4-handen.svg",         "4-handen",         "D", "hand/4-handen.png"         ],
-                ["h-d-handen.svg",         "D-handen",         "d", "hand/d-handen.png"         ],
-                ["h-f-handen.svg",         "F-handen",         "f", "hand/f-handen.png"         ],
-                ["h-vinkelhanden.svg",     "Vinkelhanden",     "F", "hand/vinkelhanden.png"     ],
-                ["h-tumvinkelhanden.svg",  "Tumvinkelhanden",  "A", "hand/tumvinkelhanden.png"  ],
-                ["h-a-handen.svg",         "A-handen",         "a", "hand/a-handen.png"         ],
-                ["h-s-handen.svg",         "S-handen",         "s", "hand/s-handen.png"         ],
-                ["h-klohanden.svg",        "Klohanden",        "S", "hand/klohanden.png"        ],
-                ["h-o-handen.svg",         "O-handen",         "o", "hand/o-handen.png"         ],
-                ["h-knutna-handen.svg",    "Knutna handen",    "g", "hand/knutna-handen.png"    ],
-                ["h-e-handen.svg",         "E-handen",         "e", "hand/e-handen.png"         ],
-                ["h-tumhanden.svg",        "Tumhanden",        "b", "hand/tumhanden.png"        ],
-                ["h-q-handen.svg",         "Q-handen",         "q", "hand/q-handen.png"         ],
-                ["h-pekfingret.svg",       "Pekfingret",       "l", "hand/pekfingret.png"       ],
-                ["h-l-handen.svg",         "L-handen",         "L", "hand/l-handen.png"         ],
-                ["h-raka-matthanden.svg",  "Raka måtthanden",  "C", "hand/raka-matthanden.png"  ],
-                ["h-nyphanden.svg",        "Nyphanden",        "P", "hand/nyphanden.png"        ],
-                ["h-t-handen.svg",         "T-handen",         "t", "hand/t-handen.png"         ],
-                ["h-krokfingret.svg",      "Krokfingret",      "R", "hand/krokfingret.png"      ],
-                ["h-matthanden.svg",       "Måtthanden",       "c", "hand/matthanden.png"       ],
-                ["h-hallhanden.svg",       "Hållhanden",       "O", "hand/hallhanden.png"       ],
-                ["h-langfingret.svg",      "Långfingret",      "r", "hand/langfingret.png"      ],
-                ["h-n-handen.svg",         "N-handen",         "n", "hand/n-handen.png"         ],
-                ["h-lilla-o-handen.svg",   "Lilla O-handen",   "p", "hand/lilla-o-handen.png"   ],
-                ["h-v-handen.svg",         "V-handen",         "v", "hand/v-handen.png"         ],
-                ["h-tupphanden.svg",       "Tupphanden",       "V", "hand/tupphanden.png"       ],
-                ["h-k-handen.svg",         "K-handen",         "k", "hand/k-handen.png"         ],
-                ["h-dubbelkroken.svg",     "Dubbelkroken",     "u", "hand/dubbelkroken.png"     ],
-                ["h-bojda-tupphanden.svg", "Böjda tupphanden", "U", "hand/bojda-tupphanden.png" ],
-                ["h-m-handen.svg",         "M-handen",         "m", "hand/m-handen.png"         ],
-                ["h-w-handen.svg",         "W-handen",         "w", "hand/w-handen.png"         ],
-                ["h-lillfingret.svg",      "Lillfingret",      "i", "hand/lillfingret.png"      ],
-                ["h-flyghanden.svg",       "Flyghanden",       "I", "hand/flyghanden.png"       ],
-                ["h-stora-langfingret.svg","Stora långfingret","Y", "hand/stora-langfingret.png"],
-                ["h-runda-langfingret.svg","Runda långfingret","Z", "hand/runda-langfingret.png"],
-                ["h-stora-nyphanden.svg",  "Stora nyphanden",  "h", "hand/stora-nyphanden.png"  ],
-                ["h-x-handen.svg",         "X-handen",         "x", "hand/x-handen.png"         ],
+                ["h-flata-handen",     "Flata handen",     "j", "flata-handen"     ],
+                ["h-flata-tumhanden",  "Flata tumhanden",  "J", "flata-tumhanden"  ],
+                ["h-sprethanden",      "Sprethanden",      "y", "sprethanden"      ],
+                ["h-4-handen",         "4-handen",         "D", "4-handen"         ],
+                ["h-d-handen",         "D-handen",         "d", "d-handen"         ],
+                ["h-f-handen",         "F-handen",         "f", "f-handen"         ],
+                ["h-vinkelhanden",     "Vinkelhanden",     "F", "vinkelhanden"     ],
+                ["h-tumvinkelhanden",  "Tumvinkelhanden",  "A", "tumvinkelhanden"  ],
+                ["h-a-handen",         "A-handen",         "a", "a-handen"         ],
+                ["h-s-handen",         "S-handen",         "s", "s-handen"         ],
+                ["h-klohanden",        "Klohanden",        "S", "klohanden"        ],
+                ["h-o-handen",         "O-handen",         "o", "o-handen"         ],
+                ["h-knutna-handen",    "Knutna handen",    "g", "knutna-handen"    ],
+                ["h-e-handen",         "E-handen",         "e", "e-handen"         ],
+                ["h-tumhanden",        "Tumhanden",        "b", "tumhanden"        ],
+                ["h-q-handen",         "Q-handen",         "q", "q-handen"         ],
+                ["h-pekfingret",       "Pekfingret",       "l", "pekfingret"       ],
+                ["h-l-handen",         "L-handen",         "L", "l-handen"         ],
+                ["h-raka-matthanden",  "Raka måtthanden",  "C", "raka-matthanden"  ],
+                ["h-nyphanden",        "Nyphanden",        "P", "nyphanden"        ],
+                ["h-t-handen",         "T-handen",         "t", "t-handen"         ],
+                ["h-krokfingret",      "Krokfingret",      "R", "krokfingret"      ],
+                ["h-matthanden",       "Måtthanden",       "c", "matthanden"       ],
+                ["h-hallhanden",       "Hållhanden",       "O", "hallhanden"       ],
+                ["h-langfingret",      "Långfingret",      "r", "langfingret"      ],
+                ["h-n-handen",         "N-handen",         "n", "n-handen"         ],
+                ["h-lilla-o-handen",   "Lilla O-handen",   "p", "lilla-o-handen"   ],
+                ["h-v-handen",         "V-handen",         "v", "v-handen"         ],
+                ["h-tupphanden",       "Tupphanden",       "V", "tupphanden"       ],
+                ["h-k-handen",         "K-handen",         "k", "k-handen"         ],
+                ["h-dubbelkroken",     "Dubbelkroken",     "u", "dubbelkroken"     ],
+                ["h-bojda-tupphanden", "Böjda tupphanden", "U", "bojda-tupphanden" ],
+                ["h-m-handen",         "M-handen",         "m", "m-handen"         ],
+                ["h-w-handen",         "W-handen",         "w", "w-handen"         ],
+                ["h-lillfingret",      "Lillfingret",      "i", "lillfingret"      ],
+                ["h-flyghanden",       "Flyghanden",       "I", "flyghanden"       ],
+                ["h-stora-langfingret","Stora långfingret","Y", "stora-langfingret"],
+                ["h-runda-langfingret","Runda långfingret","Z", "runda-langfingret"],
+                ["h-stora-nyphanden",  "Stora nyphanden",  "h", "stora-nyphanden"  ],
+                ["h-x-handen",         "X-handen",         "x", "x-handen"         ],
             ],
             ar: [
-                "Attitydsriktning",                       // Cannot be combined with:
+                "Attitydsriktning",
                 '.top',
-                ["ar-vanster.svg", "Vänsterriktad", "v"], //   höger- & vänstervänd
-                ["ar-hoger.svg",   "Högerriktad",   "h"], //   -"-
-                ["ar-fram.svg",    "Framåtriktad",  "f"], //   framåt- & inåtriktad
-                ["ar-in.svg",      "Inåtriktad",    "i"], //   -"-
-                ["ar-upp.svg",     "Uppåtriktad",   "u"], //   uppåt- & nedåtvänd
-                ["ar-ner.svg",     "Nedåtriktad",   "n"], //   -"-
+                ["ar-vanster", "Vänsterriktad", "v"],
+                ["ar-hoger",   "Högerriktad",   "h"],
+                ["ar-fram",    "Framåtriktad",  "f"],
+                ["ar-in",      "Inåtriktad",    "i"],
+                ["ar-upp",     "Uppåtriktad",   "u"],
+                ["ar-ner",     "Nedåtriktad",   "n"],
             ],
             av: [
-                "Attitydsvridning",                       // Cannot be combined with:
-                ["av-vanster.svg", "Vänstervänd", "v"],   //   höger- & vänsterriktad
-                ["av-hoger.svg",   "Högervänd",   "h"],   //   -"-
-                ["av-fram.svg",    "Framåtvänd",  "f"],   //   framåt- & inåtriktad
-                ["av-in.svg",      "Inåtvänd",    "i"],   //   -"-
-                ["av-upp.svg",     "Uppåtvänd",   "u"],   //   uppåt- & nedåtriktad
-                ["av-ner.svg",     "Nedåtvänd",   "n"],   //   -"-
+                "Attitydsvridning",
+                ["av-vanster", "Vänstervänd", "v"],
+                ["av-hoger",   "Högervänd",   "h"],
+                ["av-fram",    "Framåtvänd",  "f"],
+                ["av-in",      "Inåtvänd",    "i"],
+                ["av-upp",     "Uppåtvänd",   "u"],
+                ["av-ner",     "Nedåtvänd",   "n"],
             ],
             ina: [
                 "Interaktionsart",
                 '.top',
-                ["i-kors.svg",    "Kors",    "x"],
-                ["i-vinkel.svg",  "Vinkel",  "w"],
-                ["i-hakning.svg", "Hakning", "X"],
+                ["i-kors",    "Kors",    "x"],
+                ["i-vinkel",  "Vinkel",  "w"],
+                ["i-hakning", "Hakning", "X"],
             ],
             artion_tall: [ // Artikulation
                 "Rörelseriktning",
                 '.top',
-                ["rr-vanster.svg",       "Föres åt vänster",              "v"],
-                ["rr-hoger.svg",         "Föres åt höger",                "h"],
-                ["rr-vanster-hoger.svg", "Föres vänster–höger (sidled)",  "s"],
-                ["rr-fram.svg",          "Föres framåt",                  "f"],
-                ["rr-in.svg",            "Föres inåt",                    "i"],
-                ["rr-fram-in.svg",       "Föres framåt–inåt (djupled)",   "d"],
-                ["rr-upp.svg",           "Föres uppåt",                   "u"],
-                ["rr-ner.svg",           "Föres nedåt",                   "n"],
-                ["rr-upp-ner.svg",       "Föres uppåt–nedåt (höjdled)",   "j"],
-                ["rr-kort-upp.svg",      "Föres kort uppåt",              "U"],
-                ["rr-kort-ner.svg",      "Föres kort nedåt",              "N"],
+                ["rr-vanster",       "Föres åt vänster",              "v"],
+                ["rr-hoger",         "Föres åt höger",                "h"],
+                ["rr-vanster-hoger", "Föres vänster–höger (sidled)",  "s"],
+                ["rr-fram",          "Föres framåt",                  "f"],
+                ["rr-in",            "Föres inåt",                    "i"],
+                ["rr-fram-in",       "Föres framåt–inåt (djupled)",   "d"],
+                ["rr-upp",           "Föres uppåt",                   "u"],
+                ["rr-ner",           "Föres nedåt",                   "n"],
+                ["rr-upp-ner",       "Föres uppåt–nedåt (höjdled)",   "j"],
+                ["rr-kort-upp",      "Föres kort uppåt",              "U"],
+                ["rr-kort-ner",      "Föres kort nedåt",              "N"],
                 "Rörelseart",
-                ["ra-spelar.svg",        "Spelar",                        "~"],
-                ["ra-stror.svg",         "Strör",                         "@"],
-                ["ra-vinkar.svg",        "Vinkar",                        "#"],
-                ["ra-bojs.svg",          "Böjs",                          '"'],
+                ["ra-spelar",        "Spelar",                        "~"],
+                ["ra-stror",         "Strör",                         "@"],
+                ["ra-vinkar",        "Vinkar",                        "#"],
+                ["ra-bojs",          "Böjs",                          '"'],
                 "Interaktionsart",
-                ["i-vaxelvis.svg",       "Växelvis",                      "="],
-                ["i-konvergerar.svg",    "Konvergerar",                   ">"],
-                ["i-divergerar.svg",     "Divergerar",                    "<"],
-                ["i-byte.svg",           "Byte",                          "'"],
-                ["i-kors.svg",           "Kors",                          "x"],
-                ["i-vinkel.svg",         "Vinkel",                        "w"],
-                ["i-hakning.svg",        "Hakning",                       "X"],
-                ["i-entre.svg",          "Entré / mottagning",            "e"],
-                ["i-kontakt.svg",        "Kontakt",                       "."],
+                ["i-vaxelvis",       "Växelvis",                      "="],
+                ["i-konvergerar",    "Konvergerar",                   ">"],
+                ["i-divergerar",     "Divergerar",                    "<"],
+                ["i-byte",           "Byte",                          "'"],
+                ["i-kors",           "Kors",                          "x"],
+                ["i-vinkel",         "Vinkel",                        "w"],
+                ["i-hakning",        "Hakning",                       "X"],
+                ["i-entre",          "Entré / mottagning",            "e"],
+                ["i-kontakt",        "Kontakt",                       "."],
                 "Övrigt",
-                ["x-upprepning.svg", "Upprepad artikulation",             ":"],
-                ["x-separator.svg",  "Markerar sekventiell artikulation", "!"],
+                ["x-upprepning", "Upprepad artikulation",             ":"],
+                ["x-separator",  "Markerar sekventiell artikulation", "!"],
             ],
             artion_high: [ // Artikulation
                 "Rörelseart",
                 '.top',
-                ["ra-bage.svg",   "Båge",   "b"],
-                ["ra-cirkel.svg", "Cirkel", "c"],
-                ["ra-vrids.svg",  "Vrids",  "v"],
-                ["ra-slas.svg",   "Slås",   "s"],
+                ["ra-bage",   "Båge",   "b"],
+                ["ra-cirkel", "Cirkel", "c"],
+                ["ra-vrids",  "Vrids",  "v"],
+                ["ra-slas",   "Slås",   "s"],
             ],
             artion_low: [ // Artikulation
                 "Rörelseriktning",
-                ["rr-vanster2.svg",       "Åt vänster",             "v"],
-                ["rr-hoger2.svg",         "Åt höger",               "h"],
-                ["rr-vanster-hoger2.svg", "Vänster–höger (sidled)", "s"],
-                ["rr-fram2.svg",          "Framåt",                 "f"],
-                ["rr-in2.svg",            "Inåt",                   "i"],
-                ["rr-fram-in2.svg",       "Framåt–inåt (djupled)",  "d"],
-                ["rr-fixme.svg",          "FIXME",                  "m"],
-                ["rr-upp2.svg",           "Uppåt",                  "u"],
-                ["rr-ner2.svg",           "Nedåt",                  "n"],
-                ["rr-upp-ner2.svg",       "Uppåt–nedåt (höjdled)",  "j"],
+                ["rr-vanster2",       "Åt vänster",             "v"],
+                ["rr-hoger2",         "Åt höger",               "h"],
+                ["rr-vanster-hoger2", "Vänster–höger (sidled)", "s"],
+                ["rr-fram2",          "Framåt",                 "f"],
+                ["rr-in2",            "Inåt",                   "i"],
+                ["rr-fram-in2",       "Framåt–inåt (djupled)",  "d"],
+                ["rr-fixme",          "FIXME",                  "m"],
+                ["rr-upp2",           "Uppåt",                  "u"],
+                ["rr-ner2",           "Nedåt",                  "n"],
+                ["rr-upp-ner2",       "Uppåt–nedåt (höjdled)",  "j"],
             ],
         },
         cueRemove   = {},
@@ -248,8 +248,12 @@ function makeClusterGui(args) {
                     var html = '';
                     glyphData[glyphType].forEach(function (image) {
                         if (typeof image === 'string') { return; }
-                        if (image[0]) { html += '<img src="pic/' + image[0] + '">'; }
-                        if (image[3]) { html += '<img src="pic/' + image[3] + '">'; }
+                        if (image[0]) {
+                            html += '<img src="pic/' + image[0] + '.svg">';
+                        }
+                        if (image[3]) {
+                            html += '<img src="pic/hand/' + image[3] + '.png">';
+                        }
                     });
                     return html;
                 }).join('') + '</div>');
@@ -269,8 +273,8 @@ function makeClusterGui(args) {
             glyphList.
                 filter(function (value) { return typeof value !== 'string'; }).
                 forEach(function (value, index) {
-                    var file = value[0], shortkey = value[2],
-                        html = '<img src="pic/' + file + '">';
+                    var svgName = value[0], shortkey = value[2],
+                        html = '<img src="pic/' + svgName + '.svg">';
                     glyphImages[glyphType][shortkey] = html;
                 });
         });
@@ -513,10 +517,10 @@ function makeClusterGui(args) {
                         tableHtml += '<tr><th colspan=4>' + value;
                     }
                 } else {
-                    var glyph    = value[0],
-                        text     = value[1],
-                        shortkey = value[2],
-                        image    = value[3],
+                    var svgName  = value[0],   // glyph image
+                        text     = value[1],   // handshape name
+                        shortkey = value[2],   // shortkey
+                        pngName  = value[3],   // handshape image
                         shortkeyHtml = '<td class="right shortkey">' +
                             (shortkey.match(/^[A-Z]$/) ? 'Shift+' : '') +
                             shortkey.toUpperCase()
@@ -524,8 +528,10 @@ function makeClusterGui(args) {
                     tableHtml += '<tr tabindex=1 data-num=' + index + ' ' +
                         'data-value="' + escapeHtml(shortkey) + '"' +
                         (startGlyphStr === shortkey ? ' class=selected' : '') + '>' +
-                        '<td class=' + cssClass + '><img src="pic/' + glyph + '">' +
-                        (image ? '<td><img src="pic/' + image + '">' : '<td>') +
+                        '<td class=' + cssClass + '>' +
+                        '<img src="pic/' + svgName + '.svg">' +
+                        '<td>' +
+                        (pngName ? '<img src="pic/hand/' + pngName + '.png">' : '') +
                         '<td class=left>' + text + shortkeyHtml;
                     index += 1;
                 }
