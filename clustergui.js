@@ -15,6 +15,8 @@ function makeClusterGui(args) {
             show : show,
             uncue: uncue,
         },
+        bodyElement   = $(document.body),
+        windowElement = $(window),
         overlayActive = false,
         glyphData = {
             r: [
@@ -207,15 +209,15 @@ function makeClusterGui(args) {
             6: 3, 7: 3, 8: 3, 9: 3,
         },
         domClusterElement = {
-            1: $('.cluster-1', args.inElement),
-            2: $('.cluster-2', args.inElement),
-            3: $('.cluster-3', args.inElement),
-            4: $('.cluster-4', args.inElement),
-            5: $('.cluster-5', args.inElement),
-            6: $('.cluster-6', args.inElement).remove(),
-            7: $('.cluster-7', args.inElement).remove(),
-            8: $('.cluster-8', args.inElement).remove(),
-            9: $('.cluster-9', args.inElement).remove(),
+            1: $('.cluster[data-num="1"]', args.inElement),
+            2: $('.cluster[data-num="2"]', args.inElement),
+            3: $('.cluster[data-num="3"]', args.inElement),
+            4: $('.cluster[data-num="4"]', args.inElement),
+            5: $('.cluster[data-num="5"]', args.inElement),
+            6: $('.cluster[data-num="6"]', args.inElement).remove(),
+            7: $('.cluster[data-num="7"]', args.inElement).remove(),
+            8: $('.cluster[data-num="8"]', args.inElement).remove(),
+            9: $('.cluster[data-num="9"]', args.inElement).remove(),
         },
         domFieldElement = {
             1: $('.field-1', args.inElement),
@@ -242,7 +244,7 @@ function makeClusterGui(args) {
         var glyphImages = {};
 
         // Preload cluster images (so that script works even offline).
-        $('body').append(
+        bodyElement.append(
             '<div class="hide">' +
                 Object.keys(glyphData).map(function (glyphType) {
                     var html = '';

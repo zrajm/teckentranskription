@@ -16,12 +16,12 @@
         <tr>
           <td class=fieldvspace></td>
           <td class="field field-1 hide">
-            <table class="cluster cluster-1 hide">
+            <table class="cluster hide" data-num=1>
               <!-- Cluster type: Ia (type number: 1) -->
               <tr><td tabindex=1 class="glyph r high">
               <tr><td tabindex=1 class="glyph a text">
             </table
-            ><table class="cluster cluster-2 hide">
+            ><table class="cluster hide" data-num=2>
               <!-- Cluster type: Ib (type number: 2) -->
               <tr><td tabindex=1 class="glyph r high">
               <tr><td tabindex=1 class="glyph h text" rowspan=2>
@@ -29,18 +29,18 @@
               <tr><td tabindex=1 class="glyph av">
             </table>
           <td class="field field-2 hide">
-            <table class="cluster cluster-3 hide">
+            <table class="cluster hide" data-num=3>
               <!-- Cluster type: IIa (type number: 3) -->
               <tr><td><td tabindex=1 class="glyph r high">
               <tr><td tabindex=1 class="glyph ar">
                 <td tabindex=1 class="glyph h text" rowspan=2>
               <tr><td tabindex=1 class="glyph av">
             </table
-            ><table class="cluster cluster-4 hide">
+            ><table class="cluster hide" data-num=4>
               <!-- Cluster type: IIb (type number: 4) -->
               <tr><td tabindex=1 class="glyph ina full">
             </table
-            ><table class="cluster cluster-5 hide">
+            ><table class="cluster hide" data-num=5>
               <!-- Cluster type: IIc (type number: 5) -->
               <tr><td colspan=2 class="high">
               <tr><td tabindex=1 class="glyph h text" rowspan=2>
@@ -48,23 +48,23 @@
               <tr><td tabindex=1 class="glyph av">
             </table>
           <td class="field field-3 hide">
-            <table class="cluster cluster-6 hide">
+            <table class="cluster hide" data-num=6>
               <!-- Cluster type: IIIa (type number: 6) -->
               <tr><td tabindex=1 class="glyph artion_tall full">
             </table>
-            <table class="cluster cluster-7 hide">
+            <table class="cluster hide" data-num=7>
               <!-- Cluster type: IIIb (type number: 7) -->
               <tr><td rowspan=2 class=full>
                 <td tabindex=1 class="glyph artion_high">
               <tr><td tabindex=1 class="glyph artion_low">
             </table>
-            <table class="cluster cluster-8 hide">
+            <table class="cluster hide" data-num=8>
               <!-- Cluster type: IIIc (type number: 8) -->
               <tr><td rowspan=2 class=top><img src="pic/ra-forandras.svg">
                 <td class=high>
               <tr><td tabindex=1 class="glyph h text">
             </table>
-            <table class="cluster cluster-9 hide">
+            <table class="cluster hide" data-num=9>
               <!-- Cluster type: IIId (type number: 9) -->
               <tr><td rowspan=2 class=full>
                 <td tabindex=1 class="glyph artion_low" style="vertical-align:top; padding-top:8px">
@@ -79,13 +79,13 @@
     <table class="uigroup buttons i" border=1 title="Artikulationsställe = Läget där där artikulationen realiseras.">
       <caption>I. Artikulationsställe</caption>
       <tr><td style="padding:.25em .5em">
-          <button id=ia title="Ia. Kroppsläge">
+          <button class=cluster data-num=1 title="Ia. Kroppsläge">
             <table border=0>
               <tr><td>R
               <tr><td class=big>A
             </table>
           </button>
-          <button id=ib title="Ib. Vänster/passiv hand vid manuellt läge">
+          <button class=cluster data-num=2 title="Ib. Vänster/passiv hand vid manuellt läge">
             <table border=0>
               <tr><td>R
               <tr>
@@ -99,7 +99,7 @@
     <table class="uigroup buttons ii" border=1 title="Artikulator = Den hand som agerar / den aktiva handen.">
       <caption>II. Artikulator</caption>
       <tr><td style="padding:.25em .5em">
-          <button id=iia title="IIa. Vänster/aktiv hand vid dubbelartikulation">
+          <button class=cluster data-num=3 title="IIa. Vänster/aktiv hand vid dubbelartikulation">
             <table border=0>
               <tr>
                 <td>
@@ -111,7 +111,7 @@
                 <td>AV
             </table>
           </button>
-          <button id=iib title="IIb. Interaktionsart">
+          <button class=cluster data-num=4 title="IIb. Interaktionsart">
             <table border=0>
               <tr><td colspan=2> 
               <tr>
@@ -120,7 +120,7 @@
               <tr><td> 
             </table>
           </button>
-          <button id=iic title="IIc. Höger/aktiv hand">
+          <button class=cluster data-num=5 title="IIc. Höger/aktiv hand">
             <table border=0>
               <tr><td colspan=2> 
               <tr>
@@ -135,7 +135,7 @@
       <caption>III. Artikulation</caption>
       <tr><td style="padding:.25em .5em">
           <!-- FIXME: Flytta 'kontakt' + 'medial kontakt'(?) till separator? -->
-          <button class=FIXME id=iiia title="IIIa. Aktiv hands agerande">
+          <button class=cluster data-num=6 class=FIXME title="IIIa. Aktiv hands agerande">
             <table border=0>
               <tr><td colspan=2> 
               <tr>
@@ -144,7 +144,7 @@
               <tr><td> 
             </table>
           </button>
-          <button id=iiib title="IIIb. Aktiv hands agerande (båge/cirkel/vrids/slås)">
+          <button class=cluster data-num=7 title="IIIb. Aktiv hands agerande (båge/cirkel/vrids/slås)">
             <table border=0>
               <tr><td colspan=2> 
               <tr>
@@ -153,7 +153,7 @@
               <tr><td>ION
             </table>
           </button>
-          <button id=iiic title="IIIc. Aktiv hand förändrar handform">
+          <button class=cluster data-num=8 title="IIIc. Aktiv hand förändrar handform">
             <table border=0>
               <tr><td> 
               <tr><td><img style="height:27px" src="pic/ra-forandras.svg">
@@ -161,7 +161,7 @@
               <tr><td> 
             </table>
           </button>
-          <button id=iiid title="IIId. Medial kontakt (används i äldre transkription)">
+          <button class=cluster data-num=9 title="IIId. Medial kontakt (används i äldre transkription)">
             <table border=0>
               <tr><td colspan=2> 
               <tr>

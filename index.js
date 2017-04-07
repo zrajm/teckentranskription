@@ -1,16 +1,6 @@
 /* Copyright 2016-2017 by zrajm. Released under GPLv3 license. */
 
-var addIaButtonElement  = $("#ia")
-    addIbButtonElement  = $("#ib")
-    addIIaButtonElement = $("#iia")
-    addIIbButtonElement = $("#iib")
-    addIIcButtonElement = $("#iic")
-    addIIIaButtonElement = $("#iiia")
-    addIIIbButtonElement = $("#iiib")
-    addIIIcButtonElement = $("#iiic")
-    addIIIdButtonElement = $("#iiid")
-    bodyElement         = $(document.body),
-    windowElement       = $(window),
+var clusterButtonElements = $('button.cluster'),
     loadInputElement    = $("#load-input"),
     saveButtonElement   = $("#save"),
     saveInputElement    = $("#save-input"),
@@ -369,15 +359,16 @@ function buttonDelete() {
 ////////////////////////////////////////////////////////////////////////////////
 
 updateLoadList();
-addIaButtonElement.  click(function() { transcript.add('1') });
-addIbButtonElement.  click(function() { transcript.add('2') });
-addIIaButtonElement. click(function() { transcript.add('3') });
-addIIbButtonElement. click(function() { transcript.add('4') });
-addIIcButtonElement. click(function() { transcript.add('5') });
-addIIIaButtonElement.click(function() { transcript.add('6') });
-addIIIbButtonElement.click(function() { transcript.add('7') });
-addIIIcButtonElement.click(function() { transcript.add('8') });
-addIIIdButtonElement.click(function() { transcript.add('9') });
+clusterButtonElements.each(function (_, element) {
+    element = $(element);
+    var clusterStr = "" + element.data('num');
+    element.
+        click(
+            function() { transcript.add(clusterStr); }).
+        hover(
+            function () { gui.cue(clusterStr); },
+            function () { gui.uncue(); });
+});
 (function () {
     var prev;
     // This is to allow the dropdown to restore previous value if loading was
@@ -405,44 +396,6 @@ $(function () {
     }
     $('.glyph').focus();
 });
-
-/* Cluster button: Show preview of cluster to be added. */
-addIaButtonElement.hover(
-    function () { gui.cue('1'); },
-    function () { gui.uncue(); }
-);
-addIbButtonElement.hover(
-    function () { gui.cue('2'); },
-    function () { gui.uncue(); }
-);
-addIIaButtonElement.hover(
-    function () { gui.cue('3'); },
-    function () { gui.uncue(); }
-);
-addIIbButtonElement.hover(
-    function () { gui.cue('4'); },
-    function () { gui.uncue(); }
-);
-addIIcButtonElement.hover(
-    function () { gui.cue('5'); },
-    function () { gui.uncue(); }
-);
-addIIIaButtonElement.hover(
-    function () { gui.cue('6'); },
-    function () { gui.uncue(); }
-);
-addIIIbButtonElement.hover(
-    function () { gui.cue('7'); },
-    function () { gui.uncue(); }
-);
-addIIIcButtonElement.hover(
-    function () { gui.cue('8'); },
-    function () { gui.uncue(); }
-);
-addIIIdButtonElement.hover(
-    function () { gui.cue('9'); },
-    function () { gui.uncue(); }
-);
 
 console.info("To show dump button write: $('#dump').removeClass('hide')");
 
