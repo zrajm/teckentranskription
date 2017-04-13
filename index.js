@@ -1,12 +1,12 @@
 /* Copyright 2016-2017 by zrajm. Released under GPLv3 license. */
 
 var clusterButtonElements = $('button.cluster'),
-    loadInputElement    = $("#load-input"),
-    saveButtonElement   = $("#save"),
-    saveInputElement    = $("#save-input"),
-    dumpButtonElement   = $("#dump"),
-    clearButtonElement  = $("#clear"),
-    deleteButtonElement = $("#delete"),
+    loadInputElement    = $('select.ui'),
+    saveButtonElement   = $('button.save'),
+    saveInputElement    = $('input.ui'),
+    dumpButtonElement   = $('button.dump'),
+    clearButtonElement  = $('button.clear'),
+    deleteButtonElement = $('button.delete'),
     overlayElement      = $("#overlay"),
     statusElement       = $("#status"),
     transcript          = makeTranscript(onTranscriptChange),
@@ -397,6 +397,6 @@ $(function () {
     $('.glyph').focus();
 });
 
-console.info("To show dump button write: $('#dump').removeClass('hide')");
+console.info("Display debug tools by writing: $('.debug').removeClass('hide')");
 
 //[eof]
