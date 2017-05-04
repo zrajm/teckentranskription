@@ -267,10 +267,6 @@
 
   Reference: [[http://stackoverflow.com/questions/2849756/][List of valid characters for the fragment identifier in an URL?]]
   (on Stackoverflow).
-* TODO Replace field and cluster names in HTML/CSS
-  Roman numeral field names (e.g. 'iii') should be replaced with the new style
-  numeric names (e.g. 'field-3'), and the same goes for clusters names (e.g.
-  'iiia' should become 'cluster-6').
 * TODO Error handling in URL fragments
   Invalid glyph letters should be replaced with the character '*', which
   should display a question mark-type sign in the transcript.
@@ -306,6 +302,15 @@
 * TODO Rename `*Type` -> `*Name`(?)
 * TODO Rename `data-value` -> `data-chr` in glyph selector
   The name of the data attribute is far to vague as it is now.
+* DONE Field names no longer hilites when glyph is focused     :COSMETIC:BUG:
+  CLOSED: [2017-05-04 Thu 16:33]
+* DONE Replace field and cluster names in HTML/CSS
+  CLOSED: [2017-04-03 Mon 15:23]
+  Happened in commit: d447ddd2
+
+  Roman numeral field names (e.g. 'iii') should be replaced with the new style
+  numeric names (e.g. 'field-3'), and the same goes for clusters names (e.g.
+  'iiia' should become 'cluster-6').
 * DONE Add 'debug mode'
   CLOSED: [2017-04-04 Tue 16:51]
   All debug tools should be hidden from the normal user.

@@ -214,16 +214,16 @@ footer {
 .sign .field:last-child { border-right: 0; } /* after last field */
 
 /* Make linebreaking behave somewhat. */
-.sign .field.i, .sign .field.ii {
+.sign .field-1, .sign .field-2 {
     vertical-align: top;
     white-space: nowrap;
 }
 
 /* Show transcription field labels when hovering on '.sign'. */
 .sign .field { position: relative; }
-.sign .field.i:before { content: "I"; }
-.sign .field.ii:before { content: "II"; }
-.sign .field.iii:before { content: "III"; }
+.sign .field-1:before { content: "I"; }
+.sign .field-2:before { content: "II"; }
+.sign .field-3:before { content: "III"; }
 .sign .field:before {
     display: none;
     position: absolute;
