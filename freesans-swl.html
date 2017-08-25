@@ -1,0 +1,2704 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>FreeSans-SWL: Ett typsnitt för transkription av svenskt teckenspråk</title>
+  <style>
+    @font-face {
+        font-family: "FreeSans-SWL";
+        src: url("freesans-swl.ttf");
+    }
+    body { font-family: "FreeSans-SWL", "FreeSans", sans-serif; }
+
+    * { margin: 0; padding: 0; }
+
+    blockquote, body, dl, img, ol, pre, ul { margin: 1em; }
+    header, footer, table { margin: 1em 0; }
+
+    h1, h2, h3, h4, h5, h6, h7 { margin: 1em 0 .5em 0; }
+    p + p { text-indent: 1em; }
+    p + hr { display: none; }
+    hr + p { margin-top: 1em; }
+
+    /* Definition lists */
+    dt:before { display: block; content: ""; }
+    dt, dd {
+        display: inline;
+    }
+    dt {
+        font-weight: bold;
+    }
+    dd:before { content: " – "; }
+
+    .x2 { font-size: 2em }
+
+    table { border-collapse: collapse; }
+    table[border="1"] th,
+    table[border="1"] td {
+        padding: .2em .4em;
+        border: 1px solid #000;
+    }
+
+    /* don't underline links, unless hovering */
+    [href] { text-decoration: none; }
+    [href]:hover { text-decoration: underline; }
+  </style>
+</head>
+
+<body>
+  <section>
+    <h1>FreeSans-SWL: Ett typsnitt för transkription av svenskt teckenspråk</h1>
+
+    <p>FreeSans-SWL är ett Unicode-kompatibelt sans-serif-typsnitt för
+    transkription av svenskt teckenspråk. Typsnittet är baserat
+    på <a href="https://www.gnu.org/software/freefont/">GNU FreeSans</a> (alla
+    symboler som finns i GNU FreeSans finns också i FreeSans-SWL) och detta
+    typsnitt kan alltså användas för såväl brödtext som teckentranskriptioner.
+
+    <hr>
+
+    <p>Tilldelning av Unicode-kodpunkter gjordes
+    av <a href="http://www.acc.umu.se/~saasha/typsnitt/#swl">Saašha
+    Metsärantala</a> (förutom för
+    symbolerna <b>􌦨</b>, <b>􌦩</b>, <b>􌦪</b>, <b>􌦫</b>, <b>􌦬</b> och <b>􌦭</b>
+    som lades till av zrajm). Symbolerna är formgivna av zrajm, men mestadels
+    baserade på hur de ser ut i typsnittet
+    <a href=https://www.gnu.org/software/freefont/>GNU FreeSans</a>. (”SWL”
+    är en <a href="https://en.wikipedia.org/wiki/ISO_639:s">ISO
+    639-3</a>-förkortning för ”svenskt teckenspråk”.)
+
+    <p>FreeSans-SWL är fritt att använda (både privat och kommersiellt),
+    men om du modifierar det måste du göra din modifierade variant tillgänglig
+    och tillåtta fri användning (se <a href="#licens">Licens</a> nedan).
+
+    <hr>
+
+    <section>
+      <h1>Ladda ner</h1>
+
+      <p>För att använda FreeSans-SWL behöver du bara Truetypefilen
+      nedan. Om du vill lägga till och/eller ändra saker i typsnittet (och
+      använder Linux/Fontforge) så kan SFD-filen också vara av intresse. (Om du
+      faktiskt modifierar typsnittet, kontakta
+      gärna <a href="mailto:zrajm@zrajm.org">mig</a>!)
+
+      <table border=1>
+        <tr>
+          <th>Filnamn
+          <th>Format
+          <th>Kommentar
+        <tr>
+          <td><code><a href=freesans-swl.ttf>freesans-swl.ttf</a></code>
+          <td>Truetype
+          <td>För den vanliga användaren.
+        <tr>
+          <td><code><a href=freesans-swl.sfd>freesans-swl.sfd</a></code>
+          <td>Fontforge
+          <td>För den som vill ändra/uppdatera typsnittet.
+      </table>
+    </section>
+
+    <section>
+      <h1>Andras arbete</h1>
+
+      <p>Detta typsnitt bygger på andras idéer och arbete. Huvudsaklig
+      inspiration har
+      varit <a href="http://www.ling.su.se/teckenspr%C3%A5ksresurser/verktyg/teckentranskription">beskrivningen
+      av teckentranskription</a> från Institutionen för lingvistik vid
+      Stockholms universitet (med flera böcker som beskriver teckenskriften
+      utförligare).
+
+      <p><a href="http://www.acc.umu.se/~saasha/typsnitt/">Saašha Metsärantalas
+      webbsida med typsnitt</a> har också varit av stor vikt (tilldelningen av
+      Unicode-kodpunkter kom därifrån). Metsärantala har också
+      en <a href="http://www.acc.umu.se/~saasha/typsnitt/swl_sans.htm">en
+      tangentbordkarta för teckentranskription</a> som kan vara av intresse
+      (symbolerna <b>􌦨</b>, <b>􌦩</b>, <b>􌦪</b>, <b>􌦫</b>, <b>􌦬</b> och <b>􌦭</b>
+      finns dock inte med där, dessvärre).
+    </section>
+
+    <section>
+      <h1>Stylesheet för webben</h1>
+
+      <p>Om du vill använda FreeSans-SWL på en webbsida, så är det
+      enklaste sättet att ladda ner ovanstående typsnitt och lägga det
+      tillsammans med dina HTML-filer på servern, och sedan lägga till följande
+      i din CSS. (Googla på ”web fonts” om du stöter på patrull.)
+
+<pre>    @font-face {
+        font-family: "FreeSans-SWL";
+        src: url("freesans-swl.ttf");
+    }
+    body { font-family: "FreeSans-SWL", "FreeSans", sans-serif; }</pre>
+
+      <p>Ovanstående CSS använder FreeSans-SWL för <i>hela</i> webbsidan
+      (vilket funkar alldeles utmärkt, eftersom typsnittet innehåller de
+      vanliga bokstäverna + symbolerna för teckenskrift) men mer avancerade
+      CSS-lösningar är förstås också möjliga, dessa lämnas dock som en övning
+      till läsaren.
+    </section>
+</section>
+
+<section>
+  <h1>Symbolplacering</h1>
+
+  <p>Följande är avsett att visa placeringen av diakritiska symboler i
+  förhållande till deras bassymboler.
+
+  <section>
+    <h1>Handformer</h1>
+
+    <p class=x2><!-- a -->􌤤􌤹 􌥄􌤹 􌤣􌤹 <!-- b -->􌤧􌤹 <!-- c -->􌥋􌤹 􌥉􌤹 <!-- d -->􌦫􌤹 􌤩􌤹
+    􌤎􌤹 <!-- e -->􌥇􌤹 <!-- f -->􌦬􌤹 <!-- g -->􌤦􌤹 <!-- h -->􌤲􌤹 <!-- i -->􌤱􌤹
+    􌥑􌤹 <!-- j -->􌤢􌤹 􌥂􌤹 􌤪􌤹 <!-- k -->􌥎􌤹 <!-- l -->􌥈􌤹 􌤨􌤹 <!-- m -->􌤿􌤹 <!-- n
+    -->􌥌􌤹 <!-- o -->􌥆􌤹 􌤫􌤹 <!-- q -->􌦭􌤹 <!-- r -->􌤬􌤹 <!-- s -->􌥅􌤹 􌤥􌤹 <!-- t
+    -->􌥊􌤹 <!-- u -->􌤽􌤹 􌤯􌤹 <!-- v -->􌤭􌤹 􌤮􌤹 <!-- w -->􌤰􌤹 <!-- x -->􌤳􌤹 <!-- y
+    -->􌥃􌤹 􌥒􌤹 <!-- z -->􌥟􌤹 <!-- 4 -->􌦪􌤹
+  </section>
+
+  <section>
+    <h1>Kroppslägen</h1>
+
+    <p class=x2>
+    <!--ansiktet-->􌤆􌤹
+    <!--övre ansiktet-->􌤂􌤹
+    <!--undre ansiktet-->􌥞􌤹
+    <!--hjässan-->􌤀􌤹
+    <!--pannan-->􌤃􌤹
+    <!--ögonen-->􌤄􌤹
+    <!--ögat-->􌤅􌤹
+    <!--öronen-->􌤾􌤹
+    <!--svaga örat-->􌤈􌤹
+    <!--starka örat-->􌤇􌤹
+    <!--kinderna-->􌤉􌤹
+    <!--svaga kinden-->􌤋􌤹
+    <!--starka kinden-->􌤊􌤹
+    <!--nasan-->􌤼􌤹
+    <!--munnen-->􌤌􌤹
+    <!--hakan-->􌤛􌤹
+    <!--nacken-->􌤜􌤹
+    <!--halsen-->􌤞􌤹
+    <!--axlarna-->􌤠􌤹
+    <!--svaga axeln-->􌥀􌤹
+    <!--starka axeln-->􌤡􌤹
+    <!--armen-->􌥜􌤹
+    <!--överarmen-->􌤑􌤹
+    <!--underarmen-->􌤒􌤹
+    <!--bröstet-->􌤓􌤹
+    <!--svaga bröstet-->􌤕􌤹
+    <!--starka bröstet-->􌤔􌤹
+    <!--magen-->􌤖􌤹
+    <!--höfterna-->􌤗􌤹
+    <!--svaga höften-->􌤙􌤹
+    <!--starka höften-->􌤘􌤹
+    <!--benet-->􌤚􌤹
+  </section>
+
+  <section>
+    <h1>Attitydsymboler</h1>
+
+    <table border=1>
+      <tr align=center>
+        <td class=x2 bgcolor=#888>􌥓􌤶
+        <td class=x2 bgcolor=#888>􌥓􌥗
+        <td class=x2>􌥓􌤷
+        <td class=x2>􌥓􌥘
+        <td class=x2>􌥓􌤸
+        <td class=x2>􌥓􌥙
+      <tr align=center>
+        <td class=x2 bgcolor=#888>􌥔􌤶
+        <td class=x2 bgcolor=#888>􌥔􌥗
+        <td class=x2>􌥔􌤷
+        <td class=x2>􌥔􌥘
+        <td class=x2>􌥔􌤸
+        <td class=x2>􌥔􌥙
+      <tr align=center>
+        <td class=x2>􌤴􌤶
+        <td class=x2>􌤴􌥗
+        <td class=x2 bgcolor=#888>􌤴􌤷
+        <td class=x2 bgcolor=#888>􌤴􌥘
+        <td class=x2>􌤴􌤸
+        <td class=x2>􌤴􌥙
+      <tr align=center>
+        <td class=x2>􌥕􌤶
+        <td class=x2>􌥕􌥗
+        <td class=x2 bgcolor=#888>􌥕􌤷
+        <td class=x2 bgcolor=#888>􌥕􌥘
+        <td class=x2>􌥕􌤸
+        <td class=x2>􌥕􌥙
+      <tr align=center>
+        <td class=x2>􌤵􌤶
+        <td class=x2>􌤵􌥗
+        <td class=x2>􌤵􌤷
+        <td class=x2>􌤵􌥘
+        <td class=x2 bgcolor=#888>􌤵􌤸
+        <td class=x2 bgcolor=#888>􌤵􌥙
+      <tr align=center>
+        <td class=x2>􌥖􌤶
+        <td class=x2>􌥖􌥗
+        <td class=x2>􌥖􌤷
+        <td class=x2>􌥖􌥘
+        <td class=x2 bgcolor=#888>􌥖􌤸
+        <td class=x2 bgcolor=#888>􌥖􌥙
+    </table>
+
+    <p><span style="background:#888">Grå bakgrund</span> indikerar anatomiskt
+    omöjliga kombinationer.
+
+  </section>
+
+  <section>
+    <h1>Båge/cirkel/slås/vrids</h1>
+
+    <table border=1>
+      <tr align=center>
+        <th>båge
+        <td class=x2><!--båge uppåt-->M􌥯􌥿M
+        <td class=x2><!--båge nedåt-->M􌥯􌦀M
+        <td class=x2><!--båge höjdled-->M􌥯􌦌M
+        <td class=x2><!--båge svag-->M􌥯􌦈M
+        <td class=x2><!--båge stark-->M􌥯􌥽M
+        <td class=x2><!--båge sidled-->M􌥯􌦉M
+        <td class=x2><!--båge framåt-->M􌥯􌥾M
+        <td class=x2><!--båge bakåt-->M􌥯􌦊M
+        <td class=x2><!--båge djupled-->M􌥯􌦋M
+        <td class=x2><!--båge mot varann-->M􌥯􌦂M
+      <tr align=center>
+        <th>cirkel
+        <td class=x2><!--cirkel uppåt-->M􌥰􌥿M
+        <td class=x2 bgcolor=#888><!--cirkel nedåt-->M􌥰􌦀M
+        <td class=x2><!--cirkel höjdled-->M􌥰􌦌M
+        <td class=x2><!--cirkel svag-->M􌥰􌦈M
+        <td class=x2 bgcolor=#888><!--cirkel stark-->M􌥰􌥽M
+        <td class=x2><!--cirkel sidled-->M􌥰􌦉M
+        <td class=x2><!--cirkel framåt-->M􌥰􌥾M
+        <td class=x2><!--cirkel bakåt-->M􌥰􌦊M
+        <td class=x2><!--cirkel djupled-->M􌥰􌦋M
+        <td class=x2><!--cirkel mot varann-->M􌥰􌦂M
+      <tr align=center>
+        <th>slås
+        <td class=x2><!--slås uppåt-->M􌥱􌥿M
+        <td class=x2><!--slås nedåt-->M􌥱􌦀M
+        <td class=x2><!--slås höjdled-->M􌥱􌦌M
+        <td class=x2><!--slås svag-->M􌥱􌦈M
+        <td class=x2><!--slås stark-->M􌥱􌥽M
+        <td class=x2><!--slås sidled-->M􌥱􌦉M
+        <td class=x2><!--slås framåt-->M􌥱􌥾M
+        <td class=x2><!--slås bakåt-->M􌥱􌦊M
+        <td class=x2><!--slås djupled-->M􌥱􌦋M
+        <td class=x2><!--slås mot varann-->M􌥱􌦂M
+      <tr align=center>
+        <th>vrids
+        <td class=x2><!--vrids uppåt-->M􌥲􌥿M
+        <td class=x2><!--vrids nedåt-->M􌥲􌦀M
+        <td class=x2><!--vrids höjdled-->M􌥲􌦌M
+        <td class=x2><!--vrids svag-->M􌥲􌦈M
+        <td class=x2><!--vrids stark-->M􌥲􌥽M
+        <td class=x2><!--vrids sidled-->M􌥲􌦉M
+        <td class=x2><!--vrids framåt-->M􌥲􌥾M
+        <td class=x2><!--vrids bakåt-->M􌥲􌦊M
+        <td class=x2><!--vrids djupled-->M􌥲􌦋M
+        <td class=x2><!--vrids mot varann-->M􌥲􌦂M
+    </table>
+
+    <p><span style="background:#888">Grå bakgrund</span> indikerar otillåtna
+    kombinationer.
+
+  </section>
+</section>
+
+<section>
+  <h1>Artikulationssymboler</h1>
+
+  <p>Symbolerna nedan är listade i den ordning som ges i <i>Svenskt
+  teckenspråkslexikon</i>, sånär på symbolen <i>böjs</i> som har tillkommit
+  senare och som här har infogats före <i>vinkar</i>.
+
+  <p>För att tydligaregöra den vertikala placeringen visas alla symboler jämte
+  en bokstav.
+
+  <table border=1>
+    <tr>
+      <th>namn
+      <th>utseende
+      <th>kommentar
+    <tr>
+      <th>kontakt
+      <td class=x2>M􌤟M
+    <tr>
+      <th>hålls stilla
+      <td class=x2>M􌦑M
+    <tr>
+      <th>förs åt svaga hållet, starka hållet, i sidled
+      <td class=x2>M􌥢M􌥣M􌥤M
+      <td class=x2>M􌥢􌥡M􌥣􌥡M􌥤􌥡M
+    <tr>
+      <th>förs framåt, bakåt, i djupled
+      <td class=x2>M􌦃M􌦄M􌥥M
+      <td class=x2>M􌦃􌥡M􌦄􌥡M􌥥􌥡M
+    <tr>
+      <th>förs uppåt, nedåt, i höjdled
+      <td class=x2>M􌥦M􌥧M􌥨M
+      <td class=x2>M􌥦􌥡M􌥧􌥡M􌥨􌥡M
+    <tr>
+      <th>förs kort åt svaga hållet, starka hållet
+      <td class=x2>M􌥩M􌥪M
+      <td class=x2>M􌥩􌥡M􌥪􌥡M
+    <tr>
+      <th>förs kort framåt, bakåt
+      <td class=x2>M􌥵M􌥶M
+      <td class=x2>M􌥵􌥡M􌥶􌥡M
+    <tr>
+      <th>förs kort uppåt, nedåt
+      <td class=x2>M􌥷M􌥸M
+      <td class=x2>M􌥷􌥡M􌥸􌥡M
+    <tr>
+      <th>divergerar
+      <td class=x2>M􌥹M
+      <td class=x2>M􌥹􌥡M
+    <tr>
+      <th>konvergerar
+      <td class=x2>M􌦅M
+      <td class=x2>M􌦅􌥡M
+    <tr>
+      <th>kors
+      <td class=x2>M􌦎M
+    <tr>
+      <th>hakning
+      <td class=x2>M􌥫M
+    <tr>
+      <th>byte
+      <td class=x2>M􌥬M
+    <tr>
+      <th>entré
+      <td class=x2>M􌥭M
+    <tr>
+      <th>vinkel
+      <td class=x2>M􌥮M
+    <tr>
+      <th>båge
+      <td class=x2>M􌥯M
+      <td rowspan=4>handextern rörelseart
+    <tr>
+      <th>cirkel
+      <td class=x2>M􌥰M
+    <tr>
+      <th>slås
+      <td class=x2>M􌥱M
+    <tr>
+      <th>vrids
+      <td class=x2>M􌥲M
+    <tr>
+      <th>spelar
+      <td class=x2>M􌥳M
+      <td rowspan=5>handintern rörelseart
+    <tr>
+      <th>strör
+      <td class=x2>M􌥴M
+    <tr>
+      <th>böjs (ny)
+      <td class=x2>M􌦨M
+    <tr>
+      <th>vinkar
+      <td class=x2>M􌥺M
+    <tr>
+      <th>förändras
+      <td class=x2>M􌦆M
+    <tr>
+      <th>växelvis
+      <td class=x2>M􌦇M
+  </table>
+</section>
+
+<section>
+  <h1>Övriga symboler</h1>
+
+  <table border=1>
+    <tr>
+      <th>namn
+      <th>utseende
+      <th>kommentar
+    <tr>
+      <th>separator mellan tecken
+      <td class=x2>M􌥠M
+    <tr>
+      <th>separator mellan artikulationsgrupper
+      <td class=x2>M􌥼M
+    <tr>
+      <th>separator mellan händer
+      <td class=x2>M􌦩M
+    <tr>
+      <th>upprepad artikulation
+      <td class=x2>M􌥻M
+  </table>
+</section>
+
+<section>
+  <h1>Symboltabell</h1>
+
+  <p>Detta typsnitt lägger till de symboler som saknas för att kunna
+  transkribera svenskt teckenspråk till Unicode. Det är en vidareutbyggnad på
+  <a href="https://www.gnu.org/software/freefont/">GNU FreeSans</a>. Det
+  använder sig av kodpunkter <code>U+10C900</code>
+  tillochmed <code>U+10C9FF</code> i ett av
+  Unicodes <a href="https://en.wikipedia.org/wiki/Private_Use_Areas">områden
+  för privat användning</a>.
+
+  <p>Rubrikerna <b>1</b> och <b>2</b> i tabellen nedan indikerar vilket
+  ASCII-tecken
+  i <a href="http://www.ling.su.se/teckenspr%C3%A5ksresurser/verktyg/teckentranskription">Stockholms
+  universitets teckentranskriptionstypsnitt</a> (<code>Truetrans1.ttf</code>
+  och <code>Truetrans2.ttf</code>) som motsvarar denna symbol.
+
+  <p><b>Genväg</b> är tangentsbordsgenvägarna i Saašha
+  Metsärantalas <a href="http://www.acc.umu.se/~saasha/typsnitt/swl_sans.htm">tangentbordskarta</a>
+  (denna inkluderar i skrivande stund inte symbolerna för <i>böjs, separator
+  (mellan händer), 4-, D-, Q- och F-handen</i>).
+
+  <hr>
+
+  <p>I tabellen nedan använder jag <i>starka</i> respektive <i>svaga hållet</i>
+  istället för de gängse (men missvisande) termerna <i>höger</i>
+  och <i>vänster</i>. – Detta spåkbruk är dels inspirerat av Lars Wallins
+  användning av ”ipsilateral” och ”kontralateral” (i <i>Polysyntetiska tecken i
+  svenska teckenspråket</i>) och dels av David J. Petersons användning
+  av <i>strong</i> och <i>weak</i>
+  i <a href="http://dedalvs.conlang.org/slipa.html">SLIPA: An IPA for Signed
+  Languages</a>.
+
+  <dl>
+    <dt>Stark</dt>
+    <dd>Betyder ”hörandes den dominanta sidan till”, således är ”starka kinden”
+    den högra kinden för en högerhänt person, men vänster kind för den som är
+    vänsterhänt (detta motsvarar Wallins ”ipsilateral”).
+
+    <dt>Svag</dt>
+    <dd>Betyder ”hörandes den icke-dominanta sidan till” (detta motsvarar
+    Wallins ”kontralateral”).
+  </dl>
+
+  <style>
+    table.kodpunkter { text-align: center; }
+    table.kodpunkter td:nth-child(2),
+    table.kodpunkter td:last-child:not([colspan]) {
+      font-family: monospace;
+      text-align: left;
+    }
+    .kodpunkter .unused { background: #faa; }
+    .kodpunkter .future { background: #ff8; }
+    .kodpunkter .used   { background: #afa; }
+    .kodpunkter .boring { background: #888; }
+  </style>
+
+  <table border=1 class=kodpunkter>
+    <tr>
+      <th>Genväg
+      <th>Kodpunkt
+      <th>Symbol
+      <th>1
+      <th>2
+      <th>Beskrivning
+      <th>Namn
+    <tr class=used>
+      <td>⌥q
+      <td>U+10c900
+      <td lang=swl class=x2>􌤀
+      <td>!
+      <td>
+      <td align=left>hjässan
+      <td>swl_<wbr>position_<wbr>crown
+    <tr class=unused>
+      <td>
+      <td>U+10c901
+      <td lang=swl class=x2>􌤁
+      <td>
+      <td>
+      <td align=left colspan=2><i>används inte</i>
+    <tr class=used>
+      <td>⌥å
+      <td>U+10c902
+      <td lang=swl class=x2>􌤂
+      <td>#
+      <td>
+      <td align=left>övre delen av ansiktet
+      <td>swl_<wbr>position_<wbr>face_<wbr>upper
+    <tr class=used>
+      <td>⌥w
+      <td>U+10c903
+      <td lang=swl class=x2>􌤃
+      <td>$
+      <td>
+      <td align=left>pannan
+      <td>swl_<wbr>position_<wbr>forehead
+    <tr class=used>
+      <td>⌥ä
+      <td>U+10c904
+      <td lang=swl class=x2>􌤄
+      <td>%
+      <td>
+      <td align=left>ögonen
+      <td>swl_<wbr>position_<wbr>eyes
+    <tr class=used>
+      <td>⌥ö
+      <td>U+10c905
+      <td lang=swl class=x2>􌤅
+      <td>&amp;
+      <td>
+      <td align=left>ögat
+      <td>swl_<wbr>position_<wbr>eye
+    <tr class=used>
+      <td>⌥o
+      <td>U+10c906
+      <td lang=swl class=x2>􌤆
+      <td>)
+      <td>
+      <td align=left>ansiktet / huvudhöjd
+      <td>swl_<wbr>position_<wbr>face
+    <tr class=used>
+      <td>⌥m
+      <td>U+10c907
+      <td lang=swl class=x2>􌤇
+      <td>*
+      <td>
+      <td align=left>starka örat / sidan av huvudet
+      <td>swl_<wbr>position_<wbr>ear_<wbr>strong
+    <tr class=used>
+      <td>⌥b
+      <td>U+10c908
+      <td lang=swl class=x2>􌤈
+      <td>+
+      <td>
+      <td align=left>svaga örat / sidan av huvudet
+      <td>swl_<wbr>position_<wbr>ear_<wbr>weak
+    <tr class=used>
+      <td>⇧!
+      <td>U+10c909
+      <td lang=swl class=x2>􌤉
+      <td>,
+      <td>
+      <td align=left>kinderna
+      <td>swl_<wbr>position_<wbr>cheeks
+    <tr class=used>
+      <td>⇧)
+      <td>U+10c90a
+      <td lang=swl class=x2>􌤊
+      <td>-
+      <td>
+      <td align=left>starka kinden
+      <td>swl_<wbr>position_<wbr>cheek_<wbr>strong
+    <tr class=used>
+      <td>⇧(
+      <td>U+10c90b
+      <td lang=swl class=x2>􌤋
+      <td>.
+      <td>
+      <td align=left>svaga kinden
+      <td>swl_<wbr>position_<wbr>cheek_<wbr>weak
+    <tr class=used>
+      <td>⌥e
+      <td>U+10c90c
+      <td lang=swl class=x2>􌤌
+      <td>/
+      <td>
+      <td align=left>munnen
+      <td>swl_<wbr>position_<wbr>mouth
+    <tr class=unused>
+      <td>
+      <td>U+10c90d
+      <td lang=swl class=x2>􌤍
+      <td>
+      <td>
+      <td align=left colspan=2><i>används inte</i>
+    <tr class=used>
+      <td>o
+      <td>U+10c90e
+      <td lang=swl class=x2>􌤎
+      <td>l
+      <td>s
+      <td align=left>lilla O-handen
+      <td>swl_<wbr>hand_<wbr>small_<wbr>o
+    <tr class=unused>
+      <td>
+      <td>U+10c90f
+      <td lang=swl class=x2>􌤏
+      <td>
+      <td>
+      <td align=left colspan=2><i>används inte</i>
+    <tr class=unused>
+      <td>
+      <td>U+10c910
+      <td lang=swl class=x2>􌤐
+      <td>
+      <td>
+      <td align=left colspan=2><i>används inte</i>
+    <tr class=used>
+      <td>⌥t
+      <td>U+10c911
+      <td lang=swl class=x2>􌤑
+      <td>0
+      <td>
+      <td align=left>överarmen
+      <td>swl_<wbr>position_<wbr>arm_<wbr>upper
+    <tr class=used>
+      <td>⌥y
+      <td>U+10c912
+      <td lang=swl class=x2>􌤒
+      <td>1
+      <td>
+      <td align=left>underarmen
+      <td>swl_<wbr>position_<wbr>arm_<wbr>lower
+    <tr class=used>
+      <td>⌥j
+      <td>U+10c913
+      <td lang=swl class=x2>􌤓
+      <td>2
+      <td>
+      <td align=left>bröstet
+      <td>swl_<wbr>position_<wbr>chest
+    <tr class=used>
+      <td>⌥k
+      <td>U+10c914
+      <td lang=swl class=x2>􌤔
+      <td>3
+      <td>
+      <td align=left>starka sidan av bröstet
+      <td>swl_<wbr>position_<wbr>chest_<wbr>strongward
+    <tr class=used>
+      <td>⌥h
+      <td>U+10c915
+      <td lang=swl class=x2>􌤕
+      <td>4
+      <td>
+      <td align=left>svaga sidan av bröstet
+      <td>swl_<wbr>position_<wbr>chest_<wbr>weakward
+    <tr class=used>
+      <td>⌥d
+      <td>U+10c916
+      <td lang=swl class=x2>􌤖
+      <td>5
+      <td>
+      <td align=left>magen / mellangärdet
+      <td>swl_<wbr>position_<wbr>stomach
+    <tr class=used>
+      <td>⌥f
+      <td>U+10c917
+      <td lang=swl class=x2>􌤗
+      <td>6
+      <td>
+      <td align=left>höfterna
+      <td>swl_<wbr>position_<wbr>hips
+    <tr class=used>
+      <td>⌥g
+      <td>U+10c918
+      <td lang=swl class=x2>􌤘
+      <td>7
+      <td>
+      <td align=left>starka höften
+      <td>swl_<wbr>position_<wbr>hip_<wbr>strongward
+    <tr class=used>
+      <td>⌥l
+      <td>U+10c919
+      <td lang=swl class=x2>􌤙
+      <td>8
+      <td>
+      <td align=left>svaga höften
+      <td>swl_<wbr>position_<wbr>hip_<wbr>weakward
+    <tr class=used>
+      <td>⌥s
+      <td>U+10c91a
+      <td lang=swl class=x2>􌤚
+      <td>9
+      <td>
+      <td align=left>benet
+      <td>swl_<wbr>position_<wbr>leg
+    <tr class=used>
+      <td>⌥r
+      <td>U+10c91b
+      <td lang=swl class=x2>􌤛
+      <td>:
+      <td>
+      <td align=left>hakan
+      <td>swl_<wbr>position_<wbr>chin
+    <tr class=used>
+      <td>⌥p
+      <td>U+10c91c
+      <td lang=swl class=x2>􌤜
+      <td>;
+      <td>
+      <td align=left>nacken
+      <td>swl_<wbr>position_<wbr>neck_<wbr>back
+    <tr class=unused>
+      <td>
+      <td>U+10c91d
+      <td lang=swl class=x2>􌤝
+      <td>
+      <td>
+      <td align=left colspan=2><i>används inte</i>
+    <tr class=used>
+      <td>⌥i
+      <td>U+10c91e
+      <td lang=swl class=x2>􌤞
+      <td>&lt;
+      <td>
+      <td align=left>halsen
+      <td>swl_<wbr>position_<wbr>neck_<wbr>front
+    <tr class=used>
+      <td>p
+      <td>U+10c91f
+      <td lang=swl class=x2>􌤟
+      <td>=
+      <td>)
+      <td align=left>kontakt
+      <td>swl_<wbr>articulation_<wbr>contact
+    <tr class=used>
+      <td>⌥x
+      <td>U+10c920
+      <td lang=swl class=x2>􌤠
+      <td>&gt;
+      <td>
+      <td align=left>axlarna
+      <td>swl_<wbr>position_<wbr>shoulders
+    <tr class=used>
+      <td>⌥c
+      <td>U+10c921
+      <td lang=swl class=x2>􌤡
+      <td>?
+      <td>
+      <td align=left>starka axeln
+      <td>swl_<wbr>position_<wbr>shoulder_<wbr>strongward
+    <tr class=used>
+      <td>⇧J
+      <td>U+10c922
+      <td lang=swl class=x2>􌤢
+      <td>A
+      <td>h
+      <td align=left>flata handen
+      <td>swl_<wbr>hand_<wbr>flat
+    <tr class=used>
+      <td>v
+      <td>U+10c923
+      <td lang=swl class=x2>􌤣
+      <td>B
+      <td>J
+      <td align=left>vinkelhanden
+      <td>swl_<wbr>hand_<wbr>angled
+    <tr class=used>
+      <td>⇧A
+      <td>U+10c924
+      <td lang=swl class=x2>􌤤
+      <td>C
+      <td>K
+      <td align=left>A-handen
+      <td>swl_<wbr>hand_<wbr>a
+    <tr class=used>
+      <td>z
+      <td>U+10c925
+      <td lang=swl class=x2>􌤥
+      <td>D
+      <td>l
+      <td align=left>klohanden
+      <td>swl_<wbr>hand_<wbr>claw
+    <tr class=used>
+      <td>⇧G
+      <td>U+10c926
+      <td lang=swl class=x2>􌤦
+      <td>E
+      <td>m
+      <td align=left>knutna handen
+      <td>swl_<wbr>hand_<wbr>fist
+    <tr class=used>
+      <td>⇧B
+      <td>U+10c927
+      <td lang=swl class=x2>􌤧
+      <td>F
+      <td>N
+      <td align=left>tumhanden
+      <td>swl_<wbr>hand_<wbr>thumb
+    <tr class=used>
+      <td>l
+      <td>U+10c928
+      <td lang=swl class=x2>􌤨
+      <td>G
+      <td>o
+      <td align=left>L-handen
+      <td>swl_<wbr>hand_<wbr>l
+    <tr class=used>
+      <td>⇧D
+      <td>U+10c929
+      <td lang=swl class=x2>􌤩
+      <td>H
+      <td>p
+      <td align=left>nyphanden
+      <td>swl_<wbr>hand_<wbr>pinching
+    <tr class=used>
+      <td>⇧Q
+      <td>U+10c92a
+      <td lang=swl class=x2>􌤪
+      <td>I
+      <td>q
+      <td align=left>krokfingret
+      <td>swl_<wbr>hand_<wbr>hook_<wbr>finger
+    <tr class=used>
+      <td>⇧Ö
+      <td>U+10c92b
+      <td lang=swl class=x2>􌤫
+      <td>J
+      <td>R
+      <td align=left>hållhanden
+      <td>swl_<wbr>hand_<wbr>holding
+    <tr class=used>
+      <td>⇧R
+      <td>U+10c92c
+      <td lang=swl class=x2>􌤬
+      <td>K
+      <td>r
+      <td align=left>långfingret
+      <td>swl_<wbr>hand_<wbr>middle_<wbr>finger
+    <tr class=used>
+      <td>⇧V
+      <td>U+10c92d
+      <td lang=swl class=x2>􌤭
+      <td>L
+      <td>t
+      <td align=left>V-handen
+      <td>swl_<wbr>hand_<wbr>v
+    <tr class=used>
+      <td>ä
+      <td>U+10c92e
+      <td lang=swl class=x2>􌤮
+      <td>M
+      <td>T
+      <td align=left>tupphanden
+      <td>swl_<wbr>hand_<wbr>rooster
+    <tr class=used>
+      <td>⇧Å
+      <td>U+10c92f
+      <td lang=swl class=x2>􌤯
+      <td>N
+      <td>V
+      <td align=left>böjda tupphanden
+      <td>swl_<wbr>hand_<wbr>rooster_<wbr>bent
+    <tr class=used>
+      <td>⇧W
+      <td>U+10c930
+      <td lang=swl class=x2>􌤰
+      <td>O
+      <td>w
+      <td align=left>W-handen
+      <td>swl_<wbr>hand_<wbr>w
+    <tr class=used>
+      <td>⇧I
+      <td>U+10c931
+      <td lang=swl class=x2>􌤱
+      <td>P
+      <td>W
+      <td align=left>lillfingret
+      <td>swl_<wbr>hand_<wbr>little_<wbr>finger
+    <tr class=used>
+      <td>⇧H
+      <td>U+10c932
+      <td lang=swl class=x2>􌤲
+      <td>Q
+      <td>y
+      <td align=left>stora nyphanden
+      <td>swl_<wbr>hand_<wbr>pinching_<wbr>large
+    <tr class=used>
+      <td>⇧X
+      <td>U+10c933
+      <td lang=swl class=x2>􌤳
+      <td>R
+      <td>Z
+      <td align=left>X-handen
+      <td>swl_<wbr>hand_<wbr>x
+    <tr class=used>
+      <td>3
+      <td>U+10c934
+      <td lang=swl class=x2>􌤴
+      <td>S
+      <td>
+      <td align=left>attityd framåtriktad
+      <td>swl_<wbr>attitude_<wbr>directed_<wbr>forward
+    <tr class=used>
+      <td>5
+      <td>U+10c935
+      <td lang=swl class=x2>􌤵
+      <td>T
+      <td>
+      <td align=left>attityd uppåtriktad
+      <td>swl_<wbr>attitude_<wbr>directed_<wbr>upward
+    <tr class=used>
+      <td>⇧!
+      <td>U+10c936
+      <td lang=swl class=x2>􌤶
+      <td>U
+      <td>
+      <td align=left>attityd svagvänd
+      <td>swl_<wbr>attitude_<wbr>turned_<wbr>weakward
+    <tr class=used>
+      <td>⇧#
+      <td>U+10c937
+      <td lang=swl class=x2>􌤷
+      <td>V
+      <td>
+      <td align=left>attityd framåtvänd
+      <td>swl_<wbr>attitude_<wbr>turned_<wbr>forward
+    <tr class=used>
+      <td>⇧%
+      <td>U+10c938
+      <td lang=swl class=x2>􌤸
+      <td>W
+      <td>
+      <td align=left>attityd uppåtvänd
+      <td>swl_<wbr>attitude_<wbr>turned_<wbr>upward
+    <tr class=used>
+      <td>t
+      <td>U+10c939
+      <td lang=swl class=x2>◌􌤹
+      <td>X
+      <td>
+      <td align=left>ovanför
+      <td>swl_<wbr>diacritic_<wbr>above
+    <tr class=used>
+      <td>n
+      <td>U+10c93a
+      <td lang=swl class=x2>◌􌤺
+      <td>Y
+      <td>
+      <td align=left>brevid
+      <td>swl_<wbr>diacritic_<wbr>beside
+    <tr class=used>
+      <td>b
+      <td>U+10c93b
+      <td lang=swl class=x2>◌􌤻
+      <td>Z
+      <td>
+      <td align=left>bakom
+      <td>swl_<wbr>diacritic_<wbr>behind
+    <tr class=used>
+      <td>⌥a
+      <td>U+10c93c
+      <td lang=swl class=x2>􌤼
+      <td>[
+      <td>
+      <td align=left>näsan
+      <td>swl_<wbr>position_<wbr>nose
+    <tr class=used>
+      <td>å
+      <td>U+10c93d
+      <td lang=swl class=x2>􌤽
+      <td>n
+      <td>U
+      <td align=left>dubbelkroken
+      <td>swl_<wbr>hand_<wbr>double_<wbr>hook
+    <tr class=used>
+      <td>⌥n
+      <td>U+10c93e
+      <td lang=swl class=x2>􌤾
+      <td>]
+      <td>
+      <td align=left>öronen / sidorna av huvudet
+      <td>swl_<wbr>position_<wbr>ears
+    <tr class=used>
+      <td>⇧M
+      <td>U+10c93f
+      <td lang=swl class=x2>􌤿
+      <td>o
+      <td>v
+      <td align=left>M-handen
+      <td>swl_<wbr>hand_<wbr>m
+    <tr class=used>
+      <td>⌥z
+      <td>U+10c940
+      <td lang=swl class=x2>􌥀
+      <td>_
+      <td>
+      <td align=left>svaga axeln
+      <td>swl_<wbr>shoulder_<wbr>weakward
+    <tr class=unused>
+      <td>
+      <td>U+10c941
+      <td lang=swl class=x2>􌥁
+      <td>
+      <td>
+      <td align=left colspan=2><i>används inte</i>
+    <tr class=used>
+      <td>j
+      <td>U+10c942
+      <td lang=swl class=x2>􌥂
+      <td>a
+      <td>I
+      <td align=left>flata tumhanden
+      <td>swl_<wbr>hand_<wbr>flat_<wbr>thumb
+    <tr class=used>
+      <td>⇧Y
+      <td>U+10c943
+      <td lang=swl class=x2>􌥃
+      <td>b
+      <td>i
+      <td align=left>sprethanden
+      <td>swl_<wbr>hand_<wbr>splayed
+    <tr class=used>
+      <td>⇧Ä
+      <td>U+10c944
+      <td lang=swl class=x2>􌥄
+      <td>c
+      <td>j
+      <td align=left>tumvinkelhanden
+      <td>swl_<wbr>hand_<wbr>thumb_<wbr>angled
+    <tr class=used>
+      <td>⇧S
+      <td>U+10c945
+      <td lang=swl class=x2>􌥅
+      <td>d
+      <td>k
+      <td align=left>S-handen
+      <td>swl_<wbr>hand_<wbr>s
+    <tr class=used>
+      <td>⇧O
+      <td>U+10c946
+      <td lang=swl class=x2>􌥆
+      <td>e
+      <td>L
+      <td align=left>O-handen
+      <td>swl_<wbr>hand_<wbr>o
+    <tr class=used>
+      <td>⇧E
+      <td>U+10c947
+      <td lang=swl class=x2>􌥇
+      <td>f
+      <td>M
+      <td align=left>E-handen
+      <td>swl_<wbr>hand_<wbr>e
+    <tr class=used>
+      <td>⇧L
+      <td>U+10c948
+      <td lang=swl class=x2>􌥈
+      <td>g
+      <td>n
+      <td align=left>pekfingret
+      <td>swl_<wbr>hand_<wbr>index_<wbr>finger
+    <tr class=used>
+      <td>c
+      <td>U+10c949
+      <td lang=swl class=x2>􌥉
+      <td>h
+      <td>O
+      <td align=left>raka måtthanden
+      <td>swl_<wbr>hand_<wbr>measuring_<wbr>straight
+    <tr class=used>
+      <td>⇧T
+      <td>U+10c94a
+      <td lang=swl class=x2>􌥊
+      <td>i
+      <td>P
+      <td align=left>T-handen
+      <td>swl_<wbr>hand_<wbr>t
+    <tr class=used>
+      <td>⇧C
+      <td>U+10c94b
+      <td lang=swl class=x2>􌥋
+      <td>j
+      <td>Q
+      <td align=left>måtthanden
+      <td>swl_<wbr>hand_<wbr>measuring
+    <tr class=used>
+      <td>⇧N
+      <td>U+10c94c
+      <td lang=swl class=x2>􌥌
+      <td>k
+      <td>S
+      <td align=left>N-handen
+      <td>swl_<wbr>hand_<wbr>n
+    <tr class=unused>
+      <td>
+      <td>U+10c94d
+      <td lang=swl class=x2>􌥍
+      <td>
+      <td>
+      <td align=left colspan=2><i>används inte</i>
+    <tr class=used>
+      <td>⇧K
+      <td>U+10c94e
+      <td lang=swl class=x2>􌥎
+      <td>m
+      <td>u
+      <td align=left>K-handen
+      <td>swl_<wbr>hand_<wbr>k
+    <tr class=unused>
+      <td>
+      <td>U+10c94f
+      <td lang=swl class=x2>􌥏
+      <td>
+      <td>
+      <td align=left colspan=2><i>används inte</i>
+    <tr class=unused>
+      <td>
+      <td>U+10c950
+      <td lang=swl class=x2>􌥐
+      <td>
+      <td>
+      <td align=left colspan=2><i>används inte</i>
+    <tr class=used>
+      <td>i
+      <td>U+10c951
+      <td lang=swl class=x2>􌥑
+      <td>p
+      <td>x
+      <td align=left>flyghanden
+      <td>swl_<wbr>hand_<wbr>flyer
+    <tr class=used>
+      <td>y
+      <td>U+10c952
+      <td lang=swl class=x2>􌥒
+      <td>q
+      <td>X
+      <td align=left>stora långfingret
+      <td>swl_<wbr>hand_<wbr>middle_<wbr>finger
+    <tr class=used>
+      <td>1
+      <td>U+10c953
+      <td lang=swl class=x2>􌥓
+      <td>r
+      <td>
+      <td align=left>attityd svagriktad
+      <td>swl_<wbr>attitude_<wbr>directed_<wbr>weakward
+    <tr class=used>
+      <td>2
+      <td>U+10c954
+      <td lang=swl class=x2>􌥔
+      <td>s
+      <td>
+      <td align=left>attityd starkriktad
+      <td>swl_<wbr>attitude_<wbr>directed_<wbr>strongward
+    <tr class=used>
+      <td>4
+      <td>U+10c955
+      <td lang=swl class=x2>􌥕
+      <td>t
+      <td>
+      <td align=left>attityd bakåtriktad
+      <td>swl_<wbr>attitude_<wbr>directed_<wbr>backward
+    <tr class=used>
+      <td>6
+      <td>U+10c956
+      <td lang=swl class=x2>􌥖
+      <td>u
+      <td>
+      <td align=left>attityd nedåtriktad
+      <td>swl_<wbr>attitude_<wbr>directed_<wbr>downward
+    <tr class=used>
+      <td>⇧&quot;
+      <td>U+10c957
+      <td lang=swl class=x2>􌥗
+      <td>v
+      <td>
+      <td align=left>attityd starkvänd
+      <td>swl_<wbr>attitude_<wbr>turned_<wbr>strongward
+    <tr class=used>
+      <td>⇧¤
+      <td>U+10c958
+      <td lang=swl class=x2>􌥘
+      <td>w
+      <td>
+      <td align=left>attityd bakåtvänd
+      <td>swl_<wbr>attitude_<wbr>turned_<wbr>backward
+    <tr class=used>
+      <td>⇧&amp;
+      <td>U+10c959
+      <td lang=swl class=x2>􌥙
+      <td>x
+      <td>
+      <td align=left>attityd nedåtvänd
+      <td>swl_<wbr>attitude_<wbr>turned_<wbr>downward
+    <tr class=used>
+      <td>g
+      <td>U+10c95a
+      <td lang=swl class=x2>◌􌥚
+      <td>y
+      <td>
+      <td align=left>nedanför
+      <td>swl_<wbr>diacritic_<wbr>below
+    <tr class=used>
+      <td>m
+      <td>U+10c95b
+      <td lang=swl class=x2>◌􌥛
+      <td>z
+      <td>
+      <td align=left>framför
+      <td>swl_<wbr>diacritic_<wbr>in_<wbr>front
+    <tr class=used>
+      <td>⌥v
+      <td>U+10c95c
+      <td lang=swl class=x2>􌥜
+      <td>~
+      <td>
+      <td align=left>armen
+      <td>swl_<wbr>position_<wbr>arm
+    <tr class=unused>
+      <td>
+      <td>U+10c95d
+      <td lang=swl class=x2>􌥝
+      <td>
+      <td>
+      <td align=left colspan=2><i>används inte</i>
+    <tr class=used>
+      <td>⌥u
+      <td>U+10c95e
+      <td lang=swl class=x2>􌥞
+      <td>£
+      <td>
+      <td align=left>nedre delen av ansiktet
+      <td>swl_<wbr>position_<wbr>face_<wbr>lower
+    <tr class=used>
+      <td>⇧Z
+      <td>U+10c95f
+      <td lang=swl class=x2>􌥟
+      <td>å
+      <td>Y
+      <td align=left>runda långfingret
+      <td>swl_<wbr>hand_<wbr>middle_<wbr>finger_<wbr>round
+    <tr class=used>
+      <td>7
+      <td>U+10c960
+      <td lang=swl class=x2>􌥠
+      <td>
+      <td>!
+      <td align=left>separator mellan tecken
+      <td>swl_<wbr>other_<wbr>separator_<wbr>signs
+    <tr class=used>
+      <td>⇧P
+      <td>U+10c961
+      <td lang=swl class=x2>􌥡
+      <td>
+      <td>#
+      <td align=left>medial kontakt
+      <td>swl_<wbr>articulation_<wbr>medial_<wbr>contact
+    <tr class=used>
+      <td>⌥⇧!
+      <td>U+10c962
+      <td lang=swl class=x2>􌥢
+      <td>
+      <td>$
+      <td align=left>förs åt svaga hållet
+      <td>swl_<wbr>move_<wbr>weakward
+    <tr class=used>
+      <td>⌥⇧&quot;
+      <td>U+10c963
+      <td lang=swl class=x2>􌥣
+      <td>
+      <td>%
+      <td align=left>förs åt starka hållet
+      <td>swl_<wbr>move_<wbr>strongward
+    <tr class=used>
+      <td>⌥⇧(
+      <td>U+10c964
+      <td lang=swl class=x2>􌥤
+      <td>
+      <td>&amp;
+      <td align=left>förs i sidled
+      <td>swl_<wbr>move_<wbr>sideways
+    <tr class=used>
+      <td>⌥⇧)
+      <td>U+10c965
+      <td lang=swl class=x2>􌥥
+      <td>
+      <td>*
+      <td align=left>förs i djupled
+      <td>swl_<wbr>move_<wbr>depthwise
+    <tr class=used>
+      <td>⌥⇧%
+      <td>U+10c966
+      <td lang=swl class=x2>􌥦
+      <td>
+      <td>+
+      <td align=left>förs uppåt
+      <td>swl_<wbr>move_<wbr>upward
+    <tr class=used>
+      <td>⌥⇧&amp;
+      <td>U+10c967
+      <td lang=swl class=x2>􌥧
+      <td>
+      <td>,
+      <td align=left>förs nedåt
+      <td>swl_<wbr>move_<wbr>downward
+    <tr class=used>
+      <td>⌥⇧!
+      <td>U+10c968
+      <td lang=swl class=x2>􌥨
+      <td>
+      <td>-
+      <td align=left>förs i höjdled
+      <td>swl_<wbr>move_<wbr>vertically
+    <tr class=used>
+      <td>⇧/
+      <td>U+10c969
+      <td lang=swl class=x2>􌥩
+      <td>
+      <td>.
+      <td align=left>förs kort åt svaga hållet
+      <td>swl_<wbr>move_<wbr>short_<wbr>weakward
+    <tr class=used>
+      <td>⌥⇧/
+      <td>U+10c96a
+      <td lang=swl class=x2>􌥪
+      <td>
+      <td>/
+      <td align=left>förs kort åt starka hållet
+      <td>swl_<wbr>move_<wbr>short_<wbr>strongward
+    <tr class=used>
+      <td>x
+      <td>U+10c96b
+      <td lang=swl class=x2>􌥫
+      <td>
+      <td>0
+      <td align=left>hakning
+      <td>swl_<wbr>move_<wbr>hooking
+    <tr class=used>
+      <td>q
+      <td>U+10c96c
+      <td lang=swl class=x2>􌥬
+      <td>
+      <td>1
+      <td align=left>byte
+      <td>swl_<wbr>move_<wbr>exchanging
+    <tr class=used>
+      <td>⌥⇧E
+      <td>U+10c96d
+      <td lang=swl class=x2>􌥭
+      <td>
+      <td>2
+      <td align=left>entré
+      <td>swl_<wbr>move_<wbr>entering
+    <tr class=used>
+      <td>⌥⇧V
+      <td>U+10c96e
+      <td lang=swl class=x2>􌥮
+      <td>
+      <td>3
+      <td align=left>vinkel
+      <td>swl_<wbr>move_<wbr>angling
+    <tr class=used>
+      <td>h
+      <td>U+10c96f
+      <td lang=swl class=x2>􌥯
+      <td>
+      <td>4
+      <td align=left>båge
+      <td>swl_<wbr>move_<wbr>curving
+    <tr class=used>
+      <td>ö
+      <td>U+10c970
+      <td lang=swl class=x2>􌥰
+      <td>
+      <td>5
+      <td align=left>cirkel
+      <td>swl_<wbr>move_<wbr>circling
+    <tr class=used>
+      <td>w
+      <td>U+10c971
+      <td lang=swl class=x2>􌥱
+      <td>
+      <td>6
+      <td align=left>slås
+      <td>swl_<wbr>move_<wbr>hitting
+    <tr class=used>
+      <td>s
+      <td>U+10c972
+      <td lang=swl class=x2>􌥲
+      <td>
+      <td>7
+      <td align=left>vrids
+      <td>swl_<wbr>move_<wbr>turning
+    <tr class=used>
+      <td>a
+      <td>U+10c973
+      <td lang=swl class=x2>􌥳
+      <td>
+      <td>8
+      <td align=left>spelar
+      <td>swl_<wbr>move_<wbr>playing
+    <tr class=used>
+      <td>0
+      <td>U+10c974
+      <td lang=swl class=x2>􌥴
+      <td>
+      <td>9
+      <td align=left>strör
+      <td>swl_<wbr>move_<wbr>strewing
+    <tr class=used>
+      <td>⇧F
+      <td>U+10c975
+      <td lang=swl class=x2>􌥵
+      <td>
+      <td>:
+      <td align=left>förs kort framåt
+      <td>swl_<wbr>move_<wbr>short_<wbr>forward
+    <tr class=used>
+      <td>f
+      <td>U+10c976
+      <td lang=swl class=x2>􌥶
+      <td>
+      <td>;
+      <td align=left>förs kort bakåt
+      <td>swl_<wbr>move_<wbr>short_<wbr>backward
+    <tr class=used>
+      <td>⇧U
+      <td>U+10c977
+      <td lang=swl class=x2>􌥷
+      <td>
+      <td>&lt;
+      <td align=left>förs kort uppåt
+      <td>swl_<wbr>move_<wbr>short_<wbr>upward
+    <tr class=used>
+      <td>u
+      <td>U+10c978
+      <td lang=swl class=x2>􌥸
+      <td>
+      <td>&gt;
+      <td align=left>förs kort nedåt
+      <td>swl_<wbr>move_<wbr>short_<wbr>downward
+    <tr class=used>
+      <td>d
+      <td>U+10c979
+      <td lang=swl class=x2>􌥹
+      <td>
+      <td>?
+      <td align=left>divergerar
+      <td>swl_<wbr>move_<wbr>diverging
+    <tr class=used>
+      <td>⌥⇧K
+      <td>U+10c97a
+      <td lang=swl class=x2>􌥺
+      <td>
+      <td>A
+      <td align=left>vinkar
+      <td>swl_<wbr>move_<wbr>waving
+    <tr class=used>
+      <td>9
+      <td>U+10c97b
+      <td lang=swl class=x2>􌥻
+      <td>
+      <td>B
+      <td align=left>upprepad artikulation
+      <td>swl_<wbr>other_<wbr>repetition
+    <tr class=used>
+      <td>8
+      <td>U+10c97c
+      <td lang=swl class=x2>􌥼
+      <td>
+      <td>C
+      <td align=left>separator mellan artikulationsgrupper
+      <td>swl_<wbr>other_<wbr>separator_<wbr>groups
+    <tr class=used>
+      <td>⌥2
+      <td>U+10c97d
+      <td lang=swl class=x2>􌥽
+      <td>
+      <td>D
+      <td align=left>åt starka hållet (under båge/cirkel/slås/vrids)
+      <td>swl_<wbr>direction_<wbr>strongward
+    <tr class=used>
+      <td>⌥3
+      <td>U+10c97e
+      <td lang=swl class=x2>􌥾
+      <td>
+      <td>E
+      <td align=left>framåt (under båge/cirkel/slås/vrids)
+      <td>swl_<wbr>direction_<wbr>forward
+    <tr class=used>
+      <td>⌥5
+      <td>U+10c97f
+      <td lang=swl class=x2>􌥿
+      <td>
+      <td>F
+      <td align=left>uppåt (under båge/cirkel/slås/vrids)
+      <td>swl_<wbr>direction_<wbr>upward
+    <tr class=used>
+      <td>⌥6
+      <td>U+10c980
+      <td lang=swl class=x2>􌦀
+      <td>
+      <td>G
+      <td align=left>nedåt (under båge/cirkel/slås/vrids)
+      <td>swl_<wbr>direction_<wbr>downward
+    <tr class=unused>
+      <td>
+      <td>U+10c981
+      <td lang=swl class=x2>􌦁
+      <td>
+      <td>
+      <td align=left colspan=2><i>används inte</i>
+    <tr class=used>
+      <td>⌥7
+      <td>U+10c982
+      <td lang=swl class=x2>􌦂
+      <td>
+      <td>H
+      <td align=left>mot varandra (under båge/cirkel/slås/vrids)
+      <td>swl_<wbr>direction_<wbr>toward_<wbr>each_<wbr>other
+    <tr class=used>
+      <td>⌥⇧#
+      <td>U+10c983
+      <td lang=swl class=x2>􌦃
+      <td>
+      <td>[
+      <td align=left>förs framåt
+      <td>swl_<wbr>move_<wbr>forward
+    <tr class=used>
+      <td>⌥⇧¤
+      <td>U+10c984
+      <td lang=swl class=x2>􌦄
+      <td>
+      <td>]
+      <td align=left>förs bakåt
+      <td>swl_<wbr>move_<wbr>backward
+    <tr class=used>
+      <td>k
+      <td>U+10c985
+      <td lang=swl class=x2>􌦅
+      <td>
+      <td>_
+      <td align=left>konvergerar
+      <td>swl_<wbr>move_<wbr>converging
+    <tr class=used>
+      <td>r
+      <td>U+10c986
+      <td lang=swl class=x2>􌦆
+      <td>
+      <td>a
+      <td align=left>förändras
+      <td>swl_<wbr>move_<wbr>changing
+    <tr class=used>
+      <td>e
+      <td>U+10c987
+      <td lang=swl class=x2>􌦇
+      <td>
+      <td>b
+      <td align=left>växelvis
+      <td>swl_<wbr>move_<wbr>alternating
+    <tr class=used>
+      <td>⌥1
+      <td>U+10c988
+      <td lang=swl class=x2>􌦈
+      <td>
+      <td>c
+      <td align=left>åt svaga hållet (under båge/cirkel/slås/vrids)
+      <td>swl_<wbr>direction_<wbr>weakward
+    <tr class=used>
+      <td>⌥8
+      <td>U+10c989
+      <td lang=swl class=x2>􌦉
+      <td>
+      <td>d
+      <td align=left>i sidled (under båge/cirkel/slås/vrids)
+      <td>swl_<wbr>direction_<wbr>sideways
+    <tr class=used>
+      <td>⌥4
+      <td>U+10c98a
+      <td lang=swl class=x2>􌦊
+      <td>
+      <td>e
+      <td align=left>bakåt (under båge/cirkel/slås/vrids)
+      <td>swl_<wbr>direction_<wbr>backwards
+    <tr class=used>
+      <td>⌥9
+      <td>U+10c98b
+      <td lang=swl class=x2>􌦋
+      <td>
+      <td>f
+      <td align=left>i djupled (under båge/cirkel/slås/vrids)
+      <td>swl_<wbr>direction_<wbr>depthwise
+    <tr class=used>
+      <td>⌥0
+      <td>U+10c98c
+      <td lang=swl class=x2>􌦌
+      <td>
+      <td>g
+      <td align=left>i höjdled (under båge/cirkel/slås/vrids)
+      <td>swl_<wbr>direction_<wbr>vertically
+    <tr class=unused>
+      <td>
+      <td>U+10c98d
+      <td lang=swl class=x2>􌦍
+      <td>
+      <td>
+      <td align=left colspan=2><i>används inte</i>
+    <tr class=used>
+      <td>⌥⇧X
+      <td>U+10c98e
+      <td lang=swl class=x2>􌦎
+      <td>
+      <td>~
+      <td align=left>kors
+      <td>swl_<wbr>move_<wbr>crossing
+    <tr class=unused>
+      <td>
+      <td>U+10c98f
+      <td lang=swl class=x2>􌦏
+      <td>
+      <td>
+      <td align=left colspan=2><i>används inte</i>
+    <tr class=unused>
+      <td>
+      <td>U+10c990
+      <td lang=swl class=x2>􌦐
+      <td>
+      <td>
+      <td align=left colspan=2><i>används inte</i>
+    <tr class=used>
+      <td>⌥⇧Ö
+      <td>U+10c991
+      <td lang=swl class=x2>􌦑
+      <td>
+      <td>£
+      <td align=left>hålls stilla
+      <td>swl_<wbr>move_<wbr>held_<wbr>still
+    <tr class=boring>
+      <td>⌥⇧M
+      <td>U+10c992
+      <td lang=swl class=x2>􌦒
+      <td>
+      <td>
+      <td align=left>upprepad kontakt
+      <td>
+    <tr class=boring>
+      <td>⌥⇧R
+      <td>U+10c993
+      <td lang=swl class=x2>􌦓
+      <td>
+      <td>
+      <td align=left>rörelse i pilens riktning
+      <td>
+    <tr class=boring>
+      <td>⌥⇧F
+      <td>U+10c994
+      <td lang=swl class=x2>􌦔
+      <td>
+      <td>
+      <td align=left>rörelse med distinkt rörelseslut
+      <td>
+    <tr class=boring>
+      <td>⌥⇧T
+      <td>U+10c995
+      <td lang=swl class=x2>􌦕
+      <td>
+      <td>
+      <td align=left>upprepad rörelse i pilens riktning
+      <td>
+    <tr class=boring>
+      <td>⌥⇧G
+      <td>U+10c996
+      <td lang=swl class=x2>􌦖
+      <td>
+      <td>
+      <td align=left>rörelse fram och tillbaka, i sidled eller upp och ner
+      <td>
+    <tr class=boring>
+      <td>⌥⇧I
+      <td>U+10c997
+      <td lang=swl class=x2>􌦗
+      <td>
+      <td>
+      <td align=left>växelvisa rörelser
+      <td>
+    <tr class=boring>
+      <td>⌥⇧H
+      <td>U+10c998
+      <td lang=swl class=x2>􌦘
+      <td>
+      <td>
+      <td align=left>bågrörelse i pilens riktning
+      <td>
+    <tr class=boring>
+      <td>⌥⇧D
+      <td>U+10c999
+      <td lang=swl class=x2>􌦙
+      <td>
+      <td>
+      <td align=left>etappvis förflyttning
+      <td>
+    <tr class=boring>
+      <td>⌥⇧Z
+      <td>U+10c99a
+      <td lang=swl class=x2>􌦚
+      <td>
+      <td>
+      <td align=left>förflyttning med små vågrörelser eller sidledsrörelser
+      <td>
+    <tr class=boring>
+      <td>⌥⇧Y
+      <td>U+10c99b
+      <td lang=swl class=x2>􌦛
+      <td>
+      <td>
+      <td align=left>förflyttning med vridrörelser
+      <td>
+    <tr class=boring>
+      <td>⌥⇧S
+      <td>U+10c99c
+      <td lang=swl class=x2>􌦜
+      <td>
+      <td>
+      <td align=left>förflyttning i sick-sack
+      <td>
+    <tr class=unused>
+      <td>
+      <td>U+10c99d
+      <td lang=swl class=x2>􌦝
+      <td>
+      <td>
+      <td align=left colspan=2><i>används inte</i>
+    <tr class=boring>
+      <td>⌥⇧W
+      <td>U+10c99e
+      <td lang=swl class=x2>􌦞
+      <td>
+      <td>
+      <td align=left>förflyttning med upprepad handformsändring
+      <td>
+    <tr class=boring>
+      <td>⌥⇧C
+      <td>U+10c99f
+      <td lang=swl class=x2>􌦟
+      <td>
+      <td>
+      <td align=left>förflyttning med cirkelrörelser
+      <td>
+    <tr class=boring>
+      <td>⌥⇧O
+      <td>U+10c9a0
+      <td lang=swl class=x2>􌦠
+      <td>
+      <td>
+      <td align=left>cirkelrörelse
+      <td>
+    <tr class=boring>
+      <td>⌥⇧Q
+      <td>U+10c9a1
+      <td lang=swl class=x2>􌦡
+      <td>
+      <td>
+      <td align=left>växelvisa cirkelrörelser
+      <td>
+    <tr class=boring>
+      <td>⌥⇧J
+      <td>U+10c9a2
+      <td lang=swl class=x2>􌦢
+      <td>
+      <td>
+      <td align=left>handen vrids eller slås
+      <td>
+    <tr class=boring>
+      <td>⌥⇧U
+      <td>U+10c9a3
+      <td lang=swl class=x2>􌦣
+      <td>
+      <td>
+      <td align=left>handen vrids eller slås, upprepad rörelse
+      <td>
+    <tr class=boring>
+      <td>⌥⇧A
+      <td>U+10c9a4
+      <td lang=swl class=x2>􌦤
+      <td>
+      <td>
+      <td align=left>spelande växelvisa rörelser
+      <td>
+    <tr class=boring>
+      <td>⌥⇧L
+      <td>U+10c9a5
+      <td lang=swl class=x2>􌦥
+      <td>
+      <td>
+      <td align=left>vinkande (samtidiga) fingerrörelse
+      <td>
+    <tr class=boring>
+      <td>⌥⇧B
+      <td>U+10c9a6
+      <td lang=swl class=x2>􌦦
+      <td>
+      <td>
+      <td align=left>tummen förs utmed fingrarna
+      <td>
+    <tr class=used>
+      <td>⌥⇧N
+      <td>U+10c9a7
+      <td lang=swl class=x2>􌦧
+      <td>
+      <td>
+      <td align=left>distinkt början/avslutning (används med konvergerar/divergerar)
+      <td>other abrupt
+    <tr class=used>
+      <td>
+      <td>U+10c9a8
+      <td lang=swl class=x2>􌦨
+      <td>
+      <td>
+      <td align=left>böjs
+      <td>swl_<wbr>move_<wbr>bending
+    <tr class=used>
+      <td>
+      <td>U+10c9a9
+      <td lang=swl class=x2>􌦩
+      <td>
+      <td>
+      <td align=left>separator mellan händer
+      <td>swl_<wbr>other_<wbr>separator_<wbr>hands
+    <tr class=used>
+      <td>
+      <td>U+10c9aa
+      <td lang=swl class=x2>􌦪
+      <td>
+      <td>
+      <td align=left>4-handen
+      <td>swl_<wbr>hand_<wbr>4
+    <tr class=used>
+      <td>
+      <td>U+10c9ab
+      <td lang=swl class=x2>􌦫
+      <td>
+      <td>
+      <td align=left>D-handen
+      <td>swl_<wbr>hand_<wbr>d
+    <tr class=used>
+      <td>
+      <td>U+10c9ac
+      <td lang=swl class=x2>􌦬
+      <td>
+      <td>
+      <td align=left>F-handen
+      <td>swl_<wbr>hand_<wbr>f
+    <tr class=used>
+      <td>
+      <td>U+10c9ad
+      <td lang=swl class=x2>􌦭
+      <td>
+      <td>
+      <td align=left>Q-handen
+      <td>swl_<wbr>hand_<wbr>q
+    <tr class=future>
+      <td>
+      <td>U+10c9ae
+      <td lang=swl class=x2>􌦮
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9af
+      <td lang=swl class=x2>􌦯
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9b0
+      <td lang=swl class=x2>􌦰
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9b1
+      <td lang=swl class=x2>􌦱
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9b2
+      <td lang=swl class=x2>􌦲
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9b3
+      <td lang=swl class=x2>􌦳
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9b4
+      <td lang=swl class=x2>􌦴
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9b5
+      <td lang=swl class=x2>􌦵
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9b6
+      <td lang=swl class=x2>􌦶
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9b7
+      <td lang=swl class=x2>􌦷
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9b8
+      <td lang=swl class=x2>􌦸
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9b9
+      <td lang=swl class=x2>􌦹
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9ba
+      <td lang=swl class=x2>􌦺
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9bb
+      <td lang=swl class=x2>􌦻
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9bc
+      <td lang=swl class=x2>􌦼
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9bd
+      <td lang=swl class=x2>􌦽
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9be
+      <td lang=swl class=x2>􌦾
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9bf
+      <td lang=swl class=x2>􌦿
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9c0
+      <td lang=swl class=x2>􌧀
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=unused>
+      <td>
+      <td>U+10c9c1
+      <td lang=swl class=x2>􌧁
+      <td>
+      <td>
+      <td align=left colspan=2><i>används inte</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9c2
+      <td lang=swl class=x2>􌧂
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9c3
+      <td lang=swl class=x2>􌧃
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9c4
+      <td lang=swl class=x2>􌧄
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9c5
+      <td lang=swl class=x2>􌧅
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9c6
+      <td lang=swl class=x2>􌧆
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9c7
+      <td lang=swl class=x2>􌧇
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9c8
+      <td lang=swl class=x2>􌧈
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9c9
+      <td lang=swl class=x2>􌧉
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9ca
+      <td lang=swl class=x2>􌧊
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9cb
+      <td lang=swl class=x2>􌧋
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9cc
+      <td lang=swl class=x2>􌧌
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=unused>
+      <td>
+      <td>U+10c9cd
+      <td lang=swl class=x2>􌧍
+      <td>
+      <td>
+      <td align=left colspan=2><i>används inte</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9ce
+      <td lang=swl class=x2>􌧎
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=unused>
+      <td>
+      <td>U+10c9cf
+      <td lang=swl class=x2>􌧏
+      <td>
+      <td>
+      <td align=left colspan=2><i>används inte</i>
+    <tr class=unused>
+      <td>
+      <td>U+10c9d0
+      <td lang=swl class=x2>􌧐
+      <td>
+      <td>
+      <td align=left colspan=2><i>används inte</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9d1
+      <td lang=swl class=x2>􌧑
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9d2
+      <td lang=swl class=x2>􌧒
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9d3
+      <td lang=swl class=x2>􌧓
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9d4
+      <td lang=swl class=x2>􌧔
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9d5
+      <td lang=swl class=x2>􌧕
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9d6
+      <td lang=swl class=x2>􌧖
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9d7
+      <td lang=swl class=x2>􌧗
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9d8
+      <td lang=swl class=x2>􌧘
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9d9
+      <td lang=swl class=x2>􌧙
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9da
+      <td lang=swl class=x2>􌧚
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9db
+      <td lang=swl class=x2>􌧛
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9dc
+      <td lang=swl class=x2>􌧜
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=unused>
+      <td>
+      <td>U+10c9dd
+      <td lang=swl class=x2>􌧝
+      <td>
+      <td>
+      <td align=left colspan=2><i>används inte</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9de
+      <td lang=swl class=x2>􌧞
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9df
+      <td lang=swl class=x2>􌧟
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9e0
+      <td lang=swl class=x2>􌧠
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9e1
+      <td lang=swl class=x2>􌧡
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9e2
+      <td lang=swl class=x2>􌧢
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9e3
+      <td lang=swl class=x2>􌧣
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9e4
+      <td lang=swl class=x2>􌧤
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9e5
+      <td lang=swl class=x2>􌧥
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9e6
+      <td lang=swl class=x2>􌧦
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9e7
+      <td lang=swl class=x2>􌧧
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9e8
+      <td lang=swl class=x2>􌧨
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9e9
+      <td lang=swl class=x2>􌧩
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9ea
+      <td lang=swl class=x2>􌧪
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9eb
+      <td lang=swl class=x2>􌧫
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9ec
+      <td lang=swl class=x2>􌧬
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9ed
+      <td lang=swl class=x2>􌧭
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9ee
+      <td lang=swl class=x2>􌧮
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9ef
+      <td lang=swl class=x2>􌧯
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9f0
+      <td lang=swl class=x2>􌧰
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9f1
+      <td lang=swl class=x2>􌧱
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9f2
+      <td lang=swl class=x2>􌧲
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9f3
+      <td lang=swl class=x2>􌧳
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9f4
+      <td lang=swl class=x2>􌧴
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9f5
+      <td lang=swl class=x2>􌧵
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9f6
+      <td lang=swl class=x2>􌧶
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9f7
+      <td lang=swl class=x2>􌧷
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9f8
+      <td lang=swl class=x2>􌧸
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9f9
+      <td lang=swl class=x2>􌧹
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9fa
+      <td lang=swl class=x2>􌧺
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9fb
+      <td lang=swl class=x2>􌧻
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9fc
+      <td lang=swl class=x2>􌧼
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9fd
+      <td lang=swl class=x2>􌧽
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9fe
+      <td lang=swl class=x2>􌧾
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+    <tr class=future>
+      <td>
+      <td>U+10c9ff
+      <td lang=swl class=x2>􌧿
+      <td>
+      <td>
+      <td align=left colspan=2><i>framtida användning</i>
+  </table>
+
+  <dl>
+    <dt class=used>grönmarkerade<dd>Symboler ämnade för teckentranskription som
+    definieras av detta typsnitt.
+
+    <dt class=future>framtida användning<dd>Kodpunkter som kan komma att
+    användas i framtiden.
+
+    <dt class=unused>används inte<dd>Saašha Metsärantala har noterat att dessa
+    symboler används av andra projekt så vi undviker dessa kodpunkter.
+
+    <dt class=boring>gråmarkerade<dd>Dessa symboler används för att annotera
+    bilder med teckenspråk, men inte för teckentranskription. Symbolerna är
+    kopierade ifrån Saašha Metsärantalas typsnitt, men jag har i övrigt inte
+    rört symbolerna.
+  </dl>
+</section>
+
+<section>
+  <h1>Kopiera in teckenskriftssymbolerna i ett annat typsnitt</h1>
+
+  <p>Såhär gör du för att kopiera teckenskriftssymbolerna
+  från FreeSans-SWL till ett annat typsnitt (eller en senare version
+  av GNU FreeSans).
+
+  <p>Här bara antar jag att du har ett Linuxsystem, och att du använder
+  typsnittseditorn <i>Fontforge</i>.
+
+  <section>
+    <h1>Kopiera typsnittsmetadata</h1>
+
+    <ol>
+      <li>Öppna ”Font Info”-fönstret för bägge typsnitten (genom att
+      trycka <i>Ctrl-Shift-F</i> eller välja ”Element &gt; Font Info…” i
+      menyn) och välj ”PS Names” tabben.
+
+      <li>Kopiera ”Fontname”, ”Family Name” och ”Name For Humans” ifrån
+      FreeSans-SWL till det nya typsnittet.
+
+      <li>Kopiera den sista delen av copyrightmeddelandet ifrån FreeSans-SWL
+      till det nya typsnittet.
+
+      <li>Klicka på ”OK”-knappen i requestern som dyker upp. Klicka därefter
+      ”Change”-knappen i ”Change UniqueID?”-fönstret som dyker upp efter ett
+      namnbyte.
+    </ol>
+  </section>
+
+  <section>
+    <h1>Kopiera över teckenskriftssymbolerna</h1>
+    <ol>
+      <li>Öppna FreeSans-SWL + typsnittet som du vill updatera till i Fontforge.
+
+      <li>Gå till den första teckentranskriptionssymbolen
+      med <i>Ctrl-Shift-&gt;</i> (eller välj ”View &gt; Goto” i menyn) +
+      ”<code>u10c900</code>” och enter.
+
+      <li>Markera alla teckenskriftssymboler
+      (<code>u10c900</code>–<code>u10c9ff</code>) och kopiera dem med Ctrl-C.
+
+      <li>Byt till det andra teckensnittets fönster och gå till teckenskriftens
+      första kodpunkt (<i>Ctrl-Shift-&gt;</i> + ”<code>u10c900</code>” igen).
+
+      <li>Klistra in teckenskriftssymbolerna med Ctrl-V.
+    </ol>
+  </section>
+
+  <section>
+    <h1>Fixa till diakritiska symboler</h1>
+
+    <p>Alla modifierande symboler behöver vara av ”OT Glyph Class”:en
+    ”<code>mark</code>”, och eftersom denna information inte följer med då man
+    kopierar symbolerna behöver detta justeras för hand:
+
+    <p>Följande 22 symboler (i kodpunktsordning) behöver justeras:
+
+      <pre>U+10c936 swl_attitude_turned_weakward
+U+10c937 swl_attitude_turned_forward
+U+10c938 swl_attitude_turned_upward
+U+10c939 swl_diacritic_above
+U+10c93a swl_diacritic_beside
+U+10c93b swl_diacritic_behind
+U+10c957 swl_attitude_turned_strongward
+U+10c958 swl_attitude_turned_backward
+U+10c959 swl_attitude_turned_downward
+U+10c95a swl_diacritic_below
+U+10c95b swl_diacritic_in_front
+<hr>
+U+10c961 swl_articulation_medial_contact
+U+10c97d swl_direction strongward
+U+10c97e swl_direction_forward
+U+10c97f swl_direction_upward
+U+10c980 swl_direction_downward
+U+10c982 swl_direction_toward_each_other
+U+10c988 swl_direction_weakward
+U+10c989 swl_direction_sideways
+U+10c98a swl_direction_backwards
+U+10c98b swl_direction_depthwise
+U+10c98c swl_direction_vertically</pre>
+
+    <p>För var och en av ovanstående symboler, gör följande:
+
+    <ol>
+      <li>Markera symbolen i fråga i fontvyn och tryck <i>Ctrl-I</i> (eller
+      välj ”Element &gt; Glyph Info…” i menyn).
+
+      <li>Gå till ”Unicode”-tabben i ”Glyph Info” fönstret, och byt ”OT Glyph Class” till ”<code>mark</code>”.
+    </ol>
+  </section>
+
+  <section>
+    <h1>Skapa regler för diakritiska tecken</h1>
+
+    <ol>
+      <li>Meny ”Element > Font Info…” (<i>Ctrl-Shift-F</i>) öppnar ett nytt
+      fönster.
+
+      <li>Klicka på ”Lookups” (i sidebaren till höger), sen på tabben ”GPOS”
+      (hogst upp).
+
+      <li>Hitta ”'mark' Mark Positioning in Latin lookup 15” i
+      listan, markera den och klicka ”Edit metadata”.
+
+      <li>Det ska nu dyka upp en ”Lookup”-requester. I den, klicka på den lilla
+      nedåtpilen till vänster om ”&lt;New&gt;” (längst ner i listan), välj
+      därefter ”mark Mark Positioning”, och klicka ”OK”.
+    </ol>
+  </section>
+</section>
+
+  <section>
+    <h1>Trubbel med Fontforge?</h1>
+
+    <section>
+      <h1>Jag sparade en Truetypefil i Fontforge och nu är attitydsymbolerna
+      helt keffa!</h1>
+
+      <p><b>Beskrivning:</b> Om attitydsymboler och diakritiska tecken inte
+      ritas upp på rätt ställen (utan hamnar till höger tecknet de borde komma
+      ovanför eller under) så har förmodligen OpenType-tabellen ”GPOS” inte
+      sparats som den ska (denna tabell är en del av Truetype och beskriver
+      vilka symboler som är diakritiska och hur de ska placeras ut).
+
+      <p><b>Lösning:</b> När du genererar en Truetypefil i Fontforge
+      (tryck <i>Ctrl-Shift-G</i> (eller väljer ”File &gt; Generate Fonts…” i
+      menyn) så kan du välja hurvida OpenType-tabellerna ska sparas till filen
+      genom att trycka ”Options” (i ”Generate Fonts”-fönstret) och se till att
+      ”OpenType” är ikryssad (de två underpunkterna behöver <i>inte</i> vara
+      ikryssade).
+
+      <p><b>Bakgrund:</b> För mig dök det här problemet upp efter det att jag
+      av misstag tryckt <i>Ctrl-Alt-G</i> (”File &gt; Generate Mac Family…”)
+      istället för <i>Ctrl-Shift-G</i> (”File &gt; Generate Fonts…”), ”Generate
+      Mac Family…” verkar nämligen <i>slå av</i> OpenType-inställningen!
+    </section>
+  </section>
+
+<section>
+  <h1>Framtida tillägg?</h1>
+
+  <p>Följande symboler är under beaktande för tillägg i framtiden.
+
+  <hr>
+
+  <p>Lars Wallin, <i>Polysyntetiska tecken i svenska teckenspråket</i> (1994).
+  Följande 28 symboler kan komma att läggas till. (Dessa symboler är obsoleta,
+  men kan tänkas vara intressanta ur ett historiskt perspektiv.)
+
+  <p>Ifrån appendix A (s.116):
+  <ul>
+    <li>vinklad pekfingerhand
+    <li>böjd pekfingerhand
+    <li>vinklad N-hand
+    <li>NA-hand
+    <li>böjd N-hand
+  </ul>
+
+  <p>Appendix B (s.118):
+  <ul>
+    <li>böjd sprethand
+    <li>vinklad sprethand
+    <li>N-måtthand
+    <li>böjd stor nyphand
+    <li>böjt långfinger
+    <li>kort-fram-distinkt-avslutning
+    <li>kort-in-distinkt-avslutning
+    <li>kort-upp-distinkt-avslutning
+    <li>kort-ner-distinkt-avslutning
+    <li>kort-höger-distinkt-avslutning
+    <li>kort-vänster-distinkt-avslutning
+    <li>fram-distinkt-början
+    <li>in-distinkt-början
+    <li>upp-distinkt-början
+    <li>ner-distinkt-början
+    <li>höger-distinkt-början
+    <li>vänster-distinkt-början
+    <li>fram-distinkt-början-och-avslutning
+    <li>in-distinkt-början-och-avslutning
+    <li>upp-distinkt-början-och-avslutning
+    <li>ner-distinkt-början-och-avslutning
+    <li>höger-distinkt-början-och-avslutning
+    <li>vänster-distinkt-början-och-avslutning
+  </ul>
+
+  <p>Thomas Björkstrand, <i>Redundans i teckentranskriptionssystemet: Förslag
+  till förenkling</i> (1998), s.16. Följande 3 symboler kan komma att läggas
+  till. (Dessa symboler föreslogs som en förbättring av det nuvarande sättet
+  att skriva cirkelrörelser [􌥰].)
+
+  <ul>
+    <li>cirkelrörelse i frontalplan
+    <li>cirkelrörelse i horisontalplan
+    <li>cirkelrörelse i vertikalplan
+  </ul>
+</section>
+
+
+<section>
+  <h1 id=licens>Licens</h1>
+
+  <p>GNU FreeSans-SWL är (precis som dess
+  förlaga <a href="https://www.gnu.org/software/freefont/">GNU FreeSans</a>)
+  distribuerad under licensen <a href="LICENSE.txt">GNU GPL version 3</a>. Du
+  är fri att ladda hem och använda typsnittet (även för kommersiella ändamål).
+  Du får också modifiera typsnittet och distribuera din modifierade version
+  givet att du använder samma licens.
+
+  <hr>
+
+  <p>Vidare har detta typsnitt (precis som GNU FreeSans) ett undantag från
+  GNU-licensen i följande:
+
+  <blockquote>”<b>As a special exception,</b> if you create a document which
+  uses this font, and embed this font or unaltered portions of this font into
+  the document, this font does not by itself cause the resulting document to be
+  covered by the GNU General Public License. This exception does not however
+  invalidate any other reasons why the document might be covered by the GNU
+  General Public License. If you modify this font, you may extend this
+  exception to your version of the font, but you are not obligated to do so. If
+  you do not wish to do so, delete this exception statement from your version.”
+  [<a href="https://www.gnu.org/software/freefont/license.html">GNU FreeFont
+  License</a>]</blockquote>
+</section>
+
+
+<footer>
+  <p align=center>Copyright 2017 by <a href="mailto:zrajm@zrajm.org">zrajm</a>,
+  Uppsala, Sweden.
+</footer>
+</body>
+</html>
