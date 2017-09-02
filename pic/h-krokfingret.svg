@@ -8,12 +8,12 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    version="1.1"
-   width="35.599998"
-   height="60.299999"
-   viewBox="0 -200 355.99998 602.99999"
-   id="svg3073">
+   width="35.631248"
+   height="67"
+   viewBox="0 -200 356.31249 669.99998"
+   id="svg3001">
   <metadata
-     id="metadata3083">
+     id="metadata3011">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -25,13 +25,17 @@
     </rdf:RDF>
   </metadata>
   <defs
-     id="defs3081" />
-  <g
-     transform="matrix(1,0,0,-1,-78,401)"
-     id="g3075">
-    <path
-       d="m 333,32 v 442 q 0,57 -35.5,92 Q 262,601 206,601 149,601 113.5,566 78,531 78,474 h 34 q 0,39 27.5,66 27.5,27 66.5,27 38,0 65.5,-27 Q 299,513 299,474 V 32 H 213 V -2 H 434 V 32 H 333 z"
-       id="path3077"
-       style="fill:currentColor" />
-  </g>
+     id="defs3009">
+    <clipPath
+       id="clipPath7518">
+      <path
+         d="m 264.90625,-219.09376 253.1875,0 0,167.593752 -253.1875,0 z M -2.6293944e-6,-189.99998 509,-189.99998 l 0,640 -509.0000026293944,0 z"
+         id="path7520"
+         style="opacity:0.5;fill:#ffff00;fill-opacity:1;stroke:none" />
+    </clipPath>
+  </defs>
+  <path
+     d="m 22,-22.500064 c 0,-69.493761 50.0514,-125.625006 112.15625,-125.625006 62.10486,0 112.15626,56.131235 112.15626,125.625009 l 0,470.500011 m -88,0 176,0"
+     id="path5618"
+     style="fill:none;stroke:#000000;stroke-width:44;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
 </svg>

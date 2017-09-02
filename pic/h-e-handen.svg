@@ -8,9 +8,9 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    version="1.1"
-   width="30.799999"
-   height="58.099998"
-   viewBox="0 -200 307.99999 580.99998"
+   width="35.759377"
+   height="67"
+   viewBox="0 -200 357.59376 669.99999"
    id="svg3037">
   <metadata
      id="metadata3047">
@@ -26,12 +26,8 @@
   </metadata>
   <defs
      id="defs3045" />
-  <g
-     transform="matrix(1,0,0,-1,-90,378)"
-     id="g3039">
-    <path
-       d="M 134,266 V 41 H 398 V -3 H 90 V 578 H 398 V 534 H 134 V 310 H 352 V 266 H 134 z"
-       id="path3041"
-       style="fill:currentColor" />
-  </g>
+  <path
+     d="m 335.60228,-148 -313.60229,0 0,595.99999 313.60229,0 M 281,149.99998 l -237,0"
+     id="path7704-4"
+     style="fill:none;stroke:#000000;stroke-width:43.99999619;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
 </svg>

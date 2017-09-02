@@ -8,9 +8,9 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    version="1.1"
-   width="37.400002"
-   height="58.200001"
-   viewBox="0 -200 374.00002 582.00001"
+   width="42.02"
+   height="67"
+   viewBox="0 -200 420.20001 670"
    id="svg2989">
   <metadata
      id="metadata2999">
@@ -25,13 +25,21 @@
     </rdf:RDF>
   </metadata>
   <defs
-     id="defs2997" />
-  <g
-     transform="matrix(1,0,0,-1,-67,382)"
-     id="g2991">
-    <path
-       d="m 266,282 h 117 v 40 H 289 L 441,582 91,580 v -40 l 276,2 -129,-219 z m -28,41 -132,-1 V 282 H 216 L 67,0 401,4 V 38 H 127 l 139,244 z"
-       id="path2993"
-       style="fill:currentColor" />
-  </g>
+     id="defs2997">
+    <clipPath
+       id="clipPath7764">
+      <path
+         d="m -2.6293944e-6,-180.49995 413.4999926293944,0 0,640 -413.4999926293944,0 z"
+         id="path7766"
+         style="opacity:0.5;fill:#ffff00;fill-opacity:1;stroke:none" />
+    </clipPath>
+  </defs>
+  <path
+     d="m 38.09375,-148 344,0 -344,596 344,0"
+     id="path13155-9"
+     style="fill:none;stroke:#000000;stroke-width:43.99999619;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+  <path
+     d="m 60.090001,150 299.999999,1e-5"
+     id="path13155"
+     style="fill:none;stroke:#000000;stroke-width:43.99998856;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
 </svg>

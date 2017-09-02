@@ -349,7 +349,7 @@ function makeClusterGui(args) {
             glyph.html(html);
             // Special case for 'medial contact' and 'separator' glyphs.
             // (Bottom aligned using CSS class 'low'.)
-            if (html.match(/\/x-separator\.svg"/)) {
+            if (html.match(/\/(x-.*|rr-.*[^2]|ra-(stror|spelar|vinkar|bojs|forandras)|i-.*)\.svg"/)) {
                 glyph.addClass('low');
             } else {
                 glyph.removeClass('low');

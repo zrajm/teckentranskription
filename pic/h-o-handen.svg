@@ -8,9 +8,9 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    version="1.1"
-   width="44.113155"
-   height="58.327797"
-   viewBox="0 -200 441.13155 583.27797"
+   width="48.45343"
+   height="67"
+   viewBox="0 -200 484.5343 669.99999"
    id="svg2989">
   <metadata
      id="metadata2999">
@@ -27,11 +27,11 @@
   <defs
      id="defs2997" />
   <g
-     transform="matrix(1,0,0,-1,-29.927273,382.17391)"
-     id="g2991">
-    <path
-       d="M 471,285 Q 469,163 404,79.5 339,-4 242,-1 150,2 91,82.5 32,163 30,284 q -2,117 51,201 59,93 162,97 98,4 164,-84 66,-88 64,-213 z m -43,1 Q 430,393 377.5,467.5 325,542 244,539 166,536 118.5,464 71,392 73,286 75,182 122,113.5 169,45 244,42 321,39 373.5,109.5 426,180 428,286 z"
-       id="path2993"
-       style="fill:currentColor" />
-  </g>
+     transform="matrix(1,0,0,-1,-33.775767,470.11916)"
+     id="g2991"
+     style="fill:none;stroke:#000000;stroke-width:1" />
+  <path
+     d="M 462.53431,144.3839 A 220.18099,298.06265 1.7571571 1 1 21.999997,155.6161 220.18099,298.06265 1.7571571 0 1 462.53431,144.3839 z"
+     id="path5449"
+     style="fill:none;stroke:#000000;stroke-width:43.99999619;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
 </svg>

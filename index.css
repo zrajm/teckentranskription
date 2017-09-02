@@ -5,6 +5,14 @@
     padding: 0;
 }
 
+p, ol, figure { margin: 1em 0; }
+ol, figure {
+    margin-left: 1em;
+    list-style: upper-roman inside none;
+}
+figure { border: 1px solid transparent; }
+figcaption { margin: .5em 0; }
+
 *:not(td) { box-sizing: border-box; }
 
 img { max-height: 175px; }
@@ -108,12 +116,12 @@ button table {
 /* SVGs aligned to bottom should be pushed 10px upwards. */
 .cluster .low  { vertical-align: bottom; }
 .glyph.low img {
-    padding-bottom: 8px;
+    XXpadding-bottom: 8px;
     padding-top: 0px !important;
 }
 
+.glyph.artion_tall img                { padding: 0; }
 .glyph.h img                          { padding: 0px 4px; }
-.glyph img[src="pic/x-separator.svg"] { padding: 0px 6px; }
 
 /* width */
 .glyph.artion_high  { width:  46px; }

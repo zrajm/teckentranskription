@@ -8,9 +8,9 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    version="1.1"
-   width="40"
-   height="57.400002"
-   viewBox="0 -200 400 574.00002"
+   width="42.03125"
+   height="67"
+   viewBox="0 -200 420.3125 670.00001"
    id="svg3013">
   <metadata
      id="metadata3023">
@@ -25,13 +25,18 @@
     </rdf:RDF>
   </metadata>
   <defs
-     id="defs3021" />
-  <g
-     transform="matrix(1,0,0,-1,-48,375)"
-     id="g3015">
-    <path
-       d="M 207,303 48,551 85,575 247,323 411,575 448,551 287,303 H 441 V 259 H 269 V 1 H 225 V 259 H 50 v 44 h 157 z"
-       id="path3017"
-       style="fill:currentColor" />
-  </g>
+     id="defs3021">
+    <clipPath
+       id="clipPath7975">
+      <path
+         d="M -3.2836914e-6,-169.99998 420.3,-169.99998 l 0,639.99999 -420.3000032836914,0 z"
+         id="path7977"
+         style="opacity:0.5;fill:#ffff00;fill-opacity:1;stroke:none" />
+    </clipPath>
+  </defs>
+  <path
+     d="M 25.437493,-170 210.18979,150 394.94167,-170 M 210.19,448.00001 l 1e-5,-298 m -166.190012,0 332.300002,0"
+     clip-path="url(#clipPath7975)"
+     id="path4054-3"
+     style="fill:none;stroke:#000000;stroke-width:44;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
 </svg>

@@ -8,9 +8,9 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    version="1.1"
-   width="41"
-   height="62.299999"
-   viewBox="0 -200 410 622.99999"
+   width="41.349998"
+   height="67"
+   viewBox="0 -200 413.49998 669.99998"
    id="svg3001">
   <metadata
      id="metadata3011">
@@ -25,13 +25,33 @@
     </rdf:RDF>
   </metadata>
   <defs
-     id="defs3009" />
-  <g
-     transform="matrix(1,0,0,-1,-43,419)"
-     id="g3003">
-    <path
-       d="M 453,-4 407,-2 104,513 91,508 V -4 H 43 v 623 h 56 l 294,-516 12,2 v 513 h 48 V -4 z"
-       id="path3005"
-       style="fill:currentColor" />
-  </g>
+     id="defs3009">
+    <clipPath
+       id="clipPath7764">
+      <path
+         d="m -2.6293944e-6,-180.49995 413.4999926293944,0 0,640 -413.4999926293944,0 z"
+         id="path7766"
+         style="opacity:0.5;fill:#ffff00;fill-opacity:1;stroke:none" />
+    </clipPath>
+    <clipPath
+       id="clipPath7518">
+      <path
+         d="m 264.90625,-219.09376 253.1875,0 0,167.593752 -253.1875,0 z M -2.6293944e-6,-189.99998 509,-189.99998 l 0,640 -509.0000026293944,0 z"
+         id="path7520"
+         style="opacity:0.5;fill:#ffff00;fill-opacity:1;stroke:none" />
+    </clipPath>
+    <clipPath
+       id="clipPath7518-6">
+      <path
+         d="m 264.90625,-219.09376 253.1875,0 0,167.593752 -253.1875,0 z M -2.6293944e-6,-189.99998 509,-189.99998 l 0,640 -509.0000026293944,0 z"
+         id="path7520-7"
+         style="opacity:0.5;fill:#ffff00;fill-opacity:1;stroke:none" />
+    </clipPath>
+  </defs>
+  <path
+     d="m 391.50417,-180.50001 0,640.00006 -369.504171,-640 -10e-7,640"
+     transform="translate(2e-6,10.499945)"
+     clip-path="url(#clipPath7764)"
+     id="path7073"
+     style="fill:none;stroke:#000000;stroke-width:44;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
 </svg>

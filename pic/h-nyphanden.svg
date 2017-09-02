@@ -8,12 +8,12 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    version="1.1"
-   width="47.700001"
-   height="57.200001"
-   viewBox="0 -200 477.00001 572.00001"
-   id="svg3061">
+   width="48.060001"
+   height="67"
+   viewBox="0 -200 480.6 670"
+   id="svg3001">
   <metadata
-     id="metadata3071">
+     id="metadata3011">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -25,13 +25,38 @@
     </rdf:RDF>
   </metadata>
   <defs
-     id="defs3069" />
-  <g
-     transform="matrix(1,0,0,-1,-10,371)"
-     id="g3063">
-    <path
-       d="M 487,-1 H 10 L 246,571 z M 416,43 246,470 81,43 h 335 z"
-       id="path3065"
-       style="fill:currentColor" />
-  </g>
+     id="defs3009">
+    <clipPath
+       id="clipPath7764">
+      <path
+         d="m -2.6293944e-6,-180.49995 413.4999926293944,0 0,640 -413.4999926293944,0 z"
+         id="path7766"
+         style="opacity:0.5;fill:#ffff00;fill-opacity:1;stroke:none" />
+    </clipPath>
+    <clipPath
+       id="clipPath4581-6">
+      <path
+         d="M -3.2836914e-6,-199.99998 420.3,-199.99998 l 0,639.99999 -420.3000032836914,0 z"
+         id="path4583-1"
+         style="opacity:0.5;fill:#ffff00;fill-opacity:1;stroke:none" />
+    </clipPath>
+    <clipPath
+       id="clipPath4581-6-0">
+      <path
+         d="M -3.2836914e-6,-199.99998 420.3,-199.99998 l 0,639.99999 -420.3000032836914,0 z"
+         id="path4583-1-2"
+         style="opacity:0.5;fill:#ffff00;fill-opacity:1;stroke:none" />
+    </clipPath>
+    <clipPath
+       id="clipPath4569-6-3">
+      <path
+         d="M -3.2836914e-6,-199.99998 420.3,-199.99998 l 0,639.99999 -420.3000032836914,0 z"
+         id="path4571-2-7"
+         style="opacity:0.5;fill:#ffff00;fill-opacity:1;stroke:none" />
+    </clipPath>
+  </defs>
+  <path
+     d="M 240.33086,-125.67172 31.469993,448 449.1303,448 z"
+     id="path9093-7"
+     style="fill:none;stroke:#000000;stroke-width:43.99998474;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
 </svg>
