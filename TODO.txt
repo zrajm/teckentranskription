@@ -1,5 +1,15 @@
 -*- org -*-
 
+* TODO Add alternative handshape pics in glyph selector            :COSMETIC:
+  Flata handen, flyghanden, klohanden, knutna handen, lilla O-handen,
+  nyphanden, pekfingret, sprethanden, stora nyphanden all have alternative
+  handshapes, these should be displayed in the glyph selector menu together
+  with the handshape already shown there.
+* TODO Attitude support for 'underarmen'
+  For words like e.g. 'Behärska' http://teckensprakslexikon.su.se/ord/00157.
+
+  'Underarmen transkriberas följd av attitydsymbolerna.' [Teckentranskription,
+  p.5]
 * TODO Add support chat channel and link to it
   Solr has a support IRC chat channel on Freenode. Apparently
   `webchat.freenode.net` can be used to easily access a chat channel (for
@@ -99,11 +109,34 @@
   squiggly underline?)
 
   Some rules:
-    + Contradictory attitude direction ('AR') and attitude twist ('AV') glyphs
-      should be marked. (When the attitude direction cannot be the same as, or
-      the opposite of, the attitude twist -- as this would be anatomically
-      impossible. E.g. if attitude direction is 'up' then attitude twist can be
-      neither 'up' nor 'down'.)
+    + Possible attitude combinations in the active hand. (Table from 'Tecknad
+      Svenska', p.51).
+
+          |---------------+-----------------------------------------|
+          |               | Vridning (AV)                           |
+          |---------------+-----+-----+------+----+---------+-------|
+          | Riktning (AR) | upp | ner | fram | in | vänster | höger |
+          | upp           | -   | -   | x    | x  | x       | x     |
+          | ner           | -   | -   | x    | x  | x       | ?     |
+          | fram          | x   | x   | -    | -  | x       | x     |
+          | in            | x   | x   | -    | -  | ?       | x     |
+          | vänster       | x   | x   | x    | x  | -       | -     |
+          | höger         | ?   | x   | x    | ?  | -       | -     |
+          |---------------+-----+-----+------+----+---------+-------|
+
+      '-' denotes impossible combinations (as the hand cannot be pointed and
+      turned in the same direction at the same time).
+
+      '?' indicate combinations not found in the dictionary by the author of
+      'Tecknad Svenska'. -- CHECK WITH DICTIONARY!
+
+    + Possible attitude combinations in the passive hand. -- 'Tecknad Svenska'
+      mentions (p.51) that these are fewer than for the active hand. -- CHECK
+      WITH DICTIONARY!
+
+    + Possible attitude handshapes for the passive hand. -- 'Tecknad Svenska'
+      mentions (p.51) that fewer handshapes are used for the passive, than for
+      the active hand. -- CHECK WITH DICTIONARY!
 * TODO Add textarea for notes to a transcription               :NICE:FEATURE:
   This is for free text notes to a transcription, and should be loaded/saved
   with the transcription. (This would not, at least initially not, be included
@@ -302,6 +335,11 @@
 * TODO Rename `*Type` -> `*Name`(?)
 * TODO Rename `data-value` -> `data-chr` in glyph selector
   The name of the data attribute is far to vague as it is now.
+* TODO Redraw glyphs
+  Articulation glyph arrows are almost all uneven.
+
+  `rr-fram.svg` had a symmetrical arrow head, but thinner lines than all the
+  other arrows.
 * DONE Field names no longer hilites when glyph is focused     :COSMETIC:BUG:
   CLOSED: [2017-05-04 Thu 16:33]
 * DONE Replace field and cluster names in HTML/CSS
