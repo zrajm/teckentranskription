@@ -1,215 +1,317 @@
 <!doctype html>
+<html>
 <head>
-  <!-- Copyright 2016-2017 by zrajm. Released under GPLv3 license. -->
+  <!-- Copyright 2017 by zrajm. Released under GPLv3 license. -->
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Teckentranskription</title>
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-  <link rel=stylesheet href="index.css">
-  <link rel=stylesheet href="dragula.css">
-  <link rel=license href="LICENSE.txt">
+  <style>
+
+    /* Default font: FreeSans-SWL */
+    @font-face {
+        font-family: "FreeSans-SWL";
+        src: url("freesans-swl.ttf");
+    }
+    html {
+      font-family: "FreeSans-SWL", "FreeSans", sans-serif;
+      line-height: 1.5em;
+      max-width: 44em;
+      margin: 0 auto;
+      background: #888;
+    }
+    body {
+      background: #fff;
+      padding: 1em;
+    }
+
+    body, textarea, button {
+      font-family: inherit;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    blockquote, dl, img, ol, pre, ul { margin: 1em; }
+    header, footer, table { margin: 1em 0; }
+
+    h1, h2, h3, h4, h5, h6, h7 { margin: 1em 0 .5em 0; }
+    p + p { text-indent: 1em; }
+    p + hr { display: none; }
+    hr + p { margin-top: 1em; }
+
+    /* tables */
+    table { border-collapse: collapse; }
+    table[border="1"] th,
+    table[border="1"] td {
+        padding: .2em .4em;
+        border: 1px solid #000;
+    }
+
+    /* don't underline links, unless hovering */
+    [href] { text-decoration: none; }
+    [href]:hover { text-decoration: underline; }
+
+    /* other */
+    .x15 { font-size: 1.5em; }
+    .x2 { font-size: 2em; }
+    .x4 { font-size: 4em; }
+
+
+    .border {
+      border: 1px solid #000;
+    }
+
+
+    /* special for this page */
+    span {
+      line-height: 2.4em;
+      border: 1px solid black;
+      padding: .5em .25em;
+      Xdisplay: inline-block;
+    }
+    span button {
+      font-size: 1.25em;
+    }
+    textarea {
+      padding: 0 .5em;
+      box-sizing: border-box;
+      width: 100%;
+      height: 10em;
+      line-height: 1.5em;
+    }
+  </style>
 </head>
 <body>
-  <noscript>Javascript required.</noscript>
-  <main>
-    <div id=input>
-      <table class=sign>
-        <tr>
-          <td class=fieldvspace></td>
-          <td class="field field-1 hide">
-            <table class="cluster hide" data-num=1>
-              <!-- Cluster type: Ia (type number: 1) -->
-              <tr><td tabindex=1 class="glyph r high">
-              <tr><td tabindex=1 class="glyph a text">
-            </table
-            ><table class="cluster hide" data-num=2>
-              <!-- Cluster type: Ib (type number: 2) -->
-              <tr><td tabindex=1 class="glyph r high">
-              <tr><td tabindex=1 class="glyph h text" rowspan=2>
-                <td tabindex=1 class="glyph ar">
-              <tr><td tabindex=1 class="glyph av">
-            </table>
-          <td class="field field-2 hide">
-            <table class="cluster hide" data-num=3>
-              <!-- Cluster type: IIa (type number: 3) -->
-              <tr><td><td tabindex=1 class="glyph r high">
-              <tr><td tabindex=1 class="glyph ar">
-                <td tabindex=1 class="glyph h text" rowspan=2>
-              <tr><td tabindex=1 class="glyph av">
-            </table
-            ><table class="cluster hide" data-num=4>
-              <!-- Cluster type: IIb (type number: 4) -->
-              <tr><td tabindex=1 class="glyph ina full">
-            </table
-            ><table class="cluster hide" data-num=5>
-              <!-- Cluster type: IIc (type number: 5) -->
-              <tr><td colspan=2 class="high">
-              <tr><td tabindex=1 class="glyph h text" rowspan=2>
-                <td tabindex=1 class="glyph ar">
-              <tr><td tabindex=1 class="glyph av">
-            </table>
-          <td class="field field-3 hide">
-            <table class="cluster hide" data-num=6>
-              <!-- Cluster type: IIIa (type number: 6) -->
-              <tr><td tabindex=1 class="glyph artion_tall full low">
-            </table>
-            <table class="cluster hide" data-num=7>
-              <!-- Cluster type: IIIb (type number: 7) -->
-              <tr><td rowspan=2 class=full>
-                <td tabindex=1 class="glyph artion_high">
-              <tr><td tabindex=1 class="glyph artion_low">
-            </table>
-            <table class="cluster hide" data-num=8>
-              <!-- Cluster type: IIIc (type number: 8) -->
-              <tr><td rowspan=2 class=low><img src="pic/ra-forandras.svg">
-                <td class=high>
-              <tr><td tabindex=1 class="glyph h text">
-            </table>
-            <table class="cluster hide" data-num=9>
-              <!-- Cluster type: IIId (type number: 9) -->
-              <tr><td rowspan=2 class=full>
-                <td tabindex=1 class="glyph artion_low" style="vertical-align:top; padding-top:8px">
-              <tr><td class=low><img src="pic/i-medial-kontakt.svg">
-            </table>
-      </table>
-      <div id=status>
-        Click buttons to add symbols, drag-and-drop to remove and rearrange.
-      </div>
-    </div>
 
-    <table class="uigroup buttons" border=1 title="Artikulationsställe = Läget där där artikulationen realiseras.">
-      <caption>I. Artikulationsställe</caption>
-      <tr><td style="padding:.25em .5em">
-          <button class=cluster data-num=1 title="Ia. Kroppsläge">
-            <table border=0>
-              <tr><td>R
-              <tr><td class=big>A
-            </table>
-          </button>
-          <button class=cluster data-num=2 title="Ib. Vänster/passiv hand vid manuellt läge">
-            <table border=0>
-              <tr><td>R
-              <tr>
-                <td rowspan=2 class=big>H
-                <td>AR
-              <tr><td>AV
-            </table>
-          </button>
-    </table>
+  <textarea placeholder="Skriv här…
+(Använd knapparna nedan för att skriva tecken&shy;symboler.)"
+    class="border x15" style=""></textarea>
 
-    <table class="uigroup buttons" border=1 title="Artikulator = Den hand som agerar / den aktiva handen.">
-      <caption>II. Artikulator</caption>
-      <tr><td style="padding:.25em .5em">
-          <button class=cluster data-num=3 title="IIa. Vänster/aktiv hand vid dubbelartikulation">
-            <table border=0>
-              <tr>
-                <td>
-                <td>R
-              <tr>
-                <td>AR
-                <td rowspan=2 class=big>H
-              <tr>
-                <td>AV
-            </table>
-          </button>
-          <button class=cluster data-num=4 title="IIb. Interaktionsart">
-            <table border=0>
-              <tr><td colspan=2> 
-              <tr>
-                <td rowspan=2 class=big style="max-width:0;overflow:hidden"> 
-                <td style="position:relative;top:-.5em">I
-              <tr><td> 
-            </table>
-          </button>
-          <button class=cluster data-num=5 title="IIc. Höger/aktiv hand">
-            <table border=0>
-              <tr><td colspan=2> 
-              <tr>
-                <td rowspan=2 class=big>H
-                <td>AR
-              <tr><td>AV
-            </table>
-          </button>
-    </table>
+  <span style="background:#f8f;"><!--
+    --><button title="brevid ">◌􌤺</button><!--
+    --><button title="framför">◌􌥛</button><!--
+    --><button title="bakom  ">◌􌤻</button><!--
+    --><button title="ovanför">◌􌤹</button><!--
+    nedanför--><button>◌􌥚</button></span>
 
-    <table class="uigroup buttons" border=1 title="Artikulation = Hur artikulatorn agerar (rörelseriktning, rörelseart och interaktionsart).">
-      <caption>III. Artikulation</caption>
-      <tr><td style="padding:.25em .5em">
-          <!-- FIXME: Flytta 'kontakt' + 'medial kontakt'(?) till separator? -->
-          <button class=cluster data-num=6 class=FIXME title="IIIa. Aktiv hands agerande">
-            <table border=0>
-              <tr><td colspan=2> 
-              <tr>
-                <td rowspan=2 class=big style="max-width:0;overflow:hidden"> 
-                <td>ART-ION
-              <tr><td> 
-            </table>
-          </button>
-          <button class=cluster data-num=7 title="IIIb. Aktiv hands agerande (båge/cirkel/vrids/slås)">
-            <table border=0>
-              <tr><td colspan=2> 
-              <tr>
-                <td rowspan=2 class=big style="max-width:0;overflow:hidden"> 
-                <td>ART
-              <tr><td>ION
-            </table>
-          </button>
-          <button class=cluster data-num=8 title="IIIc. Aktiv hand förändrar handform">
-            <table border=0>
-              <tr><td> 
-              <tr><td><img style="height:65px" src="pic/ra-forandras.svg">
-                <td class=big>H
-            </table>
-          </button>
-          <button class=cluster data-num=9 title="IIId. Medial kontakt (används i äldre transkription)">
-            <table border=0>
-              <tr><td colspan=2> 
-              <tr>
-                <td rowspan=2 class=big style="max-width:0;overflow:hidden"> 
-                <td>RIKT
-              <tr><td><img style="height:17px" src="pic/i-medial-kontakt.svg">
-            </table>
-          </button>
-    </table>
+  <span style="background:#ff8;"><!--
+    --><button title="svagriktad  ">􌥓</button><!--
+    --><button title="starkriktad ">􌥔</button><!--
+    --><button title="framåtriktad">􌤴</button><!--
+    --><button title="bakåtriktad ">􌥕</button><!--
+    --><button title="uppåtriktad ">􌤵</button><!--
+    --><button title="nedåtriktad ">􌥖</button> <!--
+    --><button title="svagvriden  ">􌤶&nbsp;&nbsp;</button><!--
+    --><button title="starkvriden ">􌥗&nbsp;&nbsp;</button><!--
+    --><button title="framåtvriden">􌤷&nbsp;&nbsp;</button><!--
+    --><button title="bakåtvriden ">􌥘&nbsp;&nbsp;</button><!--
+    --><button title="uppåtvriden ">􌤸&nbsp;&nbsp;</button><!--
+    --><button title="nedåtvriden ">􌥙&nbsp;&nbsp;</button></span>
 
-    <table class=uigroup border=1>
-      <tr><td style="padding:.25em .5em; text-align:left">
-          <select class="ui" disabled></select
-            ><button class="ui delete" disabled>Delete</button>
-          <br><input class="ui" placeholder="Save name…"
-            ><button class="ui save">Save</button>
-          <br><button class="ui clear">Clear</button
-            ><button class="ui hide dump debug">Dump</button>
-    </table>
-    <footer>
-      <a href="intro.html" title="Description of the transcription system."
-         >Introduction</a> |
-      <a href="https://github.com/zrajm/teckentranskription/blob/master/README.md"
-         title="What is this page for? Described here!"
-         >About</a> |
-      <a href="https://github.com/zrajm/teckentranskription/issues"
-         title="Is something missing or broken on this page? Report it here!"
-         >Report issue</a> |
-      <a href="https://github.com/zrajm/teckentranskription"
-         title="The GitHub repository of this page."
-         >GitHub</a> |
-      <a href="freesans-swl.html"
-         title="A typeface for sign language transcription."
-         >Unicode Font</a> |
-      <a href="LICENSE.txt" rel=license
-         title="Released under the GNU General Public License, Version 3 (GPLv3)."
-         >License</a>
-      <br>© 2016–2017 zrajm, Uppsala.
-    </footer>
-    <div id=overlay>
-      <!-- Table values are filled in (as needed) by Javascript. -->
-      <table></table>
-    </div>
-  </main>
+  <span style="background:#8f8;"><!--
+    --><button title="ansiktet      ">􌤆</button><!--
+    --><button title="övre ansiktet ">􌤂</button><!--
+    --><button title="undre ansiktet">􌥞</button><!--
+    --><button title="hjässan       ">􌤀</button><!--
+    --><button title="pannan        ">􌤃</button><!--
+    --><button title="ögonen        ">􌤄</button><!--
+    --><button title="ögat          ">􌤅</button><!--
+    --><button title="öronen        ">􌤾</button><!--
+    --><button title="svaga örat    ">􌤈</button><!--
+    --><button title="starka örat   ">􌤇</button><!--
+    --><button title="kinderna      ">􌤉</button><!--
+    --><button title="svaga kinden  ">􌤋</button><!--
+    --><button title="starka kinden ">􌤊</button><!--
+    --><button title="nasan         ">􌤼</button><!--
+    --><button title="munnen        ">􌤌</button><!--
+    --><button title="hakan         ">􌤛</button><!--
+    --><button title="nacken        ">􌤜</button><!--
+    --><button title="halsen        ">􌤞</button><!--
+    --><button title="axlarna       ">􌤠</button><!--
+    --><button title="svaga axeln   ">􌥀</button><!--
+    --><button title="starka axeln  ">􌤡</button><!--
+    --><button title="armen         ">􌥜</button><!--
+    --><button title="överarmen     ">􌤑</button><!--
+    --><button title="underarmen    ">􌤒</button><!--
+    --><button title="bröstet       ">􌤓</button><!--
+    --><button title="svaga bröstet ">􌤕</button><!--
+    --><button title="starka bröstet">􌤔</button><!--
+    --><button title="magen         ">􌤖</button><!--
+    --><button title="höfterna      ">􌤗</button><!--
+    --><button title="svaga höften  ">􌤙</button><!--
+    --><button title="starka höften ">􌤘</button><!--
+    --><button title="benet         ">􌤚</button></span>
+
+  <span style="background:#8f8;"><!--
+    --><button title="a-handen">􌤤</button><!--
+    --><button title="tumvinkelhanden">􌥄</button><!--
+    --><button title="vinkelhanden">􌤣</button><!--
+    --><button title="tumhanden">􌤧</button><!--
+    --><button title="måtthanden">􌥋</button><!--
+    --><button title="raka måtthanden">􌥉</button><!--
+    --><button title="d-handen">􌦫</button><!--
+    --><button title="nyphanden">􌤩</button><!--
+    --><button title="lilla o-handen">􌤎</button><!--
+    --><button title="e-handen">􌥇</button><!--
+    --><button title="f-handen">􌦬</button><!--
+    --><button title="knutna handen">􌤦</button><!--
+    --><button title="stora nyphanden">􌤲</button><!--
+    --><button title="lillfingret">􌤱</button><!--
+    --><button title="flyghanden">􌥑</button><!--
+    --><button title="flata handen">􌤢</button><!--
+    --><button title="flata tumhanden">􌥂</button><!--
+    --><button title="krokfinget">􌤪</button><!--
+    --><button title="k-handen">􌥎</button><!--
+    --><button title="pekfingret">􌥈</button><!--
+    --><button title="l-handen">􌤨</button><!--
+    --><button title="m-handen">􌤿</button><!--
+    --><button title="n-handen">􌥌</button><!--
+    --><button title="o-handen">􌥆</button><!--
+    --><button title="hållhanden">􌤫</button><!--
+    --><button title="q-handen">􌦭</button><!--
+    --><button title="långfingret">􌤬</button><!--
+    --><button title="s-handen">􌥅</button><!--
+    --><button title="klohanden">􌤥</button><!--
+    --><button title="t-handen">􌥊</button><!--
+    --><button title="dubbelkroken">􌤽</button><!--
+    --><button title="böjda tupphanden">􌤯</button><!--
+    --><button title="v-handen">􌤭</button><!--
+    --><button title="tupphanden">􌤮</button><!--
+    --><button title="w-handen">􌤰</button><!--
+    --><button title="x-handen">􌤳</button><!--
+    --><button title="sprethanden">􌥃</button><!--
+    --><button title="stora långfingret">􌥒</button><!--
+    --><button title="runda långfingret">􌥟</button><!--
+    --><button title="4-handen">􌦪</button></span>
+
+  <span style="background:#faa;"><!--
+    --><button title="kontakt">􌤟</button><!--
+    --><button title="hålls stilla">􌦑</button><!--
+    --><button title="förs åt svaga hållet">􌥢</button><!--
+    --><button title="förs åt starka hållet">􌥣</button><!--
+    --><button title="förs i sidled">􌥤</button><!--
+    --><button title="förs framåt">􌦃</button><!--
+    --><button title="förs bakåt">􌦄</button><!--
+    --><button title="förs i djupled">􌥥</button><!--
+    --><button title="förs uppåt">􌥦</button><!--
+    --><button title="förs nedåt">􌥧</button><!--
+    --><button title="förs i höjdled">􌥨</button><!--
+    --><button title="förs kort åt svaga hållet">􌥩</button><!--
+    --><button title="förs kort åt starka hållet">􌥪</button><!--
+    --><button title="förs kort framåt">􌥵</button><!--
+    --><button title="förs kort bakåt">􌥶</button><!--
+    --><button title="förs kort uppåt">􌥷</button><!--
+    --><button title="förs kort nedåt">􌥸</button> <!--
+    --><button title="divergerar">􌥹</button><!--
+    --><button title="konvergerar">􌦅</button><!--
+    --><button title="kors">􌦎</button><!--
+    --><button title="hakning">􌥫</button><!--
+    --><button title="byte">􌥬</button><!--
+    --><button title="entré">􌥭</button><!--
+    --><button title="vinkel">􌥮</button> <!--
+    --><button title="spelar">􌥳</button><!--
+    --><button title="strör">􌥴</button><!--
+    --><button title="böjs (ny)">􌦨</button><!--
+    --><button title="vinkar">􌥺</button><!--
+    --><button title="förändras">􌦆</button><!--
+    --><button title="växelvis">􌦇</button> <!--
+    --><button title="medial kontakt">􌥡&nbsp;&nbsp;</button></span>
+
+  <span style="background:#f8f;"><!--
+    --><button title="båge  ">􌥯</button><!--
+    --><button title="cirkel">􌥰</button><!--
+    --><button title="slås  ">􌥱</button><!--
+    --><button title="vrids ">􌥲</button> <!--
+    --><button title="svagled   ">􌦈&nbsp;&nbsp;</button><!--
+    --><button title="starkled  ">􌥽&nbsp;&nbsp;</button><!--
+    --><button title="sidled    ">􌦉&nbsp;&nbsp;</button><!--
+    --><button title="framåt    ">􌥾&nbsp;&nbsp;</button><!--
+    --><button title="bakåt     ">􌦊&nbsp;&nbsp;</button><!--
+    --><button title="djupled   ">􌦋&nbsp;&nbsp;</button><!--
+    --><button title="uppåt     ">􌥿&nbsp;&nbsp;</button><!--
+    --><button title="nedåt     ">􌦀&nbsp;&nbsp;</button><!--
+    --><button title="höjdled   ">􌦌&nbsp;&nbsp;</button><!--
+    --><button title="mot varann">􌦂&nbsp;&nbsp;</button></span>
+
+  <span style="background:#f8f;"><!--
+    --><button title="upprepning                    ">􌥻</button> <!--
+    --><button title="separator artikulationssekvens">􌥼</button><!--
+    --><button title="separator sammansatt tecken   ">􌥠</button><!--
+    --><button title="separator mellan händer       ">􌦩</button></span>
+
+  <!-- table border=1>
+    <tr align=center class=x2>
+      <td disabled>􌥓􌤶
+      <td disabled>􌥓􌥗
+      <td>􌥓􌤷
+      <td>􌥓􌥘
+      <td>􌥓􌤸
+      <td>􌥓􌥙
+    <tr align=center class=x2>
+      <td disabled>􌥔􌤶
+      <td disabled>􌥔􌥗
+      <td>􌥔􌤷
+      <td>􌥔􌥘
+      <td>􌥔􌤸
+      <td>􌥔􌥙
+    <tr align=center class=x2>
+      <td>􌤴􌤶
+      <td>􌤴􌥗
+      <td disabled>􌤴􌤷
+      <td disabled>􌤴􌥘
+      <td>􌤴􌤸
+      <td>􌤴􌥙
+    <tr align=center class=x2>
+      <td>􌥕􌤶
+      <td>􌥕􌥗
+      <td disabled>􌥕􌤷
+      <td disabled>􌥕􌥘
+      <td>􌥕􌤸
+      <td>􌥕􌥙
+    <tr align=center class=x2>
+      <td>􌤵􌤶
+      <td>􌤵􌥗
+      <td>􌤵􌤷
+      <td>􌤵􌥘
+      <td disabled>􌤵􌤸
+      <td disabled>􌤵􌥙
+    <tr align=center class=x2>
+      <td>􌥖􌤶
+      <td>􌥖􌥗
+      <td>􌥖􌤷
+      <td>􌥖􌥘
+      <td disabled>􌥖􌤸
+      <td disabled>􌥖􌥙
+  </table -->
+
+  <p style="margin-top:1em">Använd fältet/knapparna ovan för att transkribera
+  teckenspråk. För att se resultatet i ett annat program, installera
+  typsnittet <a href="freesans-swl.ttf"><tt>FreeSans-SWL.ttf</tt></a> på din
+  dator och klipp-och-klistra det du skrivit ovan.
+
+  <p>Ladda om sidan för att tömma transkriptionsfältet och börja från början.
+
+  <footer>
+    <a href="intro.html" title="Description of the transcription system."
+       >Introduction</a> |
+    <a href="https://github.com/zrajm/teckentranskription/blob/master/README.md"
+       title="What is this page for? Described here!"
+       >About</a> |
+    <a href="https://github.com/zrajm/teckentranskription/issues"
+       title="Is something missing or broken on this page? Report it here!"
+       >Report issue</a> |
+    <a href="https://github.com/zrajm/teckentranskription"
+       title="The GitHub repository of this page."
+       >GitHub</a> |
+    <a href="freesans-swl.html"
+       title="A typeface for sign language transcription."
+       >Unicode Font</a> |
+    <a href="LICENSE.txt" rel=license
+       title="Released under the GNU General Public License, Version 3 (GPLv3)."
+       >License</a>
+    <br>© 2017 zrajm, Uppsala.
+  </footer>
   <script src="jquery-3.1.1.js"></script>
-  <script src="dragula.js"></script>
-  <script src="clustergui.js"></script>
-  <script src="hashchange.js"></script>
   <script src="index.js"></script>
 </body>
 </html>
