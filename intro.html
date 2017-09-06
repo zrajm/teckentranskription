@@ -1,0 +1,3640 @@
+<!doctype html>
+<html lang=sv class=hyphenate style="visibility:visible">
+<head>
+  <!-- Copyright 2017 by zrajm. Released under GPLv3 license. -->
+  <!--
+      FIXME: Checkboxes should mark items in tables.
+
+      FIXME: Beskriv i 'referenser' att 'Teckenspråkstranskription' et al.
+      kommer av varandra
+
+      FIXME: all mentions of a reference should be a link to the reference section
+
+      FIXME: Replace source text with <details> + source in <summary>
+
+      FIXME: Descriptions of glyphs Lilla A-handen et al glyps occuring in
+      "Kompendium in teckenspråkstranskription".
+
+      FIXME: Transcription of 'camera' should be described in the rules (has both
+      body position + passive hand) http://teckensprakslexikon.su.se/ord/03672
+
+      FIXME: Handshape images (of hands) should be floated right in the table,
+      rather that be in td tags (this allows the unfolding text use the full
+      table width).
+
+      FIXME: Details tags for sources should have some kinda border.
+
+      FIXME: Expand/collapse should cycle through: All detals collapsed, all
+      details without 'closed' attribute opened, ALL details opened.
+
+    -->
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Teckenskrift</title>
+  <link rel=stylesheet href="index.css">
+  <link rel=license href="LICENSE.txt">
+  <style>
+
+    /* Default font: FreeSans-SWL */
+    @font-face {
+        font-family: "FreeSans-SWL";
+        src: url("freesans-swl.ttf");
+    }
+    html { font-family: "FreeSans-SWL", "FreeSans", sans-serif; }
+    body, textarea, button { font-family: inherit; }
+
+    .x2 { font-size: 2em; line-height:  50px !important; }
+    .x4 { font-size: 4em; line-height: 100px !important; }
+
+    a[href^="#ref"] { font-style: italic; }
+    a[href^="http://teckensprakslexikon.su.se/ord/"],
+    i.sign {
+        font-style: normal;
+        font-weight: bold;
+        font-variant: small-caps;
+    }
+
+    blockquote p:first-child:before { content: open-quote;}
+    blockquote p:last-child:after { content: close-quote; }
+
+    blockquote cite { font-style: inherit; }
+    blockquote cite:before { content: "["; }
+    blockquote cite:after { content: "]"; }
+
+    .hilite { background: #ddd; }
+
+    label {
+        cursor: pointer;
+    }
+
+    p + hr { display: none; }
+
+    a { text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .FIXME { background: yellow; font-weight: bold; }
+    :not(td,tr).FIXME:before { content: "FIXME: "; }
+    .FIXME:empty:before { content: "FIXME"; }
+
+    html { overflow-y: scroll; }
+
+    .float-left, .float-right {
+        float: left;
+        height: 3em !important;
+        border: 1px solid #888;
+        padding: 2px !important;
+        margin-right: 10px !important;
+        margin-top: 5px !important;
+    }
+    .float-right { float: right; }
+
+    p + p {
+        margin-top: -1em;
+        text-indent: 1em;
+    }
+
+    div.space {
+        margin: 1em;
+        margin-right: 0;
+    }
+
+    details.button {
+        border: 2px solid #aaa;
+        border-radius: 2px;
+        padding: 0;
+    }
+    details.button summary {
+        background: #aaa;
+        margin: 0;
+        padding: 6px 13px;
+    }
+    details summary h1 {
+        display: inline;
+    }
+
+    p.hanging, .hanging p {
+        text-indent: -1em;
+        padding-left: 1em;
+    }
+
+    dl {
+        margin: 1em 0;
+        padding-left: 1em;
+    }
+    dl dt:before {
+        display: block;
+        content: "";
+    }
+    dl dt {
+        margin-left: -1em;
+        display: inline;
+        font-weight: bold;
+    }
+    dl dd:before {
+        display: inline;
+        content: "– ";
+    }
+    dl dd {
+        display: inline;
+    }
+
+    p > img[src$=".svg"] {
+        position:relative;
+        top: .01em;
+        max-height: .8em;
+        padding: 0 .05em;
+    }
+    table.struktur td {
+        vertical-align: top;
+    }
+
+    table[border="1"] td {
+        border: 1px solid black;
+    }
+
+    table[border="0"],
+    table[border="0"] td {
+        margin-left: 1em;
+        border: none !important;
+        height: initial !important;
+        line-height: initial !important;
+    }
+
+    sup {
+        line-height: 25px;
+        font-size: 80%;
+        vertical-align: top;
+        position: relative;
+        top: -5px;
+    }
+
+    table, .columns2 figure {
+              column-break-inside: avoid;
+         -moz-column-break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+    }
+
+    div.columns details:after {
+        Xbackground: red;
+    }
+
+    div.columns2 {
+        border: 1px solid blue;
+    }
+
+    .columns2, .columns {
+                column-count: auto;
+           -moz-column-count: auto;
+        -webkit-column-count: auto;
+                column-gap: 12px;
+           -moz-column-gap: 12px;
+        -webkit-column-gap: 12px;
+                column-width: 370px;
+           -moz-column-width: 370px;
+        -webkit-column-width: 370px;
+    }
+    .columns > table {
+        border-collapse: collapse;
+        border: 1px solid black;
+        margin-bottom: 4px;
+        width: 100%;
+    }
+    .columns > table >         tr > th,
+    .columns > table >         tr > td,
+    .columns > table > tbody > tr > th,
+    .columns > table > tbody > tr > td {
+        line-height: 25px;
+        box-sizing: content-box;
+        height: 50px;
+        padding: 2px;
+    }
+    .columns > table >         tr > th,
+    .columns > table > tbody > tr > th {
+        text-align: left;
+        background: #ccc;
+    }
+    .columns > table >         tr > td.txt,
+    .columns > table > tbody > tr > td.txt {
+        width: 100%;
+    }
+    .columns > table >         tr > td.img:first-child,
+    .columns > table > tbody > tr > td.img:first-child {
+        min-width: 45px;
+    }
+    .columns > table >         tr > td.img,
+    .columns > table > tbody > tr > td.img {
+        text-align: center;
+        vertical-align: top;
+    }
+    .columns > table >         tr > td > img,
+    .columns > table > tbody > tr > td > img {
+        display: block;
+        height: 100%;
+        padding: 2.5px;
+        margin: auto;
+    }
+    .columns > table >         tr > td > img[src^="pic/hand/"],
+    .columns > table > tbody > tr > td > img[src^="pic/hand/"],
+    .columns > table >         tr > td > img[src^="pic/x/"],
+    .columns > table > tbody > tr > td > img[src^="pic/x/"] {
+        padding: 0;
+    }
+    .columns > table >         tr > td:last-child,
+    .columns > table > tbody > tr > td:last-child {
+        padding-right: 4px;
+    }
+
+    th > details { font-weight: normal; }
+    th > details > summary { font-weight: bold; }
+
+    table.attityd {
+        border-collapse: collapse;
+    }
+    table.attityd th,
+    table.attityd td {
+        height: 45px;
+        padding: 4px;
+        border: 1px solid black;
+    }
+    table.attityd img {
+        max-width: 20px;
+        max-height: 20px;
+        display: block;
+        margin: 0 auto;
+    }
+    table.attityd th,
+    table.attityd td { text-align: center; }
+    table.attityd td.symbol { width: 45px; }
+  </style>
+</head>
+<body lang=sv>
+  <main>
+
+    <p><b>Notera:</b> Nedanstående text är i beta. Gult markerar partier är
+    under aktiv omarbetning. Kommentarer och förslag mottages gärna
+    av <i><a href="mailto:zrajm@zrajm.org">zrajm@zrajm.org</a></i>.
+
+    <details>
+      <summary><h1>Teckenskrift</h1></summary>
+
+      <p>Teckenskrift<a href="#noty1"><sup>1</sup></a> är ett alfabet för
+      svenskt teckenspråk.
+
+      <p>Det en fonematisk skrift, till för att skriva ner den manuella
+      komponenten (det händerna gör) då man tecknar, men inkluderar inte övrig
+      information (såsom kroppsposition och ansiktsrörelser). – Med andra ord
+      lämpar den sig bäst för att skriva ner hur något tecknas i grova drag,
+      men vill du göra en smal fonetisk transkription av ett enskilt yttrande
+      behöver den kompletteras med annan notation.
+
+      <p>Min avsikt med det här sidan är att ge dig en introduktion till hur
+      teckenskrift används, men också att vara en referens där du snabbt kan
+      slå upp någon enskild detalj när så behövs. De olika sektionerna är
+      inledningsvis kollapsade för att ge dig överblick, klicka på en sektion
+      för att expandera den, eller klicka den lilla ”Expandera allt”-ikonen
+      högst upp till höger om du vill läsa sidan från start till slut.
+
+      <aside class=hanging>
+        <p id=noty1><sup>1</sup> Ordet ”teckenskrift” används
+        i <a href="#ref1977">Tecknad Svenska</a> som namn på
+        teckenspråkstranskriptionssystemet och eftersom det är ett kort och bra
+        ord så jag använder det här. :)
+      </aside>
+    </details>
+
+    <section>
+        <!--summary><h1>Övergripande struktur</h1></summary-->
+
+      <p>Det finns tre fält (I–III) som vart och ett beskriver de tre olika
+      aspekterna av ett teckens uttal:
+
+      <figure>
+        <table border=1 style="border-collapse:separate;border:0">
+          <tr style=color:#888>
+            <td style=border:0>I
+            <td style=border:0>II
+            <td style=border:0>III
+          <tr class=x4>
+            <td style=border-color:#888>􌤆
+            <td style=border-color:#888>􌥈􌥕􌥙
+            <td style=border-color:#888>􌥰􌥿
+        </table>
+        <figcaption><a href=02544>ansikte</a></figcaption>
+      </figure>
+
+      <div class=space>
+        <section><details open>
+          <summary><h1>I. Artikulationsställe – läge/plats</h1></summary>
+
+          <p>Artikulationsstället är den plats där den aktiva handen befinner
+          sig då ett tecken utförs.
+
+          <p>Vid handläge är den ena handen är passiv och den andra aktiv. Vid
+          dubbelartikulation är båda händerna aktiva, och handläge är därför
+          inte möjligt.
+
+          <p>Kroppsläge är möjligt i kombination med alla sorters tecken.
+
+          <div class=space>
+
+            <section><details>
+              <summary><h1>Relationssymboler</h1></summary>
+
+              <p>Relationssymbolerna placeras ovanför lägessymbolen, eller (i
+              dubbelartikulation) ovanför symbolen för den icke-dominanta handen.
+              Symbolen beskriver var den dominanta handen befinner sig i
+              förhållande till till symbolen med relationstecknet. (Med andra
+              ord, om relationstecknet är <i>ovanför</i> (◌􌤹) så betyder det att
+              den dominanta är ovanför den andra handen/kroppsläget.
+
+              <figure columns>
+                <table class=attityd>
+                  <tr><td>◌􌤹<th style="text-align:left">över
+                    <td style="border:0;text-align:left">(Underförstådd vid passiv hand.)
+                  <tr><td>◌􌥚<th style="text-align:left">under
+                  <tr><td>◌􌤺<th style="text-align:left">bredvid
+                    <td style="border:0;text-align:left">(Underförstådd vid dubbel artikulator.)
+                  <tr><td>◌􌥛<th style="text-align:left">framför
+                  <tr><td>◌􌤻<th style="text-align:left">bakom
+                </table>
+                <figcaption>Ordningen ovan är densamma som
+                  i <a href="#ref1997">Svenskt
+                  teckenspråkslexikon</a>.</figcaption>
+              </figure>
+
+              <p>Om ingen relationssymbol är utskriven, så antages <i>brevid</i>
+              (◌􌤺) vid dubbelartikulationer och <i>över</i> (◌􌤹) vid tvåhandstecken
+              med en handläge.
+
+              <figure class=FIXME>Exempel med passiv hand</figure>
+
+              <figure class=FIXME>Exempel med kroppsläge</figure>
+
+              <figure>
+                <span class=x4>􌤒􌤹􌥔􌥙􌤢􌤴􌤸􌥢􌥲􌦀􌥼􌤟</span>
+                <figcaption><a href=00157>Behärska</a> – Flata handen,
+                framåtriktad och uppåtvänd, förs åt vänster samtidigt som den
+                vrids nedåt till kontakt ovanpå underarmen, högerriktad och
+                nedåtvänd.</figcaption>
+              </figure>
+            </details></section>
+
+            <section><details>
+              <summary><h1 id=kroppslage>Kroppsläge</h1></summary>
+
+              <div class=space>
+                <details class=button closed>
+                  <summary>Exempel</summary>
+
+                  <figure>
+                    <span class=x4>􌤕􌤢􌥓􌥙􌤟</span>
+                    <figcaption><a href=00958>ha</a></figcaption>
+                  </figure>
+
+                  <figure class=FIXME>Neutrala läget</figure>
+
+                  <figure class=FIXME>Dubbelartikulation med dubblad kroppslägessymbol</figure>
+
+                  <figure class=FIXME>Underarm med attitydsymboler</figure>
+
+                </details>
+              </div>
+
+              <figure>
+                <label class=l1977><input type=checkbox checked>
+                  <a href="#ref1977">Tecknad svenska</a> (1977)</label>
+                <label class=h1><input type=checkbox checked>
+                  Enhandslägen</label>
+                <label class=h2><input type=checkbox checked>
+                  Tvåhandslägen</label>
+
+                <div class=columns>
+                <table class=item>
+                  <tr class="h1 h2">
+                    <td class="img x2 l1977"> 
+                    <td class="txt l1977">
+                      <details closed>
+                        <summary>Neutrala läget (ingen symbol)</summary>
+
+                        <p>Neutrala läget representeras av frånvaron av
+                        artikulationsställe, och har således ingen egen symbol i
+                        teckenskriften.
+
+                <h1 id=neutrala_laget>Utelämnat artikulationsställe</h1>
+
+                <p>Om artikulationsstället är utelämnat avses det <i>neutrala
+                  läget</i> – det området framför kroppen där händerna lättast
+                  befinner sig när armarna är böjda i armbågarna.
+
+                        <hr>
+                        <p>”I <i class=sign>du</i> och <i class=sign>teckna</i>
+                        används ett mycket vanligt artikulationsställe, som fått
+                        beteckningen det neutrala artikulationsstället. Det är
+                        alltså inte någon del av kroppen, utan det område framför
+                        kroppen där händerna rör sig lätt och naturligt. Detta
+                        läge är inte exakt avgränsat och händernas placering inom
+                        detta varierar, t ex beroende på om man sitter eller
+                        står.” [<a href="#ref1977">Tecknad svenska</a> s.34]
+
+                        <hr>
+                        <p>”<b>Det neutrala läget</b> har redan omnämnts i samband
+                        med t ex aspektbeskrivningen i detta kapitels inledning.
+                        Neutrala läget är alltså hela området framför kroppen där
+                        händerna rör sig naturligt. Det begränsas uppåt ungefär i
+                        höjd med axlarna, där det redan omnämnda lägeskiremet
+                        ansiktet vidtar. — Det är i detta område den vänstra
+                        handen befinner sig när den fungerar som
+                        artikulationsställe. Det neutrala lägeskiremet
+                        ’neutraliseras’ då av den vänstra handen som så att säga
+                        övertar aspektfunktionen artikulationsställe.” [<i>Tecknad
+                        svenska</i> s.56–57]
+                      </details>
+                </table><table class=item>
+                  <tr>
+                    <td class="img x2 l1977">􌤆
+                    <td class="txt l1977">
+                      <details closed>
+                        <summary>Ansiktet / huvudhöjd</summary>
+
+                        <p>Används för tecken utan kontakt.
+                        <p>Används till både en- och tvåhandstecken.
+
+                        <hr>
+                        <p>”<b>Ansiktet</b> har två varianter. Den ena utnyttjas
+                        i tecken som <i class=sign>sol</i> och är påtagligt nära
+                        ansiktet, medan den andra varianten inte har samma närhet
+                        till ansiktet. Den är mera antydningsvis orienterad till
+                        huvudet eller vid sidan av huvudet. I teckenböckernas
+                        beskrivningar av tecken med detta artikulationsställe
+                        kallas det ofta <i>”i huvudhöjd”,</i> vilket
+                        markerar att det är skilt från det (lägre) neutrala
+                        artikulationsstället.” [<a href="#ref1977">Tecknad svenska</a> s.54]
+                      </details>
+                </table><table class=item>
+                  <tr>
+                    <td class="img x2 l1977">􌤂
+                    <td class="txt l1977">
+                      <details closed>
+                        <summary>Övre delen av ansiktet</summary>
+
+                        <p>Används för tecken utan kontakt.
+                        <p>Används till både en- och tvåhandstecken.
+
+                        <hr>
+                        <p>”<b>Övre ansiktet</b> är ett läge i höjd med pannan
+                        och ögonen, medan <b>nedre ansiktet</b> är mera i nivå
+                        med munnen och hakan. I informellt tecknande kan båda
+                        lägena förskjutas nedåt, så att tecken med övre läget
+                        realiseras i munhöjd, medan de med nedre läget realiseras
+                        i brösthöjd — men med bibehållen distinktion mellan ett
+                        högre och ett lägre ställe.” [<a href="#ref1977">Tecknad svenska</a>
+                        s.54]
+                      </details>
+                </table><table class=item>
+                  <tr>
+                    <td class="img x2 l1977">􌥞
+                    <td class="txt l1977">
+                      <details closed>
+                        <summary>Nedre delen av ansiktet</summary>
+
+                        <p>Används för tecken utan kontakt.
+                        <p>Används till både en- och tvåhandstecken.
+
+                        <hr>
+                        <p>”<b>Övre ansiktet</b> är ett läge i höjd med pannan
+                        och ögonen, medan <b>nedre ansiktet</b> är mera i nivå
+                        med munnen och hakan. I informellt tecknande kan båda
+                        lägena förskjutas nedåt, så att tecken med övre läget
+                        realiseras i munhöjd, medan de med nedre läget realiseras
+                        i brösthöjd — men med bibehållen distinktion mellan ett
+                        högre och ett lägre ställe.” [<a href="#ref1977">Tecknad svenska</a>
+                        s.54]
+                      </details>
+                </table><table class=item>
+                  <tr class="h1 h2">
+                    <td class="img x2 l1977">􌤀
+                    <td class="txt l1977">
+                      <details closed>
+                        <summary>Hjässan</summary>
+
+                        <p>Används till både en- och tvåhandstecken.
+
+                        <hr>
+                        <p>”<b>Hjässan</b> som lägeskirem utgörs av hela
+                        överdelen av huvudet fram till och med hårfästet. Hjässan
+                        förekommer endast i ett litet antal tecken.” [<i>Tecknad
+                        svenska</i> s.52]
+                      </details>
+                </table><table class=item>
+                  <tr>
+                    <td class="img x2 l1977">􌤃
+                    <td class="txt l1977">
+                      <details closed>
+                        <summary>Pannan</summary>
+
+                        <p>Används till både en- och tvåhandstecken.
+
+                        <p><b>Pannan</b> tar vid där hjässan slutar och omfattar
+                        även ögonbrynen, som alltså inte är ett eget lägeskirem.
+                        Pannan tillskrivs traditionellt en viss betydelseladdning
+                        då tecken som uttrycker någon form av intellektuell
+                        verksamhet (eller avsaknaden av sådan) väljer pannan som
+                        lägeskirem. Bland dem finns <i class=sign>veta</i>,
+                        <i class=sign>tänka</i>, <i class=sign>klok</i>,
+                        <i class=sign>dum</i>, <i class=sign>korttänkt</i>.
+                        Alla tecken som har läget pannan, har givetvis inte denna
+                        betydelsekomponent (<i class=sign>läder</i>,
+                        <i class=sign>gammal</i>, <i class=sign>bonde</i>).
+                        [<a href="#ref1977">Tecknad svenska</a> s.52]
+                      </details>
+                </table><table class=item>
+                  <tr class=h2>
+                    <td class="img x2">􌤄
+                    <td class="txt">
+                      <details closed>
+                        <summary>Ögonen</summary>
+
+                        <p>Används endast till tvåhandstecken. Till exempel:
+                        􌤄􌤯􌤵􌥘􌤯􌤵􌥘􌥧 <a href=04445>mycket trött</a> och
+                        􌤄􌥔􌥘􌥌􌥌􌥓􌥘􌥹􌥼􌥻 <a href=08641>smink</a>.
+                      </details>
+                </table><table class=item>
+                  <tr>
+                    <td class="img x2">􌤅
+                    <td class="txt">
+                      <details closed>
+                        <summary>Ögat</summary>
+
+                        <p>Används endast till enhandstecken.
+                      </details>
+                </table><table class=item>
+                  <tr class=h2>
+                    <td class="img x2 l1977">􌤾
+                    <td class="txt l1977">
+                      <details closed>
+                        <summary>Öronen / sidorna av huvudet</summary>
+
+                        <p>Används endast till tvåhandstecken.
+                      </details>
+                </table><table class=item>
+                  <tr>
+                    <td class="img x2">􌤈
+                    <td class="txt">
+                      <details closed>
+                        <summary>Svaga örat / sidan av huvudet</summary>
+
+                        <p>Används endast till enhandstecken.
+
+                        <p>Transkriptionssymbolen är ovanlig, har endast funnit
+                        ett ord i <i>Svenskt teckenspråkslexikon</i> där den
+                        används:
+                        􌤇􌤪􌤵􌤶􌥢􌥼􌤟􌥠􌤈􌤪􌤵􌤶􌤟􌥼􌥢􌥱􌦈 <a href=03480>ignorera</a>/<a href=16651>strunta
+                        i</a>
+                      </details>
+                </table><table class=item>
+                  <tr>
+                    <td class="img x2 l1977">􌤇
+                    <td class="txt l1977">
+                      <details closed>
+                        <summary>Starka örat / sidan av huvudet</summary>
+
+                        <p><b>Örat</b> som kirem är inte bara själva örat, utan
+                        hela sidan av huvudet. Det säger sig självt att tecken
+                        som till sin innebörd kan knytas till hörselsinnet (och
+                        dess frånvaro) gärna placerat vid örat: <i class=sign>höra</i>,
+                        <i class=sign>döv</i>, <i class=sign>lyssna</i>,
+                        <i class=sign>ljud</i>. [<a href="#ref1977">Tecknad svenska</a> s.52]
+                      </details>
+                </table><table class=item>
+                  <tr class=h2>
+                    <td class="img x2 l1977">􌤉
+                    <td class="txt l1977">
+                      <details closed>
+                        <summary>Kinderna<a href="#note1"><sup>2</sup></a></summary>
+                      </details>
+                </table><table class=item>
+                  <tr>
+                    <td class="img x2">􌤋
+                    <td class="txt">
+                      <details closed>
+                        <summary>Svaga kinden</summary>
+                      </details>
+                </table><table class=item>
+                  <tr>
+                    <td class="img x2 l1977">􌤊
+                    <td class="txt l1977">
+                      <details closed>
+                        <summary>Starka kinden</summary>
+
+                        <p><b>Kinden</b> är kanske ett av de mer ointuitiva
+                        lägeskiremen så tillvida att det omfattar flera delar av
+                        ansiktet: kind, tinning, öga och näsa, dvs nästan hela
+                        partiet mellan pannan och munnen. Några tecken som
+                        spontant tillskrivs läget ögonen har egentligen kinden
+                        som ställe, <i class=sign>gråta</i> är ett sådant
+                        exempel. Vi vet att tårarna kommer från ögonen, så som
+                        tecknets form anger, men vad fingrarna visar i tecknet är
+                        hur tårarna rinner ned utefter kinderna. — Lägeskiremet
+                        kinden är ett exempel på det som tidigare diskuterades,
+                        nämligen att trots att man kan identifiera flera olika
+                        ansiktspartier med egna benämningar kan de inte skiljas
+                        åt som kirem. De kontrasterar mot de övriga lägena men
+                        inte inbördes. [<a href="#ref1977">Tecknad svenska</a> s.52]
+                      </details>
+                </table><table class=item>
+                  <tr class="h1 h2">
+                    <td class="img x2 l1977">􌤼
+                    <td class="txt l1977">
+                      <details closed>
+                        <summary>Näsan</summary>
+
+                        <p>Används till både en- och tvåhandstecken (jag har
+                        dock endast funnit ett tvåhandstecken med 􌤼 i
+                        <a href="#refweb">Svenskt teckenspråkslexikon</a>,
+                        nämligen: 􌤼􌤵􌥗􌤦􌤻􌤦􌤵􌤶􌤟􌥱􌦂􌥼􌥻 <a href="02127">skvallra</a>).
+                      </details>
+                </table><table class=item>
+                  <tr>
+                    <td class="img x2 l1977">􌤌
+                    <td class="txt l1977">
+                      <details closed>
+                        <summary>Munnen</summary>
+
+                        <details closed>
+                          <summary>[<a href="#ref1977">Tecknad svenska</a>
+                          s.52, 54]</summary>
+
+                          <p>”<b>Munnen</b> är inte bara läpparna utan också
+                          mungiporna och litet av området omkring munnen. Något
+                          enstaka tecken utnyttjar tänderna som läge, men
+                          kirematiskt sett är de endast en variant till
+                          lägeskiremet munnen. I tecken där artikulatorn skall
+                          ha kontakt med själva munnen kan en tecknande ses
+                          sänka handen något, så att den i stället placeras
+                          nedanför munnen. Det beror i regel på att man inte
+                          vill att munnen skall vara skymd, då det förhindrar
+                          avläsningen av det samtidigt uttalade ordet.”
+                        </details>
+                      </details>
+                </table><table class=item>
+                  <tr>
+                    <td class="img x2 l1977">􌤛
+                    <td class="txt l1977">
+                      <details closed>
+                        <summary>Hakan</summary>
+
+                        <details closed>
+                          <summary>[<a href="#ref1977">Tecknad svenska</a>
+                          s.54]</summary>
+
+                          <p>”<b>Hakan</b> är trots närheten till munnen ett
+                          eget kirem. Det kan tyckas märkligt att mun och haka
+                          kan skiljas åt när exv inte de olika varianterna av
+                          läget kinden är olika kirem, men ett teckenpar
+                          som <i class=sign>avläsa</i> (mun- eller
+                          läppavläsning) och <i class=sign>jude</i> visar
+                          tydligt hur mun och haka kontrasterar […].”
+                        </details>
+                      </details>
+                </table><table class=item>
+                  <tr>
+                    <td class="img x2">􌤜
+                    <td class="txt">
+                      <details closed>
+                        <summary>Nacken</summary>
+                      </details>
+                </table><table class=item>
+                  <tr>
+                    <td class="img x2 l1977">􌤞
+                    <td class="txt l1977">
+                      <details closed>
+                        <summary>Halsen</summary>
+
+                        <p>”<b>Halsen</b> har två varianter, dels framsidan av
+                          halsen med struphuvudet och dels sidan av halsen. Den
+                          högerhänte använder normalt den högra sidan.
+                          [<a href="#ref1977">Tecknad svenska</a> s.54]
+                      </details>
+                </table><table class=item>
+                  <tr class=h2>
+                    <td class="img x2">􌤠
+                    <td class="txt">
+                      <details closed>
+                        <summary>Axlarna<a href="#note1"><sup>2</sup></a></summary>
+
+                        <p>”Axlarna förekommer bara i ett litet antal tecken. I
+                        tecken med <b>enkel</b> artikulator används såväl vänster
+                        som höger axel, men inget tecken har belagts där båda
+                        axlarna utnyttjas. När så är fallet, har tecknen alltid
+                        dubbel artikulator. Axlarnas lägeskirem är två (inte tre
+                        som för bröstet): <b>höger axel</b> och <b>vänster
+                        axel</b>. Valet av axel är i tecknad svenska inte lämnat
+                        till den enskilde teckenanvändaren utan är alltid givet
+                        för varje tecken.” [<a href="#ref1977">Tecknad svenska</a> s.56]
+                      </details>
+                </table><table class=item>
+                  <tr>
+                    <td class="img x2 l1977">􌥀
+                    <td class="txt l1977">
+                      <details closed>
+                        <summary>Svaga axeln</summary>
+
+                        <p>”Axlarna förekommer bara i ett litet antal tecken. I
+                        tecken med <b>enkel</b> artikulator används såväl vänster
+                        som höger axel, men inget tecken har belagts där båda
+                        axlarna utnyttjas. När så är fallet, har tecknen alltid
+                        dubbel artikulator. Axlarnas lägeskirem är två (inte tre
+                        som för bröstet): <b>höger axel</b> och <b>vänster
+                        axel</b>. Valet av axel är i tecknad svenska inte lämnat
+                        till den enskilde teckenanvändaren utan är alltid givet
+                        för varje tecken.” [<a href="#ref1977">Tecknad svenska</a> s.56]
+                      </details>
+                </table><table class=item>
+                  <tr>
+                    <td class="img x2 l1977">􌤡
+                    <td class="txt l1977">
+                      <details closed>
+                        <summary>Starka axeln</summary>
+
+                        <p>”Axlarna förekommer bara i ett litet antal tecken. I
+                        tecken med <b>enkel</b> artikulator används såväl vänster
+                        som höger axel, men inget tecken har belagts där båda
+                        axlarna utnyttjas. När så är fallet, har tecknen alltid
+                        dubbel artikulator. Axlarnas lägeskirem är två (inte tre
+                        som för bröstet): <b>höger axel</b> och <b>vänster
+                        axel</b>. Valet av axel är i tecknad svenska inte lämnat
+                        till den enskilde teckenanvändaren utan är alltid givet
+                        för varje tecken.” [<a href="#ref1977">Tecknad svenska</a> s.56]
+                      </details>
+                </table><table class=item>
+                  <tr>
+                    <td class="img x2 l1977">􌥜
+                    <td class="txt l1977">
+                      <details closed>
+                        <summary>Armen</summary>
+
+                        <p>Den här symbolen används i <a href="#ref1977">Tecknad svenska</a> för
+                        både över- och underarm. <span class=FIXME>Men i senare
+                        verk används separata symboler för dessa.</span>
+
+                        <hr>
+                        <p>”<i>’Armen’</i> är inte ett eget kirem enligt analysen
+                        utan två olika kirem, överarmen och underarmen. Men det
+                        räcker med en gemensam symbol för dem eftersom underarmen
+                        till skillnad från överarmen alltid måste ha
+                        attitydbeskrivning och därigenom kan inte förväxling
+                        ske.” [<a href="#ref1977">Tecknad svenska</a> s.81]
+
+                      </details>
+                </table><table class=item>
+                  <tr>
+                    <td class="img x2">􌤑
+                    <td class="txt">
+                      <details closed>
+                        <summary>Överarmen</summary>
+
+                        <p>”<b>Överarmen</b> är partiet mellan axeln och
+                        armbågen.” [<a href="#ref1977">Tecknad svenska</a> s.56]
+                      </details>
+                </table><table class=item>
+                  <tr>
+                    <td class="img x2">􌤒
+                    <td class="txt">
+                      <details closed>
+                        <summary>Underarmen</summary>
+
+                        <p>Följs av attitydsymboler (på samma sätt som en passiv
+                        hand).
+
+                        <p>”<b>Underarmen</b> omfattar även handleden. Underarmen
+                        skiljer sig från de övriga kroppslägeskiremen genom att
+                        den är rörlig och kan hållas på flera olika sätt — den
+                        kräver attitydbeskrivning. Av riktningarna är bara fram,
+                        upp och vänster belagda medan vridningen som beskrivs med
+                        referens till armens insida, visar större variation.
+                        Underarmen som ställe måste alltså alltid kompletteras i
+                        teckenbeskrivningen med attitydangivelse till skillnad
+                        från överarmen som i sin funktion av artikulationsställe
+                        inte behöver det.
+
+                        <p>I tecken med underarmen som lägesbeskrivning intar
+                        handen alltid en omarkerad form, dvs den är helt
+                        avslappnad och har ingen funktion i tecknet.” [<i>Tecknad
+                        svenska</i> s.56]
+                      </details>
+                </table><table class=item>
+                  <tr class="h1 h2">
+                    <td class="img x2 l1977">􌤓
+                    <td class="txt l1977">
+                      <details closed>
+                        <summary>Bröstet<a href="#note1"><sup>2</sup></a></summary>
+
+                        <p>”<b>Bröstet</b> är partiet mellan halsen och
+                        mellangärdet. I tecken med enkel artikulator placeras
+                        handen <b>mitt på</b> bröstet, men för tecken med dubbel
+                        artikulator krävs ett större utrymme om båda händerna
+                        skall artikulera samtidigt. Dessa teckens utförande tar
+                        då <b>båda sidorna</b> av bröstet i anspråk.
+                        Tecknen <i class=sign>skön</i> och <i class=sign>bada</i>
+                        […] illustrerar de två varianterna av bröstet.”
+                        [<a href="#ref1977">Tecknad svenska</a> s.54]
+                      </details>
+                </table><table class=item>
+                  <tr>
+                    <td class="img x2 l1977">􌤕
+                    <td class="txt l1977">
+                      <details closed>
+                        <summary>Svaga sidan av bröstet</summary>
+
+                        <p>”<b>Vänster sida av bröstet</b> eller <b>hjärtat</b>
+                        är dessutom ett eget lägeskirem, trots att den också
+                        ingår som en del av föregående kirems varianter (som dock
+                        var betingad av dubbel artikulator). En hand som spretas
+                        uppåt på vänster sida av bröstet ger
+                        tecknet <i class=sign>förtjust</i>. Om detta ställe
+                        utbyts mot (mitt på) bröstet betyder det i
+                        stället <i class=sign>förkyld</i>.” [<i>Tecknad
+                        svenska</i> s.54, 56]
+                      </details>
+                </table><table class=item>
+                  <tr>
+                    <td class="img x2 l1977">􌤔
+                    <td class="txt l1977">
+                      <details closed>
+                        <summary>Starka sidan av bröstet</summary>
+
+                        <p>”<b>Höger sida av bröstet</b> fungerar också den som
+                        ett eget kirem. Att vänster sida gör det, skulle kunna
+                        förklaras av att hjärtat attraherar en del teckens val av
+                        ställe, men förekomsten av den högra sidan som lägeskirem
+                        kan inte förklaras med hänvisning till något speciellt
+                        organ eller någon viss kroppsdel. Hur höger sida
+                        kontrasterar mot vänster sida visar
+                        tecknen <i class=sign>konsulent</i>
+                        och <i class=sign>minister</i> […], och skillnaden mellan
+                        bröstet och höger sida demonstreras
+                        av <i class=sign>skön</i> och <i class=sign>fattig</i>”
+                        [<a href="#ref1977">Tecknad svenska</a> s.56]
+                      </details>
+                </table><table class=item>
+                  <tr>
+                    <td class="img x2 l1977">􌤖
+                    <td class="txt l1977">
+                      <details closed>
+                        <summary>Magen / mellangärdet</summary>
+
+                        <p>”<b>Magen</b> har valts som beteckning för ett
+                        lägeskirem som rymmer många varianter som alla är olika
+                        kroppsdelar: mellangärdet, magen, midjan, höften — till
+                        och med låren och benen ingår här. Det korrekta
+                        utförandet av tecknet <i class=sign>hund</i> är en
+                        klappande rörelse mot låret. Men om den tecknande sitter
+                        eller syns endast till en del av någon annan anledning
+                        antyds endast detta läge och handen klappar mot ett tänkt
+                        ben i midjehöjd. Tecknet uppfattas ändå som hund. Det har
+                        inte varit möjligt att hitta några kontrasterande
+                        teckenpar inom denna jämförelsevis heterogena grupp, som
+                        dock utåt gentemot de andra lägeskiremen fungerar som en
+                        enhetlig uppsättning, i och med att de kontrasterar mot
+                        dessa lägen.” [<a href="#ref1977">Tecknad svenska</a> s.56]
+                      </details>
+                </table><table class=item>
+                  <tr class=h2>
+                    <td class="img x2">􌤗
+                    <td class="txt">
+                      <details closed>
+                        <summary>Höfterna<a href="#note1"><sup>2</sup></a></summary>
+                      </details>
+                </table><table class=item>
+                  <tr>
+                    <td class="img x2">􌤙
+                    <td class="txt">
+                      <details closed>
+                        <summary>Svaga höften</summary>
+                      </details>
+                </table><table class=item>
+                  <tr>
+                    <td class="img x2">􌤘
+                    <td class="txt">
+                      <details closed>
+                        <summary>Starka höften</summary>
+                      </details>
+                </table><table class=item>
+                  <tr>
+                    <td class="img x2">􌤚
+                    <td class="txt">
+                      <details closed>
+                        <summary>Benet</summary>
+                      </details>
+                </table>
+                </div>
+                <figcaption class=hanging>
+                  <p id=note1><sup>2</sup> Dubblerade symboler (􌤄, 􌤾, 􌤉, 􌤠, 􌤓 och
+                    􌤗) används då båda händerna är involverade i artikulationen.
+                </figcaption>
+              </figure>
+
+              <p><b>Minnesregel:</b> Alla rundade symboler utom näsan (􌤼) är på
+                huvudet, medan symboler med räta vinklar i sig är på kroppen.
+            </details></section>
+
+            <section><details>
+              <summary><h1 id=handlage>Handläge (en passiv hand)</h1></summary>
+
+              <p>Vid handläge (kallas också <i>manuellt läge</i>) är den
+              dominanta handen aktiv och den icke-dominanta handen passiv.
+
+              <p>Den passiva handen utgör artikulationsställe och skrivs med en
+              handform plus symboler för attitydriktning och -vridning. Då bara
+              den ena handen är aktiv, kan inte artikulationer som kräver två
+              aktiva händer kombineras med handläge,
+              av <a href="#interaktionsart">interaktionsarterna</a> kan således
+              bara 􌥫, 􌥭 och 􌤟 användas.
+
+              <p>I fält I nedan syns den passiva handen/artikulationstället (􌤢),
+              och i fält II syns den aktiva handen/artikulatorn (􌥈).
+
+              <figure>
+                <table border=1 style="border-collapse:separate;border:0">
+                  <tr style=color:#888>
+                    <td style=border:0>I
+                    <td style=border:0>II
+                    <td style=border:0>III
+                  <tr class=x4>
+                    <td style=border-color:#888>􌤢􌥔􌤸
+                    <td style=border-color:#888>􌥈􌥓􌤸
+                    <td style=border-color:#888>􌤟􌥣
+                </table>
+                <figcaption><a href=02889>mening</a>/<a href=04578>ord</a> –
+                  Pekfingret, vänsterriktat och uppåtvänt, förs åt höger med
+                  bibehållen kontakt med flata handen, högerriktad och
+                  uppåtvänd.</figcaption>
+                </figure>
+            </details></section>
+          </div>
+        </details></section>
+
+        <section><details>
+          <summary><h1>II. Artikulator – handform och attityd</h1></summary>
+
+          <p>Artikulatorn innefattar <i>handform</i> och <i>attityd</i>
+            (handflatans riktning och vridning).
+
+          <p>Ett tecken kan utföras med en eller två händer. I de fall två
+            händer används kan den icke-dominanta handen antingen hållas stilla
+            (i så fall utgör den ett <a href="#i">artikulationsställe</a>,
+            enligt ovan) eller röra sig tillsammans med den dominanta handen (i
+            så fall är den en artikulator, såsom beskrivet här).
+
+          <p>Artikulatorn består av en eller två händer.
+
+          <figure class=FIXME>Exempel med enkel artikulator</figure>
+
+          <figure class=FIXME>Exempel med dubbel artikulator</figure>
+
+          <div class=space>
+            <section><details>
+              <summary><h1>Handform</h1></summary>
+
+              <!--table border=1>
+                <tr><th colspan=4>
+                  <select><option>?<option>Raka<option>Vinklade<option>Böjda<option selected>Knutna<option>Kontakt</select>
+                  <select><option>?<option>Spretade<option>Sammanhållna</select>
+                    fingrar
+                    <th>
+                <tr>
+                  <td><select><option>?<option>Rakt<option>Vinklat<option>Böjt<option selected>Knutet<option>Kontakt</select>
+                  <td><select><option>?<option>Rakt<option>Vinklat<option>Böjt<option selected>Knutet<option>Kontakt</select>
+                  <td><select><option>?<option>Rakt<option>Vinklat<option>Böjt<option selected>Knutet<option>Kontakt</select>
+                  <td><select><option>?<option>Rakt<option>Vinklat<option>Böjt<option selected>Knutet<option>Kontakt</select>
+                  <td style="border-left:1px solid black"><select><option>Rak<option>Vinklad<option>Böjd<option selected>Knuten</select>
+                <tr>
+                  <td>Lillfinger
+                  <td>Ringfinger
+                  <td>Långfinger
+                  <td>Pekfinger
+                  <td style="border-left:1px solid black">Tumme
+                <tr>
+                  <td colspan=3>
+                  <td colspan=2><select><option>?<option>Hållhand</select>
+              </table-->
+
+              <figure>
+                <!--style>.h2015 { background: rgba(255,0,0,.5) }</style>
+                <style>table.h2015 { background: rgba(255,0,0,.5); outline: 5px solid red; }</style>
+                <style>.fs { background: red }</style>
+                <style>.fx { background: blue }</style>
+                <style>.fr { background: green }</style>
+                <style>.f0 { background: magenta }</style-->
+                <label class=h1977><input type=checkbox checked>
+                  <a href="#ref1977">Tecknad svenska</a> (1977)</label>
+                <label class="h1982 FIXME"><nobr><input type=checkbox checked>
+                  <i>Teckenspråkstranskription</i> (1982)</nobr></label>
+                <label class="h1994 FIXME"><input type=checkbox checked>
+                  <i>Polysyntetiska tecken i svenska teckenspråket</i>
+                  (1994)</label>
+                <label class=h1997><input type=checkbox checked>
+                  <i>Svenskt teckenspråkslexikon</i> (1997)</label>
+                <label class=h2015><nobr><input type=checkbox checked>
+                  <a href="#ref2015">Teckentranskription</a> (2015)</nobr></label>
+                <label class="hweb FIXME"><input type=checkbox checked>
+                  <i>Svenskt teckenspråkslexikon</i> (webbversionen)</label>
+
+                <br>
+                  <details closed style=display:inline;padding-left:2em>
+                    <summary style=margin-left:-2em><label class=hel><input
+                      type=checkbox checked> Hel handform</label></summary>
+
+                      <p>”De åtta […] handformerna [􌤢, 􌥃, 􌥅, 􌤥, 􌥆, 􌤣, 􌤤 och
+                      􌤦] i den följande genomgången skiljer sig från de övriga
+                      genom att de kan betraktas som hela handformer. I dessa
+                      deltar alla fingrarna i konfigurationen och intar samma
+                      position.” [<a href="#ref1977">Tecknad svenska</a>
+                      s.41]
+                  </details>
+                  <details closed style="display:inline;padding-left:2em">
+                    <summary style="margin-left:-2em;border:1px solid black"
+                      ><label class=fx><input type=checkbox checked> Spretad</label>
+                      <label class=fs><input type=checkbox checked> Samlad</label>
+                    </summary>
+                    <p>Applicerbart på handformer med två eller fler fingrar
+                    intill.
+                  </details>
+                <span style="border:1px solid black">
+                  <label class=fb><input type=checkbox checked> Böjd</label>
+                  <label class=fv><input type=checkbox checked> Vinklad</label>
+                  <label class=fr><input type=checkbox checked> Rak</label>
+                  <label class=f0><input type=checkbox checked> Knuten</label
+                ></span>
+                <label class=f1><input type=checkbox checked> Ett finger</label>
+                <label class=f2><input type=checkbox checked> Två fingrar</label>
+                <label class=f3><input type=checkbox checked> Tre fingrar</label>
+                <label class=f4><input type=checkbox checked> Fyra fingrar</label>
+
+                <label class=open><input type=checkbox checked> Öppen (FIXME)</label>
+                <label class=closed><input type=checkbox checked> Sluten (FIXME)</label>
+
+                <br>Finlandsvenskt teckenspråk:
+                <label class=flat title="Alla fingrar (utom tumme) samlade."><input type=checkbox checked> Handflata (6)</label>
+                <label class=knuten title="Alla fingrar (utom tumme) knutna."><input type=checkbox checked> Knuten hand (5)</label>
+                <label class=ett title="Ett utstickande finger, tumme invikt."><input type=checkbox checked> Ett finger (6)</label>
+                <label class=två><input type=checkbox checked> Två fingrar (12)</label>
+                <label class=tre><input type=checkbox checked> Tre fingrar (6)</label>
+                <label class=fyra><input type=checkbox checked> Fyra fingrar (1)</label>
+                <label class=fem><input type=checkbox checked> Fem fingrar (6)</label>
+                <label class=grepp title="Tummen nuddar en fingertopp."><input type=checkbox checked> Grepphand (7)</label>
+
+                <div class=columns>
+                  <table class="item fs fv f4 grepp closed hel h1982"><tr>
+                    <td class="img x2 h1977 h1994 h1997 h2015 hweb">􌤤
+                    <td class="txt h1977 h1994 h1997 h2015 hweb">
+                      <details closed>
+                        <summary>A-handen</summary>
+
+                        <details closed>
+                          <summary>[<a href="#ref1977">Tecknad svenska</a>
+                          s.45]</summary>
+
+                          <p><img src="pic/x/a-handen-1.png" class=float-left
+                          style=padding-right:4px!important> ”<b>A-handen</b>
+                          är [liksom vinkelhanden] också böjd i enbart den inre
+                          knogen. Fingrarna är samlade. Tummen är motställd de
+                          övriga fingrarna och är i kontakt med fingertopparna.
+                          A-handen kan även kallas sluten hand, men så som
+                          ordet används här är även O-handen en sluten hand.”
+                        </details>
+
+                        <details closed>
+                          <summary>[<i>Polysyntetiska tecken</i> s.125]</summary>
+
+                          <p><img src="pic/x/a-handen-1.png" class=float-left
+                          style=padding-right:4px!important> ”A-handen utgörs
+                          av att fingrarna samlad form är böjda i inre knogen.
+                          Tummen är motställd fingrarna och är vanligtvis
+                          kontakt med pek- och långfingrarnas flatsida vid
+                          ytterknogen.”
+                        </details>
+                      </details>
+                    <td class="img h1977 h1994 h1997 h2015"><img src="pic/x/a-handen-1.png">
+                  </table><table class="item fs fv f2 två h1994 FIXME"><tr>
+                    <td class="img"><img src="pic/h-lilla-a-handen.svg">
+                    <td class="txt">
+                      <details closed>
+                        <summary>NA-handen</summary>
+
+                        <p>Symbol från <a href="#ref1994">Polysyntetiska tecken
+                        i svenska teckenspråket</a> som inte används
+                        av <a href="#ref1997">Svenskt teckenspråkslexikon</a>.
+
+                        <details closed>
+                          <summary>[<a href="#ref1994">Polysyntetiska tecken i
+                          svenska teckenspråket</a>]</summary>
+
+                          <p class=FIXME>(Beskrivning saknas)
+                        </details>
+                      </details>
+                    <!--td class="txt">NA-handen<a href="#hnote1"><sup>1</sup></a -->
+                    <td class="img"><img src="pic/x/lilla-a-handen-1.png">
+                  </table><table class="item fs fv f4 flat h1982 h1994"><tr>
+                    <td class="img x2 h1997 h2015 hweb">􌥄
+                    <td class="txt    h1997 h2015 hweb">
+                      <details closed>
+                        <summary>Tumvinkelhanden</summary>
+
+                        <p>Tumvinkelhanden liknar A-handen men öppningsgraden
+                        mellan tummen och fingertopparna är mer markerad.
+                        Ibland kan fingrarna vara något böjda i yttre knogarna.
+                        [<i>Polysyntetiska tecken</i> s.125]
+                      </details>
+                    <td class="img h1997 h2015"><img src="pic/x/tumvinkelhanden-1.png">
+                  </table><table class="item fs fv f4 flat hel h1982 h1994"><tr>
+                    <td class="img x2 h1977 h1997 h2015 hweb">􌤣
+                    <td class="txt    h1977 h1997 h2015 hweb">
+                      <details closed>
+                        <summary>Vinkelhanden</summary>
+
+                        <p><img src="pic/x/vinkelhanden-1.png" class=float-left
+                        style=padding-right:4px!important> ”<b>Den vinklade
+                        handen</b> är böjd i den inre men inte i den yttre
+                        knogen. Fingrarna är samlade. Tummen ligger normalt upp
+                        mot pekfingrets inre knoge. Man kan ibland se att den
+                        också kallas kupad hand.” [<a href="#ref1977">Tecknad svenska</a>
+                        s.45]
+
+                        <hr>
+                        <p>”Ett enda drag skiljer också den flata handen från
+                        den vinklade som är böjd i den inre knogen.”
+                        [<a href="#ref1977">Tecknad svenska</a> s.41]
+
+                        <hr>
+                        <p>”Den vinklade handens bokstav är ett uppochnervänt
+                        V.” [<a href="#ref1977">Tecknad svenska</a> s.80]
+                      </details>
+                    <td class="img h1977 h1997 h2015"><img src="pic/x/vinkelhanden-1.png">
+                    <td class="img       h1997 h2015"><img src="pic/x/vinkelhanden-2.png">
+                  </table><table class="item f0 knuten h1982 h1994"><tr>
+                    <td class="img x2 h1977 h1997 h2015 hweb">􌤧
+                    <td class="txt    h1977 h1997 h2015 hweb">
+                      <details closed>
+                        <summary>Tumhanden</summary>
+
+                        <p><b>Tummen</b> är vanligen rak, men böjda varianter
+                        förekommer också. [<a href="#ref1977">Tecknad svenska</a> s.46]
+                      </details>
+                    <td class="img h1977 h1997 h2015"><img src="pic/x/tumhanden-1.png">
+                    <td class="img h1977 h1997      "><img src="pic/x/tumhanden-2.png">
+                  </table><table class="item fb f1 två h1982 h1994"><tr>
+                    <td class="img x2 h1977 h1997 h2015 hweb">􌥋
+                    <td class="txt    h1977 h1997 h2015 hweb">
+                      <details closed>
+                        <summary>Måtthanden</summary>
+
+                        <p>”<b>Måtthanden</b> formas av tummen och
+                        pekfingret som båda är böjda i yttre knogen. Tummen är
+                        motställd pekfingret (jfr klohanden). I samband med
+                        artikulationstypen förändringsrörelse (se s 66) uteblir
+                        böjningen i yttre knogen.” [<a href="#ref1977">Tecknad svenska</a>
+                        s.47]
+
+                        <hr>
+                        <p>”Måtthandens ikoniska symbol är ett bakvänt C”
+                        [<a href="#ref1977">Tecknad svenska</a> s.80]
+                      </details>
+                    <td class="img h1977 h1997 h2015"><img src="pic/x/matthanden-1.png">
+                    <td class="img       h1997      "><img src="pic/x/matthanden-2.png">
+                    <td class="img       h1997      "><img src="pic/x/matthanden-3.png">
+                  </table><table class="item fv f1 två h1982 h1994"><tr>
+                    <td class="img x2 h1997 h2015 hweb">􌥉
+                    <td class="txt    h1997 h2015 hweb">
+                      <details closed>
+                        <summary>Raka måtthanden</summary>
+
+                        <p>”utgörs av att pekfingret och tummen hålls
+                        motställda varandra med en öppningsgrad emellan. Någon
+                        fix öppningsgrad kan svårligen förutbestämrnas men
+                        snapsglasstorlek är normalfall. Pekfingret är vanligen
+                        böjt främst inre knogen. Men viss böjning i
+                        mellanknogen och yttre leden förekommer också. Raka
+                        måtthanden förekommer också två varianter som
+                        allomorfer. Dels hålls övriga fingrar knutna, dels raka
+                        och spretade. Det finns en tredje allomorf. Den utgörs
+                        också av pekfingret och tummen med tillägget att
+                        långfingret hålls intill pekfingret (jfr. N-måtthand,
+                        .22).” [<i>Polysyntetiska tecken</i> s.129]
+                      </details>
+                    <td class="img h1997 h2015"><img src="pic/x/raka-matthanden-1.png">
+                  </table><table class="item fs fr f4 flat h1982 h1994"><tr>
+                    <td class="img x2 h2015 hweb">􌦫
+                    <td class="txt    h2015 hweb">
+                      <details closed>
+                        <summary>D-handen</summary>
+
+                        <p class=FIXME>(Beskrivning saknas)
+                      </details>
+                    <td class="img h2015"><img src="pic/x/d-handen-1.png">
+                  </table><table class="item f1 closed grepp h1982 h1994"><tr>
+                    <td class="img x2 fv fb h1977 h1997 h2015 hweb">􌤩
+                    <td class="txt    fv fb h1977 h1997 h2015 hweb">
+                      <details closed>
+                        <summary>Nyphanden</summary>
+
+                        <p>”<b>Nyphanden</b> skiljer sig från måtthanden
+                        genom att tummen och pekfingret här etablerat kontakt
+                        med varandra. De bildar antingen en spets (jfr
+                        A-handen) eller en liten ring (jfr O-handen).”
+                        [<a href="#ref1977">Tecknad svenska</a> s.47]
+
+                        <hr>
+                        <p>”[Den] grekiska bokstaven […] delta avbildar den
+                        spets som tummen och pekfingret bildar i nyphanden.”
+                        [<a href="#ref1977">Tecknad svenska</a> s.80]
+                      </details>
+                    <td class="img fv h1977 h1997 h2015"><img src="pic/x/nyphanden-1.png">
+                    <td class="img fb h1977 h1997 h2015"><img src="pic/x/nyphanden-2.png">
+                  </table><table class="item fs f2 closed grepp"><tr>
+                    <td class="img x2 fb fv h1997 h2015 hweb">􌤎
+                    <td class="txt    fb fv h1997 h2015 hweb">
+                      <details closed>
+                        <summary>Lilla O-handen</summary>
+
+                        <p class=FIXME>(Beskrivning saknas)
+                      </details>
+                    <td class="img fb h1997 h2015"><img src="pic/x/lilla-o-handen-1.png">
+                    <td class="img fv h1997 h2015"><img src="pic/x/lilla-o-handen-2.png">
+                  </table><table class="item f0 closed knuten h1982 h1994"><tr>
+                    <td class="img x2 h1997 h2015 hweb">􌥇
+                    <td class="txt    h1997 h2015 hweb">
+                      <details closed>
+                        <summary>E-handen</summary>
+
+                        <p class=FIXME>(Beskrivning saknas)
+                      </details>
+                    <td class="img h1997 h2015"><img src="pic/x/e-handen-1.png">
+                  </table><table class="item fs fb f3 tre"><tr>
+                    <td class="img x2 h2015 hweb">􌦬
+                    <td class="txt    h2015 hweb">
+                      <details closed>
+                        <summary>F-handen</summary>
+
+                        <p class=FIXME>(Beskrivning saknas)
+                      </details>
+                    <td class="img h2015"><img src="pic/x/stora-nyphanden-5.png">
+                  </table><table class="item f0 closed knuten hel h1982 h1994"><tr>
+                    <td class="img x2 h1977 h1997 h2015 hweb">􌤦
+                    <td class="txt    h1977 h1997 h2015 hweb">
+                      <details closed>
+                        <summary>Knutna handen</summary>
+
+                        <p>”<b>Den knutna handen</b> är böjd i inre och yttre
+                        knogarna så långt att fingertopparna ligger i kontakt
+                        med handflatan. Tummen ligger över de krökta fingrarna
+                        i grundformen.
+
+                        <p>Variant: <i>”hållhanden”</i> som skiljer sig
+                        från den äkta knutna formen genom att tummen ligger mot
+                        pekfingrets sida (ungefär samma form som handen har när
+                        man håller i en nyckel).” [<a href="#ref1977">Tecknad svenska</a> s.45]
+
+                        <hr>
+                        <p>>”Knuten hand utgörs av att fingrarna är böjda i inre
+                        och yttre knogarna så mycket att fingertopparna har
+                        kontakt med handflatan. Tummen ligger över de krökta
+                        pek- och långfingrarna.” [<i>Polysyntetiska tecken</i>
+                        s.123]
+                      </details>
+                    <td class="img h1977 h1997 h2015"><img src="pic/x/knutna-handen-1.png">
+                    <td class="img       h1997 h2015"><img src="pic/x/knutna-handen-2.png">
+                  </table><table class="item f4 closed grepp h1982 h1994"><tr>
+                    <td class="img x2 fs fx fb fv h1977 h1997 h2015 hweb">􌤲
+                    <td class="txt    fs fx fb fv h1977 h1997 h2015 hweb">
+                      <details closed>
+                        <summary>Stora nyphanden</summary>
+
+                        <details closed>
+                          <summary>[<a href="#ref1977">Tecknad svenska</a>
+                          s.47]</summary>
+
+                          <p>”<b>Den stora nyphanden</b> bildas som nyphanden
+                          med den skillnaden att de övriga fingrarna inte är
+                          knutna utan helt raka och spretade. Den är således
+                          det enda undantaget från regeln om att
+                          fingerhandformerna har en knuten grundform. Som
+                          variant förekommer handalfabetets H-hand (se figur 9,
+                          s 32).”
+                        </details>
+
+                        <details closed>
+                          <summary>[<i>Polysyntetiska tecken</i> s.124]</summary>
+
+                          <p>”Nyphanden [􌤲] utgörs av pekfingret och tummen som
+                          vanligtvis är i kontakt med varandra vid
+                          fingerdynorna. Nyphanden förekommer i två varianter
+                          som allomorfer. Dels hålls övriga fingrar knutna,
+                          dels utsträckta och spretade.”
+                        </details>
+                      </details>
+                    <td class="img fx fb h1977 h1997 h2015"><img src="pic/x/stora-nyphanden-1.png">
+                    <td class="img fx fv h1977 h1997      "><img src="pic/x/stora-nyphanden-2.png">
+                    <td class="img fs fb h1977 h1997      "><img src="pic/x/stora-nyphanden-3.png">
+                    <td class="img fx fv       h1997      "><img src="pic/x/stora-nyphanden-4.png">
+                    <td class="img fs fb       h1997 h2015"><img src="pic/x/stora-nyphanden-5.png">
+                  </table><table class="item fx fb f4 closed grepp h1994 FIXME"><tr>
+                    <td class="img"><img src="pic/h-bojda-stora-nyphanden.svg">
+                    <td class="txt">
+                      <details closed>
+                        <summary>Böjda stora nyphanden<a href="#hnote1"><sup>1</sup></a></summary>
+
+                        <p>”Böjda stora nyphanden utgörs av att tummen och
+                        pekfingret bildar en ring med övriga fingrar spretade
+                        och utsträckta.” [<i>Polysyntetiska tecken</i> s.111]
+
+                        <p>Kallas även ”Runda nyphanden” i bildtext.
+                        [<i>Polysyntetiska tecken</i> s.111]
+                      </details>
+                    <td class="img FIXME"><img src="pic/x/stora-nyphanden-1.png">
+                  </table><table class="item f1 ett h1982 h1994"><tr>
+                    <td class="img x2 fr fv h1977 h1997 h2015 hweb">􌤱
+                    <td class="txt    fr fv h1977 h1997 h2015 hweb">
+                      <details closed>
+                        <summary>Lillfingret</summary>
+
+                        <p>”<b>Lillfingret</b> är rakt, men en viss böjning i
+                        inre knogen tillåts för att underlätta artikulationen.
+                        Kallas även I-handen.” [<a href="#ref1977">Tecknad svenska</a> s.46]
+                      </details>
+                    <td class="img fr h1977 h1997 h2015"><img src="pic/x/lillfingret-1.png">
+                    <td class="img fv h1977 h1997      "><img src="pic/x/lillfingret-2.png">
+                  </table><table class="item fr f1 två h1982 h1994"><tr>
+                    <td class="img x2 h1977 h1997 h2015 hweb">􌥑
+                    <td class="txt    h1977 h1997 h2015 hweb">
+                      <details closed>
+                        <summary>Flyghanden</summary>
+
+                        <p>”<b>Flyghanden</b> utgörs av tummen och lillfingret
+                        och har sitt namn efter ett av de få tecken den
+                        förekommer i. Fingrarna är oböjda.
+
+                        <p>Variant: hos några personer kan i en del teckens
+                        utförande en variant iakttas som i stället för tummen
+                        har pekfingret.” [<a href="#ref1977">Tecknad svenska</a> s.46]
+
+                        <hr>
+                        <p>”Flyghanden […] har som grundelement [ett] I
+                        […] till vilka har fogats ett tvärstreck. Detta kan om
+                        man vill tolkas som symbol för tummen, som är det enda
+                        drag som skiljer […] flyghanden från I-handen.”
+                        [<a href="#ref1977">Tecknad svenska</a> s.80]
+                      </details>
+                    <td class="img h1977 h1997 h2015"><img src="pic/x/flyghanden-1.png">
+                    <td class="img             h2015"><img src="pic/x/flyghanden-2.png">
+                    <td class="img h1977       h2015"><img src="pic/x/flyghanden-3.png">
+                  </table><table class="item fs f4 flat hel h1982 h1994"><tr>
+                    <td class="img x2 fr fv h1977 h1997 h2015 hweb">􌤢
+                    <td class="txt    fr fv h1977 h1997 h2015 hweb">
+                      <details closed>
+                        <summary>Flata handen</summary>
+
+                        <p>”<b>Den flata handen</b> är en rak hand utan böjning i
+                        knogarna. Fingrarna är samlade. Tummen är inte ett
+                        distinktivt drag i den här handformen och förekommer i
+                        olika positioner. Den mest avspända varianten får lätt
+                        något åtskilda fingrar och kan för smidighetens skull
+                        också ha en viss böjning i knogarna.
+
+                        <p>Den flata handen är en mycket utnyttjad handform som
+                        lika gärna skulle kunna kallas <i>”handen”</i>. Dess
+                        mest utmärkande drag är att den <b>inte</b> intagit
+                        någon särskild form, men som sådan står den ändå i
+                        kontrast till alla andra former.
+
+                        <p>Variant: vid tecken med artikulationen hakning eller
+                        mottagning (se s 70, 72) ligger tummen indragen över
+                        handflatan innan den utför rörelsen som innebär att den
+                        griper tag i den andra handen och håller i denna mellan
+                        fingrarna och tummen.” [<a href="#ref1977">Tecknad svenska</a> s.41, 45]
+
+                        <hr>
+                        <p>Flata handen utgörs av att alla fingrar är
+                        utsträckta och samlade. Tummen hålles vanligtvis intill
+                        pekfingersidan. [<i>Polysyntetiska tecken</i> s.108,
+                        s.129]
+                      </details>
+                    <td class="img fr h1977 h1997 h2015"><img src="pic/x/flata-handen-1.png">
+                    <td class="img fr h1977       h2015"><img src="pic/x/flata-handen-2.png">
+                    <td class="img fr h1977 h1997      "><img src="pic/x/d-handen-1.png">
+                    <td class="img fv       h1997      "><img src="pic/x/vinkelhanden-2.png">
+                  </table><table class="item fs fr f4 flat h1982 h1994"><tr>
+                    <td class="img x2 h1997 h2015 hweb">􌥂
+                    <td class="txt    h1997 h2015 hweb">
+                      <details closed>
+                        <summary>Flata tumhanden</summary>
+
+                        <p>”Flata tumhanden utgörs av att tummen är mer rak i
+                        inre knogen och fingrarna mer utsträckta i inre
+                        knogarna jämfört med S-handen.” [<i>Polysyntetiska
+                        tecken</i> s.129]
+                      </details>
+                    <td class="img h1997 h2015"><img src="pic/x/flata-tumhanden-1.png">
+                  </table><table class="item fb f1 ett h1982 h1994"><tr>
+                    <td class="img x2 h1977 h1997 h2015 hweb">􌤪
+                    <td class="txt    h1977 h1997 h2015 hweb">
+                      <details closed>
+                        <summary>Krokfingret</summary>
+
+                        <p>”<b>Krokfingret</b> är också pekfingret, som här dock
+                        är böjt i yttre knogen och därmed också i den yttersta
+                        leden på fingret. [<a href="#ref1977">Tecknad svenska</a> s.46]
+
+                        <hr>
+                        <p>”[K]rokfingrets [symbol är] ett uppochnervänt J.”
+                        [<a href="#ref1977">Tecknad svenska</a> s.80]
+
+                        <hr>
+                        <p>”Krokfingerhanden utgörs av att pekfingret är böjt i
+                        mellanknogen och yttersta leden.” [<i>Polysyntetiska
+                        tecken</i> s.107]
+
+                        <hr>
+                        <p><b>Notera:</b> Här används samma teckenskriftssymbol
+                        som i <i>Svenskt teckenspråkslexikon</i>
+                        och <a href="#ref2015">Teckentranskription</a>. I de
+                        äldre <i>Polysyntetiska tecken</i>
+                        och <i>Teckenspråkstranskription</i> är symbolen
+                        spegelvänd och kroken och pekar åt höger istället för
+                        vänster.
+                      </details>
+                    <td class="img h1977 h1997 h2015"><img src="pic/x/krokfingret-1.png">
+                  </table><table class="item fx fv f2 tre h1982 h1994"><tr>
+                    <td class="img x2 h1997 h2015 hweb">􌥎
+                    <td class="txt    h1997 h2015 hweb">
+                      <details closed>
+                        <summary>K-handen</summary>
+
+                        <p class=FIXME>(Beskrivning saknas)
+                      </details>
+                    <td class="img h1997 h2015"><img src="pic/x/k-handen-1.png">
+                  </table><table class="item f1 ett h1982 h1994"><tr>
+                    <td class="img x2 fr fv h1977 h1997 h2015 hweb">􌥈
+                    <td class="txt    fr fv h1977 h1997 h2015 hweb">
+                      <details closed>
+                        <summary>Pekfingret</summary>
+
+                        <p>”<b>Pekfingret</b> är rakt, men kan i enstaka tecken
+                        böjas i den inre knogen om artikulationen därigenom
+                        underlättas.
+
+                        <p>Pekfingret är vid sidan av den flata handen den mest
+                        frekventa handformen. Det kan delvis förklaras av att
+                        många tecken till sitt ursprung är pekningar
+                        (<i class=sign>du</i>, <i class=sign>jag</i>, <i class=sign>upp</i>, <i class=sign>ner</i>, <i class=sign>gud</i> m fl). Den
+                        här handformen kan också ibland ha en viss
+                        betydelseladdning och är vanlig i tecken med
+                        betydelsekomponenten <i>”en”</i>, <i>”ensam”</i>.”
+                        [<a href="#ref1977">Tecknad svenska</a> s.46]
+
+                        <hr>
+                        <p>”utgörs av pekfingerhanden med utsträckt pekfinger
+                        utan böjning i inre knogen. Den har också en allomorf,
+                        vinklad pekfingerhand med fingret böjt i inre knogen.
+                        Allomorfen är artikulatoriskt betingad, t ex när
+                        pekfingerändan är riktad bakåt vid örat som i tecknet
+                        betecknande ’penna sitter bakom örat’”
+                        [<i>Polysyntetiska tecken</i> s.105]
+                      </details>
+                    <td class="img fr h1977 h1997 h2015"><img src="pic/x/pekfingret-1.png">
+                    <td class="img fv h1977 h1997 h2015"><img src="pic/x/vinklade-pekfingret.png">
+                  </table><table class="item fv f1 ett h1982 h1994 FIXME"><tr>
+                    <td class="img"><img src="pic/h-vinklade-pekfingret.svg">
+                    <td class="txt">
+                      <details closed>
+                        <summary>Vinklade pekfingret<a href="#hnote1"><sup>1</sup></a></summary>
+                        <p>”fingret böjs innerknogen” [<i>Polysyntetiska
+                        tecken</i> s.106]
+                      </details>
+                    <td class="img"><img src="pic/x/vinklade-pekfingret.png">
+                  </table><table class="FIXME item fb f1 ett h1994"><tr>
+                    <td class="img"><img src="pic/h-bojda-pekfingret.svg">
+                    <td class="txt">
+                      <details closed>
+                        <summary>Böjda pekfingret<a href="#hnote1"><sup>1</sup></a></summary>
+                        <details closed>
+                          <summary>[<i>Persontecken</i> s.21]</summary>
+
+                          <p>”LO-handen (en variant av nyphanden)”
+                        </details>
+                      </details>
+                    <td class="img"><img src="pic/x/bojda-pekfingret-1.png">
+                  </table><table class="item fr f1 två h1982 h1994"><tr>
+                    <td class="img x2 h1997 h2015 hweb">􌤨
+                    <td class="txt    h1997 h2015 hweb">
+                      <details closed>
+                        <summary>L-handen</summary>
+
+                        <p>”L-handen utgörs av rakt pekfinger och tumme som
+                        förhåller sig vinkelräta mot varandra.”
+                        [<i>Polysyntetiska tecken</i>, s.112]
+                      </details>
+                    <td class="img h1997 h2015" style="padding-right:2px"><img src="pic/x/l-handen-1.png">
+                  </table><table class="item fs fr f3 tre h1982 h1994"><tr>
+                    <td class="img x2 h1977 h1997 h2015 hweb">􌤿
+                    <td class="txt    h1977 h1997 h2015 hweb">
+                      <details closed>
+                        <summary>M-handen</summary>
+
+                        <p>”<b>M-handen</b> kan ses som omvändningen av
+                        flyghanden. I den här handformen är det handens tre
+                        mellersta fingrar som utgör formen, medan tummen och
+                        lillfingret ligger ’knutna’ in över handflatan.
+                        Fingrarna är företrädesvis samlade. Detta är den enda
+                        formen av fingerkonfigurationerna där ringfingret
+                        deltar aktivt i formens bildande. [<i>Tecknad
+                        svenska</i> s.46]
+                      </details>
+                    <td class="img h1977 h1997 h2015"><img src="pic/x/m-handen-1.png">
+                  </table><table class="item fs f2 två h1982 h1994"><tr>
+                    <td class="img x2 fr fv h1977 h1997 h2015 hweb">􌥌
+                    <td class="txt    fr fv h1977 h1997 h2015 hweb">
+                      <details closed>
+                        <summary>N-handen</summary>
+
+                        <p>”<b>N-handen</b> utgörs av rakt lång- och pekfinger.
+                        Fingrarna är samlade.” [<a href="#ref1977">Tecknad svenska</a>
+                        s.46]
+
+                        <hr>
+                        <p>”[…] utgörs av utsträckta och samlade pek- och
+                        långfingrar (se 7.15).” [<i>Polysyntetiska tecken</i>
+                        s.108]
+                      </details>
+                    <td class="img fr h1977 h1997 h2015"><img src="pic/x/n-handen-1.png">
+                    <td class="img fv       h1997      "><img src="pic/x/vinklade-n-handen-1.png">
+                    <td class="img fv       h1997      "><img src="pic/x/vinklade-n-handen-2.png">
+                  </table><table class="FIXME item fs fv f2 två"><tr>
+                    <td class="img h1994"><img src="pic/h-vinklade-n-handen.svg">
+                    <td class="txt h1994">
+                      <details closed>
+                        <summary>Vinklade N-handen<a href="#hnote1"><sup>1</sup></a></summary>
+
+                        <p>”utgörs av utsträckta pek- och långfingrar i samlad
+                        form och böjda i inre knogarna” [<i>Polysyntetiska
+                        tecken</i> s.115]
+                      </details>
+                    <td class="img h1994"><img src="pic/x/vinklade-n-handen-1.png">
+                    <td class="img h1994 FIXME"><img src="pic/x/vinklade-n-handen-2.png"><!-- CONFIRM THIS -->
+                  </table><table class="FIXME item fs fv f2 två h1994"><tr>
+                    <td class="img"><img src="pic/h-lilla-matthanden.svg">
+                    <td class="txt">
+                      <details closed>
+                        <summary>N-måtthanden</summary>
+
+                        <p>Symbol från <a href="#ref1994">Polysyntetiska tecken
+                        i svenska teckenspråket</a> som inte används
+                        av <a href="#ref1997">Svenskt teckenspråkslexikon</a>.
+
+                        <details closed>
+                          <summary>[<a href="#ref1994">Polysyntetiska tecken i
+                          svenska teckenspråket</a> s.110]</summary>
+
+                          <p><!-- Det finns en annan handform (se 7.22) som
+                          också betecknar små entiteter. Den -->
+                          ”[N-måtthanden] utgörs av att pekfingret och
+                          långfingret är sammanhållna och böjda i inre
+                          knogarna. Tummen är motställd de båda
+                          fingrarna.” <!-- Handformen väljs vanligen för små
+                          fyrkantiga entiteter (två-dimensionella) som frimärke
+                          och små pyramidliknande entiteter (tre-dimensionella)
+                          som gelehallon. Det är oklart hur den förhåller sig
+                          till böjda tupphanden. Handformen används begränsad
+                          omfattning och förekommer inte så ofta som böjda
+                          tupphanden. -->
+                        </details>
+                      </details>
+                    <td class="img"><img src="pic/x/lilla-matthanden-1.png">
+                  </table><table class="FIXME item fs fb f2 två h1994"><tr>
+                    <td class="img"><img src="pic/h-bojda-n-handen.svg">
+                    <td class="txt">
+                      <details closed>
+                        <summary>Böjda N-handen<a href="#hnote1"><sup>1</sup></a>
+                      </details>
+                    <td class="img FIXME"><img src="pic/x/bojda-n-handen-1.png">
+                  </table><table class="item fs fb f4 closed grepp hel h1982 h1994"><tr>
+                    <td class="img x2 h1977 h1997 h2015 hweb">􌥆
+                    <td class="txt    h1977 h1997 h2015 hweb">
+                      <details closed>
+                        <summary>O-handen</summary>
+
+                        <p><b>O-handen</b> är böjd i inre och yttre knogarna,
+                        men endast så mycket att tummen och fingertopparna
+                        skall kunna etablera kontakt för att en cirkelform
+                        skall bildas. O-handen är i motsats till både S-handen
+                        och klo-handen en sluten handform och kontakten mellan
+                        fingertopparna och tummen är det enda draget som
+                        skiljer O-handen från dem. I O-handen finns en spretning
+                        antydd, men fingrarna kan också vara samlade. [<i>Tecknad
+                        svenska</i> s.45]
+                      </details>
+                    <td class="img h1977 h1997 h2015"><img src="pic/x/o-handen-1.png">
+                  </table><table class="item f0 knuten h1982 h1994"><tr>
+                    <td class="img x2 h1997 h2015 hweb">􌤫
+                    <td class="txt    h1997 h2015 hweb">
+                      <details closed>
+                        <summary>Hållhanden</summary>
+
+                        <p>”Hållhanden liknar knuten hand men pekfingret är
+                        något mer utsträckt i inre knogen och tummen hålls mot
+                        sidan av pekfingret.” [<i>Polysyntetiska tecken</i>
+                        s.126]
+                      </details>
+                    <td class="img h1997 h2015"><img src="pic/x/hallhanden-1.png">
+                  </table><table class="item f0 knuten"><tr>
+                    <td class="img x2 h2015 hweb">􌦭
+                    <td class="txt    h2015 hweb">
+                      <details closed>
+                        <summary>Q-handen</summary>
+
+                        <p>Knuten hand, med tummen utstickande i samma riktning
+                        som tumvinkelhanden.
+
+                        <p>Symbolen omnämns
+                        i <a href="#ref2015">Teckentranskription</a> men utan
+                        att handformen beskrivs. Bilden ovan är baserad på dess
+                        utseende i videor i <i>Svenskt teckenspråkslexikon</i>
+                        (webbversionen).
+
+                        <p>Detta är nästan helt oanvänd handform, i <i>Svenskt
+                        teckenspråkslexikon</i> förekommer den bara i tecknet
+                        􌦭􌤵􌤶􌦑 som betyder <a href=08943>Q</a> (bokstaven)
+                        eller <a href=15616>dam</a> (i kortspel).
+
+                      </details>
+                    <td class="img h2015"><img src="pic/x/q-handen-1.png">
+                  </table><table class="item fr f1 ett h1982 h1994"><tr>
+                    <td class="img x2 h1997 h2015 hweb">􌤬
+                    <td class="txt    h1997 h2015 hweb">
+                      <details closed>
+                        <summary>Långfingret</summary>
+
+                        <p class=FIXME>(Beskrivning saknas)
+                      </details>
+                    <td class="img h1997 h2015"><img src="pic/x/langfingret-1.png">
+                  </table><table class="item fs fb f4 open flat hel h1982 h1994"><tr>
+                    <td class="img x2 h1977 h1997 h2015 hweb">􌥅
+                    <td class="txt    h1977 h1997 h2015 hweb">
+                      <details closed>
+                        <summary>S-handen</summary>
+
+                        <details closed>
+                          <summary>[<a href="#ref1977">Tecknad svenska</a>
+                          s.45]</summary>
+
+                          <p>”<b>S-handen</b> är rak i de inre knogarna men
+                          böjd i de yttre. Fingrarna är samlade och tummen är
+                          motställd dessa. Handen är öppen, dvs kontakt mellan
+                          tummen och fingertopparna förekommer inte.”
+                        </details>
+
+                        <details closed>
+                          <summary>[<i>Polysyntetiska tecken</i> s.111 &amp;
+                          s.128]</summary>
+
+                          <p>”S-handen utgörs av att fingrarna är raka i inre
+                          knogarna och samlade men böjda i mellanknogarna och
+                          yttersta leden. Tummen är motställd fingrarna.”
+                        </details>
+                      </details>
+                    <td class="img h1977       h1997 h2015"><img src="pic/x/s-handen-1.png">
+                    <td class="img       h1994 h1997      "><img src="pic/x/s-handen-2.png">
+                  </table><table class="item fx fb f4 fem open hel h1982 h1994"><tr>
+                    <td class="img x2 h1977 h1997 h2015 hweb">􌤥
+                    <td class="txt    h1977 h1997 h2015 hweb">
+                      <details closed>
+                        <summary>Klohanden</summary>
+
+                        <p>”<b>Klo-handen</b> är rak i de inre knogarna men böjd
+                        i de yttre. Fingrarna är spretade — det enda draget som
+                        skiljer den från S-handen. Liksom den spretade handen
+                        (med raka fingrar) utmärks klo-handen av spändhet
+                        jämfört med sin samlade motsvarighet, i det här fallet
+                        alltså en avspänd, mindre samlad variant av S-handen.”
+                        [<a href="#ref1977">Tecknad svenska</a> s.45]
+
+                        <hr>
+                        <p>”För klohanden används grekiska bokstaven sigma […]”
+                        [<a href="#ref1977">Tecknad svenska</a> s.80]
+
+                        <hr>
+                        <p>”Klohanden utgörs av att fingrarna är spretade och
+                        raka i inre knogarna men böjda i mellanknogarna och
+                        yttersta leden. Hur mycket fingrarna är böjda varierar.
+                        När handformen etablerar kontakt med tex. bröstet
+                        sträcks fingrarna gärna ut så att kontakten etableras
+                        mitt på fingertopparna och inte vid nagelområdet.”
+                        [<i>Polysyntetiska tecken</i> s.109, 126]
+                      </details>
+                    <td class="img h1977 h1997 h2015"><img src="pic/x/klohanden-1.png">
+                    <td class="img       h1997 h2015"><img src="pic/x/klohanden-2.png" style="margin-right:-4px">
+                    <td class="img       h1997      "><img src="pic/x/bojda-sprethanden-1.png" style="margin-left:-2px">
+                    <td class="img       h1997      "><img src="pic/x/klohanden-3.png">
+                  </table><table class="item fv f1 två h1982 h1994"><tr>
+                    <td class="img x2 h1977 h1997 h2015 hweb">􌥊
+                    <td class="txt    h1977 h1997 h2015 hweb">
+                      <details closed>
+                        <summary>T-handen</summary>
+
+                        <details closed>
+                          <summary>[<a href="#ref1977">Tecknad svenska</a>
+                          s.46]</summary>
+
+                          <p><img src="pic/x/l-handen-1.png" class=float-left>
+                          ”<b>T-handen</b> bildas av tummen och pekfingret
+                          […]. <s>Båda är raka och bildar tillsammans en rät
+                          vinkel.</s> Den har fått sitt namn efter den variant
+                          som används i initialtecken (med
+                          handalfabetets <b>T</b> som
+                          artikulator). <img src="pic/x/t-handen-1.png"
+                          class="float-left"
+                          style="padding-right:4px!important"> I varianten är
+                          pekfingret böjt i inre knogen och tummen vilar mot
+                          densamma”
+                        </details>
+
+                        <p><b>Notera:</b> Att den första varianten som beskrivs
+                        ovan numera kallas L-handen (och transkriberas ”􌤨”),
+                        enbart den andra handformen kallas idag T-handen.
+                      </details>
+                    <td class="img h1977 h1997 h2015"><img src="pic/x/t-handen-1.png">
+                    <td class="img       h1997      "><img src="pic/x/t-handen-2.png">
+                  </table><table class="item fb f2 två h1982 h1994"><tr>
+                    <td class="img x2 fx fs h1977 h1997 h2015 hweb">􌤽
+                    <td class="txt    fx fs h1977 h1997 h2015 hweb">
+                      <details closed>
+                        <summary>Dubbelkroken</summary>
+
+                        <details closed>
+                          <summary>[<i>Tecknad svenska</i> s.46]</summary>
+
+                          <p><img src="pic/x/dubbelkroken-1.png"
+                          class="float-left"> <div class="float-left
+                          FIXME"></div> ”<b>Dubbelkroken</b> formas av pek- och
+                          långfingret som böjts i den yttre knogen. Det är
+                          denna böjning som skiljer den från N- och V-händerna.
+                          Fingrarna kan vara spretade eller samlade.”
+                        </details>
+
+                        <details closed>
+                          <summary>[<a href="#ref1977">Tecknad svenska</a>
+                          s.80]</summary>
+
+                          <p>”Dubbelkroken skrivs med ett uppochnervänt U.”
+                        </details>
+                      </details>
+                    <td class="img fx h1977 h1997 h2015"><img src="pic/x/dubbelkroken-1.png">
+                    <td class="img fs h1977             FIXME x2">?
+                  </table><table class="item fx fb f2 tre h1982 h1994"><tr>
+                    <td class="img x2 h1997 h2015 hweb">􌤯
+                    <td class="txt    h1997 h2015 hweb">
+                      <details closed>
+                        <summary>Böjda tupphanden</summary>
+
+                        <details closed>
+                          <summary>[<i>Polysyntetiska tecken</i> s.109,
+                          s.127]</summary>
+
+                          <p>”Böjda tupphanden utgörs av tummen, pekfingret och
+                          långfingret som är spretade från varandra och raka i
+                          inre knogarna samt böjda i mellanknogarna och
+                          yttersta leden.”
+                        </details>
+                      </details>
+                    <td class="img h1997 h2015"><img src="pic/x/bojda-tupphanden-1.png">
+                  </table><table class="item fx f2 två h1982 h1994"><tr>
+                    <td class="img x2 fr fv h1977 h1997 h2015 hweb">􌤭
+                    <td class="txt    fr fv h1977 h1997 h2015 hweb">
+                      <details closed>
+                        <summary>V-handen</summary>
+
+                        <details closed>
+                          <summary>[<a href="#ref1977">Tecknad svenska</a>
+                          s.46]</summary>
+
+                          <p><img src="pic/x/v-handen-1.png"
+                          class="float-left"> ”<b>V-handen</b> utgörs också av
+                          pek- och långfingret, men dessa är i den här [till
+                          skillnad från N-handen] formen spretade. Den har
+                          ibland en viss semantisk laddning
+                          motsvarande <i>”två”</i>, <i>”dubbel”</i> och används
+                          t ex i tecknen TVÅ, BÅDA, ELLER.”
+                        </details>
+                      </details>
+                    <td class="img fr h1977 h1997 h2015"><img src="pic/x/v-handen-1.png">
+                    <td class="img fv       h1997      "><img src="pic/x/vinklade-v-handen-1.png">
+                  </table><table class="item fx f2 tre h1982 h1994"><tr>
+                    <td class="img x2 fr fv h1977 h1997 h2015 hweb">􌤮
+                    <td class="txt    fr fv h1977 h1997 h2015 hweb">
+                      <details closed>
+                        <summary>Tupphanden</summary>
+
+                        <p><img src="pic/x/tupphanden-1.png"
+                        class="float-left"> ”<b>Tupphanden</b> består […] av
+                        tre fingrar: tummen, pekfingret och långfingret. De är
+                        oböjda och spretar från varandra.” [<i>Tecknad
+                        svenska</i> s.46]
+
+                        <hr>
+                        <p>”[…] tupphanden har som grundelement [ett] V […]
+                        till vilk[et] har fogats ett tvärstreck. Detta kan om
+                        man vill tolkas som symbol för tummen, som är det enda
+                        drag som skiljer tupphanden från V-handen […]
+                        [<a href="#ref1977">Tecknad svenska</a> s.80]
+                      </details>
+                    <td class="img fr h1977 h1997 h2015"><img src="pic/x/tupphanden-1.png">
+                    <td class="img fv       h1997      "><img src="pic/x/vinklade-tupphanden-1.png">
+                  </table><table class="item fx fr f3 tre h1982 h1994"><tr>
+                    <td class="img x2 h1997 h2015 hweb">􌤰
+                    <td class="txt    h1997 h2015 hweb">
+                      <details closed>
+                        <summary>W-handen</summary>
+
+                        <p class=FIXME>(Beskrivning saknas)
+                      </details>
+                    <td class="img h1997 h2015"><img src="pic/x/w-handen-1.png">
+                  </table><table class="item fb fx f3 tre"><tr>
+                    <td class="img x2 hweb FIXME">?
+                    <td class="txt    hweb">
+                      <details closed>
+                        <summary>Böjda W-handen</summary>
+
+                        <p>Denna handform har ingen egen symbol
+                        i <a href="#ref1997">Svenskt teckenspråkslexikon</a>
+                        utan transkriberas ”􌤰” i de tecken där den förekommer.
+                        Benämningen ”böjda W-handen” förekommer dock i
+                        beskrivningen av följande tecken:
+
+                        <table>
+                          <tr><td>􌤢􌤴􌤸􌤰􌤴􌥙􌤟􌥼􌥣􌥲􌥿  <td><a href=01376>tre veckor</a>
+                          <tr><td>􌤡􌤰􌤴􌥙􌦄􌥦􌥱􌥿     <td><a href=07387>för tre veckor sedan</a>
+                          <tr><td>􌤢􌤴􌤸􌤰􌤴􌥙􌤟􌥼􌦄􌥦􌥱􌥿 <td><a href=01851>för tre veckor sedan</a>
+                          <tr><td>􌤢􌤴􌤸􌤰􌥓􌥙􌤟􌥼􌦃􌥲􌦊  <td><a href=01351>om tre veckor</a>
+                          <tr><td>􌤢􌤴􌥗􌤰􌤴􌤶􌥣􌤟􌥲􌥿􌥻  <td><a href=01363>var tredje vecka</a>
+                        </table>
+                      </details>
+                    <td class="img x2 FIXME">?
+                  </table><table class="item fs fr f2 två"><tr>
+                    <td class="img x2 h1997 h2015 hweb">􌤳
+                    <td class="txt    h1997 h2015 hweb">
+                      <details closed>
+                        <summary>X-handen</summary>
+
+                        <p class=FIXME>(Beskrivning saknas)
+                      </details>
+                    <td class="img h1997 h2015"><img src="pic/x/x-handen-1.png">
+                  </table><table class="item fx fr f4 fem open hel h1982 h1994"><tr>
+                    <td class="img x2 h1977 h1997 h2015 hweb">􌥃
+                    <td class="txt    h1977 h1997 h2015 hweb">
+                      <details closed>
+                        <summary>Sprethanden</summary>
+
+                        <p><img src="pic/x/sprethanden-1.png"
+                        class="float-right"> ”<b>Den spretade handen</b> är en
+                        rak hand utan böjning i knogarna. Fingrarna (inkl
+                        tummen) är spretade. Skillnaden mellan en avslappnad
+                        flat hand med åtskilda fingrar och en spretad hand är
+                        lätt observerad eftersom den spretade handen utmärks av
+                        större spändhet.
+
+                        <p><span class="float-right FIXME"></span> Variant: Vid
+                        artikulationen med förändringsrörelse (se s 66)
+                        föregriper tummen läget i sluthanden och ligger redan i
+                        själva sprethanden in över handflatan, motställd de
+                        andra fingrarna som samtidigt har en viss grad av
+                        böjning i inre knogen.” [<a href="#ref1977">Tecknad svenska</a> s.45]
+
+                        <hr>
+                        <p>Den spretade handen symboliseras här med ett Y med
+                        ett streck genom och kan kanske ge association till
+                        handformen. [<a href="#ref1977">Tecknad svenska</a> s.80]
+
+                        <hr>
+                        <p><img src="pic/x/sprethanden-1.png"
+                        class="float-left"> ”Sprethanden utgörs av att
+                        fingrarna är spretade och utsträckta i alla knogarna.”
+                        [<i>Polysyntetiska tecken</i> s.113]
+                      </details>
+                    <td class="img h1977 h1997 h2015"><img src="pic/x/sprethanden-1.png">
+                    <td class="img h1977 h1997      "><img src="pic/x/4-handen-1.png">
+                    <td class="img       h1997 h2015"><img src="pic/x/sprethanden-3.png">
+                  </table><table class="FIXME item fv fx f4 fem h1994"><tr>
+                    <td class="img"><img src="pic/h-vinklade-sprethanden.svg">
+                    <td class="txt">
+                      <details closed>
+                        <summary>Vinklade sprethanden<a href="#hnote1"><sup>1</sup></a></summary>
+
+                        <p>”[…] utgörs av att fingrarna är spretade och
+                        vinklade inre knogarna.” [<i>Polysyntetiska tecken</i>
+                        s.111]
+
+                        <hr>
+                        <p>På bild i figur 6.20 och 6.21, <i>Polysyntetiska
+                        tecken</i> s.88.
+                      </details>
+                    <td class="img x2 FIXME">?
+                  </table><table class="FIXME item fx fb f4 fem h1994"><tr>
+                    <td class="img hweb"><img src="pic/h-bojda-sprethanden.svg">
+                    <td class="txt hweb">
+                      <details closed>
+                        <summary>Böjda sprethanden<a href="#hnote1"><sup>1</sup></a></summary>
+
+                        <p>”[…] en handform som är ett mellanting av sprethand
+                        och klohand. Jag kallar den för böjd sprethand. De
+                        spretade fingrarna är lätt böjda i mellan- och
+                        ytterknogarna.” [<i>Polysyntetiska tecken</i> s.53]
+
+                        <hr>
+                        <p>”Böjda sprethanden utgörs av att fingrarna är
+                        spretande och raka i inre knogarna och något böjda i
+                        både mellanknogarna och yttersta leden.”
+                        [<i>Polysyntetiska tecken</i> s.110]
+
+                        <hr>
+                        <p>”[…] utgörs av spretade fingrar som är böjda i
+                        mellan- och ytterknogarna.” [<i>Polysyntetiska
+                        tecken</i> s.127]
+
+                        <!-- Illustrationer: 7.23 (s.110), 7.56 (s.127)
+                        [Polysyntetiska tecken] -->
+
+                        <hr>Symbolen förekommer inte i <i>Svenskt
+                        teckenspråkslexikon</i>, men ”böjda sprethanden”
+                        omnämns i beskrivningen av
+                        􌤢􌤴􌥗􌥃􌤴􌤶􌤟􌥼􌥣􌥲􌥿 <a href=01388>fem veckor</a>.
+                      </details>
+                    <td class="img"><img src="pic/x/bojda-sprethanden-1.png">
+                  </table><table class="item fv fx f4 fem h1982 h1994"><tr>
+                    <td class="img x2 h1997 h2015 hweb">􌥒
+                    <td class="txt    h1997 h2015 hweb">
+                      <details closed>
+                        <summary>Stora långfingret</summary>
+
+                        <p class=FIXME>(Beskrivning saknas)
+                      </details>
+                    <td class="img h1997 h2015"><img src="pic/x/stora-langfingret-1.png">
+                    <td class="img h1997      "><img src="pic/x/stora-langfingret-2.png">
+                    <td class="img h1997      "><img src="pic/x/stora-langfingret-3.png">
+                  </table><table class="item fx f4 closed grepp h1982 h1994"><tr>
+                    <td class="img x2 fv fb h1997 h2015 hweb">􌥟
+                    <td class="txt    fv fb h1997 h2015 hweb">
+                      <details closed>
+                        <summary>Runda långfingret</summary>
+
+                        <p class=FIXME>(Beskrivning saknas)
+                      </details>
+                    <td class="img fb h1997 h2015"><img src="pic/x/runda-langfingret-1.png">
+                    <td class="img fv h1997      "><img src="pic/x/runda-langfingret-2.png">
+                  </table><table class="FIXME item fx fb f4 fem h1994"><tr>
+                    <td class="img"><img src="pic/h-bojda-langfingret.svg">
+                    <td class="txt">
+                      <details closed>
+                        <summary>Böjda långfingret<a href="#hnote1"><sup>1</sup></a></summary>
+                        <p>”En annan handform är böjt långfinger. Tummen hålls
+                        under långfingertoppen med en lucka emellan. Övriga
+                        fingrar är utsträckta.” [<i>Polysyntetiska tecken</i>
+                        s.53]
+
+                        <hr>
+                        <p>”[…] utgörs av böjt långfinger i alla knogarna och
+                        tummen öppet motställd långfingret” [<i>Polysyntetiska
+                        tecken</i> s.128]
+                      </details>
+                    <td class="img"><img src="pic/x/stora-langfingret-2.png">
+                  </table><table class="item fr fx f4 fyra h1982 h1994"><tr>
+                    <td class="img x2 h2015 hweb">􌦪
+                    <td class="txt    h2015 hweb">
+                      <details closed>
+                        <summary>4-handen</summary>
+
+                        <p class=FIXME>(Beskrivning saknas)
+                      </details>
+                    <td class="img h2015"><img src="pic/x/4-handen-1.png">
+                  </table><table class="item fb fx f4 fyra"><tr>
+                    <td class="img x2 hweb FIXME">?
+                    <td class="txt    hweb">
+                      <details closed>
+                        <summary>Böjda 4-handen</summary>
+
+                        <p>Denna handform har ingen egen symbol
+                        i <a href="#ref1997">Svenskt teckenspråkslexikon</a>
+                        utan transkriberas ”􌦪” i de tecken där den förekommer.
+                        Benämningen ”böjda 4-handen” förekommer dock i
+                        beskrivningen av följande tecken:
+
+                        <table>
+                          <tr><td>􌤢􌤴􌥗􌦪􌤴􌤶􌤟􌥼􌥣􌥲􌥿  <td><a href=01378>fyra veckor</a>
+                          <tr><td>􌤡􌦪􌤴􌥙􌦄􌥦􌥱􌥿     <td><a href=05630>för fyra veckor sedan</a>
+                          <tr><td>􌤢􌤴􌤸􌦪􌤴􌥙􌤟􌥼􌦄􌥦􌥱􌥿 <td><a href=01396>för fyra veckor sedan</a>
+                          <tr><td>􌦪􌥓􌥙􌤟􌥼􌦃􌥲􌦊     <td><a href=01389>om fyra veckor</a>
+                          <tr><td>􌤢􌤴􌥗􌦪􌤴􌤶􌥣􌤟􌥲􌥿􌥻  <td><a href=01409>var fjärde vecka</a>
+                        </table>
+                      </details>
+                    <td class="img hweb"><img src="pic/x/bojda-4-handen-1.png">
+                  </table>
+                </div>
+                <figcaption class=hanging>
+                  <p id=hnote1><sup>1</sup> Symbol
+                    från <a href="#ref1994">Polysyntetiska tecken i svenska
+                    teckenspråket</a> som inte används
+                    av <a href="#ref1997">Svenskt teckenspråkslexikon</a>.
+                </figcaption>
+              </figure>
+
+              <p>Teckenskriften är till sin natur ganska en ganska fonetiskt
+                odetaljerad (mer fonematisk än fonetisk) men exakt <i>hur
+                bred</i> en varierar ifrån källa till källa. <i>Svenskt
+                teckenspråkslexikon</i> (bokversionen) använder sig av en
+                bredare transkription (med färre symboler och fler allofoner)
+                än <i>Polysyntetiska tecken i svenska teckenspråket</i>.
+
+                <p>Till exempel använder <i>Svenskt teckenspråkslexikon</i>
+                inte 􌦬 utan ser den som en allofon till 􌤲 (stora nyphanden),
+                man har heller inget behov av att skilja 􌥌
+                från <img src="pic/h-vinklade-n-handen.svg"> (vinklade
+                N-handen) utan transkriberar bägge med 􌥌. (Webbversionen
+                av <i>Svenskt teckenspråkslexikon</i> har lagt till 􌦪, 􌦭, 􌦫 och
+                􌦬.)
+            </details></section>
+
+            <section><details>
+              <summary><h1>Attityd</h1></summary>
+
+              <p>Attityden beskriver <i>handflatans</i> position, och påverkas
+              således inte av handformen. (Om du håller handen stilla och byter
+              handform så kan handen fortfarande skrivas med samma
+              attitydsymboler – bara handformssymbolen behöver ändras.)
+
+              <hr>
+              <p>Om du tänker dig att du ser den tecknande personen uppifrån så
+              blir pil- och skålsymboler mer lättbegripliga.
+
+              <figure>
+                <table class=attityd>
+                  <tr>
+                    <th>
+                    <th colspan=2>Riktning
+                    <th colspan=2>Vridning
+                  <tr>
+                    <th rowspan=2>Sidled
+                    <td class="x2 symbol">􌥓
+                    <th colspan=2>Vänster
+                    <td class="x2 symbol">􌤶  
+                  <tr>
+                    <td class="x2 symbol">􌥔
+                    <th colspan=2>Höger
+                    <td class="x2 symbol">􌥗  
+                  <tr>
+                    <th rowspan=2>Djupled
+                    <td class="x2 symbol">􌤴
+                    <th colspan=2>Fram
+                    <td class="x2 symbol">􌤷  
+                  <tr>
+                    <td class="x2 symbol">􌥕
+                    <th colspan=2>Bakåt
+                    <td class="x2 symbol">􌥘  
+                  <tr>
+                    <th rowspan=2>Höjdled
+                    <td class="x2 symbol">􌤵
+                    <th colspan=2>Upp
+                    <td class="x2 symbol">􌤸  
+                  <tr>
+                    <td class="x2 symbol">􌥖
+                    <th colspan=2>Ner
+                    <td class="x2 symbol">􌥙  
+                </table>
+                <figcaption>Ordningen ovan är densamma som
+                  i <a href="#ref1997">Svenskt
+                  teckenspråkslexikon</a>.</figcaption>
+              </figure>
+
+              <p class=FIXME>Handens attityd skrivs efter handformen (med
+              riktningssymbol ovanför vridningssymbol), 􌤢􌤵􌤷, eller i
+              tvåhandstecken (med en aktiv och en passiv hand) (􌤢􌤵􌤷􌤢􌤵􌤷).
+
+              <hr>
+              <p class=FIXME>Vid tvåhandstecken med dubbel artikulator skrivs
+              attityden på varsin sida om de bägge händerna (􌤵􌤷􌤢􌤢􌤵􌤷), och vid
+              tvåhandstecken med en aktiv och en passiv hand skrivs attityden
+              efter respektive handform (􌤢􌤵􌤷􌤢􌤵􌤷).
+            </details></section>
+          </div>
+
+      </details></section>
+
+      <section><details>
+        <summary><h1>III. Artikulation – rörelse</h1></summary>
+
+        <p>Dessa symboler beskriver handens/händernas förflyttning.
+
+      <figure>
+        <label class=r1977><input type=checkbox checked>
+          <a href="#ref1977">Tecknad svenska</a> (1977)</label>
+        <!-- label class="r1977 FIXME"><nobr><input type=checkbox checked>
+            <i>Teckenspråkstranskription</i> (1982)</nobr></label>
+        <label class="r1994 FIXME"><input type=checkbox checked>
+          <i>Polysyntetiska tecken i svenska teckenspråket</i>
+          (1994)</label>
+        <label class=r1997><input type=checkbox checked>
+          <i>Svenskt teckenspråkslexikon</i> (1997)</label>
+        <label class=r2015><nobr><input type=checkbox checked>
+            <a href="#ref2015">Teckentranskription</a> (2015)</nobr></label>
+        <label class="rweb FIXME"><input type=checkbox checked>
+          <i>Svenskt teckenspråkslexikon</i> (webbversionen)</label -->
+
+        <div class=columns>
+          <table class=item>
+            <tr><th>Rörelseriktning
+          </table><table class=item>
+            <tr>
+              <td class="img x2">􌦑
+              <td class="txt">
+                <details closed>
+                  <summary>Hålls stilla</summary>
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2 r1977">􌥢
+              <td class="txt    r1977">
+                <details closed>
+                  <summary>Förs åt vänster</summary>
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2 r1977">􌥣
+              <td class="txt    r1977">
+                <details closed>
+                  <summary>Förs åt höger</summary>
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2 r1977">􌥤
+              <td class="txt    r1977">
+                <details closed>
+                  <summary>Förs i sidled</summary>
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2 r1977">􌦃
+              <td class="txt    r1977">
+                <details closed>
+                  <summary>Förs framåt</summary>
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2 r1977">􌦄
+              <td class="txt    r1977">
+                <details closed>
+                  <summary>Förs bakåt</summary>
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2 r1977">􌥥
+              <td class="txt    r1977">
+                <details closed>
+                  <summary>Förs i djupled</summary>
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2 r1977">􌥦
+              <td class="txt    r1977">
+                <details closed>
+                  <summary>Förs uppåt</summary>
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2 r1977">􌥧
+              <td class="txt    r1977">
+                <details closed>
+                  <summary>Förs nedåt</summary>
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2 r1977">􌥨
+              <td class="txt    r1977">
+                <details closed>
+                  <summary>Förs i höjdled</summary>
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2">􌥩
+              <td class="txt">
+                <details closed>
+                  <summary>Förs kort åt vänster</summary>
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2">􌥪
+              <td class="txt">
+                <details closed>
+                  <summary>Förs kort åt höger</summary>
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2">􌥵
+              <td class="txt">
+                <details closed>
+                  <summary>Förs kort framåt</summary>
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2">􌥶
+              <td class="txt">
+                <details closed>
+                  <summary>Förs kort bakåt</summary>
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2">􌥷
+              <td class="txt">
+                <details closed>
+                  <summary>Förs kort uppåt</summary>
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2">􌥸
+              <td class="txt">
+                <details closed>
+                  <summary>Förs kort nedåt</summary>
+                </details>
+          </table><table class=item>
+            <tr><th>
+              <details closed>
+                <summary>Rörelseart</summary>
+
+                <p>Beskriver vilken typ av rörelse som sker. Handexterna
+                rörelser (􌥯, 􌥰, 􌥱 och 􌥲) förändrar handens attityd, medan
+                handinterna rörelser (􌥳􌥴􌦨􌥺􌦆) endast involverar fingrarna och
+                lämnar attityden oförändrad.
+              </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2 r1977">􌥯
+              <td class="txt    r1977">
+                <details closed>
+                  <summary>Båge</summary>
+
+                  <p>Skrivs efter en <i>förs</i>-symbol för att indikera att
+                  handen förs i en båge. Bågens riktning skrivs med en
+                  rörelseriktningssymbol under bågen.
+
+                  <p>I t ex 􌤦􌤴􌤶􌥣􌥯􌥿 <a href=01105>tvångsplacera</a> förs handen
+                  framåt (􌦃) med en samtidig rörelse i en båge uppåt (􌥯􌥿).
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2 r1977">􌥰
+              <td class="txt    r1977">
+                <details closed>
+                  <summary>Cirkel</summary>
+
+                  <p>Handen föres i en cirkel. Pilen under cirkelsymbolen visar
+                  rörelsens riktning.
+
+                  <p>En cirkelrörelse kan utföras i tre plan, men riktningen är
+                  endast betydelseskiljande i medialplanet och därför
+                  används inte 􌥰􌥽 och 􌥰􌦀:
+
+                  <table border=1>
+                    <tr>
+                      <td class=x2>􌥰􌦈 􌥰􌦉
+                      <td><img src="pic/plane-horizontal.png">
+                      <td class=txt>Horisontalplanet
+                    <tr>
+                      <td class=x2>􌥰􌥾 􌥰􌦊 􌥰􌦋
+                      <td><img src="pic/plane-median.png">
+                      <td class=txt>Medianplanet
+                    <tr>
+                      <td class=x2>􌥰􌥿 􌥰􌦌
+                      <td class=img><img src="pic/plane-frontal.png">
+                      <td class=txt>Frontalplanet
+                    <tr class=FIXME>
+                      <td class=x2>􌥰􌦂
+                      <td>
+                      <td>
+                  </table>
+
+                  <p>􌥰􌦉, 􌥰􌦋 och 􌥰􌦌 används när rörelsen är
+                  upprepad.
+
+                  <p>Exempel: 􌤢􌤴􌥙􌥰􌦈 <a href=00262>område</a>,
+                  􌤆􌥈􌥕􌥙􌥰􌥿 <a href=02544>ansikte</a>.
+
+                  <hr>
+                  <p class=FIXME>Varför används inte 􌥰􌦈􌥻, 􌥰􌥾􌥻, 􌥰􌦊􌥻 och 􌥰􌥿􌥻
+                  istället? – Särskilt 􌥰􌥾􌥻 och 􌥰􌦊􌥻 vore väl användbara för att
+                  distingera riktningen på cirkeln vid repeterade
+                  cirkelrörelser? – Kontrollera vilken praxis som används
+                  i <a href="#refweb">Svenskt teckenspråkslexikon</a>.
+
+                  <hr>
+                  <p class=FIXME>􌥰􌦂 förekommer också, men det är i skrivande
+                  stund inte klart för denna författare vad innebörden är.
+
+                  <p class=FIXME>Några exempel på detta är dock: 􌥖􌥘􌥈􌥈􌥖􌥘􌥰􌦂􌥼􌤟􌥼􌥻
+                  <a href=03054>balett</a> (h),
+                  􌤄􌥕􌥙􌥈􌥈􌥕􌥙􌥰􌦂􌥼􌦄 <a href=03063>glasögon</a> (f) och
+                  􌥕􌥙􌥈􌥈􌥕􌥙􌥰􌦂 <a href=03167>noll</a> (f).
+
+                  <hr>
+                  <p class=FIXME>Det finns en föreslagen reform för hur
+                  transkriptionen av cirkelrörelse ska gå till!
+
+
+                  <details closed>
+                    <summary>[<a href="#ref1977">Tecknad svenska</a> s.63–66]</summary>
+
+                    <p>Cirkelrörelse står i kontrast till de övriga
+                    rörelsearterna och fungerar inte som ett riktningskirem
+                    vilket man först är böjd att anta. Cirklarnas storlek
+                    skiftar och kan varieras utan att det medför
+                    betydelseskillnad. Cirkelrörelserna kan utföras i tre olika
+                    plan, något som däremot har betydelseskiljande funktion.
+                    Beskrivningen av cirkelplanen görs lättast med referens
+                    till klockan och visarnas rörelser.
+
+                    <p>Om vi tänker oss att klockan ligger framför den
+                    tecknande kommer visarnas rörelser att beskriva en cirkel i
+                    det <b>horisontala planet,</b> en rörelse som finns i t ex
+                    tecknen <i class=sign>tallrik</i> […]
+                    och <i class=sign>laga mat</i> (imiterar hur man rör i en
+                    gryta). När tecknets rörelse beskriver denna liggande
+                    cirkels omkrets är cirkelrörelsens egen riktning
+                    betydelselös, vilket också kan uttryckas som att rörelse
+                    med- eller moturs inte är kirematisk. Om handen börjar
+                    rörelsen mot vänster eller höger gör ingen skillnad, båda
+                    riktningarna förekommer men deras användning varierar från
+                    person till person, från tecken till tecken.
+
+                    <p>Det andra cirkelplanet som utnyttjas kan
+                    kallas <b>vertikalt och parallellt med kroppen,</b> och då
+                    kan vi tänka oss att klockan står framför den tecknande som
+                    t ex i <i class=sign>ledsen</i> […]. Riktningen i själva
+                    cirkelrörelsen kan även här vara med- eller moturs i fri
+                    variation.
+
+                    <p>Det tredje planet slutligen är också vertikalt men
+                    klockan skall nu tänkas placerad så att man ser den från
+                    sidan med urtavlan åt höger. Detta cirkelplan kan beskrivas
+                    som <b>vertikalt och vinkelrätt</b> mot den tecknande.
+                    Dessa cirkelrörelser skiljer sig från de övriga så tillvida
+                    att riktningen här är distinktiv, dvs rörelse med- eller
+                    moturs är betydelseskiljande i det här planet. — Det kan
+                    kanske delvis förklaras av att rörelsen här, tydligare än i
+                    de andra planen, associeras till förflyttning i en viss
+                    riktning. Vi kan tänka oss ett hjul som sätts i rotation
+                    fram-ner-in-upp-fram osv. (medurs) och som när det placeras
+                    på en plan yta kommer att rulla framåt från personen som
+                    satte fart på det. Om det däremot snurrar
+                    in-ned-fram-upp-in (moturs) kommer det att förflyttas in
+                    mot personen och blir en rörelse bakåt. — Cirkelrörelser i
+                    detta plan kommer att beskrivas antingen som cirkel fram
+                    eller cirkel in.
+
+                    <p>I de två först nämnda planen är alltså cirkelns egen
+                    riktning inte betydelseskiljande. Den horisontala cirkeln
+                    kan därför beskrivas av såväl vänster som höger, den
+                    vertikala-parallella som upp eller ner. Vänster och upp har
+                    valts som beskrivning för respektive cirkelplan och vi får
+                    sammanlagt fyra olika riktningsangivelser för
+                    cirkelrörelsens beskrivning:
+
+                    <table border=0>
+                      <tr><td>horisontal cirkelrörelse:   <td>vänster
+                      <tr><td>vertikal-parallell rörelse: <td>upp
+                      <tr><td>vertikal-vinkelrät rörelse: <td>fram<br>in
+                    </table>
+
+                    <p>I många tecken finns ett samband mellan
+                    artikulationsställets eget plan och cirkelrörelsens plan. I
+                    t ex tecknet <i class=sign>drömma</i> (en klo-hand cirklar
+                    vid pannan) ’anpassas’ cirkelrörelsen till pannans plan och
+                    blir vertikal-parallell. I <i class=sign>film(a)</i> är
+                    artikulationsstället vänster hand som är framåtriktad och
+                    vänd åt höger och blir då ett vertikalt-vinkelrätt ställe.
+                    Cirkelrörelsen är även den vertikal-vinkelrät, dvs fram
+                    (tecknet imiterar hur man vevar fram filmen i kameran).
+                  </details>
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2 r1977">􌥱
+              <td class="txt    r1977">
+                <details closed>
+                  <summary>Slås</summary>
+
+                  <p>En rörelse som ändrar attitydriktningen (handflatans
+                  riktning).
+
+                  <p>Ett enkelt exempel är 􌤀􌤣􌤴􌤶􌥱􌥿􌥼􌤟 <a href=00002>dop</a>, men
+                  slås kan också kombineras med andra rörelser som i
+                  􌤂􌤺􌤢􌤵􌥘􌦄􌥱􌦊 <a href=00046>längesedan</a> där handen förs bakåt
+                  (􌦄) slås bakåt (􌥱􌦊) samtidigt.
+
+                <!-- grep -wrim1 "slås" /home/zrajm/Web/2017-01-30-teckentranskription-download/words R 's#[ ]+# #g; s#<[^>]*>##g' |=grep -Piv 'slås ((kort|snabbt|långsamt|något|lite|sedan|först|därefter|slutligen|växelvis) )?(upp|uppåt|ned|ner|nedåt|inåt|bakåt|fram|framåt|(åt|till) (vänster|höger)|mot varandra|fram och in|upp och ne[dr]|utåt|från varandra|mot och från varandra|från och mot varandra)([/, ]|$)' M '+/slås' -->
+
+                  <p>Om handen slås diagonalt används upprepas symbolen med
+                  olika riktningar och utan separator mellan dem;
+                  􌤩􌤴􌤶􌥱􌥽􌥱􌥿 <a href=14813>spärr, spare</a> (i bowling),
+                  􌤵􌥗􌤤􌤤􌤵􌤶􌤟􌦃􌥱􌥾􌥱􌥿􌥻 <a href=01343>installera, installation</a>.
+
+                  <p>Om någon annan rörelse (t ex en vridning) utförs under en
+                  del av slåendet så behöver slåendet delas upp i separata
+                  delar (med separationsstreck mellan), t ex
+                  􌤢􌤵􌥗􌥈􌤵􌤷􌤟􌥼􌥱􌦀􌥼􌥱􌥿􌥲􌦊􌥼􌤟 <a href=03019>timme</a>.
+
+                  <p class=FIXME>Verifiera att pilen indikerar handflatans
+                  slutliga position (inte i vilken riktning den vrids).
+
+                  <details class=button closed>
+                    <summary>Exempel</summary>
+                    <figure>
+                      <table border=1>
+                        <tr>
+                          <td class="x2">􌥱􌦈
+                            <td>slås åt vänster <!-- [198]
+                            <br>slås till vänster [6] -->
+                        <tr>
+                          <td class="x2">􌥱􌥽
+                          <td>slås åt höger <!-- [141]
+                            <br>slås till höger [1] -->
+                        <tr>
+                          <td class="x2">􌥱􌦉
+                          <td>slås åt vänster och höger <!-- [130]
+                            <br>slås från varandra [66]
+                            <br>slås åt varsitt håll [1]
+                            <br>slås utåt [2]
+                            <br>slås utåt från varandra [1]
+                            <br>slås mot och från varandra [1]
+                            <br>slås från och mot varandra [1]
+                            <br>slås åt varsitt håll [1] -->
+                        <tr>
+                          <td class="x2">􌥱􌦂
+                          <td>slås mot varandra <!-- [63] -->
+                        <tr>
+                          <td class="x2">􌥱􌥾
+                          <td>slås framåt <!-- [839]
+                            <br>slås fram [62] -->
+                        <tr>
+                          <td class="x2">􌥱􌦊
+                          <td>slås bakåt <!-- [89]
+                            <br>slås bakåt (vid örat/sidan om halsen/huvudet) [1]
+                            <br>(aldrig ”slås in”) -->
+                        <tr>
+                          <td class="x2">􌥱􌦋
+                          <td><!-- slås fram och in [24]
+                            <br>slås fram och tillbaka (vid örat/sidan om halsen/huvudet) [18]
+                            <br>-->slås framåt och bakåt<!-- [1]
+                            <br>slås inåt och framåt [1] -->
+                        <tr>
+                          <td class="x2">􌥱􌥿
+                          <td>slås uppåt <!-- [395]
+                            <br>slås upp [10] -->
+                        <tr>
+                          <td class="x2">􌥱􌦀
+                          <td>slås nedåt <!-- [504]
+                            <br>slås ned [11]
+                            <br>slås ner [5] -->
+                        <tr>
+                          <td class="x2">􌥱􌦌
+                          <td>slås uppåt och nedåt <!--[2]
+                            <br>slås upp och ned [38]
+                            <br>slås upp och ner [37]
+                            <br>slås ner och upp [1]
+                            <br>slås ned och upp [2]
+                            <br>slås upp-ner [1]-->
+                      </table>
+                    </figure>
+                  </details>
+                  <details closed>
+                    <summary>[<a href="#ref1977">Tecknad svenska</a> s.63]</summary>
+
+                    <p><b>Slås</b> kan liksom vrides beskrivas med hänvisning
+                    till attityden. När det gäller slå är det dock inte
+                    attitydvridningen som ändras utan riktningen i handen. En
+                    jämförelse mellan tecknen 􌤫􌤴􌥙􌥲􌦈􌥼􌥻 <a href=03826>nyckel</a>
+                    och 􌤫􌥓􌥘􌥱􌦀􌥼􌥻 <a href=03813>feber</a> visar tydligt
+                    skillnaden mellan vrides och slås.
+                    I <a href=03826>nyckel</a> […] vrids handen upp och ner och
+                    attitydriktningen är densamma under hela tecknet.
+                    I <a href=03813>feber</a> […] slås en tänkt termometer upp
+                    och ner, dvs handens riktning växlar mellan upp och ner
+                    medan handflatan (attitydvridningen) hela tiden är
+                    bakåt. <a href=03826>Nyckel</a> och <a href=03813>feber</a>
+                    kan i sin tur jämföras med tecknet […]
+                    [􌤫􌤴􌤶􌥨 <a href=03819>måla</a>; <a href=03820>målare</a>] som
+                    har den iterativa föresrörelsen […]. I detta tecken är
+                    såväl attitydriktning som attitydvridning oförändrade under
+                    artikulationen medan handen flyttas upp och ner.
+                  </details>
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2 r1977">􌥲
+              <td class="txt    r1977">
+                <details closed>
+                  <summary>Vrids</summary>
+
+                  <p>En rörelse som ändrar attitydvridningen (handflatans
+                  vridning).
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2 r1977">􌥳
+              <td class="txt    r1977">
+                <details closed>
+                  <summary>Spelar</summary>
+
+                  <p>Innebär växelvisa rörelser i fingrarnas inre knogar.
+                  Påverkar inte handens attityd.
+
+                  <p>Exempel: <a href=00426>sjuda</a>, <a href=00815>april</a>,
+                  <a href=00835>prata</a>, <a href=00887>september</a>,
+                  <a href=00896>punktskrift</a> och <a href=00109>njuta</a>.
+              </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2">􌥴
+              <td class="txt">
+                <details closed>
+                  <summary>Strör</summary>
+
+                  <p>Innebär att tummen förs över fingertopparna. Påverkar inte
+                  handens attityd.
+
+                  <p>Exempel: <a href=15029>mutter</a>,
+                  <a href=15628>Arameiska</a>,
+                  <a href=05288>snuttefilt</a>, <a href=06687>Arameiska</a> och
+                  <a href=15578>Armenien</a>.
+
+                  <p class=FIXME>Lägg till animation av ”strör”.
+
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2">􌥺
+              <td class="txt">
+                <details closed>
+                  <summary>Vinkar</summary>
+
+                  <p>Innebär samtidiga rörelser i de inre knogarna. Påverkar
+                  inte handens attityd.
+
+                  <p>Exempel: <a href=00061>nyss</a>, <a href=00246>trappa</a>,
+                  <a href=03759>Liseberg</a>, <a href=01257>madrass</a> och
+                  <a href=12187>spagetti</a>.
+
+                  <p class=FIXME>Lägg till animation av ”vinkar”.
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2">􌦨
+              <td class="txt">
+                <details closed>
+                  <summary>Böjs</summary>
+
+                  <p>Innebär rörelse i de yttre knogarna. Påverkar inte handens
+                  attityd.
+
+                  <p>Exempel: <a href=00499>jägare</a>,
+                  <a href=01000>praktiant</a>, <a href=00996>baka</a>,
+                  <a href=00946>klä av</a> och
+                  <a href=01024>reumatism</a>.
+
+                  <p class=FIXME>Lägg till animation av ”böjs”.
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2 r1977">􌦆
+              <td class="txt    r1977">
+                <details closed>
+                  <summary>Förändras</summary>
+
+                  <p>Innebär att den aktiva handen byter handform till det som
+                  angetts efter pilen. Påverkar inte handens attityd.
+
+                  <p><a href="#ref2015">Teckentranskription</a> (2015) säger att
+                  ”symbolen <i>vanligen</i> kompletteras med symbolen för den
+                  avslutande handformen” [min emfas] – men jag har ännu inte
+                  sett någon transkription där handform saknats.
+
+                  <p>Exempel: <a href=00074>bäst</a>,
+                  <a href=00023>förmåga</a>, <a href=00155>kapten</a>,
+                  <a href=00500>diskvalificera</a> och <a href=01240>anka</a>.
+                </details>
+          </table><table class=item>
+            <tr><th>
+                <details closed>
+                  <summary>Interaktionsart</summary>
+
+                  <p>Beskriver hur två händer, eller en hand och ett läge,
+                  interagerar med varandra. (Dessa symboler används således
+                  inte i enhandstecken i neutrala läget.)
+
+                  <details closed>
+                    <summary>[<a href="#ref1977">Tecknad svenska</a> s.82]</summary>
+
+                    <p>För interaktionsarterna har symbolerna valts med tanke
+                    på att det normalt fordras två händer för att denna
+                    kiremtyp skall förekomma. Därför utmärks de av två
+                    samverkande linjer. Undantag är kontaktsymbolerna — kontakt
+                    fordrar heller inte två händer.
+                  </details>
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2 r1977">􌦇
+              <td class="txt    r1977">
+                <details closed>
+                  <summary>Växelvis</summary>
+
+                  <p>De två händerna i en dubbelartikulation utför samma rörelse
+                  men ur fas med varandra.
+
+                  <p>Exempel: 􌤴􌥗􌥃􌥃􌤴􌤶􌥰􌦋􌦇 <a href=00998>teckna</a>
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2 r1977">􌥹
+              <td class="txt    r1977">
+                <details closed>
+                  <summary>Divergerar</summary>
+
+                  <p>De två händerna i en dubbelartikulation förs bort ifrån
+                  varandra.
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2 r1977">􌦅
+              <td class="txt    r1977">
+                <details closed>
+                  <summary>Konvergerar</summary>
+
+                  <p>De två händerna i en dubbelartikulation förs mot varandra.
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2">􌥬
+              <td class="txt">
+                <details closed>
+                  <summary>Byte</summary>
+
+                  <p>De två händerna i en dubbelartikulation byter plats med
+                  varandra, på ett sånt sätt att attityden ändras.
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2 r1977">􌦎
+              <td class="txt    r1977">
+                <details closed>
+                  <summary>Kors</summary>
+
+                  <p>De två händerna i en dubbelartikulation...
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2 r1977">􌥮
+              <td class="txt    r1977">
+                <details closed>
+                  <summary>Vinkel</summary>
+
+                  <p>De två händerna i en dubbelartikulation...
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2 r1977">􌥫
+              <td class="txt    r1977">
+                <details closed>
+                  <summary>Hakning</summary>
+
+                  <p>Beskriver interaktionen mellan två aktiva händer, eller
+                  mellan en aktiv hand och ett hand- eller kroppsläge.
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2 r1977">􌥭
+              <td class="txt    r1977">
+                <details closed>
+                  <summary>Entré / mottagning</summary>
+
+                  <p>Innebär att den aktiva handen går in i, eller omsluter,
+                  den andra handen eller ett kroppsläge. Förekommer i både
+                  tvåhandstecken och tecken med kroppsläge.
+
+                  <p>Det kan till exempel innebära att fingrarna passerar
+                  mellan varandra (􌤵􌥗􌤥􌤥􌤵􌤶􌥭 <a href=01740>bön, be</a> eller
+                  􌥄􌤴􌥗􌤣􌤴􌥙􌥧􌥼􌥭 <a href=05234>medlem</a>), att ett kroppsläge förs
+                  in mellan fingrarna på den aktiva handen
+                  (􌤒􌤹􌥔􌥙􌥅􌤴􌥙􌥭􌥢 <a href=01392>gips, gipsa</a>) eller att den
+                  aktiva handen förs in ett kroppsläge
+                  (􌤒􌥖􌥗􌤢􌥧􌥗􌥦􌥱􌦊􌥼􌥭<a href=00143>ombud</a>).
+
+                  <p>(<a href="#ref2015">Teckentranskription</a> och dess
+                  föregångare ger alla tecknet *􌤌􌤧􌤵􌤶􌥭 <i class=sign>nöt</i> som
+                  enda exempel på entré med kroppsläge,
+                  i <a href="#ref1997">Svenskt teckenspråkslexikon</a> finns
+                  detta tecken dock endast upptaget som
+                  􌤌􌤧􌤵􌤶􌤟􌥼􌦃􌥼􌥻 <a href=09123>nöt</a>.)
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2 r1977">􌤟
+              <td class="txt    r1977">
+                <details closed>
+                  <summary>Kontakt</summary>
+
+                  <p>Beskriver interaktionen mellan två aktiva händer, eller
+                  mellan en aktiv hand och ett hand- eller kroppsläge.
+
+                  <p>Används för att beskriva initial, final eller bibehållen
+                  kontakt.
+
+                  <p class=FIXME>
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2">􌥡  
+              <td class="txt">
+                <details closed>
+                  <summary>Medial kontakt</summary>
+
+                  <p>Beskriver interaktionen mellan två aktiva händer, eller
+                  mellan en aktiv hand och ett hand- eller kroppsläge. Denna
+                  symbol kan skrivas under följande rörelseriktningssymboler:
+                  􌥢􌥣􌥤􌦃􌦄􌥥􌥦􌥧􌥨􌥩􌥪􌥵􌥶􌥷􌥸, och innebär att den aktiva handen kort
+                  nuddar vid artikulationstället under den pågående rörelsen.
+                  (Detta skiljer sig ifrån <i>bibehållen kontakt</i>, då
+                  kontakten fortgår under hela rörelsen, som i till exempel
+                  􌤔􌥋􌤴􌤶􌤟􌥧 <a href="05718">kapital</a>).
+
+                  <p>I ordet 􌤓􌥃􌥓􌥘􌥦􌥡 <a href=00171>hemsk, otäck, obehaglig</a>
+                  förs handen uppåt, men nuddar tillfälligt bröstet under
+                  rörelsen. Medial kontakt kan också kombineras med andra
+                  rörelser (här <i>slås</i>) som då skrivs separat
+                  􌤃􌤢􌥕􌥗􌥢􌥡􌥱􌦈􌥼􌥣􌥡􌥱􌥽􌥼􌥻 <a href=00027>roa sig, för skojs skull,
+                  förströelse</a>.
+                </details>
+          </table><table class=item>
+            <tr><th>Övrigt
+          </table><table class=item>
+            <tr>
+              <td class="img x2">􌥻
+              <td class="txt">
+                <details closed>
+                  <summary>Upprepad artikulation</summary>
+
+                  <p>Skrivs efter en enskild artikulationssymbol för att visa
+                  att den upprepas, eller sist i en egen artikulationsgrupp
+                  (􌥼􌥻) för att visa att hela artikulationen upprepas.
+
+                  <details closed>
+                    <summary>[<i>Kompendium i teckentranskription</i> s.9]</summary>
+
+                    <p>Upprepad artikulation innebär i regel två upprepningar.
+                    Om upprepningen står ensam sist i egen grupp (􌥼􌥻) innebär
+                    det att hela artikulationen upprepas. Om
+                    upprepningssymbolen står inom en grupp är det bara den
+                    artikulationen som står före upprepningssymbolen som
+                    upprepas.
+                  </details>
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2">􌥼
+              <td class="txt">
+                <details closed>
+                  <summary>Separator för artikulationsgrupper</summary>
+
+                  <p>Den här symbolen delar in artikulationen i grupper. Alla
+                  symboler inom en grupp utförs samtidigt, medan grupperna
+                  utföres var och en efter varandra.
+
+                  <p>I till exempel 􌤦􌤴􌤶􌦄􌥦 <a href=01999>bromsa, stanna upp,
+                  hejda sig</a> utförs de två artikulationerna (􌦄 <i>förs
+                  bakåt</i> och 􌥦 <i>förs uppåt</i>) samtidigt.
+
+                  <details closed>
+                    <summary>[<i>Kompendium i teckentranskription</i> s.11]</summary>
+
+                    <p>Här förekommer ofta flera symboler vilka kombineras
+                    enligt två principer: symboler för samtidiga element skrivs
+                    inom varje grupp som avslutas med 􌥼. I regel förekommer
+                    minst två symboler varav den ena betecknar en rörelseart
+                    och den andra en rörelseriktning. Den vanliga enkla
+                    förflyttningsrörelsen, föres, saknar dock symbol och
+                    transkriberas enbart med en riktningsangivelse.
+                  </details>
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2">􌥠
+              <td class="txt">
+                <details closed>
+                  <summary>Separator för sammansatta tecken</summary>
+                </details>
+          </table><table class=item>
+            <tr>
+              <td class="img x2">􌦩
+              <td class="txt">
+                <details closed>
+                  <summary>Separator för höger/vänster hand</summary>
+
+                  <p>I somliga tecken (som i t ex
+                  􌤲􌤴􌥙􌥤􌦩􌥅􌤴􌤸 <a href=03805>fiol</a>) agerar de två händerna
+                  oberoende av varandra och behöver transkriberas separat, i
+                  dessa fall separeras de två handbeskrivningarna med denna
+                  separator. Den här sortens tecken är ovanliga, och verkar
+                  mestadels vara föreställande/ikoniska tecken.
+
+                  <p>Denna separator finns mig veterligen inte beskriven i
+                  någon teckentranskriptionsguide, men används i mer än bara en
+                  handfull fall av <a href="#refweb">Svenskt
+                  teckenspråkslexikon</a>. Några exempel:
+
+                  <figure>
+                    <table>
+                      <tr>
+                        <td>􌥜􌥅􌤵􌥘􌦑􌦩􌤔􌤲􌥓􌥘􌤟􌥱􌦀􌥼􌥻
+                        <td><a href=10019>Argentina</a>;
+                          <a href=15318>Beatles</a>;
+                          <a href=01567>gitarr</a>
+                        <td>V􌦩H
+                      <tr>
+                        <td>􌥯􌤤􌤵􌥘􌤟􌦩􌤜􌤻􌤤􌤵􌤷􌤟􌥼􌥬􌥼􌤟
+                        <td><a href=01317>bakvänt, blanda ihop</a>
+                        <td>H􌦩V
+                      <tr>
+                        <td>􌤓􌤫􌥕􌥗􌤵􌥱􌥿􌦩􌤓􌤫􌥔􌥘􌤟
+                        <td><a href=06030>dragking</a>
+                        <td>H􌦩V
+                      <tr>
+                        <td>􌥯􌥆􌤵􌤷􌦆􌥃􌥼􌥻􌦩􌤕􌥆􌤵􌤷􌦆􌥃􌥼􌥻
+                        <td><a href=05788>förälskelse</a>;
+                          <a href=06123>kärlek</a>
+                        <td>H􌦩V
+                      <tr>
+                        <td>􌥯􌥆􌤵􌤷􌤟􌥼􌥵􌦆􌥃􌥼􌥻􌦩􌤕􌥆􌤵􌤷􌤟􌥼􌥵􌦆􌥃􌥼􌥻
+                        <td><a href=01854>förälskad</a>
+                        <td>H􌦩V
+                      <tr>
+                        <td>􌤕􌤥􌥔􌥘􌤟􌦩􌤔􌤥􌥓􌥘􌥣􌥼􌥻
+                        <td><a href=06232>Gnesta</a>
+                        <td>V􌦩H
+                      <tr>
+                        <td>􌥅􌤴􌤸􌦑􌦩􌤔􌤫􌥓􌥘􌥱􌦀􌥼􌥻
+                        <td><a href=08301>orkester</a>
+                        <td>V􌦩H
+                      <tr>
+                        <td>􌤔􌤢􌥓􌥙􌤟􌥧􌥼􌥻􌦩􌤔􌤢􌥔􌤸􌤟
+                        <td><a href=05869>mammografi</a>
+                        <td>H􌦩V
+                      <tr>
+                        <td>􌥆􌤴􌤸􌥷􌦆􌥃􌦩􌤢􌥔􌤷􌥸􌥵
+                        <td><a href=14717>serve</a>
+                        <td>V􌦩H
+                      <tr>
+                        <td>􌤅􌤺􌥉􌤵􌤶􌤟􌦆􌤩􌥠􌤓􌤫􌥕􌥗􌤟􌥦􌦩􌤖􌤫􌥔􌥘􌤟
+                        <td><a href=03259>sovsäck</a>
+                        <td>H􌦩V
+                    </table>
+                  </figure>
+
+                  <p>Dessvärre verkar det inte helt konsekvent vilken hand som
+                  transkriberas på vilken sida av 􌦩 (noterat i tabellen ovan
+                  med H􌦩V och V􌦩H). Men i samtliga fall är det den
+                  aktiva/dominanta handen är den av de två som har någon typ av
+                  rörelse.
+
+                  <p>I fallet 􌥯􌤤􌤵􌥘􌤟􌦩􌤜􌤻􌤤􌤵􌤷􌤟􌥼􌥬􌥼􌤟 <a href=01317>bakvänt, blanda
+                  ihop</a> beskriver rörelsetranskriptionen de bäge händernas
+                  gemensamma rörelse, men i samtliga av de andra fallen ovan
+                  vardera hands artikulation separat. (Så inte ens detta är
+                  konsekvent.)
+                </details>
+          </table>
+        </div>
+      </figure>
+    </section>
+
+
+      </section>
+    </details></section>
+    </div>
+
+    <section><details>
+      <summary><h1>Teckenskriftens utveckling</h1></summary>
+
+      <div class=space>
+      <section><details open>
+          <summary><h1>1977 – <a href="#ref1977">Tecknad svenska</a></h1></summary>
+
+        <p>Notera att denna bok beskriver en skrift avsedd för transkription av
+        tecknad svenska (som <i>inte</i> är samma sak som svenskt teckenspråk).
+
+        <p><b>Lägen:</b> 􌤆, 􌤂, 􌥞, 􌤀, 􌤃, 􌤇, 􌤊, 􌤼, 􌤌, 􌤛, 􌤞, 􌥀, 􌤡, 􌥜, 􌤓, 􌤕, 􌤔 och
+        􌤖. Symboler för <i>hjässan</i>, <i>näsan</i> och <i>halsen</i> såg
+        annorlunda ut än de gör idag, medan symboler
+        för <i>ögat</i>, <i>nacken</i>, <i>höfterna</i>, <i>under-</i>
+        och <i>överarmen</i> och <i>benet</i> saknas helt. <i>Över-</i>
+        och <i>underarmen</i> skiljer sig i skrift endast genom att underarmen
+        skrivs med efterföljande attitydsymboler, och överarmen skrivs utan
+        dessa.
+
+        <p><b>Handformer:</b> 􌤢, 􌥆, 􌤤, 􌤦, 􌤧, 􌥈, 􌤱, 􌥌, 􌤭, 􌤿, 􌥊, 􌥃, 􌤥, 􌤣, 􌤪, 􌤽,
+        􌥑, 􌤮, 􌥋 och 􌤩. (Symbolen för <i>krokfingret</i> är en spegelvänd i
+        förhållande till vad vi använder idag.)
+
+        <p><b>Attityd:</b> Symbolerna (􌥓􌤶, 􌥔􌥗, 􌤴􌤷, 􌥕􌥘, 􌤵􌤸 och 􌥖􌥙) ser redan
+        från början ut som de gör i idag.
+
+        <p><b>Rörelseriktning:</b> 􌥢, 􌥣, 􌥤, 􌦃, 􌦄, 􌥥, 􌥦, 􌥧 och 􌥨.
+
+        <p><b>Rörelseart:</b> 􌥯, 􌥰, 􌥱, 􌥲, 􌦆 och 􌥳.
+
+        <p><b>Interaktionsart:</b> 􌥹, 􌦅, 􌦎, 􌥫, 􌥭, 􌥮, 􌦇 och 􌤟 plus en symbol för
+        något som kallas <i>iterativ</i> eller <i>upprepad kontakt</i>.
+
+        <p><b>Relationssymboler:</b> Inga, 􌤳􌤺, 􌤳􌥛, 􌤳􌤻, 􌤳􌤹 och 􌤳􌥚 lyser här helt
+        med sin frånvaro.
+      </details></section>
+
+      <section><details open>
+          <summary><h1>1982 – <i>Teckenspråkstranskription</i></h1></summary>
+
+        <p><b>Relationssymboler:</b>
+
+        <p><b>Lägen:</b>
+
+        <p><b>Handformer:</b>
+
+        <p><b>Attityd:</b>
+
+        <p><b>Rörelseriktning:</b>
+
+        <p><b>Rörelseart:</b>
+
+        <p><b>Interaktionsart:</b>
+
+        <p>Symbolerna för <i>hjässan</i> (􌤀) och <i>näsan</i> (􌤼) antar den
+        form de har idag. Symboler för <i>ögat</i> (􌤅), <i>nacken</i>
+        (􌤜), <i>höften</i> (􌤙), <i>överarmen</i> (􌤑) läggs
+        till. <i>Underarmen</i> saknar fortfarande egen symbol och skrivs
+        med <i>armen</i> (􌥜) plus attitydsymboler.
+
+        (Symbolen för <i>krokfingret</i> är en spegelvänd i förhållande till
+        vad vi använder idag.)
+
+      </details></section>
+
+      <section><details open>
+          <summary><h1>1993 – <i>Kompendium i teckentranskription</i></h1></summary>
+
+          <p>Tecknet för <i>halsen</i> sträcks ut till fullhöjd.(?)
+
+          <p>(Symbolen för <i>krokfingret</i> är en spegelvänd i förhållande
+          till vad vi använder idag.)
+
+      </details></section>
+
+      <section><details open>
+          <summary><h1>1994 – <i>Polysyntetiska tecken i svenska
+          teckenspråket</i></h1></summary>
+
+          <p>Ett stort antal nya tecken introduceras för beskrivning av
+          polysyntetiska tecken.
+
+      </details></section>
+
+      <section>
+        <details open>
+          <summary><h1>1997 – <i>Svenskt teckenspråkslexikon</i></h1>
+
+          <p>Handformer: 􌤢􌥂􌥃􌤣􌥄􌤤􌥅􌤥􌥆􌤦􌥇􌤧􌥈􌤨􌥉􌤩􌥊􌤪􌥋􌤫􌤬􌥌􌤎􌤭􌤮􌥎􌤽􌤯􌤿􌤰􌤱􌥑􌥒􌥟􌤲􌤳 (Symbolen
+          för <i>krokfingret</i> är här vänd åt det håll vi använder idag.
+
+          Rörelsesymboler: 􌤟􌦑􌥢􌥣􌥤􌦃􌦄􌥥􌥦􌥧􌥨􌥩􌥪􌥵􌥶􌥷􌥸􌥹􌦅􌦎􌥫􌥬􌥭􌥮􌥯􌥰􌥱􌥲􌥳􌥴􌥺􌦆􌦇
+      </details></section>
+
+      <section><details open>
+          <summary><h1>2015 – <a href="#ref2015">Teckentranskription</a></h1>
+
+        <p>􌦨 <i>böjs</i> dök först upp 2015
+        i <a href="#ref2015">Teckentranskription</a>. (Innan dess
+        transkriberades detta fonem på olika sätt beroende på sammanhang – till
+        exempel skrevs <a href="02940">vapen</a> tidigare 􌤢􌤻􌥔􌤸􌥈􌤴􌤶􌦆􌤪􌥼􌥻 men
+        numera används 􌤢􌤻􌥔􌤸􌥈􌤴􌤶􌦨􌥼􌥻 – <i>Svenskt
+        teckenspråkslexikon</i> <a href="#ref1997">bokversion</a> s.421
+        vs. <a href="#refweb">webbversion</a>).
+
+        <p>Bibehållen interaktionsart (􌦎, 􌥫 och 􌥮) skrivs nu inte längre mellan
+        de två handformssymbolerna i tecken med dubbel artikulator, utan skrivs
+        istället på första position i artikulationen (i fält III).
+      </details></section>
+    </section></details>
+
+    <section><details>
+      <summary><h1>Ordlista</h1></summary>
+
+        <div class=hanging>
+
+          <p><b>artikulator</b> –
+
+          <p><b>artikulationsställe</b> –
+
+          <p><b>artikulation</b> –
+
+          <p id=artikulationsgrupp><b>artikulationsgrupp</b> – En grupp
+            artikulationssymboler som artikuleras samtidigt (t ex realiseras
+            ”􌥣􌦄” genom att handen förs diagonalt nedåt åt höger, medan ”􌥣􌥼􌦄”
+            realiseras genom att handen förs först åt höger, sedan
+            nedåt). <i>Sekvens</i> används ibland med samma innebörd.
+
+          <p><b>attityd</b> – Beskriver en hands (eller underarms) vinkel i
+            förhållande till kroppen. <span class=FIXME>infoga symboler för
+            riktning</span> Attityden består av två komponenter,
+            nämligen <a href="#riktning">riktning</a>
+            och <a href="#vridning">vridning</a>.
+
+          <p><b>bibehållen interaktion</b> – En interaktion som pågår under
+            artikulerandet av ett helt tecken.
+
+          <p><b>bibehållen kontakt</b> – Kontakt som varar under en hel rörelse
+            (till skillnad från <a href="#medial-kontakt">medial kontakt</a>).
+            Skrivs med en punkt först i en artikulationsgrupp (􌤟􌥣).
+
+          <p><b>enhandstecken</b> – Tecken som enbart involverar en hand (se
+            också <a href="#tvahandstecken">tvåhandstecken</a>).
+
+          <p><b>final kontakt</b> – (􌥣􌥼􌤟)
+
+          <p id="grupp"><b>grupp</b> –
+            Se <a href="#artikulationsgrupp">artikulationsgrupp</a>.
+
+          <p id="handlage"><b>handläge</b> – Då en hand utgör ett
+            artikulationsställe/läge. Förekommer i tvåhandstecken med
+            en <a href="#aktiv-hand">aktiv</a> och
+            en <a href="#passiv-hand">passiv hand</a>. (Kallas också ”manuellt
+            läge”.)
+
+          <p id="initial-kontakt"><b>initial kontakt</b> – (􌤟􌥼􌥣)
+
+          <p id="kontakt"><b>kontakt</b> – Då artikulatorn nuddar vid
+            artikulationstället (se
+            även <a href="#bibehallen-kontakt">bibehållen</a>,
+            <a href="#initial-kontakt">initial</a>,
+            <a href="#medial-kontakt">medial</a>
+            och <a href="final-kontakt">final kontakt</a>).
+
+          <p id="kroppslage"><b>kroppsläge</b> – Ett artikulationsställe/läge
+            på kroppen eller armen.
+
+          <p><b>läge</b> – Artikulationställe. Utgörs av plats på kroppen
+            (<a href="#kroppslage">kroppsläge</a>), eller den passiva handen
+            (<a href="#handlage">handläge</a>).
+
+          <p id="medial-kontakt"><b>medial kontakt</b> – Kontakt som sker
+            flyktigt under en pågående rörelse. Skrivs med en punkt under
+            rörelsesymbolen (􌥣􌥡).
+
+          <p id="passiv-hand"><b>passiv hand</b> – Den hand i ett
+            tvåhandstecken med enkel artikulator som hålls stilla och ett utgör
+            artikulationsställe.
+
+          <p><b>polysyntetisk</b> – Polysyntetiska ord består uttrycker flera
+            betydelser på en gång. Förekommer i både tecknade och aukustiska
+            språk (som t ex mohawk, inuktitut och klingonska).
+
+            <br>    I akustiska språk består polysyntetiska ord huvudsakligen
+            av stavelser som inte är ord i sig vilka modifierar betydelsen av
+            en ordrot (i t ex det klingonska ordet <b>vIHoHruplaHpu'DI'</b> ”då
+            han hade kunnat vara beredd att döda mig” är <b>HoH</b> ”att döda”
+            huvudordet, medan alla andra stavelser utgörs av affix).
+
+            <br>    I tecknade språk, däremot, används oftast den rumsliga
+            dimensionen för beskriva komplexa företeelser och skeenden på ett
+            väldigt kortfattat sätt.
+
+          <p><b>riktning</b> – Den del av <a href="#attityd">attityden</a> som
+            beskriver åt vilket håll handflatan är
+            riktad. <span class=FIXME>infoga symboler för riktning</span>
+
+          <p id="sammansatt-artikulator"><b>sammansatt artikulator</b> – Då ett
+            tecken med dubbel artikulator
+            har <a href="#bibehallen-interaktion">bibehållen interaktion</a>
+            eller <a href="bibehallen-kontakt">kontakt</a> kan händerna
+            tillsammans betraktas som en sammansatt artikulator.
+
+          <p id="sekvens"><b>sekvens</b> –
+            Se <a href="#artikulationsgrupp">artikulationsgrupp</a>.
+
+          <p id="starka"><b>starka</b> (egen term) – Det som tillhör den
+            dominanta handens sida av kroppen. ”Starka handen” innebär höger
+            hand för en högerhänt person, och vänster hand för en vänsterhänt.
+            Ordet kan också användas för att beskriva andra delar av kroppen än
+            handen (”starka sidan av bröstet”, ”starka örat” etc.) och
+            refererar då till en kroppsdel på samma sida av kroppen som den
+            dominanta handen. (Wallin använder här ordet ”ipsi[lateral]”.)
+
+          <p id="svaga"><b>svaga</b> (egen term) – Det som tillhör den
+            icke-dominanta handens sida av kroppen
+            (se <a href="#starka">starka</a>). (Wallin använder här ordet
+            ”kontra[lateral]”.)
+
+          <p id="tvahandstecken"><b>tvåhandstecken</b> – Ett tecken i vilka
+            båda händerna används. Kan vara en tecken
+            med <a href="#dubbel-artikulator">dubbel artikulator</a> eller med
+            en <a href="#aktiv-hand">aktiv</a> och
+            en <a href="#passiv-hand">passiv hand</a>
+
+          <p id="vridning"><b>vridning</b> – Den del
+            av <a href="#attityd">attityden</a> som beskriver åt vilket håll
+            handflatan är vänd. <span class=FIXME>infoga symboler för
+            vridning</span>
+        </div>
+    </details></section>
+
+    <section><details>
+      <summary><h1>Efterord</h1></summary>
+
+      <p>Efter att ha (om och om igen) läst Bergman och
+      Björkstrands <a href="#ref2015">Teckentranskription</a> från 2015, och i försök att bena
+      ut än det ena än det andra.
+
+      <!-- I Teckentranskription (2015) beskrivs det transkriptionssystem som
+      används för transkription av enskilda tecken i svenska teckenspråket och
+      som används i Svenskt teckenspråkslexikon (2008, 2014). Det är en
+      reviderad version av det system som tidigare beskrivits i Bergman 1977,
+      Bergman 1982 och i Björkstrand & Bergman 1993. Revisionen, som i huvudsak
+      har gjorts inom projektet Datorbaserat lexikon för det svenska
+      teckenspråket (finansierat av Riksbankens jubileumsfond och
+      Socialvetenskapliga forskningsrådet), har utförts i samarbete med Tomas
+      Hedberg.
+
+      * Bergman, Brita (1977). "Tecknad svenska". Utbildningsforskning 28. Stockholm:
+        Liber Läromedel/Utbildningsförlaget.
+      * Bergman, Brita (1982). "Teckenspråkstranskription". Forskning om teckenspråk X.
+        Stockholm: Institutionen för lingvistik, Stockholms universitet
+      * Björkstrand, Thomas och Bergman, Brita (1993). "Kompendium i
+        teckentranskription". Institutionen för lingvistik, Stockholms
+        universitet
+
+      * Svenskt teckenspråkslexikon (2008)
+      * Svenskt teckenspråkslexikon (2014)
+
+      De största förändringarna är dels tillkomsten av nya
+      transkriptionssymboler, dels ändringar i konventionerna för hur
+      symbolerna kombineras med varandra. Det är främst i aspekten artikulation
+      som symbolerna skrivs annorlunda än förut, nämligen att de nu i princip
+      genomgående skrivs efter varandra (tidigare kunde de skrivas även under
+      varandra). -->
+
+      <p>Jag har egentligen bara kunnat hitta en bra källa som beskriver hur
+        teckenskrift fungerar, nämligen Bergman och
+        Björkstrands <a href="#ref2015">Teckentranskription</a> från 2015 (den är i sig en
+        uppdaterad version av Bergmans tidigare
+        <i>Teckenspråkstranskription</i>, från 1982). – Dock används fler symboler
+        i <i><a href="http://teckensprakslexikon.su.se/">Svenskt
+        teckenspråkslexikon</a></i> än vad som beskrivs
+        i <i>Teckentranskription!</i>
+
+      <p>I <i>Polysyntetiska tecken i svenska teckenspråket</i> presenterar
+        Wallin en lista (i <a href="wallin-1994-a.jpg">Appendix A</a>,
+        och <a href="wallin-1994-b.jpg">Appendix B</a>) som inkluderar ett
+        stort antal symboler som saknas i <a href="#ref2015">Teckentranskription</a>. (Wallins
+        lista är, enligt honom själv, en ”lätt modifierad” lista av det som
+        presenteras i <i>Kompendium i teckentranskription.</i> [Bergman, Brita
+        & Björkstrand, Thomas. 1993. Institutionen för lingvistik, Stockholms
+        universitet. (26 sid.)] – Jag har dock ännu inte lyckats få tag i denna
+        för jämförelse.)
+
+      <section><details>
+        <summary><h1>Errata till mina källor</h1></summary>
+
+        <p>En viktig källa till informationen du finner i den här texten är
+          kompendiet <a href="#ref2015">Teckentranskription</a> (från 2015) – den är i sig en
+          ny version av <i>Tecken<b>språks</b>transkription</i> [min emfas]
+          (från 1982), uppdaterad för att reflektera teckenskriftspraxis av
+          idag. De två texterna är dock mycket lika <i>och på några ställen
+          hittar man oreviderad/inaktuell text från det tidigare verket i det
+          senare.</i>
+
+        <p>Snarare än att tynga ner min text ovan med referenser och fotnoter
+          för att peka ut dessa fel, har jag valt att här dokumentera de
+          problem jag (tycker mig) ha hittat, så att du ska ha en sportslig
+          chans att avgöra hurvida jag har begått våld på mitt källmaterial
+          eller inte.
+
+        <hr>
+
+        <p>Interaktionsarterna 􌦎, 􌥮 och 􌥫 i tycks innehålla några fel (i form
+          av oreviderad text från det tidigare verket). Det sägs att ”de kan
+          förekomma både i andra och tredje fältet” [s.18] trots att de numera
+          enbart skrivs i fält III. Exempel (38–40) är uppdaterade och har
+          symbolerna i fält III, men exempel (41a–41b ’rida’) har blivit kvar i
+          okorrigerat skick (i Svenskt teckenspråkslexikon finner vi
+          dock <a href=04298>rida</a> transkriberat på den nya sättet med
+          interaktionsartssymbolen först i fält III).
+      </details></section>
+    </details></section>
+
+    <section><details>
+      <summary><h1>Udda transkriptioner</h1></summary>
+
+      <p>Nedan är några transkriptioner jag stött på som verkar strida emot de
+      regler som beskrivs i <a href="#ref2015">Teckentranskription</a>.
+
+      <div class=hanging>
+
+        <p class=FIXME>Dubbelartikulation med olika handformer för de olika
+        händerna (har sett detta beskrivet som en omöjlighet
+        [i <a href="#ref2015">Teckentranskription</a>?] men det verkar i själva
+        verket förekomma i relativt många tecken):
+          <br>􌤵􌥘􌥈􌤥􌤴􌥙􌥧 <a href=12364>fallskärm</a>
+
+        <p class=FIXME>En separator (”+”) som inte finns beskriven (har lagt
+        till och försökt beskriva dess i artikeln ovan):
+
+          <br>􌥜􌥅􌤵􌥘􌦑􌦩􌤔􌤲􌥓􌥘􌤟􌥱􌦀􌥼􌥻 <a href=01567>gitarr</a>; <a href=10019>Argentina</a>;
+          <a href=15318>Beatles</a>
+
+          <br>􌥜􌥅􌤵􌥘􌦑􌦩􌤓􌤥􌥓􌥘􌤟􌥱􌦀􌥼􌥻 <i class=sign>gitarr</i>
+          (<a href="#ref1997">Teckenspråkslexikon</a> [boken] s.243).
+
+        <p class=FIXME>En simultan rörelse i motsatta riktningar(?) – 􌥧􌥡􌥦􌥡 och
+        􌦃􌥡􌦄􌥡 ser helt paradoxalt ut i mina ögon, finns det någon särskild
+        anledning att man skriver på detta sätt, när det som avses verkar vara
+        􌥧􌥡􌦇 respektive 􌦃􌥡􌦇? (Att jämföras med
+        􌤖􌤴􌥙􌤤􌤤􌤴􌥙􌥧􌥡􌦇􌥼􌥻 <a href=04417>korruption</a>.)
+          <br>􌤴􌥗􌤲􌤲􌤴􌤶􌥧􌥡􌥦􌥡􌦆􌥃 <a href=02658>just</a>; <a href=08407>perfekt</a>;
+          <a href=04595>precis</a>
+          <br>􌤵􌥗􌤦􌤦􌤵􌤶􌦃􌥡􌦄􌥡􌥼􌥻 <a href=08052>renovera, renovering</a>
+
+        <p class=FIXME>Artikulator som är annan kroppsdel än hand. I nedan
+        tecken agerar armbågen artikulator, medan handen hålls stilla. Det är
+        inte precis uppenbart hur nedanstående transkription bör tolkas… Vad är
+        det i nedan transkription som indikerar att det är armbågen som bör
+        röra sig, och inte handen?
+
+        <br>􌤔􌤺􌥜􌤦􌤴􌥙􌥢􌥼􌤟􌥼􌥻 <a href=08113>McDonalds</a>; <a href=05946>Macintosh,
+        Mac</a>; <a href=01987>Skottland</a>; <a href=01988>whisky</a>
+
+        <p class=FIXME>En överarm med attityd
+        (enligt <a href="#ref2015">Teckentranskription</a> kan endast händer
+        och <i>underarm</i> ha en attityd):
+           <br>􌤒􌥖􌥗􌤢􌥖􌥗􌥦􌥱􌦊􌥼􌥭 <a href=00143>ombud</a>
+
+      </div>
+
+      <p><i>Divergerar</i> och <i>medial kontakt</i> i kombination:
+
+      <figure>
+        <table>
+          <tr>
+            <td>􌤊􌤢􌥦􌤶􌤟􌥧􌥠􌤴􌥗􌤢􌤢􌤴􌤶􌥹􌥡􌦇􌥼􌥻
+            <td><a href=16590>försoning</a>
+          <tr>
+            <td>􌤴􌥗􌤲􌤹􌤲􌤴􌤶􌥹􌥡􌥠􌥔􌥘􌤢􌥛􌤢􌥓􌥘􌥸􌥼􌥦􌥱􌥾􌥼􌥸
+            <td><a href=12365>definiera, definition</a>
+          <tr>
+            <td>􌤴􌥗􌤲􌤹􌤲􌤴􌤶􌥹􌥡􌥼􌥹􌥡􌥼􌦆􌥃
+            <td><a href=12362>definiera, definition</a>
+        </table>
+      </figure>
+
+      <p>I korrespondans med Thomas Björkstrand har han nämnt planer på att
+      korta ner <i>konvergerar</i> och <i>divergerar</i>-symbolerna på höjden,
+      så att <i>medial kontakt</i>-symbolen får plats under den utan att de två
+      symbolerna överlappar varandra (i webbversionen
+      av <a href="#refweb">Svenskt teckenspråkslexikon</a> överlappar de
+      varandra, men inte i <a href="#ref1997">bokversionen</a>). I
+      typsnittet <i><a href="freesans-swl.html">FreeSans-SWL</a></i> (som jag
+      använder här) har jag implementerat hans förslag.
+
+    </details></section>
+
+    <section class=hanging><details>
+      <summary><h1>Referenser</h1></summary>
+
+      <p id=ref1977>Bergman, Brita (1977)
+        <i><a href="http://su.diva-portal.org/smash/record.jsf?pid=diva2%3A867043&dswid=2695">Tecknad
+        svenska</a></i>. Utbildningsforskning 28. Stockholm, Liber
+        Läromedel/Utbildningsförlaget. – Innåller detaljerade beskrivningar av
+        de olika fonemen i <i>tecknad svenska</i> (en delmängd av de som finns
+        i svenskt teckenspråk).
+
+      <p id=ref1982>Bergman, Brita (1982)
+        <i><a href="http://www.ling.su.se/polopoly_fs/1.74155.1328095008!/menu/standard/file/Forskning_om_teckensprak_X_1982.pdf">Teckenspråkstranskription</a></i>.
+        Forskning om teckenspråk X. Stockholm, Institutionen för lingvistik,
+        Stockholms universitet. – Se
+        även <a href="http://www.ling.su.se/forskning/avhandlingar-publikationer/forskning-om-teckenspr%C3%A5k-fot-1.18280"><i>Forskning
+        om teckenspråks</i> webbsida</a>.)
+
+      <p id=ref1993>Bergman, Brita och Björkstrand, Thomas (1993) <i>Kompendium
+        i teckentranskription</i>. Stockholms universitet, Institutionen för
+        lingvistik. – <i>Polysyntetiska tecken</i> omnämner denna källa som den
+        viktigaste beskrivningen av svensk teckenskrift. (Denna källa finns
+        varken i tryck eller tillgänglig online, men kan fås i PDF-format ifrån
+        expeditionen på institutionen för lingvistik vid Stockholms
+        universitet.)
+
+      <p id=ref1989>Hedberg, Tomas (1989)
+        <i>Persontecken – Deras härkomst, bildningssätt och användning</i>.
+        Forskning om teckenspråk</a> XVI. Stockholm, Institutionen för
+        lingvistik, Stockholms universitet. – Använder sig av ”LO-handen”
+        [s.21] och förenklade symboler för cirkelrörelser [s.14
+        m.fl.] <!-- FIXME: Lägg till sidref för alla förekomster! --> (dessa
+        symboler beskrevs senare av Thomas Björkstrand i <i>Redundans i
+        teckentranskriptionsssystemet</i> [1998]).
+
+      <p id=ref1994>Wallin, Lars (1994)
+        <i><a href="http://su.diva-portal.org/smash/record.jsf?pid=diva2%3A186541&dswid=6194">Polysyntetiska
+        tecken i svenska teckenspråket</a></i>. Stockholm, Institutionen för
+        lingvistik, Stockholms universitet. – Innehåller ett flertal nya
+        symboler specifikt för transkription av polysyntetiska tecken
+        (<img src="pic/h-vinklade-pekfingret.svg">,
+        <img src="pic/h-vinklade-n-handen.svg">).
+
+      <p id=ref1997>Hedberg, Tomas (redaktör) (1997)
+        <i><a href="http://su.diva-portal.org/smash/record.jsf?pid=diva2%3A186541&dswid=6194">Svenskt
+        teckenspråkslexikon</a></i>. Leksand, Sverigen Dövas Riksförbund,
+        Teckenspråksavdelningen. – Detta är bokversionen av <i>Svenskt
+        Teckenspråkslexikon</i>.
+
+      <p id=ref1998>Björkstrand, Thomas (1998)
+        <i>Redundans i teckentranskriptionsssystemet – Förslag till
+        förenkling</i>. C-uppsats i teckenspråk. Stockholm, Institutionen för
+        lingvistik, Stockholms universitet. – Beskriver bl.a. förenklade
+        symboler för beskrivning av cirkelrörelser. <!-- FIXME: Lägg till dessa
+        symboler i artikeln ovan -->
+
+      <p id=refweb><a href="http://www.ling.su.se/teckenspr%C3%A5k">Avdelningen
+        för teckenspråk</a>
+        (2008–) <i><a href="http://teckensprakslexikon.su.se/">Svenskt
+        teckenspråkslexikon</a></i>. Stockholm, Institutionen för lingvistik,
+        Stockholms universitet. – Detta är den kontinuenligt uppdaterade
+        webbversionen av <i>Svenskt Teckenspråkslexikon</i>.
+
+      <p id=ref2015>Björkstrand, Thomas och Bergman, Brita (2015)
+        <i><a href="http://www.ling.su.se/teckenspr%C3%A5ksresurser/verktyg/teckentranskription">Teckentranskription</a></i>. <a href="http://www.ling.su.se/forskning/avhandlingar-publikationer/forskning-om-teckenspr%C3%A5k-fot-1.18280">Forskning
+        om teckenspråk</a> XXV. Stockholm, Institutionen för lingvistik,
+        Stockholms universitet. – Huvudsaklig källa till den nuvarande formen
+        av teckenskriften.
+    </details></section>
+
+    <footer>
+      <a href="." title="A page to help with transcription."
+         >Transcribe</a> |
+      <a href="https://github.com/zrajm/teckentranskription/blob/master/README.md"
+         title="What is this page for? Described here!"
+         >About</a> |
+      <a href="https://github.com/zrajm/teckentranskription/issues"
+         title="Is something missing or broken on this page? Report it here!"
+         >Report issue</a> |
+      <a href="https://github.com/zrajm/teckentranskription"
+         title="The GitHub repository of this page."
+         >GitHub</a> |
+      <a href="freesans-swl.html"
+         title="A typeface for sign language transcription."
+         >Unicode Font</a> |
+      <a href="LICENSE.txt" rel=license
+         title="Released under the GNU General Public License, Version 3 (GPLv3)."
+         >License</a>
+      <br>© 2017 zrajm, Uppsala.
+    </footer>
+  </main>
+  <img id=hover style="display:none;position:fixed;bottom:0;right:0;border:4px solid black;padding: .5em 1em;background:#fff">
+  <script src="jquery-3.1.1.js"></script>
+  <script>
+    $('body').prepend('<img id=toggle><img id=toggle2>');
+    var state = false,
+        attrs = {
+            true: {
+                src: 'pic/gui/collapse-all.svg',
+                title: 'Kollapsa allt',
+            },
+            false: {
+                src: 'pic/gui/expand-all.svg',
+                title: 'Expandera allt',
+            }
+        };
+
+    function toggle(a) {
+        state = !state;
+        $('details:not([closed])').attr('open', state);
+        $('#toggle').attr(attrs[state]);
+    }
+
+    function toggle2(a) {
+        state = !state;
+        $('details').attr('open', state);
+        $('#toggle').attr(attrs[state]);
+    }
+
+    $('#toggle,#toggle2').attr(attrs[state]).click(toggle).css({
+        opacity: .25,
+        zoom: 2,
+        position: 'fixed',
+        right: 0,
+        margin: '.125em .25em',
+    });
+    $('#toggle2').click(toggle2).css({ right: 15 });
+
+    // Expand all when loading page.
+    $('#toggle').click()
+    ///////////////////////////////////////////////////////////////////////////
+    $('label.fx').
+        hover(
+            function () { $('.fx').addClass('hilite')    },
+            function () { $('.fx').removeClass('hilite') }
+        );
+    $('label.fs').
+        hover(
+            function () { $('.fs').addClass('hilite')    },
+            function () { $('.fs').removeClass('hilite') }
+        );
+    $('label.fr').
+        hover(
+            function () { $('.fr').addClass('hilite')    },
+            function () { $('.fr').removeClass('hilite') }
+        );
+    $('label.fv').
+        hover(
+            function () { $('.fv').addClass('hilite')    },
+            function () { $('.fv').removeClass('hilite') }
+        );
+    $('label.fb').
+        hover(
+            function () { $('.fb').addClass('hilite')    },
+            function () { $('.fb').removeClass('hilite') }
+        );
+    $('label.f0').
+        hover(
+            function () { $('.f0').addClass('hilite')    },
+            function () { $('.f0').removeClass('hilite') }
+        );
+    $('label.f1').
+        hover(
+            function () { $('.f1').addClass('hilite')    },
+            function () { $('.f1').removeClass('hilite') }
+        );
+    $('label.f2').
+        hover(
+            function () { $('.f2').addClass('hilite')    },
+            function () { $('.f2').removeClass('hilite') }
+        );
+    $('label.f3').
+        hover(
+            function () { $('.f3').addClass('hilite')    },
+            function () { $('.f3').removeClass('hilite') }
+        );
+    $('label.f4').
+        hover(
+            function () { $('.f4').addClass('hilite')    },
+            function () { $('.f4').removeClass('hilite') }
+        );
+    $('label.open').
+        hover(
+            function () { $('.open').addClass('hilite')    },
+            function () { $('.open').removeClass('hilite') }
+        );
+    $('label.closed').
+        hover(
+            function () { $('.closed').addClass('hilite')    },
+            function () { $('.closed').removeClass('hilite') }
+        );
+
+    $('label.hel').
+        hover(
+            function () { $('.hel').addClass('hilite')    },
+            function () { $('.hel').removeClass('hilite') }
+        );
+    ////////////////////////////////////////////////////////////////////////////
+    $('label.h1977').
+        hover(
+            function () { $('.h1977').addClass('hilite')    },
+            function () { $('.h1977').removeClass('hilite') }
+        );
+    $('label.h1982').
+        hover(
+            function () { $('.h1982').addClass('hilite')    },
+            function () { $('.h1982').removeClass('hilite') }
+        );
+    $('label.h1994').
+        hover(
+            function () { $('.h1994').addClass('hilite')    },
+            function () { $('.h1994').removeClass('hilite') }
+        );
+    $('label.h1997').
+        hover(
+            function () { $('.h1997').addClass('hilite')    },
+            function () { $('.h1997').removeClass('hilite') }
+        );
+    $('label.h2015').
+        hover(
+            function () { $('.h2015').addClass('hilite')    },
+            function () { $('.h2015').removeClass('hilite') }
+        );
+    $('label.hweb').
+        hover(
+            function () { $('.hweb').addClass('hilite')    },
+            function () { $('.hweb').removeClass('hilite') }
+        );
+    ////////////////////////////////////////////////////////////////////////////
+    $('label.r1977').
+        hover(
+            function () { $('.r1977').addClass('hilite')    },
+            function () { $('.r1977').removeClass('hilite') }
+        );
+    ////////////////////////////////////////////////////////////////////////////
+    $('label.l1977').
+        hover(
+            function () { $('.l1977').addClass('hilite')    },
+            function () { $('.l1977').removeClass('hilite') }
+        );
+    $('label.h1').
+        hover(
+            function () { $('.h1').addClass('hilite')    },
+            function () { $('.h1').removeClass('hilite') }
+        );
+    $('label.h2').
+        hover(
+            function () { $('.h2').addClass('hilite')    },
+            function () { $('.h2').removeClass('hilite') }
+        );
+    ////////////////////////////////////////////////////////////////////////////
+    $('label.flat').
+        hover(
+            function () { $('.flat').addClass('hilite')    },
+            function () { $('.flat').removeClass('hilite') }
+        );
+    $('label.knuten').
+        hover(
+            function () { $('.knuten').addClass('hilite')    },
+            function () { $('.knuten').removeClass('hilite') }
+        );
+    $('label.ett').
+        hover(
+            function () { $('.ett').addClass('hilite')    },
+            function () { $('.ett').removeClass('hilite') }
+        );
+    $('label.två').
+        hover(
+            function () { $('.två').addClass('hilite')    },
+            function () { $('.två').removeClass('hilite') }
+        );
+    $('label.tre').
+        hover(
+            function () { $('.tre').addClass('hilite')    },
+            function () { $('.tre').removeClass('hilite') }
+        );
+    $('label.fyra').
+        hover(
+            function () { $('.fyra').addClass('hilite')    },
+            function () { $('.fyra').removeClass('hilite') }
+        );
+    $('label.fem').
+        hover(
+            function () { $('.fem').addClass('hilite')    },
+            function () { $('.fem').removeClass('hilite') }
+        );
+    $('label.grepp').
+        hover(
+            function () { $('.grepp').addClass('hilite')    },
+            function () { $('.grepp').removeClass('hilite') }
+        );
+
+    ////////////////////////////////////////////////////////////////////////////
+    $('table img[src^="pic/x/"]').hover(
+        function () {
+            var elem  = $(this),
+                image = elem.attr('src');
+            elem.css('background', 'rgba(0, 0, 0, .125)');
+            $('#hover').attr('src', image).show();
+        },
+        function () {
+            $(this).css('background', 'inherit');
+            $('#hover').hide();
+        },
+    )
+
+    ////////////////////////////////////////////////////////////////////////////
+    $('[href]').each(function () {
+        var elem = $(this), href = elem.attr('href')
+        // Add 'target=_blank' to all non-internal links.
+        if (!href.match(/^#/)) {
+            elem.attr('target', '_blank')
+        }
+        // Rewrite 5-digit IDs to links to Svenskt teckenspråkslexikon.
+        if (href.match(/^\d{5}($|#)/)) {
+            elem.attr('href', 'http://teckensprakslexikon.su.se/ord/' + href)
+        }
+    })
+  </script>
+</body>
+</html>

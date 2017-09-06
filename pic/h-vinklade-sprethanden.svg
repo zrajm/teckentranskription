@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="45.325356"
+   height="67"
+   viewBox="0 -200 453.25356 670.00002"
+   id="svg3013">
+  <metadata
+     id="metadata3023">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs3021">
+    <clipPath
+       id="clipPath3126">
+      <path
+         d="m -0.00356556,-180.49995 420.30000556,0 0,639.99999 -420.30000556,0 z"
+         id="path3128"
+         style="opacity:0.5;fill:#ffff00;fill-opacity:1;stroke:none" />
+    </clipPath>
+    <clipPath
+       id="clipPath3126-6">
+      <path
+         d="m -0.00356556,-180.49995 420.30000556,0 0,639.99999 -420.30000556,0 z"
+         id="path3128-2"
+         style="opacity:0.5;fill:#ffff00;fill-opacity:1;stroke:none" />
+    </clipPath>
+  </defs>
+  <path
+     d="m 25.433931,-180.49997 184.752299,320 169.54968,-293.66866 m -169.54947,591.66867 1e-5,-298 m -188.186453,0 376.292873,0"
+     transform="translate(0.00356159,10.500015)"
+     clip-path="url(#clipPath3126)"
+     id="path4054-3-5"
+     style="fill:none;stroke:#000000;stroke-width:43.99999619;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+  <path
+     d="M 426.2943,-53.310013 394.94299,-170.00011 278.21356,-138.80446"
+     id="path7164"
+     style="color:#000000;fill:none;stroke:#000000;stroke-width:44;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+</svg>

@@ -10,8 +10,6 @@ ol, figure {
     margin-left: 1em;
     list-style: upper-roman inside none;
 }
-figure { border: 1px solid transparent; }
-figcaption { margin: .5em 0; }
 
 *:not(td) { box-sizing: border-box; }
 
