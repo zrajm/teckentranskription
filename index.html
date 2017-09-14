@@ -63,13 +63,8 @@
 
 
     /* special for this page */
-    span {
-      line-height: 2.4em;
-      border: 1px solid black;
-      padding: .5em .25em;
-      Xdisplay: inline-block;
-    }
-    span button {
+    button {
+      padding: .125em 0 0 0;
       font-size: 1.25em;
     }
     textarea {
@@ -79,28 +74,58 @@
       height: 10em;
       line-height: 1.5em;
     }
+
+    button:hover { border-color: #888; }
+    button {
+      border: 1px solid #666;
+      position: relative;
+      background-image: linear-gradient(to bottom, #bbb, #fff);
+      border-radius: 2px;
+      padding: .2em .125em .125em .125em;
+      box-sizing: border-box;
+      margin: .5px;
+    }
+
+    button:hover:before { opacity: .1; }
+    button:before {
+      opacity: .3;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right:0;
+      content: " ";
+    }
+
+    .relation     button:before { background: #f0f; }
+    .attityd      button:before { background: #ff0; }
+    .lage         button:before { background: #00f; }
+    .handform     button:before { background: #0f0; }
+    .forflyttning button:before { background: #f00; }
+    .rorelse      button:before { background: #f0f; }
+    .annat        button:before { background: #ff0; }
   </style>
 </head>
 <body>
 
-  <textarea placeholder="Skriv här…
-(Använd knapparna nedan för att skriva tecken&shy;symboler.)"
-    class="border x15" style=""></textarea>
+  <textarea autofocus placeholder="Skriv här…
+(Använd knapparna nedan för att skriva transkriptions&shy;symboler, och tangentbordet för att skriva vanlig text.)"
+    class="border x15"></textarea>
 
-  <span style="background:#f8f;"><!--
+  <span class=relation><!--
     --><button title="brevid ">◌􌤺</button><!--
     --><button title="framför">◌􌥛</button><!--
     --><button title="bakom  ">◌􌤻</button><!--
     --><button title="ovanför">◌􌤹</button><!--
     nedanför--><button>◌􌥚</button></span>
 
-  <span style="background:#ff8;"><!--
+  <span class=attityd><!--
     --><button title="svagriktad  ">􌥓</button><!--
     --><button title="starkriktad ">􌥔</button><!--
     --><button title="framåtriktad">􌤴</button><!--
     --><button title="bakåtriktad ">􌥕</button><!--
     --><button title="uppåtriktad ">􌤵</button><!--
-    --><button title="nedåtriktad ">􌥖</button> <!--
+    --><button title="nedåtriktad ">􌥖</button><!--
     --><button title="svagvriden  ">&nbsp;&nbsp;􌤶</button><!--
     --><button title="starkvriden ">&nbsp;&nbsp;􌥗</button><!--
     --><button title="framåtvriden">&nbsp;&nbsp;􌤷</button><!--
@@ -108,7 +133,7 @@
     --><button title="uppåtvriden ">&nbsp;&nbsp;􌤸</button><!--
     --><button title="nedåtvriden ">&nbsp;&nbsp;􌥙</button></span>
 
-  <span style="background:#8f8;"><!--
+  <span class=lage><!--
     --><button title="ansiktet      ">􌤆</button><!--
     --><button title="övre ansiktet ">􌤂</button><!--
     --><button title="undre ansiktet">􌥞</button><!--
@@ -142,7 +167,7 @@
     --><button title="starka höften ">􌤘</button><!--
     --><button title="benet         ">􌤚</button></span>
 
-  <span style="background:#8f8;"><!--
+  <span class=handform><!--
     --><button title="a-handen">􌤤</button><!--
     --><button title="tumvinkelhanden">􌥄</button><!--
     --><button title="vinkelhanden">􌤣</button><!--
@@ -184,7 +209,8 @@
     --><button title="runda långfingret">􌥟</button><!--
     --><button title="4-handen">􌦪</button></span>
 
-  <span style="background:#faa;"><!--
+  <span class=forflyttning><!--
+    --><button title="medial kontakt">&nbsp;&nbsp;􌥡</button><!--
     --><button title="kontakt">􌤟</button><!--
     --><button title="hålls stilla">􌦑</button><!--
     --><button title="förs åt svaga hållet">􌥢</button><!--
@@ -215,13 +241,13 @@
     --><button title="vinkar">􌥺</button><!--
     --><button title="förändras">􌦆</button><!--
     --><button title="växelvis">􌦇</button> <!--
-    --><button title="medial kontakt">&nbsp;&nbsp;􌥡</button></span>
+    --></span>
 
-  <span style="background:#f8f;"><!--
+  <span class=rorelse><!--
     --><button title="båge  ">􌥯</button><!--
     --><button title="cirkel">􌥰</button><!--
     --><button title="slås  ">􌥱</button><!--
-    --><button title="vrids ">􌥲</button> <!--
+    --><button title="vrids ">􌥲</button><!--
     --><button title="svagled   ">&nbsp;&nbsp;􌦈</button><!--
     --><button title="starkled  ">&nbsp;&nbsp;􌥽</button><!--
     --><button title="sidled    ">&nbsp;&nbsp;􌦉</button><!--
@@ -233,8 +259,8 @@
     --><button title="höjdled   ">&nbsp;&nbsp;􌦌</button><!--
     --><button title="mot varann">&nbsp;&nbsp;􌦂</button></span>
 
-  <span style="background:#f8f;"><!--
-    --><button title="upprepning                    ">􌥻</button> <!--
+  <span class=annat><!--
+    --><button title="upprepning                    ">􌥻</button><!--
     --><button title="separator artikulationssekvens">􌥼</button><!--
     --><button title="separator sammansatt tecken   ">􌥠</button><!--
     --><button title="separator mellan händer       ">􌦩</button></span>
