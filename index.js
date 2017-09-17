@@ -1,5 +1,4 @@
-
-// For inserting text in a textarea
+// For inserting text in a textarea.
 function insertAtCursor(domElement, str) {
     if (document.selection) {
         // IE support
@@ -24,15 +23,13 @@ function insertAtCursor(domElement, str) {
     }
 }
 
-var textareaElem = $('textarea').get(0);
-$('button').mousedown(button_clicked).keydown(button_clicked);
-
 // Invoke this on .mousedown() and/or .keydown() (to catch mouse clicks and
 // keyboard input respectively). This will prevent default function of an
 // element it is attached to (specifically, if attached to .mousedown(), this
 // will prevent the button from being focused when clicked -- so that the
 // previously focused element keeps its focus; this will not worked for
 // .click() as the element is already focused when that event is triggered).
+var textareaElem = $('textarea').get(0);
 function button_clicked(event) {
     var key;
 
@@ -52,5 +49,9 @@ function button_clicked(event) {
     }
     return true;
 }
+
+/******************************************************************************/
+
+$('button').mousedown(button_clicked).keydown(button_clicked);
 
 /*[eof]*/
