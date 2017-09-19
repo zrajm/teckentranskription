@@ -24,7 +24,7 @@
     }
     body {
       background: #fff;
-      padding: 1em;
+      padding: .25em 1em;
     }
 
     body, textarea, button {
@@ -65,8 +65,63 @@
       border: 1px solid #000;
     }
 
-
     /* special for this page */
+    .share {
+      position: relative;
+      text-align: right;
+    }
+    .share button {
+      margin-bottom: 4px;
+      padding: .125em .25em;
+      margin-left: auto;
+      margin-right: 0;
+      right: 0;
+    }
+    .share div.bubble {
+      box-sizing: border-box;
+      text-align: center;
+      width: 30em;
+      max-width: 100%;
+      display: none;
+      margin: 6px 10px;
+      border-radius: 4px;
+      border: 1px solid rgba(27, 31, 35, 0.15);
+      background: #fff;
+      padding: 5px;
+      z-index: 100;
+      position: absolute;
+      right: 0;
+    }
+   .share div.bubble:before,
+   .share div.bubble:after {
+      border: 8px solid transparent;
+      border-bottom-color: rgba(27, 31, 35, 0.15);
+      content: "";
+      display: block;
+      position: absolute;
+      right: 9px;
+      top: -16px;
+    }
+    .share div.bubble:after {
+      border: 7px solid transparent;
+      border-bottom-color: #fff;
+      right: 10px;
+      top: -14px;
+    }
+    .url {
+      padding: .125em .25em;
+      font-family: monospace;
+      word-wrap: break-word;
+      text-align: left;
+      border: 1px solid rgb(209, 213, 218);
+      border-radius: 3px;
+      box-shadow: rgba(27, 31, 35, 0.075) 0px 1px 2px 0px inset;
+      line-height: 1.5em;
+      padding: 3px 8px;
+      max-height: 7.5em;
+      overflow-y: scroll;
+    }
+
     button {
       padding: .125em 0 0 0;
       font-size: 1.25em;
@@ -112,169 +167,178 @@
 </head>
 <body>
 
-  <textarea autofocus placeholder="Skriv här…
-(Använd knapparna nedan för att skriva transkriptions&shy;symboler, och tangentbordet för att skriva vanlig text.)"
-    class="border x15"></textarea>
+  <aside class=share>
+    <button>Share…</button>
+    <div class=bubble>
+      <div class=url></div>
+      <div class=msg></div>
+    </div>
+  </aside>
 
-  <span class=relation><!--
-    --><button title="brevid">◌􌤺</button><!--
-    --><button title="framför">◌􌥛</button><!--
-    --><button title="bakom">◌􌤻</button><!--
-    --><button title="ovanför">◌􌤹</button><!--
-    --><button title="nedanför">◌􌥚</button></span>
+  <main>
+    <textarea autofocus class="border x15" placeholder="Skriv här…
+(Använd knapparna nedan för att skriva transkriptions&shy;symboler, och tangentbordet för att skriva vanlig text.)"></textarea>
 
-  <span class=attityd><!--
-    --><button title="svagriktad">􌥓</button><!--
-    --><button title="starkriktad">􌥔</button><!--
-    --><button title="framåtriktad">􌤴</button><!--
-    --><button title="bakåtriktad">􌥕</button><!--
-    --><button title="uppåtriktad">􌤵</button><!--
-    --><button title="nedåtriktad">􌥖</button><!--
-    --><button title="svagvriden">&nbsp;&nbsp;􌤶</button><!--
-    --><button title="starkvriden">&nbsp;&nbsp;􌥗</button><!--
-    --><button title="framåtvriden">&nbsp;&nbsp;􌤷</button><!--
-    --><button title="bakåtvriden">&nbsp;&nbsp;􌥘</button><!--
-    --><button title="uppåtvriden">&nbsp;&nbsp;􌤸</button><!--
-    --><button title="nedåtvriden">&nbsp;&nbsp;􌥙</button></span>
+    <span class=relation><!--
+      --><button title="brevid">◌􌤺</button><!--
+      --><button title="framför">◌􌥛</button><!--
+      --><button title="bakom">◌􌤻</button><!--
+      --><button title="ovanför">◌􌤹</button><!--
+      --><button title="nedanför">◌􌥚</button></span>
 
-  <span class=lage><!--
-    --><button title="ansiktet">􌤆</button><!--
-    --><button title="övre ansiktet">􌤂</button><!--
-    --><button title="undre ansiktet">􌥞</button><!--
-    --><button title="hjässan">􌤀</button><!--
-    --><button title="pannan">􌤃</button><!--
-    --><button title="ögonen">􌤄</button><!--
-    --><button title="ögat">􌤅</button><!--
-    --><button title="öronen">􌤾</button><!--
-    --><button title="svaga örat">􌤈</button><!--
-    --><button title="starka örat">􌤇</button><!--
-    --><button title="kinderna">􌤉</button><!--
-    --><button title="svaga kinden">􌤋</button><!--
-    --><button title="starka kinden">􌤊</button><!--
-    --><button title="nasan">􌤼</button><!--
-    --><button title="munnen">􌤌</button><!--
-    --><button title="hakan">􌤛</button><!--
-    --><button title="nacken">􌤜</button><!--
-    --><button title="halsen">􌤞</button><!--
-    --><button title="axlarna">􌤠</button><!--
-    --><button title="svaga axeln">􌥀</button><!--
-    --><button title="starka axeln">􌤡</button><!--
-    --><button title="armen">􌥜</button><!--
-    --><button title="överarmen">􌤑</button><!--
-    --><button title="underarmen">􌤒</button><!--
-    --><button title="bröstet">􌤓</button><!--
-    --><button title="svaga bröstet">􌤕</button><!--
-    --><button title="starka bröstet">􌤔</button><!--
-    --><button title="magen">􌤖</button><!--
-    --><button title="höfterna">􌤗</button><!--
-    --><button title="svaga höften">􌤙</button><!--
-    --><button title="starka höften">􌤘</button><!--
-    --><button title="benet">􌤚</button></span>
+    <span class=attityd><!--
+      --><button title="svagriktad">􌥓</button><!--
+      --><button title="starkriktad">􌥔</button><!--
+      --><button title="framåtriktad">􌤴</button><!--
+      --><button title="bakåtriktad">􌥕</button><!--
+      --><button title="uppåtriktad">􌤵</button><!--
+      --><button title="nedåtriktad">􌥖</button><!--
+      --><button title="svagvriden">&nbsp;&nbsp;􌤶</button><!--
+      --><button title="starkvriden">&nbsp;&nbsp;􌥗</button><!--
+      --><button title="framåtvriden">&nbsp;&nbsp;􌤷</button><!--
+      --><button title="bakåtvriden">&nbsp;&nbsp;􌥘</button><!--
+      --><button title="uppåtvriden">&nbsp;&nbsp;􌤸</button><!--
+      --><button title="nedåtvriden">&nbsp;&nbsp;􌥙</button></span>
 
-  <span class=handform><!--
-    --><button title="a-handen">􌤤</button><!--
-    --><button title="tumvinkelhanden">􌥄</button><!--
-    --><button title="vinkelhanden">􌤣</button><!--
-    --><button title="tumhanden">􌤧</button><!--
-    --><button title="måtthanden">􌥋</button><!--
-    --><button title="raka måtthanden">􌥉</button><!--
-    --><button title="d-handen">􌦫</button><!--
-    --><button title="nyphanden">􌤩</button><!--
-    --><button title="lilla o-handen">􌤎</button><!--
-    --><button title="e-handen">􌥇</button><!--
-    --><button title="f-handen">􌦬</button><!--
-    --><button title="knutna handen">􌤦</button><!--
-    --><button title="stora nyphanden">􌤲</button><!--
-    --><button title="lillfingret">􌤱</button><!--
-    --><button title="flyghanden">􌥑</button><!--
-    --><button title="flata handen">􌤢</button><!--
-    --><button title="flata tumhanden">􌥂</button><!--
-    --><button title="krokfinget">􌤪</button><!--
-    --><button title="k-handen">􌥎</button><!--
-    --><button title="pekfingret">􌥈</button><!--
-    --><button title="l-handen">􌤨</button><!--
-    --><button title="m-handen">􌤿</button><!--
-    --><button title="n-handen">􌥌</button><!--
-    --><button title="o-handen">􌥆</button><!--
-    --><button title="hållhanden">􌤫</button><!--
-    --><button title="q-handen">􌦭</button><!--
-    --><button title="långfingret">􌤬</button><!--
-    --><button title="s-handen">􌥅</button><!--
-    --><button title="klohanden">􌤥</button><!--
-    --><button title="t-handen">􌥊</button><!--
-    --><button title="dubbelkroken">􌤽</button><!--
-    --><button title="böjda tupphanden">􌤯</button><!--
-    --><button title="v-handen">􌤭</button><!--
-    --><button title="tupphanden">􌤮</button><!--
-    --><button title="w-handen">􌤰</button><!--
-    --><button title="x-handen">􌤳</button><!--
-    --><button title="sprethanden">􌥃</button><!--
-    --><button title="stora långfingret">􌥒</button><!--
-    --><button title="runda långfingret">􌥟</button><!--
-    --><button title="4-handen">􌦪</button></span>
+    <span class=lage><!--
+      --><button title="ansiktet">􌤆</button><!--
+      --><button title="övre ansiktet">􌤂</button><!--
+      --><button title="undre ansiktet">􌥞</button><!--
+      --><button title="hjässan">􌤀</button><!--
+      --><button title="pannan">􌤃</button><!--
+      --><button title="ögonen">􌤄</button><!--
+      --><button title="ögat">􌤅</button><!--
+      --><button title="öronen">􌤾</button><!--
+      --><button title="svaga örat">􌤈</button><!--
+      --><button title="starka örat">􌤇</button><!--
+      --><button title="kinderna">􌤉</button><!--
+      --><button title="svaga kinden">􌤋</button><!--
+      --><button title="starka kinden">􌤊</button><!--
+      --><button title="nasan">􌤼</button><!--
+      --><button title="munnen">􌤌</button><!--
+      --><button title="hakan">􌤛</button><!--
+      --><button title="nacken">􌤜</button><!--
+      --><button title="halsen">􌤞</button><!--
+      --><button title="axlarna">􌤠</button><!--
+      --><button title="svaga axeln">􌥀</button><!--
+      --><button title="starka axeln">􌤡</button><!--
+      --><button title="armen">􌥜</button><!--
+      --><button title="överarmen">􌤑</button><!--
+      --><button title="underarmen">􌤒</button><!--
+      --><button title="bröstet">􌤓</button><!--
+      --><button title="svaga bröstet">􌤕</button><!--
+      --><button title="starka bröstet">􌤔</button><!--
+      --><button title="magen">􌤖</button><!--
+      --><button title="höfterna">􌤗</button><!--
+      --><button title="svaga höften">􌤙</button><!--
+      --><button title="starka höften">􌤘</button><!--
+      --><button title="benet">􌤚</button></span>
 
-  <span class=forflyttning><!--
-    --><button title="medial kontakt">&nbsp;&nbsp;􌥡</button><!--
-    --><button title="kontakt">􌤟</button><!--
-    --><button title="hålls stilla">􌦑</button><!--
-    --><button title="förs åt svaga hållet">􌥢</button><!--
-    --><button title="förs åt starka hållet">􌥣</button><!--
-    --><button title="förs i sidled">􌥤</button><!--
-    --><button title="förs framåt">􌦃</button><!--
-    --><button title="förs bakåt">􌦄</button><!--
-    --><button title="förs i djupled">􌥥</button><!--
-    --><button title="förs uppåt">􌥦</button><!--
-    --><button title="förs nedåt">􌥧</button><!--
-    --><button title="förs i höjdled">􌥨</button><!--
-    --><button title="förs kort åt svaga hållet">􌥩</button><!--
-    --><button title="förs kort åt starka hållet">􌥪</button><!--
-    --><button title="förs kort framåt">􌥵</button><!--
-    --><button title="förs kort bakåt">􌥶</button><!--
-    --><button title="förs kort uppåt">􌥷</button><!--
-    --><button title="förs kort nedåt">􌥸</button> <!--
-    --><button title="divergerar">􌥹</button><!--
-    --><button title="konvergerar">􌦅</button><!--
-    --><button title="kors">􌦎</button><!--
-    --><button title="hakning">􌥫</button><!--
-    --><button title="byte">􌥬</button><!--
-    --><button title="entré">􌥭</button><!--
-    --><button title="vinkel">􌥮</button> <!--
-    --><button title="spelar">􌥳</button><!--
-    --><button title="strör">􌥴</button><!--
-    --><button title="böjs (ny)">􌦨</button><!--
-    --><button title="vinkar">􌥺</button><!--
-    --><button title="förändras">􌦆</button><!--
-    --><button title="växelvis">􌦇</button> <!--
-    --></span>
+    <span class=handform><!--
+      --><button title="a-handen">􌤤</button><!--
+      --><button title="tumvinkelhanden">􌥄</button><!--
+      --><button title="vinkelhanden">􌤣</button><!--
+      --><button title="tumhanden">􌤧</button><!--
+      --><button title="måtthanden">􌥋</button><!--
+      --><button title="raka måtthanden">􌥉</button><!--
+      --><button title="d-handen">􌦫</button><!--
+      --><button title="nyphanden">􌤩</button><!--
+      --><button title="lilla o-handen">􌤎</button><!--
+      --><button title="e-handen">􌥇</button><!--
+      --><button title="f-handen">􌦬</button><!--
+      --><button title="knutna handen">􌤦</button><!--
+      --><button title="stora nyphanden">􌤲</button><!--
+      --><button title="lillfingret">􌤱</button><!--
+      --><button title="flyghanden">􌥑</button><!--
+      --><button title="flata handen">􌤢</button><!--
+      --><button title="flata tumhanden">􌥂</button><!--
+      --><button title="krokfinget">􌤪</button><!--
+      --><button title="k-handen">􌥎</button><!--
+      --><button title="pekfingret">􌥈</button><!--
+      --><button title="l-handen">􌤨</button><!--
+      --><button title="m-handen">􌤿</button><!--
+      --><button title="n-handen">􌥌</button><!--
+      --><button title="o-handen">􌥆</button><!--
+      --><button title="hållhanden">􌤫</button><!--
+      --><button title="q-handen">􌦭</button><!--
+      --><button title="långfingret">􌤬</button><!--
+      --><button title="s-handen">􌥅</button><!--
+      --><button title="klohanden">􌤥</button><!--
+      --><button title="t-handen">􌥊</button><!--
+      --><button title="dubbelkroken">􌤽</button><!--
+      --><button title="böjda tupphanden">􌤯</button><!--
+      --><button title="v-handen">􌤭</button><!--
+      --><button title="tupphanden">􌤮</button><!--
+      --><button title="w-handen">􌤰</button><!--
+      --><button title="x-handen">􌤳</button><!--
+      --><button title="sprethanden">􌥃</button><!--
+      --><button title="stora långfingret">􌥒</button><!--
+      --><button title="runda långfingret">􌥟</button><!--
+      --><button title="4-handen">􌦪</button></span>
 
-  <span class=rorelse><!--
-    --><button title="båge">􌥯</button><!--
-    --><button title="cirkel">􌥰</button><!--
-    --><button title="slås">􌥱</button><!--
-    --><button title="vrids">􌥲</button><!--
-    --><button title="svagled">&nbsp;&nbsp;􌦈</button><!--
-    --><button title="starkled">&nbsp;&nbsp;􌥽</button><!--
-    --><button title="sidled">&nbsp;&nbsp;􌦉</button><!--
-    --><button title="framåt">&nbsp;&nbsp;􌥾</button><!--
-    --><button title="bakåt">&nbsp;&nbsp;􌦊</button><!--
-    --><button title="djupled">&nbsp;&nbsp;􌦋</button><!--
-    --><button title="uppåt">&nbsp;&nbsp;􌥿</button><!--
-    --><button title="nedåt">&nbsp;&nbsp;􌦀</button><!--
-    --><button title="höjdled">&nbsp;&nbsp;􌦌</button><!--
-    --><button title="mot varann">&nbsp;&nbsp;􌦂</button></span>
+    <span class=forflyttning><!--
+      --><button title="medial kontakt">&nbsp;&nbsp;􌥡</button><!--
+      --><button title="kontakt">􌤟</button><!--
+      --><button title="hålls stilla">􌦑</button><!--
+      --><button title="förs åt svaga hållet">􌥢</button><!--
+      --><button title="förs åt starka hållet">􌥣</button><!--
+      --><button title="förs i sidled">􌥤</button><!--
+      --><button title="förs framåt">􌦃</button><!--
+      --><button title="förs bakåt">􌦄</button><!--
+      --><button title="förs i djupled">􌥥</button><!--
+      --><button title="förs uppåt">􌥦</button><!--
+      --><button title="förs nedåt">􌥧</button><!--
+      --><button title="förs i höjdled">􌥨</button><!--
+      --><button title="förs kort åt svaga hållet">􌥩</button><!--
+      --><button title="förs kort åt starka hållet">􌥪</button><!--
+      --><button title="förs kort framåt">􌥵</button><!--
+      --><button title="förs kort bakåt">􌥶</button><!--
+      --><button title="förs kort uppåt">􌥷</button><!--
+      --><button title="förs kort nedåt">􌥸</button> <!--
+      --><button title="divergerar">􌥹</button><!--
+      --><button title="konvergerar">􌦅</button><!--
+      --><button title="kors">􌦎</button><!--
+      --><button title="hakning">􌥫</button><!--
+      --><button title="byte">􌥬</button><!--
+      --><button title="entré">􌥭</button><!--
+      --><button title="vinkel">􌥮</button> <!--
+      --><button title="spelar">􌥳</button><!--
+      --><button title="strör">􌥴</button><!--
+      --><button title="böjs (ny)">􌦨</button><!--
+      --><button title="vinkar">􌥺</button><!--
+      --><button title="förändras">􌦆</button><!--
+      --><button title="växelvis">􌦇</button> <!--
+      --></span>
 
-  <span class=annat><!--
-    --><button title="upprepning">􌥻</button><!--
-    --><button title="separator artikulationssekvens">􌥼</button><!--
-    --><button title="separator sammansatt tecken">􌥠</button><!--
-    --><button title="separator mellan händer">􌦩</button></span>
+    <span class=rorelse><!--
+      --><button title="båge">􌥯</button><!--
+      --><button title="cirkel">􌥰</button><!--
+      --><button title="slås">􌥱</button><!--
+      --><button title="vrids">􌥲</button><!--
+      --><button title="svagled">&nbsp;&nbsp;􌦈</button><!--
+      --><button title="starkled">&nbsp;&nbsp;􌥽</button><!--
+      --><button title="sidled">&nbsp;&nbsp;􌦉</button><!--
+      --><button title="framåt">&nbsp;&nbsp;􌥾</button><!--
+      --><button title="bakåt">&nbsp;&nbsp;􌦊</button><!--
+      --><button title="djupled">&nbsp;&nbsp;􌦋</button><!--
+      --><button title="uppåt">&nbsp;&nbsp;􌥿</button><!--
+      --><button title="nedåt">&nbsp;&nbsp;􌦀</button><!--
+      --><button title="höjdled">&nbsp;&nbsp;􌦌</button><!--
+      --><button title="mot varann">&nbsp;&nbsp;􌦂</button></span>
 
-  <p style="margin-top:1em">Använd fältet/knapparna ovan för att transkribera
-  teckenspråk. För att se resultatet i ett annat program, installera
-  typsnittet <a href="freesans-swl.ttf"><tt>FreeSans-SWL.ttf</tt></a> på din
-  dator och klipp-och-klistra det du skrivit ovan.
+    <span class=annat><!--
+      --><button title="upprepning">􌥻</button><!--
+      --><button title="separator artikulationssekvens">􌥼</button><!--
+      --><button title="separator sammansatt tecken">􌥠</button><!--
+      --><button title="separator mellan händer">􌦩</button></span>
 
-  <p>Ladda om sidan för att tömma transkriptionsfältet och börja från början.
+    <p style="margin-top:1em">Använd fältet/knapparna ovan för att transkribera
+    teckenspråk. För att se resultatet i ett annat program, installera
+    typsnittet <a href="freesans-swl.ttf"><tt>FreeSans-SWL.ttf</tt></a> på din
+    dator och klipp-och-klistra det du skrivit ovan.
+
+    <p>Ladda om sidan för att tömma transkriptionsfältet och börja från början.
+  </main>
 
   <footer>
     <a href="intro.html" title="Description of the transcription system."
