@@ -39,7 +39,7 @@ function insertAtCursor(jqElement, str) {
     }
 }
 
-function qualifier(e) {
+function qualifier(event) {
     if (event.shiftKey || event.ctrlKey || event.altKey || event.metaKey) {
         return true;
     }
