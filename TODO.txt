@@ -4,8 +4,72 @@
 ** TODO Homogenize CSS for all pages
    All pages should use one base CSS + an extra CSS with the styles needed for
    these pages, and preferably there should be no extra per-file CSS.
-* Introduction
+* Transcription Intro Article
 ** TODO Update terminology
+   Weak/strong should be replaced by ipsilateral/contralateral (ipsi/contra).
+** TODO Fix table checkboxes
+   One should be able to use the table checkboxes for selecting what to display
+   in any given table.
+
+   These should work so that, when checked, all items with that attribute are
+   displayed (but no other).
+
+   If multiple checkboxes are marked, they should be AND:ed together.
+** TODO Reference section should which sources are derivatives of other
+
+   There should be comments describing that the following works are basically
+   variations on *the exact the same text*, with only some minor updates. (This
+   is especially important almost all of the example transcriptions given are
+   retained, even though many of them are no longer to be found in the
+   lexicon.)
+
+     + Teckenspråkstranskription (1982)
+     + Kompendium i teckentranskription (1993)
+     + Teckentranskription (2015)
+** TODO All mentions of a reference should link to relevant reference section
+** TODO Standardize citing of sources
+   Everywhere where a source is quoted, it should be done using a <details>
+   tag, with name + page of source in the <summary>. E.g.:
+
+     <details closed>
+       <summary>[<a href="#ref1977">Tecknad svenska</a>]</summary>
+
+       <p>.....
+   </details>
+** TODO Add symbol descriptions from "Kompendium in teckenspråkstranskription"
+   Symbols for "lilla A-handen" etc. that occur in this source should be
+   included in the article.
+** TODO Include transcription of words especially interesting words
+   'camera' makes use of passive + active hand + body position. That this can
+   occur (and how) should be described in the transcription rules somehow.
+   http://teckensprakslexikon.su.se/ord/03672
+
+   'setback' (få tji/få bakslag) is singed in an odd way, and the passive hand
+   sort of has a body position, but the sign isn't transcribed that way in the
+   lexicon: http://teckensprakslexikon.su.se/ord/00497 -- Is there even a way
+   to understand the sign from the current transcription in the lexicon?
+** TODO Prettier positioning of the hand images in the handshape table
+
+   The handshape images in the table of handshapes should not be in separate
+   <td>, but should instead be floated left, so that the description text of
+   the handshape in question can fill out the entire width of the column (right
+   now the text column becomes very narrow when there are multiple hand shapes
+   show on the right hand side of the text).
+** TODO Source citations (<details>) should be more clearly delineated
+   Currently is kinda hard to see difference between an expanded source
+   citation and the surrounding text, maybe put a border or something around
+   it?
+** TODO Improve top-right expand/collapse buttons
+   Instead of having two buttons, there should be only one which should (in a
+   fashion similar to org-mode) cycle through the modes:
+
+     + Everything collapsed (default)
+     + All <details> without the 'closed' attribute opened
+     + ALL <details> opened
+
+   Mouseover text should clearly state what will happen upon the next click.
+* Unicode typeface
+** TODO Add simplified 'circle' notation
 * Transcription app
 ** TODO Run code + HTML + CSS through validator.
 ** TODO Add tests for Javascript code
@@ -13,8 +77,8 @@
 ** TODO Ease-of-use: Hovering on symbol buttons should display help info
    E.g. when hovering over an input button it should display information about
    that character in an overlay (in lower right corner?). There should an image
-   of the hand shape, or an animation of the finger/hand movements etc.
+   of the handshape, or an animation of the finger/hand movements etc.
 * Finished
 ** DONE Clean up TODO file and move these TODO items into its own (org-mode) file.
-   CLOSED: [2017-09-20 ons 18:45]
+   CLOSED: [2017-09-20 Wed 19:25]
 * [eof]
