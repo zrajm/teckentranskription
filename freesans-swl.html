@@ -53,52 +53,39 @@
     <h1>FreeSans-SWL: Ett typsnitt för transkription av svenskt teckenspråk</h1>
 
     <p>FreeSans-SWL är ett Unicode-kompatibelt sans-serif-typsnitt för
-    transkription av svenskt teckenspråk. Typsnittet är baserat
-    på <a href="https://www.gnu.org/software/freefont/">GNU FreeSans</a> (alla
-    symboler som finns i GNU FreeSans finns också i FreeSans-SWL) och detta
-    typsnitt kan alltså användas för såväl brödtext som teckentranskriptioner.
+    transkription av svenskt teckenspråk. Det är en variant
+    av <a href="https://www.gnu.org/software/freefont/">GNU FreeSans</a> med de
+    symboler som behövs för att transkribera svenskt teckenspråk tillagda. (De
+    tillagda symbolerna är formgivna i en stil som passar in i typsnittet i
+    övrigt.) Detta innebär att du kan använda samma typsnitt för både text och
+    transkriptioner.
 
-    <hr>
+    <p>Transkriptionssymbolerna är de som beskrivs i <i>Teckentranskription</i>
+    (2015, FOT XXV, Björkstrand och Bergman), med ytterligare symboler hämtade
+    från andra källor (t.ex. finns <b>􌦨</b> och <b>􌦩</b> med eftersom de
+    används i <i>Svenskt teckenspråkslexikon</i>).
 
-    <p>Tilldelning av Unicode-kodpunkter gjordes
-    av <a href="http://www.acc.umu.se/~saasha/typsnitt/#swl">Saašha
-    Metsärantala</a> (förutom för
-    symbolerna <b>􌦨</b>, <b>􌦩</b>, <b>􌦪</b>, <b>􌦫</b>, <b>􌦬</b> och <b>􌦭</b>
-    som lades till av zrajm). Symbolerna är formgivna av zrajm, men mestadels
-    baserade på hur de ser ut i typsnittet
-    <a href=https://www.gnu.org/software/freefont/>GNU FreeSans</a>. (”SWL”
-    är en <a href="https://en.wikipedia.org/wiki/ISO_639:s">ISO
-    639-3</a>-förkortning för ”svenskt teckenspråk”.)
-
-    <p>FreeSans-SWL är fritt att använda (både privat och kommersiellt),
-    men om du modifierar det måste du göra din modifierade variant tillgänglig
-    och tillåtta fri användning (se <a href="#licens">Licens</a> nedan).
-
-    <hr>
+    <p>”SWL” är <a href="https://en.wikipedia.org/wiki/ISO_639:s">ISO
+    639-3</a>-förkortningen för ”svenskt teckenspråk”.
 
     <section>
-      <h1>Ladda ner</h1>
+      <h1>Hur använda?</h1>
+      <p>Det enklaste sättet att använda typsnittet är att:
 
-      <p>För att använda FreeSans-SWL behöver du bara Truetypefilen
-      nedan. Om du vill lägga till och/eller ändra saker i typsnittet (och
-      använder Linux/Fontforge) så kan SFD-filen också vara av intresse. (Om du
-      faktiskt modifierar typsnittet, kontakta
-      gärna <a href="mailto:zrajm@zrajm.org">mig</a>!)
+      <ol>
+        <li>Ladda hem
+        typsnittet <code><a href=freesans-swl.ttf>freesans-swl.ttf</a></code>
+        och installera det på din dator. (Klicka bara på länken, de flesta
+        datorer/operativsystem förstår att det är ett typsnitt och frågar dig
+        om du vill installera det.)
 
-      <table border=1>
-        <tr>
-          <th>Filnamn
-          <th>Format
-          <th>Kommentar
-        <tr>
-          <td><code><a href=freesans-swl.ttf>freesans-swl.ttf</a></code>
-          <td>Truetype
-          <td>För den vanliga användaren.
-        <tr>
-          <td><code><a href=freesans-swl.sfd>freesans-swl.sfd</a></code>
-          <td>Fontforge
-          <td>För den som vill ändra/uppdatera typsnittet.
-      </table>
+        <li>Välj ”FreeSans-SWL” som typsnitt i ditt ordbehandlingsprogram.
+
+        <li>Använd <a href="./">teckentranskriptionsssidan</a> för att
+        skriva (eller redigera) en transkriptionen av ett tecken.
+
+        <li>Klipp/klistra transkriptionen till/från ditt ordbehandlingsprogram.
+      </ol>
     </section>
 
     <section>
@@ -111,13 +98,20 @@
       Stockholms universitet (med flera böcker som beskriver teckenskriften
       utförligare).
 
-      <p><a href="http://www.acc.umu.se/~saasha/typsnitt/">Saašha Metsärantalas
-      webbsida med typsnitt</a> har också varit av stor vikt (tilldelningen av
-      Unicode-kodpunkter kom därifrån). Metsärantala har också
+      <p><a href="http://www.acc.umu.se/~saasha/typsnitt/#swl">Saašha
+      Metsärantalas webbsida med typsnitt</a> har också varit av stor vikt
+      (tilldelningen av Unicode-kodpunkter kommer huvudsakligen därifrån,
+      förutom för symbolerna <b>􌦨</b>, <b>􌦩</b>, <b>􌦪</b>, <b>􌦫</b>, <b>􌦬</b>
+      och <b>􌦭</b> som lades till av zrajm). Metsärantala har också
       en <a href="http://www.acc.umu.se/~saasha/typsnitt/swl_sans.htm">en
-      tangentbordkarta för teckentranskription</a> som kan vara av intresse
-      (symbolerna <b>􌦨</b>, <b>􌦩</b>, <b>􌦪</b>, <b>􌦫</b>, <b>􌦬</b> och <b>􌦭</b>
-      finns dock inte med där, dessvärre).
+      tangentbordkarta för teckentranskription</a> som kan vara av intresse (de
+      symboler som lagts till av zrajm finns dessvärre inte med där).
+
+      <p>Det är fritt fram att använda FreeSans-SWL både privat och
+      kommersiellt, men om du modifierar typsnittet så måste du göra din
+      modifierade version tillgänglig, och låta andra använda ditt typsnitt på
+      samma villkor som gäller för den här versionen
+      (se <a href="#licens">Licens</a> nedan).
     </section>
 
     <section>
@@ -2469,6 +2463,35 @@
     kopierade ifrån Saašha Metsärantalas typsnitt, men jag har i övrigt inte
     rört symbolerna.
   </dl>
+</section>
+
+<section>
+  <h1>Avancerat</h1>
+
+  <p>Nedanstående information är avsett för den som vill ändra eller bygga ut
+  typsnittet.
+
+  <p>För att använda FreeSans-SWL behöver du bara Truetype-typsnittet nedan. Om
+  du vill lägga till och/eller ändra saker i typsnittet (och använder
+  Linux/Fontforge) så kan SFD-filen också vara av intresse. (Om du faktiskt
+  modifierar eller gör tillägg, kontakta
+  gärna <a href="mailto:zrajm@zrajm.org">zrajm</a>. – Jag är nyfiken på hur du
+  använder det!)
+
+  <table border=1>
+    <tr>
+      <th>Filnamn
+      <th>Format
+      <th>Kommentar
+    <tr>
+      <td><code><a href=freesans-swl.ttf>freesans-swl.ttf</a></code>
+      <td>Truetype
+      <td>För den vanliga användaren.
+    <tr>
+      <td><code><a href=freesans-swl.sfd>freesans-swl.sfd</a></code>
+      <td>Fontforge
+      <td>För den som vill ändra/uppdatera typsnittet.
+  </table>
 </section>
 
 <section>
