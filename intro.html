@@ -6,7 +6,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Teckenskrift</title>
-  <link rel=stylesheet href="index.css">
+  <link rel=stylesheet href="intro.css">
   <link rel=license href="LICENSE.txt">
   <style>
 
@@ -47,7 +47,7 @@
     a { text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    .FIXME { background: yellow; font-weight: bold; }
+    .FIXME { background: rgba(255, 255, 0, .75); font-weight: bold; }
     :not(td,tr).FIXME:before { content: "FIXME: "; }
     .FIXME:empty:before { content: "FIXME"; }
 
@@ -121,6 +121,14 @@
     }
     table.struktur td {
         vertical-align: top;
+    }
+
+    table.border-example {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    table.border-example td {
+        padding: .25em .5em;
     }
 
     table[border="1"] td {
@@ -3135,48 +3143,86 @@
           senare.</i>
 
         <p>Snarare än att tynga ner min text ovan med referenser och fotnoter
-          för att peka ut dessa fel, har jag valt att här dokumentera de
-          problem jag (tycker mig) ha hittat, så att du ska ha en sportslig
-          chans att avgöra hurvida jag har begått våld på mitt källmaterial
-          eller inte.
+        för att peka ut dessa fel, har jag valt att här dokumentera de problem
+        jag (tycker mig) ha hittat, så att du ska ha en sportslig chans att
+        avgöra hurvida jag har begått våld på mitt källmaterial eller inte.
 
         <hr>
 
         <p>Interaktionsarterna 􌦎, 􌥮 och 􌥫 i tycks innehålla några fel (i form
-          av oreviderad text från det tidigare verket). Det sägs att ”de kan
-          förekomma både i andra och tredje fältet” [s.18] trots att de numera
-          enbart skrivs i fält III. Exempel (38–40) är uppdaterade och har
-          symbolerna i fält III, men exempel (41a–41b ’rida’) har blivit kvar i
-          okorrigerat skick (i Svenskt teckenspråkslexikon finner vi
-          dock <a href=04298>rida</a> transkriberat på den nya sättet med
-          interaktionsartssymbolen först i fält III).
+        av oreviderad text från det tidigare verket). Det sägs att ”de kan
+        förekomma både i andra och tredje fältet” [s.18] trots att de numera
+        enbart skrivs i fält III. Exempel (38–40) är uppdaterade och har
+        symbolerna i fält III, men exempel (41a–41b ’rida’) har blivit kvar i
+        okorrigerat skick (i Svenskt teckenspråkslexikon finner vi
+        dock <a href=04298>rida</a> transkriberat på den nya sättet med
+        interaktionsartssymbolen först i fält III).
       </details></section>
     </details></section>
 
     <section><details>
       <summary><h1 id=udda>Udda transkriptioner</h1></summary>
 
+      <p>Jag hade en diskussion om dessa symboler med Thomas Björkstrand (12
+      oktober 2017) och fick en del klargöranden. Nedan har jag lagt till
+      kommentarer om dessa.
+
+      <hr>
+
       <p>Nedan är några transkriptioner jag stött på som verkar strida emot de
-      regler som beskrivs i <a href="#ref2015">Teckentranskription</a>.
+      regler som beskrivs i <a href="#ref2015">Teckentranskription</a>, eller
+      andra källor, eller som är odokumenterade.
 
-      <section class="hanging FIXME">
-
+      <section>
         <h1>Dubbelartikulation med olika handformer</h1>
 
-        <p>Det beskrivs som omöjligt
-        [i <a href="#ref2015">Teckentranskription</a>?] att tecken med dubbel
-        artikulator har olika handformer för de två händerna, men detta verkar
-        förekomma i relativt många tecken, t ex:
-          <br>􌤵􌥘􌥈􌤥􌤴􌥙􌥧 <a href=12364>fallskärm</a>
+        <p>Dessa förekommer och är accepterade (om än hyffsat ovanliga) de
+        omtalas som otillåtna<sup><a href="#noty2">2</a></sup>
+        i <a href="#ref2015">Teckentranskription</a> trots att ett par av
+        exemplen som ges där (exempel 41b ”<i class=sign>rida</i>” och 42
+        ”<i class=sign>fallskärm</i>” nedan) demonstrerar just denna typ av
+        tvåhandstecken.
 
-       <hr>
+        <figure>
+          <table>
+            <tr>
+              <td>􌤵􌥘􌥈􌤥􌤴􌥙􌥧
+              <td><a href=12364>fallskärm</a>
+            <tr>
+              <td>􌤴􌥗􌤢􌤹􌤭􌥖􌥘􌥫􌥰􌦋
+              <td><a href=04298>rida</a>
+          </table>
+        </figure>
 
+        <aside class=hanging>
+          <p id=noty2><sup>2</sup> ”Dubbel artikulator anges genom att två
+          handformssymboler sätts ut. I och med att händerna i tecken med
+          dubbel artikulator har samma handform skrivs alltså samma symbol två
+          gånger.” [<a href="#ref2015">Teckentranskription</a> s.11]
+
+
+          <br>     ”Om handformerna är olika måste en hand vara
+          artikulationsställe då ju händerna har samma form i tecken med dubbel
+          artikulator.” [<a href="#ref2015">Teckentranskription</a> s.12]
+        </aside>
+      </section>
+
+      <section>
        <h1 id=plusseparatorn>Odokumenterad separator (”􌦩”)</h1>
 
-       <p>Denna separator används (i både <a href="#ref1997">bok-</a>
-       och <a href="#refweb">webbversionen</a>) av <i>Svenskt
-       teckenspråkslexikon,</i> men finns mig veterligen inte beskriven i
-       någonstans. Här följer några exempel på dess användning är:
+       <p>Denna separator används av <i>Svenskt teckenspråkslexikon</i> (i
+       både <a href="#ref1997">bok-</a>
+       och <a href="#refweb">webbversionen</a>) men finns mig veterligen inte
+       beskriven i någonstans.
+
+       <p>Det varierar vilken hand som beskrivs före, och vilken som beskrivs
+       efter separatorn, men då jag påtalade detta för Björkstrand menade han
+       att detta var oavsiktligt, och tog anteckningar för att kunna fixa
+       problemet i lexikonet. (Han verkade också hålla med mig om att placera
+       vänsterhandens transkription till vänster om separatorn, och högerhanden
+       till höger om den var en bra idé.)
+
+       <p>Nedan följer några exempel på dess användning:
 
         <figure>
           <table>
@@ -3247,8 +3293,14 @@
        väcker frågan: Bör det finnas en artikulationsbeskrivning på varderad
        sidan om plustecknet, eller bara en som beskriver bägge händernas
        rörelse?
-
+      </section>
+      <section>
        <h1>Paradoxala rörelser</h1>
+
+       <p>Thomas Björkstrand höll med om att dessa transkriptioner var
+       felaktiga, och borde rättas alteftersom de blir funna.
+
+       <hr>
 
        <p>Simultana rörelser i motsatta riktningar(?) – 􌥧􌥡􌥦􌥡 och 􌦃􌥡􌦄􌥡 ser helt
        paradoxala ut i mina ögon. Finns det någon särskild anledning att man
@@ -3259,7 +3311,11 @@
           <a href=04595>precis</a>
           <br>􌤵􌥗􌤦􌤦􌤵􌤶􌦃􌥡􌦄􌥡􌥼􌥻 <a href=08052>renovera, renovering</a>
 
+      </section>
+      <section>
         <h1>När artikulatorn inte är en hand</h1>
+
+      <p>Björkstrand höll med om att detta är en lite problematiskt transkription.
 
         <p>I tecknet nedan agerar armbågen artikulator medan handen hålls
         stilla. Det är dock inte precis uppenbart (för mig) hur nedanstående
@@ -3268,16 +3324,27 @@
 
         <br>􌤔􌤺􌥜􌤦􌤴􌥙􌥢􌥼􌤟􌥼􌥻 <a href=08113>McDonalds</a>; <a href=05946>Macintosh,
         Mac</a>; <a href=01987>Skottland</a>; <a href=01988>whisky</a>
-
+      </section>
+      <section>
         <h1>Överarm med attityd</h1>
+
+        <p>Detta är alltid fel enligt Björkstrand.
+
+        <hr>
 
         <p>Enligt <a href="#ref2015">Teckentranskription</a> kan endast händer
         och <i>underarmen</i> ha en attityd, trots detta finns minst ett tecken
         där <i>överarmen</i> har attityd.
 
         <br>􌤑􌥖􌥗􌤢􌥖􌥗􌥦􌥱􌦊􌥼􌥭 <a href=00143>ombud</a>
-
+      </section>
+      <section class=FIXME>
         <h1>Problematiska transkriptioner av den ickedominanta handen</h1>
+
+        <p>När jag pratade med Björkstrand var jag lite för slut i huvudet för
+        orka tänka, så vi gick inte igenom denna fråga.
+
+        <hr>
 
         <p>I tecken där den ickedominanta handen är passiv men inte fungerar
         som läge för den aktiva handen transkriberas de två händerna (med hjälp
@@ -3291,11 +3358,11 @@
         <p>Några exempel:
 
         <figure>
-          <table border=1 style="border-collapse:collapse">
+          <table class=border-example>
             <tr>
               <th>Transkription
               <th>Ord
-              <th colspan=2>Tänkbar ny transkription?
+              <th colspan=2>Tänkbar annan transkription?
             <tr>
               <td>􌤢􌥚􌥔􌥘􌤢􌤴􌥙􌥦􌥱􌥿􌥠􌤼􌤢􌤵􌤷􌦄
               <td><a href=00497>få tji, bakslag, motgång</a>
@@ -3323,9 +3390,14 @@
         transkriptionen av <a href=04504>barnslig</a>
         och <a href=04511>docka</a> ovan kan det ju tyckas redundant att
         specificera den dominanta handens/armens attityd två gånger
-        (*􌤒􌥚<mark style=background:green>􌤵􌤶</mark>􌤢􌥔􌤸􌤟􌦩􌥑<mark style=background:green>􌤵􌤶</mark>􌥲􌦊􌥼􌥻).
+        (*􌤒􌥚<mark>􌤵􌤶</mark>􌤢􌥔􌤸􌤟􌦩􌥑<mark>􌤵􌤶</mark>􌥲􌦊􌥼􌥻).
 
-
+        <p>􌤼􌤺􌤫􌤵􌤶􌤟􌥠􌤢􌥔􌥙􌤫􌤴􌤶􌥢 <a href=03477>straff</a> kan kanske också bättre
+        skrivas *􌤼􌤺􌤫􌤵􌤶􌤟􌥠􌤢􌥔􌥙<mark>􌦑􌦩</mark>􌤫􌤴􌤶􌥢? – För att visa att den
+        ickedominanta handen inte är ett uttalsställe utan en egen
+        artikulation.
+      </section>
+      <section>
         <h1>Absolut höger–vänster distinktion</h1>
 
         <p>􌤒􌤹􌤴􌥙􌤢􌥔􌥙􌤟􌥼􌥻 <a href=00154>höger</a> (vänsterhanden klappar på höger
@@ -3344,8 +3416,8 @@
         vilken hand som bör användas, då det blir en aning obekvämt att använda
         fel.
       </section>
-
-      <p><i>Divergerar</i> och <i>medial kontakt</i> i kombination:
+      <section>
+        <h1><i>Divergerar</i> och <i>medial kontakt</i> i kombination</h1>
 
       <figure>
         <table>

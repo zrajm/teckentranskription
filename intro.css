@@ -13,6 +13,8 @@ ol, figure {
 
 *:not(td) { box-sizing: border-box; }
 
+mark { background: rgba(255, 0, 0, .5); }
+
 img { max-height: 175px; }
 
 body {
