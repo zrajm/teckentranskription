@@ -7,7 +7,11 @@
 * Transcription Intro Article
 ** TODO Update terminology
    Weak/strong should be replaced by ipsilateral/contralateral (ipsi/contra).
-** TODO Fix table checkboxes
+** [0/2] Table filtering
+*** TODO Number of entries shown should be displayed at top of table
+    So that you can easily see e.g. how many handshapes occurred in a specific
+    source.
+*** TODO Fix table checkboxes
    One should be able to use the table checkboxes for selecting what to display
    in any given table.
 
@@ -49,7 +53,6 @@
    lexicon: http://teckensprakslexikon.su.se/ord/00497 -- Is there even a way
    to understand the sign from the current transcription in the lexicon?
 ** TODO Prettier positioning of the hand images in the handshape table
-
    The handshape images in the table of handshapes should not be in separate
    <td>, but should instead be floated left, so that the description text of
    the handshape in question can fill out the entire width of the column (right
