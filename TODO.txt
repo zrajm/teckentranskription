@@ -72,7 +72,19 @@
 
    Mouseover text should clearly state what will happen upon the next click.
 * Unicode typeface
-** TODO Add simplified 'circle' notation
+** TODO Field III should be raised a bit
+   To allow for larger simplified circles, and room for the arrows below
+   circle/twist etc.
+** TODO Add 'neutral space' symbol + modifiers
+*** TODO Modify transcription of ARGENTINA/BEATLES/ORKESTER
+    These signs could all benefit from having the left hand transcribed with
+    a symbol for 'to the left in the neutral space'.
+
+    http://teckensprakslexikon.su.se/ord/10019 ARGENTINA
+    http://teckensprakslexikon.su.se/ord/15318 BEATLES
+    http://teckensprakslexikon.su.se/ord/08301 ORKESTER
+** DONE Add simplified 'circle' notation
+   CLOSED: [2017-10-21 Sat 17:26]
 * Transcription app
 ** TODO Run code + HTML + CSS through validator.
 ** TODO Add tests for Javascript code
