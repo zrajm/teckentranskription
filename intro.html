@@ -4073,41 +4073,44 @@
   <script src="jquery-3.1.1.js"></script>
   <script>
     $('body').prepend('<img id=toggle><img id=toggle2>');
-    var state = false,
-        attrs = {
-            true: {
-                src: 'pic/gui/collapse-all.svg',
-                title: 'Kollapsa allt',
+    var state = 0,
+        attrs = [
+            {
+                src: 'pic/gui/expand.svg',
+                title: 'Expandera allt utom detaljer',
             },
-            false: {
+            {
                 src: 'pic/gui/expand-all.svg',
                 title: 'Expandera allt',
+            },
+            {
+                src: 'pic/gui/collapse-all.svg',
+                title: 'Kollapsa allt',
             }
-        };
+        ];
 
     function toggle(a) {
-        state = !state;
-        $('details:not([closed])').attr('open', state);
+        if (state === 0) {
+            $('details:not([closed])').attr('open', true);
+        } else if (state === 1) {
+            $('details').attr('open', true);
+        } else if (state === 2) {
+            $('details').attr('open', false);
+        }
+        state = (state + 1) % attrs.length;
         $('#toggle').attr(attrs[state]);
     }
 
-    function toggle2(a) {
-        state = !state;
-        $('details').attr('open', state);
-        $('#toggle').attr(attrs[state]);
-    }
-
-    $('#toggle,#toggle2').attr(attrs[state]).click(toggle).css({
+    $('#toggle').attr(attrs[state]).click(toggle).css({
         opacity: .25,
         zoom: 2,
         position: 'fixed',
         right: 0,
         margin: '.125em .25em',
     });
-    $('#toggle2').click(toggle2).css({ right: 15 });
 
     // Expand all when loading page.
-    $('#toggle').click()
+    $('#toggle').click();
     ///////////////////////////////////////////////////////////////////////////
     $('label.fx').
         hover(
