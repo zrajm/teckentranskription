@@ -134,4 +134,24 @@ function share_clicked(event) {
 $('main button').mousedown(button_clicked).keydown(button_clicked);
 $('.share button').mousedown(share_clicked).keydown(share_clicked);
 
+/******************************************************************************/
+
+/* Hover images */
+
+function update_hover() {
+    var elem = $(this),
+        html = (elem.data('src')||'').split(' ').map(function(img) {
+            return img ?
+                '<img src="pic/x/' + img + '.png" style="max-height:150px;margin:0;padding:0">' :
+                '';
+        }).join(' ') +
+        '<div align=center class=x2>' + elem.html()        + '</div>' +
+        '<div align=center>'          + elem.attr('title') + '</div>';
+    $('#hover').html(html).show();
+}
+
+function hide_hover() { $('#hover').hide(); }
+
+$('main button').hover(update_hover, hide_hover).focus(update_hover);
+
 /*[eof]*/
