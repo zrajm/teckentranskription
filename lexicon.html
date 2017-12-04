@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang=sv>
+<head>
+  <!-- Copyright 2017 by zrajm. Released under GPLv3 license. -->
+  <meta charset="UTF-8">
+  <title>TSP-Lex!</title>
+  <link rel=stylesheet href="intro.css">
+  <link rel=license href="LICENSE.txt">
+  <style>
+    /* Default font: FreeSans-SWL */
+    @font-face {
+        font-family: "FreeSans-SWL";
+        src: url("freesans-swl.ttf");
+    }
+    * { margin: 0; padding: 0; }
+    li { margin-left: 1em; }
+    html { font-family: "FreeSans-SWL", "FreeSans", sans-serif; }
+    body, textarea, button, input, pre { font-family: inherit; font-size: 2.5em; }
+    img { height: 1.8em; vertical-align: middle; }
+  </style>
+</head>
+<body>
+
+  <input autofocus placeholder="Sök…">
+  <div class=results></div>
+  <script src="jquery-3.1.1.js"></script>
+  <script src="lexicon.js"></script>
+  <script src="lexicon-data.js"></script>
+</body>
+</html>
