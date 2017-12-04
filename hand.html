@@ -1,0 +1,807 @@
+<!doctype html>
+<html lang=sv>
+<head>
+  <!-- Copyright 2017 by zrajm. Released under GPLv3 license. -->
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel=license href="LICENSE.txt">
+  <style>
+    /* Default font: FreeSans-SWL */
+    @font-face {
+        font-family: "FreeSans-SWL";
+        src: url("freesans-swl.ttf");
+    }
+    html { font-family: "FreeSans-SWL", "FreeSans", sans-serif; }
+    body, textarea, button { font-family: inherit; }
+
+    img.x1 { max-height: 1em; }
+    img.x2 { max-height: 2em; }
+    img.x4 { max-height: 4em; }
+    .x2 { font-size: 2em; line-height:  50px !important; }
+    .x4 { font-size: 4em; line-height: 100px !important; }
+    .center { text-align: center; }
+
+    .normal { max-height: 1em; }
+
+    table.border-example {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    table.border-example th,
+    table.border-example td {
+        border: 1px solid black;
+        Xpadding: .25em .5em;
+    }
+    table.border-example td:empty {
+        background: grey;
+    }
+  </style>
+</head>
+<body lang=sv>
+  <main>
+
+    <!--
+    <h1>FIXME</h1>
+    <p>1982 kollad en extra gång (pga hittat fel)
+    <p>Vad betyder följande? Och finns det undantag?
+    <ul>
+      <li><i>böjd</i>
+      <li><i>vinklad</i>
+    </ul>
+    -->
+
+    <table class=border-example>
+      <colgroup>
+        <col span=7>
+        <col style="background:#ff8">
+        <col span=2>
+        <col span=2 style="background:#ff8">
+      </colgroup>
+      <tr>
+        <th rowspan=2></th>
+        <th rowspan=2>Namn</th>
+        <th colspan=10>Källa <span style="background:#ff8;">(lexikon)</span>
+      <tr>
+        <th title="Bergman, ”Tecknad svenska”">1977</th>
+        <th title="Bergman, ”Teckenspråkstranskription”">1982</th>
+        <th title="Hedberg, ”Persontecken”">1989</th>
+        <th title="Bergman & Björkstrand, ”Kompendium i teckentranskription”">1993</th>
+        <th title="Wallin, ”Polysyntetiska tecken i svenska teckenspråket”">1994</th>
+        <th title="Hedberg, ”Svenskt teckenspråkslexikon” (bokversion)">1997</th>
+        <th title="Björkstrand, ”Redundans i teckentranskriptionssystemet”">1998</th>
+        <th title="Björkstrand & Bergman, ”Teckentranskription”">2015</th>
+        <th title="”Svenskt teckenspråkslexikon” (webbversion)">2017</th>
+        <th title="Framtida lexikon" style="position:relative;color:transparent">0000<span style="margin-left:-.25em;position:absolute;left:50%;color:black;">–</span></th>
+      <tr>
+        <td class="x2 center">􌤤</td>
+        <td>A-handen</td>
+        <td title="1977: A-handen (s.79), slutna handen (s.89)">x</td>
+        <td title="1982: A-handen">x</td>
+        <td title="1989: A-handen">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: A-hand">x</td>
+        <td title="1997: A-handen">x</td>
+        <td title="1998: A-handen">x</td>
+        <td title="2015: A-handen">x</td>
+        <td title="2017: A handen">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center"><img src="pic/h-lilla-a-handen.svg" class=normal></td>
+        <td>NA-handen</td>
+        <td></td>
+        <td></td>
+        <td title="1989: NA-handen">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: NA-hand">x</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td title="Framtid: "></td>
+      <tr>
+        <td class="x2 center">􌥄</td>
+        <td>tumvinkelhanden</td>
+        <td></td>
+        <td title="1982: tumvinkelhanden">x</td>
+        <td title="1989: tumvinkelhanden">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: tumvinkelhand">x</td>
+        <td title="1997: tumvinkelhanden">x</td>
+        <td title="1998: tumvinkelhanden">x</td>
+        <td title="2015: tumvinkelhanden">x</td>
+        <td title="2017: tumvinkelhanden">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">􌤣</td>
+        <td>vinkelhanden</td>
+        <td title="1977: vinklade handen">x</td>
+        <td title="1982: vinkelhanden">x</td>
+        <td title="1989: vinkelhanden">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: vinkelhand">x</td>
+        <td title="1997: vinkelhanden">x</td>
+        <td title="1998: vinkelhanden">x</td>
+        <td title="2015: vinkelhanden">x</td>
+        <td title="2017: vinkelhanden">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">􌤧</td>
+        <td>tumhanden</td>
+        <td title="1977: tummen">x</td>
+        <td title="1982: tummen">x</td>
+        <td title="1989: tummen">x</td>
+        <td title="1993: tummen">x</td>
+        <td title="1994: tumme">x</td>
+        <td title="1997: tummen">x</td>
+        <td title="1998: tumhanden">x</td>
+        <td title="2015: tumhanden">x</td>
+        <td title="2017: tumhanden">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">􌥋</td>
+        <td>måtthanden</td>
+        <td title="1977: måtthanden">x</td>
+        <td title="1982: måtthanden">x</td>
+        <td title="1989: måtthanden">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: måtthand">x</td>
+        <td title="1997: måtthanden">x</td>
+        <td title="1998: måtthanden">x</td>
+        <td title="2015: måtthanden">x</td>
+        <td title="2017: måtthanden">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">􌥉</td>
+        <td>raka måtthanden</td>
+        <td></td>
+        <td title="1982: raka måtthanden">x</td>
+        <td title="1989: raka måtthanden">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: rak måtthand">x</td>
+        <td title="1997: raka måtthanden">x</td>
+        <td title="1998: raka måtthanden">x</td>
+        <td title="2015: raka måtthanden">x</td>
+        <td title="2017: raka måtthanden">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center"><img src="pic/h-vinklade-tupphanden.svg" class=normal></td>
+        <td>vinklade tupphanden</td>
+        <td></td>
+        <td></td>
+        <td title="1989: vinklade tupphanden">x</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td title="Framtid: "></td>
+      <tr>
+        <td class="x2 center">􌦫</td>
+        <td>D-handen</td>
+        <td></td>
+        <td title="1982: D-handen">x</td>
+        <td title="1989: D-handen">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: D-hand">x</td>
+        <td></td>
+        <td title="1998: D-handen">x</td>
+        <td title="2015: D-handen">x</td>
+        <td title="2017: ? (används, men finns inte med i index över handformer)">!</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">􌤩</td>
+        <td>nyphanden</td>
+        <td title="1977: nyphanden">x</td>
+        <td title="1982: nyphanden">x</td>
+        <td title="1989: nyphanden">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: nyphand">x</td>
+        <td title="1997: nyphanden">x</td>
+        <td title="1998: nyphanden">x</td>
+        <td title="2015: nyphanden">x</td>
+        <td title="2017: nyphanden">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">􌤎</td>
+        <td>lilla O-handen</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td title="1997: lilla O-handen">x</td>
+        <td></td>
+        <td title="2015: lilla O-handen">x</td>
+        <td title="2017: lilla O handen">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">􌥇</td>
+        <td>E-handen</td>
+        <td></td>
+        <td title="1982: E-handen">x</td>
+        <td title="1989: E-handen">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: E-hand">x</td>
+        <td title="1997: E-handen">x</td>
+        <td title="1998: E-handen">x</td>
+        <td title="2015: E-handen">x</td>
+        <td title="2017: E handen">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">􌦬</td>
+        <td>F-handen</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td title="2015: F-handen">x</td>
+        <td title="2017: ? (används, men finns inte med i index över handformer)">!</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">􌤦</td>
+        <td>knutna handen</td>
+        <td title="1977: knutna handen">x</td>
+        <td title="1982: knutna handen">x</td>
+        <td title="1989: knutna handen">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: knuten hand">x</td>
+        <td title="1997: knutna handen">x</td>
+        <td title="1998: knutna handen">x</td>
+        <td title="2015: knutna handen">x</td>
+        <td title="2017: knutna handen">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">􌤲</td>
+        <td>stora nyphanden</td>
+        <td title="1977: stora nyphanden">x</td>
+        <td title="1982: stora nyphanden">x</td>
+        <td title="1989: stora nyphanden">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: stor nyphand">x</td>
+        <td title="1997: stora nyphanden">x</td>
+        <td title="1998: stora nyphanden">x</td>
+        <td title="2015: stora nyphanden">x</td>
+        <td title="2017: stora nyphanden">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center"><img src="pic/h-bojda-stora-nyphanden.svg" class=normal></td>
+        <td>böjda stora nyphanden</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td title="1994: böjd stor nyphand">x</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td title="Framtid: "></td>
+      <tr>
+        <td class="x2 center">􌤱</td>
+        <td>lillfingret</td>
+        <td title="1977: lillfingret">x</td>
+        <td title="1982: lillfingret">x</td>
+        <td title="1989: lillfingret">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: lillfingerhand">x</td>
+        <td title="1997: lillfingret">x</td>
+        <td title="1998: lillfingret">x</td>
+        <td title="2015: lillfingret">x</td>
+        <td title="2017: lillfingret">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">􌥑</td>
+        <td>flyghanden</td>
+        <td title="1977: flyghanden (utan seriffer s.79, med seriffer s.89)">x</td>
+        <td title="1982: flyghanden">x</td>
+        <td title="1989: flyghanden">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: flyghand">x</td>
+        <td title="1997: flyghanden">x</td>
+        <td title="1998: flyghanden">x</td>
+        <td title="2015: flyghanden">x</td>
+        <td title="2017: flyghanden">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">􌤢</td>
+        <td>flata handen</td>
+        <td title="1977: flata handen">x</td>
+        <td title="1982: flata handen">x</td>
+        <td title="1989: flata handen">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: flat hand">x</td>
+        <td title="1997: flata handen">x</td>
+        <td title="1998: flata handen">x</td>
+        <td title="2015: flata handen">x</td>
+        <td title="2017: flata handen">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">􌥂</td>
+        <td>flata tumhanden</td>
+        <td></td>
+        <td title="1982: flata tumhanden">x</td>
+        <td title="1989: flata tumhanden">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: flat tumhand">x</td>
+        <td title="1997: flata tumhanden">x</td>
+        <td title="1998: flata tumhanden">x</td>
+        <td title="2015: flata tumhanden">x</td>
+        <td title="2017: flata tumhanden">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">􌤪</td>
+        <td>krokfingret</td>
+        <td title="1977: krokfingret (spegelvänd)">x</td>
+        <td title="1982: krokfingret (spegelvänd)">x</td>
+        <td title="1989: krokfingret (spegelvänd)">x</td>
+        <td title="1993: (spegelvänd)">x</td>
+        <td title="1994: krokfingerhand (spegelvänd)">x</td>
+        <td title="1997: krokfingret">x</td>
+        <td title="1998: krokfingret">x</td>
+        <td title="2015: krokfingret">x</td>
+        <td title="2017: krokfingret">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">􌥎</td>
+        <td>K-handen</td>
+        <td></td>
+        <td title="1982: K-handen">x</td>
+        <td title="1989: K-handen">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: K-hand">x</td>
+        <td title="1997: K-handen">x</td>
+        <td title="1998: K-handen">x</td>
+        <td title="2015: K-handen">x</td>
+        <td title="2017: K handen">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">􌥈</td>
+        <td>pekfingret</td>
+        <td title="1977: pekfingret">x</td>
+        <td title="1982: pekfingret">x</td>
+        <td title="1989: pekfingret">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: pekfingerhand">x</td>
+        <td title="1997: pekfingret">x</td>
+        <td title="1998: pekfingret">x</td>
+        <td title="2015: pekfingret">x</td>
+        <td title="2017: pekfingret">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center"><img src="pic/h-vinklade-pekfingret.svg" class=normal></td>
+        <td>vinklade pekfingret</td>
+        <td></td>
+        <td title="1982: vinklade pekfingret">x</td>
+        <td title="1989: vinklade pekfingret">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: vinklad pekfingerhand">x</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td title="Framtid: "></td>
+      <tr>
+        <td class="x2 center"><img src="pic/h-bojda-pekfingret.svg" class=normal></td>
+        <td>böjda pekfingret; LO-handen</td>
+        <td></td>
+        <td></td>
+        <td title="1989: LO-handen">x</td>
+        <td title="1993: böjda pekfingret (kontakt mellan pek-/långfinger och tumme)">x</td>
+        <td title="1994: böjd pekfingerhand (?? exakt handform?)">x</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td title="Framtid: "></td>
+      <tr>
+        <td class="x2 center">􌤨</td>
+        <td>L-handen</td>
+        <td></td>
+        <td title="1982: L-handen">x</td>
+        <td title="1989: L-handen">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: L-hand">x</td>
+        <td title="1997: L-handen">x</td>
+        <td title="1998: L-handen">x</td>
+        <td title="2015: L-handen">x</td>
+        <td title="2017: L handen">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">􌤿</td>
+        <td>M-handen</td>
+        <td title="1977: M-handen">x</td>
+        <td title="1982: M-handen">x</td>
+        <td title="1989: M-handen">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: M-hand">x</td>
+        <td title="1997: M-handen">x</td>
+        <td title="1998: M-handen">x</td>
+        <td title="2015: M-handen">x</td>
+        <td title="2017: M handen">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">􌥌</td>
+        <td>N-handen</td>
+        <td title="1977: N-handen">x</td>
+        <td title="1982: N-handen">x</td>
+        <td title="1989: N-handen">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: N-hand">x</td>
+        <td title="1997: N-handen">x</td>
+        <td title="1998: N-handen">x</td>
+        <td title="2015: N-handen">x</td>
+        <td title="2017: N handen">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center"><img src="pic/h-vinklade-n-handen.svg" class=normal></td>
+        <td>vinklade N-handen</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td title="1993: ">x</td>
+        <td title="1994: vinklad N-hand">x</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td title="Framtid: "></td>
+      <tr>
+        <td class="x2 center"><img src="pic/h-lilla-matthanden.svg" class=normal></td>
+        <td>N-måtthanden</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td title="1994: N-måtthand">x</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td title="Framtid: "></td>
+      <tr>
+        <td class="x2 center"><img src="pic/h-bojda-n-handen.svg" class=normal></td>
+        <td>böjda N-handen; NO-handen</td>
+        <td></td>
+        <td></td>
+        <td title="1989: NO-handen">x</td>
+        <td title="1993: böjda N-handen (kontakt mellan pek-/långfinger och tumme)">x</td>
+        <td title="1994: böjd N-hand">x</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td title="Framtid: "></td>
+      <tr>
+        <td class="x2 center">􌥆</td>
+        <td>O-handen</td>
+        <td title="1977: O-handen">x</td>
+        <td title="1982: O-handen">x</td>
+        <td title="1989: O-handen">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: O-hand">x</td>
+        <td title="1997: O-handen">x</td>
+        <td title="1998: O-handen">x</td>
+        <td title="2015: O-handen">x</td>
+        <td title="2017: O handen">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">􌤫</td>
+        <td>hållhanden</td>
+        <td></td>
+        <td title="1982: hållhanden">x</td>
+        <td title="1989: hållhanden">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: hållhand">x</td>
+        <td title="1997: hållhanden">x</td>
+        <td title="1998: hållhanden">x</td>
+        <td title="2015: hållhanden">x</td>
+        <td title="2017: hållhanden">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">􌦭</td>
+        <td>Q-handen</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td title="2015: Q-handen">x</td>
+        <td title="2017: ? (används, men finns inte med i index över handformer)">!</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">􌤬</td>
+        <td>långfingret</td>
+        <td></td>
+        <td title="1982: långfingret">x</td>
+        <td title="1989: långfingret">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: långfingerhand">x</td>
+        <td title="1997: långfingret">x</td>
+        <td title="1998: långfingret">x</td>
+        <td title="2015: långfingret">x</td>
+        <td title="2017: långfingret">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">􌥅</td>
+        <td>S-handen</td>
+        <td title="1977: S-handen">x</td>
+        <td title="1982: S-handen">x</td>
+        <td title="1989: S-handen">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: S-hand">x</td>
+        <td title="1997: S-handen">x</td>
+        <td title="1998: S-handen">x</td>
+        <td title="2015: S-handen">x</td>
+        <td title="2017: S handen">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">􌤥</td>
+        <td>klohanden</td>
+        <td title="1977: klohanden">x</td>
+        <td title="1982: klohanden">x</td>
+        <td title="1989: klohanden">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: klohand">x</td>
+        <td title="1997: klohanden">x</td>
+        <td title="1998: klohanden">x</td>
+        <td title="2015: klohanden">x</td>
+        <td title="2017: klohanden">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">􌥊</td>
+        <td>T-handen</td>
+        <td title="1977: T-handen">x</td>
+        <td title="1982: T-handen">x</td>
+        <td title="1989: T-handen">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: T-hand">x</td>
+        <td title="1997: T-handen">x</td>
+        <td title="1998: T-handen">x</td>
+        <td title="2015: T-handen">x</td>
+        <td title="2017: T handen">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">U</td>
+        <td>lamahanden</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">􌤽</td>
+        <td>dubbelkroken</td>
+        <td title="1977: dubbelkroken">x</td>
+        <td title="1982: dubbelkroken">x</td>
+        <td title="1989: dubbelkroken">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: dubbelkrokhand">x</td>
+        <td title="1997: dubbelkroken">x</td>
+        <td title="1998: dubbelkroken">x</td>
+        <td title="2015: dubbelkroken">x</td>
+        <td title="2017: dubbelkroken">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">􌤯</td>
+        <td>böjda tupphanden</td>
+        <td></td>
+        <td title="1982: böjda tupphanden">x</td>
+        <td title="1989: böjda tupphanden">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: böjd tupphand">x</td>
+        <td title="1997: böjda tupphanden">x</td>
+        <td title="1998: böjda tupphanden">x</td>
+        <td title="2015: böjda tupphanden">x</td>
+        <td title="2017: böjda tupphanden">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">􌤭</td>
+        <td>V-handen</td>
+        <td title="1977: V-handen">x</td>
+        <td title="1982: V-handen">x</td>
+        <td title="1989: V-handen">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: V-hand">x</td>
+        <td title="1997: V-handen">x</td>
+        <td title="1998: V-handen">x</td>
+        <td title="2014: V-handen">x</td>
+        <td title="2017: V handen">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">􌤮</td>
+        <td>tupphanden</td>
+        <td title="1977: tupphanden">x</td>
+        <td title="1982: tupphanden">x</td>
+        <td title="1989: tupphanden">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: tupphand">x</td>
+        <td title="1997: tupphanden">x</td>
+        <td title="1998: tupphanden">x</td>
+        <td title="2015: tupphanden">x</td>
+        <td title="2017: tupphanden">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">􌤰</td>
+        <td>W-handen</td>
+        <td></td>
+        <td title="1982: W-handen">x</td>
+        <td title="1989: W-handen">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: W-hand">x</td>
+        <td title="1997: W-handen">x</td>
+        <td title="1998: W-handen">x</td>
+        <td title="2015: W-handen">x</td>
+        <td title="2017: W handen">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">–</td>
+        <td>böjda W-handen</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td title="Framtid: ">?</td>
+      <tr>
+        <td class="x2 center">􌤳</td>
+        <td>X-handen</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td title="1997: X-handen">x</td>
+        <td></td>
+        <td title="2015: X-handen">x</td>
+        <td title="2017: X handen">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">􌥃</td>
+        <td>sprethanden</td>
+        <td title="1977: spretade handen">x</td>
+        <td title="1982: sprethanden">x</td>
+        <td title="1989: sprethanden">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: sprethand">x</td>
+        <td title="1997: sprethanden">x</td>
+        <td title="1998: sprethanden">x</td>
+        <td title="2015: sprethanden">x</td>
+        <td title="2017: sprethanden">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center"><img src="pic/h-vinklade-sprethanden.svg" class=normal></td>
+        <td>vinklade sprethanden</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td title="1994: vinklad sprethand">x</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td title="Framtid: "></td>
+      <tr>
+        <td class="x2 center"><img src="pic/h-bojda-sprethanden.svg" class=normal></td>
+        <td>böjda sprethanden</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td title="1994: böjd sprethand">x</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td title="Framtid: "></td>
+      <tr>
+        <td class="x2 center">􌥒</td>
+        <td>stora långfingret</td>
+        <td></td>
+        <td title="1982: stora långfingret">x</td>
+        <td title="1989: stora långfingret">x</td>
+        <td title="1993: stora långfingret">x</td>
+        <td title="1994: stor långfingerhand">x</td>
+        <td title="1997: stora långfingret">x</td>
+        <td title="1998: stora långfingret">x</td>
+        <td title="2015: stora långfingret">x</td>
+        <td title="2017: stora långfingret">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">􌥟</td>
+        <td>runda långfingret</td>
+        <td></td>
+        <td title="1982: runda långfingret">x</td>
+        <td title="1989: runda långfingret (utan tvärstreck)">x</td>
+        <td title="1993: runda långfingret">x</td>
+        <td title="1994: rund långfingerhand">x</td>
+        <td title="1997: runda långfingret">x</td>
+        <td title="1998: runda långfingret">x</td>
+        <td title="2015: runda långfingret">x</td>
+        <td title="2017: runda långfingret">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center"><img src="pic/h-bojda-langfingret.svg" class=normal></td>
+        <td>böjda långfingret</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td title="1994: böjt långfinger">x</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td title="Framtid: "></td>
+      <tr>
+        <td class="x2 center">􌦪</td>
+        <td>4-handen</td>
+        <td></td>
+        <td title="1982: 4-handen">x</td>
+        <td title="1989: 4-handen">x</td>
+        <td title="1993: ">x</td>
+        <td title="1994: 4-hand">x</td>
+        <td></td>
+        <td title="1998: 4-handen">x</td>
+        <td title="2015: 4-handen">x</td>
+        <td title="2017: 4 handen">x</td>
+        <td title="Framtid: ">x</td>
+      <tr>
+        <td class="x2 center">–</td>
+        <td>böjda 4-handen</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td title="Framtid: ">?</td>
+      <tr>
+        <td colspan=2>Total</td>
+        <td title="1977">+22</td>
+        <td title="1982">+15<br>(37)</td>
+        <td title="1989">+4<br>(41)</td>
+        <td title="1993">-1+1<br>(41)</td>
+        <td title="1994">+5<br>(46)</td>
+        <td title="1997">-12+2<br>(36)</td>
+        <td title="1998">-2+2<br>(36)</td>
+        <td title="2015">+3<br>(39)</td>
+        <td title="2017"></td>
+        <td title="Framtid"></td>
+      <tr>
+        <th rowspan=2></th>
+        <th rowspan=2>Namn</th>
+        <th title="Bergman, ”Tecknad svenska”">1977</th>
+        <th title="Bergman, ”Teckenspråkstranskription”">1982</th>
+        <th title="Hedberg, ”Persontecken”">1989</th>
+        <th title="Bergman & Björkstrand, ”Kompendium i teckentranskription”">1993</th>
+        <th title="Wallin, ”Polysyntetiska tecken i svenska teckenspråket”">1994</th>
+        <th title="Hedberg, ”Svenskt teckenspråkslexikon” (bokversion)">1997</th>
+        <th title="Björkstrand, ”Redundans i teckentranskriptionssystemet”">1998</th>
+        <th title="Björkstrand & Bergman, ”Teckentranskription”">2015</th>
+        <th title="”Svenskt teckenspråkslexikon” (webbversion)">2017</th>
+        <th title="Framtida lexikon">–</th>
+      <tr>
+        <th colspan=10>Källa <span style="background:#ff8;">(lexikon)</span>
+    </table>
+  </main>
+</body>
+</html>
