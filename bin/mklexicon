@@ -1,0 +1,834 @@
+#!/usr/bin/perl
+
+# FIXME: how is relation diacritic with passive hand expressed(?)
+# FIXME: 00162
+
+use strict;
+use warnings;
+use utf8;
+use JSON::PP;
+binmode(STDOUT, ":utf8");
+#use Data::Dumper;
+#$Data::Dumper::Sortkeys = 1; # sub {
+#     return [ sort {$a <=> $b } keys %{ shift() } ];
+# };
+
+# Use UTF8 for EVERYTHING.
+use open qw(:std :utf8);
+@ARGV = do {
+    use Encode qw(decode_utf8);
+    map { decode_utf8($_, 1) } @ARGV;
+};
+
+my @cluster_subs = (
+    [
+        # Segment 1
+        ########################################
+        # When segment 1 = is 'handalfabetet'
+        [
+            9,                 # if this is 'handalfabetet' then check:
+            2,                 #   must be 'neutrala läget'
+            68,                #   must be /\ben\b/
+            69,                #   must be 'en'
+            [],
+            #[1, 3..8, 10..33], #   must be empty
+        ],
+
+        # Main definition of segment 1
+        [ \&position, 1, 2, 3 ],     # relation, {position|handshape}, attitude
+
+        # Passive secondary hand (with 2 articulation places)
+        [ \&passive_secondary_hand, 4, 5],    # handshape, attitude
+        # (fields 4 and 34 are identical)
+        [ \&is_same, 4, 34 ],
+
+        # Active secondary hand
+        [ \&active_secondary_hand, 6, 7, 8],   # relation, handshape, attitude
+        # (field 8 and 35 are identical)
+        [ \&is_same, 8, 35 ],
+
+        # Dominant hand (always active)
+        [ \&primary_hand, 9, 10 ],      # {handshape|'handalfabetet'}, attitude
+
+        # Articulations and separators
+        [ \&articulations, 11, 12, 13, 14, 15, 16 ],
+        [ \&separator,    17 ],
+        [ \&articulations, 18, 19, 20, 21, 22 ],
+        [ \&separator,    23 ],
+        [ \&articulations, 24, 25, 26, 27 ],
+        [ \&separator,    28 ],
+        [ \&articulations, 29 ],               # 'bokstaveras'
+        [ \&separator,    30 ],
+        [ \&articulations, 31, 33 ],
+        [ \&separator,    32 ],
+        #[ \&Xxx,     34 ], # same as 4 (used above)
+        #[ \&xxx,     35 ], # same as 8 (used above)
+        #[ \&xxx,     68 ],
+        #[ \&xxx,     69 ],
+
+        ########################################
+        [ \&compound, 36 ],     # {'sammansatt'|'sammansatt_med_bokst'}
+        #    'sammansatt' -- följande segment är tecken
+        #    'sammansatt_med_bokst' -- följande segment är bokstaverat  # FIXME
+        ########################################
+    ], [
+        # Segment 2
+        ########################################
+        # When segment 2 = is 'handalfabetet'
+        [
+            45,                   # if this is 'handalfabetet' then check:
+            38,                   #   must be 'neutrala läget'
+            70,                   #   must be /\ben\b/
+            71,                   #   must be 'en'
+            [],
+            #[37, 39..44, 46..67], #   must be empty
+        ],
+
+        # Main definition of segment 2
+        [ \&position, 37, 38, 39 ],  # relation, {position|handshape}, attitude
+
+        # Passive secondary hand (with 2 articulation places)
+        [ \&passive_secondary_hand, 40, 41],   # handshape, attitude
+
+        # Active secondary hand
+        [ \&active_secondary_hand, 42, 43, 44], # relation, handshape, attitude
+
+        # Dominant hand (always active)
+        [ \&primary_hand, 45, 46 ],     # {handshape|'handalfabetet'}, attitude
+
+        # Articulations and separators
+        [ \&articulations, 47, 48, 49, 50, 51 ],
+        [ \&separator,    52 ],
+        [ \&articulations, 53, 54, 55, 56, 57 ],
+        [ \&separator,    58 ],
+        [ \&articulations, 59, 60, 61 ],
+        [ \&separator,    62 ],
+        [ \&articulations, 63 ],               # 'bokstaveras'
+        [ \&separator,    64 ],
+        [ \&articulations, 65, 67 ],
+        [ \&separator,    66 ],
+        # #[ \&xxx,     70 ],
+        # #[ \&xxx,     71 ],
+
+        ########################################
+        [ \&compound, 72 ],
+        ########################################
+    ], [
+        # Segment 3
+        ########################################
+        # When segment 3 = is 'handalfabetet'
+        [
+            81,                    # if this is 'handalfabetet' then check:
+            74,                    #   must be 'neutrala läget'
+            104,                   #   must be /\ben\b/
+            105,                   #   must be 'en'
+            [],
+            #[73, 75..80, 82..103], #   must be empty
+        ],
+
+        # Main definition of segment 3
+        [ \&position, 73, 74, 75 ],  # relation, {position|handshape}, attitude
+
+        # Passive secondary hand (with 2 articulation places)
+        [ \&passive_secondary_hand, 76, 77 ],  # handshape, attitude
+
+        # Active secondary hand
+        [ \&active_secondary_hand, 78, 79, 80 ], # relation, handshape, attitude
+
+        # Dominant hand (always active)
+        [ \&primary_hand, 81, 82 ],     # {handshape|'handalfabetet'}, attitude
+
+        # Articulations and separators
+        [ \&articulations, 83, 84, 85, 86, 87 ],
+        [ \&separator,    88 ],
+        [ \&articulations, 89, 90, 91, 92, 93 ],
+        [ \&separator,    94 ],
+        [ \&articulations, 95, 96, 97, 98 ],
+        [ \&separator,    99 ],
+        [ \&articulations, 100 ],              # 'bokstaveras'
+        [ \&separator,    101 ],
+        [ \&articulations, 102, 103 ],
+        # #[ \&xxx,     104 ],
+        # #[ \&xxx,     105 ],
+    ],
+);
+
+################################################################################
+
+my %relation = (
+    bredvid => '􌤺',
+    framför => '􌥛',
+    bakom   => '􌤻',
+    över    => '􌤹',
+    under   => '􌥚',
+);
+
+my %attitude = do {
+    my %dir = (
+        'vänsterriktad' => '􌥓',  'högerriktad' => '􌥔',
+        'framåtriktad'  => '􌤴',  'inåtriktad'  => '􌥕',
+        'uppåtriktad'   => '􌤵',  'nedåtriktad' => '􌥖',
+    );
+    my %turn = (
+        'vänstervänd'   => '􌤶',  'högervänd'   => '􌥗',
+        'framåtvänd'    => '􌤷',  'inåtvänd'    => '􌥘',
+        'uppåtvänd'     => '􌤸',  'nedåtvänd'   => '􌥙',
+    );
+    map {
+        my $dir = $_;
+        map {
+            my $turn = $_;
+            ("$dir-$turn" => "$dir{$dir}$turn{$turn}");
+        } keys %turn;
+    } keys %dir,
+};
+
+my %handshape = (
+    'a-handen'         => '􌤤',
+    'tumvinkelhanden'  => '􌥄',
+    'vinkelhanden'     => '􌤣',
+    'tumhanden'        => '􌤧',
+    'tummen'        => '􌤧',   # FIXME: remove
+    'måtthanden'       => '􌥋',
+    'rakamåtthanden'   => '􌥉',
+    'd-handen'         => '􌦫',
+    'nyphanden'        => '􌤩',
+    'lillao-handen'    => '􌤎',
+    'e-handen'         => '􌥇',
+    'f-handen'         => '􌦬',
+    'knutenhand'       => '􌤦',
+    'storanyphanden'   => '􌤲',
+    'lillfingret'      => '􌤱',
+    'flyghanden'       => '􌥑',
+    'flatahanden'      => '􌤢',
+    'flatatumhanden'   => '􌥂',
+    'krokfingret'      => '􌤪',
+    'k-handen'         => '􌥎',
+    'pekfingret'       => '􌥈',
+    'l-handen'         => '􌤨',
+    'm-handen'         => '􌤿',
+    'n-handen'         => '􌥌',
+    'o-handen'         => '􌥆',
+    'hållhanden'       => '􌤫',
+    'q-handen'         => '􌦭',
+    'långfingret'      => '􌤬',
+    's-handen'         => '􌥅',
+    'klohanden'        => '􌤥',
+    't-handen'         => '􌥊',
+    'dubbelkroken'     => '􌤽',
+    'böjdatupphanden'  => '􌤯',
+    'v-handen'         => '􌤭',
+    'tupphanden'       => '􌤮',
+    'whanden'          => '􌤰',
+    'x-handen'         => '􌤳',
+    'sprethanden'      => '􌥃',
+    'storalångfingret' => '􌥒',
+    'rundalångfingret' => '􌥟',
+    '4-handen'         => '􌦪',
+);
+my %position = (
+    %handshape,
+    'neutrala läget'      => '',
+    'ansiktet, huvudhöjd' => '􌤆',
+    'ansiktet, övre del'  => '􌤂',
+    'ansiktet, nedre del' => '􌥞',
+    'hjässan'             => '􌤀',
+    'pannan'              => '􌤃',
+    'ögonen'              => '􌤄',
+    'ögat'                => '􌤅',
+    'öronen'              => '􌤾',
+    'örat, vänster'       => '􌤈',
+    'örat, höger'         => '􌤇',
+    'kinderna'            => '􌤉',
+    'kinden, vänster'     => '􌤋',
+    'kinden, höger'       => '􌤊',
+    'näsan'               => '􌤼',
+    'munnen'              => '􌤌',
+    'hakan'               => '􌤛',
+    'nacken'              => '􌤜',
+    'halsen'              => '􌤞',
+    'axlarna'             => '􌤠',
+    'axeln, vänster'      => '􌥀',
+    'axeln, höger'        => '􌤡',
+    'armen'               => '􌥜',
+    'överarmen'           => '􌤑',
+    'underarmen'          => '􌤒',
+    'bröstet'             => '􌤓',
+    'bröstet, vänster'    => '􌤕',
+    'bröstet, höger'      => '􌤔',
+    'magen'               => '􌤖',
+    'höfterna'            => '􌤗',
+    'höftet, vänster'     => '􌤙',
+    'höftet, höger'       => '􌤘',
+    'benet'               => '􌤚',
+);
+my %articulation = (
+    %handshape,                   # include handshapes
+    'medialkontakt'      => '􌥡',
+    'kontakt'            => '􌤟',
+    'stillastående'      => '􌦑',
+    'förs_vänster'       => '􌥢',
+    'förs_höger'         => '􌥣',
+    'förs_vä-hö'         => '􌥤',
+    'förs_framåt'        => '􌦃',
+    'förs inåt'          => '􌦄',  # FIXME
+    'förs_inåt'          => '􌦄',
+    'förs_fram-in'       => '􌥥',
+    'förs_uppåt'         => '􌥦',
+    'förs_nedåt'         => '􌥧',
+    'förs_upp-ner'       => '􌥨',
+    'förs_vänster_stopp' => '􌥩',
+    'förs_höger_stopp'   => '􌥪',
+    'förs_framåt stopp'  => '􌥵',  # FIXME
+    'förs_framåt_stopp'  => '􌥵',
+    'förs_inåt_stopp'    => '􌥶',
+    'förs_uppåt stopp'   => '􌥷',  # FIXME
+    'förs_uppåt_stopp'   => '􌥷',
+    'förs_nedåt_stopp'   => '􌥸',
+    'divergerar'         => '􌥹',
+    'konvergerar'        => '􌦅',
+    'kors'               => '􌦎',
+    'hakas'              => '􌥫',
+    'byte'               => '􌥬',
+    'entre'              => '􌥭',
+    'vinkel'             => '􌥮',
+    'spelar'             => '􌥳',
+    'strör'              => '􌥴',
+    'böjs'               => '􌦨',
+    'vinkar'             => '􌥺',
+    'förändras'          => '􌦆',
+    'växelvis'           => '􌦇',
+    'båge vä'            => '􌥯􌦈',
+    'båge hö'            => '􌥯􌥽',
+    'båge vä-hö'         => '􌥯􌦉',
+    'båge fram'          => '􌥯􌥾',
+    'båge in'            => '􌥯􌦊',
+   #'båge fram-in'       => '􌥯􌦋',
+    'båge upp'           => '􌥯􌥿',
+    'båge ner'           => '􌥯􌦀',
+   #'båge upp-ner'       => '􌥯􌦌',
+   #'båge mot'           => '􌥯􌦂',
+    'cirkel vä'          => '􌥰􌦈',
+   #'cirkel hö'          => '􌥰􌥽',
+    'cirkel vä-hö'       => '􌥰􌦉',
+    'cirkel fram'        => '􌥰􌥾',
+    'cirkel in'          => '􌥰􌦊',
+    'cirkel fram-in'     => '􌥰􌦋',
+    'cirkel upp'         => '􌥰􌥿',
+   #'cirkel ner'         => '􌥰􌦀',
+    'cirkel upp-ner'     => '􌥰􌦌',
+    'cirkel mot'         => '􌥰􌦂',
+    'slås vä'            => '􌥱􌦈',
+    'slås hö'            => '􌥱􌥽',
+    'slås vä-hö'         => '􌥱􌦉',
+    'slås fram'          => '􌥱􌥾',
+    'slås in'            => '􌥱􌦊',
+    'slås fram-in'       => '􌥱􌦋',
+    'slås upp'           => '􌥱􌥿',
+    'slås ner'           => '􌥱􌦀',
+    'slås upp-ner'       => '􌥱􌦌',
+    'slås mot'           => '􌥱􌦂',
+    'vrids vä'           => '􌥲􌦈',
+    'vrids hö'           => '􌥲􌥽',
+    'vrids vä-hö'        => '􌥲􌦉',
+    'vrids fram'         => '􌥲􌥾',
+    'vrids in'           => '􌥲􌦊',
+    'vrids fram-in'      => '􌥲􌦋',
+    'vrids upp'          => '􌥲􌥿',
+    'vrids ner'          => '􌥲􌦀',
+    'vrids upp-ner'      => '􌥲􌦌',
+    'vrids mot'          => '􌥲􌦂',
+    'upprepning'         => '􌥻',
+);
+
+my %compound = (
+    'bokstaveras' => '',
+    'bokst_med_sammansatt' => '',
+    'dubbla' => '',
+    'fras' => '',
+    'ickesammansatt' => '',
+    'sammansatt' => '􌥠',
+    'sammansatt med bokst' => '',
+    'sammansatt_med_bokst' => '􌥠',
+);
+
+################################################################################
+
+sub compound {
+    my ($id, $field) = @_;
+    $field = lc $field;
+    die "UNSET symbol in compound\n"
+        if not defined $field;
+    die "INVALID symbol '$field' in compound\n"
+        if not exists $compound{ $field };
+    return $compound{$field};
+}
+
+sub is_same {
+    my ($id, $field1, $field2) = @_;
+    die "INVALID fields are not the same\n" if $field1 ne $field2;
+    return '';
+}
+
+sub caller_function {
+    (my $caller = (caller(2))[3]) =~ s#.*:##;
+    return $caller;
+}
+
+################################################################################
+##
+## Cluster functions. These each verify one cluster, die()s on failure, or
+## return the corresponding Unicode string on success.
+##
+sub attitude_cluster {
+    my ($attitude) = lc shift();
+
+    die "UNSET attitude\n"
+        if not defined $attitude;
+    die "INVALID attitude '$attitude'\n"
+        if not (exists $attitude{$attitude} or $attitude eq '');
+
+    return ($attitude ne '' ? $attitude{ $attitude } : '');
+}
+sub relation_cluster {
+    my ($relation) = lc shift();
+
+    die "UNSET relation\n"
+        if not defined $relation;
+    die "INVALID relation '$relation'\n"
+        if not (exists $relation{ $relation } or $relation eq '');
+
+    return ($relation ne '' ? $relation{ $relation } : '');
+}
+sub handshape_cluster {
+    my ($handshape) = lc shift();
+
+    die "UNSET handshape\n"
+        if not defined $handshape;
+    die "INVALID empty handshape\n"
+        if $handshape eq '';
+    die "INVALID handshape '$handshape'\n"
+        if not exists $handshape{$handshape};
+
+    return $handshape{$handshape};
+}
+sub position_cluster {
+    my ($place) = lc shift();
+
+    die "UNSET place in position\n"
+        if not defined $place;
+    die "INVALID place '$place' in position\n"
+        if not exists $position{$place};
+
+    return $position{$place};
+}
+
+################################################################################
+
+sub position {
+    my ($id, $relation, $place, $attitude) = @_;
+    return
+        position_cluster($place) .
+        relation_cluster($relation) .
+        attitude_cluster($attitude);
+}
+
+sub passive_secondary_hand {
+    my ($id, $handshape, $attitude) = @_;
+    return do {
+        if (lc($handshape // '') eq 'armen') {
+            die {
+                msg    => "WARNING: 'armen' not allowed in passive secondary hand\n",
+                result => '􌥜',
+            };
+        } else {
+            handshape_cluster($handshape);
+        }
+    } . attitude_cluster($attitude);
+}
+
+sub active_secondary_hand {
+    my ($id, $relation, $handshape, $attitude) = @_;
+    return
+        attitude_cluster($attitude) .
+        handshape_cluster($handshape) .
+        relation_cluster($relation);
+}
+
+sub primary_hand {
+    my ($id, $handshape, $attitude) = @_;
+    # $handshape = 'handalfabetet' means that the whole segment should be
+    # empty, and replaced with '#' (non-transcription sign)
+
+    # FIXME: Shouldn't be invalid when there's a body position
+    # return "INVALID empty handshape in primary hand"
+    #    if $handshape eq '';
+
+    return
+        handshape_cluster($handshape) .
+        attitude_cluster($attitude);
+}
+
+sub first_articulation {
+    my ($id, $articulation) = @_;
+    die "UNSET articulation\n" if not defined $articulation;
+
+    die "INVALID articulation '$articulation'\n"
+        if not (exists $articulation{ lc $articulation } or
+                $articulation eq '');
+
+    return $articulation{ lc $articulation };
+}
+
+sub articulation {
+    my ($id, $articulation) = @_;
+    die "UNSET articulation" if not defined $articulation;
+
+    die "INVALID articulation '$articulation'\n"
+        if not (exists $articulation{ lc $articulation } or
+                exists $handshape{    lc $articulation } or
+                $articulation eq '');
+
+    return (
+        $articulation{ lc $articulation } or
+        $handshape{    lc $articulation }
+    );
+}
+
+# FIXME: check that handshape only occurs after 'förändras'
+sub articulations {
+    my ($id, @articulation) = @_;
+
+    my $i = 0;
+    while ($i <= $#articulation) {
+        if (lc($articulation[$i]) eq 'medialkontakt') {
+            if ($i == $#articulation) {
+                die "INVALID 'medialkontakt' cannot be last in articulation\n";
+            } else {
+                @articulation[$i + 1, $i] = @articulation[$i, $i + 1];
+                $i += 1;
+            }
+        }
+        $i += 1;
+    }
+
+    if (exists $handshape{ $articulation[0] }) {
+        die "INVALID handshape '$articulation[0]' must be preceded by 'förändras'\n";
+    }
+    {
+        my @articulation2 = grep { defined $_ and $_ ne '' } @articulation;
+        foreach my $i (0..$#articulation2) {
+            my $symbol = $articulation2[$i];
+            if (lc($symbol) eq 'förändras') {
+                if ($i == $#articulation2 or not exists($handshape{ lc $articulation2[ $i + 1 ] })) {
+                    die "INVALID 'förändras' must be followed by handshape\n";
+                }
+            }
+        }
+    }
+
+    return join('',
+        first_articulation($id, shift(@articulation)) // '',
+        map {
+            articulation($id, $_) // '';
+        } @articulation
+    );
+}
+
+# FIXME: make sure 'gitarr' et al works
+# FIXME: check unused input values
+sub separator {
+    my ($id, $separator) = @_;
+    return '􌥼'
+        if $separator eq 'Sekv';
+    die "INVALID separator '$separator'\n";
+    return '';
+}
+
+################################################################################
+
+sub trim {
+    my ($str) = @_;
+    for ($str) {
+        s/^\s+//;
+        s/\s+$//;
+    }
+    return $str;
+}
+
+sub get_image_names {
+    my ($dir) = @_;
+    $dir //= '';
+    $dir =~ s#/+$##;
+    die "$0: Argument '$dir' not a directory\n" if not -d $dir;
+    return map {
+        my ($key) = m#-(\d{5})-#;
+        s#^.*/([^/]*)-(\d{5})-transcription[.]jpg$#$1#;
+        ($key => $_);
+    } <$dir/*.jpg>;
+}
+
+sub get_words {
+    my ($file) = @_;
+    open(my $in, '<:utf8', $file) or die "Cannot open file '$file' for reading\n";
+    return map {
+        /^(\d{5}):(.*)$/ ? ($1 => $2) : ();
+    } <$in>;
+}
+
+sub split_transcript {
+    my ($transcript) = @_;
+    return map {
+        my $a = trim($_);
+        $a =~ s#^(\d+)[.]##;
+        $a =~ /^---$/ ? () : ($1 // 0 => $a);
+    } split(/\x0b/, $transcript);
+}
+
+sub parse_line {
+    my ($line) = @_;
+    $line =~ s#[\s\n\r]+$##;
+    my ($id, $transcript) = split(/\t/, $line);
+    return ($id, split_transcript($transcript // ''));
+}
+
+sub dump_values {
+    my %data = @_;
+    return join(" ", map {
+        (my $value = lc $data{$_}) =~ s#\s+#-#g;
+        $value ne '' ? "$_:$value" : ();
+    } sort { $a <=> $b } keys %data);
+}
+
+sub html_header {
+    return <<'END_HTML';
+<!doctype html>
+<html lang=sv>
+<head>
+  <!-- Copyright 2017 by zrajm. Released under GPLv3 license. -->
+  <meta charset="UTF-8">
+  <title>TSP-Lex!</title>
+  <!-- link rel=stylesheet href="intro.css" -->
+  <link rel=license href="LICENSE.txt">
+  <style>
+    /* Default font: FreeSans-SWL */
+    @font-face {
+        font-family: "FreeSans-SWL";
+        src: url("freesans-swl.ttf");
+    }
+    * { margin: 0; padding: 0; }
+    li { margin-left: 1em; }
+    html { font-family: "FreeSans-SWL", "FreeSans", sans-serif; }
+    body, textarea, button, input, pre { font-family: inherit; font-size: 2.5em; }
+    img { height: 1.8em; vertical-align: middle; }
+  </style>
+</head>
+<body>
+
+END_HTML
+}
+
+sub html_footer {
+    return <<'END_HTML';
+</body>
+</html>
+END_HTML
+}
+
+sub verify {
+    my ($when_msg, $data_ref, $content_ref, $empty_ref) = @_;
+
+    # Check fields with specified content
+    foreach my $i (sort { $a <=> $b } keys %$content_ref) {
+        my $expected = $content_ref->{$i};
+        my $got      = $data_ref->{$i} // '';
+        if (ref($expected) eq 'Regexp') {
+            warn "INVALID field $i '$got' (must contain '$expected' $when_msg)\n"
+                if lc($got) !~ /$expected/;
+        } else {
+            warn "INVALID field $i '$got' (must be '$expected' $when_msg)\n"
+                if lc($got) ne $expected;
+        }
+    }
+    # Check empty fields
+    for my $i (@$empty_ref) {
+        warn "INVALID field $i '$data_ref->{$i}' (must be empty $when_msg)\n"
+            if ($data_ref->{$i} // '') ne '';
+    }
+}
+
+sub sub_name {
+    my ($sub_ref) = @_;
+    use B 'svref_2object';
+    return svref_2object($sub_ref)->GV->NAME;
+}
+
+sub transcribe_to_unicode {
+    my ($id, %data) = @_;
+    my $out = '';
+    warn "INVALID field 4 '".($data{4}//'')."' must be same as 34 '".($data{34}//'')."'"
+        if lc($data{4}//'') ne lc($data{34}//'');
+    warn "INVALID field 8 '".($data{8}//'')."' must be same as 35 '".($data{35}//'')."'"
+        if lc($data{8}//'') ne lc($data{35}//'');
+
+    foreach my $segment_subs_ref (@cluster_subs) {
+        my ($tests, @segment_subs) = @$segment_subs_ref;
+        my ($main_handshape, $main_position, $main_xxx, $main_number,
+            $main_empty) = @$tests;
+
+        if (lc($data{$main_handshape} // '') eq 'handalfabetet') {
+            verify(
+                "when field $main_handshape = 'handalfabetet'",
+                \%data, {
+                    $main_position => 'neutrala läget',
+                    $main_xxx      => qr/\ben\b/,
+                    $main_number   => 'en',
+                }, $main_empty,
+            );
+            $out .= "#";
+        } else {
+            for my $sub_and_args (@segment_subs) {
+                my ($sub, @nums) = @$sub_and_args;
+
+                my (%used, @value);
+                foreach my $num (@nums) {
+                    if (defined $num) {
+                        $used{$num} = $data{$num};
+                        push @value, defined($num) ? ($data{$num} // '') : '';
+                    }
+                }
+
+                my @has_values = grep { ($_ // '') ne '' } @value;
+                if (@has_values > 0) {
+                    $out .= eval { $sub->($id, @value) } // '';
+
+                    if ($@) {
+                        my $msg = ref($@) eq 'HASH' ? $@->{msg} : $@;
+                        warn "ERROR: " . sub_name($sub) . "(" . join(', ', map {
+                            "$nums[$_]:»$value[$_]«"
+                        } 0..$#nums) . ") – $msg\n";
+
+                        $out .= $@->{result}
+                            if ref($@) eq 'HASH' ;
+                    }
+                }
+            }
+        }
+    }
+    return $out;
+}
+
+################################################################################
+
+my %opt = (
+    output_format => 'html',
+    id2word_file  => '',
+    image_dir     => '',
+);
+
+for (my $i = 0; $i <= $#ARGV;) {
+    local $_ = $ARGV[$i];
+    /^-/   or  do { $i += 1; next };
+    /^--$/ and last;
+
+    # Split option with '=' in it.
+    splice(@ARGV, $i, 1, s/=(.*)$// ? $1 : ());
+
+    /^(-i|--images)$/ and do { $opt{image_dir}     =  splice(@ARGV, $i, 1); next };
+    /^(-w|--webapp)$/ and do { $opt{output_format} = 'app';                 next };
+    /^(-j|--json)$/   and do { $opt{output_format} = 'json';                next };
+    /^(-w|--words)$/  and do { $opt{id2word_file}  =  splice(@ARGV, $i, 1); next };
+    /^-/ and die "Unknown option '$_'\n";
+}
+
+my %pic  = get_image_names($opt{image_dir});
+my %word = get_words($opt{id2word_file});
+
+################################################################################
+## Accumulate error messages on warn().
+{
+    my @warn;
+    $SIG{__WARN__} = sub { push @warn, "@_" };
+    sub get_warns {
+        my @x = @warn;
+        @warn = ();
+        return @x;
+    }
+}
+################################################################################
+
+local $/ = "\r";  # Mac line endings
+
+if ($opt{output_format} eq 'html') {
+    print html_header();
+}
+
+my $i = 1;
+my @thingy;
+LINE: while (<>) {
+    my ($id, %data) = parse_line($_);
+    next if not %data;
+
+    # Create Unicode transcription.
+    my $unicode = transcribe_to_unicode($id, %data);
+
+    if ($opt{output_format} =~ m#^(app|html)$#) {
+        if ($pic{$id} and $unicode) {
+            push(@thingy, [
+                $pic{$id},
+                $id,
+                $unicode,
+                split(/;/, $word{$id}),
+            ]);
+        }
+    } else {
+        if (my @warn = get_warns()) {
+            print "<hr>\n",
+                "<a href=\"http://teckensprakslexikon.su.se/ord/$id\">$id</a>\n";
+
+            if ($unicode =~ /[a-z]/) {
+                print "BADNESS:\n";
+                $unicode = "<mark>$unicode</mark>";
+            }
+
+            # Output transcription
+            printf "<br>%s", $unicode;
+
+            # Add transcript image from lexicon.
+            printf "<br><img src=\"%s\">\n", ($pic{$id} // '');
+
+            # Debug dump of values.
+            printf "<br>%s\n", dump_values(%data);
+
+            # Output warn() messages.
+            print "<ul>\n";
+            foreach (@warn) {
+                print "  <li>$id: " . (/^ERROR/ ? '' : "ERROR2: ") . $_;
+            }
+            print "</ul>\n";
+        }
+    }
+    #exit if $i++ > 1000;
+}
+
+if ($opt{output_format} eq 'html') {
+    print html_footer();
+} else {
+    my $json = JSON::PP->new->sort_by(
+        sub { $JSON::PP::a->[0] cmp $JSON::PP::b->[0] }
+    )->encode(\@thingy);
+
+    if ($opt{output_format} eq 'json') {
+        print $json;
+    } elsif ($opt{output_format} eq 'app') {
+
+        for ($json) {
+            s#\[#\n[#g;
+        }
+        print "    var lexicon = $json\n",
+            "  </script>\n",
+            html_footer();
+    }
+}
+
+#[eof]

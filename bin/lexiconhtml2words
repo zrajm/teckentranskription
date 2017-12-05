@@ -1,0 +1,46 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use utf8;
+use Data::Dumper;
+
+die "Usage: $0 DIR <INPUT >OUTPUT\n" if @ARGV == 0;
+(my $dir = shift()) =~ s#/+$##;
+die "$0: First arg must be a directory\n" if not -d ($dir // '');
+
+################################################################################
+
+sub read_file {
+    my ($file) = @_;
+    local $/ = undef;
+    open(my $in, '<', $file) or die "Cannot open file '$file' for reading\n";
+    return <$in>;
+}
+
+################################################################################
+
+my %words;
+
+foreach my $file (<$dir/?????>) {
+    my $html = read_file($file);
+
+
+    my ($word) = $html =~ m#<h2>(.*?)</h2>#;
+    if ($word) {
+        $word =~ s#\s*<span class="also_means">\s*(.*?)</span>##;
+        $word = lc $word;
+
+        my @word = ($word, $1 ? split(/,\s+/, $1) : ());
+
+        my ($id) = $file =~ m#.*/(\d{5})#;
+
+        $words{$id} = \@word;
+    }
+}
+
+foreach my $id (sort keys %words) {
+    print "$id:", join(";", @{ $words{$id} }), "\n";
+}
+
+#[eof]
