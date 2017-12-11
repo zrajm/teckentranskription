@@ -1,6 +1,6 @@
 
 $('input').change(function () {
-    var findStr = $(this).val()
+    var findStr = ($(this).val() || '').toLowerCase()
     output_matching(search_lexicon(findStr), findStr)
 });
 
