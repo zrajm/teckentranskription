@@ -4,6 +4,18 @@
 ** TODO Homogenize CSS for all pages
    All pages should use one base CSS + an extra CSS with the styles needed for
    these pages, and preferably there should be no extra per-file CSS.
+* Lexicon
+** TODO Progressbar displayed during search
+   The search is always very fast, but displaying results takes time when there
+   are a lot of entries found... Is there a way to speed this up?
+** TODO Search query: Multiple words (should be AND:ed)
+   Searching for 'A<space>B' should find lexical entries with both 'A' and 'B'
+   in them, regardless of order.
+** TODO Sortable search results
+   Present search result in a sortable table? Should be able to sort by swedish
+   word, and by sign language.
+** TODO Missing slash in transcription between segments 1 & 2
+   E.g. in #􌤵􌥗􌤩􌤩􌤵􌤶􌥣􌥱􌦋􌦇􌥻􌥠#
 * Transcription Intro Article
 ** TODO Update terminology
    Weak/strong should be replaced by ipsilateral/contralateral (ipsi/contra).
@@ -94,6 +106,9 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Browser history buttons should work
+   CLOSED: [2017-12-12 Tue 13:30]
+   Update '#<query>' part of the URL so that back/forward buttons work.
 ** DONE Clean up TODO file and move these TODO items into its own (org-mode) file.
    CLOSED: [2017-09-20 Wed 19:25]
 * [eof]

@@ -1,8 +1,49 @@
+////////////////////////////////////////////////////////////////////////////////
+//
+// UrlFragment module.
+//
+var urlFragment = (function () {
+    // Base URL (w/o hash fragment).
+    function getBaseUrl() { return window.location.href.split('#')[0] }
 
-$('input').change(function () {
-    var findStr = ($(this).val() || '').toLowerCase()
-    output_matching(search_lexicon(findStr), findStr)
+    // URL fragment (w/o leading '#')
+    function getFragment() { return decodeURI(window.location.hash.substr(1)) }
+
+    // Set hashchange function callback.
+    function onChange(func) {
+        $(window).on('hashchange', function () { func(getFragment()) })
+    }
+
+    // Change URL fragment (does not trigger hashchange event).
+    function setFragment(urlFragment) {
+        var url = getBaseUrl() + '#' + encodeURI(urlFragment)
+        if (getFragment() !== urlFragment) {
+            window.history.pushState({}, '', url)
+        }
+    }
+
+    // Trigger hashchange on pageload.
+    $(function () { $(window).trigger('hashchange') })
+
+    return { set: setFragment, onChange: onChange };
+}())
+
+////////////////////////////////////////////////////////////////////////////////
+
+urlFragment.onChange(do_search)  // URL fragment change
+$('input').change(function () {  // form input change
+    var findStr = $(this).val() || ''
+    do_search(findStr)
 });
+
+function do_search(findStr) {
+    urlFragment.set(findStr)
+    $('#q').val(findStr)
+    if (findStr) {
+        lowerStr = findStr.toLowerCase()
+        output_matching(search_lexicon(lowerStr), lowerStr)
+    }
+}
 
 function matching_entry(findStr, entry) {
     return entry.slice(1).some(function(fieldStr) {
