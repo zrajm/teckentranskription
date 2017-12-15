@@ -68,11 +68,12 @@ function htmlifyEntry(entry, hiliteText) {
         swe   = entry.slice(3)
     return [
         //'image: ' + image + '\n',
+        '<span class=gray>' + hilite(id, hiliteText) + '</span> ' +
+        hilite(trans, hiliteText) + ' ' +
         '<a href="http://teckensprakslexikon.su.se/ord/' + id + '" target=_blank>' +
             swe.map(function(txt) {
                 return hilite(txt, hiliteText)
             }).join(', ') + '</a>',
-        hilite(trans, hiliteText),
     ]
 }
 

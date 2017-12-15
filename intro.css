@@ -13,7 +13,24 @@ ol, figure {
 
 *:not(td) { box-sizing: border-box; }
 
-mark { background: rgba(255, 0, 0, .5); }
+a {
+    text-decoration: none;
+    color: #1a0dab;
+}
+a:hover { text-decoration: underline; }
+
+mark { color: inherit;
+    position: relative;
+    background: rgba(255, 192, 0, .5);
+    border: 0;
+}
+mark:before {
+    background: rgba(255, 192, 0, .2);
+    top:0; left:0; right:0; bottom:0;
+    position: absolute;
+    content: '';
+    border: 0;
+}
 
 img { max-height: 175px; }
 

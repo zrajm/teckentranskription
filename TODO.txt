@@ -5,6 +5,12 @@
    All pages should use one base CSS + an extra CSS with the styles needed for
    these pages, and preferably there should be no extra per-file CSS.
 * Lexicon
+** TODO Pressing <enter> should also update search
+   Currently, in MSIE11, pressing <enter> does not execute search (one has to
+   unfocus the input field for the search to update).
+** TODO Add CC license + note data source
+** TODO Add link to lexicon from transcription article
+** TODO Add links to other articles from lexicon
 ** TODO Progressbar displayed during search
    The search is always very fast, but displaying results takes time when there
    are a lot of entries found... Is there a way to speed this up?

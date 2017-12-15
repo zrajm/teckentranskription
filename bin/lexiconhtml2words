@@ -2,12 +2,22 @@
 
 use strict;
 use warnings;
-use utf8;
 use Data::Dumper;
+
+# Use UTF8 for EVERYTHING.
+use utf8;
+use open qw(:std :utf8);
+@ARGV = do {
+    use Encode qw(decode_utf8);
+    map { decode_utf8($_, 1) } @ARGV;
+};
 
 die "Usage: $0 DIR <INPUT >OUTPUT\n" if @ARGV == 0;
 (my $dir = shift()) =~ s#/+$##;
-die "$0: First arg must be a directory\n" if not -d ($dir // '');
+if (not -d ($dir // '')) {
+    die("$0: First arg must be a dir with HTML files fetched ",
+        "from teckensprakslexikon.su.se\n");
+}
 
 ################################################################################
 
@@ -21,26 +31,30 @@ sub read_file {
 ################################################################################
 
 my %words;
-
-foreach my $file (<$dir/?????>) {
+my @html_files = <$dir/?????>;
+my $count = 0;
+foreach my $file (@html_files) {
     my $html = read_file($file);
 
+    printf STDERR "Reading HTML input files: %s%%\r", int((($count + 1) / @html_files) * 100);
 
     my ($word) = $html =~ m#<h2>(.*?)</h2>#;
     if ($word) {
-        $word =~ s#\s*<span class="also_means">\s*(.*?)</span>##;
-        $word = lc $word;
-
-        my @word = ($word, $1 ? split(/,\s+/, $1) : ());
+        for ($word) {
+            s/\s{2,}/ /g;
+            s{\s*<span class="also_means">\s*(.*?)</span>}{ $1 ? ", $1" : "" }e;
+            $word = lc($_) if not /^..*[[:upper:]]/;
+        }
 
         my ($id) = $file =~ m#.*/(\d{5})#;
 
-        $words{$id} = \@word;
+        $words{$id} = $word;
     }
+    $count += 1;
 }
 
 foreach my $id (sort keys %words) {
-    print "$id:", join(";", @{ $words{$id} }), "\n";
+    print "$id:$words{$id}\n";
 }
 
 #[eof]
