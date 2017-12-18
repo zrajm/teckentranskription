@@ -7,13 +7,7 @@
   <link rel=stylesheet href="intro.css">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <style>
-    /* Default font: FreeSans-SWL */
-    @font-face {
-        font-family: "FreeSans-SWL";
-        src: url("freesans-swl.ttf");
-    }
     html {
-      font-family: "FreeSans-SWL", "FreeSans", sans-serif;
       line-height: 1.5em;
       max-width: 44em;
       margin: 0 auto;
@@ -22,14 +16,6 @@
     body {
       background: #fff;
       padding: .25em 1em;
-    }
-
-    body, textarea, button {
-      font-family: inherit;
-    }
-    * {
-      margin: 0;
-      padding: 0;
     }
 
     blockquote, dl, img, ol, pre, ul { margin: 1em; }
@@ -57,11 +43,6 @@
     .x2 { font-size: 2em; }
     .x4 { font-size: 4em; }
 
-
-    .border {
-      border: 1px solid #000;
-    }
-
     /* special for this page */
     .share {
       position: relative;
@@ -72,7 +53,6 @@
       padding: .125em .25em;
       margin-left: auto;
       margin-right: 0;
-      right: 0;
     }
     .share div.bubble {
       box-sizing: border-box;
@@ -119,10 +99,7 @@
       overflow-y: scroll;
     }
 
-    button {
-      padding: .125em 0 0 0;
-      font-size: 1.25em;
-    }
+    button { font-size: 1.25em; }
     textarea {
       padding: 0 .5em;
       box-sizing: border-box;
@@ -131,36 +108,13 @@
       line-height: 1.5em;
     }
 
-    button:hover { border-color: #888; }
-    button {
-      border: 1px solid #666;
-      position: relative;
-      background-image: linear-gradient(to bottom, #bbb, #fff);
-      border-radius: 2px;
-      padding: .2em .125em .125em .125em;
-      box-sizing: border-box;
-      margin: .5px;
-    }
-
-    button:hover:before { opacity: .1; }
-    button:before {
-      opacity: .3;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right:0;
-      content: " ";
-    }
-
-    .relation     button:before { background: #f0f; }
-    .attityd      button:before { background: #ff0; }
-    .lage         button:before { background: #00f; }
-    .handform     button:before { background: #0f0; }
-    .forflyttning button:before { background: #f00; }
-    .rorelse      button:before { background: #f0f; }
-    .annat        button:before { background: #ff0; }
-
+    .relation     button { background-color: #f0f; }
+    .attityd      button { background-color: #ff0; }
+    .lage         button { background-color: #00f; }
+    .handform     button { background-color: #0f0; }
+    .forflyttning button { background-color: #f00; }
+    .rorelse      button { background-color: #f0f; }
+    .annat        button { background-color: #ff0; }
   </style>
 </head>
 <body>
@@ -175,7 +129,7 @@
   </aside>
 
   <main>
-    <textarea autofocus class="border x15" placeholder="Skriv här…
+    <textarea autofocus class="x15" placeholder="Skriv här…
 (Använd knapparna nedan för att skriva transkriptions&shy;symboler, och tangentbordet för att skriva vanlig text.)"></textarea>
 
     <span class=relation><!--
