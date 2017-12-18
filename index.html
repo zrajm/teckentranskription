@@ -4,6 +4,7 @@
   <!-- Copyright 2017 by zrajm. Released under GPLv3 license. -->
   <meta charset="UTF-8">
   <title>Teckentranskription</title>
+  <link rel=stylesheet href="intro.css">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <style>
     /* Default font: FreeSans-SWL */
@@ -160,31 +161,10 @@
     .rorelse      button:before { background: #f0f; }
     .annat        button:before { background: #ff0; }
 
-    noscript:after {
-      content: 'Javascript required.';
-      font-size: 72px;
-      line-height: 150%;
-      font-weight: bold;
-      padding: .25em .75em;
-      text-align: center;
-      box-shadow: .25em .25em .25em rgba(0, 0, 0, .5);
-      background: #ff2;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    noscript {
-      z-index: 1;
-      background: rgba(0, 0, 0, .5);
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-    }
   </style>
 </head>
 <body>
-  <noscript></noscript>
+  <noscript class=required>Javascript required.</noscript>
 
   <aside class=share>
     <button>Share…</button>
