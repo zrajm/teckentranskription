@@ -1,5 +1,11 @@
 /* Copyright 2016-2017 by zrajm. Released under GPLv3 license. */
 
+/* Default font: FreeSans-SWL */
+@font-face {
+    font-family: "FreeSans-SWL";
+    src: url("freesans-swl.ttf");
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -40,10 +46,10 @@ mark:before {
 
 img { max-height: 175px; }
 
+html { font-family: "FreeSans-SWL", "FreeSans", sans-serif; }
 body {
     padding: .25em 1em;
     font-size: 22px;
-    font-family: sans-serif;
 }
 
 noscript {
@@ -98,11 +104,12 @@ table {
 }
 
 /* Button margins & layout. */
-button, select, input {
+button, select, input, textarea {
     border: 1px solid #aaa;
     border-radius: 2px;
     color: inherit;
     font-size: inherit;
+    font-family: inherit;
     margin: 3px;
     padding: 6px 13px;
 }
