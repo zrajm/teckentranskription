@@ -3,6 +3,12 @@
 * {
     margin: 0;
     padding: 0;
+    caret-color: rgba(79, 79, 255, .75);
+}
+:focus {
+    outline: 0;
+    box-shadow: 0 0 0 3px rgba(79, 79, 255, .75);
+    z-index: 1;
 }
 
 p, ol, figure { margin: 1em 0; }
@@ -69,8 +75,6 @@ noscript {
 
 /* DEBUG: Border for glyph tables. */
 /* table, td { outline: 1px solid rgba(0,0,0,.3); } */
-
-:focus                { outline: 4px solid rgba(0, 0, 255, 0.5) !important; z-index: 1; }
 
 .FIXME {
     /* background: red; */
