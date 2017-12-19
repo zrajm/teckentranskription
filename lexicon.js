@@ -81,7 +81,7 @@ function output_matching(matchingTxt, hiliteText) {
     var html =
         'Sökträffar: ' + matchingTxt.length + '\n' +
         matchingTxt.map(function(entry) {
-            return '<br>' + htmlifyEntry(entry, hiliteText).join(' ')
+            return '<div>' + htmlifyEntry(entry, hiliteText).join(' ') + '</div>'
         }).join('')
     $('.results').html(html)
 }
