@@ -31,7 +31,7 @@ var urlFragment = (function () {
 ////////////////////////////////////////////////////////////////////////////////
 
 urlFragment.onChange(do_search)  // URL fragment change
-$('input').change(function () {  // form input change
+$('#q').change(function () {     // form input change
     var findStr = $(this).val() || ''
     do_search(findStr)
 });

@@ -54,16 +54,33 @@ function transcriptKeyboard(jqText) {
     }
 
     $(function () {
-        jqKeyboard
-            .width(jqText.width())
-            .find('button').mousedown(button_clicked).keydown(button_clicked)
-        jqText.keyup(function (e) {
-            if (e.key === 'Escape') {
-                jqKeyboard.toggle()
-            } else if (e.key === 'Enter') {
-                jqText.change()
+        jqKeyboard.
+            width(jqText.width()).
+            find('button').
+                mousedown(button_clicked).
+                keydown(button_clicked)
+        jqText.
+            keydown(function (e) {
+                switch (e.key) {
+                case 'Escape':
+                    e.preventDefault()
+                    jqKeyboard.toggle()
+                    break
+                case 'Enter':
+                    e.preventDefault()
+                    jqText.change()
+                }
+            }).
+            change(function() { jqKeyboard.hide() })
+        $(document).click(function (e) {
+            if (e.target === domText) {
+                // click in text input area
+                jqKeyboard.show()
+            } else if ($(e.target).closest(jqKeyboard).length === 0) {
+                // click outside virtual keyboard
+                jqKeyboard.hide()
             }
-        }).change(function() { jqKeyboard.hide() })
+        })
     })
 }
 
