@@ -5,9 +5,6 @@
    All pages should use one base CSS + an extra CSS with the styles needed for
    these pages, and preferably there should be no extra per-file CSS.
 * Lexicon
-** TODO Pressing <enter> should also update search
-   Currently, in MSIE11, pressing <enter> does not execute search (one has to
-   unfocus the input field for the search to update).
 ** TODO Add CC license + note data source
 ** TODO Add link to lexicon from transcription article
 ** TODO Add links to other articles from lexicon
@@ -117,4 +114,8 @@
    Update '#<query>' part of the URL so that back/forward buttons work.
 ** DONE Clean up TODO file and move these TODO items into its own (org-mode) file.
    CLOSED: [2017-09-20 Wed 19:25]
+** DONE Pressing <enter> should also update search
+   CLOSED: [2017-12-20 Wed 18:43]
+   Currently, in MSIE11, pressing <enter> does not execute search (one has to
+   unfocus the input field for the search to update).
 * [eof]
