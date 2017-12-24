@@ -79,11 +79,12 @@ function htmlifyEntry(entry, hiliteText) {
 
 function output_matching(matchingTxt, hiliteText) {
     var html =
-        'Sökträffar: ' + matchingTxt.length + '\n' +
+        '<div class=gray>' + matchingTxt.length + ' sökträffar</div>\n' +
         matchingTxt.map(function(entry) {
             return '<div>' + htmlifyEntry(entry, hiliteText).join(' ') + '</div>'
         }).join('')
-    $('.results').html(html)
+    $('.results').html('<div class=gray>Visar ' + matchingTxt.length + ' träffar…</div>')
+    setTimeout(function () { $('.results').html(html) }, 0)
 }
 
 function search_lexicon(findStr) {

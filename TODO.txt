@@ -5,7 +5,16 @@
    All pages should use one base CSS + an extra CSS with the styles needed for
    these pages, and preferably there should be no extra per-file CSS.
 * Lexicon
-** TODO Add CC license + note data source
+** TODO Search queries
+*** TODO Searching should be case-insensitive
+    Some words in the dictionary have upper case letters in their definition,
+    these upper case letters cannot be matched in a search. (Since the query is
+    translated to lowercase, and only lower case is searched for.)
+*** TODO Comma as OR separator in search query
+    Query should be split into OR:ed sub-queries on comma. E.g.
+    'X, Y' should search for all words containing either X or Y.
+*** TODO Space as AND separator in search query
+** TODO Add CC license text + note data source
 ** TODO Add link to lexicon from transcription article
 ** TODO Add links to other articles from lexicon
 ** TODO Progressbar displayed during search
