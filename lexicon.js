@@ -32,65 +32,61 @@ var urlFragment = (function () {
 
 urlFragment.onChange(do_search)  // URL fragment change
 $('#q').change(function () {     // form input change
-    var findStr = $(this).val() || ''
-    do_search(findStr)
+    var searchQuery = $(this).val() || ''
+    do_search(searchQuery)
 });
 
-function do_search(findStr) {
-    urlFragment.set(findStr)
-    $('#q').val(findStr)
-    if (findStr) {
-        lowerStr = findStr.toLowerCase()
-        output_matching(search_lexicon(lowerStr), lowerStr)
+function do_search(searchQuery) {
+    var regex = new RegExp(searchQuery.replace(/[^a-z]/gi, '\\$&'), 'i')
+    urlFragment.set(searchQuery)
+    $('#q').val(searchQuery)
+    if (searchQuery) {
+        output_matching(search_lexicon(regex), regex)
     }
 }
 
-function matching_entry(findStr, entry) {
+function matching_entry(regex, entry) {
     return entry.slice(1).some(function(fieldStr) {
-        return fieldStr.indexOf(findStr) >= 0 ? true : false;
-        //if (fieldStr.indexOf(findStr) >= 0) {
-        //    return true;
-        //}
-        //return false;
+        return fieldStr.match(regex)
     });
 }
 
-function hilite(str, needle) {
-    return str.replace(needle, function (substr) {
+function hilite(str, regex) {
+    return str.replace(regex, function (substr) {
         return '<mark>' + substr + '</mark>'
     })
 }
 
-function htmlifyEntry(entry, hiliteText) {
+function htmlifyEntry(entry, hiliteRegex) {
     var //image = entry[0],
         id    = entry[1],
         trans = entry[2],
         swe   = entry.slice(3)
     return [
         //'image: ' + image + '\n',
-        '<span class=gray>' + hilite(id, hiliteText) + '</span> ' +
-        hilite(trans, hiliteText) + ' ' +
+        '<span class=gray>' + hilite(id, hiliteRegex) + '</span> ' +
+        hilite(trans, hiliteRegex) + ' ' +
         '<a href="http://teckensprakslexikon.su.se/ord/' + id + '" target=_blank>' +
             swe.map(function(txt) {
-                return hilite(txt, hiliteText)
+                return hilite(txt, hiliteRegex)
             }).join(', ') + '</a>',
     ]
 }
 
-function output_matching(matchingTxt, hiliteText) {
+function output_matching(matchingTxt, hiliteRegex) {
     var html =
         '<div class=gray>' + matchingTxt.length + ' sökträffar</div>\n' +
         matchingTxt.map(function(entry) {
-            return '<div>' + htmlifyEntry(entry, hiliteText).join(' ') + '</div>'
+            return '<div>' + htmlifyEntry(entry, hiliteRegex).join(' ') + '</div>'
         }).join('')
     $('.results').html('<div class=gray>Visar ' + matchingTxt.length + ' träffar…</div>')
     setTimeout(function () { $('.results').html(html) }, 0)
 }
 
-function search_lexicon(findStr) {
+function search_lexicon(regex) {
     var matchingTxt = [];
     lexicon.forEach(function(entry) {
-        if (matching_entry(findStr, entry)) {
+        if (matching_entry(regex, entry)) {
             matchingTxt.push(entry);
         }
     });

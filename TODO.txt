@@ -6,10 +6,6 @@
    these pages, and preferably there should be no extra per-file CSS.
 * Lexicon
 ** TODO Search queries
-*** TODO Searching should be case-insensitive
-    Some words in the dictionary have upper case letters in their definition,
-    these upper case letters cannot be matched in a search. (Since the query is
-    translated to lowercase, and only lower case is searched for.)
 *** TODO Comma as OR separator in search query
     Query should be split into OR:ed sub-queries on comma. E.g.
     'X, Y' should search for all words containing either X or Y.
@@ -118,6 +114,11 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Make lexicon search case-insensitive
+   CLOSED: [2017-12-25 Mon 01:58]
+   Some words in the dictionary have upper case letters in their definition,
+   these upper case letters cannot be matched in a search. (Since the query is
+   translated to lowercase, and only lower case is searched for.)
 ** DONE Lexicon: Browser history buttons should work
    CLOSED: [2017-12-12 Tue 13:30]
    Update '#<query>' part of the URL so that back/forward buttons work.
