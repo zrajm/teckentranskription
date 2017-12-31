@@ -5,6 +5,11 @@
    All pages should use one base CSS + an extra CSS with the styles needed for
    these pages, and preferably there should be no extra per-file CSS.
 * Lexicon
+** TODO Separator-at-end bug
+   http://localhost/teckentranskription/lexicon.html#@*%F4%8C%A5%A0
+
+   Actually, last segment should be '#' in these words. Fix the data generator
+   script!
 ** TODO Search queries
 *** TODO Comma as OR separator in search query
     Query should be split into OR:ed sub-queries on comma. E.g.
@@ -13,9 +18,6 @@
 ** TODO Add CC license text + note data source
 ** TODO Add link to lexicon from transcription article
 ** TODO Add links to other articles from lexicon
-** TODO Progressbar displayed during search
-   The search is always very fast, but displaying results takes time when there
-   are a lot of entries found... Is there a way to speed this up?
 ** TODO Search query: Multiple words (should be AND:ed)
    Searching for 'A<space>B' should find lexical entries with both 'A' and 'B'
    in them, regardless of order.
@@ -114,6 +116,19 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Progressbar during search result update
+   CLOSED: [2017-12-31 Sun 11:18]
+   The search is always very fast, but displaying results takes time when there
+   are a lot of entries found... Is there a way to speed this up?
+
+   NO -- I did some research/experiments with various ways of updating the DOM,
+   but couldn't find any method that was significantly faster than the one
+   currently used.
+
+   Rewrote the updating so a search resulting in 500 matches will be displayed
+   is the same way as before, but if there are more matches than that, then
+   each additional chunk of 500 matches will be added chuck-by-chunk (with a
+   progress bar at the top of the page indicating how many chunks to go).
 ** DONE Make lexicon search case-insensitive
    CLOSED: [2017-12-25 Mon 01:58]
    Some words in the dictionary have upper case letters in their definition,

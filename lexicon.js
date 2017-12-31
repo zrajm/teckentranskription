@@ -103,20 +103,64 @@ var timer = (function() {
     }
 }())
 
-function output_matching(matchingTxt, hiliteRegex) {
-    var html =
-        '<div class=gray>' + matchingTxt.length + ' sökträffar</div>\n' +
-        matchingTxt.map(function(entry) {
-            return '<div>' + htmlifyEntry(entry, hiliteRegex).join(' ') + '</div>'
-        }).join('')
-    $('#results').html('<div class=gray>Visar ' + matchingTxt.length + ' träffar…</div>')
-    setTimeout(function () {
+
+var progressBar = (function() {
+    $('body').prepend('<div id=progress><div></div></div>')
+    $('#progress').css({
+        position: 'fixed',
+        boxShadow: 'inset 0 -4px 2px #eee',
+        top: 0,
+        left: 0,
+        right: 0,
+        height: 3,
+    }).hide()
+    var domProgress = $('#progress div').css({
+        opacity: .75,
+        height: 3,
+        background: '#900',
+        width: 0,
+    })
+    function progressBar(percent) {
+        $('#progress')[percent === undefined ? 'hide' : 'show']()
+        domProgress.css({ width: percent + '%' })
+    }
+    return progressBar
+}())
+
+function output_matching_by_chunk(elem, htmlQueue, startSize) {
+    var chunksize = 500, chunk, percent
+    if (!startSize) {
+        startSize = htmlQueue.length
         timer.reset()
-        $('#results').html(html)
-        setTimeout(function () {
-            timer.total('Showing ' + matchingTxt.length + ' results took %s.')
+    }
+    // Output one chunk of search result (in own <div> for speed).
+    chunk = htmlQueue.splice(0, chunksize)
+    elem.append('<div>' + chunk.join('') + '</div>')
+
+    // Update progress bar & debug output to console.
+    percent = 100 - Math.round((htmlQueue.length / (startSize || 1)) * 100)
+    progressBar(percent)
+    timer.step('  ' + percent + '% – Showing chunk took %s.')
+
+    // Process next chunk (using recursion).
+    if (htmlQueue.length > 0) {            // if moar chunks remain
+        setTimeout(function () {           //   process them
+            output_matching_by_chunk(elem, htmlQueue, startSize)
         }, 0)
-    }, 0)
+    } else {                               // if all chunks done
+        timer.total('Showing ' + startSize + ' results took %s.')
+        setTimeout(function () {           //   hide progress bar
+            progressBar(undefined)
+        }, 250)
+    }
+}
+
+function output_matching(matchingTxt, hiliteRegex) {
+    var elem = $('#results').html('<div class=gray>Visar ' + matchingTxt.length + ' träffar…</div>'),
+        htmlQueue = matchingTxt.map(function(entry) {
+            return '<div>' + htmlifyEntry(entry, hiliteRegex).join(' ') + '</div>\n'
+        })
+    output_matching_by_chunk(elem, htmlQueue)
 }
 
 function search_lexicon(regex) {
