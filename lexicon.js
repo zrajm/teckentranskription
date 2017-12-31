@@ -79,8 +79,8 @@ function output_matching(matchingTxt, hiliteRegex) {
         matchingTxt.map(function(entry) {
             return '<div>' + htmlifyEntry(entry, hiliteRegex).join(' ') + '</div>'
         }).join('')
-    $('.results').html('<div class=gray>Visar ' + matchingTxt.length + ' träffar…</div>')
-    setTimeout(function () { $('.results').html(html) }, 0)
+    $('#results').html('<div class=gray>Visar ' + matchingTxt.length + ' träffar…</div>')
+    setTimeout(function () { $('#results').html(html) }, 0)
 }
 
 function search_lexicon(regex) {
