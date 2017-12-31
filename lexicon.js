@@ -73,6 +73,36 @@ function htmlifyEntry(entry, hiliteRegex) {
     ]
 }
 
+var timer = (function() {
+    var timeFirst, timeLast
+    function reset() {
+        timeFirst = performance.now()
+        timeLast  = timeFirst
+    }
+    function prefix(ms) {
+        return (
+            ms > 1000 ?
+                (ms / 1000 + .5) + 's'  :
+                (ms        + .5) + 'ms'
+        ).replace(/^([.0-9]{0,3}[0-9]?)[.0-9]*([a-z]+)/, '$1$2');
+    }
+    function timeSince(time) { return prefix(performance.now() - time) }
+    function total(msg) {
+        console.log(msg.replace(/%s/, timeSince(timeFirst)))
+    }
+    function step(msg) {
+        console.log(msg.replace(/%s/, timeSince(timeLast)))
+        timeLast = performance.now()
+    }
+
+    reset()
+    return {
+        total: total,
+        step: step,
+        reset: reset,
+    }
+}())
+
 function output_matching(matchingTxt, hiliteRegex) {
     var html =
         '<div class=gray>' + matchingTxt.length + ' sökträffar</div>\n' +
@@ -80,16 +110,24 @@ function output_matching(matchingTxt, hiliteRegex) {
             return '<div>' + htmlifyEntry(entry, hiliteRegex).join(' ') + '</div>'
         }).join('')
     $('#results').html('<div class=gray>Visar ' + matchingTxt.length + ' träffar…</div>')
-    setTimeout(function () { $('#results').html(html) }, 0)
+    setTimeout(function () {
+        timer.reset()
+        $('#results').html(html)
+        setTimeout(function () {
+            timer.total('Showing ' + matchingTxt.length + ' results took %s.')
+        }, 0)
+    }, 0)
 }
 
 function search_lexicon(regex) {
     var matchingTxt = [];
+    timer.reset()
     lexicon.forEach(function(entry) {
         if (matching_entry(regex, entry)) {
             matchingTxt.push(entry);
         }
     });
+    timer.total('Search took %s.')
     return matchingTxt
 }
 //[eof]
