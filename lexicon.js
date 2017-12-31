@@ -103,28 +103,26 @@ var timer = (function() {
     }
 }())
 
-
 var progressBar = (function() {
-    $('body').prepend('<div id=progress><div></div></div>')
-    $('#progress').css({
-        position: 'fixed',
-        boxShadow: 'inset 0 -4px 2px #eee',
-        top: 0,
-        left: 0,
-        right: 0,
-        height: 3,
-    }).hide()
-    var domProgress = $('#progress div').css({
-        opacity: .75,
-        height: 3,
-        background: '#900',
-        width: 0,
-    })
-    function progressBar(percent) {
-        $('#progress')[percent === undefined ? 'hide' : 'show']()
-        domProgress.css({ width: percent + '%' })
+    var jqContainer = $('<div><div></div></div>').
+        prependTo('body').css({
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            height: 3,
+            boxShadow: 'inset 0 -4px 2px #eee',
+        }).hide(),
+        jqContent = jqContainer.children().css({
+            width: 0,
+            height: 3,
+            opacity: .75,
+            background: '#900',
+        })
+    return function (percent) {
+        jqContainer[percent === undefined ? 'hide' : 'show']()
+        jqContent.css({ width: percent + '%' })
     }
-    return progressBar
 }())
 
 function output_matching_by_chunk(elem, htmlQueue, startSize) {
@@ -150,7 +148,7 @@ function output_matching_by_chunk(elem, htmlQueue, startSize) {
     } else {                               // if all chunks done
         timer.total('Showing ' + startSize + ' results took %s.')
         setTimeout(function () {           //   hide progress bar
-            progressBar(undefined)
+            progressBar()
         }, 250)
     }
 }
