@@ -13,6 +13,9 @@ button, input, select, textarea { font-family: inherit; }
     padding: 0;
     caret-color: rgba(79, 79, 255, .75);
 }
+
+html { overflow-y: scroll; }
+
 *:not(td) { box-sizing: border-box; }
 :focus {
     outline: 0;
