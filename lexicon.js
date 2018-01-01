@@ -1,19 +1,15 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
-// UrlFragment module.
+// URL fragment module -- Update/trigger on URL fragment change.
+//
+//   .set(STR) -- set URL fragment to '#STR' w/o triggering `onchange()`
+//   .onChange(FUNC) -- Call FUNC(STR) on fragment change
 //
 var urlFragment = (function () {
     // Base URL (w/o hash fragment).
     function getBaseUrl() { return window.location.href.split('#')[0] }
-
-    // URL fragment (w/o leading '#')
+    // URL fragment (no leading '#')
     function getFragment() { return decodeURI(window.location.hash.substr(1)) }
-
-    // Set hashchange function callback.
-    function onChange(func) {
-        $(window).on('hashchange', function () { func(getFragment()) })
-    }
-
     // Change URL fragment (does not trigger hashchange event).
     function setFragment(urlFragment) {
         var url = getBaseUrl() + '#' + encodeURI(urlFragment)
@@ -21,15 +17,90 @@ var urlFragment = (function () {
             window.history.pushState({}, '', url)
         }
     }
-
+    // Set hashchange function callback.
+    function onChange(func) {
+        $(window).on('hashchange', function () { func(getFragment()) })
+    }
     // Trigger hashchange on pageload.
     $(function () { $(window).trigger('hashchange') })
-
-    return { set: setFragment, onChange: onChange };
+    return {
+        set: setFragment,
+        onChange: onChange,
+    };
 }())
 
 ////////////////////////////////////////////////////////////////////////////////
+//
+// Progress bar module -- Display thin progress bar line at the top of the
+// window.
+//
+//   progressBar(PERCENT) -- show progress bar, and set to PERCENT
+//   progressBar() -- hide progress bar
+//
+var progressBar = (function() {
+    var jqContainer = $('<div><div></div></div>').
+        prependTo('body').css({
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            height: 3,
+            boxShadow: 'inset 0 -4px 2px #eee',
+        }).hide(),
+        jqContent = jqContainer.children().css({
+            width: 0,
+            height: 3,
+            opacity: .75,
+            background: '#900',
+        })
+    return function (percent) {
+        jqContainer[percent === undefined ? 'hide' : 'show']()
+        jqContent.css({ width: percent + '%' })
+    }
+}())
 
+////////////////////////////////////////////////////////////////////////////////
+//
+// Timer logging module -- Output msg on console, replacing '%s' in msg with
+// time in seconds or milliseconds (rounded to 3-4 digits).
+//
+//   .reset() -- reset time
+//   .step(MSG) -- display MSG, replace %s with time since last msg
+//   .total(MSG) -- display MSG, replace %s with time since last reset
+//
+var logTiming = (function() {
+    var timeFirst, timeLast
+    function reset() {
+        timeFirst = performance.now()
+        timeLast  = timeFirst
+    }
+    function prefix(ms) {
+        return (
+            ms > 1000 ?
+                (ms / 1000 + .5) + 's'  :  // seconds
+                (ms        + .5) + 'ms'    // milliseconds
+        ).replace(/^([.0-9]{0,3}[0-9]?)[.0-9]*([a-z]+)/, '$1$2');
+    }
+    function timeSince(time) { return prefix(performance.now() - time) }
+    function total(msg) {
+        console.log(msg.replace(/%s/, timeSince(timeFirst)))
+    }
+    function step(msg) {
+        console.log(msg.replace(/%s/, timeSince(timeLast)))
+        timeLast = performance.now()
+    }
+    reset()
+    return {
+        reset: reset,  // reset timer
+        step: step,    // output time since last msg
+        total: total,  // output time since reset
+    }
+}())
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Main program
+//
 urlFragment.onChange(do_search)  // URL fragment change
 $('#q').change(function () {     // form input change
     var searchQuery = $(this).val() || ''
@@ -73,63 +144,11 @@ function htmlifyEntry(entry, hiliteRegex) {
     ]
 }
 
-var timer = (function() {
-    var timeFirst, timeLast
-    function reset() {
-        timeFirst = performance.now()
-        timeLast  = timeFirst
-    }
-    function prefix(ms) {
-        return (
-            ms > 1000 ?
-                (ms / 1000 + .5) + 's'  :
-                (ms        + .5) + 'ms'
-        ).replace(/^([.0-9]{0,3}[0-9]?)[.0-9]*([a-z]+)/, '$1$2');
-    }
-    function timeSince(time) { return prefix(performance.now() - time) }
-    function total(msg) {
-        console.log(msg.replace(/%s/, timeSince(timeFirst)))
-    }
-    function step(msg) {
-        console.log(msg.replace(/%s/, timeSince(timeLast)))
-        timeLast = performance.now()
-    }
-
-    reset()
-    return {
-        total: total,
-        step: step,
-        reset: reset,
-    }
-}())
-
-var progressBar = (function() {
-    var jqContainer = $('<div><div></div></div>').
-        prependTo('body').css({
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            height: 3,
-            boxShadow: 'inset 0 -4px 2px #eee',
-        }).hide(),
-        jqContent = jqContainer.children().css({
-            width: 0,
-            height: 3,
-            opacity: .75,
-            background: '#900',
-        })
-    return function (percent) {
-        jqContainer[percent === undefined ? 'hide' : 'show']()
-        jqContent.css({ width: percent + '%' })
-    }
-}())
-
 function output_matching_by_chunk(elem, htmlQueue, startSize) {
     var chunksize = 500, chunk, percent
     if (!startSize) {
         startSize = htmlQueue.length
-        timer.reset()
+        logTiming.reset()
     }
     // Output one chunk of search result (in own <div> for speed).
     chunk = htmlQueue.splice(0, chunksize)
@@ -138,7 +157,7 @@ function output_matching_by_chunk(elem, htmlQueue, startSize) {
     // Update progress bar & debug output to console.
     percent = 100 - Math.round((htmlQueue.length / (startSize || 1)) * 100)
     progressBar(percent)
-    timer.step('  ' + percent + '% – Showing chunk took %s.')
+    logTiming.step('  ' + percent + '% – Showing chunk took %s.')
 
     // Process next chunk (using recursion).
     if (htmlQueue.length > 0) {            // if moar chunks remain
@@ -146,7 +165,7 @@ function output_matching_by_chunk(elem, htmlQueue, startSize) {
             output_matching_by_chunk(elem, htmlQueue, startSize)
         }, 0)
     } else {                               // if all chunks done
-        timer.total('Showing ' + startSize + ' results took %s.')
+        logTiming.total('Showing ' + startSize + ' results took %s.')
         setTimeout(function () {           //   hide progress bar
             progressBar()
         }, 250)
@@ -163,13 +182,14 @@ function output_matching(matchingTxt, hiliteRegex) {
 
 function search_lexicon(regex) {
     var matchingTxt = [];
-    timer.reset()
+    logTiming.reset()
     lexicon.forEach(function(entry) {
         if (matching_entry(regex, entry)) {
             matchingTxt.push(entry);
         }
     });
-    timer.total('Search took %s.')
+    logTiming.total('Search took %s.')
     return matchingTxt
 }
+
 //[eof]
