@@ -139,11 +139,13 @@ $('#q').change(function () {     // form input change
 });
 
 function do_search(searchQuery) {
-    var regex = new RegExp(searchQuery.replace(/[^a-z]/gi, '\\$&'), 'i')
     urlFragment.set(searchQuery)
     $('#q').val(searchQuery)
     if (searchQuery) {
-        output_matching(search_lexicon(regex), regex)
+        setTimeout(function () {
+            var regex = new RegExp(searchQuery.replace(/[^a-z]/gi, '\\$&'), 'i')
+            output_matching(search_lexicon(regex), regex)
+        }, 0)
     }
 }
 
