@@ -95,7 +95,38 @@ var logTiming = (function() {
         step: step,    // output time since last msg
         total: total,  // output time since reset
     }
-}())
+}());
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Scroll-to-top button module -- Display button for scrolling back to top of
+// page when user scrolls down more than 100px.
+//
+(function (w) {
+    var oldTop,
+        jqContainer = $('<img src="pic/gui/up-arrow.svg" title="Scroll to top">').
+        prependTo(document.body).hide().css({
+            background: '#fff',
+            position: 'fixed',
+            right: '.9em',
+            bottom: '.6em',
+            zIndex: 4000,
+            borderRadius: '50%',
+            height: '1.5em',
+            boxShadow: '0 16px 24px 2px rgba(0,0,0,.14),' +
+                '0 6px 30px 5px rgba(0,0,0,.12),' +
+                '0 8px 10px -5px rgba(0,0,0,.4)',
+            padding: '.3em',
+        }).click(function () { $('body, html').animate({ scrollTop: 0 }, 500) })
+    w.scroll(function() {
+        var curTop = w.scrollTop() <= 100
+        if (curTop !== oldTop) {
+            if ( curTop) { jqContainer.fadeOut() }
+            if (!curTop) { jqContainer.fadeIn() }
+            scrollScroll = curTop
+        }
+    });
+}($(window)))
 
 ////////////////////////////////////////////////////////////////////////////////
 //
