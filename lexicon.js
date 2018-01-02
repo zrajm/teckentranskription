@@ -151,7 +151,7 @@ function do_search(searchQuery) {
 
 function matching_entry(regex, entry) {
     return entry.slice(1).some(function(fieldStr) {
-        return fieldStr.match(regex)
+        return regex.test(fieldStr)
     });
 }
 
