@@ -39,7 +39,7 @@ var urlFragment = (function () {
 //
 var progressBar = (function() {
     var jqContainer = $('<div><div></div></div>').
-        prependTo('body').css({
+        prependTo(document.body).css({
             position: 'fixed',
             top: 0,
             left: 0,
