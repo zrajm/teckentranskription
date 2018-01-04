@@ -9,18 +9,15 @@
    When search result is being updated, performing a new search should abort
    the updating of the previous result. One should also be able to abort the
    updating (e.g. by pressing Esc).
+** TODO New search query syntax (require '*' for partial words)
+   There should also be a help section for the new special characters, and if a
+   search resulted in zero matches, something helpful should be displayed to
+   the user.
 ** TODO Separator-at-end bug
    http://localhost/teckentranskription/lexicon.html#@*%F4%8C%A5%A0
 
    Actually, last segment should be '#' in these words. Fix the data generator
    script!
-** TODO Search queries
-*** TODO Comma as OR separator in search query
-    Query should be split into OR:ed sub-queries on comma. E.g.
-    'X, Y' should search for all words containing either X or Y.
-*** TODO Space as AND separator in search query
-    Searching for 'A<space>B' should find lexical entries with both 'A' and 'B'
-    in them, regardless of order.
 ** TODO Add CC license text + note data source
 ** TODO Add link to lexicon from transcription article
 ** TODO Add links to other articles from lexicon
@@ -119,6 +116,14 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Search queries: Comma as OR separator in search query
+   CLOSED: [2018-01-04 Thu 17:40]
+   Query should be split into OR:ed sub-queries on comma. E.g.
+   'X, Y' should search for all words containing either X or Y.
+** DONE Search queries: Space as AND separator in search query
+   CLOSED: [2018-01-04 Thu 17:40]
+   Searching for 'A<space>B' should find lexical entries with both 'A' and 'B'
+   in them, regardless of order.
 ** DONE Scroll to top-of-page widgety thing
    CLOSED: [2018-01-02 Tue 06:06]
    Semi-transparent arrow in lower right corner should appear if scrolling

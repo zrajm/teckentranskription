@@ -139,20 +139,165 @@ $('#q').change(function () {     // form input change
 });
 
 function do_search(searchQuery) {
-    urlFragment.set(searchQuery)
     $('#q').val(searchQuery)
-    if (searchQuery) {
-        setTimeout(function () {
-            var regex = new RegExp(searchQuery.replace(/[^a-z]/gi, '\\$&'), 'i')
-            output_matching(search_lexicon(regex), regex)
-        }, 0)
-    }
+    setTimeout(function () {
+        var query = parseQuery(searchQuery)
+        urlFragment.set(searchQuery)
+        if (query.length > 0) {
+            logTiming.reset()
+            var matches = search_lexicon(query)
+            logTiming.total('Search took %s.')
+
+            output_matching(matches)
+        }
+    }, 0)
 }
 
-function matching_entry(regex, entry) {
-    return entry.slice(1).some(function(fieldStr) {
-        return regex.test(fieldStr)
-    });
+// Remove matching quotes + escape regex meta characters. (Quote may also be
+// missing at end of word.)
+function unquote(str) {
+    return str.
+        replace(/^(["'])(.*?)\1?$/u, '$2').        // remove quotes
+        // MSIE:   *+?^$.[ ]{}()| / \              //   metachar + regex delim
+        replace(/^[*+?^$.[\]{}()|\/\\]$/u, '\\$&') // escape metachars
+}
+
+// Convert string to regex string.
+function regexify(string) {
+    return string.replace(/[\x00-\x7f]/gu, function (str) {
+        // Invoked once for every character in the ASCII (0-127) range.
+        if (str.match(/^[a-zA-Z0-9_]$/u)) { return str } // retain word chars
+        switch (str) {                       // special characters
+        case '*': return '[^ ]*'             //   match all non-space
+        case '@': return '[􌤆􌤂􌥞􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛􌤜􌤞􌤠􌥀􌤡􌥜􌤑􌤒􌤓􌤕􌤔􌤖􌤗􌤙􌤘􌤚][􌤺􌥛􌤻􌤹􌥚]?' // one place symbol
+        case '#': return '[􌤤􌥄􌤣􌤧􌥋􌥉􌦫􌤩􌤎􌥇􌦬􌤦􌤲􌤱􌥑􌤢􌥂􌤪􌥎􌥈􌤨􌤿􌥌􌥆􌤫􌦭􌤬􌥅􌤥􌥊􌤽􌤯􌤭􌤮􌤰􌤳􌥃􌥒􌥟􌦪][􌤺􌥛􌤻􌤹􌥚]?' // one handshape symbol
+        case '^': return '[􌤺􌥛􌤻􌤹􌥚]'           //   one relation symbol
+        case ':': return '[􌥓􌥔􌤴􌥕􌤵􌥖][􌤶􌥗􌤷􌥘􌤸􌥙]'  //   one attitude symbol
+        }
+        return '\\' + str                    // backslash everything else
+    })
+}
+
+// Split user-provided query string into a query object, with the following
+// syntax:
+//
+// query = [
+//   [                         // subquery (array with 2 elements)
+//      [ /re1/g, /re2/g ],    //   1 element: array of search terms
+//      [ /re3/g, /re4/g ],    //   2 element: array of negated terms
+//   ], ...                    // moar subqueries...
+// ]
+//
+// A search QUERY contains one or more TERMs (separated by space) all TERMs
+// must me found in an entry for that entry to match (they are AND:ed). A TERM
+// can also be negated by preceding it with '-'.
+//
+// If a search contains more than one SUBQUERY (separated by comma) only one
+// SUBQUERY need to match for an entry to match (they are OR:ed).
+//
+// A TERM can be partially or fully quoted (with ' or "). Text in quotes is
+// always interpreted literally, outherwise some characters (space, comma,
+// minus etc.) have special meaning.
+//
+// Part of a TERM can be quoted >like*" this"< (to match something starting
+// with 'like' and ending in the separate word ' this'). An unlimited number of
+// parts may be quoted. Spaces inside quotes are interpreted literally, while
+// spaces outside considered separators between search TERMs.
+//
+function parseQuery(queryStr) {
+    var m, terms, pre, neg, str, query = [], len = queryStr.length,
+        termRegex = /([\s,]*)(-?)('[^']*'|"[^"]*"|[^\s,'"]*)/gyu
+    while (m = termRegex.exec(',' + queryStr)) {
+        pre =  m[1]                         // space/comma before TERM
+        idx =  m[2] ? 'exclude' : 'include' // '-' before TERM
+        str =  m[3]                         // TERM
+
+        // Strip quotes or regexify.
+        str = /^["']/.test(str) ? unquote(str) : regexify(str)
+
+        // Preceded by comma = start new subquery.
+        if (/,/.test(pre)) {
+            query.push({ include: [], exclude: [], hilite: undefined })
+        }
+
+        if (pre) {                             // space before = new TERM
+            terms = query[query.length - 1][idx]
+            terms.push(str)
+        } else {                               // otherwise TERM cont'd
+            terms[terms.length - 1] += str
+        }
+        if (termRegex.lastIndex > len) { break }
+    }
+    return query.
+        map(function (subquery) {    // remove empty terms
+            return {
+                include: subquery.include.filter(function (x) { return x !== '' }),
+                exclude: subquery.exclude.filter(function (x) { return x !== '' }),
+            }
+        }).
+        filter(function (subquery) {  // remove subqueries with no
+            return subquery.include.length > 0 //   positive terms
+        }).
+        map(function (subquery) {              // add hilite regex to subqueries
+            return {
+                hilite: str2regex(subquery.include.join('|')),
+                include: subquery.include.map(str2regex),
+                exclude: subquery.exclude.map(str2regex),
+            }
+        })
+}
+
+function str2regex(x) {
+    // Does lookbehind (?<=..) work on MSIE?
+    //return new RegExp('(?:^|(?<=\s))' + x + '(?=$|\s)', 'gui')
+    return new RegExp(x, 'gui')
+}
+
+function stripEmptyQueryTerms(x) {
+    if (x instanceof Array) {
+        return x.filter(function (x) { // strip empty terms
+            return x !== ''
+        }).map(stripEmptyQueryTerms)   // call recursivelly on all values
+    }
+    return x
+}
+
+function dump(object, msg) {
+    RegExp.prototype.toJSON = RegExp.prototype.toString;
+    console.log((msg || '%s').replace(/%s/, JSON.stringify(object, null, 4)))
+}
+
+// Return true if at least one element in entry matches regex.
+function regexInEntry(regex, entry) {
+    var i, l = entry.length
+    // Skip first field (i = 1) in entry.
+    for (i = 1; i < l; i += 1) {
+        if (regex.test(entry[i])) { return true }
+    }
+    return false;
+}
+
+// Subquery is a two-element array. 1st element is list of regexes that must
+// all be found, 2nd element is list of regexes that must NOT be found.
+function subqueryInEntry(subquery, entry) {
+    var positive = subquery.include, negative = subquery.exclude
+    if (!positive.every(function (re) { return regexInEntry(re, entry) })) {
+        return false  // not all positive terms matched
+    }
+    if (negative.some(function (re) { return regexInEntry(re, entry) })) {
+        return false  // at least one negative term matched
+    }
+    return true
+}
+
+// Return matching subquery number or -1 if no subquery match. (To get
+// truthiness, do binary not ['~'] on returned value.)
+function queryInEntry(query, entry) {
+    var i, l = query.length
+    for (i = 0; i < l; i += 1) { // return 1st matching subquery number
+        if (subqueryInEntry(query[i], entry)) { return i }
+    }
+    return -1
 }
 
 function hilite(str, regex) {
@@ -161,8 +306,10 @@ function hilite(str, regex) {
     })
 }
 
-function htmlifyEntry(entry, hiliteRegex) {
-    var //image = entry[0],
+function htmlifyEntry(match) {
+    var hiliteRegex = match.hilite,
+        entry       = match.entry,
+        //image = entry[0],
         id    = entry[1],
         trans = entry[2],
         swe   = entry.slice(3)
@@ -205,23 +352,25 @@ function output_matching_by_chunk(elem, htmlQueue, startSize) {
     }
 }
 
-function output_matching(matchingTxt, hiliteRegex) {
+function output_matching(matchingTxt) {
     var elem = $('#results').html('<div class=gray>Visar ' + matchingTxt.length + ' träffar…</div>'),
         htmlQueue = matchingTxt.map(function(entry) {
-            return '<div>' + htmlifyEntry(entry, hiliteRegex).join(' ') + '</div>\n'
+            return '<div>' + htmlifyEntry(entry).join(' ') + '</div>\n'
         })
     output_matching_by_chunk(elem, htmlQueue)
 }
 
-function search_lexicon(regex) {
+function search_lexicon(query) {
     var matchingTxt = [];
-    logTiming.reset()
     lexicon.forEach(function(entry) {
-        if (matching_entry(regex, entry)) {
-            matchingTxt.push(entry);
+        var subquery = queryInEntry(query, entry)
+        if (subquery > -1) {
+            matchingTxt.push({
+                hilite: query[subquery].hilite,
+                entry: entry,
+            })
         }
     });
-    logTiming.total('Search took %s.')
     return matchingTxt
 }
 
