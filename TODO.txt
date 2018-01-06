@@ -28,11 +28,6 @@
     Actually, last segment should be '#' in these words. Fix the data generator
     script!
 ** TODO Lexicon/search part should be standalone module
-** TODO Cleanup variable + function names
-   Don't use '_' in function names.
-
-   Replace `searchQuery` with either `queryStr` or just `query`, depending on
-   whether it's a parsed object or the user-inputted query string.
 ** TODO Virtual keyboard should not rely on HTML
    All the HTML, CSS etc. should be in self-contained Javascript module.
 ** TODO Hover over button should display handshape etc.
@@ -136,6 +131,12 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Cleanup variable + function names
+   CLOSED: [2018-01-06 Sat 22:22]
+   Don't use '_' in function names.
+
+   Replace `searchQuery` with either `queryStr` or just `query`, depending on
+   whether it's a parsed object or the user-inputted query string.
 ** DONE Rewrite query parser
    CLOSED: [2018-01-06 Sat 22:12]
    Query parser now process user-inputted query string character by character,

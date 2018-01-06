@@ -189,10 +189,10 @@ function parseQuery(queryStr) {
         var query = [];
         var negative;
 
-        function str2regex(x) {
+        function str2regex(regex) {
             // Does lookbehind (?<=..) work on MSIE?
             //return new RegExp("(?:^|(?<=\s))" + x + "(?=$|\s)", "gui");
-            return new RegExp(x, "gui");
+            return new RegExp(regex, "gui");
         }
         function addSubquery() {
             query.push({
@@ -354,7 +354,7 @@ function htmlifyEntry(match) {
     ].join(" ");
 }
 
-function output_matching_by_chunk(elem, htmlQueue, startSize) {
+function outputMatchingByChunk(elem, htmlQueue, startSize) {
     "use strict";
     var chunksize = 500;
     var chunk;
@@ -375,7 +375,7 @@ function output_matching_by_chunk(elem, htmlQueue, startSize) {
     // Process next chunk (using recursion).
     if (htmlQueue.length > 0) {            // if moar chunks remain
         setTimeout(function () {           //   process them
-            output_matching_by_chunk(elem, htmlQueue, startSize);
+            outputMatchingByChunk(elem, htmlQueue, startSize);
         }, 0);
     } else {                               // if all chunks done
         logTiming.total("Showing " + startSize + " results took %s.");
@@ -385,45 +385,45 @@ function output_matching_by_chunk(elem, htmlQueue, startSize) {
     }
 }
 
-function output_matching(matchingTxt) {
+function outputMatching(matches) {
     "use strict";
-    var elem = $("#results").html("<div class=gray>Visar " + matchingTxt.length + " träffar…</div>");
-    var htmlQueue = matchingTxt.map(function (entry) {
+    var elem = $("#results").html("<div class=gray>Visar " + matches.length + " träffar…</div>");
+    var htmlQueue = matches.map(function (entry) {
         return "<div>" + htmlifyEntry(entry) + "</div>\n";
     });
-    output_matching_by_chunk(elem, htmlQueue);
+    outputMatchingByChunk(elem, htmlQueue);
 }
 
-function search_lexicon(query) {
+function searchLexicon(query) {
     "use strict";
-    var matchingTxt = [];
+    var matches = [];
     if (query.length === 0) {
         return [];
     }
     lexicon.forEach(function (entry) {
         var subquery = queryInEntry(query, entry);
         if (subquery > -1) {
-            matchingTxt.push({
+            matches.push({
                 hilite: query[subquery].hilite,
                 entry: entry
             });
         }
     });
-    return matchingTxt;
+    return matches;
 }
 
-function do_search(searchQuery) {
+function doSearch(queryStr) {
     "use strict";
-    $("#q").val(searchQuery);
+    $("#q").val(queryStr);
     setTimeout(function () {
-        var query = parseQuery(searchQuery);
-        urlFragment.set(searchQuery);
+        var query = parseQuery(queryStr);
+        urlFragment.set(queryStr);
 
         logTiming.reset();
-        var matches = search_lexicon(query);
+        var matches = searchLexicon(query);
         logTiming.total("Search took %s.");
 
-        output_matching(matches);
+        outputMatching(matches);
     }, 0);
 }
 
@@ -431,11 +431,11 @@ function do_search(searchQuery) {
 //
 // Main program
 //
-urlFragment.onChange(do_search); // URL fragment change
+urlFragment.onChange(doSearch);  // URL fragment change
 $("#q").change(function (e) {    // form input change
     "use strict";
-    var searchQuery = $(e.target).val() || "";
-    do_search(searchQuery);
+    var queryStr = $(e.target).val() || "";
+    doSearch(queryStr);
 });
 
 //[eof]
