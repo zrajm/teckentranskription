@@ -27,6 +27,15 @@
 
     Actually, last segment should be '#' in these words. Fix the data generator
     script!
+** TODO Lexicon/search part should be standalone module
+** TODO Cleanup variable + function names
+   Don't use '_' in function names.
+
+   Replace `searchQuery` with either `queryStr` or just `query`, depending on
+   whether it's a parsed object or the user-inputted query string.
+** TODO Virtual keyboard should not rely on HTML
+   All the HTML, CSS etc. should be in self-contained Javascript module.
+** TODO Hover over button should display handshape etc.
 ** TODO Strip newlines when pasting into <textarea>
 ** TODO Memory optimization
    Leakyness? -- Does a new search completely (or as completely as possible)
@@ -127,6 +136,11 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Rewrite query parser
+   CLOSED: [2018-01-06 Sat 22:12]
+   Query parser now process user-inputted query string character by character,
+   instead of parsing it with a regex. This should eliminate the possibility of
+   an infinite loop in some undetected corner case.
 ** DONE Make the Javascript pass JSLint
    CLOSED: [2018-01-06 Sat 08:01]
    Two warnings remain as of now, but these seem quite minor & hard to fix so

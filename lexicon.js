@@ -157,47 +157,6 @@ var logTiming = (function (perf, log) {
 // Functions
 //
 
-// Remove matching quotes + escape regex meta characters. (Quote may also be
-// missing at end of word.)
-function unquote(str) {
-    "use strict";
-    return str
-        .replace(/^(["'])(.*?)\1?$/u, "$2")           // remove quotes
-        // MSIE:    *+? ^$. [ ]{}()| / \              //   metachar + regex delim
-        .replace(/^[*+?\^$.\[\]{}()|\/\\]$/u, "\\$&");// escape metachars
-}
-
-// Convert string to regex string.
-function regexify(string) {
-    "use strict";
-    return string.replace(/[\u0000-\u007f]/gu, function (str) {
-        // Invoked once for every character in the ASCII (0-127) range.
-        if (str.match(/^[a-zA-Z0-9_]$/u)) {  // retain word chars
-            return str;
-        }
-        switch (str) {                       // special characters
-        case "*":                            //   match all non-space
-            return "[^ ]*";
-        case "@":                            // one place symbol
-            return "[􌤆􌤂􌥞􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛􌤜􌤞􌤠􌥀􌤡􌥜􌤑􌤒􌤓􌤕􌤔􌤖􌤗􌤙􌤘􌤚][􌤺􌥛􌤻􌤹􌥚]?";
-        case "#":                            // one handshape symbol
-            return "[􌤤􌥄􌤣􌤧􌥋􌥉􌦫􌤩􌤎􌥇􌦬􌤦􌤲􌤱􌥑􌤢􌥂􌤪􌥎􌥈􌤨􌤿􌥌􌥆􌤫􌦭􌤬􌥅􌤥􌥊􌤽􌤯􌤭􌤮􌤰􌤳􌥃􌥒􌥟􌦪][􌤺􌥛􌤻􌤹􌥚]?";
-        case "^":                            //   one relation symbol
-            return "[􌤺􌥛􌤻􌤹􌥚]";
-        case ":":                            //   one attitude symbol
-            return "[􌥓􌥔􌤴􌥕􌤵􌥖][􌤶􌥗􌤷􌥘􌤸􌥙]";
-        }
-        return "\\" + str;                   // backslash everything else
-    });
-}
-
-function str2regex(x) {
-    "use strict";
-    // Does lookbehind (?<=..) work on MSIE?
-    //return new RegExp("(?:^|(?<=\s))" + x + "(?=$|\s)", "gui");
-    return new RegExp(x, "gui");
-}
-
 // Split user-provided query string into a query object, with the following
 // syntax:
 //
@@ -226,66 +185,108 @@ function str2regex(x) {
 //
 function parseQuery(queryStr) {
     "use strict";
-    var m;
-    var terms;
-    var pre;
-    var idx;
-    var str;
-    var query = [];
-    var len = queryStr.length;
-    var termRegex = /([\s,]*)(-?)('[^']*'|"[^"]*"|[^\s,'"]*)/gyu;
-    while (m = termRegex.exec("," + queryStr)) {
-        pre = m[1];           // space/comma before TERM
-        idx = m[2]            // '-' before TERM
-            ? "exclude"
-            : "include";
-        str = m[3];           // TERM
+    var queryBuilder = (function () {
+        var query = [];
+        var negative;
 
-        // Strip quotes or regexify.
-        str = /^["']/.test(str)
-            ? unquote(str)
-            : regexify(str);
-
-        // Preceded by comma = start new subquery.
-        if (/,/.test(pre)) {
+        function str2regex(x) {
+            // Does lookbehind (?<=..) work on MSIE?
+            //return new RegExp("(?:^|(?<=\s))" + x + "(?=$|\s)", "gui");
+            return new RegExp(x, "gui");
+        }
+        function addSubquery() {
             query.push({
                 include: [],
-                exclude: [],
-                hilite: undefined
+                exclude: []
             });
+            negative = false;
         }
 
-        if (pre) {                             // space before = new TERM
-            terms = query[query.length - 1][idx];
-            terms.push(str);
-        } else {                               // otherwise TERM cont'd
-            terms[terms.length - 1] += str;
-        }
-        if (termRegex.lastIndex > len) {
-            break;
-        }
+        addSubquery();
+        return {
+            addSubquery: addSubquery,
+            addTerm: function (term) {
+                if (term !== "") {
+                    query[query.length - 1][
+                        negative
+                            ? "exclude"
+                            : "include"
+                    ].push(term);
+                    negative = false;
+                }
+            },
+            getQuery: function getQuery() {
+                // Ignore subqueries without positive search terms, turn all
+                // values to regexes, and add a hilite regex to each subquery.
+                return query.reduce(function (query, subquery) {
+                    return subquery.include.length === 0
+                        ? query
+                        : query.concat({
+                            hilite: str2regex(subquery.include.join("|")),
+                            include: subquery.include.map(str2regex),
+                            exclude: subquery.exclude.map(str2regex)
+                        });
+                }, []);
+            },
+            negative: function () {
+                negative = true;
+            }
+        };
+    }());
+    var metachars = {
+        "*": "[^ ]*",            // all non-space
+        "@":                     // one place symbol
+                "[􌤆􌤂􌥞􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛􌤜􌤞􌤠􌥀􌤡􌥜􌤑􌤒􌤓􌤕􌤔􌤖􌤗􌤙􌤘􌤚][􌤺􌥛􌤻􌤹􌥚]?",
+        "#":                     // one handshape symbol
+                "[􌤤􌥄􌤣􌤧􌥋􌥉􌦫􌤩􌤎􌥇􌦬􌤦􌤲􌤱􌥑􌤢􌥂􌤪􌥎􌥈􌤨􌤿􌥌􌥆􌤫􌦭􌤬􌥅􌤥􌥊􌤽􌤯􌤭􌤮􌤰􌤳􌥃􌥒􌥟􌦪][􌤺􌥛􌤻􌤹􌥚]?",
+        "^": "[􌤺􌥛􌤻􌤹􌥚]",          // one relation symbol
+        ":": "[􌥓􌥔􌤴􌥕􌤵􌥖][􌤶􌥗􌤷􌥘􌤸􌥙]"  // one attitude symbol
+    };
+    var term = "";
+    var quote = "";
+
+    // Escape all regular expression metacharacters & the regex delimiter '/'.
+    function quotemeta(str) {
+        // PCRE/ERE:          *+? ^$. [  { ()|   \
+        // MSIE meta + delim: *+? ^$. [ ]{}()| / \
+        return str.replace(/^[*+?\^$.\[\]{}()|\/\\]$/u, "\\$&");
     }
-    return query
-        .map(function (subquery) {             // remove empty terms
-            return {
-                include: subquery.include.filter(function (x) {
-                    return x !== "";
-                }),
-                exclude: subquery.exclude.filter(function (x) {
-                    return x !== "";
-                })
-            };
-        })
-        .filter(function (subquery) {          // remove subqueries with no
-            return subquery.include.length > 0;//   positive terms
-        })
-        .map(function (subquery) {             // add hilite regex to subqueries
-            return {
-                hilite: str2regex(subquery.include.join("|")),
-                include: subquery.include.map(str2regex),
-                exclude: subquery.exclude.map(str2regex)
-            };
-        });
+
+    queryStr.split(/(?:)/gu).forEach(function (char) {
+        if (quote) {                           // quoted chars
+            switch (char) {
+            case quote:
+                quote = "";
+                break;
+            default:
+                term += quotemeta(char);
+            }
+        } else {                               // unquoted chars
+            switch (char) {
+            case ",":                          //   subquery
+                queryBuilder.addTerm(term);
+                queryBuilder.addSubquery();
+                term = "";
+                break;
+            case " ":                          //   term
+                queryBuilder.addTerm(term);
+                term = "";
+                break;
+            case "\"":                         //   quote
+            case "'":
+                quote = char;
+                break;
+            default:
+                if (char === "-" && !term) {   //   leading '-' (negation)
+                    queryBuilder.negative();
+                } else {
+                    term += metachars[char] || quotemeta(char);
+                }
+            }
+        }
+    });
+    queryBuilder.addTerm(term);
+    return queryBuilder.getQuery();
 }
 
 function dump(object, msg) {
@@ -396,6 +397,9 @@ function output_matching(matchingTxt) {
 function search_lexicon(query) {
     "use strict";
     var matchingTxt = [];
+    if (query.length === 0) {
+        return [];
+    }
     lexicon.forEach(function (entry) {
         var subquery = queryInEntry(query, entry);
         if (subquery > -1) {
@@ -414,13 +418,12 @@ function do_search(searchQuery) {
     setTimeout(function () {
         var query = parseQuery(searchQuery);
         urlFragment.set(searchQuery);
-        if (query.length > 0) {
-            logTiming.reset();
-            var matches = search_lexicon(query);
-            logTiming.total("Search took %s.");
 
-            output_matching(matches);
-        }
+        logTiming.reset();
+        var matches = search_lexicon(query);
+        logTiming.total("Search took %s.");
+
+        output_matching(matches);
     }, 0);
 }
 
