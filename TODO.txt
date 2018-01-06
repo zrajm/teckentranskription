@@ -27,6 +27,7 @@
 
     Actually, last segment should be '#' in these words. Fix the data generator
     script!
+** TODO Strip newlines when pasting into <textarea>
 ** TODO Memory optimization
    Leakyness? -- Does a new search completely (or as completely as possible)
    clear the memory before building up a new search result?
@@ -126,6 +127,16 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Make the Javascript pass JSLint
+   CLOSED: [2018-01-06 Sat 08:01]
+   Two warnings remain as of now, but these seem quite minor & hard to fix so
+   leaving them for now.
+
+   Unexpected '\' before '1'.
+       .replace(/^(["'])(.*?)\1?$/u, "$2")           // remove quotes
+
+   Unexpected statement '=' in expression position.
+      while (m = termRegex.exec("," + queryStr)) {
 ** DONE Add links to other articles from lexicon
    CLOSED: [2018-01-05 Fri 10:37]
 ** DONE Search queries: Comma as OR separator in search query
