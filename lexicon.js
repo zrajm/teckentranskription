@@ -252,7 +252,7 @@ function parseQuery(queryStr) {
         return str.replace(/^[*+?\^$.\[\]{}()|\/\\]$/u, "\\$&");
     }
 
-    queryStr.split(/(?:)/gu).forEach(function (char) {
+    queryStr.split(/(?!$)/mu).forEach(function (char) {
         if (quote) {                           // quoted chars
             switch (char) {
             case quote:
@@ -354,7 +354,7 @@ function htmlifyEntry(match) {
     ].join(" ");
 }
 
-function outputMatchingByChunk(elem, htmlQueue, startSize) {
+function outputMatching(elem, htmlQueue, startSize) {
     "use strict";
     var chunksize = 500;
     var chunk;
@@ -375,7 +375,7 @@ function outputMatchingByChunk(elem, htmlQueue, startSize) {
     // Process next chunk (using recursion).
     if (htmlQueue.length > 0) {            // if moar chunks remain
         setTimeout(function () {           //   process them
-            outputMatchingByChunk(elem, htmlQueue, startSize);
+            outputMatching(elem, htmlQueue, startSize);
         }, 0);
     } else {                               // if all chunks done
         logTiming.total("Showing " + startSize + " results took %s.");
@@ -385,34 +385,7 @@ function outputMatchingByChunk(elem, htmlQueue, startSize) {
     }
 }
 
-function outputMatching(matches) {
-    "use strict";
-    var elem = $("#results").html("<div class=gray>Visar " + matches.length + " träffar…</div>");
-    var htmlQueue = matches.map(function (entry) {
-        return "<div>" + htmlifyEntry(entry) + "</div>\n";
-    });
-    outputMatchingByChunk(elem, htmlQueue);
-}
-
-function searchLexicon(query) {
-    "use strict";
-    var matches = [];
-    if (query.length === 0) {
-        return [];
-    }
-    lexicon.forEach(function (entry) {
-        var subquery = queryInEntry(query, entry);
-        if (subquery > -1) {
-            matches.push({
-                hilite: query[subquery].hilite,
-                entry: entry
-            });
-        }
-    });
-    return matches;
-}
-
-function doSearch(queryStr) {
+function searchLexicon(queryStr) {
     "use strict";
     $("#q").val(queryStr);
     setTimeout(function () {
@@ -420,10 +393,26 @@ function doSearch(queryStr) {
         urlFragment.set(queryStr);
 
         logTiming.reset();
-        var matches = searchLexicon(query);
+        var matches = query.length === 0
+            ? []
+            : lexicon.reduce(function (matches, entry) {
+                var subquery = queryInEntry(query, entry);
+                return subquery === -1
+                    ? matches
+                    : matches.concat({
+                        hilite: query[subquery].hilite,
+                        entry: entry
+                    });
+            }, []);
         logTiming.total("Search took %s.");
 
-        outputMatching(matches);
+        outputMatching(
+            $("#results")
+                .html("<div class=gray>Visar " + matches.length + " träffar…</div>"),
+            matches.map(function (entry) {
+                return "<div>" + htmlifyEntry(entry) + "</div>\n";
+            })
+        );
     }, 0);
 }
 
@@ -431,11 +420,11 @@ function doSearch(queryStr) {
 //
 // Main program
 //
-urlFragment.onChange(doSearch);  // URL fragment change
-$("#q").change(function (e) {    // form input change
+urlFragment.onChange(searchLexicon); // URL fragment change
+$("#q").change(function (e) {        // form input change
     "use strict";
     var queryStr = $(e.target).val() || "";
-    doSearch(queryStr);
+    searchLexicon(queryStr);
 });
 
 //[eof]
