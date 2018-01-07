@@ -27,9 +27,6 @@
 
     Actually, last segment should be '#' in these words. Fix the data generator
     script!
-** TODO Virtual keyboard shouldn't respond to Alt-Esc etc.
-   Only plain Esc, without qualifier keys, should result in the onscreen
-   keyboard being displayed.
 ** TODO Use ECMAScript6 or not?
    Currently using /u regex flag, which turns out to be ES6. This program
    probably won't work without it, and thus it might be better to go all the
@@ -160,6 +157,10 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Virtual keyboard shouldn't respond to Alt-Esc etc.
+   CLOSED: [2018-01-07 Sun 12:45]
+   Only plain Esc, without qualifier keys, should result in the onscreen
+   keyboard being displayed.
 ** DONE Cleanup variable + function names
    CLOSED: [2018-01-06 Sat 22:22]
    Don't use '_' in function names.

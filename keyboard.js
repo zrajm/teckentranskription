@@ -62,7 +62,6 @@ function transcriptKeyboard(jqText) {
         if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) {
             return true;
         }
-
         switch (e.which) {
         case 27:                     // Escape
             e.preventDefault();
@@ -89,6 +88,9 @@ function transcriptKeyboard(jqText) {
             .keydown(button_clicked);
         jqText
             .keydown(function (e) {
+                if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) {
+                    return true;
+                }
                 switch (e.key) {
                 case "Escape":
                     e.preventDefault();
