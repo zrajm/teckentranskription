@@ -48,7 +48,7 @@ Generate JSON
 The JSON is generated from ID-to-translation mapping file + the transcription
 dump file, like this:
 
-    bin/mklexicon --add-warns --webapp \
+    bin/mklexicon --webapp \
         --images=STUFF/teckensprakslexikon.su.se-2017-12-01/IMAGES \
         --words=svtsplex-id2sv.txt <svtsplex-export.tab >lexicon-data.js
 

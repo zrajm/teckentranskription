@@ -724,6 +724,7 @@ my %opt = (
     output_format => 'html',
     id2word_file  => '',
     image_dir     => '',
+    add_warns     => '',
 );
 
 for (my $i = 0; $i <= $#ARGV;) {
@@ -735,8 +736,10 @@ for (my $i = 0; $i <= $#ARGV;) {
     splice(@ARGV, $i, 1, s/=(.*)$// ? $1 : ());
 
     /^(-i|--images)$/ and do { $opt{image_dir}     =  splice(@ARGV, $i, 1); next };
+    /^(--add-warns)$/ and do { $opt{add_warns}     =  1;                    next };
     /^(-w|--webapp)$/ and do { $opt{output_format} = 'app';                 next };
     /^(-j|--json)$/   and do { $opt{output_format} = 'json';                next };
+    /^(--html)$/      and do { $opt{output_format} = 'html';                next };
     /^(-w|--words)$/  and do { $opt{id2word_file}  =  splice(@ARGV, $i, 1); next };
     /^-/ and die "Unknown option '$_'\n";
 }
@@ -774,11 +777,14 @@ LINE: while (<>) {
 
     if ($opt{output_format} =~ m#^(app|html)$#) {
         if ($pic{$id} and $unicode) {
+            my @warns = get_warns();
+            s/\n+$// foreach @warns;
             push(@thingy, [
                 $pic{$id},
+                ($opt{add_warns} && @warns) ? ("WARN: " . join(', ',@warns)) : (),
                 $id,
                 $unicode,
-                split(/,\s+/, $word{$id}),
+                split(/,\s+/, $word{$id} // ""),
             ]);
         }
     } else {
