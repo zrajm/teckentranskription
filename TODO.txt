@@ -27,6 +27,35 @@
 
     Actually, last segment should be '#' in these words. Fix the data generator
     script!
+** TODO Virtual keyboard shouldn't respond to Alt-Esc etc.
+   Only plain Esc, without qualifier keys, should result in the onscreen
+   keyboard being displayed.
+** TODO Use ECMAScript6 or not?
+   Currently using /u regex flag, which turns out to be ES6. This program
+   probably won't work without it, and thus it might be better to go all the
+   way and use `let` and `const` and all the other good stuff from ES6.
+
+   Which browsers support ES6?
+
+   Need to test (get some statistics on what browser ppl have):
+
+   Compatibility data is from here: http://kangax.github.io/compat-table/es6/
+
+   + ES5 standard released in 2009.
+   + ES6 standard released in 2015.
+
+   |-----------------+---------------------|
+   | Browser         | /u support          |
+   |-----------------+--------+------------|
+   | Firefox         | >=v50? | 2016-06-06 |
+   | EdgeHTML        | >=v12  | 2016-08-02 |
+   | Safari          | >=v10  | 2016-09-20 |
+   | Chrome/Chromium | >=v54? | 2016-10-12 |
+   | Explorer        | -      | -          |
+   |-----------------+--------+------------|
+
+   If we need to go ES5, then splitting of the query string can be done with
+   code found here: https://stackoverflow.com/a/38901550/351162
 ** TODO Lexicon/search part should be standalone module
 ** TODO Virtual keyboard should not rely on HTML
    All the HTML, CSS etc. should be in self-contained Javascript module.
