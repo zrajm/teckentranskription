@@ -54,8 +54,6 @@
    If we need to go ES5, then splitting of the query string can be done with
    code found here: https://stackoverflow.com/a/38901550/351162
 ** TODO Lexicon/search part should be standalone module
-** TODO Virtual keyboard should not rely on HTML
-   All the HTML, CSS etc. should be in self-contained Javascript module.
 ** TODO Hover over button should display handshape etc.
 ** TODO Strip newlines when pasting into <textarea>
 ** TODO Memory optimization
@@ -157,6 +155,9 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Virtual keyboard should not rely on HTML
+   CLOSED: [2018-01-08 Mon 06:40]
+   All the HTML, CSS etc. should be in self-contained Javascript module.
 ** DONE Virtual keyboard shouldn't respond to Alt-Esc etc.
    CLOSED: [2018-01-07 Sun 12:45]
    Only plain Esc, without qualifier keys, should result in the onscreen

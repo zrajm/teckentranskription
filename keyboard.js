@@ -1,15 +1,17 @@
 /*jslint browser fudge */
 /*global window $ */
 
-// jqText is a jQuery DOM element in which to insert text (e.g. <textarea> or
-// <input> element).
-function transcriptKeyboard(jqText) {
+// jqInput is a jQuery DOM element in which to insert text (a <textarea> or
+// <input> element). This element will be wrapped in a container element
+// (jqWrapper), and a virtual keyboard (jqKeyboard) will added at the end of
+// the container.
+function transcriptKeyboard(jqInput) {
     "use strict";
-    var domText = jqText.get(0);
-    var jqKeyboard = $("#keyboard");
-    var jqInput = $("#input");
+    var domInput = jqInput.get(0);
+    var jqWrapper;
+    var jqKeyboard;
 
-    // For inserting text in a textarea.
+    // Insert text in a textarea.
     function insertAtCursor(str) {
         var sel;
         var begPos;
@@ -20,8 +22,8 @@ function transcriptKeyboard(jqText) {
         var refocused = false;
 
         // Focus text input element (if not already focused).
-        if (domFocused !== domText) {
-            domText.focus();
+        if (domFocused !== domInput) {
+            domInput.focus();
             refocused = true;
         }
 
@@ -30,19 +32,19 @@ function transcriptKeyboard(jqText) {
             // IE support
             sel = document.selection.createRange();
             sel.text = str;
-        } else if (domText.selectionStart || domText.selectionStart === 0) {
+        } else if (domInput.selectionStart || domInput.selectionStart === 0) {
             // MOZILLA and others
-            begPos = domText.selectionStart;
-            endPos = domText.selectionEnd;
+            begPos = domInput.selectionStart;
+            endPos = domInput.selectionEnd;
             newPos = begPos + str.length;
-            value = domText.value;
+            value = domInput.value;
 
             // Replace string & move cursor.
-            domText.value = value.slice(0, begPos) + str + value.slice(endPos);
-            domText.setSelectionRange(newPos, newPos);
+            domInput.value = value.slice(0, begPos) + str + value.slice(endPos);
+            domInput.setSelectionRange(newPos, newPos);
         } else {
             // other
-            domText.value += str;
+            domInput.value += str;
         }
 
         // Refocus original element.
@@ -66,7 +68,7 @@ function transcriptKeyboard(jqText) {
         case 27:                     // Escape
             e.preventDefault();
             jqKeyboard.hide();
-            jqText.focus();
+            jqInput.focus();
             break;
         case 1:                      // Left mouse button
         case 13:                     // Enter
@@ -82,11 +84,245 @@ function transcriptKeyboard(jqText) {
         return true;
     }
 
+    function insertKeyboardInDom(jqWrapper) {
+        var keyboardHtml = [[
+            {class: "relation", prefix: "Relation: "},
+            "<nobr>",
+            ["◌􌤺", "Brevid"],
+            ["◌􌥛", "Framför"],
+            ["◌􌤻", "Innanför"],
+            ["◌􌤹", "Ovanför"],
+            ["◌􌥚", "Nedanför"],
+            "</nobr>"
+        ], [
+            {class: "attityd", prefix: "Attityd: "},
+            "<nobr>",
+            ["􌥓", "Vänsterriktad"],
+            ["􌥔", "Högerriktad"],
+            ["􌤴", "Framåtriktad"],
+            "</nobr>",
+            ["􌥕", "Inåtriktad"],
+            ["􌤵", "Uppåtriktad"],
+            ["􌥖", "Nedåtriktad"],
+            ["&nbsp;&nbsp;􌤶", "Vänstervänd"],
+            ["&nbsp;&nbsp;􌥗", "Högervänd"],
+            ["&nbsp;&nbsp;􌤷", "Framåtvänd"],
+            "<nobr>",
+            ["&nbsp;&nbsp;􌥘", "Inåtvänd"],
+            ["&nbsp;&nbsp;􌤸", "Uppåtvänd"],
+            ["&nbsp;&nbsp;􌥙", "Nedåtvänd"],
+            "</nobr>"
+        ], [
+            {class: "lage", prefix: "Läge: "},
+            "<nobr>",
+            ["􌤆", "Ansikte"],
+            ["􌤂", "Övre ansikte"],
+            ["􌥞", "Undre ansikte"],
+            "</nobr>",
+            ["􌤀", "Hjässa"],
+            ["􌤃", "Panna"],
+            ["􌤄", "Ögon"],
+            ["􌤅", "Öga"],
+            ["􌤾", "Öra"],
+            ["􌤈", "Vänster öra"],
+            ["􌤇", "Höger öra"],
+            ["􌤉", "Kinder"],
+            ["􌤋", "Vänster kind"],
+            ["􌤊", "Höger kind"],
+            ["􌤼", "Näsa"],
+            ["􌤌", "Mun"],
+            ["􌤛", "Haka"],
+            ["􌤜", "Nacke"],
+            ["􌤞", "Hals"],
+            ["􌤠", "Axlar"],
+            ["􌥀", "Vänster axel"],
+            ["􌤡", "Höger axel"],
+            ["􌥜", "Arm"],
+            ["􌤑", "Överarm"],
+            ["􌤒", "Underarm"],
+            ["􌤓", "Bröst"],
+            ["􌤕", "Vänster bröst"],
+            ["􌤔", "Höger bröst"],
+            ["􌤖", "Mage"],
+            ["􌤗", "Höfter"],
+            "<nobr>",
+            ["􌤙", "Vänster höft"],
+            ["􌤘", "Höger höft"],
+            ["􌤚", "Ben"],
+            "</nobr>"
+        ], [
+            {class: "handform", prefix: "Handform: "},
+            "<nobr>",
+            ["􌤤", "A-hand", "a-handen-1"],
+            ["􌥄", "Tumvinkelhand", "tumvinkelhanden-1"],
+            ["􌤣", "Vinkelhand", "vinkelhanden-1 vinkelhanden-2"],
+            "</nobr>",
+            ["􌤧", "Tumhand", "tumhanden-1 tumhanden-2"],
+            ["􌥋", "Måtthand", "matthanden-1 matthanden-2 matthanden-3"],
+            ["􌥉", "Rak måtthand", "raka-matthanden-1"],
+            ["􌦫", "D-hand", "d-handen-1"],
+            ["􌤩", "Nyphand", "nyphanden-1 nyphanden-2"],
+            ["􌤎", "Liten o-hand", "lilla-o-handen-1 lilla-o-handen-2"],
+            ["􌥇", "E-hand", "e-handen-1"],
+            ["􌦬", "F-hand", "stora-nyphanden-5"],
+            ["􌤦", "Knuten hand", "knutna-handen-1 knutna-handen-2"],
+            ["􌤲", "Stor nyphand", "stora-nyphanden-1 stora-nyphanden-2 stora-nyphanden-3 stora-nyphanden-4 stora-nyphanden-5"],
+            ["􌤱", "Lillfinger", "lillfingret-1 lillfingret-2"],
+            ["􌥑", "Flyghand", "flyghanden-1 flyghanden-2 flyghanden-3"],
+            ["􌤢", "Flat hand", "flata-handen-1 flata-handen-2"],
+            ["􌥂", "Flat tumhand", "flata-tumhanden-1"],
+            ["􌤪", "Krokfinger", "krokfingret-1"],
+            ["􌥎", "K-hand", "k-handen-1"],
+            ["􌥈", "Pekfinger", "pekfingret-1 vinklade-pekfingret"],
+            ["􌤨", "L-hand", "l-handen-1"],
+            ["􌤿", "M-hand", "m-handen-1"],
+            ["􌥌", "N-hand", "n-handen-1 vinklade-n-handen-1 vinklade-n-handen-2"],
+            ["􌥆", "O-hand", "o-handen-1"],
+            ["􌤫", "Hållhand", "hallhanden-1"],
+            ["􌦭", "Q-hand", "q-handen-1"],
+            ["􌤬", "Långfingret", "langfingret-1"],
+            ["􌥅", "S-hand", "s-handen-1 s-handen-2"],
+            ["􌤥", "Klohand", "klohanden-1 klohanden-2 bojda-sprethanden-1 klohanden-3"],
+            ["􌥊", "T-hand", "t-handen-1 t-handen-2"],
+            ["􌤽", "Dubbelkrok", "dubbelkroken-1"],
+            ["􌤯", "Böjd tupphand", "bojda-tupphanden-1"],
+            ["􌤭", "V-hand", "v-handen-1"],
+            ["􌤮", "Tupphand", "tupphanden-1 vinklade-tupphanden-1"],
+            ["􌤰", "W-hand", "w-handen-1"],
+            ["􌤳", "X-hand", "x-handen-1"],
+            ["􌥃", "Sprethand", "sprethanden-1 4-handen-1 sprethanden-3"],
+            "<nobr>",
+            ["􌥒", "Stort långfinger", "stora-langfingret-1 stora-langfingret-2 stora-langfingret-3"],
+            ["􌥟", "Runt långfinger", "runda-langfingret-1 runda-langfingret-2"],
+            ["􌦪", "4-hand", "4-handen-1"],
+            "</nobr>"
+        ], [
+            {class: "forflyttning"},
+            "<nobr>",
+            ["&nbsp;&nbsp;􌥡", "Medial kontakt"],
+            ["􌤟", "Kontakt"],
+            ["􌦑", "Hålls stilla"],
+            "</nobr>",
+            ["􌥢", "Förs åt vänster"],
+            ["􌥣", "Förs åt höger"],
+            ["􌥤", "Förs i sidled"],
+            ["􌦃", "Förs framåt"],
+            ["􌦄", "Förs inåt/bakåt"],
+            ["􌥥", "Förs i djupled"],
+            ["􌥦", "Förs uppåt"],
+            ["􌥧", "Förs nedåt"],
+            ["􌥨", "Förs i höjdled"],
+            ["􌥩", "Förs kort åt vänster"],
+            ["􌥪", "Förs kort åt höger"],
+            ["􌥵", "Förs kort framåt"],
+            ["􌥶", "Förs kort inåt/bakåt"],
+            ["􌥷", "Förs kort uppåt"],
+            ["􌥸", "Förs kort nedåt"],
+            " ",
+            ["􌥹", "Divergerar"],
+            ["􌦅", "Konvergerar"],
+            ["􌦎", "Korsas"],
+            ["􌥫", "Hakas"],
+            ["􌥬", "Byter plats"],
+            ["􌥭", "Gör entré"],
+            ["􌥮", "I vinkel"],
+            " ",
+            ["􌥳", "Spelar"],
+            ["􌥴", "Strör"],
+            ["􌦨", "Böjs"],
+            "<nobr>",
+            ["􌥺", "Vinkar"],
+            ["􌦆", "Förändras"],
+            ["􌦇", "Växelvis"],
+            "</nobr>"
+        ], [
+            {class: "rorelse"},
+            "<nobr>",
+            ["􌥯", "Båge"],
+            ["􌥰", "Cirkel"],
+            ["􌦮", "Cirkel i frontalplan"],
+            "</nobr>",
+            ["􌦯", "Cirkel i horisontalplan"],
+            ["􌦰", "Cirkel i medialplan"],
+            ["􌥱", "Slås"],
+            ["􌥲", "Vrids"],
+            ["&nbsp;&nbsp;􌦈", "Åt vänster"],
+            ["&nbsp;&nbsp;􌥽", "Åt höger"],
+            ["&nbsp;&nbsp;􌦉", "I sidled"],
+            ["&nbsp;&nbsp;􌥾", "Framåt"],
+            ["&nbsp;&nbsp;􌦊", "Inåt/bakåt"],
+            ["&nbsp;&nbsp;􌦋", "I djupled"],
+            ["&nbsp;&nbsp;􌥿", "Uppåt"],
+            "<nobr>",
+            ["&nbsp;&nbsp;􌦀", "Nedåt"],
+            ["&nbsp;&nbsp;􌦌", "I höjdled"],
+            ["&nbsp;&nbsp;􌦂", "Mot varann"],
+            "</nobr>"
+        ], [
+            {class: "annat"},
+            "<nobr>",
+            ["􌥻", "Upprepning"],
+            ["􌥼", "Separator artikulationssekvens"],
+            ["􌥠", "Separator sammansatt tecken"],
+            ["􌦩", "Separator mellan händer"],
+            "</nobr>"
+        ]].map(function (x) {
+            var attr = x[0];
+            return "<span class=\"" + attr.class + "\">" + x
+                .splice(1).map(function (y) {
+                    return typeof y === "string"
+                        ? y
+                        : "<button title=\"" + (attr.prefix || "") +
+                                y[1] + "\">" + y[0] + "</button>";
+                }).join("") + "<span>";
+        }).join(" ");
+        return $(
+            "<div>" +
+                "<style>" +
+                ".relation     button { background-color: #f0f; }" +
+                ".attityd      button { background-color: #ff0; }" +
+                ".lage         button { background-color: #00f; }" +
+                ".handform     button { background-color: #0f0; }" +
+                ".forflyttning button { background-color: #f00; }" +
+                ".rorelse      button { background-color: #f0f; }" +
+                ".annat        button { background-color: #ff0; }" +
+                "</style>" +
+                keyboardHtml +
+                "</div>"
+        )
+            .appendTo(jqWrapper)
+            .css({
+                minWidth: "100%",
+                position: "absolute",
+                zIndex: 1,
+                background: "#fff",
+                boxShadow: "0 16px 24px 2px rgba(0,0,0,.14)," +
+                        "0 6px 30px 5px rgba(0,0,0,.12)," +
+                        "0 8px 10px -5px rgba(0,0,0,.4)",
+                lineHeight: 0,
+                padding: "3px"
+            })
+            .hide();
+    }
+
     $(function () {
+        jqWrapper = jqInput.wrap("<div>").parent().css({
+            lineHeight: "0",
+            position: "relative"
+        });
+        jqKeyboard = insertKeyboardInDom(jqWrapper);
+        jqInput.css({
+            width: "100%",
+            margin: 0,
+            overflow: "hidden",
+            whiteSpace: "pre",
+            resize: "none"
+        }).focus();
+
         jqKeyboard
             .mousedown(button_clicked)
             .keydown(button_clicked);
-        jqText
+        jqInput
             .keydown(function (e) {
                 if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) {
                     return true;
@@ -98,7 +334,7 @@ function transcriptKeyboard(jqText) {
                     break;
                 case "Enter":
                     e.preventDefault();
-                    jqText.change();
+                    jqInput.change();
                     break;
                 }
             })
@@ -110,9 +346,9 @@ function transcriptKeyboard(jqText) {
             });
 
         // Hide screen keyboard if focus goes outside it or text field.
-        jqInput.focusout(function (e) {
+        jqWrapper.focusout(function (e) {
             var domFocused = $(e.relatedTarget);
-            if (domFocused.closest(jqInput, jqInput).length === 0) {
+            if (domFocused.closest(jqWrapper, jqWrapper).length === 0) {
                 jqKeyboard.hide();
             }
         });
