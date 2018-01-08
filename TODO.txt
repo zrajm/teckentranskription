@@ -53,6 +53,18 @@
 
    If we need to go ES5, then splitting of the query string can be done with
    code found here: https://stackoverflow.com/a/38901550/351162
+** TODO Display search result in subquery order
+   Returned result should have one list per subquery (and in the same order as
+   the subqueries), and the result should be displayed in that order.
+** TODO Sortable search result
+   Search result should be sortable in by:
+
+   + Subquery order
+   + ID number
+   + Sign language transcription (sort order?)
+   + Swedish
+
+   Default should be: subquery + sign language.
 ** TODO Lexicon/search part should be standalone module
 ** TODO Hover over button should display handshape etc.
 ** TODO Strip newlines when pasting into <textarea>
