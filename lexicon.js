@@ -345,12 +345,12 @@ function htmlifyEntry(match) {
     var swe = entry.slice(3);
     return [
         //"image: " + image,
-        "<span class=gray>" + hilite(id, hiliteRegex) + "</span>",
+        "<a href=\"http://teckensprakslexikon.su.se/ord/" + id + "\" target=_blank>" +
+             hilite(id, hiliteRegex) + "</a>",
         hilite(trans, hiliteRegex),
-        "<a href=\"http://teckensprakslexikon.su.se/ord/" + id + "\" target=_blank>" + swe
-            .map(function (txt) {
-                return hilite(txt, hiliteRegex);
-            }).join(", ") + "</a>"
+        swe.map(function (txt) {
+            return hilite(txt, hiliteRegex);
+        }).join(", ")
     ].join(" ");
 }
 
