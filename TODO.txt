@@ -1,15 +1,23 @@
 -*- org -*-
 
 * General
+** TODO Minify SVG
+   https://jakearchibald.github.io/svgomg/
 ** TODO Homogenize CSS for all pages
    All pages should use one base CSS + an extra CSS with the styles needed for
    these pages, and preferably there should be no extra per-file CSS.
 * Lexicon
-** [0/1] Query syntax
+** [0/4] Query syntax
 *** TODO New search query syntax (require '*' for partial words)
     There should also be a help section for the new special characters, and if a
     search resulted in zero matches, something helpful should be displayed to
     the user.
+*** TODO Don't use '#' for special stuff in search queries
+    It is used in the transcriptions to indicate finger spelled words.
+*** TODO Add character classes [...] to search query
+    Useful when one is searching for one of multiple hand shapes.
+*** TODO Way to match end of words in search queries
+    ^..$ (?), or use '*' to denote non-end of words?
 ** [0/2] Search result
 *** TODO Updating of search result should be interruptable
     When search result is being updated, performing a new search should abort
@@ -27,6 +35,30 @@
 
     Actually, last segment should be '#' in these words. Fix the data generator
     script!
+** [0/8] GUI
+*** TODO Make CSS done by Javascript neater
+    Instead of using jQuery to apply CSS in 'style' attribute, should generate
+    random ID for a prefix, and use CSS rules.
+*** TODO Newlines->space when pasting into search query <textarea>
+*** TODO Add search query help info
+    In a dropdown of some kind?
+**** TODO Automatically display search query help
+     Before a search is performed, and when a search results in no matches.
+*** TODO Chrome should autodetect lexicon as 'search engine'
+    https://martin-thoma.com/search-engine-autodiscovery/#google-chrome-autodiscovery
+*** TODO Focus indicator border should be light turquoise
+    Something matching the current color theme, rather than the currently blue
+    focus indicator border.
+*** TODO Page load progress bar should fit in style
+    Dark turquoise + it should be displayed under the search bar (or if the
+    search bar is retracted, at the top of the page)
+*** TODO Make virtual keyboard come sliding out from under the search form
+    The on-screen keyboard should be displayed on top of search results, so
+    that dropping the keyboard does not scroll the search results.
+*** TODO Make search form drop down on top of search result
+    When scrolling down over the search results, the search form should slide
+    upwards, and reveal a button which can be pressed to drop down the search
+    form on top of the results.
 ** TODO Use ECMAScript6 or not?
    Currently using /u regex flag, which turns out to be ES6. This program
    probably won't work without it, and thus it might be better to go all the
@@ -67,7 +99,6 @@
    Default should be: subquery + sign language.
 ** TODO Lexicon/search part should be standalone module
 ** TODO Hover over button should display handshape etc.
-** TODO Strip newlines when pasting into <textarea>
 ** TODO Memory optimization
    Leakyness? -- Does a new search completely (or as completely as possible)
    clear the memory before building up a new search result?
@@ -159,14 +190,16 @@
 ** DONE Add simplified 'circle' notation
    CLOSED: [2017-10-21 Sat 17:26]
 * Transcription app
+** TODO Should use same virtual keyboard code as lexicon
 ** TODO Run code + HTML + CSS through validator.
 ** TODO Add tests for Javascript code
-** TODO Share button should look more like YouTube's share button
 ** TODO Ease-of-use: Hovering on symbol buttons should display help info
    E.g. when hovering over an input button it should display information about
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Make GUI turquoise
+   CLOSED: [2018-01-18 Thu 17:45]
 ** DONE Virtual keyboard should not rely on HTML
    CLOSED: [2018-01-08 Mon 06:40]
    All the HTML, CSS etc. should be in self-contained Javascript module.
@@ -236,4 +269,6 @@
    CLOSED: [2017-12-20 Wed 18:43]
    Currently, in MSIE11, pressing <enter> does not execute search (one has to
    unfocus the input field for the search to update).
+** DONE Share button should look more like YouTube's share button
+   CLOSED: [2017-12-18 Mon 11:49]
 * [eof]

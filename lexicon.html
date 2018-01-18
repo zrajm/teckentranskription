@@ -8,18 +8,40 @@
   <link rel=stylesheet href="intro.css">
   <link rel=license href="LICENSE.txt">
   <style>
-    li { margin-left: 1em; }
     body { font-size: 2.5em; }
-    img { height: 1.8em; vertical-align: middle; }
-    .gray { color: #888; }
-    textarea { font-size: 1em; padding-left: .5em; line-height: 1.4em; }
-    #results { text-indent: -1em; padding-left: 1em; }
+    .gray { color: #7f7f7f; }
     footer { opacity: .33; !important; font-size: 50%; }
+
+    /* Search query <textarea> */
+    #q {
+        padding-left: .5em; line-height: 1.4em;
+        border: 0; border-radius: 4px;
+        transition: background 0.2s ease-out;
+        background:
+            url(pic/gui/magnifier.svg) center left .5em/auto 1em no-repeat,
+            rgba(255, 255, 255, .3);
+    }
+    #q:valid { background-image: url(); } /* remove placeholder icon */
+    #q:focus,
+    #kb-icon:focus { background-color: white; }
+    #kb-icon { background: transparent; }
+    #results {
+      margin: .5em 1em;
+      padding-left: 1em;
+      text-indent: -1em;
+    }
+    #results > *:first-child { margin: .5em 0; }
+    header {
+      background: #1D997C;
+      padding: .5em 1em;
+    }
   </style>
 </head>
 <body>
   <noscript class=required>Javascript required.</noscript>
-  <textarea id=q rows=1 placeholder="Sök… (Esc = symboler)"></textarea>
+  <header>
+    <textarea id=q rows=1 required></textarea>
+  </header>
   <div id=results></div>
   <footer>
     <a href="." title="A page to help with transcription."

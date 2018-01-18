@@ -10,6 +10,7 @@ function transcriptKeyboard(jqInput) {
     var domInput = jqInput.get(0);
     var jqWrapper;
     var jqKeyboard;
+    var jqKeyboardIcon;
 
     // Insert text in a textarea.
     function insertAtCursor(str) {
@@ -306,9 +307,25 @@ function transcriptKeyboard(jqInput) {
     }
 
     $(function () {
-        jqWrapper = jqInput.wrap("<div>").parent().css({
+        jqWrapper = jqInput.wrap("<div class=wrap>").parent().css({
             lineHeight: "0",
             position: "relative"
+        });
+        jqKeyboardIcon = $(
+            "<button id=\"kb-icon\">" +
+                "<img title=\"Transkriptionssymboler (Esc)\" " +
+                "src=\"pic/gui/keyboard.svg\" style=\"height:1em;display:block\">" +
+                "</button>"
+        ).appendTo(jqWrapper).css({
+            margin: 'auto',
+            padding: '0 .5em',
+            top: 0,
+            right: 0,
+            position: 'absolute',
+            zIndex: 9999,
+            display: 'block',
+            border: 0,
+            height: '100%',
         });
         jqKeyboard = insertKeyboardInDom(jqWrapper);
         jqInput.css({
@@ -340,10 +357,11 @@ function transcriptKeyboard(jqInput) {
             })
             .change(function () {
                 jqKeyboard.hide();
-            })
-            .click(function () {
-                jqKeyboard.show();
             });
+
+        jqKeyboardIcon.click(function () {
+            jqKeyboard.toggle();
+        });
 
         // Hide screen keyboard if focus goes outside it or text field.
         jqWrapper.focusout(function (e) {
