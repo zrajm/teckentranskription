@@ -317,15 +317,15 @@ function transcriptKeyboard(jqInput) {
                 "src=\"pic/gui/keyboard.svg\" style=\"height:1em;display:block\">" +
                 "</button>"
         ).appendTo(jqWrapper).css({
-            margin: 'auto',
-            padding: '0 .5em',
+            margin: "auto",
+            padding: "0 .5em",
             top: 0,
             right: 0,
-            position: 'absolute',
+            position: "absolute",
             zIndex: 9999,
-            display: 'block',
+            display: "block",
             border: 0,
-            height: '100%',
+            height: "100%"
         });
         jqKeyboard = insertKeyboardInDom(jqWrapper);
         jqInput.css({

@@ -346,7 +346,7 @@ function htmlifyEntry(match) {
     return [
         //"image: " + image,
         "<a href=\"http://teckensprakslexikon.su.se/ord/" + id + "\" target=_blank>" +
-             hilite(id, hiliteRegex) + "</a>",
+                hilite(id, hiliteRegex) + "</a>",
         hilite(trans, hiliteRegex),
         swe.map(function (txt) {
             return hilite(txt, hiliteRegex);
