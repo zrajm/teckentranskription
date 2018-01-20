@@ -7,14 +7,26 @@
    All pages should use one base CSS + an extra CSS with the styles needed for
    these pages, and preferably there should be no extra per-file CSS.
 * Lexicon
-** [0/4] Query syntax
+** [0/11] Query syntax
 *** TODO New search query syntax (require '*' for partial words)
     There should also be a help section for the new special characters, and if a
     search resulted in zero matches, something helpful should be displayed to
     the user.
 *** TODO Don't use '#' for special stuff in search queries
     It is used in the transcriptions to indicate finger spelled words.
-*** TODO Add character classes [...] to search query
+*** TODO Character class for 'förs'
+    All arrows, not including 'contact'.
+*** TODO Character class for 'circle'
+    Old + new circle symbols
+*** TODO Character class for 'face'
+    Combination of upper and lower face.
+*** TODO Character class for 'upper face'
+    Upper/whole face + upper & central facial features (crown, forhead, eye) etc.
+*** TODO Character class for 'lower face'
+    Lower/whole face + lower & central facial features (cheek, chin, mouth) etc.
+*** TODO Character class for 'hand-external type of motion'
+    Curving, (all types of) circling, hitting and turning.
+*** TODO Character classes [...] to search query
     Useful when one is searching for one of multiple hand shapes.
 *** TODO Way to match end of words in search queries
     ^..$ (?), or use '*' to denote non-end of words?
@@ -36,6 +48,15 @@
     Actually, last segment should be '#' in these words. Fix the data generator
     script!
 ** [0/8] GUI
+*** TODO Help section for query syntax
+    Useful (complex) query:
+    􌥧 􌦆􌥃 -􌥠 -#:#: -:##: -􌦆*􌦆  -@
+
+    Display signs that contain a downward motion, and a handshape transition to
+    the spread hand (sprethanden), but that does not contain multiple segments
+    (-􌥠), two handed segments (excluding those with a passive secondary hand
+    with -#:#:, and those with an active secondary hand with -:##:), more than
+    one handshape transition, or a specified position (-@).
 *** TODO Make CSS done by Javascript neater
     Instead of using jQuery to apply CSS in 'style' attribute, should generate
     random ID for a prefix, and use CSS rules.
