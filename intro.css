@@ -19,7 +19,7 @@ html { overflow-y: scroll; }
 *:not(td) { box-sizing: border-box; }
 :focus {
     outline: 0;
-    box-shadow: 0 0 0 3px rgba(173, 189, 224, 1);
+    box-shadow: 0 0 0 3px rgb(173, 189, 224);
     z-index: 10;
     position: relative;
 }
@@ -34,6 +34,7 @@ a {
     text-decoration: none;
     color: #1a0dab;
 }
+a:focus,
 a:hover { text-decoration: underline; }
 
 mark { color: inherit;

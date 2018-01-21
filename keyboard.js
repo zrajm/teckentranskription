@@ -293,6 +293,7 @@ function transcriptKeyboard(jqInput) {
         )
             .appendTo(jqWrapper)
             .css({
+                borderRadius: "4px",
                 minWidth: "100%",
                 position: "absolute",
                 zIndex: 1,
@@ -301,7 +302,7 @@ function transcriptKeyboard(jqInput) {
                         "0 6px 30px 5px rgba(0,0,0,.12)," +
                         "0 8px 10px -5px rgba(0,0,0,.4)",
                 lineHeight: 0,
-                padding: "3px"
+                padding: ".125em"
             })
             .hide();
     }
