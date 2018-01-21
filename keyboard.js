@@ -280,13 +280,13 @@ function transcriptKeyboard(jqInput) {
         return $(
             "<div>" +
                 "<style>" +
-                ".relation     button { background-color: #f0f; }" +
-                ".attityd      button { background-color: #ff0; }" +
-                ".lage         button { background-color: #00f; }" +
-                ".handform     button { background-color: #0f0; }" +
-                ".forflyttning button { background-color: #f00; }" +
-                ".rorelse      button { background-color: #f0f; }" +
-                ".annat        button { background-color: #ff0; }" +
+                ".relation     button { background-color: #C77BC7; }" +
+                ".attityd      button { background-color: #C7C77B; }" +
+                ".lage         button { background-color: #7B7BC7; }" +
+                ".handform     button { background-color: #7BC77B; }" +
+                ".forflyttning button { background-color: #C77B7B; }" +
+                ".rorelse      button { background-color: #C77BC7; }" +
+                ".annat        button { background-color: #C7C77B; }" +
                 "</style>" +
                 keyboardHtml +
                 "</div>"
@@ -313,7 +313,7 @@ function transcriptKeyboard(jqInput) {
             position: "relative"
         });
         jqKeyboardIcon = $(
-            "<button id=\"kb-icon\">" +
+            "<button id=\"kb-icon\" class=nostyle>" +
                 "<img title=\"Transkriptionssymboler (Esc)\" " +
                 "src=\"pic/gui/keyboard.svg\" style=\"height:1em;display:block\">" +
                 "</button>"
