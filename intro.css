@@ -11,7 +11,7 @@ button, input, select, textarea { font-family: inherit; }
 * {
     margin: 0;
     padding: 0;
-    caret-color: rgba(79, 79, 255, .75);
+    caret-color: rgba(173, 189, 224, 1);
 }
 
 html { overflow-y: scroll; }
@@ -19,7 +19,7 @@ html { overflow-y: scroll; }
 *:not(td) { box-sizing: border-box; }
 :focus {
     outline: 0;
-    box-shadow: 0 0 0 3px rgba(79, 79, 255, .75);
+    box-shadow: 0 0 0 3px rgba(173, 189, 224, 1);
     z-index: 10;
     position: relative;
 }
@@ -135,7 +135,7 @@ select:not([disabled]):hover {
 button:not([disabled]):hover:focus,
 select:not([disabled]):hover:focus {
     box-shadow: inset 1000px 1000px rgba(255, 255, 255, .5),
-        0 0 0 3px rgba(79, 79, 255, .75);
+        0 0 0 3px rgba(173, 189, 224, 1);
 }
 
 button, select {

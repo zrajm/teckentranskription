@@ -44,7 +44,6 @@
 
 *** TODO Separator-at-end bug
     http://localhost/teckentranskription/lexicon.html#@*%F4%8C%A5%A0
-
     Actually, last segment should be '#' in these words. Fix the data generator
     script!
 ** [0/8] GUI
@@ -57,7 +56,7 @@
     (-􌥠), two handed segments (excluding those with a passive secondary hand
     with -#:#:, and those with an active secondary hand with -:##:), more than
     one handshape transition, or a specified position (-@).
-*** TODO Make CSS done by Javascript neater
+*** TODO Make Javascript generated CSS neater
     Instead of using jQuery to apply CSS in 'style' attribute, should generate
     random ID for a prefix, and use CSS rules.
 *** TODO Newlines->space when pasting into search query <textarea>
@@ -67,9 +66,6 @@
      Before a search is performed, and when a search results in no matches.
 *** TODO Chrome should autodetect lexicon as 'search engine'
     https://martin-thoma.com/search-engine-autodiscovery/#google-chrome-autodiscovery
-*** TODO Focus indicator border should be light turquoise
-    Something matching the current color theme, rather than the currently blue
-    focus indicator border.
 *** TODO Page load progress bar should fit in style
     Dark turquoise + it should be displayed under the search bar (or if the
     search bar is retracted, at the top of the page)
@@ -219,6 +215,10 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Focus indicator border should be light turquoise
+   CLOSED: [2018-01-21 Sun 02:07]
+   Something matching the current color theme, rather than the currently blue
+   focus indicator border.
 ** DONE Make GUI turquoise
    CLOSED: [2018-01-18 Thu 17:45]
 ** DONE Virtual keyboard should not rely on HTML
