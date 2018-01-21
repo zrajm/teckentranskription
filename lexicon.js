@@ -16,11 +16,11 @@ var urlFragment = (function () {
     }
     // URL fragment (no leading '#')
     function getFragment() {
-        return decodeURI(window.location.hash.substr(1));
+        return decodeURIComponent(window.location.hash.substr(1));
     }
     // Change URL fragment (does not trigger hashchange event).
     function setFragment(urlFragment) {
-        var url = getBaseUrl() + "#" + encodeURI(urlFragment);
+        var url = getBaseUrl() + "#" + encodeURIComponent(urlFragment);
         if (getFragment() !== urlFragment) {
             window.history.pushState({}, "", url);
         }

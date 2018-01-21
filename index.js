@@ -75,7 +75,7 @@ $(function () { $(window).trigger('hashchange') });
 // Update transcript based on URL hash.
 $(window).on('hashchange', function () {
     var hash    = window.location.hash,
-        decoded = decodeURI(hash.replace(/^#/, '')), url;
+        decoded = decodeURIComponent(hash.replace(/^#/, '')), url;
     share_close();
     jqTextarea.val(decoded);
 
@@ -98,7 +98,7 @@ function share_close() {
 function share_toggle() {
     if (share_opened) { return share_close(); }
     share_opened = true;
-    var hash = encodeURI(jqTextarea.val());
+    var hash = encodeURIComponent(jqTextarea.val());
     var url  = location.href.replace(location.hash, '') + '#' + hash;
     var msg  = 'Press Ctrl-C (or &#8984;-C) to copy link to clipboard!';
     $('.share .bubble').show();
