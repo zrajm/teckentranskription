@@ -8,6 +8,15 @@
    these pages, and preferably there should be no extra per-file CSS.
 * Lexicon
 ** [0/11] Query syntax
+*** TODO Specify match is to be all in one segment
+    Add a prefix to specify that a match should be all within the same segment.
+    (Maybe 'x:'?)
+
+    This would mean that a query like '*􌤶##:' cannot match across segment
+    borders.
+
+    In practice this means that in fields with this prefix, an asterisk ('*')
+    should match '[^/]*' (where '/' is the segment separator) instead of '.*'.
 *** TODO New search query syntax (require '*' for partial words)
     There should also be a help section for the new special characters, and if a
     search resulted in zero matches, something helpful should be displayed to
