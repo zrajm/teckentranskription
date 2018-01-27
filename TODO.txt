@@ -9,6 +9,9 @@
 * Lexicon
 ** [0/12] Query syntax
 *** TODO Help section for query syntax
+    * = match 'word' characters (i.e. not space and segment separator, '􌥠', but
+      everything else)
+
     Useful (complex) query:
     􌥧 􌦆􌥃 -􌥠 -#:#: -:##: -􌦆*􌦆  -@
 

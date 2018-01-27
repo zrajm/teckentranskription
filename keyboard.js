@@ -263,8 +263,8 @@ function transcriptKeyboard(jqInput) {
             {class: "annat"},
             "<nobr>",
             ["􌥻", "Upprepning"],
-            ["􌥼", "Separator artikulationssekvens"],
-            ["􌥠", "Separator sammansatt tecken"],
+            ["􌥼", "Separator mellan artikulationer"],
+            ["􌥠", "Separator mellan segment"],
             ["􌦩", "Separator mellan händer"],
             "</nobr>"
         ]].map(function (x) {
@@ -281,12 +281,12 @@ function transcriptKeyboard(jqInput) {
             "<div>" +
                 "<style>" +
                 ".relation     button { background-color: #C77BC7; }" +
-                ".attityd      button { background-color: #C7C77B; }" +
+                ".attityd      button { background-color: #FCAA5D; }" +
                 ".lage         button { background-color: #7B7BC7; }" +
                 ".handform     button { background-color: #7BC77B; }" +
                 ".forflyttning button { background-color: #C77B7B; }" +
                 ".rorelse      button { background-color: #C77BC7; }" +
-                ".annat        button { background-color: #C7C77B; }" +
+                ".annat        button { background-color: #FCAA5D; }" +
                 "</style>" +
                 keyboardHtml +
                 "</div>"
