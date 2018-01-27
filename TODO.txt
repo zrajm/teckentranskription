@@ -7,7 +7,16 @@
    All pages should use one base CSS + an extra CSS with the styles needed for
    these pages, and preferably there should be no extra per-file CSS.
 * Lexicon
-** [0/11] Query syntax
+** [0/12] Query syntax
+*** TODO Help section for query syntax
+    Useful (complex) query:
+    􌥧 􌦆􌥃 -􌥠 -#:#: -:##: -􌦆*􌦆  -@
+
+    Display signs that contain a downward motion, and a handshape transition to
+    the spread hand (sprethanden), but that does not contain multiple segments
+    (-􌥠), two handed segments (excluding those with a passive secondary hand
+    with -#:#:, and those with an active secondary hand with -:##:), more than
+    one handshape transition, or a specified position (-@).
 *** TODO Specify match is to be all in one segment
     Add a prefix to specify that a match should be all within the same segment.
     (Maybe 'x:'?)
@@ -23,6 +32,9 @@
     the user.
 *** TODO Don't use '#' for special stuff in search queries
     It is used in the transcriptions to indicate finger spelled words.
+*** TODO All handshapes/places chars should allow diacritic
+    I.e. each handshape (except in character classes, or in quotes) should
+    allow for an optional diacritic.
 *** TODO Character class for 'förs'
     All arrows, not including 'contact'.
 *** TODO Character class for 'circle'
@@ -55,16 +67,7 @@
     http://localhost/teckentranskription/lexicon.html#@*%F4%8C%A5%A0
     Actually, last segment should be '#' in these words. Fix the data generator
     script!
-** [0/8] GUI
-*** TODO Help section for query syntax
-    Useful (complex) query:
-    􌥧 􌦆􌥃 -􌥠 -#:#: -:##: -􌦆*􌦆  -@
-
-    Display signs that contain a downward motion, and a handshape transition to
-    the spread hand (sprethanden), but that does not contain multiple segments
-    (-􌥠), two handed segments (excluding those with a passive secondary hand
-    with -#:#:, and those with an active secondary hand with -:##:), more than
-    one handshape transition, or a specified position (-@).
+** [0/7] GUI
 *** TODO Make Javascript generated CSS neater
     Instead of using jQuery to apply CSS in 'style' attribute, should generate
     random ID for a prefix, and use CSS rules.

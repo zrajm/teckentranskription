@@ -234,7 +234,7 @@ function parseQuery(queryStr) {
         };
     }());
     var metachars = {
-        "*": "[^ ]*",            // all non-space
+        "*": "[^ 􌥠]*",           // all non-space
         "@":                     // one place symbol
                 "[􌤆􌤂􌥞􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛􌤜􌤞􌤠􌥀􌤡􌥜􌤑􌤒􌤓􌤕􌤔􌤖􌤗􌤙􌤘􌤚][􌤺􌥛􌤻􌤹􌥚]?",
         "#":                     // one handshape symbol
