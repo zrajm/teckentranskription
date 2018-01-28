@@ -829,9 +829,9 @@ if ($opt{output_format} eq 'html') {
     } elsif ($opt{output_format} eq 'app') {
 
         for ($json) {
-            s#\[#\n[#g;
+            s#(?!^)\[#\n[#g;
         }
-        print "    var lexicon = $json\n";
+        print "var lexicon = $json;\n";
     }
 }
 

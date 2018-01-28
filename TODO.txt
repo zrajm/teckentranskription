@@ -15,6 +15,24 @@
     Useful (complex) query:
     􌥧 􌦆􌥃 -􌥠 -#:#: -:##: -􌦆*􌦆  -@
 
+    Transcriptions are fiddly and finicky, rather than spending time on
+    inputting a transcription, search for a sign that you know is similar to
+    the one you're looking for, then copy/paste the transcription of that sign
+    into the search field and replace parts you're not sure about with
+    asterisks ('*').
+
+    If you get too many matches, the following search terms can be useful for
+    ignoring some of them:
+
+      -:##: -- exclude signs with two active hands
+      -#:#: -- exclude signs with one active, one passive hand
+      -@    -- exclude signs a body position
+      -􌥠    -- exclude signs with more than one segment
+      -􌥠*􌥠  -- exclude signs with more than two segments
+      :##:  -- include only signs with two active hands
+      #:#:  -- include only signs with one active, one passive hand
+      @     -- include only signs which have a body position
+
     Display signs that contain a downward motion, and a handshape transition to
     the spread hand (sprethanden), but that does not contain multiple segments
     (-􌥠), two handed segments (excluding those with a passive secondary hand

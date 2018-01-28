@@ -1,5 +1,4 @@
-    var lexicon =
-[
+var lexicon = [
 ["mossa","00003","􌤀􌤢􌥓􌥙􌤟􌥼􌥻","mössa"],
 ["indien","00004","􌤀􌤢􌥓􌥙􌥰􌦈􌦆􌤦􌥼􌤟","indien"],
 ["himmel","00005","􌤀􌤢􌥓􌥙􌥣􌥯􌥿􌥱􌥿","himmel"],
@@ -16724,4 +16723,4 @@
 ["bik-karlskoga","17245","􌤵􌥘􌥈􌥈􌤵􌤷􌥦􌥲􌦊􌥲􌥾","BIK Karlskoga"],
 ["tingsryd-aif","17246","#","Tingsryd AIF"],
 ["almtuna-is","17247","#","Almtuna IS"],
-["halm","17248","􌥃􌤹􌤴􌥙􌥃􌤴􌥙􌤟􌦃􌥼􌥻","halm"]]
+["halm","17248","􌥃􌤹􌤴􌥙􌥃􌤴􌥙􌤟􌦃􌥼􌥻","halm"]];
