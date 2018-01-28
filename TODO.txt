@@ -35,9 +35,6 @@
     the user.
 *** TODO Don't use '#' for special stuff in search queries
     It is used in the transcriptions to indicate finger spelled words.
-*** TODO All handshapes/places chars should allow diacritic
-    I.e. each handshape (except in character classes, or in quotes) should
-    allow for an optional diacritic.
 *** TODO Character class for 'förs'
     All arrows, not including 'contact'.
 *** TODO Character class for 'circle'
@@ -230,6 +227,12 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Circling/curving/hitting/twisting should allow modifier
+   CLOSED: [2018-01-28 Sun 01:22]
+** DONE All handshapes/places chars should allow diacritic
+   CLOSED: [2018-01-28 Sun 01:20]
+   I.e. each handshape (except in character classes, or in quotes) should
+   allow for an optional diacritic.
 ** DONE Focus indicator border should be light turquoise
    CLOSED: [2018-01-21 Sun 02:07]
    Something matching the current color theme, rather than the currently blue

@@ -242,6 +242,18 @@ function parseQuery(queryStr) {
         "^": "[􌤺􌥛􌤻􌤹􌥚]",          // one relation symbol
         ":": "[􌥓􌥔􌤴􌥕􌤵􌥖][􌤶􌥗􌤷􌥘􌤸􌥙]"  // one attitude symbol
     };
+    // Allow relation symbol after all unquoted positions & handshapes.
+    "􌤆􌤂􌥞􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛􌤜􌤞􌤠􌥀􌤡􌥜􌤑􌤒􌤓􌤕􌤔􌤖􌤗􌤙􌤘􌤚􌤤􌥄􌤣􌤧􌥋􌥉􌦫􌤩􌤎􌥇􌦬􌤦􌤲􌤱􌥑􌤢􌥂􌤪􌥎􌥈􌤨􌤿􌥌􌥆􌤫􌦭􌤬􌥅􌤥􌥊􌤽􌤯􌤭􌤮􌤰􌤳􌥃􌥒􌥟􌦪"
+        .split(/(?!$)/mu).forEach(function (char) {
+            metachars[char] = char + '[􌤺􌥛􌤻􌤹􌥚]?';
+        });
+    // Allow direction symbol under circling (old/frontal/horizontal/sagittal),
+    // curving, hitting, twisting.
+    "􌥯􌥰􌦮􌦯􌦰􌥱􌥲".
+        split(/(?!$)/mu).forEach(function (char) {
+            metachars[char] = char + '[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂]?';
+        });
+
     var term = "";
     var quote = "";
 
