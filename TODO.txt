@@ -154,7 +154,6 @@
    the old array, instead of object, approach?)
 ** TODO Repeated search should not reload search result
 ** TODO Add CC license text + note data source
-** TODO Add link to lexicon from transcription article
 * Transcription Intro Article
 ** TODO Update terminology
    Weak/strong should be replaced by ipsilateral/contralateral (ipsi/contra).
@@ -223,9 +222,8 @@
 
    Mouseover text should clearly state what will happen upon the next click.
 * Unicode typeface
-** TODO Field III should be raised a bit
-   To allow for larger simplified circles, and room for the arrows below
-   circle/twist etc.
+** TODO Remove strong/weak terminology from font article
+   Replace with the usual left/right (do this in Swedish too).
 ** TODO Add 'neutral space' symbol + modifiers
 *** TODO Modify transcription of ARGENTINA/BEATLES/ORKESTER
     These signs could all benefit from having the left hand transcribed with
@@ -234,6 +232,9 @@
     http://teckensprakslexikon.su.se/ord/10019 ARGENTINA
     http://teckensprakslexikon.su.se/ord/15318 BEATLES
     http://teckensprakslexikon.su.se/ord/08301 ORKESTER
+** DONE Field III should be raised a bit
+   To allow for larger simplified circles, and room for the arrows below
+   circle/twist etc.
 ** DONE Add simplified 'circle' notation
    CLOSED: [2017-10-21 Sat 17:26]
 * Transcription app
@@ -245,6 +246,11 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Add link to lexicon from other articles
+   CLOSED: [2018-02-01 Thu 08:51]
+*** DONE freesans-swl.html
+*** DONE index.html
+*** DONE intro.html
 ** DONE Circling/curving/hitting/twisting should allow modifier
    CLOSED: [2018-01-28 Sun 01:22]
 ** DONE All handshapes/places chars should allow diacritic
