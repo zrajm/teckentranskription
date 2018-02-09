@@ -2561,52 +2561,6 @@
   </section>
 
   <section>
-    <h1>Fixa till diakritiska symboler</h1>
-
-    <p>Alla modifierande symboler behöver vara av ”OT Glyph Class”:en
-    ”<code>mark</code>”, och eftersom denna information inte följer med då man
-    kopierar symbolerna behöver detta justeras för hand:
-
-    <p>Följande 22 symboler (i kodpunktsordning) behöver justeras:
-
-      <pre>U+10c936 attitude_turned_leftward
-U+10c937 attitude_turned_forward
-U+10c938 attitude_turned_upward
-U+10c939 relation_above
-U+10c93a relation_beside
-U+10c93b relation_behind
-<hr>
-U+10c957 attitude_turned_rightward
-U+10c958 attitude_turned_backward
-U+10c959 attitude_turned_downward
-U+10c95a relation_below
-U+10c95b relation_ahead
-<hr>
-U+10c961 modifier_medial_contact
-<hr>
-U+10c97d modifier_rightward
-U+10c97e modifier_forward
-U+10c97f modifier_upward
-U+10c980 modifier_downward
-U+10c982 modifier_toward_each_other
-<hr>
-U+10c988 modifier_leftward
-U+10c989 modifier_sideways
-U+10c98a modifier_backwards
-U+10c98b modifier_depthwise
-U+10c98c modifier_vertically</pre>
-
-    <p>För var och en av ovanstående symboler, gör följande:
-
-    <ol>
-      <li>Markera symbolen i fråga i fontvyn och tryck <i>Ctrl-I</i> (eller
-      välj ”Element &gt; Glyph Info…” i menyn).
-
-      <li>Gå till ”Unicode”-tabben i ”Glyph Info” fönstret, och byt ”OT Glyph Class” till ”<code>mark</code>”.
-    </ol>
-  </section>
-
-  <section>
     <h1>Skapa regler för diakritiska tecken</h1>
 
     <ol>
