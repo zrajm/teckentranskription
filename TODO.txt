@@ -222,23 +222,6 @@
 
    Mouseover text should clearly state what will happen upon the next click.
 * Unicode typeface
-** [7/8] Reimport GNU FreeSans glyphs into font
-*** DONE Add unmodified GNU FreeSans + SFD file thereof
-    CLOSED: [2018-02-05 Mon 08:45]
-*** DONE Wipe FreeSans-SWL clean with GNU FreeSans
-    CLOSED: [2018-02-05 Mon 15:27]
-*** DONE Update 'sfntRevision'
-    CLOSED: [2018-02-09 Fri 14:25]
-*** DONE Add FreeSans-SWL global metadata
-    CLOSED: [2018-02-09 Fri 14:42]
-    Set font name, copyright notice etc. for freesans-swl.
-*** DONE Set capital height guideline
-    CLOSED: [2018-02-09 Fri 14:56]
-*** DONE Add sign language symbols from previous font
-    CLOSED: [2018-02-09 Fri 17:26]
-*** DONE Add names to sign language symbols
-    CLOSED: [2018-02-09 Fri 17:43]
-*** TODO Add character lookup tables
 ** [0/5] Add latest work into font
 *** TODO New circle symbols
 *** TODO Increase height of articulation symbols
@@ -271,6 +254,24 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** [8/8] Reimport GNU FreeSans glyphs into font
+*** DONE Add unmodified GNU FreeSans + SFD file thereof
+    CLOSED: [2018-02-05 Mon 08:45]
+*** DONE Wipe FreeSans-SWL clean with GNU FreeSans
+    CLOSED: [2018-02-05 Mon 15:27]
+*** DONE Update 'sfntRevision'
+    CLOSED: [2018-02-09 Fri 14:25]
+*** DONE Add FreeSans-SWL global metadata
+    CLOSED: [2018-02-09 Fri 14:42]
+    Set font name, copyright notice etc. for freesans-swl.
+*** DONE Set capital height guideline
+    CLOSED: [2018-02-09 Fri 14:56]
+*** DONE Add sign language symbols from previous font
+    CLOSED: [2018-02-09 Fri 17:26]
+*** DONE Add names to sign language symbols
+    CLOSED: [2018-02-09 Fri 17:43]
+*** DONE Add character lookup tables
+    CLOSED: [2018-02-09 Fri 18:21]
 ** DONE Remove strong/weak terminology from font article
    CLOSED: [2018-02-09 Fri 18:04]
    Replace with the usual left/right (do this in Swedish too).
