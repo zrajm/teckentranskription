@@ -249,8 +249,6 @@
     Name: position_elbow_pit
 *** TODO Add symbol for neutral space
     Name: position_neutral_space
-** TODO Remove strong/weak terminology from font article
-   Replace with the usual left/right (do this in Swedish too).
 ** TODO Add 'neutral space' symbol + modifiers
 *** TODO Modify transcription of ARGENTINA/BEATLES/ORKESTER
     These signs could all benefit from having the left hand transcribed with
@@ -273,6 +271,9 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Remove strong/weak terminology from font article
+   CLOSED: [2018-02-09 Fri 18:04]
+   Replace with the usual left/right (do this in Swedish too).
 ** DONE Add link to lexicon from other articles
    CLOSED: [2018-02-01 Thu 08:51]
 *** DONE freesans-swl.html
