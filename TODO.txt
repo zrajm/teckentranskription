@@ -222,7 +222,7 @@
 
    Mouseover text should clearly state what will happen upon the next click.
 * Unicode typeface
-** [4/7] Reimport GNU FreeSans glyphs into font
+** [5/7] Reimport GNU FreeSans glyphs into font
 *** DONE Add unmodified GNU FreeSans + SFD file thereof
     CLOSED: [2018-02-05 Mon 08:45]
 *** DONE Wipe FreeSans-SWL clean with GNU FreeSans
@@ -232,7 +232,8 @@
 *** DONE Add FreeSans-SWL global metadata
     CLOSED: [2018-02-09 Fri 14:42]
     Set font name, copyright notice etc. for freesans-swl.
-*** TODO Set capital height guideline
+*** DONE Set capital height guideline
+    CLOSED: [2018-02-09 Fri 14:56]
 *** TODO Add glyphs + glyph names
 *** TODO Add character lookup tables
 ** [0/5] Add latest work into font
