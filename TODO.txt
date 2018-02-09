@@ -222,7 +222,7 @@
 
    Mouseover text should clearly state what will happen upon the next click.
 * Unicode typeface
-** [6/8] Reimport GNU FreeSans glyphs into font
+** [7/8] Reimport GNU FreeSans glyphs into font
 *** DONE Add unmodified GNU FreeSans + SFD file thereof
     CLOSED: [2018-02-05 Mon 08:45]
 *** DONE Wipe FreeSans-SWL clean with GNU FreeSans
@@ -236,15 +236,19 @@
     CLOSED: [2018-02-09 Fri 14:56]
 *** DONE Add sign language symbols from previous font
     CLOSED: [2018-02-09 Fri 17:26]
-*** TODO Add glyph names
+*** DONE Add names to sign language symbols
+    CLOSED: [2018-02-09 Fri 17:43]
 *** TODO Add character lookup tables
 ** [0/5] Add latest work into font
 *** TODO New circle symbols
 *** TODO Increase height of articulation symbols
 *** TODO Rotate bending articulation symbol 180°
 *** TODO Add symbol for handshape llama
+    Name: handshape_llama
 *** TODO Add symbol for elbow pit
+    Name: position_elbow_pit
 *** TODO Add symbol for neutral space
+    Name: position_neutral_space
 ** TODO Remove strong/weak terminology from font article
    Replace with the usual left/right (do this in Swedish too).
 ** TODO Add 'neutral space' symbol + modifiers
