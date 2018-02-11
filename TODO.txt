@@ -222,9 +222,8 @@
 
    Mouseover text should clearly state what will happen upon the next click.
 * Unicode typeface
-** [0/5] Add latest work into font
-*** TODO New circle symbols
-*** TODO Increase height of articulation symbols
+** [1/6] Add latest work into font
+*** TODO Increase circle symbol size
 *** TODO Rotate bending articulation symbol 180°
 *** TODO Add symbol for handshape llama
     Name: handshape_llama
@@ -232,6 +231,34 @@
     Name: position_elbow_pit
 *** TODO Add symbol for neutral space
     Name: position_neutral_space
+*** DONE Raise articulation symbols somewhat
+    CLOSED: [2018-02-11 Sun 19:01]
+** [0/15] Round off coordinates in symbols
+   Among others, the following symbols (excluding symbols that could be turned
+   into references):
+*** TODO position_forehead
+*** TODO position_cheeks
+*** TODO handshape_rooster
+*** TODO handshape_rooster_bent
+*** TODO handshape_flat_with_thumb
+*** TODO interaction_type_hooking
+*** TODO interaction_type_exchanging
+*** TODO interaction_type_angling
+*** TODO motion_type_curving
+*** TODO motion_type_playing
+*** TODO motion_type_waving
+*** TODO motion_type_reshaping
+*** TODO interaction_type_alternating
+*** TODO interaction_type_entering
+*** TODO motion_type_circling
+** TODO Redesign 'alternating' symbol
+** TODO Turn placeholder symbols into references
+** TODO Correct symbols borrowed from other alphabets
+   E.g. symbols 'L', 'M', 'N' etc. that are copied from latin (or other
+   alphabets) should be identical to their originals. Verify and correct this
+   in the .sfd file.
+
+   (Can the TTF hints be accurately copied as well?)
 ** TODO Add 'neutral space' symbol + modifiers
 *** TODO Modify transcription of ARGENTINA/BEATLES/ORKESTER
     These signs could all benefit from having the left hand transcribed with
