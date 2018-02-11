@@ -222,11 +222,12 @@
 
    Mouseover text should clearly state what will happen upon the next click.
 * Unicode typeface
-** [4/6] Add latest work into font
-*** TODO Add symbol for elbow pit
-    Name: position_elbow_pit
+** [5/6] Add latest work into font
 *** TODO Add symbol for neutral space
     Name: position_neutral_space
+*** DONE Add symbol for elbow pit
+    CLOSED: [2018-02-12 Mon 00:31]
+    Name: position_elbow_pit
 *** DONE Add symbol for handshape llama
     CLOSED: [2018-02-12 Mon 00:27]
     Name: handshape_llama
