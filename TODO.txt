@@ -222,14 +222,15 @@
 
    Mouseover text should clearly state what will happen upon the next click.
 * Unicode typeface
-** [2/6] Add latest work into font
-*** TODO Rotate bending articulation symbol 180°
+** [3/6] Add latest work into font
 *** TODO Add symbol for handshape llama
     Name: handshape_llama
 *** TODO Add symbol for elbow pit
     Name: position_elbow_pit
 *** TODO Add symbol for neutral space
     Name: position_neutral_space
+*** DONE Rotate bending articulation symbol 180°
+    CLOSED: [2018-02-12 Mon 00:17]
 *** DONE Increase circle symbol size
     CLOSED: [2018-02-12 Mon 00:06]
 *** DONE Raise articulation symbols somewhat
