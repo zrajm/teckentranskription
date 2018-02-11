@@ -242,7 +242,6 @@
 *** TODO motion_type_circling
 ** TODO Relation symbols should align properly with 'dotted_circle'
 ** TODO Redesign 'alternating' symbol
-** TODO Turn placeholder symbols into references
 ** TODO Correct symbols borrowed from other alphabets
    E.g. symbols 'L', 'M', 'N' etc. that are copied from latin (or other
    alphabets) should be identical to their originals. Verify and correct this
