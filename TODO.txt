@@ -222,21 +222,6 @@
 
    Mouseover text should clearly state what will happen upon the next click.
 * Unicode typeface
-** [5/6] Add latest work into font
-*** TODO Add symbol for neutral space
-    Name: position_neutral_space
-*** DONE Add symbol for elbow pit
-    CLOSED: [2018-02-12 Mon 00:31]
-    Name: position_elbow_pit
-*** DONE Add symbol for handshape llama
-    CLOSED: [2018-02-12 Mon 00:27]
-    Name: handshape_llama
-*** DONE Rotate bending articulation symbol 180°
-    CLOSED: [2018-02-12 Mon 00:17]
-*** DONE Increase circle symbol size
-    CLOSED: [2018-02-12 Mon 00:06]
-*** DONE Raise articulation symbols somewhat
-    CLOSED: [2018-02-11 Sun 19:01]
 ** [0/15] Round off coordinates in symbols
    Among others, the following symbols (excluding symbols that could be turned
    into references):
@@ -286,6 +271,22 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** [6/6] Add latest work into font
+*** DONE Add symbol for neutral space
+    CLOSED: [2018-02-12 Mon 00:38]
+    Name: position_neutral_space
+*** DONE Add symbol for elbow pit
+    CLOSED: [2018-02-12 Mon 00:31]
+    Name: position_elbow_pit
+*** DONE Add symbol for handshape llama
+    CLOSED: [2018-02-12 Mon 00:27]
+    Name: handshape_llama
+*** DONE Rotate bending articulation symbol 180°
+    CLOSED: [2018-02-12 Mon 00:17]
+*** DONE Increase circle symbol size
+    CLOSED: [2018-02-12 Mon 00:06]
+*** DONE Raise articulation symbols somewhat
+    CLOSED: [2018-02-11 Sun 19:01]
 ** [8/8] Reimport GNU FreeSans glyphs into font
 *** DONE Add unmodified GNU FreeSans + SFD file thereof
     CLOSED: [2018-02-05 Mon 08:45]
