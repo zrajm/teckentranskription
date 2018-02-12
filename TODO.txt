@@ -222,6 +222,10 @@
 
    Mouseover text should clearly state what will happen upon the next click.
 * Unicode typeface
+** TODO Reimport GNU FreeFont from sources
+   Found out that the GNU FreeFont suite is actually available in Fontforge
+   (.sfd format). Should reimport all the glyphs using these sources.
+   https://ftp.gnu.org/gnu/freefont/freefont-src-20120503.tar.gz
 ** [0/15] Round off coordinates in symbols
    Among others, the following symbols (excluding symbols that could be turned
    into references):

@@ -272,6 +272,7 @@ function transcriptKeyboard(jqInput) {
             "</nobr>",
             ["􌦲", "Läge: Armvecket"],
             "<nobr>",
+            ["􌦴", "Flätas"],
             ["􌦮", "Cirkel i frontalplan"],
             ["􌦯", "Cirkel i horisontalplan"],
             ["􌦰", "Cirkel i medialplan"],
