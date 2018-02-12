@@ -241,11 +241,8 @@ function transcriptKeyboard(jqInput) {
             "<nobr>",
             ["􌥯", "Båge"],
             ["􌥰", "Cirkel"],
-            ["􌦮", "Cirkel i frontalplan"],
-            "</nobr>",
-            ["􌦯", "Cirkel i horisontalplan"],
-            ["􌦰", "Cirkel i medialplan"],
             ["􌥱", "Slås"],
+            "</nobr>",
             ["􌥲", "Vrids"],
             ["&nbsp;&nbsp;􌦈", "Åt vänster"],
             ["&nbsp;&nbsp;􌥽", "Åt höger"],
@@ -267,6 +264,18 @@ function transcriptKeyboard(jqInput) {
             ["􌥠", "Separator mellan segment"],
             ["􌦩", "Separator mellan händer"],
             "</nobr>"
+        ], [
+            {class: "framtida"},
+            "<nobr><div style=\"display:inline-block;font-size:.5em;line-height:120%\">Följande symboler är nya<br>och används inte i lexikon än:</div> ",
+            ["􌦱", "Handform: Lamahanden"],
+            ["􌦳", "Läge: Neutrala läget"],
+            "</nobr>",
+            ["􌦲", "Läge: Armvecket"],
+            "<nobr>",
+            ["􌦮", "Cirkel i frontalplan"],
+            ["􌦯", "Cirkel i horisontalplan"],
+            ["􌦰", "Cirkel i medialplan"],
+            "</nobr>"
         ]].map(function (x) {
             var attr = x[0];
             return "<span class=\"" + attr.class + "\">" + x
@@ -287,6 +296,7 @@ function transcriptKeyboard(jqInput) {
                 ".forflyttning button { background-color: #C77B7B; }" +
                 ".rorelse      button { background-color: #C77BC7; }" +
                 ".annat        button { background-color: #FCAA5D; }" +
+                ".framtida     button { background-color: #7B7BC7; }" +
                 "</style>" +
                 keyboardHtml +
                 "</div>"
