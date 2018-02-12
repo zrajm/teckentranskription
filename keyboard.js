@@ -271,11 +271,12 @@ function transcriptKeyboard(jqInput) {
             ["􌦳", "Läge: Neutrala läget"],
             "</nobr>",
             ["􌦲", "Läge: Armvecket"],
-            "<nobr>",
             ["􌦴", "Flätas"],
             ["􌦮", "Cirkel i frontalplan"],
+            "<nobr>",
             ["􌦯", "Cirkel i horisontalplan"],
             ["􌦰", "Cirkel i medialplan"],
+            ["&nbsp;&nbsp;􌦵", "Från varann"],
             "</nobr>"
         ]].map(function (x) {
             var attr = x[0];

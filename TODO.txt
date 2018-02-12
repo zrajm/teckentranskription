@@ -155,6 +155,18 @@
 ** TODO Repeated search should not reload search result
 ** TODO Add CC license text + note data source
 * Transcription Intro Article
+** TODO Transcription problem: contact point
+   http://localhost/teckentranskription/lexicon.html#02993%2C08968
+
+   'To mean' and 'happening' look very similar in transcription, but they make
+   contact in very different places. How does the reader know where contact is
+   made? (Is there a rule of some kind? -- Or does the transcription need some
+   way of specifying the contact point?)
+** TODO Ponder replacing 'toward' and 'away from' with converge/diverge
+   Explore/ponder/research the fact that the modifier symbols '--> <--' and
+   '<-- -->' (which are written under circling, curving, hitting, twisting)
+   could maybe be better written with converging and diverging symbols
+   underneath the symbol it modifies.
 ** TODO Update terminology
    Weak/strong should be replaced by ipsilateral/contralateral (ipsi/contra).
 ** [0/2] Table filtering
@@ -222,6 +234,17 @@
 
    Mouseover text should clearly state what will happen upon the next click.
 * Unicode typeface
+** [1/3] Added symbols desired by Swedish sign language lexicon office
+*** TODO Add symbol for "independent" medial contact
+    Name: ???_medial_contact
+*** TODO Add symbol for bouncing motion
+    Name: motion_bounce
+*** DONE Add symbol for away from each other
+    CLOSED: [2018-02-12 Mon 17:38]
+    Name: modifier_away_from_each_other
+** TODO Prettify/widen modifier symbols
+   Side-to-side modifier symbols could benefit from being a bit wider, now that
+   the circle symbols they are placed beneath allow for that.
 ** TODO Reimport GNU FreeFont from sources
    Found out that the GNU FreeFont suite is actually available in Fontforge
    (.sfd format). Should reimport all the glyphs using these sources.
