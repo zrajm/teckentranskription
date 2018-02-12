@@ -254,7 +254,7 @@ function transcriptKeyboard(jqInput) {
             "<nobr>",
             ["&nbsp;&nbsp;􌦀", "Nedåt"],
             ["&nbsp;&nbsp;􌦌", "I höjdled"],
-            ["&nbsp;&nbsp;􌦂", "Mot varann"],
+            ["&nbsp;&nbsp;􌦂", "Mot varandra"],
             "</nobr>"
         ], [
             {class: "annat"},
@@ -276,7 +276,7 @@ function transcriptKeyboard(jqInput) {
             "<nobr>",
             ["􌦯", "Cirkel i horisontalplan"],
             ["􌦰", "Cirkel i medialplan"],
-            ["&nbsp;&nbsp;􌦵", "Från varann"],
+            ["&nbsp;&nbsp;􌦵", "Från varandra"],
             "</nobr>"
         ]].map(function (x) {
             var attr = x[0];
