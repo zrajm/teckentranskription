@@ -137,7 +137,7 @@
 </section>
 
 <section>
-  <h1>Symbolplacering</h1>
+  <h1 id=placering>Symbolplacering</h1>
 
   <p>Följande är avsett att visa placeringen av diakritiska symboler i
   förhållande till deras bassymboler.
@@ -2581,6 +2581,31 @@
       <td>Fontforge
       <td>För den som vill ändra/uppdatera typsnittet.
   </table>
+
+  <section>
+    <h1>Att generera Truetype i Fontforge</h1>
+
+    <p>Nedan är det inställningar jag använder när jag genererar Truetype
+    (.ttf) fil i Fontforge (<i>Ctrl-Shift-G</i> eller ”File &gt; Generate
+    Fonts…” i menyn).
+
+    <figure>
+      <img src="pic/fontforge-options.png">
+      <figcaption>
+      </figcaption>
+    </figure>
+
+    <p><b>Notera!</b> För att typsnittet ska funka bra på MacOSX behöver
+    alternativet ”Apple” (ironiskt nog) vara <i>avslaget</i> (som på bilden
+    ovan). – Om ”Apple”-alterativet istället är påslaget blir de diakritiska
+    symbolerna inte centrerade relativt sin huvudsymbol. (Diakritiska symboler
+    är: attitydvridning, relationssymboler, medial kontakt, och pilarna under
+    de handexterna rörelsearterna). (Om detta händer kan det ses tydligt
+    i <a href="#placering">jämförelsetabellerna längre upp på denna sida</a>).
+    Resultatet är ett snett intryck då det diakritiska tecknet används
+    tillsammans med en huvudsymbol som är smalare (􌥑􌤹) eller bredare (􌤿􌤹 eller
+    􌥲􌦊) än den diakritiska symbolen självt.
+  </section>
 </section>
 
 <section>
