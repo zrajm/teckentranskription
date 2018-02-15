@@ -1,6 +1,10 @@
 -*- org -*-
 
 * General
+** TODO Date for latest update of typeface
+   There should also be a link to a page with instructions for how to
+   (re-)install the typeface.
+** TODO Date for latest update of lexicon
 ** TODO Minify SVG
    https://jakearchibald.github.io/svgomg/
 ** TODO Homogenize CSS for all pages
