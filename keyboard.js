@@ -200,7 +200,7 @@ function transcriptKeyboard(jqInput) {
         ], [
             {class: "forflyttning"},
             "<nobr>",
-            ["&nbsp;&nbsp;􌥡", "Medial kontakt"],
+            ["&nbsp;&nbsp;􌥡", "Medial kontakt (modifierande)"],
             ["􌤟", "Kontakt"],
             ["􌦑", "Hålls stilla"],
             "</nobr>",
@@ -271,6 +271,7 @@ function transcriptKeyboard(jqInput) {
             ["􌦳", "Läge: Neutrala läget"],
             "</nobr>",
             ["􌦲", "Läge: Armvecket"],
+            ["􌦷", "Medial kontakt (oberoende)"],
             ["􌦴", "Flätas"],
             ["􌦮", "Cirkel i frontalplan"],
             ["􌦯", "Cirkel i horisontalplan"],
