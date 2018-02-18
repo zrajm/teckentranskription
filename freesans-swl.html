@@ -583,7 +583,7 @@
 </section>
 
 <section>
-  <h1>Symboltabell</h1>
+  <h1 id=symboler>Symboltabell</h1>
 
   <p>Detta typsnitt lägger till de symboler som saknas för att kunna
   transkribera svenskt teckenspråk till Unicode. Det är en vidareutbyggnad på
@@ -607,7 +607,7 @@
   <style>
     table.kodpunkter { text-align: center; }
     table.kodpunkter td:nth-child(2),
-    table.kodpunkter td:last-child:not([colspan]) {
+    table.kodpunkter td:nth-child(7) {
       font-family: monospace;
       text-align: left;
     }
@@ -626,6 +626,7 @@
       <th>2
       <th>Beskrivning
       <th>Namn
+      <th>Källa
     <tr class=used>
       <td>⌥q
       <td>U+10c900
@@ -633,22 +634,24 @@
       <td>!
       <td>
       <td align=left>läge: hjässan
-      <td>position_<wbr>crown
+      <td class=tt>position_<wbr>crown
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=unused>
       <td>
       <td>U+10c901
       <td lang=swl class=x2>􌤁
       <td>
       <td>
-      <td align=left colspan=2><i>används inte</i>
+      <td align=left colspan=3><i>används inte</i>
     <tr class=used>
       <td>⌥å
       <td>U+10c902
       <td lang=swl class=x2>􌤂
       <td>#
       <td>
-      <td align=left>läge: övre delen av ansiktet
-      <td>position_<wbr>face_<wbr>upper
+      <td align=left>läge: ansiktet, övre delen
+      <td class=tt>position_<wbr>face_<wbr>upper
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⌥w
       <td>U+10c903
@@ -656,7 +659,8 @@
       <td>$
       <td>
       <td align=left>läge: pannan
-      <td>position_<wbr>forehead
+      <td class=tt>position_<wbr>forehead
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⌥ä
       <td>U+10c904
@@ -664,7 +668,8 @@
       <td>%
       <td>
       <td align=left>läge: ögonen
-      <td>position_<wbr>eyes
+      <td class=tt>position_<wbr>eyes
+      <td>1982, 1993 <br><span>FIXME: none between 1982 and 1993?</span>
     <tr class=used>
       <td>⌥ö
       <td>U+10c905
@@ -672,7 +677,8 @@
       <td>&amp;
       <td>
       <td align=left>läge: ögat
-      <td>position_<wbr>eye
+      <td class=tt>position_<wbr>eye
+      <td>1982, 1989, 1993, 1994
     <tr class=used>
       <td>⌥o
       <td>U+10c906
@@ -680,23 +686,25 @@
       <td>)
       <td>
       <td align=left>läge: ansiktet / huvudhöjd
-      <td>position_<wbr>face
+      <td class=tt>position_<wbr>face
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⌥m
       <td>U+10c907
       <td lang=swl class=x2>􌤇
       <td>*
       <td>
-      <td align=left>läge: högra örat / sidan av huvudet
-      <td>position_<wbr>ear_<wbr>right
+      <td align=left>läge: örat, höger / sidan av huvudet
+      <td class=tt>position_<wbr>ear_<wbr>right
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⌥b
       <td>U+10c908
       <td lang=swl class=x2>􌤈
       <td>+
       <td>
-      <td align=left>läge: vänstra örat / sidan av huvudet
-      <td>position_<wbr>ear_<wbr>left
+      <td align=left>läge: örat, vänster / sidan av huvudet
+      <td class=tt>position_<wbr>ear_<wbr>left
     <tr class=used>
       <td>⇧!
       <td>U+10c909
@@ -704,23 +712,25 @@
       <td>,
       <td>
       <td align=left>läge: kinderna
-      <td>position_<wbr>cheeks
+      <td class=tt>position_<wbr>cheeks
+      <td>1982, 1993 <br><span>FIXME: none between 1982 and 1993?</span>
     <tr class=used>
       <td>⇧)
       <td>U+10c90a
       <td lang=swl class=x2>􌤊
       <td>-
       <td>
-      <td align=left>läge: högra kinden
-      <td>position_<wbr>cheek_<wbr>right
+      <td align=left>läge: kinden, höger
+      <td class=tt>position_<wbr>cheek_<wbr>right
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧(
       <td>U+10c90b
       <td lang=swl class=x2>􌤋
       <td>.
       <td>
-      <td align=left>läge: vänstra kinden
-      <td>position_<wbr>cheek_<wbr>left
+      <td align=left>läge: kinden, vänster
+      <td class=tt>position_<wbr>cheek_<wbr>left
     <tr class=used>
       <td>⌥e
       <td>U+10c90c
@@ -728,14 +738,15 @@
       <td>/
       <td>
       <td align=left>läge: munnen
-      <td>position_<wbr>mouth
+      <td class=tt>position_<wbr>mouth
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=unused>
       <td>
       <td>U+10c90d
       <td lang=swl class=x2>􌤍
       <td>
       <td>
-      <td align=left colspan=2><i>används inte</i>
+      <td align=left colspan=3><i>används inte</i>
     <tr class=used>
       <td>o
       <td>U+10c90e
@@ -743,21 +754,22 @@
       <td>l
       <td>s
       <td align=left>läge: lilla O-handen
-      <td>handshape_<wbr>small_<wbr>o
+      <td class=tt>handshape_<wbr>small_<wbr>o
+      <td>1993
     <tr class=unused>
       <td>
       <td>U+10c90f
       <td lang=swl class=x2>􌤏
       <td>
       <td>
-      <td align=left colspan=2><i>används inte</i>
+      <td align=left colspan=3><i>används inte</i>
     <tr class=unused>
       <td>
       <td>U+10c910
       <td lang=swl class=x2>􌤐
       <td>
       <td>
-      <td align=left colspan=2><i>används inte</i>
+      <td align=left colspan=3><i>används inte</i>
     <tr class=used>
       <td>⌥t
       <td>U+10c911
@@ -765,7 +777,8 @@
       <td>0
       <td>
       <td align=left>läge: överarmen
-      <td>position_<wbr>arm_<wbr>upper
+      <td class=tt>position_<wbr>arm_<wbr>upper
+      <td>1982, 1989, 1993, 1994
     <tr class=used>
       <td>⌥y
       <td>U+10c912
@@ -773,7 +786,8 @@
       <td>1
       <td>
       <td align=left>läge: underarmen
-      <td>position_<wbr>arm_<wbr>lower
+      <td class=tt>position_<wbr>arm_<wbr>lower
+      <td>1993, 1994
     <tr class=used>
       <td>⌥j
       <td>U+10c913
@@ -781,23 +795,26 @@
       <td>2
       <td>
       <td align=left>läge: bröstet
-      <td>position_<wbr>chest
+      <td class=tt>position_<wbr>chest
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⌥k
       <td>U+10c914
       <td lang=swl class=x2>􌤔
       <td>3
       <td>
-      <td align=left>läge: högra sidan av bröstet
-      <td>position_<wbr>chest_<wbr>right
+      <td align=left>läge: bröstet, höger sida
+      <td class=tt>position_<wbr>chest_<wbr>right
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⌥h
       <td>U+10c915
       <td lang=swl class=x2>􌤕
       <td>4
       <td>
-      <td align=left>läge: vänstra sidan av bröstet
-      <td>position_<wbr>chest_<wbr>left
+      <td align=left>läge: bröstet, vänster sida
+      <td class=tt>position_<wbr>chest_<wbr>left
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⌥d
       <td>U+10c916
@@ -805,7 +822,8 @@
       <td>5
       <td>
       <td align=left>läge: magen / mellangärdet
-      <td>position_<wbr>stomach
+      <td class=tt>position_<wbr>stomach
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⌥f
       <td>U+10c917
@@ -813,23 +831,25 @@
       <td>6
       <td>
       <td align=left>läge: höfterna
-      <td>position_<wbr>hips
+      <td class=tt>position_<wbr>hips
+      <td>1982, 1993 <br><span>FIXME: none between 1982 and 1993?</span>
     <tr class=used>
       <td>⌥g
       <td>U+10c918
       <td lang=swl class=x2>􌤘
       <td>7
       <td>
-      <td align=left>läge: högra höften
-      <td>position_<wbr>hip_<wbr>right
+      <td align=left>läge: höften, höger sida
+      <td class=tt>position_<wbr>hip_<wbr>right
+      <td>1982, 1989, 1993, 1994
     <tr class=used>
       <td>⌥l
       <td>U+10c919
       <td lang=swl class=x2>􌤙
       <td>8
       <td>
-      <td align=left>läge: vänstra höften
-      <td>position_<wbr>hip_<wbr>left
+      <td align=left>läge: höften, vänster sida
+      <td class=tt>position_<wbr>hip_<wbr>left
     <tr class=used>
       <td>⌥s
       <td>U+10c91a
@@ -837,7 +857,8 @@
       <td>9
       <td>
       <td align=left>läge: benet
-      <td>position_<wbr>leg
+      <td class=tt>position_<wbr>leg
+      <td>1982, 1989, 1993, 1994
     <tr class=used>
       <td>⌥r
       <td>U+10c91b
@@ -845,7 +866,8 @@
       <td>:
       <td>
       <td align=left>läge: hakan
-      <td>position_<wbr>chin
+      <td class=tt>position_<wbr>chin
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⌥p
       <td>U+10c91c
@@ -853,14 +875,15 @@
       <td>;
       <td>
       <td align=left>läge: nacken
-      <td>position_<wbr>neck_<wbr>back
+      <td class=tt>position_<wbr>neck_<wbr>back
+      <td>1982, 1989, 1993, 1994
     <tr class=unused>
       <td>
       <td>U+10c91d
       <td lang=swl class=x2>􌤝
       <td>
       <td>
-      <td align=left colspan=2><i>används inte</i>
+      <td align=left colspan=3><i>används inte</i>
     <tr class=used>
       <td>⌥i
       <td>U+10c91e
@@ -868,7 +891,8 @@
       <td>&lt;
       <td>
       <td align=left>läge: halsen
-      <td>position_<wbr>neck_<wbr>front
+      <td class=tt>position_<wbr>neck_<wbr>front
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>p
       <td>U+10c91f
@@ -876,7 +900,8 @@
       <td>=
       <td>)
       <td align=left>interaktionsart: kontakt
-      <td>interaction_<wbr>type_<wbr>contact
+      <td class=tt>interaction_<wbr>type_<wbr>contact
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⌥x
       <td>U+10c920
@@ -884,15 +909,17 @@
       <td>&gt;
       <td>
       <td align=left>läge: axlarna
-      <td>position_<wbr>shoulders
+      <td class=tt>position_<wbr>shoulders
+      <td>1982, 1993 <br><span>FIXME: none between 1982 and 1993?</span>
     <tr class=used>
       <td>⌥c
       <td>U+10c921
       <td lang=swl class=x2>􌤡
       <td>?
       <td>
-      <td align=left>läge: högra axeln
-      <td>position_<wbr>shoulder_<wbr>right
+      <td align=left>läge: axeln, höger
+      <td class=tt>position_<wbr>shoulder_<wbr>right
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧J
       <td>U+10c922
@@ -900,7 +927,8 @@
       <td>A
       <td>h
       <td align=left>handform: flata handen
-      <td>handshape_<wbr>flat
+      <td class=tt>handshape_<wbr>flat
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>v
       <td>U+10c923
@@ -908,7 +936,8 @@
       <td>B
       <td>J
       <td align=left>handform: vinkelhanden
-      <td>handshape_<wbr>angled
+      <td class=tt>handshape_<wbr>angled
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧A
       <td>U+10c924
@@ -916,7 +945,8 @@
       <td>C
       <td>K
       <td align=left>handform: A-handen
-      <td>handshape_<wbr>a
+      <td class=tt>handshape_<wbr>a
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>z
       <td>U+10c925
@@ -924,7 +954,8 @@
       <td>D
       <td>l
       <td align=left>handform: klohanden
-      <td>handshape_<wbr>claw
+      <td class=tt>handshape_<wbr>claw
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧G
       <td>U+10c926
@@ -932,7 +963,8 @@
       <td>E
       <td>m
       <td align=left>handform: knutna handen
-      <td>handshape_<wbr>fist
+      <td class=tt>handshape_<wbr>fist
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧B
       <td>U+10c927
@@ -940,7 +972,8 @@
       <td>F
       <td>N
       <td align=left>handform: tumhanden
-      <td>handshape_<wbr>thumb
+      <td class=tt>handshape_<wbr>thumb
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>l
       <td>U+10c928
@@ -948,7 +981,8 @@
       <td>G
       <td>o
       <td align=left>handform: L-handen
-      <td>handshape_<wbr>l
+      <td class=tt>handshape_<wbr>l
+      <td>1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧D
       <td>U+10c929
@@ -956,7 +990,8 @@
       <td>H
       <td>p
       <td align=left>handform: nyphanden
-      <td>handshape_<wbr>pinch
+      <td class=tt>handshape_<wbr>pinch
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧Q
       <td>U+10c92a
@@ -964,7 +999,8 @@
       <td>I
       <td>q
       <td align=left>handform: krokfingret
-      <td>handshape_<wbr>hook_<wbr>finger
+      <td class=tt>handshape_<wbr>hook_<wbr>finger
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧Ö
       <td>U+10c92b
@@ -972,7 +1008,8 @@
       <td>J
       <td>R
       <td align=left>handform: hållhanden
-      <td>handshape_<wbr>holding
+      <td class=tt>handshape_<wbr>holding
+      <td>1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧R
       <td>U+10c92c
@@ -980,7 +1017,8 @@
       <td>K
       <td>r
       <td align=left>handform: långfingret
-      <td>handshape_<wbr>middle_<wbr>finger
+      <td class=tt>handshape_<wbr>middle_<wbr>finger
+      <td>1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧V
       <td>U+10c92d
@@ -988,7 +1026,8 @@
       <td>L
       <td>t
       <td align=left>handform: V-handen
-      <td>handshape_<wbr>v
+      <td class=tt>handshape_<wbr>v
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>ä
       <td>U+10c92e
@@ -996,7 +1035,8 @@
       <td>M
       <td>T
       <td align=left>handform: tupphanden
-      <td>handshape_<wbr>rooster
+      <td class=tt>handshape_<wbr>rooster
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧Å
       <td>U+10c92f
@@ -1004,7 +1044,8 @@
       <td>N
       <td>V
       <td align=left>handform: böjda tupphanden
-      <td>handshape_<wbr>rooster_<wbr>bent
+      <td class=tt>handshape_<wbr>rooster_<wbr>bent
+      <td>1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧W
       <td>U+10c930
@@ -1012,7 +1053,8 @@
       <td>O
       <td>w
       <td align=left>handform: W-handen
-      <td>handshape_<wbr>w
+      <td class=tt>handshape_<wbr>w
+      <td>1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧I
       <td>U+10c931
@@ -1020,7 +1062,8 @@
       <td>P
       <td>W
       <td align=left>handform: lillfingret
-      <td>handshape_<wbr>little_<wbr>finger
+      <td class=tt>handshape_<wbr>little_<wbr>finger
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧H
       <td>U+10c932
@@ -1028,7 +1071,8 @@
       <td>Q
       <td>y
       <td align=left>handform: stora nyphanden
-      <td>handshape_<wbr>pinch_<wbr>large
+      <td class=tt>handshape_<wbr>pinch_<wbr>large
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧X
       <td>U+10c933
@@ -1036,7 +1080,7 @@
       <td>R
       <td>Z
       <td align=left>handform: X-handen
-      <td>handshape_<wbr>x
+      <td class=tt>handshape_<wbr>x
     <tr class=used>
       <td>3
       <td>U+10c934
@@ -1044,7 +1088,8 @@
       <td>S
       <td>
       <td align=left>attitydriktning: framåtriktad
-      <td>attitude_<wbr>pointed_<wbr>forward
+      <td class=tt>attitude_<wbr>pointed_<wbr>forward
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>5
       <td>U+10c935
@@ -1052,7 +1097,8 @@
       <td>T
       <td>
       <td align=left>attitydriktning: uppåtriktad
-      <td>attitude_<wbr>pointed_<wbr>upward
+      <td class=tt>attitude_<wbr>pointed_<wbr>upward
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧!
       <td>U+10c936
@@ -1060,7 +1106,8 @@
       <td>U
       <td>
       <td align=left>attitydvändning: vänstervänd
-      <td>attitude_<wbr>turned_<wbr>leftward
+      <td class=tt>attitude_<wbr>turned_<wbr>leftward
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧#
       <td>U+10c937
@@ -1068,7 +1115,8 @@
       <td>V
       <td>
       <td align=left>attitydvändning: framåtvänd
-      <td>attitude_<wbr>turned_<wbr>forward
+      <td class=tt>attitude_<wbr>turned_<wbr>forward
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧%
       <td>U+10c938
@@ -1076,7 +1124,8 @@
       <td>W
       <td>
       <td align=left>attitydvändning: uppåtvänd
-      <td>attitude_<wbr>turned_<wbr>upward
+      <td class=tt>attitude_<wbr>turned_<wbr>upward
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>t
       <td>U+10c939
@@ -1084,7 +1133,8 @@
       <td>X
       <td>
       <td align=left>relation: ovanför
-      <td>relation_<wbr>above
+      <td class=tt>relation_<wbr>above
+      <td>1993, 1994
     <tr class=used>
       <td>n
       <td>U+10c93a
@@ -1092,15 +1142,17 @@
       <td>Y
       <td>
       <td align=left>relation: brevid
-      <td>relation_<wbr>beside
+      <td class=tt>relation_<wbr>beside
+      <td>1993, 1994
     <tr class=used>
       <td>b
       <td>U+10c93b
       <td lang=swl class=x2>◌􌤻
       <td>Z
       <td>
-      <td align=left>relation: bakom
-      <td>relation_<wbr>behind
+      <td align=left>relation: innanför/bakom
+      <td class=tt>relation_<wbr>behind
+      <td>1993, 1994
     <tr class=used>
       <td>⌥a
       <td>U+10c93c
@@ -1108,7 +1160,8 @@
       <td>[
       <td>
       <td align=left>läge: näsan
-      <td>position_<wbr>nose
+      <td class=tt>position_<wbr>nose
+      <td>(1977), 1982, 1989, 1993, 1994
     <tr class=used>
       <td>å
       <td>U+10c93d
@@ -1116,7 +1169,8 @@
       <td>n
       <td>U
       <td align=left>handform: dubbelkroken
-      <td>handshape_<wbr>hook_<wbr>double
+      <td class=tt>handshape_<wbr>hook_<wbr>double
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⌥n
       <td>U+10c93e
@@ -1124,7 +1178,8 @@
       <td>]
       <td>
       <td align=left>läge: öronen / sidorna av huvudet
-      <td>position_<wbr>ears
+      <td class=tt>position_<wbr>ears
+      <td>1993 <br><span>FIXME: really no before 1993?</span>
     <tr class=used>
       <td>⇧M
       <td>U+10c93f
@@ -1132,22 +1187,24 @@
       <td>o
       <td>v
       <td align=left>handform: M-handen
-      <td>handshape_<wbr>m
+      <td class=tt>handshape_<wbr>m
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⌥z
       <td>U+10c940
       <td lang=swl class=x2>􌥀
       <td>_
       <td>
-      <td align=left>läge: vänstra axeln
-      <td>position_<wbr>shoulder_<wbr>left
+      <td align=left>läge: axeln, vänster
+      <td class=tt>position_<wbr>shoulder_<wbr>left
+      <td>1977, 1993, 1994
     <tr class=unused>
       <td>
       <td>U+10c941
       <td lang=swl class=x2>􌥁
       <td>
       <td>
-      <td align=left colspan=2><i>används inte</i>
+      <td align=left colspan=3><i>används inte</i>
     <tr class=used>
       <td>j
       <td>U+10c942
@@ -1155,7 +1212,8 @@
       <td>a
       <td>I
       <td align=left>handform: flata tumhanden
-      <td>handshape_<wbr>flat_<wbr>with_<wbr>thumb
+      <td class=tt>handshape_<wbr>flat_<wbr>with_<wbr>thumb
+      <td>1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧Y
       <td>U+10c943
@@ -1163,7 +1221,8 @@
       <td>b
       <td>i
       <td align=left>handform: sprethanden
-      <td>handshape_<wbr>spread
+      <td class=tt>handshape_<wbr>spread
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧Ä
       <td>U+10c944
@@ -1171,7 +1230,8 @@
       <td>c
       <td>j
       <td align=left>handform: tumvinkelhanden
-      <td>handshape_<wbr>angled_<wbr>with_<wbr>thumb
+      <td class=tt>handshape_<wbr>angled_<wbr>with_<wbr>thumb
+      <td>1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧S
       <td>U+10c945
@@ -1179,7 +1239,8 @@
       <td>d
       <td>k
       <td align=left>handform: S-handen
-      <td>handshape_<wbr>s
+      <td class=tt>handshape_<wbr>s
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧O
       <td>U+10c946
@@ -1187,7 +1248,8 @@
       <td>e
       <td>L
       <td align=left>handform: O-handen
-      <td>handshape_<wbr>o
+      <td class=tt>handshape_<wbr>o
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧E
       <td>U+10c947
@@ -1195,7 +1257,8 @@
       <td>f
       <td>M
       <td align=left>handform: E-handen
-      <td>handshape_<wbr>e
+      <td class=tt>handshape_<wbr>e
+      <td>1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧L
       <td>U+10c948
@@ -1203,7 +1266,8 @@
       <td>g
       <td>n
       <td align=left>handform: pekfingret
-      <td>handshape_<wbr>index_<wbr>finger
+      <td class=tt>handshape_<wbr>index_<wbr>finger
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>c
       <td>U+10c949
@@ -1211,7 +1275,8 @@
       <td>h
       <td>O
       <td align=left>handform: raka måtthanden
-      <td>handshape_<wbr>measure_<wbr>straight
+      <td class=tt>handshape_<wbr>measure_<wbr>straight
+      <td>1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧T
       <td>U+10c94a
@@ -1219,7 +1284,8 @@
       <td>i
       <td>P
       <td align=left>handform: T-handen
-      <td>handshape_<wbr>t
+      <td class=tt>handshape_<wbr>t
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧C
       <td>U+10c94b
@@ -1227,7 +1293,8 @@
       <td>j
       <td>Q
       <td align=left>handform: måtthanden
-      <td>handshape_<wbr>measure
+      <td class=tt>handshape_<wbr>measure
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧N
       <td>U+10c94c
@@ -1235,14 +1302,15 @@
       <td>k
       <td>S
       <td align=left>handform: N-handen
-      <td>handshape_<wbr>n
+      <td class=tt>handshape_<wbr>n
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=unused>
       <td>
       <td>U+10c94d
       <td lang=swl class=x2>􌥍
       <td>
       <td>
-      <td align=left colspan=2><i>används inte</i>
+      <td align=left colspan=3><i>används inte</i>
     <tr class=used>
       <td>⇧K
       <td>U+10c94e
@@ -1250,21 +1318,22 @@
       <td>m
       <td>u
       <td align=left>handform: K-handen
-      <td>handshape_<wbr>k
+      <td class=tt>handshape_<wbr>k
+      <td>1982, 1989, 1993, 1994
     <tr class=unused>
       <td>
       <td>U+10c94f
       <td lang=swl class=x2>􌥏
       <td>
       <td>
-      <td align=left colspan=2><i>används inte</i>
+      <td align=left colspan=3><i>används inte</i>
     <tr class=unused>
       <td>
       <td>U+10c950
       <td lang=swl class=x2>􌥐
       <td>
       <td>
-      <td align=left colspan=2><i>används inte</i>
+      <td align=left colspan=3><i>används inte</i>
     <tr class=used>
       <td>i
       <td>U+10c951
@@ -1272,7 +1341,8 @@
       <td>p
       <td>x
       <td align=left>handform: flyghanden
-      <td>handshape_<wbr>flyer
+      <td class=tt>handshape_<wbr>flyer
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>y
       <td>U+10c952
@@ -1280,7 +1350,8 @@
       <td>q
       <td>X
       <td align=left>handform: stora långfingret
-      <td>handshape_<wbr>middle_<wbr>finger_<wbr>large
+      <td class=tt>handshape_<wbr>middle_<wbr>finger_<wbr>large
+      <td>1982, 1989, 1993, 1994
     <tr class=used>
       <td>1
       <td>U+10c953
@@ -1288,7 +1359,8 @@
       <td>r
       <td>
       <td align=left>attitydriktning: vänsterriktad
-      <td>attitude_<wbr>pointed_<wbr>leftward
+      <td class=tt>attitude_<wbr>pointed_<wbr>leftward
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>2
       <td>U+10c954
@@ -1296,15 +1368,17 @@
       <td>s
       <td>
       <td align=left>attitydriktning: högerriktad
-      <td>attitude_<wbr>pointed_<wbr>rightward
+      <td class=tt>attitude_<wbr>pointed_<wbr>rightward
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>4
       <td>U+10c955
       <td lang=swl class=x2>􌥕
       <td>t
       <td>
-      <td align=left>attitydriktning: bakåtriktad
-      <td>attitude_<wbr>pointed_<wbr>backward
+      <td align=left>attitydriktning: inåtriktad/bakåtriktad
+      <td class=tt>attitude_<wbr>pointed_<wbr>backward
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>6
       <td>U+10c956
@@ -1312,7 +1386,8 @@
       <td>u
       <td>
       <td align=left>attitydriktning: nedåtriktad
-      <td>attitude_<wbr>pointed_<wbr>downward
+      <td class=tt>attitude_<wbr>pointed_<wbr>downward
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧&quot;
       <td>U+10c957
@@ -1320,15 +1395,17 @@
       <td>v
       <td>
       <td align=left>attitydvändning: högervänd
-      <td>attitude_<wbr>turned_<wbr>rightward
+      <td class=tt>attitude_<wbr>turned_<wbr>rightward
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧¤
       <td>U+10c958
       <td lang=swl class=x2>􌥘
       <td>w
       <td>
-      <td align=left>attitydvändning: bakåtvänd
-      <td>attitude_<wbr>turned_<wbr>backward
+      <td align=left>attitydvändning: inåtvänd/bakåtvänd
+      <td class=tt>attitude_<wbr>turned_<wbr>backward
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧&amp;
       <td>U+10c959
@@ -1336,7 +1413,8 @@
       <td>x
       <td>
       <td align=left>attitydvändning: nedåtvänd
-      <td>attitude_<wbr>turned_<wbr>downward
+      <td class=tt>attitude_<wbr>turned_<wbr>downward
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>g
       <td>U+10c95a
@@ -1344,7 +1422,8 @@
       <td>y
       <td>
       <td align=left>relation: nedanför
-      <td>relation_<wbr>below
+      <td class=tt>relation_<wbr>below
+      <td>1993, 1994
     <tr class=used>
       <td>m
       <td>U+10c95b
@@ -1352,7 +1431,8 @@
       <td>z
       <td>
       <td align=left>relation: framför
-      <td>relation_<wbr>ahead
+      <td class=tt>relation_<wbr>ahead
+      <td>1993, 1994
     <tr class=used>
       <td>⌥v
       <td>U+10c95c
@@ -1360,22 +1440,24 @@
       <td>~
       <td>
       <td align=left>läge: armen
-      <td>position_<wbr>arm
+      <td class=tt>position_<wbr>arm
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=unused>
       <td>
       <td>U+10c95d
       <td lang=swl class=x2>􌥝
       <td>
       <td>
-      <td align=left colspan=2><i>används inte</i>
+      <td align=left colspan=3><i>används inte</i>
     <tr class=used>
       <td>⌥u
       <td>U+10c95e
       <td lang=swl class=x2>􌥞
       <td>£
       <td>
-      <td align=left>läge: nedre delen av ansiktet
-      <td>position_<wbr>face_<wbr>lower
+      <td align=left>läge: ansiktet, nedre delen
+      <td class=tt>position_<wbr>face_<wbr>lower
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧Z
       <td>U+10c95f
@@ -1383,15 +1465,17 @@
       <td>å
       <td>Y
       <td align=left>handform: runda långfingret
-      <td>handshape_<wbr>middle_<wbr>finger_<wbr>round
+      <td class=tt>handshape_<wbr>middle_<wbr>finger_<wbr>round
+      <td>1982, 1989, 1993, 1994
     <tr class=used>
       <td>7
       <td>U+10c960
       <td lang=swl class=x2>􌥠
       <td>
       <td>!
-      <td align=left>övrigt: separator mellan tecken
-      <td>other_<wbr>separator_<wbr>segments
+      <td align=left>övrigt: separator mellan segment
+      <td class=tt>other_<wbr>separator_<wbr>segments
+      <td>1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧P
       <td>U+10c961
@@ -1399,39 +1483,44 @@
       <td>
       <td>#
       <td align=left>interaktionsart: medial kontakt
-      <td>modifier_<wbr>medial_<wbr>contact
+      <td class=tt>modifier_<wbr>medial_<wbr>contact
+      <td>
     <tr class=used>
       <td>⌥⇧!
       <td>U+10c962
       <td lang=swl class=x2>􌥢
       <td>
       <td>$
-      <td align=left>rörelseriktning: förs åt vänster
-      <td>motion_<wbr>leftward
+      <td align=left>rörelseriktning: förs vänster
+      <td class=tt>motion_<wbr>leftward
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⌥⇧&quot;
       <td>U+10c963
       <td lang=swl class=x2>􌥣
       <td>
       <td>%
-      <td align=left>rörelseriktning: förs åt höger
-      <td>motion_<wbr>rightward
+      <td align=left>rörelseriktning: förs höger
+      <td class=tt>motion_<wbr>rightward
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⌥⇧(
       <td>U+10c964
       <td lang=swl class=x2>􌥤
       <td>
       <td>&amp;
-      <td align=left>rörelseriktning: förs i sidled
-      <td>motion_<wbr>sideways
+      <td align=left>rörelseriktning: förs i sidled / vänster–höger
+      <td class=tt>motion_<wbr>sideways
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⌥⇧)
       <td>U+10c965
       <td lang=swl class=x2>􌥥
       <td>
       <td>*
-      <td align=left>rörelseriktning: förs i djupled
-      <td>motion_<wbr>depthwise
+      <td align=left>rörelseriktning: förs i djupled / framåt–inåt
+      <td class=tt>motion_<wbr>depthwise
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⌥⇧%
       <td>U+10c966
@@ -1439,7 +1528,8 @@
       <td>
       <td>+
       <td align=left>rörelseriktning: förs uppåt
-      <td>motion_<wbr>upward
+      <td class=tt>motion_<wbr>upward
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⌥⇧&amp;
       <td>U+10c967
@@ -1447,31 +1537,35 @@
       <td>
       <td>,
       <td align=left>rörelseriktning: förs nedåt
-      <td>motion_<wbr>downward
+      <td class=tt>motion_<wbr>downward
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⌥⇧!
       <td>U+10c968
       <td lang=swl class=x2>􌥨
       <td>
       <td>-
-      <td align=left>rörelseriktning: förs i höjdled
-      <td>motion_<wbr>vertically
+      <td align=left>rörelseriktning: förs i höjdled / uppåt–nedåt
+      <td class=tt>motion_<wbr>vertically
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧/
       <td>U+10c969
       <td lang=swl class=x2>􌥩
       <td>
       <td>.
-      <td align=left>rörelseriktning: förs kort åt vänster
-      <td>motion_<wbr>leftward_<wbr>short
+      <td align=left>rörelseriktning: förs kort vänster
+      <td class=tt>motion_<wbr>leftward_<wbr>short
+      <td>
     <tr class=used>
       <td>⌥⇧/
       <td>U+10c96a
       <td lang=swl class=x2>􌥪
       <td>
       <td>/
-      <td align=left>rörelseriktning: förs kort åt höger
-      <td>motion_<wbr>rightward_<wbr>short
+      <td align=left>rörelseriktning: förs kort höger
+      <td class=tt>motion_<wbr>rightward_<wbr>short
+      <td>
     <tr class=used>
       <td>x
       <td>U+10c96b
@@ -1479,7 +1573,8 @@
       <td>
       <td>0
       <td align=left>interaktionsart: hakning
-      <td>interaction_<wbr>type_<wbr>hooking
+      <td class=tt>interaction_<wbr>type_<wbr>hooking
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>q
       <td>U+10c96c
@@ -1487,15 +1582,17 @@
       <td>
       <td>1
       <td align=left>interaktionsart: byte
-      <td>interaction_<wbr>type_<wbr>exchanging
+      <td class=tt>interaction_<wbr>type_<wbr>exchanging
+      <td>1982, 1989, 1993, 1994
     <tr class=used>
       <td>⌥⇧E
       <td>U+10c96d
       <td lang=swl class=x2>􌥭
       <td>
       <td>2
-      <td align=left>interaktionsart: entré
-      <td>interaction_<wbr>type_<wbr>entering
+      <td align=left>interaktionsart: entré / mottagning
+      <td class=tt>interaction_<wbr>type_<wbr>entering
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⌥⇧V
       <td>U+10c96e
@@ -1503,7 +1600,8 @@
       <td>
       <td>3
       <td align=left>interaktionsart: vinkel
-      <td>interaction_<wbr>type_<wbr>angling
+      <td class=tt>interaction_<wbr>type_<wbr>angling
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>h
       <td>U+10c96f
@@ -1511,7 +1609,8 @@
       <td>
       <td>4
       <td align=left>handextern rörelseart: båge
-      <td>motion_<wbr>type_<wbr>curving
+      <td class=tt>motion_<wbr>type_<wbr>curving
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>ö
       <td>U+10c970
@@ -1519,7 +1618,8 @@
       <td>
       <td>5
       <td align=left>handextern rörelseart: cirkel
-      <td>motion_<wbr>type_<wbr>circling
+      <td class=tt>motion_<wbr>type_<wbr>circling
+      <td>1977, 1982, 1993, 1994
     <tr class=used>
       <td>w
       <td>U+10c971
@@ -1527,7 +1627,8 @@
       <td>
       <td>6
       <td align=left>handextern rörelseart: slås
-      <td>motion_<wbr>type_<wbr>hitting
+      <td class=tt>motion_<wbr>type_<wbr>hitting
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>s
       <td>U+10c972
@@ -1535,7 +1636,8 @@
       <td>
       <td>7
       <td align=left>handextern rörelseart: vrids
-      <td>motion_<wbr>type_<wbr>twisting
+      <td class=tt>motion_<wbr>type_<wbr>twisting
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>a
       <td>U+10c973
@@ -1543,7 +1645,8 @@
       <td>
       <td>8
       <td align=left>handintern rörelseart: spelar
-      <td>motion_<wbr>type_<wbr>playing
+      <td class=tt>motion_<wbr>type_<wbr>playing
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>0
       <td>U+10c974
@@ -1551,7 +1654,8 @@
       <td>
       <td>9
       <td align=left>handintern rörelseart: strör
-      <td>motion_<wbr>type_<wbr>strewing
+      <td class=tt>motion_<wbr>type_<wbr>strewing
+      <td>1982, 1989, 1993, 1994
     <tr class=used>
       <td>⇧F
       <td>U+10c975
@@ -1559,15 +1663,15 @@
       <td>
       <td>:
       <td align=left>rörelseriktning: förs kort framåt
-      <td>motion_<wbr>forward_<wbr>short
+      <td class=tt>motion_<wbr>forward_<wbr>short
     <tr class=used>
       <td>f
       <td>U+10c976
       <td lang=swl class=x2>􌥶
       <td>
       <td>;
-      <td align=left>rörelseriktning: förs kort bakåt
-      <td>motion_<wbr>backward_<wbr>short
+      <td align=left>rörelseriktning: förs kort inåt/bakåt
+      <td class=tt>motion_<wbr>backward_<wbr>short
     <tr class=used>
       <td>⇧U
       <td>U+10c977
@@ -1575,7 +1679,7 @@
       <td>
       <td>&lt;
       <td align=left>rörelseriktning: förs kort uppåt
-      <td>motion_<wbr>upward_<wbr>short
+      <td class=tt>motion_<wbr>upward_<wbr>short
     <tr class=used>
       <td>u
       <td>U+10c978
@@ -1583,15 +1687,16 @@
       <td>
       <td>&gt;
       <td align=left>rörelseriktning: förs kort nedåt
-      <td>motion_<wbr>downward_<wbr>short
+      <td class=tt>motion_<wbr>downward_<wbr>short
     <tr class=used>
       <td>d
       <td>U+10c979
       <td lang=swl class=x2>􌥹
       <td>
       <td>?
-      <td align=left>handextern rörelseart: divergerar
-      <td>interaction_<wbr>type_<wbr>diverging
+      <td align=left>handextern rörelseart: divergerar (tidigare interaktionsart)
+      <td class=tt>interaction_<wbr>type_<wbr>diverging
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⌥⇧K
       <td>U+10c97a
@@ -1599,7 +1704,8 @@
       <td>
       <td>A
       <td align=left>handintern rörelseart: vinkar
-      <td>motion_<wbr>type_<wbr>waving
+      <td class=tt>motion_<wbr>type_<wbr>waving
+      <td>1989, 1993, 1994
     <tr class=used>
       <td>9
       <td>U+10c97b
@@ -1607,7 +1713,8 @@
       <td>
       <td>B
       <td align=left>övrigt: upprepad artikulation
-      <td>other_<wbr>repetition
+      <td class=tt>other_<wbr>repetition
+      <td>1982, 1989, 1993, 1994
     <tr class=used>
       <td>8
       <td>U+10c97c
@@ -1615,7 +1722,8 @@
       <td>
       <td>C
       <td align=left>övrigt: separator mellan artikulationsgrupper
-      <td>other_<wbr>separator_<wbr>groups
+      <td class=tt>other_<wbr>separator_<wbr>groups
+      <td>1993, 1994
     <tr class=used>
       <td>⌥2
       <td>U+10c97d
@@ -1623,7 +1731,7 @@
       <td>
       <td>D
       <td align=left>handextern rörelseart, modifikator: åt höger
-      <td>modifier_<wbr>rightward
+      <td class=tt>modifier_<wbr>rightward
     <tr class=used>
       <td>⌥3
       <td>U+10c97e
@@ -1631,7 +1739,7 @@
       <td>
       <td>E
       <td align=left>handextern rörelseart, modifikator: framåt
-      <td>modifier_<wbr>forward
+      <td class=tt>modifier_<wbr>forward
     <tr class=used>
       <td>⌥5
       <td>U+10c97f
@@ -1639,7 +1747,7 @@
       <td>
       <td>F
       <td align=left>handextern rörelseart, modifikator: uppåt
-      <td>modifier_<wbr>upward
+      <td class=tt>modifier_<wbr>upward
     <tr class=used>
       <td>⌥6
       <td>U+10c980
@@ -1647,14 +1755,14 @@
       <td>
       <td>G
       <td align=left>handextern rörelseart, modifikator: nedåt
-      <td>modifier_<wbr>downward
+      <td class=tt>modifier_<wbr>downward
     <tr class=unused>
       <td>
       <td>U+10c981
       <td lang=swl class=x2>􌦁
       <td>
       <td>
-      <td align=left colspan=2><i>används inte</i>
+      <td align=left colspan=3><i>används inte</i>
     <tr class=used>
       <td>⌥7
       <td>U+10c982
@@ -1662,7 +1770,7 @@
       <td>
       <td>H
       <td align=left>handextern rörelseart, modifikator: mot varandra
-      <td>modifier_<wbr>toward_<wbr>each_<wbr>other
+      <td class=tt>modifier_<wbr>toward_<wbr>each_<wbr>other
     <tr class=used>
       <td>⌥⇧#
       <td>U+10c983
@@ -1670,23 +1778,26 @@
       <td>
       <td>[
       <td align=left>rörelseriktning: förs framåt
-      <td>motion_<wbr>forward
+      <td class=tt>motion_<wbr>forward
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⌥⇧¤
       <td>U+10c984
       <td lang=swl class=x2>􌦄
       <td>
       <td>]
-      <td align=left>rörelseriktning: förs bakåt
-      <td>motion_<wbr>backward
+      <td align=left>rörelseriktning: förs inåt/bakåt
+      <td class=tt>motion_<wbr>backward
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>k
       <td>U+10c985
       <td lang=swl class=x2>􌦅
       <td>
       <td>_
-      <td align=left>handextern rörelseart: konvergerar
-      <td>interaction_<wbr>type_<wbr>converging
+      <td align=left>handextern rörelseart: konvergerar (tidigare interaktionsart)
+      <td class=tt>interaction_<wbr>type_<wbr>converging
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>r
       <td>U+10c986
@@ -1694,7 +1805,8 @@
       <td>
       <td>a
       <td align=left>handintern rörelseart: förändras
-      <td>motion_<wbr>type_<wbr>reshaping
+      <td class=tt>motion_<wbr>type_<wbr>reshaping
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>e
       <td>U+10c987
@@ -1702,7 +1814,8 @@
       <td>
       <td>b
       <td align=left>interaktionsart: växelvis
-      <td>interaction_<wbr>type_<wbr>alternating
+      <td class=tt>interaction_<wbr>type_<wbr>alternating
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=used>
       <td>⌥1
       <td>U+10c988
@@ -1710,7 +1823,7 @@
       <td>
       <td>c
       <td align=left>handextern rörelseart, modifikator: åt vänster
-      <td>modifier_<wbr>leftward
+      <td class=tt>modifier_<wbr>leftward
     <tr class=used>
       <td>⌥8
       <td>U+10c989
@@ -1718,15 +1831,15 @@
       <td>
       <td>d
       <td align=left>handextern rörelseart, modifikator: i sidled
-      <td>modifier_<wbr>sideways
+      <td class=tt>modifier_<wbr>sideways
     <tr class=used>
       <td>⌥4
       <td>U+10c98a
       <td lang=swl class=x2>􌦊
       <td>
       <td>e
-      <td align=left>handextern rörelseart, modifikator: bakåt
-      <td>modifier_<wbr>backwards
+      <td align=left>handextern rörelseart, modifikator: inåt/bakåt
+      <td class=tt>modifier_<wbr>backwards
     <tr class=used>
       <td>⌥9
       <td>U+10c98b
@@ -1734,7 +1847,7 @@
       <td>
       <td>f
       <td align=left>handextern rörelseart, modifikator: i djupled
-      <td>modifier_<wbr>depthwise
+      <td class=tt>modifier_<wbr>depthwise
     <tr class=used>
       <td>⌥0
       <td>U+10c98c
@@ -1742,14 +1855,14 @@
       <td>
       <td>g
       <td align=left>handextern rörelseart, modifikator: i höjdled
-      <td>modifier_<wbr>vertically
+      <td class=tt>modifier_<wbr>vertically
     <tr class=unused>
       <td>
       <td>U+10c98d
       <td lang=swl class=x2>􌦍
       <td>
       <td>
-      <td align=left colspan=2><i>används inte</i>
+      <td align=left colspan=3><i>används inte</i>
     <tr class=used>
       <td>⌥⇧X
       <td>U+10c98e
@@ -1757,21 +1870,22 @@
       <td>
       <td>~
       <td align=left>interaktionsart: kors
-      <td>interaction_<wbr>type_<wbr>crossing
+      <td class=tt>interaction_<wbr>type_<wbr>crossing
+      <td>1977, 1982, 1989, 1993, 1994
     <tr class=unused>
       <td>
       <td>U+10c98f
       <td lang=swl class=x2>􌦏
       <td>
       <td>
-      <td align=left colspan=2><i>används inte</i>
+      <td align=left colspan=3><i>används inte</i>
     <tr class=unused>
       <td>
       <td>U+10c990
       <td lang=swl class=x2>􌦐
       <td>
       <td>
-      <td align=left colspan=2><i>används inte</i>
+      <td align=left colspan=3><i>används inte</i>
     <tr class=used>
       <td>⌥⇧Ö
       <td>U+10c991
@@ -1779,7 +1893,7 @@
       <td>
       <td>£
       <td align=left>hålls stilla
-      <td>motion_<wbr>held_<wbr>still
+      <td class=tt>motion_<wbr>held_<wbr>still
     <tr class=boring>
       <td>⌥⇧M
       <td>U+10c992
@@ -1874,7 +1988,7 @@
       <td lang=swl class=x2>􌦝
       <td>
       <td>
-      <td align=left colspan=2><i>används inte</i>
+      <td align=left colspan=3><i>används inte</i>
     <tr class=boring>
       <td>⌥⇧W
       <td>U+10c99e
@@ -1947,14 +2061,15 @@
       <td>
       <td align=left>tummen förs utmed fingrarna
       <td>
-    <tr class=used>
+    <tr class=used id="u10c9a7">
       <td>⌥⇧N
       <td>U+10c9a7
       <td lang=swl class=x2>􌦧
       <td>
       <td>
       <td align=left>övrigt: distinkt början/avslutning (historisk)
-      <td>other_<wbr>abruptly
+      <td class=tt>other_<wbr>abruptly
+      <td>1994
     <tr class=used>
       <td>
       <td>U+10c9a8
@@ -1962,7 +2077,7 @@
       <td>
       <td>
       <td align=left>handintern rörelseart: böjs
-      <td>motion_<wbr>type_<wbr>bending
+      <td class=tt>motion_<wbr>type_<wbr>bending
     <tr class=used>
       <td>
       <td>U+10c9a9
@@ -1970,7 +2085,8 @@
       <td>
       <td>
       <td align=left>övrigt: separator mellan händer
-      <td>other_<wbr>separator_<wbr>hands
+      <td class=tt>other_<wbr>separator_<wbr>hands
+      <td>
     <tr class=used>
       <td>
       <td>U+10c9aa
@@ -1978,7 +2094,8 @@
       <td>
       <td>
       <td align=left>handform: 4-handen
-      <td>handshape_<wbr>4
+      <td class=tt>handshape_<wbr>4
+      <td>1982, 1989, 1993, 1994
     <tr class=used>
       <td>
       <td>U+10c9ab
@@ -1986,7 +2103,8 @@
       <td>
       <td>
       <td align=left>handform: D-handen
-      <td>handshape_<wbr>d
+      <td class=tt>handshape_<wbr>d
+      <td>1982, 1989, 1993, 1994
     <tr class=used>
       <td>
       <td>U+10c9ac
@@ -1994,7 +2112,8 @@
       <td>
       <td>
       <td align=left>handform: F-handen
-      <td>handshape_<wbr>f
+      <td class=tt>handshape_<wbr>f
+      <td>
     <tr class=used>
       <td>
       <td>U+10c9ad
@@ -2002,7 +2121,8 @@
       <td>
       <td>
       <td align=left>handform: Q-handen
-      <td>handshape_<wbr>q
+      <td class=tt>handshape_<wbr>q
+      <td>
     <tr class=used>
       <td>
       <td>U+10c9ae
@@ -2010,7 +2130,8 @@
       <td>
       <td>
       <td align=left>handextern rörelseart: cirkel i frontalplan
-      <td>motion_<wbr>type_<wbr>circling_<wbr>frontal
+      <td class=tt>motion_<wbr>type_<wbr>circling_<wbr>frontal
+      <td>1989, 1998
     <tr class=used>
       <td>
       <td>U+10c9af
@@ -2018,7 +2139,8 @@
       <td>
       <td>
       <td align=left>handextern rörelseart: cirkel i horisontalplan
-      <td>motion_<wbr>type_<wbr>circling_<wbr>horizontal
+      <td class=tt>motion_<wbr>type_<wbr>circling_<wbr>horizontal
+      <td>1989, 1998
     <tr class=used>
       <td>
       <td>U+10c9b0
@@ -2026,7 +2148,8 @@
       <td>
       <td>
       <td align=left>handextern rörelseart: cirkel i sagittalplan
-      <td>motion_<wbr>type_<wbr>circling_<wbr>sagittal
+      <td class=tt>motion_<wbr>type_<wbr>circling_<wbr>sagittal
+      <td>1989, 1998
     <tr class=used>
       <td>
       <td>U+10c9b1
@@ -2034,7 +2157,8 @@
       <td>
       <td>
       <td align=left>handform: lamahanden
-      <td>handshape_<wbr>llama
+      <td class=tt>handshape_<wbr>llama
+      <td>2017
     <tr class=used>
       <td>
       <td>U+10c9b2
@@ -2042,7 +2166,8 @@
       <td>
       <td>
       <td align=left>läge: armvecket
-      <td>position_<wbr>elbow_<wbr>pit
+      <td class=tt>position_<wbr>elbow_<wbr>pit
+      <td>2017
     <tr class=used>
       <td>
       <td>U+10c9b3
@@ -2050,7 +2175,8 @@
       <td>
       <td>
       <td align=left>läge: neutrala läget
-      <td>position_<wbr>neutral_<wbr>space
+      <td class=tt>position_<wbr>neutral_<wbr>space
+      <td>2017
     <tr class=used>
       <td>
       <td>U+10c9b4
@@ -2058,7 +2184,8 @@
       <td>
       <td>
       <td align=left>interaktionsart: flätas
-      <td>interaction_<wbr>type_<wbr>braiding
+      <td class=tt>interaction_<wbr>type_<wbr>braiding
+      <td>2017
     <tr class=used>
       <td>
       <td>U+10c9b5
@@ -2066,7 +2193,8 @@
       <td>
       <td>
       <td align=left>handextern rörelseart, modifikator: från varandra
-      <td>modifier_<wbr>away_<wbr>from_<wbr>each_<wbr>other
+      <td class=tt>modifier_<wbr>away_<wbr>from_<wbr>each_<wbr>other
+      <td>2017
     <tr class=used>
       <td>
       <td>U+10c9b6
@@ -2074,15 +2202,17 @@
       <td>
       <td>
       <td align=left>handextern rörelseart: studs
-      <td>motion_<wbr>type_<wbr>bouncing
+      <td class=tt>motion_<wbr>type_<wbr>bouncing
+      <td>2017
     <tr class=used>
       <td>
       <td>U+10c9b7
       <td lang=swl class=x2>􌦷
       <td>
       <td>
-      <td align=left>interaktionsart: medial kontakt
-      <td>interaction_<wbr>type_<wbr>medial_<wbr>contact
+      <td align=left>interaktionsart: medial kontakt (oberoende)
+      <td class=tt>interaction_<wbr>type_<wbr>medial_<wbr>contact
+      <td>2017
     <tr class=future>
       <td>
       <td>U+10c9b8
@@ -2152,7 +2282,7 @@
       <td lang=swl class=x2>􌧁
       <td>
       <td>
-      <td align=left colspan=2><i>används inte</i>
+      <td align=left colspan=3><i>används inte</i>
     <tr class=future>
       <td>
       <td>U+10c9c2
@@ -2236,7 +2366,7 @@
       <td lang=swl class=x2>􌧍
       <td>
       <td>
-      <td align=left colspan=2><i>används inte</i>
+      <td align=left colspan=3><i>används inte</i>
     <tr class=future>
       <td>
       <td>U+10c9ce
@@ -2250,14 +2380,14 @@
       <td lang=swl class=x2>􌧏
       <td>
       <td>
-      <td align=left colspan=2><i>används inte</i>
+      <td align=left colspan=3><i>används inte</i>
     <tr class=unused>
       <td>
       <td>U+10c9d0
       <td lang=swl class=x2>􌧐
       <td>
       <td>
-      <td align=left colspan=2><i>används inte</i>
+      <td align=left colspan=3><i>används inte</i>
     <tr class=future>
       <td>
       <td>U+10c9d1
@@ -2348,7 +2478,7 @@
       <td lang=swl class=x2>􌧝
       <td>
       <td>
-      <td align=left colspan=2><i>används inte</i>
+      <td align=left colspan=3><i>används inte</i>
     <tr class=future>
       <td>
       <td>U+10c9de
@@ -2758,90 +2888,187 @@
   </section>
 </section>
 
+<section>
+  <h1>Trubbel med Fontforge?</h1>
+
   <section>
-    <h1>Trubbel med Fontforge?</h1>
+    <h1>Jag sparade en Truetypefil i Fontforge och nu är attitydsymbolerna
+    helt keffa!</h1>
 
-    <section>
-      <h1>Jag sparade en Truetypefil i Fontforge och nu är attitydsymbolerna
-      helt keffa!</h1>
+    <p><b>Beskrivning:</b> Om attitydsymboler och diakritiska tecken inte ritas
+    upp på rätt ställen (utan hamnar till höger tecknet de borde komma ovanför
+    eller under) så har förmodligen OpenType-tabellen ”GPOS” inte sparats som
+    den ska (denna tabell är en del av Truetype och beskriver vilka symboler
+    som är diakritiska och hur de ska placeras ut).
 
-      <p><b>Beskrivning:</b> Om attitydsymboler och diakritiska tecken inte
-      ritas upp på rätt ställen (utan hamnar till höger tecknet de borde komma
-      ovanför eller under) så har förmodligen OpenType-tabellen ”GPOS” inte
-      sparats som den ska (denna tabell är en del av Truetype och beskriver
-      vilka symboler som är diakritiska och hur de ska placeras ut).
+    <p><b>Lösning:</b> När du genererar en Truetypefil i Fontforge
+    (tryck <i>Ctrl-Shift-G</i> (eller väljer ”File &gt; Generate Fonts…” i
+    menyn) så kan du välja hurvida OpenType-tabellerna ska sparas till filen
+    genom att trycka ”Options” (i ”Generate Fonts”-fönstret) och se till att
+    ”OpenType” är ikryssad (de två underpunkterna behöver <i>inte</i> vara
+    ikryssade).
 
-      <p><b>Lösning:</b> När du genererar en Truetypefil i Fontforge
-      (tryck <i>Ctrl-Shift-G</i> (eller väljer ”File &gt; Generate Fonts…” i
-      menyn) så kan du välja hurvida OpenType-tabellerna ska sparas till filen
-      genom att trycka ”Options” (i ”Generate Fonts”-fönstret) och se till att
-      ”OpenType” är ikryssad (de två underpunkterna behöver <i>inte</i> vara
-      ikryssade).
-
-      <p><b>Bakgrund:</b> För mig dök det här problemet upp efter det att jag
-      av misstag tryckt <i>Ctrl-Alt-G</i> (”File &gt; Generate Mac Family…”)
-      istället för <i>Ctrl-Shift-G</i> (”File &gt; Generate Fonts…”), ”Generate
-      Mac Family…” verkar nämligen <i>slå av</i> OpenType-inställningen!
-    </section>
+    <p><b>Bakgrund:</b> För mig dök det här problemet upp efter det att jag av
+    misstag tryckt <i>Ctrl-Alt-G</i> (”File &gt; Generate Mac Family…”)
+    istället för <i>Ctrl-Shift-G</i> (”File &gt; Generate Fonts…”), ”Generate
+    Mac Family…” verkar nämligen <i>slå av</i> OpenType-inställningen!
   </section>
+</section>
 
 <section>
-  <h1>Framtida tillägg?</h1>
+  <h1>Avvikelser och tillägg</h1>
 
-  <p>Följande symboler är under beaktande för tillägg i framtiden.
+  <p>Nedanstående är en lista över de källor som använts, med de avvikelser och
+  nya symboler som finns i respektive källa listade.
 
-  <hr>
+  <p>Symboler som är tänkta att inkluderas i typsnittet i framtiden är
+  markerade med fetstil. Symboler som redan är med i typsnittet är inte med här
+  alls, utan dem hittar du istället i <a href="#symboler">symboltabellen</a>,
+  ovan.
 
-  <p>Lars Wallin, <i>Polysyntetiska tecken i svenska teckenspråket</i> (1994).
-  Följande 28 symboler kan komma att läggas till. (Dessa symboler är obsoleta,
-  men kan tänkas vara intressanta ur ett historiskt perspektiv.)
+  <section>
+    <h1>1977 – <i>Tecknad Svenska</i> (Brita Bergman)</h1>
+    <ul>
+      <li><i>Hjässan</i> ser ut som dagens <i>pannan</i>.
+      <li><i>Pannan</i> är en smalare variant av <i>hjässan</i>.
+      <li><i>Näsan</i> ser ut som dagens <i>ögat</i> (och symbol för <i>ögat</i> saknas).
+      <li><i>Krokfingret</i> är spegelvänd relativt dagens symbol.
+      <li><i>Halsen</i> är kortare än dagens symbol.
+      <li><b><i>Iterativ kontakt</i> finns.</b>
+    </ul>
+  </section>
 
-  <p>Ifrån appendix A (s.116):
-  <ul>
-    <li>vinklad pekfingerhand
-    <li>böjd pekfingerhand
-    <li>vinklad N-hand
-    <li>NA-hand
-    <li>böjd N-hand
-  </ul>
+  <section>
+    <h1>1982 – <i>Teckenspråkstranskription</i> (Brita Bergman)</h1>
+    <ul>
+      <li><i>Halsen</i> är kortare än dagens symbol.
+      <li><i>Kinden</i>/<i>kinderna</i> är kortare än dagens symbol.
+      <li><i>Armen</i> finns också i dubbelskriven variant (!, s.8).
+      <li><i>Överarmen</i> finns också i dubbelskriven variant (!, s.8).
+      <li><b><i>Vinklade pekfingret</i> finns</b>.
+      <li><i>Krokfingret</i> är spegelvänd relativt dagens symbol.
+      <li><i>Vrids</i> är uppochnervänd relativt dagens symbol.
+      <li><i>Strör</i> har fyra streck istf tre och en punkt under sig.
+      <li>Det finns ingen separator för artikulationsgrupp,
+        artikulationsgrupper skrivs istället på höjden.
+      <li>Relationssymbolerna ser här annorlunda ut än idag. De består av
+        antingen ett horisontellt (”-”), eller vertikalt streck (”|”) som
+        placeras på olika sidor om symbolen för läget.
+        <table border=1>
+          <tr>
+            <td>vertikalt streck ovanför symbol för vänsterhanden
+            <td>högerhand framför vänsterhand
+          <tr>
+            <td>vertikalt streck under symbol för vänsterhanden
+            <td>högerhand innanför vänsterhand
+          <tr>
+            <td>vertikalt streck mellan handsymboler
+            <td>högerhand brevid vänsterhand
+          <tr>
+            <td>horisontellt streck över symbol för vänsterhanden
+            <td>högerhand ovanför vänsterhand
+          <tr>
+            <td>horisontellt streck under symbol för vänsterhanden
+            <td>högerhand under vänsterhand
+          <tr>
+            <td>vertikalt streck till höger om kroppsläge
+            <td>högerhand till höger om kroppsläget
+          <tr>
+            <td>horisontellt streck ovanför kroppsläge
+            <td>högerhand ovanför kroppsläget
+        </table>
+    </ul>
+  </section>
 
-  <p>Appendix B (s.118):
-  <ul>
-    <li>böjd sprethand
-    <li>vinklad sprethand
-    <li>N-måtthand
-    <li>böjd stor nyphand
-    <li>böjt långfinger
-    <li>kort-fram-distinkt-avslutning
-    <li>kort-in-distinkt-avslutning
-    <li>kort-upp-distinkt-avslutning
-    <li>kort-ner-distinkt-avslutning
-    <li>kort-höger-distinkt-avslutning
-    <li>kort-vänster-distinkt-avslutning
-    <li>fram-distinkt-början
-    <li>in-distinkt-början
-    <li>upp-distinkt-början
-    <li>ner-distinkt-början
-    <li>höger-distinkt-början
-    <li>vänster-distinkt-början
-    <li>fram-distinkt-början-och-avslutning
-    <li>in-distinkt-början-och-avslutning
-    <li>upp-distinkt-början-och-avslutning
-    <li>ner-distinkt-början-och-avslutning
-    <li>höger-distinkt-början-och-avslutning
-    <li>vänster-distinkt-början-och-avslutning
-  </ul>
+  <section>
+    <h1>1989 – <i>Persontecken: Deras härkomst, bildningsätt och användning</i> (Tomas Hedberg)</h1>
+    <ul>
+      <li><i>Kinden</i>/<i>kinderna</i> är kortare än dagens symbol.
+      <li><b><i>Vinklade pekfingret</i> finns.</b>
+      <li><b><i>LO-handen</i> finns.</b>
+      <li><i>Krokfingret</i> är spegelvänd relativt dagens symbol.
+      <li><b><i>Vinklade tupphanden</i> finns.</b>
+      <li><b><i>NA-handen</i> finns.</b>
+      <li><b><i>NO-handen</i> finns.</b>
+      <li><i>Runda långfingret</i> saknar horisontellt tvärstreck (ser ut som
+        ett vanligt ”Z”).
+      <li><i>Cirkel i frontalplan</i> kallas <i>vertikal-parallell
+        cirkelrörelse</i>.
+      <li><i>Cirkel i sagittalplan</i> kallas <i>vertikal-vinkelrät
+        cirkelrörelse</i>.
+      <li>Relationssymbolerna funkar som i Bergman (1982).
+    </ul>
+  </section>
 
-  <p>Thomas Björkstrand, <i>Redundans i teckentranskriptionssystemet: Förslag
-  till förenkling</i> (1998), s.16. Följande 3 symboler kan komma att läggas
-  till. (Dessa symboler föreslogs som en förbättring av det nuvarande sättet
-  att skriva cirkelrörelser [􌥰].)
+  <section>
+    <h1>1993 – <i>Kompendium i teckentranskription</i> (Brita Bergman & Thomas Björkstrand)</h1>
+    <ul>
+      <li><b><i>Vinklade pekfingret</i> finns.</b>
+      <li><b><i>Böjda pekfingret</i> finns (samma symbol som <i>LO-handen</i> i Hedberg).</b>
+      <li><b><i>Vinklade N-handen</i> finns.</b>
+      <li><b><i>NA-handen</i> finns (samma symbol som dagens <i>lilla O-handen</i>).</b>
+      <li><b><i>Böjda N-handen</i> finns.</b>
+      <li><i>Krokfingret</i> är spegelvänd relativt dagens symbol.
+      <li><i>Attitydvridning</i> är termen som används här.
+    </ul>
+  </section>
 
-  <ul>
-    <li>cirkelrörelse i frontalplan
-    <li>cirkelrörelse i horisontalplan
-    <li>cirkelrörelse i vertikalplan
-  </ul>
+  <section>
+    <h1>1994 – <i>Polysyntetiska tecken i svenska teckenspråket</i> (Lars Wallin)</h1>
+
+    <section>
+      <h1>Appendix A</h1>
+      <ul>
+        <li><i>Ögat</i> är fyrkantigt snarare än runt.
+        <li><b><i>Vinklade pekfingret</i> finns.</b>
+        <li><i>Krokfingret</i> är spegelvänd relativt dagens symbol.
+        <li><b><i>Böjda pekfingret</i> finns (samma symbol som <i>LO-handen</i> i Hedberg).</b>
+        <li><b><i>Vinklade N-handen</i> finns.</b>
+        <li><b><i>NA-handen</i> finns (med den ursprungliga symbolen i ifrån Hedberg).</b>
+        <li><b><i>Böjda N-handen</i> finns (samma symbol som <i>NO-handen</i> i Hedberg).</b>
+      </ul>
+    </section>
+
+    <section>
+      <h1>Handformer (Appendix B)</h1>
+      <ul>
+        <li><b>Böjda sprethanden</b>
+        <li><b>Vinklade sprethanden</b>
+        <li><b>N-måtthanden</b>
+        <li><b>Böjda stora nyphanden</b>
+        <li><b>Böjda långfingret</b>
+      </ul>
+    </section>
+
+    <section>
+      <h1>Rörelseriktningar (Appendix B)</h1>
+      <ul>
+        <li><b>Kort-fram-distinkt-avslutning</b>
+        <li><b>Kort-in-distinkt-avslutning</b>
+        <li><b>Kort-upp-distinkt-avslutning</b>
+        <li><b>Kort-ner-distinkt-avslutning</b>
+        <li><b>Kort-höger-distinkt-avslutning</b>
+        <li><b>Kort-vänster-distinkt-avslutning</b>
+        <li><b>Fram-distinkt-början</b>
+        <li><b>In-distinkt-början</b>
+        <li><b>Upp-distinkt-början</b>
+        <li><b>Ner-distinkt-början</b>
+        <li><b>Höger-distinkt-början</b>
+        <li><b>Vänster-distinkt-början</b>
+        <li><b>Fram-distinkt-början-och-avslutning</b>
+        <li><b>In-distinkt-början-och-avslutning</b>
+        <li><b>Upp-distinkt-början-och-avslutning</b>
+        <li><b>Ner-distinkt-början-och-avslutning</b>
+        <li><b>Höger-distinkt-början-och-avslutning</b>
+        <li><b>Vänster-distinkt-början-och-avslutning</b>
+      </ul>
+
+      <p>Appendix B tar också upp symbolen 􌦧 <i>distinkt början/avslutning</i>
+      (som Wallin använder tillsammans med <i>divergerar</i> [􌥹]
+      och <i>konvergerar</i> [􌦅]). Denna symbol är inkluderad i typsnittet
+      (se <a href="#u10c9a7">kodpunkt U+10c9a7 i symboltabellen</a> ovan).
+    </section>
+  </section>
 </section>
 
 
