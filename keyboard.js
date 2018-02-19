@@ -276,7 +276,7 @@ function transcriptKeyboard(jqInput) {
             ["􌦮", "Cirkel i frontalplan"],
             ["􌦯", "Cirkel i horisontalplan"],
             "<nobr>",
-            ["􌦰", "Cirkel i medialplan"],
+            ["􌦰", "Cirkel i sagittalplan"],
             ["􌦶", "Studs"],
             ["&nbsp;&nbsp;􌦵", "Från varandra"],
             "</nobr>"

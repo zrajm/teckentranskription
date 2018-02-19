@@ -159,6 +159,14 @@
 ** TODO Repeated search should not reload search result
 ** TODO Add CC license text + note data source
 * Transcription intro article
+** TODO Whole handshapes vs. finger handshapes
+   Björkstrand (1998) lists whole and finger handshapes (p.19–20).
+
+   + Whole handshapes: flat hand, sprethand, S-hand, klohand, O-hand,
+     vinkelhand, knutenhand och A-hand.
+   + Finger handshapes: tummen, pekfingret, krokfingret, lillfingret, N-handen,
+     V-handen, dubbelkroken, flyghanden, M-handen, måtthanden, nyphanden och
+     stora nyphanden.
 ** TODO Transcription problem: Contact point
    http://localhost/teckentranskription/lexicon.html#02993%2C08968
 
