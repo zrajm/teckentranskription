@@ -234,24 +234,27 @@ function parseQuery(queryStr) {
         };
     }());
     var metachars = {
-        "*": "[^ 􌥠]*",           // all non-space
-        "@":                     // one place symbol
-                "[􌤆􌤂􌥞􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛􌤜􌤞􌤠􌥀􌤡􌥜􌤑􌤒􌤓􌤕􌤔􌤖􌤗􌤙􌤘􌤚][􌤺􌥛􌤻􌤹􌥚]?",
-        "#":                     // one handshape symbol
-                "[􌤤􌥄􌤣􌤧􌥋􌥉􌦫􌤩􌤎􌥇􌦬􌤦􌤲􌤱􌥑􌤢􌥂􌤪􌥎􌥈􌤨􌤿􌥌􌥆􌤫􌦭􌤬􌥅􌤥􌥊􌤽􌤯􌤭􌤮􌤰􌤳􌥃􌥒􌥟􌦪][􌤺􌥛􌤻􌤹􌥚]?",
+        "*": "[^ 􌥠]*",           // all non-space, non-'/' delimiter
+        "@":                     // one place symbol (+ optional relation)
+                "[􌦳􌤆􌤂􌥞􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛􌤜􌤞􌤠􌥀􌤡􌥜􌤑􌦲􌤒􌤓􌤕􌤔􌤖􌤗􌤙􌤘􌤚][􌤺􌥛􌤻􌤹􌥚]?",
+        "#":                     // one handshape symbol (+ optional relation)
+                "[􌤤􌥄􌤣􌤧􌥋􌥉􌦫􌤩􌤎􌥇􌦬􌤦􌤲􌤱􌥑􌤢􌥂􌤪􌥎􌥈􌤨􌤿􌥌􌥆􌤫􌦭􌤬􌥅􌤥􌥊􌦱􌤽􌤯􌤭􌤮􌤰􌤳􌥃􌥒􌥟􌦪][􌤺􌥛􌤻􌤹􌥚]?",
         "^": "[􌤺􌥛􌤻􌤹􌥚]",          // one relation symbol
         ":": "[􌥓􌥔􌤴􌥕􌤵􌥖][􌤶􌥗􌤷􌥘􌤸􌥙]"  // one attitude symbol
     };
-    // Allow relation symbol after all unquoted positions & handshapes.
-    "􌤆􌤂􌥞􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛􌤜􌤞􌤠􌥀􌤡􌥜􌤑􌤒􌤓􌤕􌤔􌤖􌤗􌤙􌤘􌤚􌤤􌥄􌤣􌤧􌥋􌥉􌦫􌤩􌤎􌥇􌦬􌤦􌤲􌤱􌥑􌤢􌥂􌤪􌥎􌥈􌤨􌤿􌥌􌥆􌤫􌦭􌤬􌥅􌤥􌥊􌤽􌤯􌤭􌤮􌤰􌤳􌥃􌥒􌥟􌦪"
+    // Unquoted place/handshape symbols should also match a following
+    // (optional) relation symbol.
+    "􌦳􌤆􌤂􌥞􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛􌤜􌤞􌤠􌥀􌤡􌥜􌤑􌦲􌤒􌤓􌤕􌤔􌤖􌤗􌤙􌤘􌤚􌤤􌥄􌤣􌤧􌥋􌥉􌦫􌤩􌤎􌥇􌦬􌤦􌤲􌤱􌥑􌤢􌥂􌤪􌥎􌥈􌤨􌤿􌥌􌥆􌤫􌦭􌤬􌥅􌤥􌥊􌦱􌤽􌤯􌤭􌤮􌤰􌤳􌥃􌥒􌥟􌦪"
         .split(/(?!$)/mu).forEach(function (char) {
             metachars[char] = char + '[􌤺􌥛􌤻􌤹􌥚]?';
         });
-    // Allow direction symbol under circling (old/frontal/horizontal/sagittal),
-    // curving, hitting, twisting.
-    "􌥯􌥰􌦮􌦯􌦰􌥱􌥲".
-        split(/(?!$)/mu).forEach(function (char) {
-            metachars[char] = char + '[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂]?';
+
+    // All unquoted hand-external motion symbols (circling/bouncing/curving/
+    // hitting/twisting/divering/converging) should also match a following
+    // (optional) motion direction symbol.
+    "􌥯􌦶􌥰􌦮􌦯􌦰􌥱􌥲􌥹􌦅"
+        .split(/(?!$)/mu).forEach(function (char) {
+            metachars[char] = char + '[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?';
         });
 
     var term = "";
