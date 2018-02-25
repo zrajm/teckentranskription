@@ -110,6 +110,8 @@
     When scrolling down over the search results, the search form should slide
     upwards, and reveal a button which can be pressed to drop down the search
     form on top of the results.
+** TODO Display date of last lexicon update
+** TODO Display date of last font update
 ** TODO Use ECMAScript6 or not?
    Currently using /u regex flag, which turns out to be ES6. This program
    probably won't work without it, and thus it might be better to go all the

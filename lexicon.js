@@ -320,9 +320,8 @@ function dump(msg, object) {
 // Return true if at least one element in entry matches regex.
 function regexInEntry(regex, entry) {
     "use strict";
-    // Skip the first field in each entry (.slice(1)).
-    return entry.slice(1).some(function (x) {
-        return regex.test(x);
+    return entry.some(function (field) {
+        return regex.test(field);
     });
 }
 
@@ -357,12 +356,10 @@ function htmlifyEntry(match) {
     "use strict";
     var hiliteRegex = match.hilite;
     var entry = match.entry;
-    //var image = entry[0];
-    var id = entry[1];
-    var trans = entry[2];
-    var swe = entry.slice(3);
+    var id = entry[0];                         // 1st field
+    var trans = entry[1];                      // 2nd field
+    var swe = entry.slice(2);                  // remaining fields
     return [
-        //"image: " + image,
         "<a href=\"http://teckensprakslexikon.su.se/ord/" + id + "\" target=_blank>" +
                 hilite(id, hiliteRegex) + "</a>",
         hilite(trans, hiliteRegex),
