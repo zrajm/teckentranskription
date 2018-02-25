@@ -317,9 +317,13 @@ function dump(msg, object) {
     }, 4)));
 }
 
-// Return true if at least one element in entry matches regex.
+// Return true if at least one element in entry matches regex. (The
+// `regex.lastIndex` property is modified by this function).
 function regexInEntry(regex, entry) {
     "use strict";
+    // `lastIndex` is set to make sure that search start at beginning of
+    // string, even when regex flag /g is used.
+    regex.lastIndex = 0;
     return entry.some(function (field) {
         return regex.test(field);
     });
