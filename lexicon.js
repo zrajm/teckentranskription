@@ -185,6 +185,14 @@ var logTiming = (function (perf, log) {
 //
 function parseQuery(queryStr) {
     "use strict";
+
+    // Escape all regular expression metacharacters & the regex delimiter '/'.
+    function quotemeta(str) {
+        // PCRE/ERE:          *+? ^$. [  { ()|   \
+        // MSIE meta + delim: *+? ^$. [ ]{}()| / \
+        return str.replace(/^[*+?\^$.\[\]{}()|\/\\]$/u, "\\$&");
+    }
+
     var queryBuilder = (function () {
         var query = [];
         var negative;
@@ -259,14 +267,6 @@ function parseQuery(queryStr) {
 
     var term = "";
     var quote = "";
-
-    // Escape all regular expression metacharacters & the regex delimiter '/'.
-    function quotemeta(str) {
-        // PCRE/ERE:          *+? ^$. [  { ()|   \
-        // MSIE meta + delim: *+? ^$. [ ]{}()| / \
-        return str.replace(/^[*+?\^$.\[\]{}()|\/\\]$/u, "\\$&");
-    }
-
     queryStr.split(/(?!$)/mu).forEach(function (char) {
         if (quote) {                           // quoted chars
             switch (char) {
