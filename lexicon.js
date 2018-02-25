@@ -304,9 +304,12 @@ function parseQuery(queryStr) {
     return queryBuilder.getQuery();
 }
 
-function dump(object, msg) {
+function dump(msg, object) {
     "use strict";
-    msg = msg || "%s";
+    if (typeof msg === "object") {             // if no msg, then use '%s'
+        object = msg;
+        msg = "%s";
+    }
     window.console.log(msg.replace(/%s/, JSON.stringify(object, function (ignore, value) {
         return value.constructor === RegExp
             ? value.toString()
