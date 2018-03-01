@@ -161,6 +161,10 @@
 ** TODO Repeated search should not reload search result
 ** TODO Add CC license text + note data source
 * Transcription intro article
+** TODO Frequency table of attitude combinations
+   A table like the one in Bergman (1977) p.51, but with a 'heat map' of
+   combination occurrences. (Both with percentages and greyscale[?] background
+   colors illustrating which combinations are the most common.)
 ** TODO Whole handshapes vs. finger handshapes
    Björkstrand (1998) lists whole and finger handshapes (p.19–20).
 
@@ -176,6 +180,8 @@
    contact in very different places. How does the reader know where contact is
    made? (Is there a rule of some kind? -- Or does the transcription need some
    way of specifying the contact point?)
+
+   Kankkonen (2015) has a way of describing 'contact' point.
 ** TODO Ponder replacing 'toward' and 'away from' with converge/diverge
    Explore/ponder/research the fact that the modifier symbols '--> <--' and
    '<-- -->' (which are written under circling, curving, hitting, twisting)
@@ -248,21 +254,97 @@
 
    Mouseover text should clearly state what will happen upon the next click.
 * Unicode typeface
-** [1/3] Added symbols desired by Swedish sign language lexicon office
-*** TODO Add "independent" symbol for medial contact
-    Name: ???_medial_contact
-*** TODO Add symbol for bouncing motion
-    Name: motion_bounce
-*** DONE Add symbol for away from each other
-    CLOSED: [2018-02-12 Mon 17:38]
-    Name: modifier_away_from_each_other
-** TODO Prettify/widen modifier symbols
-   Side-to-side modifier symbols could benefit from being a bit wider, now that
-   the circle symbols they are placed beneath allow for that.
 ** TODO Reimport GNU FreeFont from sources
    Found out that the GNU FreeFont suite is actually available in Fontforge
    (.sfd format). Should reimport all the glyphs using these sources.
    https://ftp.gnu.org/gnu/freefont/freefont-src-20120503.tar.gz
+** [0/31] Add historical symbols
+*** TODO Verify the list of historical symbols
+*** TODO Add symbol 'iterative contact' (1977)
+    Only used in Bergman (1977), example given on page 85. – Looks like a
+    six-pronged asterisk.
+*** TODO Add symbol 'angled index finger' (1982–1994)
+    First used in Bergman (1982), last seen in Wallin (1994). – Looks like
+    capital 'L' with the vertical line ending in an upwards pointing arrow.
+*** TODO Add symbol 'NA hand' (1989–1994)
+    First used in Hedberg (1989), last seen in Wallin (1994). – Looks like an
+    'A' with a small capital 'N' written between the legs of the 'A'.
+*** TODO Add symbol 'NO hand'/'bent N hand' (1989–1994)
+    Hedberg (1989) calls this the NO hand', Bergman & Björkstrand (1993) uses
+    the name 'bent index N hand'. – Looks like an 'O' with a small capital 'N'
+    written inside it.
+*** TODO Add symbol 'LO hand'/'bent index finger' (1989–1994)
+    First used in Hedberg (1989) where it is called the 'LO hand', Bergman &
+    Björkstrand (1993) rename it 'bent index finger', and it is last seen in
+    Wallin (1994) which also calls it 'bent index finger'. – Looks like an 'O'
+    with a small capital 'L' written inside it.
+*** TODO Add symbol 'angled rooster hand' (1989)
+    Only used in Hedberg (1989). – Looks like the 'straight measure hand', with
+    an extra horizontal line in the middle (or like a mirrored 'E', with the
+    top and bottom horizontal lines angled in slightly towards the middle).
+*** TODO Add symbol 'angled N hand' (1993–1994)
+    First used in Bergman & Björkstrand (1993), last seen in Wallin (1994). –
+    Looks like capital 'N' with the rightmost vertical line ending in an
+    upwards pointing arrow.
+*** TODO Add symbol 'bent spread hand' (1994)
+    Only used in Wallin (1994). – Looks like a 'spread hand' with an extra
+    horizontal line on it, or like a capital 'Y' with two horizontal lines
+    crossing it.
+*** TODO Add symbol 'angled spread hand' (1994)
+    Only used in Wallin (1994). – Looks like a 'spread hand' with an rightmost
+    diagonal line ending in an upwards pointing arrow.
+    upwards pointing arrow.
+*** TODO Add symbol 'N measure hand' (1994)
+    Only used in Wallin (1994). – Looks like capital 'N' crossed by a
+    horizontal line.
+*** TODO Add symbol 'bent large pinch hand' (1994)
+    Only used in Wallin (1994). – Looks like an 'O' with a small capital 'H'
+    written inside it.
+*** TODO Add symbol 'bent index finger' (1994)
+    Only used in Wallin (1994). - Looks like a capital 'Z' with two horizontal
+    lines crossing it.
+*** TODO Add symbol 'short left abrupt stop' (1994)
+    Only used in Wallin (1994).
+
+*** TODO Add symbol 'short right abrupt stop' (1994)
+    Only used in Wallin (1994).
+*** TODO Add symbol 'short forward abrupt stop' (1994)
+    Only used in Wallin (1994).
+*** TODO Add symbol 'short backward abrupt stop' (1994)
+    Only used in Wallin (1994).
+*** TODO Add symbol 'short up abrupt stop' (1994)
+    Only used in Wallin (1994).
+*** TODO Add symbol 'short down abrupt stop' (1994)
+    Only used in Wallin (1994).
+*** TODO Add symbol 'left abrupt start' (1994)
+    Only used in Wallin (1994).
+
+*** TODO Add symbol 'right abrupt start' (1994)
+    Only used in Wallin (1994).
+*** TODO Add symbol 'forward abrupt start' (1994)
+    Only used in Wallin (1994).
+*** TODO Add symbol 'backward abrupt start' (1994)
+    Only used in Wallin (1994).
+*** TODO Add symbol 'up abrupt start' (1994)
+    Only used in Wallin (1994).
+*** TODO Add symbol 'down abrupt start' (1994)
+    Only used in Wallin (1994).
+*** TODO Add symbol 'left abrupt start and stop' (1994)
+    Only used in Wallin (1994).
+
+*** TODO Add symbol 'right abrupt start and stop' (1994)
+    Only used in Wallin (1994).
+*** TODO Add symbol 'forward abrupt start and stop' (1994)
+    Only used in Wallin (1994).
+*** TODO Add symbol 'backward abrupt start and stop' (1994)
+    Only used in Wallin (1994).
+*** TODO Add symbol 'up abrupt start and stop' (1994)
+    Only used in Wallin (1994).
+*** TODO Add symbol 'down abrupt start and stop' (1994)
+    Only used in Wallin (1994).
+** TODO Prettify/widen modifier symbols
+   Side-to-side modifier symbols could benefit from being a bit wider, now that
+   the circle symbols they are placed beneath allow for that.
 ** [0/15] Round off coordinates in symbols
    Among others, the following symbols (excluding symbols that could be turned
    into references):
@@ -289,14 +371,6 @@
    in the .sfd file.
 
    (Can the TTF hints be accurately copied as well?)
-** TODO Add 'neutral space' symbol + modifiers
-*** TODO Modify transcription of ARGENTINA/BEATLES/ORKESTER
-    These signs could all benefit from having the left hand transcribed with
-    a symbol for 'to the left in the neutral space'.
-
-    http://teckensprakslexikon.su.se/ord/10019 ARGENTINA
-    http://teckensprakslexikon.su.se/ord/15318 BEATLES
-    http://teckensprakslexikon.su.se/ord/08301 ORKESTER
 * Transcription app
 ** TODO Should use same virtual keyboard code as lexicon
 ** TODO Run code + HTML + CSS through validator.
@@ -306,6 +380,16 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** [3/3] Add symbols wanted by Swedish sign language lexicon office to font
+*** DONE Add "independent" symbol for medial contact
+    CLOSED: [2018-02-15 Thu 15:02]
+    Name: ???_medial_contact
+*** DONE Add symbol for bouncing motion
+    CLOSED: [2018-02-15 Thu 10:36]
+    Name: motion_type_bouncing
+*** DONE Add symbol for away from each other
+    CLOSED: [2018-02-12 Mon 17:38]
+    Name: modifier_away_from_each_other
 ** DONE Added new symbols to comparison tables in font article
    CLOSED: [2018-02-12 Mon 19:21]
 ** [6/6] Add latest work into font
