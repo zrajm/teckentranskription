@@ -253,16 +253,26 @@
      + ALL <details> opened
 
    Mouseover text should clearly state what will happen upon the next click.
-* Unicode typeface
+* Font
 ** TODO Reimport GNU FreeFont from sources
    Found out that the GNU FreeFont suite is actually available in Fontforge
    (.sfd format). Should reimport all the glyphs using these sources.
    https://ftp.gnu.org/gnu/freefont/freefont-src-20120503.tar.gz
+** TODO Make modifiers arrows look like movement arrows
+   The modifier arrows (for hand external motion type) should look the same as
+   the movement arrows (rather than the attitude direction arrows). – I.e. the
+   arrows should be a bit longer than they currently are.
 ** [0/31] Add historical symbols
 *** TODO Verify the list of historical symbols
-*** TODO Add symbol 'iterative contact' (1977)
-    Only used in Bergman (1977), example given on page 85. – Looks like a
-    six-pronged asterisk.
+*** TODO Add symbol 'iterative/repeated contact' (1977)
+    Only used in Bergman (1977), examples of use can be found on pp.85, 130,
+    134, 135, 156. – Looks like a eight-pronged asterisk. (Referred to as
+    'repeated contact' in list of symbols on page 89, but 'iterative contact'
+    elsewhere.)
+*** TODO Add symbol 'repeated signeme' (1977)
+    Only used in Bergman (1977), example given on page 129. – Looks like a
+    slash through a colon (a slash with one dot above and one below the middle
+    line of the slash, similar to the music notation 'one bar repeat' symbol).
 *** TODO Add symbol 'angled index finger' (1982–1994)
     First used in Bergman (1982), last seen in Wallin (1994). – Looks like
     capital 'L' with the vertical line ending in an upwards pointing arrow.
@@ -371,6 +381,17 @@
    in the .sfd file.
 
    (Can the TTF hints be accurately copied as well?)
+* Font article
+** [1/2] Update table with dates for all 'modfier' symbols
+*** DONE Bergman 1977
+    CLOSED: [2018-03-04 Sun 10:43]
+*** TODO Bergman 1982
+*** TODO Hedberg 1989
+*** TODO Bergman & Björkstrand 1993
+*** TODO Wallin 1994
+*** TODO Lexicon 1997
+*** TODO Björkstrand 1998
+*** TODO Bergman & Björkstrand 2015
 * Transcription app
 ** TODO Should use same virtual keyboard code as lexicon
 ** TODO Run code + HTML + CSS through validator.
