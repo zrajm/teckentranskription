@@ -189,18 +189,40 @@
    underneath the symbol it modifies.
 ** TODO Update terminology
    Weak/strong should be replaced by ipsilateral/contralateral (ipsi/contra).
-** [0/2] Table filtering
-*** TODO Number of entries shown should be displayed at top of table
-    So that you can easily see e.g. how many handshapes occurred in a specific
-    source.
-*** TODO Fix table checkboxes
-   One should be able to use the table checkboxes for selecting what to display
-   in any given table.
+** [4/5] Table filtering
+*** [7/12] Handshape table
+**** TODO Tags for 1993 – Kompendium i teckentranskription
+**** TODO Tags for 1994 – Polysyntetiska tecken
+**** TODO Tags for 1997 – Svenskt teckenspråkslexikon (book)
+**** TODO Tags for 2015 – Teckentranskription
+**** TODO Tags for web – Svenskt teckenspråkslexikon (web)
+**** DONE Tags for 1989 – Persontecken
+     CLOSED: [2018-03-06 tis 19:45]
+**** DONE Tags for 1982 – Teckenspråkstranskription
+     CLOSED: [2018-03-06 tis 19:45]
+**** DONE Tags for 1977 – Tecknad svenska
+     CLOSED: [2018-03-06 Tue 19:45]
+**** DONE Add category 'finger handshape' (opposite of whole hand)
+     CLOSED: [2018-03-06 Tue 19:45]
+     Category from Tecknad svenska.
+**** DONE Use dropdown for table filtering
+     CLOSED: [2018-03-06 Tue 19:45]
+     Replaced the cluttered checkbox interface with a dropdown selector (with
+     easy search function). Decided to go with Chosen.
+     https://harvesthq.github.io/chosen/
+**** DONE Number of entries shown should be displayed at top of table
+     CLOSED: [2018-03-06 Tue 19:45]
+     So that you can easily see e.g. how many handshapes occurred in a specific
+     source.
+**** DONE Fix table checkboxes
+     CLOSED: [2018-03-06 Tue 19:45]
+     One should be able to use the table checkboxes for selecting what to
+     display in any given table.
 
-   These should work so that, when checked, all items with that attribute are
-   displayed (but no other).
+     These should work so that, when checked, all items with that attribute are
+     displayed (but no other).
 
-   If multiple checkboxes are marked, they should be AND:ed together.
+     If multiple checkboxes are marked, they should be AND:ed together.
 ** TODO Reference section should which sources are derivatives of other
 
    There should be comments describing that the following works are basically

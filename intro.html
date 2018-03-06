@@ -40,7 +40,7 @@
     blockquote cite:before { content: "["; }
     blockquote cite:after { content: "]"; }
 
-    .hilite { background: #ddd; }
+    .hilite { background: #ddd !important; }
 
     label {
         cursor: pointer;
@@ -1026,97 +1026,63 @@
           <div class=space>
             <section><details>
               <summary><h1>Handform</h1></summary>
-
-              <!--table border=1>
-                <tr><th colspan=4>
-                  <select><option>?<option>Raka<option>Vinklade<option>Böjda<option selected>Knutna<option>Kontakt</select>
-                  <select><option>?<option>Spretade<option>Sammanhållna</select>
-                    fingrar
-                    <th>
-                <tr>
-                  <td><select><option>?<option>Rakt<option>Vinklat<option>Böjt<option selected>Knutet<option>Kontakt</select>
-                  <td><select><option>?<option>Rakt<option>Vinklat<option>Böjt<option selected>Knutet<option>Kontakt</select>
-                  <td><select><option>?<option>Rakt<option>Vinklat<option>Böjt<option selected>Knutet<option>Kontakt</select>
-                  <td><select><option>?<option>Rakt<option>Vinklat<option>Böjt<option selected>Knutet<option>Kontakt</select>
-                  <td style="border-left:1px solid black"><select><option>Rak<option>Vinklad<option>Böjd<option selected>Knuten</select>
-                <tr>
-                  <td>Lillfinger
-                  <td>Ringfinger
-                  <td>Långfinger
-                  <td>Pekfinger
-                  <td style="border-left:1px solid black">Tumme
-                <tr>
-                  <td colspan=3>
-                  <td colspan=2><select><option>?<option>Hållhand</select>
-              </table-->
-
               <figure>
-                <!--style>.h2015 { background: rgba(255,0,0,.5) }</style>
-                <style>table.h2015 { background: rgba(255,0,0,.5); outline: 5px solid red; }</style>
-                <style>.fs { background: red }</style>
-                <style>.fx { background: blue }</style>
-                <style>.fr { background: green }</style>
-                <style>.f0 { background: magenta }</style-->
-                <label class=h1977><input type=checkbox checked>
-                  <a href="#ref1977">Tecknad svenska</a> (1977)</label>
-                <label class="h1982 FIXME"><nobr><input type=checkbox checked>
-                  <i>Teckenspråkstranskription</i> (1982)</nobr></label>
-                <label class="h1994 FIXME"><input type=checkbox checked>
-                  <i>Polysyntetiska tecken i svenska teckenspråket</i>
-                  (1994)</label>
-                <label class=h1997><input type=checkbox checked>
-                  <i>Svenskt teckenspråkslexikon</i> (1997)</label>
-                <label class=h2015><nobr><input type=checkbox checked>
-                  <a href="#ref2015">Teckentranskription</a> (2015)</nobr></label>
-                <label class="hweb FIXME"><input type=checkbox checked>
-                  <i>Svenskt teckenspråkslexikon</i> (webbversionen)</label>
+                <select class=tags data-placeholder="Välj kategorier att visa…" multiple>
+                  <optgroup label="Källa">
+                    <option value=h1977>1977 – Tecknad svenska</option>
+                    <option value=h1982>1982 – Teckenspråkstranskription</option>
+                    <option value=h1989>1989 – Persontecken</option>
+                    <option value=h1993 class=FIXME>1993 – Kompendium i teckentranskription</option>
+                    <option value=h1994 class=FIXME>1994 – Polysyntetiska tecken</option>
+                    <option value=h1997>1997 – Svenskt teckenspråkslexikon</option>
+                    <option value=h2015>2015 – Teckentranskription</option>
+                    <option value=hweb class=FIXME>webb – Svenskt teckenspråkslexikon</option>
+                  </optgroup>
+                  <optgroup label="Spretad/samlad" title="Applicerbart på handformer med två eller fler fingrar intill varandra.">
+                    <option value=hel>Hela handformer</option>
+                    <option value=fing>Fingerhandformer</option>
+                    <option value=fx>Spretad</option>
+                    <option value=fs>Samlad</option>
+                  </optgroup>
+                  <optgroup label="Fingrarnas vinkel">
+                    <option value=fb>Böjd</option>
+                    <option value=fv>Vinklad</option>
+                    <option value=fr>Rak</option>
+                    <option value=f0>Knuten</option
+                  </optgroup>
+                  <optgroup label="Antal fingrar">
+                    <option value=f1>Ett finger</option>
+                    <option value=f2>Två fingrar</option>
+                    <option value=f3>Tre fingrar</option>
+                    <option value=f4>Fyra fingrar</option>
+                  </optgroup>
+                  <optgroup label="Öppen/sluten">
+                    <option value=open class=FIXME>Öppen</option>
+                    <option value=closed class=FIXME>Sluten</option>
+                  </optgroup>
+                  <optgroup label="Finlandssvensk teckenspråk">
+                    <option value=flat title="Alla fingrar (utom tumme) samlade.">Handflata</option>
+                    <option value=knuten title="Alla fingrar (utom tumme) knutna.">Knuten hand</option>
+                    <option value=ett title="Ett utstickande finger, tumme invikt.">Ett finger</option>
+                    <option value=två>Två fingrar</option>
+                    <option value=tre>Tre fingrar</option>
+                    <option value=fyra>Fyra fingrar</option>
+                    <option value=fem>Fem fingrar</option>
+                    <option value=grepp title="Tummen nuddar en fingertopp.">Grepphand</option>
+                  </optgroup>
+                </select>
+                <span class=count style="color:#888">Visar alla handformer.</span>
+                <br><select class=mode>
+                  <option value=mark>Markera matchande</option>
+                  <option value=hide>Göm icke-matchande</option>
+                </select>
+                <select class=bool>
+                  <option value=and>Och</option>
+                  <option value=or>Eller</option>
+                </select>
 
-                <br>
-                  <details closed style=display:inline;padding-left:2em>
-                    <summary style=margin-left:-2em><label class=hel><input
-                      type=checkbox checked> Hel handform</label></summary>
-
-                      <p>”De åtta […] handformerna [􌤢, 􌥃, 􌥅, 􌤥, 􌥆, 􌤣, 􌤤 och
-                      􌤦] i den följande genomgången skiljer sig från de övriga
-                      genom att de kan betraktas som hela handformer. I dessa
-                      deltar alla fingrarna i konfigurationen och intar samma
-                      position.” [<a href="#ref1977">Tecknad svenska</a>
-                      s.41]
-                  </details>
-                  <details closed style="display:inline;padding-left:2em">
-                    <summary style="margin-left:-2em;border:1px solid black"
-                      ><label class=fx><input type=checkbox checked> Spretad</label>
-                      <label class=fs><input type=checkbox checked> Samlad</label>
-                    </summary>
-                    <p>Applicerbart på handformer med två eller fler fingrar
-                    intill.
-                  </details>
-                <span style="border:1px solid black">
-                  <label class=fb><input type=checkbox checked> Böjd</label>
-                  <label class=fv><input type=checkbox checked> Vinklad</label>
-                  <label class=fr><input type=checkbox checked> Rak</label>
-                  <label class=f0><input type=checkbox checked> Knuten</label
-                ></span>
-                <label class=f1><input type=checkbox checked> Ett finger</label>
-                <label class=f2><input type=checkbox checked> Två fingrar</label>
-                <label class=f3><input type=checkbox checked> Tre fingrar</label>
-                <label class=f4><input type=checkbox checked> Fyra fingrar</label>
-
-                <label class=open><input type=checkbox checked> Öppen (FIXME)</label>
-                <label class=closed><input type=checkbox checked> Sluten (FIXME)</label>
-
-                <br>Finlandsvenskt teckenspråk:
-                <label class=flat title="Alla fingrar (utom tumme) samlade."><input type=checkbox checked> Handflata (6)</label>
-                <label class=knuten title="Alla fingrar (utom tumme) knutna."><input type=checkbox checked> Knuten hand (5)</label>
-                <label class=ett title="Ett utstickande finger, tumme invikt."><input type=checkbox checked> Ett finger (6)</label>
-                <label class=två><input type=checkbox checked> Två fingrar (12)</label>
-                <label class=tre><input type=checkbox checked> Tre fingrar (6)</label>
-                <label class=fyra><input type=checkbox checked> Fyra fingrar (1)</label>
-                <label class=fem><input type=checkbox checked> Fem fingrar (6)</label>
-                <label class=grepp title="Tummen nuddar en fingertopp."><input type=checkbox checked> Grepphand (7)</label>
-
-                <div class=columns>
-                  <table class="item fs fv f4 grepp closed hel h1982"><tr>
+                <div class="list columns">
+                  <table class="item fs fv f4 grepp closed hel h1977 h1982 h1989 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1977 h1994 h1997 h2015 hweb">􌤤
                     <td class="txt h1977 h1994 h1997 h2015 hweb">
                       <details closed>
@@ -1146,7 +1112,7 @@
                         </details>
                       </details>
                     <td class="img h1977 h1994 h1997 h2015"><img src="pic/x/a-handen-1.png">
-                  </table><table class="item fs fv f2 två h1989 h1993 h1994"><tr>
+                  </table><table class="item fs fv f2 fing två h1989 h1993 h1994"><tr>
                     <td class="img"><img src="pic/h-lilla-a-handen.svg">
                     <td class="txt">
                       <details closed>
@@ -1181,7 +1147,7 @@
                         </details>
                       </details>
                     <td class="img h1989 h1993 h1994"><img src="pic/x/lilla-o-handen-2.png">
-                  </table><table class="item fs fv f4 flat h1982 h1994"><tr>
+                  </table><table class="item fs fv f4 flat h1982 h1989 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1997 h2015 hweb">􌥄
                     <td class="txt    h1997 h2015 hweb">
                       <details closed>
@@ -1193,7 +1159,7 @@
                         [<i>Polysyntetiska tecken</i> s.125]
                       </details>
                     <td class="img h1997 h2015"><img src="pic/x/tumvinkelhanden-1.png">
-                  </table><table class="item fs fv f4 flat hel h1982 h1994"><tr>
+                  </table><table class="item fs fv f4 flat hel h1977 h1982 h1989 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1977 h1997 h2015 hweb">􌤣
                     <td class="txt    h1977 h1997 h2015 hweb">
                       <details closed>
@@ -1218,18 +1184,18 @@
                       </details>
                     <td class="img h1977 h1997 h2015"><img src="pic/x/vinkelhanden-1.png">
                     <td class="img       h1997 h2015"><img src="pic/x/vinkelhanden-2.png">
-                  </table><table class="item f0 knuten h1982 h1994"><tr>
+                  </table><table class="item f0 knuten fing h1977 h1982 h1989 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1977 h1997 h2015 hweb">􌤧
                     <td class="txt    h1977 h1997 h2015 hweb">
                       <details closed>
-                        <summary>Tumhanden</summary>
+                        <summary>Tumhanden (tummen)</summary>
 
                         <p><b>Tummen</b> är vanligen rak, men böjda varianter
                         förekommer också. [<a href="#ref1977">Tecknad svenska</a> s.46]
                       </details>
                     <td class="img h1977 h1997 h2015"><img src="pic/x/tumhanden-1.png">
                     <td class="img h1977 h1997      "><img src="pic/x/tumhanden-2.png">
-                  </table><table class="item fb f1 två h1982 h1994"><tr>
+                  </table><table class="item fb f1 fing två h1977 h1982 h1989 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1977 h1997 h2015 hweb">􌥋
                     <td class="txt    h1977 h1997 h2015 hweb">
                       <details closed>
@@ -1249,7 +1215,7 @@
                     <td class="img h1977 h1997 h2015"><img src="pic/x/matthanden-1.png">
                     <td class="img       h1997      "><img src="pic/x/matthanden-2.png">
                     <td class="img       h1997      "><img src="pic/x/matthanden-3.png">
-                  </table><table class="item fv f1 två h1982 h1994"><tr>
+                  </table><table class="item fv f1 fing två h1982 h1989 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1997 h2015 hweb">􌥉
                     <td class="txt    h1997 h2015 hweb">
                       <details closed>
@@ -1269,7 +1235,7 @@
                         .22).” [<i>Polysyntetiska tecken</i> s.129]
                       </details>
                     <td class="img h1997 h2015"><img src="pic/x/raka-matthanden-1.png">
-                  </table><table class="item fs fv f2 två h1989"><tr>
+                  </table><table class="item fs fv f2 fing två h1989"><tr>
                     <td class="img"><img src="pic/h-vinklade-tupphanden.svg">
                     <td class="txt">
                       <details closed>
@@ -1287,7 +1253,7 @@
                         </details>
                       </details>
                     <td class="img h1989"><img src="pic/x/vinklade-tupphanden-1.png">
-                  </table><table class="item fs fr f4 flat h1982 h1994"><tr>
+                  </table><table class="item fs fr f4 flat h1982 h1994 h2015 hweb"><tr>
                     <td class="img x2 h2015 hweb">􌦫
                     <td class="txt    h2015 hweb">
                       <details closed>
@@ -1296,7 +1262,7 @@
                         <p class=FIXME>(Beskrivning saknas)
                       </details>
                     <td class="img h2015"><img src="pic/x/d-handen-1.png">
-                  </table><table class="item f1 closed grepp h1982 h1994"><tr>
+                  </table><table class="item f1 fing closed grepp h1977 h1982 h1989 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 fv fb h1977 h1997 h2015 hweb">􌤩
                     <td class="txt    fv fb h1977 h1997 h2015 hweb">
                       <details closed>
@@ -1315,7 +1281,7 @@
                       </details>
                     <td class="img fv h1977 h1997 h2015"><img src="pic/x/nyphanden-1.png">
                     <td class="img fb h1977 h1997 h2015"><img src="pic/x/nyphanden-2.png">
-                  </table><table class="item fs f2 closed grepp"><tr>
+                  </table><table class="item fs f2 fing closed grepp h1997 h2015 hweb"><tr>
                     <td class="img x2 fb fv h1997 h2015 hweb">􌤎
                     <td class="txt    fb fv h1997 h2015 hweb">
                       <details closed>
@@ -1328,7 +1294,7 @@
                       </details>
                     <td class="img fb h1997 h2015"><img src="pic/x/lilla-o-handen-1.png">
                     <td class="img fv h1997 h2015"><img src="pic/x/lilla-o-handen-2.png">
-                  </table><table class="item f0 closed knuten h1982 h1994"><tr>
+                  </table><table class="item f0 closed knuten h1982 h1989 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1997 h2015 hweb">􌥇
                     <td class="txt    h1997 h2015 hweb">
                       <details closed>
@@ -1337,7 +1303,7 @@
                         <p class=FIXME>(Beskrivning saknas)
                       </details>
                     <td class="img h1997 h2015"><img src="pic/x/e-handen-1.png">
-                  </table><table class="item fs fb f3 tre"><tr>
+                  </table><table class="item fs fb f3 tre h2015 hweb"><tr>
                     <td class="img x2 h2015 hweb">􌦬
                     <td class="txt    h2015 hweb">
                       <details closed>
@@ -1346,7 +1312,7 @@
                         <p class=FIXME>(Beskrivning saknas)
                       </details>
                     <td class="img h2015"><img src="pic/x/stora-nyphanden-5.png">
-                  </table><table class="item f0 closed knuten hel h1982 h1994"><tr>
+                  </table><table class="item f0 closed knuten hel h1977 h1982 h1989 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1977 h1997 h2015 hweb">􌤦
                     <td class="txt    h1977 h1997 h2015 hweb">
                       <details closed>
@@ -1371,7 +1337,7 @@
                       </details>
                     <td class="img h1977 h1997 h2015"><img src="pic/x/knutna-handen-1.png">
                     <td class="img       h1997 h2015"><img src="pic/x/knutna-handen-2.png">
-                  </table><table class="item f4 closed grepp h1982 h1994"><tr>
+                  </table><table class="item f4 fing closed grepp h1977 h1982 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 fs fx fb fv h1977 h1997 h2015 hweb">􌤲
                     <td class="txt    fs fx fb fv h1977 h1997 h2015 hweb">
                       <details closed>
@@ -1405,7 +1371,7 @@
                     <td class="img fs fb h1977 h1997      "><img src="pic/x/stora-nyphanden-3.png">
                     <td class="img fx fv       h1997      "><img src="pic/x/stora-nyphanden-4.png">
                     <td class="img fs fb       h1997 h2015"><img src="pic/x/stora-nyphanden-5.png">
-                  </table><table class="item fx fb f4 closed grepp h1994 FIXME"><tr>
+                  </table><table class="item fx fb f4 fing closed grepp h1994 FIXME"><tr>
                     <td class="img"><img src="pic/h-bojda-stora-nyphanden.svg">
                     <td class="txt">
                       <details closed>
@@ -1423,7 +1389,7 @@
                         </details>
                       </details>
                     <td class="img FIXME"><img src="pic/x/stora-nyphanden-1.png">
-                  </table><table class="item f1 ett h1982 h1994"><tr>
+                  </table><table class="item f1 fing ett h1977 h1982 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 fr fv h1977 h1997 h2015 hweb">􌤱
                     <td class="txt    fr fv h1977 h1997 h2015 hweb">
                       <details closed>
@@ -1435,7 +1401,7 @@
                       </details>
                     <td class="img fr h1977 h1997 h2015"><img src="pic/x/lillfingret-1.png">
                     <td class="img fv h1977 h1997      "><img src="pic/x/lillfingret-2.png">
-                  </table><table class="item fr f1 två h1982 h1994"><tr>
+                  </table><table class="item fr f1 fing två h1977 h1982 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1977 h1997 h2015 hweb">􌥑
                     <td class="txt    h1977 h1997 h2015 hweb">
                       <details closed>
@@ -1459,7 +1425,7 @@
                     <td class="img h1977 h1997 h2015"><img src="pic/x/flyghanden-1.png">
                     <td class="img             h2015"><img src="pic/x/flyghanden-2.png">
                     <td class="img h1977       h2015"><img src="pic/x/flyghanden-3.png">
-                  </table><table class="item fs f4 flat hel h1982 h1994"><tr>
+                  </table><table class="item fs f4 flat hel h1977 h1982 h1989 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 fr fv h1977 h1997 h2015 hweb">􌤢
                     <td class="txt    fr fv h1977 h1997 h2015 hweb">
                       <details closed>
@@ -1494,7 +1460,7 @@
                     <td class="img fr h1977       h2015"><img src="pic/x/flata-handen-2.png">
                     <td class="img fr h1977 h1997      "><img src="pic/x/d-handen-1.png">
                     <td class="img fv       h1997      "><img src="pic/x/vinkelhanden-2.png">
-                  </table><table class="item fs fr f4 flat h1982 h1994"><tr>
+                  </table><table class="item fs fr f4 flat h1982 h1989 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1997 h2015 hweb">􌥂
                     <td class="txt    h1997 h2015 hweb">
                       <details closed>
@@ -1506,7 +1472,7 @@
                         tecken</i> s.129]
                       </details>
                     <td class="img h1997 h2015"><img src="pic/x/flata-tumhanden-1.png">
-                  </table><table class="item fb f1 ett h1982 h1994"><tr>
+                  </table><table class="item fb fing f1 ett h1977 h1982 h1989 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1977 h1997 h2015 hweb">􌤪
                     <td class="txt    h1977 h1997 h2015 hweb">
                       <details closed>
@@ -1535,7 +1501,7 @@
                         vänster.
                       </details>
                     <td class="img h1977 h1997 h2015"><img src="pic/x/krokfingret-1.png">
-                  </table><table class="item fx fv f2 tre h1982 h1994"><tr>
+                  </table><table class="item fx fv f2 fing tre h1982 h1989 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1997 h2015 hweb">􌥎
                     <td class="txt    h1997 h2015 hweb">
                       <details closed>
@@ -1544,7 +1510,7 @@
                         <p class=FIXME>(Beskrivning saknas)
                       </details>
                     <td class="img h1997 h2015"><img src="pic/x/k-handen-1.png">
-                  </table><table class="item f1 ett h1982 h1994"><tr>
+                  </table><table class="item f1 fing ett h1977 h1982 h1989 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 fr fv h1977 h1997 h2015 hweb">􌥈
                     <td class="txt    fr fv h1977 h1997 h2015 hweb">
                       <details closed>
@@ -1574,7 +1540,7 @@
                       </details>
                     <td class="img fr h1977 h1997 h2015"><img src="pic/x/pekfingret-1.png">
                     <td class="img fv h1977 h1997 h2015"><img src="pic/x/vinklade-pekfingret.png">
-                  </table><table class="item fv f1 ett h1982 h1994 FIXME"><tr>
+                  </table><table class="item fv f1 fing ett h1982 h1989 h1994 FIXME"><tr>
                     <td class="img"><img src="pic/h-vinklade-pekfingret.svg">
                     <td class="txt">
                       <details closed>
@@ -1583,11 +1549,11 @@
                         tecken</i> s.106]
                       </details>
                     <td class="img"><img src="pic/x/vinklade-pekfingret.png">
-                  </table><table class="item fb f1 ett h1994"><tr>
+                  </table><table class="item fb f1 fing ett h1989 h1994"><tr>
                     <td class="img"><img src="pic/h-bojda-pekfingret.svg">
                     <td class="txt">
                       <details closed>
-                        <summary>Böjda pekfingret / LO-handen</summary>
+                        <summary>Böjda pekfingret (LO-handen)</summary>
 
                         <p><i>Används inte längre</i> – idag används
                         􌤩 <i>nyphanden</i> istället.
@@ -1624,7 +1590,7 @@
                       </details>
 
                     <td class="img h1989 h1993 h1994"><img src="pic/x/nyphanden-2.png">
-                  </table><table class="item fr f1 två h1982 h1994"><tr>
+                  </table><table class="item fr f1 fing två h1997 h1982 h1989 h1994 h2015 hweb"><tr>
                     <td class="img x2 h1997 h2015 hweb">􌤨
                     <td class="txt    h1997 h2015 hweb">
                       <details closed>
@@ -1635,7 +1601,7 @@
                         [<i>Polysyntetiska tecken</i>, s.112]
                       </details>
                     <td class="img h1997 h2015" style="padding-right:2px"><img src="pic/x/l-handen-1.png">
-                  </table><table class="item fs fr f3 tre h1982 h1994"><tr>
+                  </table><table class="item fs fr f3 fing tre h1977 h1982 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1977 h1997 h2015 hweb">􌤿
                     <td class="txt    h1977 h1997 h2015 hweb">
                       <details closed>
@@ -1651,7 +1617,7 @@
                         svenska</i> s.46]
                       </details>
                     <td class="img h1977 h1997 h2015"><img src="pic/x/m-handen-1.png">
-                  </table><table class="item fs f2 två h1982 h1994"><tr>
+                  </table><table class="item fs f2 fing två h1977 h1982 h1989 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 fr fv h1977 h1997 h2015 hweb">􌥌
                     <td class="txt    fr fv h1977 h1997 h2015 hweb">
                       <details closed>
@@ -1669,7 +1635,7 @@
                     <td class="img fr h1977 h1997 h2015"><img src="pic/x/n-handen-1.png">
                     <td class="img fv       h1997      "><img src="pic/x/vinklade-n-handen-1.png">
                     <td class="img fv       h1997      "><img src="pic/x/vinklade-n-handen-2.png">
-                  </table><table class="item fs fv f2 två"><tr>
+                  </table><table class="item fs fv f2 fing två h1994"><tr>
                     <td class="img h1994"><img src="pic/h-vinklade-n-handen.svg">
                     <td class="txt h1994">
                       <details closed>
@@ -1694,7 +1660,7 @@
                       </details>
                     <td class="img h1994"><img src="pic/x/vinklade-n-handen-1.png">
                     <td class="img h1994 FIXME"><img src="pic/x/vinklade-n-handen-2.png"><!-- CONFIRM THIS -->
-                  </table><table class="item fs fv f2 två h1994"><tr>
+                  </table><table class="item fs fv f2 fing två h1994"><tr>
                     <td class="img"><img src="pic/h-lilla-matthanden.svg">
                     <td class="txt">
                       <details closed>
@@ -1713,11 +1679,11 @@
                         </details>
                       </details>
                     <td class="img"><img src="pic/x/lilla-matthanden-1.png">
-                  </table><table class="item fs fb f2 två h1989 h1993 h1994"><tr>
+                  </table><table class="item fs fb f2 fing två h1989 h1993 h1994"><tr>
                     <td class="img"><img src="pic/h-bojda-n-handen.svg">
                     <td class="txt">
                       <details closed>
-                        <summary>Böjda N-handen / NO-handen</summary>
+                        <summary>Böjda N-handen (NO-handen)</summary>
 
                         <p><i>Används inte längre</i> – idag används
                           􌤎 <i>lilla O-handen</i> istället.
@@ -1749,7 +1715,7 @@
                         </details>
                       </details>
                     <td class="img h1989 h1993 h1994"><img src="pic/x/lilla-o-handen-1.png">
-                  </table><table class="item fs fb f4 closed grepp hel h1982 h1994"><tr>
+                  </table><table class="item fs fb f4 closed grepp hel h1977 h1982 h1989 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1977 h1997 h2015 hweb">􌥆
                     <td class="txt    h1977 h1997 h2015 hweb">
                       <details closed>
@@ -1766,7 +1732,7 @@
                         svenska</i> s.45]
                       </details>
                     <td class="img h1977 h1997 h2015"><img src="pic/x/o-handen-1.png">
-                  </table><table class="item f0 knuten h1982 h1994"><tr>
+                  </table><table class="item f0 knuten h1982 h1989 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1997 h2015 hweb">􌤫
                     <td class="txt    h1997 h2015 hweb">
                       <details closed>
@@ -1778,7 +1744,7 @@
                         s.126]
                       </details>
                     <td class="img h1997 h2015"><img src="pic/x/hallhanden-1.png">
-                  </table><table class="item f0 knuten"><tr>
+                  </table><table class="item f0 fing knuten h2015 hweb"><tr>
                     <td class="img x2 h2015 hweb">􌦭
                     <td class="txt    h2015 hweb">
                       <details closed>
@@ -1800,7 +1766,7 @@
 
                       </details>
                     <td class="img h2015"><img src="pic/x/q-handen-1.png">
-                  </table><table class="item fr f1 ett h1982 h1994"><tr>
+                  </table><table class="item fr f1 fing ett h1982 h1989 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1997 h2015 hweb">􌤬
                     <td class="txt    h1997 h2015 hweb">
                       <details closed>
@@ -1809,7 +1775,7 @@
                         <p class=FIXME>(Beskrivning saknas)
                       </details>
                     <td class="img h1997 h2015"><img src="pic/x/langfingret-1.png">
-                  </table><table class="item fs fb f4 open flat hel h1982 h1994"><tr>
+                  </table><table class="item fs fb f4 open flat hel h1977 h1982 h1989 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1977 h1997 h2015 hweb">􌥅
                     <td class="txt    h1977 h1997 h2015 hweb">
                       <details closed>
@@ -1836,7 +1802,7 @@
                       </details>
                     <td class="img h1977       h1997 h2015"><img src="pic/x/s-handen-1.png">
                     <td class="img       h1994 h1997      "><img src="pic/x/s-handen-2.png">
-                  </table><table class="item fx fb f4 fem open hel h1982 h1994"><tr>
+                  </table><table class="item fx fb f4 fem open hel h1977 h1982 h1989 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1977 h1997 h2015 hweb">􌤥
                     <td class="txt    h1977 h1997 h2015 hweb">
                       <details closed>
@@ -1867,7 +1833,7 @@
                     <td class="img       h1997 h2015"><img src="pic/x/klohanden-2.png" style="margin-right:-4px">
                     <td class="img       h1997      "><img src="pic/x/bojda-sprethanden-1.png" style="margin-left:-2px">
                     <td class="img       h1997      "><img src="pic/x/klohanden-3.png">
-                  </table><table class="item fv f1 två h1982 h1994"><tr>
+                  </table><table class="item fv f1 fing två h1977 h1982 h1989 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1977 h1997 h2015 hweb">􌥊
                     <td class="txt    h1977 h1997 h2015 hweb">
                       <details closed>
@@ -1895,7 +1861,7 @@
                       </details>
                     <td class="img h1977 h1997 h2015"><img src="pic/x/t-handen-1.png">
                     <td class="img       h1997      "><img src="pic/x/t-handen-2.png">
-                  </table><table class="item fb f2 två h1982 h1994"><tr>
+                  </table><table class="item fb f2 fing två h1977 h1982 h1989 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 fx fs h1977 h1997 h2015 hweb">􌤽
                     <td class="txt    fx fs h1977 h1997 h2015 hweb">
                       <details closed>
@@ -1922,7 +1888,7 @@
                       </details>
                     <td class="img fx h1977 h1997 h2015"><img src="pic/x/dubbelkroken-1.png">
                     <td class="img fs h1977             FIXME x2">?
-                  </table><table class="item fx fb f2 tre h1982 h1994"><tr>
+                  </table><table class="item fx fb f2 fing tre h1982 h1989 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1997 h2015 hweb">􌤯
                     <td class="txt    h1997 h2015 hweb">
                       <details closed>
@@ -1939,7 +1905,7 @@
                         </details>
                       </details>
                     <td class="img h1997 h2015"><img src="pic/x/bojda-tupphanden-1.png">
-                  </table><table class="item fx f2 två h1982 h1994"><tr>
+                  </table><table class="item fx f2 fing två h1977 h1982 h1989 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 fr fv h1977 h1997 h2015 hweb">􌤭
                     <td class="txt    fr fv h1977 h1997 h2015 hweb">
                       <details closed>
@@ -1960,8 +1926,8 @@
                       </details>
                     <td class="img fr h1977 h1997 h2015"><img src="pic/x/v-handen-1.png">
                     <td class="img fv       h1997      "><img src="pic/x/vinklade-v-handen-1.png">
-                  </table><table class="item FIXME"><tr>
-                    <td class="img x2" style="font-weight:normal">U
+                  </table><table class="item fing FIXME"><tr>
+                    <td class="img x2" style="font-weight:normal">􌦱
                     <td class="txt">
                       <details closed>
                         <summary>Lamahanden / U-handen</summary>
@@ -1970,7 +1936,7 @@
                         U􌤵􌤷􌥵􌥼􌥻 <a href="15602">Lama</a>.
                       </details>
                     <td class="img x2">?
-                  </table><table class="item fx f2 tre h1982 h1994"><tr>
+                  </table><table class="item fx f2 fing tre h1977 h1982 h1989 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 fr fv h1977 h1997 h2015 hweb">􌤮
                     <td class="txt    fr fv h1977 h1997 h2015 hweb">
                       <details closed>
@@ -1991,7 +1957,7 @@
                       </details>
                     <td class="img fr h1977 h1997 h2015"><img src="pic/x/tupphanden-1.png">
                     <td class="img fv       h1997      "><img src="pic/x/vinklade-tupphanden-1.png">
-                  </table><table class="item fx fr f3 tre h1982 h1994"><tr>
+                  </table><table class="item fx fr f3 fing tre h1997 h1982 h1994 h2015 hweb"><tr>
                     <td class="img x2 h1997 h2015 hweb">􌤰
                     <td class="txt    h1997 h2015 hweb">
                       <details closed>
@@ -2000,7 +1966,7 @@
                         <p class=FIXME>(Beskrivning saknas)
                       </details>
                     <td class="img h1997 h2015"><img src="pic/x/w-handen-1.png">
-                  </table><table class="item fb fx f3 tre"><tr>
+                  </table><table class="item fb fx f3 fing tre hweb"><tr>
                     <td class="img x2 hweb FIXME">?
                     <td class="txt    hweb">
                       <details closed>
@@ -2021,7 +1987,7 @@
                         </table>
                       </details>
                     <td class="img x2 FIXME">?
-                  </table><table class="item fs fr f2 två"><tr>
+                  </table><table class="item fs fr f2 fing två h1997 h2015 hweb"><tr>
                     <td class="img x2 h1997 h2015 hweb">􌤳
                     <td class="txt    h1997 h2015 hweb">
                       <details closed>
@@ -2030,7 +1996,7 @@
                         <p class=FIXME>(Beskrivning saknas)
                       </details>
                     <td class="img h1997 h2015"><img src="pic/x/x-handen-1.png">
-                  </table><table class="item fx fr f4 fem open hel h1982 h1994"><tr>
+                  </table><table class="item fx fr f4 fem open hel h1977 h1982 h1989 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1977 h1997 h2015 hweb">􌥃
                     <td class="txt    h1977 h1997 h2015 hweb">
                       <details closed>
@@ -2066,7 +2032,7 @@
                     <td class="img h1977 h1997 h2015"><img src="pic/x/sprethanden-1.png">
                     <td class="img h1977 h1997      "><img src="pic/x/4-handen-1.png">
                     <td class="img       h1997 h2015"><img src="pic/x/sprethanden-3.png">
-                  </table><table class="FIXME item fv fx f4 fem h1994"><tr>
+                  </table><table class="FIXME item fv fx f4 hel fem h1994"><tr>
                     <td class="img"><img src="pic/h-vinklade-sprethanden.svg">
                     <td class="txt">
                       <details closed>
@@ -2081,7 +2047,7 @@
                         tecken</i> s.88.
                       </details>
                     <td class="img x2 FIXME">?
-                  </table><table class="FIXME item fx fb f4 fem h1994"><tr>
+                  </table><table class="FIXME item fx fb f4 hel fem h1994 hweb"><tr>
                     <td class="img hweb"><img src="pic/h-bojda-sprethanden.svg">
                     <td class="txt hweb">
                       <details closed>
@@ -2112,7 +2078,7 @@
                         􌤢􌤴􌥗􌥃􌤴􌤶􌤟􌥼􌥣􌥲􌥿 <a href=01388>fem veckor</a>.
                       </details>
                     <td class="img"><img src="pic/x/bojda-sprethanden-1.png">
-                  </table><table class="item fv fx f4 fem h1982 h1994"><tr>
+                  </table><table class="item fv fx f4 fing fem h1982 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1997 h2015 hweb">􌥒
                     <td class="txt    h1997 h2015 hweb">
                       <details closed>
@@ -2123,7 +2089,7 @@
                     <td class="img h1997 h2015"><img src="pic/x/stora-langfingret-1.png">
                     <td class="img h1997      "><img src="pic/x/stora-langfingret-2.png">
                     <td class="img h1997      "><img src="pic/x/stora-langfingret-3.png">
-                  </table><table class="item fx f4 closed grepp h1982 h1994"><tr>
+                  </table><table class="item fx f4 fing closed grepp h1997 h1982 h1994 h2015 hweb"><tr>
                     <td class="img x2 fv fb h1997 h2015 hweb">􌥟
                     <td class="txt    fv fb h1997 h2015 hweb">
                       <details closed>
@@ -2133,7 +2099,7 @@
                       </details>
                     <td class="img fb h1997 h2015"><img src="pic/x/runda-langfingret-1.png">
                     <td class="img fv h1997      "><img src="pic/x/runda-langfingret-2.png">
-                  </table><table class="item fx fb f4 fem h1994"><tr>
+                  </table><table class="item fx fb f4 fing fem h1994"><tr>
                     <td class="img"><img src="pic/h-bojda-langfingret.svg">
                     <td class="txt">
                       <details closed>
@@ -2154,7 +2120,7 @@
 
                       </details>
                     <td class="img"><img src="pic/x/stora-langfingret-2.png">
-                  </table><table class="item fr fx f4 fyra h1982 h1994"><tr>
+                  </table><table class="item fr fx f4 fyra h1982 h1994 h2015 hweb"><tr>
                     <td class="img x2 h2015 hweb">􌦪
                     <td class="txt    h2015 hweb">
                       <details closed>
@@ -2163,7 +2129,7 @@
                         <p class=FIXME>(Beskrivning saknas)
                       </details>
                     <td class="img h2015"><img src="pic/x/4-handen-1.png">
-                  </table><table class="item fb fx f4 fyra"><tr>
+                  </table><table class="item fb fx f4 fyra hweb"><tr>
                     <td class="img x2 hweb FIXME">?
                     <td class="txt    hweb">
                       <details closed>
@@ -2208,6 +2174,29 @@
                 N-handen) utan transkriberar bägge med 􌥌. (Webbversionen
                 av <i>Svenskt teckenspråkslexikon</i> har lagt till 􌦪, 􌦭, 􌦫 och
                 􌦬.)
+
+                <section><details>
+                  <summary><h1>Handformskategorier</h1></summary>
+
+                  <p>”Handformerna […] fördelar sig i två grupper om man ser
+                  till hur fingrarna samverkar i bildandet av formen. De åtta
+                  första handformerna [􌤢, 􌥃, 􌥅, 􌤥, 􌥆, 􌤣, 􌤤 och 􌤦] i den
+                  följande genomgången skiljer sig från de övriga genom att de
+                  kan betraktas som hela handformer. I dessa deltar alla
+                  fingrarna i konfigurationen och intar samma position. De
+                  övriga handformerna [􌤧, 􌥈, <span class=hflip>􌤪</span>, 􌤱, 􌥌,
+                  􌤭, 􌤽, 􌥑, 􌤿, 􌤮, 􌥊, 􌥋, 􌤩 och 􌤲] utmärks däremot av att bara ett
+                  eller fler fingrar, men inte alla, deltar i handens
+                  formering. Det kan beskrivas som att det i grunden är en
+                  knuten hand från vilken något eller några av fingrarna
+                  avviker. De fingrar som inte deltar i formen ligger då krökta
+                  in mot handflatan. Dessa handformer är alltså till skillnad
+                  från de hela händerna ett slags fingerkonfigurationer.”
+                  [<a href="#ref1977">Tecknad svenska</a> s.41 – Notera: I
+                  denna källa används T-handen (􌥊) för det som idag kallas
+                  L-handen (􌤨)]
+
+                </details></section>
             </details></section>
 
             <section><details>
@@ -4900,7 +4889,36 @@
   </main>
   <img id=hover style="display:none;position:fixed;bottom:0;right:0;border:4px solid black;padding: .5em 1em;background:#fff">
   <script src="jquery-3.1.1.js"></script>
+  <link rel=stylesheet href="chosen.min.css">
+  <script src="chosen.jquery.min.js"></script>
   <script>
+    function filter() {
+        var figure = $(this).closest("figure");
+        var tags = $(".tags", figure).val();   // select: list from
+        var bool = $(".bool", figure).val();   // checkbox: 'and'/'or'
+        var mode = $(".mode", figure).val();   // checkbox: 'mark'/'hide'
+        var elem = $(".list", figure);         // element containing data
+
+        $(">*:not(.hilite)", elem).show();
+        $(".hilite", elem).removeClass("hilite");
+        $(".count", figure).text("Visar alla handformer.");
+
+        if (tags.length > 0) {
+            var selector = "." + tags.join(bool === "or" ? ",." : ".");
+
+            found = $(">" + selector, elem);
+            $(".count", figure).text("Visar " + found.length + " handformer.");
+            if (mode === "mark") {
+                $(selector, elem).addClass("hilite");
+            } else {
+                $(">*:not(" + selector + ")", elem).hide();
+            }
+        }
+    }
+    $(".tags").chosen({ width: "500px" });
+    $(".tags,.bool,.mode").change(filter);
+
+    /**************************************************************************/
     $('body').prepend('<img id=toggle><img id=toggle2>');
     var state = 0,
         attrs = [
@@ -4940,104 +4958,6 @@
 
     // Expand all when loading page.
     $('#toggle').click();
-    ///////////////////////////////////////////////////////////////////////////
-    $('label.fx').
-        hover(
-            function () { $('.fx').addClass('hilite')    },
-            function () { $('.fx').removeClass('hilite') }
-        );
-    $('label.fs').
-        hover(
-            function () { $('.fs').addClass('hilite')    },
-            function () { $('.fs').removeClass('hilite') }
-        );
-    $('label.fr').
-        hover(
-            function () { $('.fr').addClass('hilite')    },
-            function () { $('.fr').removeClass('hilite') }
-        );
-    $('label.fv').
-        hover(
-            function () { $('.fv').addClass('hilite')    },
-            function () { $('.fv').removeClass('hilite') }
-        );
-    $('label.fb').
-        hover(
-            function () { $('.fb').addClass('hilite')    },
-            function () { $('.fb').removeClass('hilite') }
-        );
-    $('label.f0').
-        hover(
-            function () { $('.f0').addClass('hilite')    },
-            function () { $('.f0').removeClass('hilite') }
-        );
-    $('label.f1').
-        hover(
-            function () { $('.f1').addClass('hilite')    },
-            function () { $('.f1').removeClass('hilite') }
-        );
-    $('label.f2').
-        hover(
-            function () { $('.f2').addClass('hilite')    },
-            function () { $('.f2').removeClass('hilite') }
-        );
-    $('label.f3').
-        hover(
-            function () { $('.f3').addClass('hilite')    },
-            function () { $('.f3').removeClass('hilite') }
-        );
-    $('label.f4').
-        hover(
-            function () { $('.f4').addClass('hilite')    },
-            function () { $('.f4').removeClass('hilite') }
-        );
-    $('label.open').
-        hover(
-            function () { $('.open').addClass('hilite')    },
-            function () { $('.open').removeClass('hilite') }
-        );
-    $('label.closed').
-        hover(
-            function () { $('.closed').addClass('hilite')    },
-            function () { $('.closed').removeClass('hilite') }
-        );
-
-    $('label.hel').
-        hover(
-            function () { $('.hel').addClass('hilite')    },
-            function () { $('.hel').removeClass('hilite') }
-        );
-    ////////////////////////////////////////////////////////////////////////////
-    $('label.h1977').
-        hover(
-            function () { $('.h1977').addClass('hilite')    },
-            function () { $('.h1977').removeClass('hilite') }
-        );
-    $('label.h1982').
-        hover(
-            function () { $('.h1982').addClass('hilite')    },
-            function () { $('.h1982').removeClass('hilite') }
-        );
-    $('label.h1994').
-        hover(
-            function () { $('.h1994').addClass('hilite')    },
-            function () { $('.h1994').removeClass('hilite') }
-        );
-    $('label.h1997').
-        hover(
-            function () { $('.h1997').addClass('hilite')    },
-            function () { $('.h1997').removeClass('hilite') }
-        );
-    $('label.h2015').
-        hover(
-            function () { $('.h2015').addClass('hilite')    },
-            function () { $('.h2015').removeClass('hilite') }
-        );
-    $('label.hweb').
-        hover(
-            function () { $('.hweb').addClass('hilite')    },
-            function () { $('.hweb').removeClass('hilite') }
-        );
     ////////////////////////////////////////////////////////////////////////////
     $('label.r1977').
         hover(
@@ -5060,48 +4980,6 @@
             function () { $('.h2').addClass('hilite')    },
             function () { $('.h2').removeClass('hilite') }
         );
-    ////////////////////////////////////////////////////////////////////////////
-    $('label.flat').
-        hover(
-            function () { $('.flat').addClass('hilite')    },
-            function () { $('.flat').removeClass('hilite') }
-        );
-    $('label.knuten').
-        hover(
-            function () { $('.knuten').addClass('hilite')    },
-            function () { $('.knuten').removeClass('hilite') }
-        );
-    $('label.ett').
-        hover(
-            function () { $('.ett').addClass('hilite')    },
-            function () { $('.ett').removeClass('hilite') }
-        );
-    $('label.två').
-        hover(
-            function () { $('.två').addClass('hilite')    },
-            function () { $('.två').removeClass('hilite') }
-        );
-    $('label.tre').
-        hover(
-            function () { $('.tre').addClass('hilite')    },
-            function () { $('.tre').removeClass('hilite') }
-        );
-    $('label.fyra').
-        hover(
-            function () { $('.fyra').addClass('hilite')    },
-            function () { $('.fyra').removeClass('hilite') }
-        );
-    $('label.fem').
-        hover(
-            function () { $('.fem').addClass('hilite')    },
-            function () { $('.fem').removeClass('hilite') }
-        );
-    $('label.grepp').
-        hover(
-            function () { $('.grepp').addClass('hilite')    },
-            function () { $('.grepp').removeClass('hilite') }
-        );
-
     ////////////////////////////////////////////////////////////////////////////
     $('table img[src^="pic/x/"]').hover(
         function () {
