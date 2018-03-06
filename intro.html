@@ -1071,7 +1071,7 @@
                     <option value=grepp title="Tummen nuddar en fingertopp.">Grepphand</option>
                   </optgroup>
                 </select>
-                <span class=count style="color:#888">Visar alla handformer.</span>
+                <span class=count style="color:#888"></span>
                 <br><select class=mode>
                   <option value=mark>Markera matchande</option>
                   <option value=hide>Göm icke-matchande</option>
@@ -4897,30 +4897,44 @@
   </style>
   <script src="chosen.jquery.min.js"></script>
   <script>
-    function filter() {
-        var figure = $(this).closest("figure");
-        var tags = $(".tags", figure).val();   // select: list from
-        var bool = $(".bool", figure).val();   // checkbox: 'and'/'or'
-        var mode = $(".mode", figure).val();   // checkbox: 'mark'/'hide'
-        var elem = $(".list", figure);         // element containing data
 
-        $(">*:not(.hilite)", elem).show();
-        $(".hilite", elem).removeClass("hilite");
-        $(".count", figure).text("Visar alla handformer.");
+    // Assumes a <figure> containing a <span> (with acounter) and
+    // a <div class=list> element. Pass the <span> DOM element in `this` and an
+    // optional (jQuery style) selector as argument. Will match the selector
+    // against the <div class=list> content, and output the number of matching
+    // elements in the <span>.
+    function update_counter(selector) {
+        var jqCounter = $(this);
+        var jqContainer = jqCounter.closest("figure").find(".list");
+        var jqItems = $(selector || ">*", jqContainer);
+        var msg = selector ? "" : "alla ";
+        jqCounter.text("Visar " + msg + jqItems.length + " handformer.");
+    }
+    function filter() {
+        var selector;
+        var jqContainer = $(this).closest("figure");
+        var tags = $(".tags", jqContainer).val();   // select: list from
+        var bool = $(".bool", jqContainer).val();   // checkbox: 'and'/'or'
+        var mode = $(".mode", jqContainer).val();   // checkbox: 'mark'/'hide'
+        var elem = $(".list", jqContainer);         // element containing data
+        var jqItems = $(">*", elem).show().removeClass("hilite");
+        var jqFound;
 
         if (tags.length > 0) {
-            var selector = "." + tags.join(bool === "or" ? ",." : ".");
-
-            found = $(">" + selector, elem);
-            $(".count", figure).text("Visar " + found.length + " handformer.");
+            selector = ">." + tags.join(bool === "or" ? ",>." : ".");
+            jqFound = $(selector, elem);
             if (mode === "mark") {
-                $(selector, elem).addClass("hilite");
+                jqFound.addClass("hilite");
             } else {
-                $(">*:not(" + selector + ")", elem).hide();
+                jqItems.not(jqFound).hide();
             }
         }
+        $(".count", jqContainer).each(function () {
+            update_counter.call(this, selector);
+        });
     }
     $(".tags").chosen({ width: "500px" });
+    $(".count").each(update_counter);
     $(".tags,.bool,.mode").change(filter);
 
     /**************************************************************************/
