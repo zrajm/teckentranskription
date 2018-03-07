@@ -1086,7 +1086,7 @@
                     <option value=grepp title="Tummen nuddar en fingertopp.">Grepphand</option>
                   </optgroup>
                 </select>
-                <span class=count style="color:#888"></span>
+                <span class=count style="color:#888" data-fmt="Visar {msg} {count} handformer."></span>
                 <br><select class=mode>
                   <option value=mark>Markera matchande</option>
                   <option value=hide>Göm icke-matchande</option>
@@ -4906,6 +4906,12 @@
   </style>
   <script src="chosen.jquery.min.js"></script>
   <script>
+    function supplant(s, o) {
+        return s.replace(/{([^{}]*)}/g, function (a, b) {
+            var r = o[b];
+            return typeof r === "string" || typeof r === "number" ? r : a;
+        });
+    };
 
     // Assumes a <figure> containing a <span> (with acounter) and
     // a <div class=list> element. Pass the <span> DOM element in `this` and an
@@ -4913,11 +4919,16 @@
     // against the <div class=list> content, and output the number of matching
     // elements in the <span>.
     function update_counter(selector) {
+        selector = typeof selector === "string" ? selector : null;
         var jqCounter = $(this);
         var jqContainer = jqCounter.closest("figure").find(".list");
         var jqItems = $(selector || ">*", jqContainer);
-        var msg = selector ? "" : "alla ";
-        jqCounter.text("Visar " + msg + jqItems.length + " handformer.");
+        var fmt = jqCounter.data("fmt") || "{count}";
+        var msg = supplant(fmt, {
+            msg: (selector ? "" : "alla"),
+            count: jqItems.length,
+        });
+        jqCounter.text(msg);
     }
     function filter() {
         var selector;
