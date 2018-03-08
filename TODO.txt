@@ -165,14 +165,6 @@
    A table like the one in Bergman (1977) p.51, but with a 'heat map' of
    combination occurrences. (Both with percentages and greyscale[?] background
    colors illustrating which combinations are the most common.)
-** TODO Whole handshapes vs. finger handshapes
-   Björkstrand (1998) lists whole and finger handshapes (p.19–20).
-
-   + Whole handshapes: flat hand, sprethand, S-hand, klohand, O-hand,
-     vinkelhand, knutenhand och A-hand.
-   + Finger handshapes: tummen, pekfingret, krokfingret, lillfingret, N-handen,
-     V-handen, dubbelkroken, flyghanden, M-handen, måtthanden, nyphanden och
-     stora nyphanden.
 ** TODO Transcription problem: Contact point
    http://localhost/teckentranskription/lexicon.html#02993%2C08968
 
@@ -187,44 +179,10 @@
    '<-- -->' (which are written under circling, curving, hitting, twisting)
    could maybe be better written with converging and diverging symbols
    underneath the symbol it modifies.
-** TODO Update terminology
-   Weak/strong should be replaced by ipsilateral/contralateral (ipsi/contra).
-** [4/5] Table filtering
-*** [7/12] Handshape table
-**** TODO Tags for 1993 – Kompendium i teckentranskription
-**** TODO Tags for 1994 – Polysyntetiska tecken
-**** TODO Tags for 1997 – Svenskt teckenspråkslexikon (book)
-**** TODO Tags for 2015 – Teckentranskription
-**** TODO Tags for web – Svenskt teckenspråkslexikon (web)
-**** DONE Tags for 1989 – Persontecken
-     CLOSED: [2018-03-06 tis 19:45]
-**** DONE Tags for 1982 – Teckenspråkstranskription
-     CLOSED: [2018-03-06 tis 19:45]
-**** DONE Tags for 1977 – Tecknad svenska
-     CLOSED: [2018-03-06 Tue 19:45]
-**** DONE Add category 'finger handshape' (opposite of whole hand)
-     CLOSED: [2018-03-06 Tue 19:45]
-     Category from Tecknad svenska.
-**** DONE Use dropdown for table filtering
-     CLOSED: [2018-03-06 Tue 19:45]
-     Replaced the cluttered checkbox interface with a dropdown selector (with
-     easy search function). Decided to go with Chosen.
-     https://harvesthq.github.io/chosen/
-**** DONE Number of entries shown should be displayed at top of table
-     CLOSED: [2018-03-06 Tue 19:45]
-     So that you can easily see e.g. how many handshapes occurred in a specific
-     source.
-**** DONE Fix table checkboxes
-     CLOSED: [2018-03-06 Tue 19:45]
-     One should be able to use the table checkboxes for selecting what to
-     display in any given table.
-
-     These should work so that, when checked, all items with that attribute are
-     displayed (but no other).
-
-     If multiple checkboxes are marked, they should be AND:ed together.
+** [0/2] Table filtering
+*** TODO Add source info for position table
+*** TODO Add source info for articulation table
 ** TODO Reference section should which sources are derivatives of other
-
    There should be comments describing that the following works are basically
    variations on *the exact the same text*, with only some minor updates. (This
    is especially important almost all of the example transcriptions given are
@@ -423,6 +381,50 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Replace weak/strong with left/right in intro article
+   CLOSED: [2018-03-08 Thu 13:47]
+** DONE Whole handshapes vs. finger handshapes
+   CLOSED: [2018-03-07 Wed]
+   Björkstrand (1998) lists whole and finger handshapes (p.19–20).
+
+   + Whole handshapes: flat hand, sprethand, S-hand, klohand, O-hand,
+     vinkelhand, knutenhand och A-hand.
+   + Finger handshapes: tummen, pekfingret, krokfingret, lillfingret, N-handen,
+     V-handen, dubbelkroken, flyghanden, M-handen, måtthanden, nyphanden och
+     stora nyphanden.
+** [12/12] Handshape table in intro article
+*** DONE Tags for web – Svenskt teckenspråkslexikon (web)
+*** DONE Tags for 2015 – Teckentranskription
+*** DONE Tags for 1997 – Svenskt teckenspråkslexikon (book)
+*** DONE Tags for 1994 – Polysyntetiska tecken
+*** DONE Tags for 1993 – Kompendium i teckentranskription
+*** DONE Tags for 1989 – Persontecken
+    CLOSED: [2018-03-06 tis 19:45]
+*** DONE Tags for 1982 – Teckenspråkstranskription
+    CLOSED: [2018-03-06 tis 19:45]
+*** DONE Tags for 1977 – Tecknad svenska
+    CLOSED: [2018-03-06 Tue 19:45]
+*** DONE Add category 'finger handshape' (opposite of whole hand)
+    CLOSED: [2018-03-06 Tue 19:45]
+    Category from Tecknad svenska.
+*** DONE Use dropdown for table filtering
+    CLOSED: [2018-03-06 Tue 19:45]
+    Replaced the cluttered checkbox interface with a dropdown selector (with
+    easy search function). Decided to go with Chosen.
+    https://harvesthq.github.io/chosen/
+*** DONE Number of entries shown should be displayed at top of table
+    CLOSED: [2018-03-06 Tue 19:45]
+    So that you can easily see e.g. how many handshapes occurred in a specific
+    source.
+*** DONE Fix table checkboxes
+    CLOSED: [2018-03-06 Tue 19:45]
+    One should be able to use the table checkboxes for selecting what to
+    display in any given table.
+
+    These should work so that, when checked, all items with that attribute are
+    displayed (but no other).
+
+    If multiple checkboxes are marked, they should be AND:ed together.
 ** [3/3] Add symbols wanted by Swedish sign language lexicon office to font
 *** DONE Add "independent" symbol for medial contact
     CLOSED: [2018-02-15 Thu 15:02]
