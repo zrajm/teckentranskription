@@ -180,6 +180,13 @@
    could maybe be better written with converging and diverging symbols
    underneath the symbol it modifies.
 ** [0/2] Table filtering
+*** TODO Add missing symbols from 1994 source to position table
+    Duplicated symbols are not listed in the book appendix (except for the
+    chest). Go through the transcriptions in the book and include the missing
+    symbols: the eyes, ears, cheeks, shoulders and/or hips.
+
+    Also look for left ear, cheek or hip, and include those as well (if they
+    exist in the book).
 *** TODO Add source info for position table
 *** TODO Add source info for articulation table
 ** TODO Reference section should which sources are derivatives of other
