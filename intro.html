@@ -436,15 +436,42 @@
               </div>
 
               <figure>
+                <!--
                 <label class=l1977><input type=checkbox checked>
                   <a href="#ref1977">Tecknad svenska</a> (1977)</label>
                 <label class=h1><input type=checkbox checked>
                   Enhandslägen</label>
                 <label class=h2><input type=checkbox checked>
                   Tvåhandslägen</label>
+                -->
+                <select class=tags data-placeholder="Välj kategorier att visa…" multiple>
+                  <optgroup label="Källa">
+                    <option value=l1977>1977 – Tecknad svenska</option>
+                    <option value=l1982 class=FIXME>1982 – Teckenspråkstranskription</option>
+                    <option value=l1989 class=FIXME>1989 – Persontecken</option>
+                    <option value=l1993 class=FIXME>1993 – Kompendium i teckentranskription</option>
+                    <option value=l1994 class=FIXME>1994 – Polysyntetiska tecken</option>
+                    <option value=l1997 class=FIXME>1997 – Svenskt teckenspråkslexikon</option>
+                    <option value=l2015 class=FIXME>2015 – Teckentranskription</option>
+                    <option value=lweb class=FIXME>webb – Svenskt teckenspråkslexikon</option>
+                  </optgroup>
+                  <optgroup label="Antal händer">
+                    <option value=h1 class=FIXME>Enhandslägen</option>
+                    <option value=h2 class=FIXME>Tvåhandslägen</option>
+                  </optgroup>
+                </select>
+                <span class=count style="color:#888" data-fmt="Visar {msg} {count} lägen."></span>
+                <br><select class=mode>
+                  <option value=mark>Markera matchande</option>
+                  <option value=hide>Göm icke-matchande</option>
+                </select>
+                <select class=bool>
+                  <option value=and>Och</option>
+                  <option value=or>Eller</option>
+                </select>
 
-                <div class=columns>
-                <table class=item>
+                <div class="list columns">
+                <table class="item h1 h2 l1977">
                   <tr class="h1 h2">
                     <td class="img x2 l1977"> 
                     <td class="txt l1977">
@@ -484,7 +511,7 @@
                         övertar aspektfunktionen artikulationsställe.” [<i>Tecknad
                         svenska</i> s.56–57]
                       </details>
-                </table><table class=item>
+                </table><table class="item l1977">
                   <tr>
                     <td class="img x2 l1977">􌤆
                     <td class="txt l1977">
@@ -505,7 +532,7 @@
                         markerar att det är skilt från det (lägre) neutrala
                         artikulationsstället.” [<a href="#ref1977">Tecknad svenska</a> s.54]
                       </details>
-                </table><table class=item>
+                </table><table class="item l1977">
                   <tr>
                     <td class="img x2 l1977">􌤂
                     <td class="txt l1977">
@@ -525,7 +552,7 @@
                         högre och ett lägre ställe.” [<a href="#ref1977">Tecknad svenska</a>
                         s.54]
                       </details>
-                </table><table class=item>
+                </table><table class="item l1977">
                   <tr>
                     <td class="img x2 l1977">􌥞
                     <td class="txt l1977">
@@ -545,7 +572,7 @@
                         högre och ett lägre ställe.” [<a href="#ref1977">Tecknad svenska</a>
                         s.54]
                       </details>
-                </table><table class=item>
+                </table><table class="item h1 h2 l1977">
                   <tr class="h1 h2">
                     <td class="img x2 l1977">􌤀
                     <td class="txt l1977">
@@ -560,7 +587,7 @@
                         förekommer endast i ett litet antal tecken.” [<i>Tecknad
                         svenska</i> s.52]
                       </details>
-                </table><table class=item>
+                </table><table class="item l1977">
                   <tr>
                     <td class="img x2 l1977">􌤃
                     <td class="txt l1977">
@@ -582,7 +609,7 @@
                         <i class=sign>gammal</i>, <i class=sign>bonde</i>).
                         [<a href="#ref1977">Tecknad svenska</a> s.52]
                       </details>
-                </table><table class=item>
+                </table><table class="item h2">
                   <tr class=h2>
                     <td class="img x2">􌤄
                     <td class="txt">
@@ -593,7 +620,7 @@
                         􌤄􌤯􌤵􌥘􌤯􌤵􌥘􌥧 <a href=04445>mycket trött</a> och
                         􌤄􌥔􌥘􌥌􌥌􌥓􌥘􌥹􌥼􌥻 <a href=08641>smink</a>.
                       </details>
-                </table><table class=item>
+                </table><table class="item">
                   <tr>
                     <td class="img x2">􌤅
                     <td class="txt">
@@ -602,7 +629,7 @@
 
                         <p>Används endast till enhandstecken.
                       </details>
-                </table><table class=item>
+                </table><table class="item h2 l1977">
                   <tr class=h2>
                     <td class="img x2 l1977">􌤾
                     <td class="txt l1977">
@@ -611,7 +638,7 @@
 
                         <p>Används endast till tvåhandstecken.
                       </details>
-                </table><table class=item>
+                </table><table class="item">
                   <tr>
                     <td class="img x2">􌤈
                     <td class="txt">
@@ -626,7 +653,7 @@
                         􌤇􌤪􌤵􌤶􌥢􌥼􌤟􌥠􌤈􌤪􌤵􌤶􌤟􌥼􌥢􌥱􌦈 <a href=03480>ignorera</a>/<a href=16651>strunta
                         i</a>
                       </details>
-                </table><table class=item>
+                </table><table class="item l1977">
                   <tr>
                     <td class="img x2 l1977">􌤇
                     <td class="txt l1977">
@@ -640,21 +667,21 @@
                         <i class=sign>döv</i>, <i class=sign>lyssna</i>,
                         <i class=sign>ljud</i>. [<a href="#ref1977">Tecknad svenska</a> s.52]
                       </details>
-                </table><table class=item>
+                </table><table class="item h2 l1977">
                   <tr class=h2>
                     <td class="img x2 l1977">􌤉
                     <td class="txt l1977">
                       <details closed>
                         <summary>Kinderna<a href="#note1"><sup>2</sup></a></summary>
                       </details>
-                </table><table class=item>
+                </table><table class="item">
                   <tr>
                     <td class="img x2">􌤋
                     <td class="txt">
                       <details closed>
                         <summary>Svaga kinden</summary>
                       </details>
-                </table><table class=item>
+                </table><table class="item l1977">
                   <tr>
                     <td class="img x2 l1977">􌤊
                     <td class="txt l1977">
@@ -676,7 +703,7 @@
                         åt som kirem. De kontrasterar mot de övriga lägena men
                         inte inbördes. [<a href="#ref1977">Tecknad svenska</a> s.52]
                       </details>
-                </table><table class=item>
+                </table><table class="item h1 h2 l1977">
                   <tr class="h1 h2">
                     <td class="img x2 l1977">􌤼
                     <td class="txt l1977">
@@ -688,7 +715,7 @@
                         <a href="#refweb">Svenskt teckenspråkslexikon</a>,
                         nämligen: 􌤼􌤵􌥗􌤦􌤻􌤦􌤵􌤶􌤟􌥱􌦂􌥼􌥻 <a href="02127">skvallra</a>).
                       </details>
-                </table><table class=item>
+                </table><table class="item l1977">
                   <tr>
                     <td class="img x2 l1977">􌤌
                     <td class="txt l1977">
@@ -711,7 +738,7 @@
                           avläsningen av det samtidigt uttalade ordet.”
                         </details>
                       </details>
-                </table><table class=item>
+                </table><table class="item l1977">
                   <tr>
                     <td class="img x2 l1977">􌤛
                     <td class="txt l1977">
@@ -731,14 +758,14 @@
                           tydligt hur mun och haka kontrasterar […].”
                         </details>
                       </details>
-                </table><table class=item>
+                </table><table class="item">
                   <tr>
                     <td class="img x2">􌤜
                     <td class="txt">
                       <details closed>
                         <summary>Nacken</summary>
                       </details>
-                </table><table class=item>
+                </table><table class="item l1977">
                   <tr>
                     <td class="img x2 l1977">􌤞
                     <td class="txt l1977">
@@ -750,7 +777,7 @@
                           högerhänte använder normalt den högra sidan.
                           [<a href="#ref1977">Tecknad svenska</a> s.54]
                       </details>
-                </table><table class=item>
+                </table><table class="item h2 l1977">
                   <tr class=h2>
                     <td class="img x2">􌤠
                     <td class="txt">
@@ -767,7 +794,7 @@
                         till den enskilde teckenanvändaren utan är alltid givet
                         för varje tecken.” [<a href="#ref1977">Tecknad svenska</a> s.56]
                       </details>
-                </table><table class=item>
+                </table><table class="item l1977">
                   <tr>
                     <td class="img x2 l1977">􌥀
                     <td class="txt l1977">
@@ -784,7 +811,7 @@
                         till den enskilde teckenanvändaren utan är alltid givet
                         för varje tecken.” [<a href="#ref1977">Tecknad svenska</a> s.56]
                       </details>
-                </table><table class=item>
+                </table><table class="item l1977">
                   <tr>
                     <td class="img x2 l1977">􌤡
                     <td class="txt l1977">
@@ -801,7 +828,7 @@
                         till den enskilde teckenanvändaren utan är alltid givet
                         för varje tecken.” [<a href="#ref1977">Tecknad svenska</a> s.56]
                       </details>
-                </table><table class=item>
+                </table><table class="item l1977">
                   <tr>
                     <td class="img x2 l1977">􌥜
                     <td class="txt l1977">
@@ -821,7 +848,7 @@
                         ske.” [<a href="#ref1977">Tecknad svenska</a> s.81]
 
                       </details>
-                </table><table class=item>
+                </table><table class="item">
                   <tr>
                     <td class="img x2">􌤑
                     <td class="txt">
@@ -831,7 +858,7 @@
                         <p>”<b>Överarmen</b> är partiet mellan axeln och
                         armbågen.” [<a href="#ref1977">Tecknad svenska</a> s.56]
                       </details>
-                </table><table class=item>
+                </table><table class="item">
                   <tr>
                     <td class="img x2">􌤒
                     <td class="txt">
@@ -857,7 +884,7 @@
                         avslappnad och har ingen funktion i tecknet.” [<i>Tecknad
                         svenska</i> s.56]
                       </details>
-                </table><table class=item>
+                </table><table class="item h1 h2 l1977">
                   <tr class="h1 h2">
                     <td class="img x2 l1977">􌤓
                     <td class="txt l1977">
@@ -874,7 +901,7 @@
                         […] illustrerar de två varianterna av bröstet.”
                         [<a href="#ref1977">Tecknad svenska</a> s.54]
                       </details>
-                </table><table class=item>
+                </table><table class="item l1977">
                   <tr>
                     <td class="img x2 l1977">􌤕
                     <td class="txt l1977">
@@ -891,7 +918,7 @@
                         stället <i class=sign>förkyld</i>.” [<i>Tecknad
                         svenska</i> s.54, 56]
                       </details>
-                </table><table class=item>
+                </table><table class="item l1977">
                   <tr>
                     <td class="img x2 l1977">􌤔
                     <td class="txt l1977">
@@ -911,7 +938,7 @@
                         av <i class=sign>skön</i> och <i class=sign>fattig</i>”
                         [<a href="#ref1977">Tecknad svenska</a> s.56]
                       </details>
-                </table><table class=item>
+                </table><table class="item l1977">
                   <tr>
                     <td class="img x2 l1977">􌤖
                     <td class="txt l1977">
@@ -933,28 +960,28 @@
                         enhetlig uppsättning, i och med att de kontrasterar mot
                         dessa lägen.” [<a href="#ref1977">Tecknad svenska</a> s.56]
                       </details>
-                </table><table class=item>
+                </table><table class="item h2">
                   <tr class=h2>
                     <td class="img x2">􌤗
                     <td class="txt">
                       <details closed>
                         <summary>Höfterna<a href="#note1"><sup>2</sup></a></summary>
                       </details>
-                </table><table class=item>
+                </table><table class="item">
                   <tr>
                     <td class="img x2">􌤙
                     <td class="txt">
                       <details closed>
                         <summary>Svaga höften</summary>
                       </details>
-                </table><table class=item>
+                </table><table class="item">
                   <tr>
                     <td class="img x2">􌤘
                     <td class="txt">
                       <details closed>
                         <summary>Starka höften</summary>
                       </details>
-                </table><table class=item>
+                </table><table class="item">
                   <tr>
                     <td class="img x2">􌤚
                     <td class="txt">
@@ -5004,22 +5031,6 @@
             function () { $('.r1977').removeClass('hilite') }
         );
     ////////////////////////////////////////////////////////////////////////////
-    $('label.l1977').
-        hover(
-            function () { $('.l1977').addClass('hilite')    },
-            function () { $('.l1977').removeClass('hilite') }
-        );
-    $('label.h1').
-        hover(
-            function () { $('.h1').addClass('hilite')    },
-            function () { $('.h1').removeClass('hilite') }
-        );
-    $('label.h2').
-        hover(
-            function () { $('.h2').addClass('hilite')    },
-            function () { $('.h2').removeClass('hilite') }
-        );
-    ////////////////////////////////////////////////////////////////////////////
     $('table img[src^="pic/x/"]').hover(
         function () {
             var elem  = $(this),
@@ -5032,7 +5043,6 @@
             $('#hover').hide();
         },
     )
-
     ////////////////////////////////////////////////////////////////////////////
     $('[href]').each(function () {
         var elem = $(this), href = elem.attr('href')
