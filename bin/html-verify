@@ -16,55 +16,85 @@ use open qw(:std :utf8);
     map { decode_utf8($_, 1) } @ARGV;
 };
 
-# List of tags that do not have a terminating </tag> (<style> and <script> are
-# treated differently in parsing, and are therefore in this list as well).
-my %unterminated_tag = map { ($_ => 1) } qw(
-    doctype br col dd dt hr img input li link meta p script style td th tr wbr
-);
+################################################################################
 
-$_ = join("", <>);
+# Line based checks.
+sub check_lines {
+    my ($text) = @_;
+    my @lines = split(/\n/, $text);
+    my $l = 1;
+    foreach (@lines) {
+        if (m#\t#) {
+            print "ERROR: Tab in line $l\n", "    '$_'\n";
+        }
+        if (m#[ ]+$#) {
+            print "ERROR: Trailing space in line $l\n", "    '$_'\n";
+        }
+        if (m#^((?:[ ]{2})*)(.?)# and $2 eq ' ') {
+            print "ERROR: Odd number of spaces in indentation, in line $l\n",
+                "    '$_'\n",
+                "     ", (" " x length($1)), "^- bad space\n";
+        }
+    } continue { $l += 1 }
+}
 
-my @html = split m#
-    (
+sub check_html {
+    my ($text) = @_;
+
+    # List of tags that do not have a terminating </tag> (<style> and <script>
+    # are treated differently in parsing, and are therefore must be on this
+    # list).
+    my %unterminated_tag = map { ($_ => 1) } qw(
+        doctype br col dd dt hr img input li link meta p script style td th tr
+        wbr
+    );
+    my @html = split m#(
         <script\b[^>]*>.*?</script\b[^>]*> |
         <style\b[^>]*>.*?</style\b[^>]*> |
         <!--.*?--> |
         <[^!].*?>
     )#sx;
+    my @stack;
+    my $context = 'html';
+    my $i = 0;         # loop counter
+    my $l = 1;         # line counter
+    while ($i < @html) {
+        $_  = $html[$i];
+        next if m#^<!--#;
+        next if not m#^<#;
 
-my @stack;
-my $context = 'html';
-my $i = 0;         # loop counter
-my $l = 1;         # line counter
-while ($i < @html) {
-    $_  = $html[$i];
-    next if m#^<!--#;
-    next if not m#^<#;
-
-    my ($tag) = m#(\w+)#;
-    if ($tag =~ m#[A-Z]#) {
-        print "ERROR: Found uppercase tagname in '$_', in line $l\n";
-        $tag = lc $tag;
-    }
-
-    # Skip tags that do not have an </ending>.
-    next if $unterminated_tag{$tag};
-
-    if (m#^</#) {
-        if ($stack[$#stack][0] eq $tag) {
-            # tag finished properly
-            pop @stack;
-        } else {
-            # bad
-            print "ERROR: Found '$_', but expected end of <$stack[$#stack][0]> (from line $stack[$#stack][1]), in line $l\n";
-            #print "    STACK: ", Dumper(\@stack), "\n";
+        my ($tag) = m#(\w+)#;
+        if ($tag =~ m#[A-Z]#) {
+            print "ERROR: Found uppercase tagname in '$_', in line $l\n";
+            $tag = lc $tag;
         }
-    } else {
-        push @stack, [$tag, $l];
+
+        # Skip tags that do not have an </ending>.
+        next if $unterminated_tag{$tag};
+
+        if (m#^</#) {
+            if ($stack[$#stack][0] eq $tag) {
+                # tag finished properly
+                pop @stack;
+            } else {
+                # bad
+                print "ERROR: Found '$_', but expected end of <$stack[$#stack][0]> (from line $stack[$#stack][1]), in line $l\n";
+                #print "    STACK: ", Dumper(\@stack), "\n";
+            }
+        } else {
+            push @stack, [$tag, $l];
+        }
+    } continue {
+        $i += 1;
+        $l += (() = /\n/g);
     }
-} continue {
-    $i += 1;
-    $l += (() = /\n/g);
 }
+
+################################################################################
+
+$_ = join("", <>);
+
+check_lines($_);
+check_html($_);
 
 #[eof]
