@@ -161,6 +161,15 @@
 ** TODO Repeated search should not reload search result
 ** TODO Add CC license text + note data source
 * Transcription intro article
+** TODO Search function
+   Javascript search function that automatically unfolds the relevant/matching
+   sections.
+** TODO Put all footnote texts inside <aside> tags
+** TODO Lone tables should not be in <figure> tags
+   Tables that are the only content in a <figure> tag should use their own
+   <caption>, and not need the surrounding <figure>.
+
+   Adapt CSS for this scenario, then remove the unnecessary <figure> tags.
 ** TODO Frequency table of attitude combinations
    A table like the one in Bergman (1977) p.51, but with a 'heat map' of
    combination occurrences. (Both with percentages and greyscale[?] background
@@ -179,7 +188,9 @@
    '<-- -->' (which are written under circling, curving, hitting, twisting)
    could maybe be better written with converging and diverging symbols
    underneath the symbol it modifies.
-** [0/2] Table filtering
+** [0/4] Table filtering
+*** TODO Go through handshape symbols in 'my' lexicon
+    To verify which handshapes are actually used in the web lexicon.
 *** TODO Add missing symbols from 1994 source to position table
     Duplicated symbols are not listed in the book appendix (except for the
     chest). Go through the transcriptions in the book and include the missing
