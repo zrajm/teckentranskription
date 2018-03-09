@@ -342,9 +342,9 @@
       <figure>
         <table border=1>
           <tr>
-            <td title="I. Artikulationsställe"><a href=#i>I<br><span class=x4>􌤆</span></a>
-            <td title="II. Artikulator"      ><a href=#ii>II<br><span class=x4>􌥈􌥕􌥙</span></a>
-            <td title="III. Artikulation"   ><a href=#iii>III<br><span class=x4>􌥰􌥿</span></a>
+            <td title="Fält I: Artikulationsställe"><a href=#i>I<br><span class=x4>􌤆</span></a>
+            <td title="Fält II: Artikulator"><a href=#ii>II<br><span class=x4>􌥈􌥕􌥙</span></a>
+            <td title="Fält III: Artikulation"><a href=#iii>III<br><span class=x4>􌥰􌥿</span></a>
         </table>
         <figcaption>De tre fälten (I–III) beskriver varsin aspekt hos uttalet
           av ett tecken. Här tecknet <a href=02544>ansikte</a>.
@@ -2257,139 +2257,132 @@
           <p>Dessa symboler beskriver handens/händernas förflyttning.
 
           <figure>
-            <label class=r1977><input type=checkbox checked>
-              <a href="#ref1977">Tecknad svenska</a> (1977)</label>
-            <!--
-            <label class="r1977 FIXME"><nobr><input type=checkbox checked>
-                <i>Teckenspråkstranskription</i> (1982)</nobr></label>
-            <label class="r1994 FIXME"><input type=checkbox checked>
-              <i>Polysyntetiska tecken i svenska teckenspråket</i>
-              (1994)</label>
-            <label class=r1997><input type=checkbox checked>
-              <i>Svenskt teckenspråkslexikon</i> (1997)</label>
-            <label class=r2015><nobr><input type=checkbox checked>
-                <a href="#ref2015">Teckentranskription</a> (2015)</nobr></label>
-            <label class="rweb FIXME"><input type=checkbox checked>
-              <i>Svenskt teckenspråkslexikon</i> (webbversionen)</label>
-            -->
+            <select class=tags data-placeholder="Välj kategorier att visa…" multiple>
+              <optgroup label="Källa">
+                <option value=r1977>1977 – Tecknad svenska</option>
+                <option value=r1982 class=FIXME>1982 – Teckenspråkstranskription</option>
+                <option value=r1989 class=FIXME>1989 – Persontecken</option>
+                <option value=r1993 class=FIXME>1993 – Kompendium i teckentranskription</option>
+                <option value=r1994 class=FIXME>1994 – Polysyntetiska tecken</option>
+                <option value=r1997 class=FIXME>1997 – Svenskt teckenspråkslexikon</option>
+                <option value=r2015 class=FIXME>2015 – Teckentranskription</option>
+                <option value=rweb class=FIXME>webb – Svenskt teckenspråkslexikon</option>
+              </optgroup>
+            </select>
+            <span class=count style="color:#888" data-fmt="Visar {msg} {count} artikulationer."></span>
+            <br><select class=mode>
+              <option value=mark>Markera matchande</option>
+              <option value=hide>Göm icke-matchande</option>
+            </select>
+            <select class=bool>
+              <option value=and>Och</option>
+              <option value=or>Eller</option>
+            </select>
 
-            <div class=columns>
-              <table class=item>
-                <tr><th>Rörelseriktning
-              </table><table class=item>
-                <tr>
-                  <td class="img x2">􌦑
-                  <td class="txt">
-                    <details closed>
-                      <summary>Hålls stilla</summary>
-                    </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2 r1977">􌥢
-                  <td class="txt    r1977">
-                    <details closed>
-                      <summary>Förs åt vänster</summary>
-                    </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2 r1977">􌥣
-                  <td class="txt    r1977">
-                    <details closed>
-                      <summary>Förs åt höger</summary>
-                    </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2 r1977">􌥤
-                  <td class="txt    r1977">
-                    <details closed>
-                      <summary>Förs i sidled</summary>
-                    </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2 r1977">􌦃
-                  <td class="txt    r1977">
-                    <details closed>
-                      <summary>Förs framåt</summary>
-                    </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2 r1977">􌦄
-                  <td class="txt    r1977">
-                    <details closed>
-                      <summary>Förs bakåt</summary>
-                    </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2 r1977">􌥥
-                  <td class="txt    r1977">
-                    <details closed>
-                      <summary>Förs i djupled</summary>
-                    </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2 r1977">􌥦
-                  <td class="txt    r1977">
-                    <details closed>
-                      <summary>Förs uppåt</summary>
-                    </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2 r1977">􌥧
-                  <td class="txt    r1977">
-                    <details closed>
-                      <summary>Förs nedåt</summary>
-                    </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2 r1977">􌥨
-                  <td class="txt    r1977">
-                    <details closed>
-                      <summary>Förs i höjdled</summary>
-                    </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2">􌥩
-                  <td class="txt">
-                    <details closed>
-                      <summary>Förs kort åt vänster</summary>
-                    </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2">􌥪
-                  <td class="txt">
-                    <details closed>
-                      <summary>Förs kort åt höger</summary>
-                    </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2">􌥵
-                  <td class="txt">
-                    <details closed>
-                      <summary>Förs kort framåt</summary>
-                    </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2">􌥶
-                  <td class="txt">
-                    <details closed>
-                      <summary>Förs kort bakåt</summary>
-                    </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2">􌥷
-                  <td class="txt">
-                    <details closed>
-                      <summary>Förs kort uppåt</summary>
-                    </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2">􌥸
-                  <td class="txt">
-                    <details closed>
-                      <summary>Förs kort nedåt</summary>
-                    </details>
-              </table><table class=item>
-                <tr><th>
+            <div class="list columns">
+              <table class="item"><tr>
+                <th>
+                  <details closed>
+                    <summary>Rörelseriktning</summary>
+                  </details>
+              </table><table class="item"><tr>
+                <td class="img x2">􌦑
+                <td class="txt">
+                  <details closed>
+                    <summary>Hålls stilla</summary>
+                  </details>
+              </table><table class="item r1977"><tr>
+                <td class="img x2 r1977">􌥢
+                <td class="txt    r1977">
+                  <details closed>
+                    <summary>Förs åt vänster</summary>
+                  </details>
+              </table><table class="item r1977"><tr>
+                <td class="img x2 r1977">􌥣
+                <td class="txt    r1977">
+                  <details closed>
+                    <summary>Förs åt höger</summary>
+                  </details>
+              </table><table class="item r1977"><tr>
+                <td class="img x2 r1977">􌥤
+                <td class="txt    r1977">
+                  <details closed>
+                    <summary>Förs i sidled</summary>
+                  </details>
+              </table><table class="item r1977"><tr>
+                <td class="img x2 r1977">􌦃
+                <td class="txt    r1977">
+                  <details closed>
+                    <summary>Förs framåt</summary>
+                  </details>
+              </table><table class="item r1977"><tr>
+                <td class="img x2 r1977">􌦄
+                <td class="txt    r1977">
+                  <details closed>
+                    <summary>Förs bakåt</summary>
+                  </details>
+              </table><table class="item r1977"><tr>
+                <td class="img x2 r1977">􌥥
+                <td class="txt    r1977">
+                  <details closed>
+                    <summary>Förs i djupled</summary>
+                  </details>
+              </table><table class="item r1977"><tr>
+                <td class="img x2 r1977">􌥦
+                <td class="txt    r1977">
+                  <details closed>
+                    <summary>Förs uppåt</summary>
+                  </details>
+              </table><table class="item r1977"><tr>
+                <td class="img x2 r1977">􌥧
+                <td class="txt    r1977">
+                  <details closed>
+                    <summary>Förs nedåt</summary>
+                  </details>
+              </table><table class="item r1977"><tr>
+                <td class="img x2 r1977">􌥨
+                <td class="txt    r1977">
+                  <details closed>
+                    <summary>Förs i höjdled</summary>
+                  </details>
+              </table><table class="item"><tr>
+                <td class="img x2">􌥩
+                <td class="txt">
+                  <details closed>
+                    <summary>Förs kort åt vänster</summary>
+                  </details>
+              </table><table class="item"><tr>
+                <td class="img x2">􌥪
+                <td class="txt">
+                  <details closed>
+                    <summary>Förs kort åt höger</summary>
+                  </details>
+              </table><table class="item"><tr>
+                <td class="img x2">􌥵
+                <td class="txt">
+                  <details closed>
+                    <summary>Förs kort framåt</summary>
+                  </details>
+              </table><table class="item"><tr>
+                <td class="img x2">􌥶
+                <td class="txt">
+                  <details closed>
+                    <summary>Förs kort bakåt</summary>
+                  </details>
+              </table><table class="item"><tr>
+                <td class="img x2">􌥷
+                <td class="txt">
+                  <details closed>
+                    <summary>Förs kort uppåt</summary>
+                  </details>
+              </table><table class="item"><tr>
+                <td class="img x2">􌥸
+                <td class="txt">
+                  <details closed>
+                    <summary>Förs kort nedåt</summary>
+                  </details>
+              </table><table class="item"><tr>
+                <th>
                   <details closed>
                     <summary>Handextern rörelseart</summary>
 
@@ -2399,631 +2392,624 @@
                     handen rör sig (inte bara fingrarna) så att handens attityd
                     förändras.
                   </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2 r1977">􌥯
-                  <td class="txt    r1977">
+              </table><table class="item r1977"><tr>
+                <td class="img x2 r1977">􌥯
+                <td class="txt    r1977">
+                  <details closed>
+                    <summary>Båge</summary>
+
+                    <p>Skrivs efter en <i>förs</i>-symbol för att indikera att
+                    handen förs i en båge. Bågens riktning skrivs med en
+                    rörelseriktningssymbol under bågen.
+
+                    <p>I t ex 􌤦􌤴􌤶􌥣􌥯􌥿 <a href=01105>tvångsplacera</a> förs handen
+                    åt ipsi (􌥣) med en samtidig rörelse i en båge uppåt (􌥯􌥿).
+
                     <details closed>
-                      <summary>Båge</summary>
+                      <summary>I <a href="#ref1977">Tecknad svenska</a>…</summary>
 
-                      <p>Skrivs efter en <i>förs</i>-symbol för att indikera att
-                      handen förs i en båge. Bågens riktning skrivs med en
-                      rörelseriktningssymbol under bågen.
+                      …skrivs grupper av samtidigt utförda artikulationer med
+                      symboler ovanför varandra (istället för separerade med ett
+                      vertikalt streck [􌥼] som är nutida praxis).
 
-                      <p>I t ex 􌤦􌤴􌤶􌥣􌥯􌥿 <a href=01105>tvångsplacera</a> förs handen
-                      åt ipsi (􌥣) med en samtidig rörelse i en båge uppåt (􌥯􌥿).
+                      <p>Här verkar <i>båge</i> (􌥯) och <i>vrids</i> (􌥲) båda
+                      använda samma notationskonvention (utan specificerad
+                      riktning), medan <i>slås</i> (􌥱) fungerar
+                      annorlunda. <span class=FIXME>FIXME: Beskriv
+                      hur <i>båge</i> faktiskt fungerar.</span>
 
-                      <details closed>
-                        <summary>I <a href="#ref1977">Tecknad svenska</a>…</summary>
+                      <table class=border-example>
+                        <tr>
+                          <td>􌤢􌤴􌤸 􌤭􌥖􌥗 􌤟􌥣<span class=abs style="margin-top:.7em;margin-left:-.6em">􌥯</span>
+                          <td><i class=sign>avgå</i>
+                          <td>s.86
+                          <td>”Den högra nedåtriktade V-handen ’står’ först i den flata
+                            vänsterhanden innan den ’avgår’ i en båge till höger.”
+                        <tr>
+                          <td>􌤓􌥈􌥓􌤸􌤟􌥣<span class=abs style="margin-top:.7em;margin-left:-.6em">􌥯</span>􌤟
+                          <td><i class=sign>vi</i>
+                          <td>s.140
+                        <tr>
+                          <td>􌤓􌥋􌤵􌤶􌤟􌥣<span class=abs style="margin-top:.7em;margin-left:-.6em">􌥯</span>􌤟
+                          <td><i class=sign>oss</i>
+                          <td>s.140
+                        <tr>
+                          <td>􌤓􌤢􌥓􌤸􌤟􌥣<span class=abs style="margin-top:.7em;margin-left:-.6em">􌥯</span>􌤟
+                          <td><i class=sign>vår</i>
+                          <td>s.140
+                      </table>
 
-                        …skrivs grupper av samtidigt utförda artikulationer med
-                        symboler ovanför varandra (istället för separerade med ett
-                        vertikalt streck [􌥼] som är nutida praxis).
-
-                        <p>Här verkar <i>båge</i> (􌥯) och <i>vrids</i> (􌥲) båda
-                        använda samma notationskonvention (utan specificerad
-                        riktning), medan <i>slås</i> (􌥱) fungerar
-                        annorlunda. <span class=FIXME>FIXME: Beskriv
-                        hur <i>båge</i> faktiskt fungerar.</span>
-
-                        <table class=border-example>
-                          <tr>
-                            <td>􌤢􌤴􌤸 􌤭􌥖􌥗 􌤟􌥣<span class=abs style="margin-top:.7em;margin-left:-.6em">􌥯</span>
-                            <td><i class=sign>avgå</i>
-                            <td>s.86
-                            <td>”Den högra nedåtriktade V-handen ’står’ först i den flata
-                              vänsterhanden innan den ’avgår’ i en båge till höger.”
-                          <tr>
-                            <td>􌤓􌥈􌥓􌤸􌤟􌥣<span class=abs style="margin-top:.7em;margin-left:-.6em">􌥯</span>􌤟
-                            <td><i class=sign>vi</i>
-                            <td>s.140
-                          <tr>
-                            <td>􌤓􌥋􌤵􌤶􌤟􌥣<span class=abs style="margin-top:.7em;margin-left:-.6em">􌥯</span>􌤟
-                            <td><i class=sign>oss</i>
-                            <td>s.140
-                          <tr>
-                            <td>􌤓􌤢􌥓􌤸􌤟􌥣<span class=abs style="margin-top:.7em;margin-left:-.6em">􌥯</span>􌤟
-                            <td><i class=sign>vår</i>
-                            <td>s.140
-                        </table>
-
-                        <p>[Notera: Detta var innan konventionen att specificera
-                        riktningen under bågen hade introducerats, i dagens
-                        notation skulle ovanstående transkriberats 􌤢􌤴􌤸􌤭􌥖􌥗􌤟􌥣􌥯􌥿.]
-                      </details>
+                      <p>[Notera: Detta var innan konventionen att specificera
+                      riktningen under bågen hade introducerats, i dagens
+                      notation skulle ovanstående transkriberats 􌤢􌤴􌤸􌤭􌥖􌥗􌤟􌥣􌥯􌥿.]
                     </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2">􌦮
-                  <td class="txt">
-                    <details closed>
-                      <summary>Cirkel i frontalplan</summary>
+                  </details>
+              </table><table class="item"><tr>
+                <td class="img x2">􌦮
+                <td class="txt">
+                  <details closed>
+                    <summary>Cirkel i frontalplan</summary>
 
-                      <figure class="float-right center-content">
-                        <img src="pic/plane-frontal.png">
-                        <figcaption>Frontalplan</figcaption>
-                      </figure>
+                    <figure class="float-right center-content">
+                      <img src="pic/plane-frontal.png">
+                      <figcaption>Frontalplan</figcaption>
+                    </figure>
 
-                      <p>Handen förs i en cirkel i frontalplanet. Pilen under
-                      cirkelsymbolen visar rörelsens riktning.
+                    <p>Handen förs i en cirkel i frontalplanet. Pilen under
+                    cirkelsymbolen visar rörelsens riktning.
 
-                      <table border=1>
-                        <tr>
-                          <td class=x2>􌦮􌦈
-                          <td>högergående cirkelrörelse (t ex <a href=13062>yr</a>)
-                        <tr>
-                          <td class=x2>􌦮􌥽
-                          <td>vänstergående cirkelrörelse (endast möjlig vid
-                          polytecken)
-                        <tr>
-                          <td class=x2>􌦮􌦂
-                          <td>motgående cirkelrörelse vid dubbelartikulator
-                          (t ex <a href=01746>moln</a>)
-                        <tr>
-                          <td class=x2>􌦮􌦉
-                          <td>frångående cirkelrörelse vid dubbelartikulator
-                          (endast möjlig vid polytecken)
-                      </table>
+                    <table border=1>
+                      <tr>
+                        <td class=x2>􌦮􌦈
+                        <td>högergående cirkelrörelse (t ex <a href=13062>yr</a>)
+                      <tr>
+                        <td class=x2>􌦮􌥽
+                        <td>vänstergående cirkelrörelse (endast möjlig vid
+                        polytecken)
+                      <tr>
+                        <td class=x2>􌦮􌦂
+                        <td>motgående cirkelrörelse vid dubbelartikulator
+                        (t ex <a href=01746>moln</a>)
+                      <tr>
+                        <td class=x2>􌦮􌦉
+                        <td>frångående cirkelrörelse vid dubbelartikulator
+                        (endast möjlig vid polytecken)
+                    </table>
 
-                      <p class=FIXME>Hur skrivs upprepade rörelser? Används 􌦮􌦂
-                      och/eller 􌦮􌦉 eller har detta frångåtts så att man alltid
-                      använder 􌥻?
+                    <p class=FIXME>Hur skrivs upprepade rörelser? Används 􌦮􌦂
+                    och/eller 􌦮􌦉 eller har detta frångåtts så att man alltid
+                    använder 􌥻?
 
-                      <details closed class=FIXME>
-                        <summary>[<a href="#ref1989">Persontecken</a> s.62]</summary>
+                    <details closed class=FIXME>
+                      <summary>[<a href="#ref1989">Persontecken</a> s.62]</summary>
 
-                        <p>*􌦯 horisontell cirkelrörelse
+                      <p>*􌦯 horisontell cirkelrörelse
 
-                        <p>*􌦮 vertikal-parallell cirkelrörelse
+                      <p>*􌦮 vertikal-parallell cirkelrörelse
 
-                        <p>*􌦰 vertikal-vinkelrät cirkelrörelse
-                      </details>
-                      <details closed class=FIXME>
-                        <summary>[<a href="#ref1998">Redundans i
-                        tecken&shy;transkriptions&shy;systemet</a> s.12–18]</summary>
-                      </details>
-
-                      <p>Detta skrevs tidigare tidigare 􌥰􌥿 eller 􌦑􌦌 (om rörelsen
-                      var upprepad).
-
-                      <p>Jag har här beskrivit denna rörelse som <i>cirkel i
-                      frontal&shy;plan</i> då detta är den enda icke-tvetydiga och
-                      koncisa term jag sett i tidigare litteratur. Här är en lista
-                      med olika andra prominenta författares terminologival för
-                      tydlighets skull:
-
-                      <table border=1>
-                        <tr>
-                          <th>År
-                          <th>Författare
-                          <th>Beskrivning
-                        <tr>
-                          <td>1977
-                          <td>Bergman
-                          <td>vertikalt och parallellt med kroppen
-                        <tr>
-                          <td>1982
-                          <td>Bergman
-                          <td>frontalplan / vertikal (stående) cirkel, parallell med den tecknandes kropp
-                        <tr>
-                          <td>1989
-                          <td>Hedberg
-                          <td>vertikal-parallell cirkelrörelse
-                        <tr>
-                          <td>1998
-                          <td>Björkstrand
-                          <td>frontalplan
-                        <tr>
-                          <td>2015
-                          <td>Bergman & Björkstrand
-                          <td>frontalplan
-                      </table>
+                      <p>*􌦰 vertikal-vinkelrät cirkelrörelse
                     </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2">􌦯
-                  <td class="txt">
+                    <details closed class=FIXME>
+                      <summary>[<a href="#ref1998">Redundans i
+                      tecken&shy;transkriptions&shy;systemet</a> s.12–18]</summary>
+                    </details>
+
+                    <p>Detta skrevs tidigare tidigare 􌥰􌥿 eller 􌦑􌦌 (om rörelsen
+                    var upprepad).
+
+                    <p>Jag har här beskrivit denna rörelse som <i>cirkel i
+                    frontal&shy;plan</i> då detta är den enda icke-tvetydiga och
+                    koncisa term jag sett i tidigare litteratur. Här är en lista
+                    med olika andra prominenta författares terminologival för
+                    tydlighets skull:
+
+                    <table border=1>
+                      <tr>
+                        <th>År
+                        <th>Författare
+                        <th>Beskrivning
+                      <tr>
+                        <td>1977
+                        <td>Bergman
+                        <td>vertikalt och parallellt med kroppen
+                      <tr>
+                        <td>1982
+                        <td>Bergman
+                        <td>frontalplan / vertikal (stående) cirkel, parallell med den tecknandes kropp
+                      <tr>
+                        <td>1989
+                        <td>Hedberg
+                        <td>vertikal-parallell cirkelrörelse
+                      <tr>
+                        <td>1998
+                        <td>Björkstrand
+                        <td>frontalplan
+                      <tr>
+                        <td>2015
+                        <td>Bergman & Björkstrand
+                        <td>frontalplan
+                    </table>
+                  </details>
+              </table><table class="item"><tr>
+                <td class="img x2">􌦯
+                <td class="txt">
+                  <details closed>
+                    <summary>Cirkel i horisontalplan</summary>
+
+                    <figure class="float-right center-content">
+                      <img src="pic/plane-horizontal.png">
+                      <figcaption>Horisontalplan</figcaption>
+                    </figure>
+
+                    <p>Handen föres i en cirkel i horisontalplanet. Pilen under
+                    cirkelsymbolen visar rörelsens riktning.
+
+                    <table border=1>
+                      <tr>
+                        <td class=x2>􌦯􌦈
+                        <td>högergående cirkelrörelse
+                        (t ex <a href=02863>ensam</a>).
+                      <tr>
+                        <td class=x2>􌦯􌥽
+                        <td>vänstergående cirkelrörelse
+                        (t ex <i class=sign>vi</i> [<i class=sign>pro-flertal-1</i>])
+                      <tr>
+                        <td class=x2>􌦯􌦂
+                        <td>motgående cirkelrörelse vid dubbelartikulator (endast
+                        möjlig vid polytecken)
+                      <tr>
+                        <td class=x2>􌦯􌦉
+                        <td>frångående cirkelrörelse vid dubbelartikulator
+                        (endast möjlig vid polytecken)
+                    </table>
+
+                    <p class=FIXME>Används 􌦯􌦂 och/eller 􌦯􌦉 för upprepad rörelse?
+
+                    <hr>
+                    <details closed class=FIXME>
+                      <summary>[<a href="#ref1989">Persontecken</a> s.62]</summary>
+
+                      <p>*􌦯 horisontell cirkelrörelse
+
+                      <p>*􌦮 vertikal-parallell cirkelrörelse
+
+                      <p>*􌦰 vertikal-vinkelrät cirkelrörelse
+                    </details>
+                    <details closed class=FIXME>
+                      <summary>[<a href="#ref1998">Redundans i
+                      tecken&shy;transkriptions&shy;systemet</a> s.12–18]</summary>
+                    </details>
+
+                    <p>Detta skrevs tidigare tidigare 􌥰􌦈 eller 􌥰􌦉 (om rörelsen
+                    var upprepad).
+
+                    <p>Jag har här beskrivit denna rörelse som <i>cirkel i
+                    horisontal&shy;plan</i>, vilket torde vara tämligen
+                    okontroversiellt med tanke på hur andra författare beskrivit
+                    denna rörelse. Här är en lista med olika andra prominenta
+                    författares terminologival för tydlighets skull:
+
+                    <table border=1>
+                      <tr>
+                        <th>År
+                        <th>Författare
+                        <th>Beskrivning
+                      <tr>
+                        <td>1977
+                        <td>Bergman
+                        <td>horisontala planet
+                      <tr>
+                        <td>1982
+                        <td>Bergman
+                        <td>horisontalplanet
+                      <tr>
+                        <td>1989
+                        <td>Hedberg
+                        <td>horisontell cirkelrörelse
+                      <tr>
+                        <td>1998
+                        <td>Björkstrand
+                        <td>horisontalplan
+                      <tr>
+                        <td>2015
+                        <td>Bergman & Björkstrand
+                        <td>horisontalplan
+                    </table>
+                  </details>
+              </table><table class="item"><tr>
+                <td class="img x2">􌦰
+                <td class="txt">
+                  <details closed>
+                    <summary>Cirkel i sagittalplan</summary>
+
+                    <figure class="float-right center-content">
+                      <img src="pic/plane-median.png">
+                      <figcaption>Sagittalplan</figcaption>
+                    </figure>
+
+                    <p>Handen föres i en cirkel i sagittalplanet. Pilen under
+                    cirkelsymbolen visar rörelsens riktning.
+
+                    <table border=1>
+                      <tr>
+                        <td class=x2>􌦰􌥾
+                        <td>framåtgående cirkelrörelse
+                        (t ex <a href=06912>jul</a>, <a href=00521>sjunga</a>).
+                      <tr>
+                        <td class=x2>􌦰􌦊
+                        <td>inåtgående cirkelrörelse
+                        (t ex <a href=00578>umgås</a>).
+                    </table>
+
+                    <details closed class=FIXME>
+                      <summary>[<a href="#ref1989">Persontecken</a> s.62]</summary>
+
+                      <p>*􌦯 horisontell cirkelrörelse
+
+                      <p>*􌦮 vertikal-parallell cirkelrörelse
+
+                      <p>*􌦰 vertikal-vinkelrät cirkelrörelse
+                    </details>
+                    <details closed class=FIXME>
+                      <summary>[<a href="#ref1998">Redundans i
+                      tecken&shy;transkriptions&shy;systemet</a> s.12–18]</summary>
+                    </details>
+
+                    <p>Detta skrevs tidigare tidigare 􌥰􌥾, 􌥰􌦊 (beroende på om
+                    cirkelrörelsen är framåt eller inåt) eller 􌥰􌦋 (om rörelsen
+                    var upprepad).
+
+                    <p>Jag har här beskrivit denna rörelse som <i>cirkel i
+                    sagittal&shy;plan</i> då detta är den enda icke-tvetydiga och
+                    koncisa term jag sett i tidigare litteratur. Här är en lista
+                    med olika andra prominenta författares terminologival för
+                    tydlighets skull:
+
+                    <table border=1>
+                      <tr>
+                        <th>År
+                        <th>Författare
+                        <th>Beskrivning
+                      <tr>
+                        <td>1977
+                        <td>Bergman
+                        <td>vertikalt och vinkelrätt
+                      <tr>
+                        <td>1982
+                        <td>Bergman
+                        <td>sagittalplan / stående cirkel vinkelrät mot den tecknande
+                      <tr>
+                        <td>1989
+                        <td>Hedberg
+                        <td>vertikal-vinkelrät cirkelrörelse
+                      <tr>
+                        <td>1998
+                        <td>Björkstrand
+                        <td>vertikalplan
+                      <tr>
+                        <td>2015
+                        <td>Bergman & Björkstrand
+                        <td>vertikalplan / stående cirkel vinkelrätt mot den tecknande
+                    </table>
+                  </details>
+              </table><table class="item r1977"><tr>
+                <td class="img x2 r1977">􌥰
+                <td class="txt    r1977">
+                  <details closed>
+                    <summary>Cirkel (äldre symbol)</summary>
+
+                    <p>Handen föres i en cirkel. Pilen under cirkelsymbolen visar
+                    rörelsens riktning.
+
+                    <p>En cirkelrörelse kan utföras i tre plan, men riktningen är
+                    endast betydelseskiljande i sagittalplanet och därför
+                    används inte 􌥰􌥽 och 􌥰􌦀:
+
+                    <table border=1>
+                      <tr>
+                        <td class=x2>􌥰􌦈 􌥰􌦉
+                        <td><img src="pic/plane-horizontal.png">
+                        <td class=txt>Horisontalplanet
+                      <tr>
+                        <td class=x2>􌥰􌥾 􌥰􌦊 􌥰􌦋
+                        <td><img src="pic/plane-median.png">
+                        <td class=txt>Sagittalplanet
+                      <tr>
+                        <td class=x2>􌥰􌥿 􌥰􌦌
+                        <td class=img><img src="pic/plane-frontal.png">
+                        <td class=txt>Frontalplanet
+                      <tr class=FIXME>
+                        <td class=x2>􌥰􌦂
+                        <td>
+                        <td>
+                    </table>
+
+                    <p>􌥰􌦉, 􌥰􌦋 och 􌥰􌦌 används när rörelsen är
+                    upprepad.
+
+                    <p>Exempel: 􌤢􌤴􌥙􌥰􌦈 <a href=00262>område</a>,
+                    􌤆􌥈􌥕􌥙􌥰􌥿 <a href=02544>ansikte</a>.
+
+                    <hr><p class=FIXME>Varför används inte 􌥰􌦈􌥻, 􌥰􌥾􌥻, 􌥰􌦊􌥻 och 􌥰􌥿􌥻
+                    istället? – Särskilt 􌥰􌥾􌥻 och 􌥰􌦊􌥻 vore väl användbara för att
+                    distingera riktningen på cirkeln vid repeterade
+                    cirkelrörelser? – Kontrollera vilken praxis som används
+                    i <a href="#refweb">Svenskt teckenspråkslexikon</a>.
+
+                    <hr><p class=FIXME>􌥰􌦂 förekommer också
+                    i <a href="#refweb">Svenskt teckenspråkslexikon</a>, men det
+                    är i skrivande stund inte klart för denna författare vad
+                    innebörden är.
+
+                    <p class=FIXME>Några exempel på detta är dock: 􌥖􌥘􌥈􌥈􌥖􌥘􌥰􌦂􌥼􌤟􌥼􌥻
+                    <a href=03054>balett</a> (h),
+                    􌤄􌥕􌥙􌥈􌥈􌥕􌥙􌥰􌦂􌥼􌦄 <a href=03063>glasögon</a> (f) och
+                    􌥕􌥙􌥈􌥈􌥕􌥙􌥰􌦂 <a href=03167>noll</a> (f).
+
                     <details closed>
-                      <summary>Cirkel i horisontalplan</summary>
+                      <summary>I <a href="#ref1977">Tecknad svenska</a>…</summary>
 
-                      <figure class="float-right center-content">
-                        <img src="pic/plane-horizontal.png">
-                        <figcaption>Horisontalplan</figcaption>
-                      </figure>
+                      …används pilar, enligt följande tabell, för att indikera
+                      cirkelrörelsens riktning och plan:
 
-                      <p>Handen föres i en cirkel i horisontalplanet. Pilen under
-                      cirkelsymbolen visar rörelsens riktning.
-
-                      <table border=1>
+                      <p><table class=border-example>
                         <tr>
-                          <td class=x2>􌦯􌦈
-                          <td>högergående cirkelrörelse
-                          (t ex <a href=02863>ensam</a>).
+                          <td>􌥰<span class=abs style="margin-top:.6em;margin-left:-.525em">􌥢</span>
+                          <td>Horisontell
+                          <td>åt vänster
                         <tr>
-                          <td class=x2>􌦯􌥽
-                          <td>vänstergående cirkelrörelse
-                          (t ex <i class=sign>vi</i> [<i class=sign>pro-flertal-1</i>])
+                          <td>􌥰<span class=abs style="margin-top:.6em;margin-left:-.5em">􌥦</span>
+                          <td>Frontal (vertikal-parallell)
+                          <td>uppåt
                         <tr>
-                          <td class=x2>􌦯􌦂
-                          <td>motgående cirkelrörelse vid dubbelartikulator (endast
-                          möjlig vid polytecken)
+                          <td>􌥰<span class=abs style="margin-top:.5em;margin-left:-.475em">􌦃</span>
+                          <td>Sagittal (vertikal-vinkelrät)
+                          <td>framåt
                         <tr>
-                          <td class=x2>􌦯􌦉
-                          <td>frångående cirkelrörelse vid dubbelartikulator
-                          (endast möjlig vid polytecken)
+                          <td>􌥰<span class=abs style="margin-top:.5em;margin-left:-.475em">􌦄</span>
+                          <td>Sagittal (vertikal-vinkelrät)
+                          <td>inåt
                       </table>
 
-                      <p class=FIXME>Används 􌦯􌦂 och/eller 􌦯􌦉 för upprepad rörelse?
+                      <p>Tabellen ovan är extrapolerad ifrån det enda tecknet i
+                      boken som finns transkriberat med cirkelrörelse, plus en
+                      tabell som anger möjliga cirkelrörelser (utan att referera
+                      till transkriptionen):
 
                       <hr>
-                      <details closed class=FIXME>
-                        <summary>[<a href="#ref1989">Persontecken</a> s.62]</summary>
-
-                        <p>*􌦯 horisontell cirkelrörelse
-
-                        <p>*􌦮 vertikal-parallell cirkelrörelse
-
-                        <p>*􌦰 vertikal-vinkelrät cirkelrörelse
-                      </details>
-                      <details closed class=FIXME>
-                        <summary>[<a href="#ref1998">Redundans i
-                        tecken&shy;transkriptions&shy;systemet</a> s.12–18]</summary>
-                      </details>
-
-                      <p>Detta skrevs tidigare tidigare 􌥰􌦈 eller 􌥰􌦉 (om rörelsen
-                      var upprepad).
-
-                      <p>Jag har här beskrivit denna rörelse som <i>cirkel i
-                      horisontal&shy;plan</i>, vilket torde vara tämligen
-                      okontroversiellt med tanke på hur andra författare beskrivit
-                      denna rörelse. Här är en lista med olika andra prominenta
-                      författares terminologival för tydlighets skull:
-
-                      <table border=1>
+                      <table class=border-example>
                         <tr>
-                          <th>År
-                          <th>Författare
-                          <th>Beskrivning
-                        <tr>
-                          <td>1977
-                          <td>Bergman
-                          <td>horisontala planet
-                        <tr>
-                          <td>1982
-                          <td>Bergman
-                          <td>horisontalplanet
-                        <tr>
-                          <td>1989
-                          <td>Hedberg
-                          <td>horisontell cirkelrörelse
-                        <tr>
-                          <td>1998
-                          <td>Björkstrand
-                          <td>horisontalplan
-                        <tr>
-                          <td>2015
-                          <td>Bergman & Björkstrand
-                          <td>horisontalplan
+                          <td>􌥔􌥘<span class=hflip>􌤪</span>􌥫<span class=hflip>􌤪</span>􌥓􌥙 􌥰<span class=abs style="margin-top:.6em;margin-left:-.525em">􌥢</span>
+                          <td><i class=sign>familj</i> <a href="#xbc1"><sup>1</sup></a>
+                            <a href="#xbc2"><sup>2</sup></a>
+                          <td>s.86
                       </table>
-                    </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2">􌦰
-                  <td class="txt">
-                    <details closed>
-                      <summary>Cirkel i sagittalplan</summary>
 
-                      <figure class="float-right center-content">
-                        <img src="pic/plane-median.png">
-                        <figcaption>Sagittalplan</figcaption>
+                      <p>”<i class=sign>familj</i> har också dubbel, men sammansatt,
+                      artikulator och har alltså bibehållen hakning medan den
+                      horisontala cirkelrörelsen utförs.” [s.86]
+
+                      <hr><p>Tabell över tänkbara cirkelrörelser [s.66]:
+
+                      <table border=0>
+                        <tr><td>horisontal cirkelrörelse:   <td>vänster
+                        <tr><td>vertikal-parallell rörelse: <td>upp
+                        <tr><td>vertikal-vinkelrät rörelse: <td>fram
+                        <tr><td>                            <td>in
+                      </table>
+
+                      <p id=xbc1 class=hanging><sup><b>1</b></sup> Detta ord för
+                        <i class=sign>familj</i> inte finns i
+                        dagens <a href="#ref1997">teckenspråkslexikon</a>.
+
+                      <p id=xbc2 class=hanging><sup><b>2</b></sup> Symbolen
+                        för krokfingret i denna källa
+                        (<span class=hflip>􌤪</span>) är spegelvänd i förhållande
+                        till den symbol som används idag (􌤪).
+                    </details>
+                  </details>
+              </table><table class="item r1977"><tr>
+                <td class="img x2 r1977">􌥱
+                <td class="txt    r1977">
+                  <details closed>
+                    <summary>Slås</summary>
+
+                    <p>En rörelse som ändrar attitydriktningen (handflatans
+                    riktning).
+
+                    <p>Ett enkelt exempel är 􌤀􌤣􌤴􌤶􌥱􌥿􌥼􌤟 <a href=00002>dop</a>, men
+                    slås kan också kombineras med andra rörelser som i
+                    􌤂􌤺􌤢􌤵􌥘􌦄􌥱􌦊 <a href=00046>längesedan</a> där handen förs bakåt
+                    (􌦄) slås bakåt (􌥱􌦊) samtidigt.
+
+                  <!-- grep -wrim1 "slås" /home/zrajm/Web/2017-01-30-teckentranskription-download/words R 's#[ ]+# #g; s#<[^>]*>##g' |=grep -Piv 'slås ((kort|snabbt|långsamt|något|lite|sedan|först|därefter|slutligen|växelvis) )?(upp|uppåt|ned|ner|nedåt|inåt|bakåt|fram|framåt|(åt|till) (vänster|höger)|mot varandra|fram och in|upp och ne[dr]|utåt|från varandra|mot och från varandra|från och mot varandra)([/, ]|$)' M '+/slås' -->
+
+                    <p>Om handen slås diagonalt används upprepas symbolen med
+                    olika riktningar och utan separator mellan dem;
+                    􌤩􌤴􌤶􌥱􌥽􌥱􌥿 <a href=14813>spärr, spare</a> (i bowling),
+                    􌤵􌥗􌤤􌤤􌤵􌤶􌤟􌦃􌥱􌥾􌥱􌥿􌥻 <a href=01343>installera, installation</a>.
+
+                    <p>Om någon annan rörelse (t ex en vridning) utförs under en
+                    del av slåendet så behöver slåendet delas upp i separata
+                    delar (med separationsstreck mellan), t ex
+                    􌤢􌤵􌥗􌥈􌤵􌤷􌤟􌥼􌥱􌦀􌥼􌥱􌥿􌥲􌦊􌥼􌤟 <a href=03019>timme</a>.
+
+                    <p class=FIXME>Verifiera att pilen indikerar handflatans
+                    slutliga position (inte i vilken riktning den vrids).
+
+                    <details class=button closed>
+                      <summary>Exempel</summary>
+                      <figure>
+                        <table border=1>
+                          <tr>
+                            <td class="x2">􌥱􌦈
+                              <td>slås åt vänster <!-- [198]
+                              <br>slås till vänster [6] -->
+                          <tr>
+                            <td class="x2">􌥱􌥽
+                            <td>slås åt höger <!-- [141]
+                              <br>slås till höger [1] -->
+                          <tr>
+                            <td class="x2">􌥱􌦉
+                            <td>slås åt vänster och höger <!-- [130]
+                              <br>slås från varandra [66]
+                              <br>slås åt varsitt håll [1]
+                              <br>slås utåt [2]
+                              <br>slås utåt från varandra [1]
+                              <br>slås mot och från varandra [1]
+                              <br>slås från och mot varandra [1]
+                              <br>slås åt varsitt håll [1] -->
+                          <tr>
+                            <td class="x2">􌥱􌦂
+                            <td>slås mot varandra <!-- [63] -->
+                          <tr>
+                            <td class="x2">􌥱􌥾
+                            <td>slås framåt <!-- [839]
+                              <br>slås fram [62] -->
+                          <tr>
+                            <td class="x2">􌥱􌦊
+                            <td>slås bakåt <!-- [89]
+                              <br>slås bakåt (vid örat/sidan om halsen/huvudet) [1]
+                              <br>(aldrig ”slås in”) -->
+                          <tr>
+                            <td class="x2">􌥱􌦋
+                            <td><!-- slås fram och in [24]
+                              <br>slås fram och tillbaka (vid örat/sidan om halsen/huvudet) [18]
+                              <br>-->slås framåt och bakåt<!-- [1]
+                              <br>slås inåt och framåt [1] -->
+                          <tr>
+                            <td class="x2">􌥱􌥿
+                            <td>slås uppåt <!-- [395]
+                              <br>slås upp [10] -->
+                          <tr>
+                            <td class="x2">􌥱􌦀
+                            <td>slås nedåt <!-- [504]
+                              <br>slås ned [11]
+                              <br>slås ner [5] -->
+                          <tr>
+                            <td class="x2">􌥱􌦌
+                            <td>slås uppåt och nedåt <!--[2]
+                              <br>slås upp och ned [38]
+                              <br>slås upp och ner [37]
+                              <br>slås ner och upp [1]
+                              <br>slås ned och upp [2]
+                              <br>slås upp-ner [1]-->
+                        </table>
                       </figure>
-
-                      <p>Handen föres i en cirkel i sagittalplanet. Pilen under
-                      cirkelsymbolen visar rörelsens riktning.
-
-                      <table border=1>
-                        <tr>
-                          <td class=x2>􌦰􌥾
-                          <td>framåtgående cirkelrörelse
-                          (t ex <a href=06912>jul</a>, <a href=00521>sjunga</a>).
-                        <tr>
-                          <td class=x2>􌦰􌦊
-                          <td>inåtgående cirkelrörelse
-                          (t ex <a href=00578>umgås</a>).
-                      </table>
-
-                      <details closed class=FIXME>
-                        <summary>[<a href="#ref1989">Persontecken</a> s.62]</summary>
-
-                        <p>*􌦯 horisontell cirkelrörelse
-
-                        <p>*􌦮 vertikal-parallell cirkelrörelse
-
-                        <p>*􌦰 vertikal-vinkelrät cirkelrörelse
-                      </details>
-                      <details closed class=FIXME>
-                        <summary>[<a href="#ref1998">Redundans i
-                        tecken&shy;transkriptions&shy;systemet</a> s.12–18]</summary>
-                      </details>
-
-                      <p>Detta skrevs tidigare tidigare 􌥰􌥾, 􌥰􌦊 (beroende på om
-                      cirkelrörelsen är framåt eller inåt) eller 􌥰􌦋 (om rörelsen
-                      var upprepad).
-
-                      <p>Jag har här beskrivit denna rörelse som <i>cirkel i
-                      sagittal&shy;plan</i> då detta är den enda icke-tvetydiga och
-                      koncisa term jag sett i tidigare litteratur. Här är en lista
-                      med olika andra prominenta författares terminologival för
-                      tydlighets skull:
-
-                      <table border=1>
-                        <tr>
-                          <th>År
-                          <th>Författare
-                          <th>Beskrivning
-                        <tr>
-                          <td>1977
-                          <td>Bergman
-                          <td>vertikalt och vinkelrätt
-                        <tr>
-                          <td>1982
-                          <td>Bergman
-                          <td>sagittalplan / stående cirkel vinkelrät mot den tecknande
-                        <tr>
-                          <td>1989
-                          <td>Hedberg
-                          <td>vertikal-vinkelrät cirkelrörelse
-                        <tr>
-                          <td>1998
-                          <td>Björkstrand
-                          <td>vertikalplan
-                        <tr>
-                          <td>2015
-                          <td>Bergman & Björkstrand
-                          <td>vertikalplan / stående cirkel vinkelrätt mot den tecknande
-                      </table>
                     </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2 r1977">􌥰
-                  <td class="txt    r1977">
                     <details closed>
-                      <summary>Cirkel (äldre symbol)</summary>
+                      <summary>[<a href="#ref1977">Tecknad svenska</a> s.63]</summary>
 
-                      <p>Handen föres i en cirkel. Pilen under cirkelsymbolen visar
-                      rörelsens riktning.
+                      <p><b>Slås</b> kan liksom vrides beskrivas med hänvisning
+                      till attityden. När det gäller slå är det dock inte
+                      attitydvridningen som ändras utan riktningen i handen. En
+                      jämförelse mellan tecknen 􌤫􌤴􌥙􌥲􌦈􌥼􌥻 <a href=03826>nyckel</a>
+                      och 􌤫􌥓􌥘􌥱􌦀􌥼􌥻 <a href=03813>feber</a> visar tydligt
+                      skillnaden mellan vrides och slås.
+                      I <a href=03826>nyckel</a> […] vrids handen upp och ner och
+                      attitydriktningen är densamma under hela tecknet.
+                      I <a href=03813>feber</a> […] slås en tänkt termometer upp
+                      och ner, dvs handens riktning växlar mellan upp och ner
+                      medan handflatan (attitydvridningen) hela tiden är
+                      bakåt. <a href=03826>Nyckel</a> och <a href=03813>feber</a>
+                      kan i sin tur jämföras med tecknet […]
+                      [􌤫􌤴􌤶􌥨 <a href=03819>måla</a>; <a href=03820>målare</a>] som
+                      har den iterativa föresrörelsen […]. I detta tecken är
+                      såväl attitydriktning som attitydvridning oförändrade under
+                      artikulationen medan handen flyttas upp och ner.
+                    </details>
+                    <details closed>
+                      <summary>I <a href="#ref1977">Tecknad svenska</a>…</summary>
 
-                      <p>En cirkelrörelse kan utföras i tre plan, men riktningen är
-                      endast betydelseskiljande i sagittalplanet och därför
-                      används inte 􌥰􌥽 och 􌥰􌦀:
+                      <p>…skrivs grupper av samtidigt utförda artikulationer med
+                      symboler ovanför varandra (istället för separerade med ett
+                      vertikalt streck [􌥼] som är nutida praxis).
 
-                      <table border=1>
+                      <p><i>Slås</i> (􌥱) verkar här fungera som en indikator att
+                      efterföljande <i>förs</i>-pil skall utföras genom en
+                      böjning i handleden, snarare än genom en förflyttning av
+                      hand och underarm.
+
+                      <p>Här verkar <i>båge</i> (􌥯) och <i>vrids</i> (􌥲) båda
+                      använda samma notationskonvention (utan specificerad
+                      riktning), medan <i>slås</i> (􌥱) fungerar annorlunda.
+
+                      <table class=border-example>
+                        <caption><sup><b>*</b></sup> Attityden
+                          är <i>uppåtvriden</i> (􌥓􌤸) för detta ord i källan, men
+                          i tabellen ovan har jag tagit mig friheten att rätta
+                          misstaget.
+                        </caption>
                         <tr>
-                          <td class=x2>􌥰􌦈 􌥰􌦉
-                          <td><img src="pic/plane-horizontal.png">
-                          <td class=txt>Horisontalplanet
+                          <td>􌥈􌤵􌤷<mark>􌥱<span style="position:absolute;margin-top:.6em;margin-left:-.55em">􌥣</span></mark>
+                          <td><i class=sign>den</i>, <i class=sign>det</i>
+                          <td>s.139, 140
                         <tr>
-                          <td class=x2>􌥰􌥾 􌥰􌦊 􌥰􌦋
-                          <td><img src="pic/plane-median.png">
-                          <td class=txt>Sagittalplanet
+                          <td>􌥈􌤵􌤶<mark>􌥱<span style="position:absolute;margin-top:.5em;margin-left:-.55em">􌦃</span></mark>
+                          <td><i class=sign>du</i>
+                          <td>s.140
                         <tr>
-                          <td class=x2>􌥰􌥿 􌥰􌦌
-                          <td class=img><img src="pic/plane-frontal.png">
-                          <td class=txt>Frontalplanet
-                        <tr class=FIXME>
-                          <td class=x2>􌥰􌦂
-                          <td>
-                          <td>
+                          <td>􌤃􌤢􌤵􌤶<span style="padding-right:.2em">􌦃<span style="position:absolute;margin-top:.7em;margin-left:-.5em">􌦆</span></span>􌥠􌥈􌤵􌤷<mark>􌥱<span style="position:absolute;margin-top:.6em;margin-left:-.55em">􌥣</span></mark>
+                          <td><i class=sign>han</i>
+                          <td>s.140
+                        <tr>
+                          <td>􌤔􌤢􌥓􌥙􌤟􌥧<span class=vflip style="position:absolute;margin-top:-.3em;margin-left:-.55em">􌥲</span>􌤟􌥠􌥈􌤵􌤷<mark>􌥱<span style="position:absolute;margin-top:.6em;margin-left:-.55em">􌥣</span></mark>
+                          <td><i class=sign>hon</i><sup><b>*</b></sup>
+                          <td>s.140
+                        <tr>
+                          <td>􌥔􌤸􌥅􌥅􌥓􌥙􌥫􌥠􌤭􌤵􌤶<mark>􌥱<span style="position:absolute;margin-top:.5em;margin-left:-.55em">􌦃</span></mark>
+                          <td><i class=sign>också</i>
+                          <td>s.149
                       </table>
-
-                      <p>􌥰􌦉, 􌥰􌦋 och 􌥰􌦌 används när rörelsen är
-                      upprepad.
-
-                      <p>Exempel: 􌤢􌤴􌥙􌥰􌦈 <a href=00262>område</a>,
-                      􌤆􌥈􌥕􌥙􌥰􌥿 <a href=02544>ansikte</a>.
-
-                      <hr><p class=FIXME>Varför används inte 􌥰􌦈􌥻, 􌥰􌥾􌥻, 􌥰􌦊􌥻 och 􌥰􌥿􌥻
-                      istället? – Särskilt 􌥰􌥾􌥻 och 􌥰􌦊􌥻 vore väl användbara för att
-                      distingera riktningen på cirkeln vid repeterade
-                      cirkelrörelser? – Kontrollera vilken praxis som används
-                      i <a href="#refweb">Svenskt teckenspråkslexikon</a>.
-
-                      <hr><p class=FIXME>􌥰􌦂 förekommer också
-                      i <a href="#refweb">Svenskt teckenspråkslexikon</a>, men det
-                      är i skrivande stund inte klart för denna författare vad
-                      innebörden är.
-
-                      <p class=FIXME>Några exempel på detta är dock: 􌥖􌥘􌥈􌥈􌥖􌥘􌥰􌦂􌥼􌤟􌥼􌥻
-                      <a href=03054>balett</a> (h),
-                      􌤄􌥕􌥙􌥈􌥈􌥕􌥙􌥰􌦂􌥼􌦄 <a href=03063>glasögon</a> (f) och
-                      􌥕􌥙􌥈􌥈􌥕􌥙􌥰􌦂 <a href=03167>noll</a> (f).
-
-                      <details closed>
-                        <summary>I <a href="#ref1977">Tecknad svenska</a>…</summary>
-
-                        …används pilar, enligt följande tabell, för att indikera
-                        cirkelrörelsens riktning och plan:
-
-                        <p><table class=border-example>
-                          <tr>
-                            <td>􌥰<span class=abs style="margin-top:.6em;margin-left:-.525em">􌥢</span>
-                            <td>Horisontell
-                            <td>åt vänster
-                          <tr>
-                            <td>􌥰<span class=abs style="margin-top:.6em;margin-left:-.5em">􌥦</span>
-                            <td>Frontal (vertikal-parallell)
-                            <td>uppåt
-                          <tr>
-                            <td>􌥰<span class=abs style="margin-top:.5em;margin-left:-.475em">􌦃</span>
-                            <td>Sagittal (vertikal-vinkelrät)
-                            <td>framåt
-                          <tr>
-                            <td>􌥰<span class=abs style="margin-top:.5em;margin-left:-.475em">􌦄</span>
-                            <td>Sagittal (vertikal-vinkelrät)
-                            <td>inåt
-                        </table>
-
-                        <p>Tabellen ovan är extrapolerad ifrån det enda tecknet i
-                        boken som finns transkriberat med cirkelrörelse, plus en
-                        tabell som anger möjliga cirkelrörelser (utan att referera
-                        till transkriptionen):
-
-                        <hr>
-                        <table class=border-example>
-                          <tr>
-                            <td>􌥔􌥘<span class=hflip>􌤪</span>􌥫<span class=hflip>􌤪</span>􌥓􌥙 􌥰<span class=abs style="margin-top:.6em;margin-left:-.525em">􌥢</span>
-                            <td><i class=sign>familj</i> <a href="#xbc1"><sup>1</sup></a>
-                              <a href="#xbc2"><sup>2</sup></a>
-                            <td>s.86
-                        </table>
-
-                        <p>”<i class=sign>familj</i> har också dubbel, men sammansatt,
-                        artikulator och har alltså bibehållen hakning medan den
-                        horisontala cirkelrörelsen utförs.” [s.86]
-
-                        <hr><p>Tabell över tänkbara cirkelrörelser [s.66]:
-
-                        <table border=0>
-                          <tr><td>horisontal cirkelrörelse:   <td>vänster
-                          <tr><td>vertikal-parallell rörelse: <td>upp
-                          <tr><td>vertikal-vinkelrät rörelse: <td>fram
-                          <tr><td>                            <td>in
-                        </table>
-
-                        <p id=xbc1 class=hanging><sup><b>1</b></sup> Detta ord för
-                          <i class=sign>familj</i> inte finns i
-                          dagens <a href="#ref1997">teckenspråkslexikon</a>.
-
-                        <p id=xbc2 class=hanging><sup><b>2</b></sup> Symbolen
-                          för krokfingret i denna källa
-                          (<span class=hflip>􌤪</span>) är spegelvänd i förhållande
-                          till den symbol som används idag (􌤪).
-                      </details>
                     </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2 r1977">􌥱
-                  <td class="txt    r1977">
+                  </details>
+              </table><table class="item r1977"><tr>
+                <td class="img x2 r1977">􌥲
+                <td class="txt    r1977">
+                  <details closed>
+                    <summary>Vrids</summary>
+
+                    <p>En rörelse som ändrar attitydvridningen (handflatans
+                    vridning).
+
                     <details closed>
-                      <summary>Slås</summary>
+                      <summary>I <a href="#ref1977">Tecknad svenska</a>…</summary>
 
-                      <p>En rörelse som ändrar attitydriktningen (handflatans
-                      riktning).
+                      <p>…skrivs grupper av samtidigt utförda artikulationer med
+                      symboler ovanför varandra (istället för separerade med ett
+                      vertikalt streck [􌥼] som är nutida praxis).
 
-                      <p>Ett enkelt exempel är 􌤀􌤣􌤴􌤶􌥱􌥿􌥼􌤟 <a href=00002>dop</a>, men
-                      slås kan också kombineras med andra rörelser som i
-                      􌤂􌤺􌤢􌤵􌥘􌦄􌥱􌦊 <a href=00046>längesedan</a> där handen förs bakåt
-                      (􌦄) slås bakåt (􌥱􌦊) samtidigt.
+                      <p>Här verkar <i>båge</i> (􌥯) och <i>vrids</i> (􌥲) båda
+                      använda samma notationskonvention (utan specificerad
+                      riktning), medan <i>slås</i> (􌥱) fungerar
+                      annorlunda. <span class=FIXME>FIXME: Beskriv
+                      hur <i>båge</i> faktiskt fungerar.</span>
 
-                    <!-- grep -wrim1 "slås" /home/zrajm/Web/2017-01-30-teckentranskription-download/words R 's#[ ]+# #g; s#<[^>]*>##g' |=grep -Piv 'slås ((kort|snabbt|långsamt|något|lite|sedan|först|därefter|slutligen|växelvis) )?(upp|uppåt|ned|ner|nedåt|inåt|bakåt|fram|framåt|(åt|till) (vänster|höger)|mot varandra|fram och in|upp och ne[dr]|utåt|från varandra|mot och från varandra|från och mot varandra)([/, ]|$)' M '+/slås' -->
-
-                      <p>Om handen slås diagonalt används upprepas symbolen med
-                      olika riktningar och utan separator mellan dem;
-                      􌤩􌤴􌤶􌥱􌥽􌥱􌥿 <a href=14813>spärr, spare</a> (i bowling),
-                      􌤵􌥗􌤤􌤤􌤵􌤶􌤟􌦃􌥱􌥾􌥱􌥿􌥻 <a href=01343>installera, installation</a>.
-
-                      <p>Om någon annan rörelse (t ex en vridning) utförs under en
-                      del av slåendet så behöver slåendet delas upp i separata
-                      delar (med separationsstreck mellan), t ex
-                      􌤢􌤵􌥗􌥈􌤵􌤷􌤟􌥼􌥱􌦀􌥼􌥱􌥿􌥲􌦊􌥼􌤟 <a href=03019>timme</a>.
-
-                      <p class=FIXME>Verifiera att pilen indikerar handflatans
-                      slutliga position (inte i vilken riktning den vrids).
-
-                      <details class=button closed>
-                        <summary>Exempel</summary>
-                        <figure>
-                          <table border=1>
-                            <tr>
-                              <td class="x2">􌥱􌦈
-                                <td>slås åt vänster <!-- [198]
-                                <br>slås till vänster [6] -->
-                            <tr>
-                              <td class="x2">􌥱􌥽
-                              <td>slås åt höger <!-- [141]
-                                <br>slås till höger [1] -->
-                            <tr>
-                              <td class="x2">􌥱􌦉
-                              <td>slås åt vänster och höger <!-- [130]
-                                <br>slås från varandra [66]
-                                <br>slås åt varsitt håll [1]
-                                <br>slås utåt [2]
-                                <br>slås utåt från varandra [1]
-                                <br>slås mot och från varandra [1]
-                                <br>slås från och mot varandra [1]
-                                <br>slås åt varsitt håll [1] -->
-                            <tr>
-                              <td class="x2">􌥱􌦂
-                              <td>slås mot varandra <!-- [63] -->
-                            <tr>
-                              <td class="x2">􌥱􌥾
-                              <td>slås framåt <!-- [839]
-                                <br>slås fram [62] -->
-                            <tr>
-                              <td class="x2">􌥱􌦊
-                              <td>slås bakåt <!-- [89]
-                                <br>slås bakåt (vid örat/sidan om halsen/huvudet) [1]
-                                <br>(aldrig ”slås in”) -->
-                            <tr>
-                              <td class="x2">􌥱􌦋
-                              <td><!-- slås fram och in [24]
-                                <br>slås fram och tillbaka (vid örat/sidan om halsen/huvudet) [18]
-                                <br>-->slås framåt och bakåt<!-- [1]
-                                <br>slås inåt och framåt [1] -->
-                            <tr>
-                              <td class="x2">􌥱􌥿
-                              <td>slås uppåt <!-- [395]
-                                <br>slås upp [10] -->
-                            <tr>
-                              <td class="x2">􌥱􌦀
-                              <td>slås nedåt <!-- [504]
-                                <br>slås ned [11]
-                                <br>slås ner [5] -->
-                            <tr>
-                              <td class="x2">􌥱􌦌
-                              <td>slås uppåt och nedåt <!--[2]
-                                <br>slås upp och ned [38]
-                                <br>slås upp och ner [37]
-                                <br>slås ner och upp [1]
-                                <br>slås ned och upp [2]
-                                <br>slås upp-ner [1]-->
-                          </table>
-                        </figure>
-                      </details>
-                      <details closed>
-                        <summary>[<a href="#ref1977">Tecknad svenska</a> s.63]</summary>
-
-                        <p><b>Slås</b> kan liksom vrides beskrivas med hänvisning
-                        till attityden. När det gäller slå är det dock inte
-                        attitydvridningen som ändras utan riktningen i handen. En
-                        jämförelse mellan tecknen 􌤫􌤴􌥙􌥲􌦈􌥼􌥻 <a href=03826>nyckel</a>
-                        och 􌤫􌥓􌥘􌥱􌦀􌥼􌥻 <a href=03813>feber</a> visar tydligt
-                        skillnaden mellan vrides och slås.
-                        I <a href=03826>nyckel</a> […] vrids handen upp och ner och
-                        attitydriktningen är densamma under hela tecknet.
-                        I <a href=03813>feber</a> […] slås en tänkt termometer upp
-                        och ner, dvs handens riktning växlar mellan upp och ner
-                        medan handflatan (attitydvridningen) hela tiden är
-                        bakåt. <a href=03826>Nyckel</a> och <a href=03813>feber</a>
-                        kan i sin tur jämföras med tecknet […]
-                        [􌤫􌤴􌤶􌥨 <a href=03819>måla</a>; <a href=03820>målare</a>] som
-                        har den iterativa föresrörelsen […]. I detta tecken är
-                        såväl attitydriktning som attitydvridning oförändrade under
-                        artikulationen medan handen flyttas upp och ner.
-                      </details>
-                      <details closed>
-                        <summary>I <a href="#ref1977">Tecknad svenska</a>…</summary>
-
-                        <p>…skrivs grupper av samtidigt utförda artikulationer med
-                        symboler ovanför varandra (istället för separerade med ett
-                        vertikalt streck [􌥼] som är nutida praxis).
-
-                        <p><i>Slås</i> (􌥱) verkar här fungera som en indikator att
-                        efterföljande <i>förs</i>-pil skall utföras genom en
-                        böjning i handleden, snarare än genom en förflyttning av
-                        hand och underarm.
-
-                        <p>Här verkar <i>båge</i> (􌥯) och <i>vrids</i> (􌥲) båda
-                        använda samma notationskonvention (utan specificerad
-                        riktning), medan <i>slås</i> (􌥱) fungerar annorlunda.
-
-                        <table class=border-example>
-                          <caption><sup><b>*</b></sup> Attityden
-                            är <i>uppåtvriden</i> (􌥓􌤸) för detta ord i källan, men
-                            i tabellen ovan har jag tagit mig friheten att rätta
-                            misstaget.
-                          </caption>
-                          <tr>
-                            <td>􌥈􌤵􌤷<mark>􌥱<span style="position:absolute;margin-top:.6em;margin-left:-.55em">􌥣</span></mark>
-                            <td><i class=sign>den</i>, <i class=sign>det</i>
-                            <td>s.139, 140
-                          <tr>
-                            <td>􌥈􌤵􌤶<mark>􌥱<span style="position:absolute;margin-top:.5em;margin-left:-.55em">􌦃</span></mark>
-                            <td><i class=sign>du</i>
-                            <td>s.140
-                          <tr>
-                            <td>􌤃􌤢􌤵􌤶<span style="padding-right:.2em">􌦃<span style="position:absolute;margin-top:.7em;margin-left:-.5em">􌦆</span></span>􌥠􌥈􌤵􌤷<mark>􌥱<span style="position:absolute;margin-top:.6em;margin-left:-.55em">􌥣</span></mark>
-                            <td><i class=sign>han</i>
-                            <td>s.140
-                          <tr>
-                            <td>􌤔􌤢􌥓􌥙􌤟􌥧<span class=vflip style="position:absolute;margin-top:-.3em;margin-left:-.55em">􌥲</span>􌤟􌥠􌥈􌤵􌤷<mark>􌥱<span style="position:absolute;margin-top:.6em;margin-left:-.55em">􌥣</span></mark>
-                            <td><i class=sign>hon</i><sup><b>*</b></sup>
-                            <td>s.140
-                          <tr>
-                            <td>􌥔􌤸􌥅􌥅􌥓􌥙􌥫􌥠􌤭􌤵􌤶<mark>􌥱<span style="position:absolute;margin-top:.5em;margin-left:-.55em">􌦃</span></mark>
-                            <td><i class=sign>också</i>
-                            <td>s.149
-                        </table>
-                      </details>
+                      <table class=border-example>
+                        <caption><sup><b>*</b></sup> Attityden
+                          är <i>uppåtvriden</i> (􌥓􌤸) för dessa ord i källan, men
+                          i tabellen ovan har jag tagit mig friheten att rätta
+                          misstaget.
+                        </caption>
+                        <tr>
+                          <td>􌤔􌤢􌥓􌤸􌤟<mark>􌥧<span class=vflip
+                            style="position:absolute;margin-top:-.3em;margin-left:-.55em">􌥲</span></mark>􌤟􌥠􌥈􌤵􌤷􌥱<span style="position:absolute;margin-top:.6em;margin-left:-.55em">􌥣</span>
+                          <td><i class=sign>hon</i><sup><b>*</b></sup>
+                          <td>s.140
+                        <tr>
+                          <td>􌤔􌤢􌥓􌤸􌤟<mark>􌥧<span class=vflip
+                            style="position:absolute;margin-top:-.3em;margin-left:-.55em">􌥲</span></mark>􌤟􌥠􌥋􌥔􌤷􌥧
+                          <td><i class=sign>henne</i><sup><b>*</b></sup>
+                          <td>s.140
+                        <tr>
+                          <td>􌤔􌤢􌥓􌤸􌤟<mark>􌥧<span class=vflip style="position:absolute;margin-top:-.3em;margin-left:-.55em">􌥲</span></mark>􌤟􌥠􌤢􌤵􌥗􌥣
+                          <td><i class=sign>hennes</i><sup><b>*</b></sup>
+                          <td>s.140
+                      </table>
                     </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2 r1977">􌥲
-                  <td class="txt    r1977">
-                    <details closed>
-                      <summary>Vrids</summary>
-
-                      <p>En rörelse som ändrar attitydvridningen (handflatans
-                      vridning).
-
-                      <details closed>
-                        <summary>I <a href="#ref1977">Tecknad svenska</a>…</summary>
-
-                        <p>…skrivs grupper av samtidigt utförda artikulationer med
-                        symboler ovanför varandra (istället för separerade med ett
-                        vertikalt streck [􌥼] som är nutida praxis).
-
-                        <p>Här verkar <i>båge</i> (􌥯) och <i>vrids</i> (􌥲) båda
-                        använda samma notationskonvention (utan specificerad
-                        riktning), medan <i>slås</i> (􌥱) fungerar
-                        annorlunda. <span class=FIXME>FIXME: Beskriv
-                        hur <i>båge</i> faktiskt fungerar.</span>
-
-                        <table class=border-example>
-                          <caption><sup><b>*</b></sup> Attityden
-                            är <i>uppåtvriden</i> (􌥓􌤸) för dessa ord i källan, men
-                            i tabellen ovan har jag tagit mig friheten att rätta
-                            misstaget.
-                          </caption>
-                          <tr>
-                            <td>􌤔􌤢􌥓􌤸􌤟<mark>􌥧<span class=vflip
-                              style="position:absolute;margin-top:-.3em;margin-left:-.55em">􌥲</span></mark>􌤟􌥠􌥈􌤵􌤷􌥱<span style="position:absolute;margin-top:.6em;margin-left:-.55em">􌥣</span>
-                            <td><i class=sign>hon</i><sup><b>*</b></sup>
-                            <td>s.140
-                          <tr>
-                            <td>􌤔􌤢􌥓􌤸􌤟<mark>􌥧<span class=vflip
-                              style="position:absolute;margin-top:-.3em;margin-left:-.55em">􌥲</span></mark>􌤟􌥠􌥋􌥔􌤷􌥧
-                            <td><i class=sign>henne</i><sup><b>*</b></sup>
-                            <td>s.140
-                          <tr>
-                            <td>􌤔􌤢􌥓􌤸􌤟<mark>􌥧<span class=vflip style="position:absolute;margin-top:-.3em;margin-left:-.55em">􌥲</span></mark>􌤟􌥠􌤢􌤵􌥗􌥣
-                            <td><i class=sign>hennes</i><sup><b>*</b></sup>
-                            <td>s.140
-                        </table>
-                      </details>
-                    </details>
-              </table><table class=item>
-                <tr><th>
+                  </details>
+              </table><table class="item"><tr>
+                <th>
                   <details closed>
                     <summary>Handintern rörelseart</summary>
 
@@ -3032,7 +3018,7 @@
                     <p>De hand<i>interna</i> rörelsearterna involverar enbart
                     fingrarna och påverkar inte handens attityd.
                   </details>
-              </table><table class=item>
+              </table><table class="item r1977">
                 <tr>
                   <td class="img x2 r1977">􌥳
                   <td class="txt    r1977">
@@ -3046,364 +3032,368 @@
                       <a href=00835>prata</a>, <a href=00887>september</a>,
                       <a href=00896>punktskrift</a> och <a href=00109>njuta</a>.
                   </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2">􌥴
-                  <td class="txt">
+              </table><table class="item"><tr>
+                <td class="img x2">􌥴
+                <td class="txt">
+                  <details closed>
+                    <summary>Strör</summary>
+
+                    <p>Innebär att tummen förs över fingertopparna. Påverkar inte
+                    handens attityd.
+
+                    <p>Exempel: <a href=15029>mutter</a>,
+                    <a href=15628>Arameiska</a>,
+                    <a href=05288>snuttefilt</a>, <a href=06687>Arameiska</a> och
+                    <a href=15578>Armenien</a>.
+
+                    <p class=FIXME>Lägg till animation av ”strör”.
+                  </details>
+              </table><table class="item"><tr>
+                <td class="img x2">􌥺
+                <td class="txt">
+                  <details closed>
+                    <summary>Vinkar</summary>
+
+                    <p>Innebär samtidiga rörelser i de inre knogarna. Påverkar
+                    inte handens attityd.
+
+                    <p>Exempel: <a href=00061>nyss</a>, <a href=00246>trappa</a>,
+                    <a href=03759>Liseberg</a>, <a href=01257>madrass</a> och
+                    <a href=12187>spagetti</a>.
+
+                    <p class=FIXME>Lägg till animation av ”vinkar”.
+                  </details>
+              </table><table class="item"><tr>
+                <td class="img x2">􌦨
+                <td class="txt">
+                  <details closed>
+                    <summary>Böjs</summary>
+
+                    <p>Innebär rörelse i de yttre knogarna. Påverkar inte handens
+                    attityd.
+
+                    <p>Exempel: <a href=00499>jägare</a>,
+                    <a href=01000>praktiant</a>, <a href=00996>baka</a>,
+                    <a href=00946>klä av</a> och
+                    <a href=01024>reumatism</a>.
+
+                    <p class=FIXME>Lägg till animation av ”böjs”.
+                  </details>
+              </table><table class="item r1977"><tr>
+                <td class="img x2 r1977">􌦆
+                <td class="txt    r1977">
+                  <details closed>
+                    <summary>Förändras</summary>
+
+                    <p>Aktiva handen byter handform till det som anges efter
+                    pilen. Påverkar inte handens attityd.
+
+                    <p><a href="#ref2015">Teckentranskription</a> (2015) säger
+                    ”symbolen <i>vanligen</i> kompletteras med symbolen för den
+                    avslutande handformen” [min emfas] – men de enda
+                    transkriptioner jag set handform saknats är
+                    i <a href="#ref1977">Tecknad svenska</a> (1977).
+
+                    <p>Exempel: <a href=00074>bäst</a>,
+                    <a href=00023>förmåga</a>, <a href=00155>kapten</a>,
+                    <a href=00500>diskvalificera</a> och <a href=01240>anka</a>.
+
                     <details closed>
-                      <summary>Strör</summary>
+                      <summary>I <a href="#ref1977">Tecknad svenska</a>…</summary>
 
-                      <p>Innebär att tummen förs över fingertopparna. Påverkar inte
-                      handens attityd.
+                      <p>…används <i>förändras</i> (􌦆) både med och utan efterföljande
+                      handformssymbol:
 
-                      <p>Exempel: <a href=15029>mutter</a>,
-                      <a href=15628>Arameiska</a>,
-                      <a href=05288>snuttefilt</a>, <a href=06687>Arameiska</a> och
-                      <a href=15578>Armenien</a>.
+                      <table class=border-example>
+                        <caption><i>Utan</i> efterföljande handform.</caption>
+                        <tr>
+                          <td>􌤢􌤴􌥗􌥆􌤴􌤶<mark>􌥣<span style="position:absolute;margin-top:.6em;margin-left:-.6em">􌦆</span></mark>
+                          <td><i class=sign>orsak</i>
+                          <td>s.116
+                        <tr>
+                          <td>􌥋􌤴􌤸<mark>􌦆</mark>􌥻
+                          <td><i class=sign>litet</i>
+                          <td>s.134
+                        <tr>
+                          <td>􌤌􌤥􌤵􌤷􌦃<mark>􌥣<span style="position:absolute;margin-top:.6em;margin-left:-.6em">􌦆</span></mark>
+                          <td><i class=sign>bita</i>
+                          <td>s.138
+                        <tr>
+                          <td>􌤃􌤢􌤵􌤶<mark style="padding-right:.2em">􌦃<span style="position:absolute;margin-top:.7em;margin-left:-.5em">􌦆</span></mark>􌥠􌥈􌤵􌤷􌥱<span style="position:absolute;margin-top:.6em;margin-left:-.55em">􌥣</span>
+                          <td><i class=sign>han</i>
+                          <td>s.140
+                        <tr>
+                          <td>􌤃􌤢􌤵􌤶<mark style="padding-right:.2em">􌦃<span style="position:absolute;margin-top:.7em;margin-left:-.5em">􌦆</span></mark>􌥠􌥋􌥔􌤷􌥧
+                          <td><i class=sign>honom</i>
+                          <td>s.140
+                        <tr>
+                          <td>􌤃􌤢􌤵􌤶<mark style="padding-right:.2em">􌦃<span style="position:absolute;margin-top:.7em;margin-left:-.5em">􌦆</span></mark>􌥠􌤢􌤵􌥗􌥣
+                          <td><i class=sign>hans</i>
+                          <td>s.140
+                      </table>
 
-                      <p class=FIXME>Lägg till animation av ”strör”.
+                      <p><table class=border-example>
+                        <caption><i>Med</i> efterföljande handform.</caption>
+                        <tr>
+                          <td>…􌥠􌤢􌤴􌤸<mark>􌦆􌤣</mark>
+                          <td><i class=sign>imperfekt</i>
+                          <td>s.135, 138
+                        <tr>
+                          <td>…􌥠􌤢􌤴􌥙<mark>􌦆􌤣</mark>
+                          <td><i class=sign>supinum</i>
+                          <td>s.135
+                        <tr>
+                          <td>􌤢􌤴􌥙<mark>􌦆􌤣</mark>
+                          <td><i class=sign>haft</i>
+                          <td>s.136
+                      </table>
                     </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2">􌥺
-                  <td class="txt">
+                  </details>
+              </table><table class="item"><tr>
+                <th>
+                  <details closed>
+                    <summary>Interaktionsart</summary>
+
+                    <p>Beskriver hur två händer, eller en hand och ett läge,
+                    interagerar med varandra. (Dessa symboler används således
+                    inte i enhandstecken i neutrala läget.)
+
                     <details closed>
-                      <summary>Vinkar</summary>
+                      <summary>[<a href="#ref1977">Tecknad svenska</a> s.82]</summary>
 
-                      <p>Innebär samtidiga rörelser i de inre knogarna. Påverkar
-                      inte handens attityd.
-
-                      <p>Exempel: <a href=00061>nyss</a>, <a href=00246>trappa</a>,
-                      <a href=03759>Liseberg</a>, <a href=01257>madrass</a> och
-                      <a href=12187>spagetti</a>.
-
-                      <p class=FIXME>Lägg till animation av ”vinkar”.
+                      <p>För interaktionsarterna har symbolerna valts med tanke
+                      på att det normalt fordras två händer för att denna
+                      kiremtyp skall förekomma. Därför utmärks de av två
+                      samverkande linjer. Undantag är kontaktsymbolerna — kontakt
+                      fordrar heller inte två händer.
                     </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2">􌦨
-                  <td class="txt">
+                  </details>
+              </table><table class="item r1977"><tr>
+                <td class="img x2 r1977">􌦇
+                <td class="txt    r1977">
+                  <details closed>
+                    <summary>Växelvis</summary>
+
+                    <p>De två händerna i en dubbelartikulation utför samma rörelse
+                    men ur fas med varandra.
+
+                    <p>Exempel: 􌤴􌥗􌥃􌥃􌤴􌤶􌥰􌦋􌦇 <a href=00998>teckna</a>
+                  </details>
+              </table><table class="item r1977"><tr>
+                <td class="img x2 r1977">􌥹
+                <td class="txt    r1977">
+                  <details closed>
+                    <summary>Divergerar</summary>
+
+                    <p>De två händerna i en dubbelartikulation förs bort ifrån
+                    varandra.
+                  </details>
+              </table><table class="item r1977"><tr>
+                <td class="img x2 r1977">􌦅
+                <td class="txt    r1977">
+                  <details closed>
+                    <summary>Konvergerar</summary>
+
+                    <p>De två händerna i en dubbelartikulation förs mot varandra.
+                  </details>
+              </table><table class="item"><tr>
+                <td class="img x2">􌥬
+                <td class="txt">
+                  <details closed>
+                    <summary>Byte</summary>
+
+                    <p>De två händerna i en dubbelartikulation byter plats med
+                    varandra, på ett sånt sätt att attityden ändras.
+                  </details>
+              </table><table class="item r1977"><tr>
+                <td class="img x2 r1977">􌦎
+                <td class="txt    r1977">
+                  <details closed>
+                    <summary>Kors</summary>
+
+                    <p>De två händerna i en dubbelartikulation...
+
+                    <p class=FIXME>Björkstrand 1998 (s.20) skriver något om var
+                    kontakten sker, och hur det beror på vilken handform som
+                    används.
+
                     <details closed>
-                      <summary>Böjs</summary>
+                      <summary>[Diagonala handpositioner i svenskt teckenspråk
+                        (2015) s.19–20]</summary>
 
-                      <p>Innebär rörelse i de yttre knogarna. Påverkar inte handens
-                      attityd.
-
-                      <p>Exempel: <a href=00499>jägare</a>,
-                      <a href=01000>praktiant</a>, <a href=00996>baka</a>,
-                      <a href=00946>klä av</a> och
-                      <a href=01024>reumatism</a>.
-
-                      <p class=FIXME>Lägg till animation av ”böjs”.
+                      <p>Med interaktionen kors menas tecken som har kontakt med
+                      varandra och har korsande handställning.
                     </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2 r1977">􌦆
-                  <td class="txt    r1977">
+                  </details>
+              </table><table class="item r1977"><tr>
+                <td class="img x2 r1977">􌥮
+                <td class="txt    r1977">
+                  <details closed>
+                    <summary>Vinkel</summary>
+
+                    <p>De två händerna i en dubbelartikulation...
+                  </details>
+              </table><table class="item r1977"><tr>
+                <td class="img x2 r1977">􌥫
+                <td class="txt    r1977">
+                  <details closed>
+                    <summary>Hakning</summary>
+
+                    <p>Beskriver interaktionen mellan två aktiva händer, eller
+                    mellan en aktiv hand och ett hand- eller kroppsläge.
+                  </details>
+              </table><table class="item r1977"><tr>
+                <td class="img x2 r1977">􌥭
+                <td class="txt    r1977">
+                  <details closed>
+                    <summary>Entré / mottagning</summary>
+
+                    <p>Innebär att den aktiva handen går in i, eller omsluter,
+                    den andra handen eller ett kroppsläge. Förekommer i både
+                    tvåhandstecken och tecken med kroppsläge.
+
+                    <p>Det kan till exempel innebära att fingrarna passerar
+                    mellan varandra (􌤵􌥗􌤥􌤥􌤵􌤶􌥭 <a href=01740>bön, be</a> eller
+                    􌥄􌤴􌥗􌤣􌤴􌥙􌥧􌥼􌥭 <a href=05234>medlem</a>), att ett kroppsläge förs
+                    in mellan fingrarna på den aktiva handen
+                    (􌤒􌤹􌥔􌥙􌥅􌤴􌥙􌥭􌥢 <a href=01392>gips, gipsa</a>) eller att den
+                    aktiva handen förs in ett kroppsläge
+                    (􌤒􌥖􌥗􌤢􌥧􌥗􌥦􌥱􌦊􌥼􌥭<a href=00143>ombud</a>).
+
+                    <p>(<a href="#ref2015">Teckentranskription</a> och dess
+                    föregångare ger alla tecknet *􌤌􌤧􌤵􌤶􌥭 <i class=sign>nöt</i> som
+                    enda exempel på entré med kroppsläge,
+                    i <a href="#ref1997">Svenskt teckenspråkslexikon</a> finns
+                    detta tecken dock endast upptaget som
+                    􌤌􌤧􌤵􌤶􌤟􌥼􌦃􌥼􌥻 <a href=09123>nöt</a>.)
+                  </details>
+              </table><table class="item r1977"><tr>
+                <td class="img x2 r1977">􌤟
+                <td class="txt    r1977">
+                  <details closed>
+                    <summary>Kontakt</summary>
+
+                    <p>Beskriver interaktionen mellan två aktiva händer, eller
+                    mellan en aktiv hand och ett hand- eller kroppsläge.
+
+                    <p>Används för att beskriva initial, final eller bibehållen
+                    kontakt.
+
+                    <p class=FIXME>
+                  </details>
+              </table><table class="item"><tr>
+                <td class="img x2">  􌥡
+                <td class="txt">
+                  <details closed>
+                    <summary>Medial kontakt</summary>
+
+                    <p>Beskriver interaktionen mellan två aktiva händer, eller
+                    mellan en aktiv hand och ett hand- eller kroppsläge. Denna
+                    symbol kan skrivas under följande rörelseriktningssymboler:
+                    􌥢􌥣􌥤􌦃􌦄􌥥􌥦􌥧􌥨􌥩􌥪􌥵􌥶􌥷􌥸, och innebär att den aktiva handen kort
+                    nuddar vid artikulationstället under den pågående rörelsen.
+                    (Detta skiljer sig ifrån <i>bibehållen kontakt</i>, då
+                    kontakten fortgår under hela rörelsen, som i till exempel
+                    􌤔􌥋􌤴􌤶􌤟􌥧 <a href="05718">kapital</a>).
+
+                    <p>I ordet 􌤓􌥃􌥓􌥘􌥦􌥡 <a href=00171>hemsk, otäck, obehaglig</a>
+                    förs handen uppåt, men nuddar tillfälligt bröstet under
+                    rörelsen. Medial kontakt kan också kombineras med andra
+                    rörelser (här <i>slås</i>) som då skrivs separat
+                    􌤃􌤢􌥕􌥗􌥢􌥡􌥱􌦈􌥼􌥣􌥡􌥱􌥽􌥼􌥻 <a href=00027>roa sig, för skojs skull,
+                    förströelse</a>.
+                  </details>
+              </table><table class="item r1977 FIXME"><tr>
+                <td class="img x2" style="font-weight:normal">*
+                <td class="txt">
+                  <details closed>
+                    <summary>Interativ/upprepad kontakt</summary>
+
+                    <p>Förekommer bara i <a href="#ref1977">Tecknad
+                    svenska</a>, inte i någon av de nyare källorna där 􌤟􌥻 eller
+                    􌤟􌥼􌥻 används istället.
+                  </details>
+              </table><table class="item"><tr>
+                <th>
+                  <details closed>
+                    <summary>Övrigt</summary>
+                  </details>
+              </table><table class="item r1977 FIXME"><tr>
+                <td class="img x2">?
+                <td class="txt">
+                  <details closed>
+                    <summary>Upprepat segment (signem)</summary>
+
+                    <p>Förekommer bara i <a href="#ref1977">Tecknad
+                    svenska</a>, inte i någon av de nyare källorna.
+                  </details>
+              </table><table class="item r1977"><tr>
+                <td class="img x2">􌥻
+                <td class="txt">
+                  <details closed>
+                    <summary>Upprepad artikulation</summary>
+
+                    <p>Skrivs efter en enskild artikulationssymbol för att visa
+                    att den upprepas, eller sist i en egen artikulationsgrupp
+                    (􌥼􌥻) för att visa att hela artikulationen upprepas.
+
                     <details closed>
-                      <summary>Förändras</summary>
+                      <summary>[<a href="#ref1993">Kompendium i teckentranskription</a> s.9]</summary>
 
-                      <p>Aktiva handen byter handform till det som anges efter
-                      pilen. Påverkar inte handens attityd.
-
-                      <p><a href="#ref2015">Teckentranskription</a> (2015) säger
-                      ”symbolen <i>vanligen</i> kompletteras med symbolen för den
-                      avslutande handformen” [min emfas] – men de enda
-                      transkriptioner jag set handform saknats är
-                      i <a href="#ref1977">Tecknad svenska</a> (1977).
-
-                      <p>Exempel: <a href=00074>bäst</a>,
-                      <a href=00023>förmåga</a>, <a href=00155>kapten</a>,
-                      <a href=00500>diskvalificera</a> och <a href=01240>anka</a>.
-
-                      <details closed>
-                        <summary>I <a href="#ref1977">Tecknad svenska</a>…</summary>
-
-                        <p>…används <i>förändras</i> (􌦆) både med och utan efterföljande
-                        handformssymbol:
-
-                        <table class=border-example>
-                          <caption><i>Utan</i> efterföljande handform.</caption>
-                          <tr>
-                            <td>􌤢􌤴􌥗􌥆􌤴􌤶<mark>􌥣<span style="position:absolute;margin-top:.6em;margin-left:-.6em">􌦆</span></mark>
-                            <td><i class=sign>orsak</i>
-                            <td>s.116
-                          <tr>
-                            <td>􌥋􌤴􌤸<mark>􌦆</mark>􌥻
-                            <td><i class=sign>litet</i>
-                            <td>s.134
-                          <tr>
-                            <td>􌤌􌤥􌤵􌤷􌦃<mark>􌥣<span style="position:absolute;margin-top:.6em;margin-left:-.6em">􌦆</span></mark>
-                            <td><i class=sign>bita</i>
-                            <td>s.138
-                          <tr>
-                            <td>􌤃􌤢􌤵􌤶<mark style="padding-right:.2em">􌦃<span style="position:absolute;margin-top:.7em;margin-left:-.5em">􌦆</span></mark>􌥠􌥈􌤵􌤷􌥱<span style="position:absolute;margin-top:.6em;margin-left:-.55em">􌥣</span>
-                            <td><i class=sign>han</i>
-                            <td>s.140
-                          <tr>
-                            <td>􌤃􌤢􌤵􌤶<mark style="padding-right:.2em">􌦃<span style="position:absolute;margin-top:.7em;margin-left:-.5em">􌦆</span></mark>􌥠􌥋􌥔􌤷􌥧
-                            <td><i class=sign>honom</i>
-                            <td>s.140
-                          <tr>
-                            <td>􌤃􌤢􌤵􌤶<mark style="padding-right:.2em">􌦃<span style="position:absolute;margin-top:.7em;margin-left:-.5em">􌦆</span></mark>􌥠􌤢􌤵􌥗􌥣
-                            <td><i class=sign>hans</i>
-                            <td>s.140
-                        </table>
-
-                        <p><table class=border-example>
-                          <caption><i>Med</i> efterföljande handform.</caption>
-                          <tr>
-                            <td>…􌥠􌤢􌤴􌤸<mark>􌦆􌤣</mark>
-                            <td><i class=sign>imperfekt</i>
-                            <td>s.135, 138
-                          <tr>
-                            <td>…􌥠􌤢􌤴􌥙<mark>􌦆􌤣</mark>
-                            <td><i class=sign>supinum</i>
-                            <td>s.135
-                          <tr>
-                            <td>􌤢􌤴􌥙<mark>􌦆􌤣</mark>
-                            <td><i class=sign>haft</i>
-                            <td>s.136
-                        </table>
-                      </details>
+                      <p>Upprepad artikulation innebär i regel två upprepningar.
+                      Om upprepningen står ensam sist i egen grupp (􌥼􌥻) innebär
+                      det att hela artikulationen upprepas. Om
+                      upprepningssymbolen står inom en grupp är det bara den
+                      artikulationen som står före upprepningssymbolen som
+                      upprepas.
                     </details>
-              </table><table class=item>
-                <tr><th>
+                  </details>
+              </table><table class="item"><tr>
+                <td class="img x2">􌥼
+                <td class="txt">
+                  <details closed>
+                    <summary>Separator för artikulationsgrupper</summary>
+
+                    <p>Den här symbolen delar in artikulationen i grupper. Alla
+                    symboler inom en grupp utförs samtidigt, medan grupperna
+                    utföres var och en efter varandra.
+
+                    <p>I till exempel 􌤦􌤴􌤶􌦄􌥦 <a href=01999>bromsa, stanna upp,
+                    hejda sig</a> utförs de två artikulationerna (􌦄 <i>förs
+                    bakåt</i> och 􌥦 <i>förs uppåt</i>) samtidigt.
+
                     <details closed>
-                      <summary>Interaktionsart</summary>
+                      <summary>[<a href="#ref1993">Kompendium i teckentranskription</a> s.11]</summary>
 
-                      <p>Beskriver hur två händer, eller en hand och ett läge,
-                      interagerar med varandra. (Dessa symboler används således
-                      inte i enhandstecken i neutrala läget.)
-
-                      <details closed>
-                        <summary>[<a href="#ref1977">Tecknad svenska</a> s.82]</summary>
-
-                        <p>För interaktionsarterna har symbolerna valts med tanke
-                        på att det normalt fordras två händer för att denna
-                        kiremtyp skall förekomma. Därför utmärks de av två
-                        samverkande linjer. Undantag är kontaktsymbolerna — kontakt
-                        fordrar heller inte två händer.
-                      </details>
+                      <p>Här förekommer ofta flera symboler vilka kombineras
+                      enligt två principer: symboler för samtidiga element skrivs
+                      inom varje grupp som avslutas med 􌥼. I regel förekommer
+                      minst två symboler varav den ena betecknar en rörelseart
+                      och den andra en rörelseriktning. Den vanliga enkla
+                      förflyttningsrörelsen, föres, saknar dock symbol och
+                      transkriberas enbart med en riktningsangivelse.
                     </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2 r1977">􌦇
-                  <td class="txt    r1977">
-                    <details closed>
-                      <summary>Växelvis</summary>
+                  </details>
+              </table><table class="item r1977"><tr>
+                <td class="img x2">􌥠
+                <td class="txt">
+                  <details closed>
+                    <summary>Separator för sammansatta tecken</summary>
+                  </details>
+              </table><table class="item"><tr>
+                <td class="img x2">􌦩
+                <td class="txt">
+                  <details closed>
+                    <summary>Separator för höger/vänster hand</summary>
 
-                      <p>De två händerna i en dubbelartikulation utför samma rörelse
-                      men ur fas med varandra.
-
-                      <p>Exempel: 􌤴􌥗􌥃􌥃􌤴􌤶􌥰􌦋􌦇 <a href=00998>teckna</a>
-                    </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2 r1977">􌥹
-                  <td class="txt    r1977">
-                    <details closed>
-                      <summary>Divergerar</summary>
-
-                      <p>De två händerna i en dubbelartikulation förs bort ifrån
-                      varandra.
-                    </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2 r1977">􌦅
-                  <td class="txt    r1977">
-                    <details closed>
-                      <summary>Konvergerar</summary>
-
-                      <p>De två händerna i en dubbelartikulation förs mot varandra.
-                    </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2">􌥬
-                  <td class="txt">
-                    <details closed>
-                      <summary>Byte</summary>
-
-                      <p>De två händerna i en dubbelartikulation byter plats med
-                      varandra, på ett sånt sätt att attityden ändras.
-                    </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2 r1977">􌦎
-                  <td class="txt    r1977">
-                    <details closed>
-                      <summary>Kors</summary>
-
-                      <p>De två händerna i en dubbelartikulation...
-
-                      <p class=FIXME>Björkstrand 1998 (s.20) skriver något om var
-                      kontakten sker, och hur det beror på vilken handform som
-                      används.
-
-                      <details closed>
-                        <summary>[Diagonala handpositioner i svenskt teckenspråk
-                          (2015) s.19–20]</summary>
-
-                        <p>Med interaktionen kors menas tecken som har kontakt med
-                        varandra och har korsande handställning.
-                      </details>
-                    </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2 r1977">􌥮
-                  <td class="txt    r1977">
-                    <details closed>
-                      <summary>Vinkel</summary>
-
-                      <p>De två händerna i en dubbelartikulation...
-                    </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2 r1977">􌥫
-                  <td class="txt    r1977">
-                    <details closed>
-                      <summary>Hakning</summary>
-
-                      <p>Beskriver interaktionen mellan två aktiva händer, eller
-                      mellan en aktiv hand och ett hand- eller kroppsläge.
-                    </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2 r1977">􌥭
-                  <td class="txt    r1977">
-                    <details closed>
-                      <summary>Entré / mottagning</summary>
-
-                      <p>Innebär att den aktiva handen går in i, eller omsluter,
-                      den andra handen eller ett kroppsläge. Förekommer i både
-                      tvåhandstecken och tecken med kroppsläge.
-
-                      <p>Det kan till exempel innebära att fingrarna passerar
-                      mellan varandra (􌤵􌥗􌤥􌤥􌤵􌤶􌥭 <a href=01740>bön, be</a> eller
-                      􌥄􌤴􌥗􌤣􌤴􌥙􌥧􌥼􌥭 <a href=05234>medlem</a>), att ett kroppsläge förs
-                      in mellan fingrarna på den aktiva handen
-                      (􌤒􌤹􌥔􌥙􌥅􌤴􌥙􌥭􌥢 <a href=01392>gips, gipsa</a>) eller att den
-                      aktiva handen förs in ett kroppsläge
-                      (􌤒􌥖􌥗􌤢􌥧􌥗􌥦􌥱􌦊􌥼􌥭<a href=00143>ombud</a>).
-
-                      <p>(<a href="#ref2015">Teckentranskription</a> och dess
-                      föregångare ger alla tecknet *􌤌􌤧􌤵􌤶􌥭 <i class=sign>nöt</i> som
-                      enda exempel på entré med kroppsläge,
-                      i <a href="#ref1997">Svenskt teckenspråkslexikon</a> finns
-                      detta tecken dock endast upptaget som
-                      􌤌􌤧􌤵􌤶􌤟􌥼􌦃􌥼􌥻 <a href=09123>nöt</a>.)
-                    </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2 r1977">􌤟
-                  <td class="txt    r1977">
-                    <details closed>
-                      <summary>Kontakt</summary>
-
-                      <p>Beskriver interaktionen mellan två aktiva händer, eller
-                      mellan en aktiv hand och ett hand- eller kroppsläge.
-
-                      <p>Används för att beskriva initial, final eller bibehållen
-                      kontakt.
-
-                      <p class=FIXME>
-                    </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2">  􌥡
-                  <td class="txt">
-                    <details closed>
-                      <summary>Medial kontakt</summary>
-
-                      <p>Beskriver interaktionen mellan två aktiva händer, eller
-                      mellan en aktiv hand och ett hand- eller kroppsläge. Denna
-                      symbol kan skrivas under följande rörelseriktningssymboler:
-                      􌥢􌥣􌥤􌦃􌦄􌥥􌥦􌥧􌥨􌥩􌥪􌥵􌥶􌥷􌥸, och innebär att den aktiva handen kort
-                      nuddar vid artikulationstället under den pågående rörelsen.
-                      (Detta skiljer sig ifrån <i>bibehållen kontakt</i>, då
-                      kontakten fortgår under hela rörelsen, som i till exempel
-                      􌤔􌥋􌤴􌤶􌤟􌥧 <a href="05718">kapital</a>).
-
-                      <p>I ordet 􌤓􌥃􌥓􌥘􌥦􌥡 <a href=00171>hemsk, otäck, obehaglig</a>
-                      förs handen uppåt, men nuddar tillfälligt bröstet under
-                      rörelsen. Medial kontakt kan också kombineras med andra
-                      rörelser (här <i>slås</i>) som då skrivs separat
-                      􌤃􌤢􌥕􌥗􌥢􌥡􌥱􌦈􌥼􌥣􌥡􌥱􌥽􌥼􌥻 <a href=00027>roa sig, för skojs skull,
-                      förströelse</a>.
-                    </details>
-              </table><table class=item>
-                <tr><th>Övrigt
-              </table><table class=item>
-                <tr>
-                  <td class="img x2">􌥻
-                  <td class="txt">
-                    <details closed>
-                      <summary>Upprepad artikulation</summary>
-
-                      <p>Skrivs efter en enskild artikulationssymbol för att visa
-                      att den upprepas, eller sist i en egen artikulationsgrupp
-                      (􌥼􌥻) för att visa att hela artikulationen upprepas.
-
-                      <details closed>
-                        <summary>[<a href="#ref1993">Kompendium i teckentranskription</a> s.9]</summary>
-
-                        <p>Upprepad artikulation innebär i regel två upprepningar.
-                        Om upprepningen står ensam sist i egen grupp (􌥼􌥻) innebär
-                        det att hela artikulationen upprepas. Om
-                        upprepningssymbolen står inom en grupp är det bara den
-                        artikulationen som står före upprepningssymbolen som
-                        upprepas.
-                      </details>
-                    </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2">􌥼
-                  <td class="txt">
-                    <details closed>
-                      <summary>Separator för artikulationsgrupper</summary>
-
-                      <p>Den här symbolen delar in artikulationen i grupper. Alla
-                      symboler inom en grupp utförs samtidigt, medan grupperna
-                      utföres var och en efter varandra.
-
-                      <p>I till exempel 􌤦􌤴􌤶􌦄􌥦 <a href=01999>bromsa, stanna upp,
-                      hejda sig</a> utförs de två artikulationerna (􌦄 <i>förs
-                      bakåt</i> och 􌥦 <i>förs uppåt</i>) samtidigt.
-
-                      <details closed>
-                        <summary>[<a href="#ref1993">Kompendium i teckentranskription</a> s.11]</summary>
-
-                        <p>Här förekommer ofta flera symboler vilka kombineras
-                        enligt två principer: symboler för samtidiga element skrivs
-                        inom varje grupp som avslutas med 􌥼. I regel förekommer
-                        minst två symboler varav den ena betecknar en rörelseart
-                        och den andra en rörelseriktning. Den vanliga enkla
-                        förflyttningsrörelsen, föres, saknar dock symbol och
-                        transkriberas enbart med en riktningsangivelse.
-                      </details>
-                    </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2">􌥠
-                  <td class="txt">
-                    <details closed>
-                      <summary>Separator för sammansatta tecken</summary>
-                    </details>
-              </table><table class=item>
-                <tr>
-                  <td class="img x2">􌦩
-                  <td class="txt">
-                    <details closed>
-                      <summary>Separator för höger/vänster hand</summary>
-
-                      <p>I somliga tecken (som i t ex
-                      􌤲􌤴􌥙􌥤􌦩􌥅􌤴􌤸 <a href=03805>fiol</a>) agerar de två händerna
-                      oberoende av varandra och behöver transkriberas separat, i
-                      dessa fall separeras de två handbeskrivningarna med denna
-                      separator. Den här sortens tecken är ovanliga, men förekommer
-                      dock i ett inte helt insignifikant antal. (Se
-                      också <a href=#udda>udda transkriptioner</a> nedan.)
-                    </details>
+                    <p>I somliga tecken (som i t ex
+                    􌤲􌤴􌥙􌥤􌦩􌥅􌤴􌤸 <a href=03805>fiol</a>) agerar de två händerna
+                    oberoende av varandra och behöver transkriberas separat, i
+                    dessa fall separeras de två handbeskrivningarna med denna
+                    separator. Den här sortens tecken är ovanliga, men förekommer
+                    dock i ett inte helt insignifikant antal. (Se
+                    också <a href=#udda>udda transkriptioner</a> nedan.)
+                  </details>
               </table>
             </div>
           </figure>
@@ -4750,7 +4740,7 @@
 
         <p id=ref1995>Bergman, Brita (1995)
         <i><a href="pdf/bergman-1995-kompendium_i_teckenspraksgrammatik.pdf">Kompendium
-        i teckenspråksgrammatik</i></a>. Stockholm, Avdelningen för
+        i teckenspråksgrammatik</a></i>. Stockholm, Avdelningen för
         teckenspråk, Institutionen för lingvistik, Stockholms universitet.
 
         <p id=ref1997>Hedberg, Tomas (redaktör) (1997)

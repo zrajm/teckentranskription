@@ -161,6 +161,9 @@
 ** TODO Repeated search should not reload search result
 ** TODO Add CC license text + note data source
 * Transcription intro article
+** TODO # links should auto-uncollapse sections
+   If one visits to a link that contain a # part in the intro article, the the
+   page should automatically unfold that part and go there.
 ** TODO Search function
    Javascript search function that automatically unfolds the relevant/matching
    sections.
