@@ -10,6 +10,13 @@
 ** TODO Homogenize CSS for all pages
    All pages should use one base CSS + an extra CSS with the styles needed for
    these pages, and preferably there should be no extra per-file CSS.
+* Virtual keyboard
+** TODO Avatar to display attitude + handshape
+   A wiki for "Virtual Humans"
+   http://vh.cmp.uea.ac.uk/index.php/JASigning_Demos
+
+   These are some cool BSL examples:
+   http://vhg.cmp.uea.ac.uk/demo/BSLExamples/
 * Lexicon
 ** [0/12] Query syntax
 *** TODO Help section for query syntax
@@ -89,7 +96,8 @@
     http://localhost/teckentranskription/lexicon.html#@*%F4%8C%A5%A0
     Actually, last segment should be '#' in these words. Fix the data generator
     script!
-** [0/7] GUI
+** [0/8] GUI
+*** TODO Fix click-eating bug
 *** TODO Make Javascript generated CSS neater
     Instead of using jQuery to apply CSS in 'style' attribute, should generate
     random ID for a prefix, and use CSS rules.
@@ -164,6 +172,14 @@
 ** TODO # links should auto-uncollapse sections
    If one visits to a link that contain a # part in the intro article, the the
    page should automatically unfold that part and go there.
+** TODO Explain relation symbols better
+   Include an image explaining the relation symbols in better detail.
+
+   What are they in relation to? How do they relate to the body of the signer?
+   This came up in discussion with Thomas Björkstrand, who argued that 'in
+   front of' symbol could be interpreted in relation to the attitude of passive
+   hand, while I argued that is is about the location of the two hand in
+   relation to the body.
 ** TODO Search function
    Javascript search function that automatically unfolds the relevant/matching
    sections.
