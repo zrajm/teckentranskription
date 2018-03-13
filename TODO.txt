@@ -169,6 +169,7 @@
 ** TODO Repeated search should not reload search result
 ** TODO Add CC license text + note data source
 * Transcription intro article
+** TODO Add symbols from Riemer 2015
 ** TODO # links should auto-uncollapse sections
    If one visits to a link that contain a # part in the intro article, the the
    page should automatically unfold that part and go there.
