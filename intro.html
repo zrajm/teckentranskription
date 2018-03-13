@@ -213,6 +213,9 @@
     .columns > table > tbody > tr > td:last-child {
         padding-right: 4px;
     }
+    // Sometimes <details> breaks out of and overlaps the surrounding <table>
+    // border. This stops that from happening (for the price of a 1px border).
+    .columns details { border: 1px solid transparent; }
 
     th > details { font-weight: normal; }
     th > details > summary { font-weight: bold; }
@@ -3664,6 +3667,129 @@
           </figure>
         </details></section>
       </div>
+
+      <section><details>
+        <summary><h1>Riktningsbeskrivning (till handexterna rörelsearter)</h1></summary>
+
+        <p>Följande symboler skrivs under symbolerna för handexterna
+        rörelsearter och beskriver rörelseartens riktning.
+
+        <figure>
+          <select class=tags data-placeholder="Välj kategorier att visa…" multiple>
+            <option value=circling>Används med cirkel (􌥰)</option>
+            <optgroup label="Källa">
+              <option value=x1977>1977 – Tecknad svenska</option>
+              <option value=x1982 class=FIXME>1982 – Teckenspråkstranskription</option>
+              <option value=x1989 class=FIXME>1989 – Persontecken</option>
+              <option value=x1993 class=FIXME>1993 – Kompendium i teckentranskription</option>
+              <option value=x1994 class=FIXME>1994 – Polysyntetiska tecken</option>
+              <option value=x1997 class=FIXME>1997 – Svenskt teckenspråkslexikon</option>
+              <option value=x2015 class=FIXME>2015 – Teckentranskription</option>
+              <option value=xweb class=FIXME>webb – Svenskt teckenspråkslexikon</option>
+            </optgroup>
+          </select>
+          <span class=count style="color:#888" data-fmt="Visar {msg} {count} artikulationer."></span>
+          <br><select class=mode>
+            <option value=mark>Markera matchande</option>
+            <option value=hide>Göm icke-matchande</option>
+          </select>
+          <select class=bool>
+            <option value=and>Och</option>
+            <option value=or>Eller</option>
+          </select>
+
+          <div class="list columns">
+            <table class="circling x1977"><tr>
+                <td class="img x2">  􌦈
+                <td class="txt">
+                  <details closed>
+                    <summary>åt vänster</summary>
+                  </details>
+            </table><table class="x1977"><tr>
+                <td class="img x2">  􌥽
+                <td class="txt">
+                  <details closed>
+                    <summary>åt höger</summary>
+                  </details>
+            </table><table class="circling"><tr>
+                <td class="img x2">  􌦉
+                <td class="txt">
+                  <details closed>
+                    <summary>i sidled (vänster–höger)</summary>
+                  </details>
+            </table><table class="circling x1977"><tr>
+                <td class="img x2">  􌥾
+                <td class="txt">
+                  <details closed>
+                    <summary>framåt</summary>
+                  </details>
+            </table><table class="circling x1977"><tr>
+                <td class="img x2">  􌦊
+                <td class="txt">
+                  <details closed>
+                    <summary>bakåt/inåt</summary>
+
+                    <p>Symbolen förekommer inte i <a href="#ref1977">Tecknad
+                    Svenska</a> (varken i symbolförklaring eller brödtext) men
+                    eftersom <i>åt höger</i> (  􌥽), och <i>framåt</i> (  􌥾) mfl
+                    snarlika symboler används, har jag här utgått att den här
+                    symbolens frånvaro är en slump, och att den ingick i
+                    praxis.
+                  </details>
+            </table><table class="circling"><tr>
+                <td class="img x2">  􌦋
+                <td class="txt">
+                  <details closed>
+                    <summary>i djupled (framåt–bakåt)</summary>
+                  </details>
+            </table><table class="circling x1977"><tr>
+                <td class="img x2">  􌥿
+                <td class="txt">
+                  <details closed>
+                    <summary>uppåt</summary>
+
+                    <p>Symbolen förekommer inte i <a href="#ref1977">Tecknad
+                    Svenska</a> (varken i symbolförklaring eller brödtext) men
+                    eftersom <i>åt höger</i> (  􌥽), och <i>framåt</i> (  􌥾) mfl
+                    snarlika symboler används, har jag här utgått att den här
+                    symbolens frånvaro är en slump, och att den ingick i
+                    praxis.
+                  </details>
+            </table><table class="x1977"><tr>
+                <td class="img x2">  􌦀
+                <td class="txt">
+                  <details closed>
+                    <summary>nedåt</summary>
+
+                    <p>Symbolen förekommer inte i <a href="#ref1977">Tecknad
+                    Svenska</a> (varken i symbolförklaring eller brödtext) men
+                    eftersom <i>åt höger</i> (  􌥽), och <i>framåt</i> (  􌥾) mfl
+                    snarlika symboler används, har jag här utgått att den här
+                    symbolens frånvaro är en slump, och att den ingick i
+                    praxis.
+                  </details>
+            </table><table class="circling"><tr>
+                <td class="img x2">  􌦌
+                <td class="txt">
+                  <details closed>
+                    <summary>i höjdled (uppåt–nedåt)</summary>
+                  </details>
+            </table><table class="circling"><tr>
+                <td class="img x2">  􌦂
+                <td class="txt">
+                  <details closed>
+                    <summary>mot varandra</summary>
+                  </details>
+            </table><table class="circling"><tr>
+                <td class="img x2">  􌦵
+                <td class="txt">
+                  <details closed>
+                    <summary>från varandra</summary>
+                  </details>
+            </table>
+          </div>
+        </figure>
+      </details></section>
     </details></section>
 
     <section><details>
