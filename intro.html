@@ -1131,6 +1131,17 @@
                   <optgroup label="Handformskategori" title="Kategori från Tecknad svenska.">
                     <option value=hel>Hela handformer</option>
                     <option value=fing>Fingerhandformer</option>
+                    <option value=open class=FIXME title="Ingen kontakt mellan tumme och fingertoppar.">Öppen</option>
+                    <option value=closed class=FIXME title="Har kontakt mellan tumme och fingertoppar">Sluten</option>
+                    <!-- Handshapes explicitly mentioned (in *Tecknad svenska*)
+                        as either open or closed:
+
+                        OPEN: flata handen, klohanden, måtthanden, S-handen,
+                        sprethanden, T-handen.
+
+                        CLOSED: A-handen, O-handen, hållhanden, knutna handen,
+                        nyphanden.
+                      -->
                   </optgroup>
                   <optgroup label="Fingrarnas vinkel">
                     <option value=fx title="Applicerbart på former med minst två fingrar intill varandra.">Spretad</option>
@@ -1145,10 +1156,6 @@
                     <option value=f2>Två fingrar</option>
                     <option value=f3>Tre fingrar</option>
                     <option value=f4>Fyra fingrar</option>
-                  </optgroup>
-                  <optgroup label="Öppen/sluten">
-                    <option value=open class=FIXME>Öppen</option>
-                    <option value=closed class=FIXME>Sluten</option>
                   </optgroup>
                   <optgroup label="Finlandssvensk teckenspråk">
                     <option value=flat title="Alla fingrar (utom tumme) samlade.">Handflata</option>
@@ -1284,7 +1291,7 @@
                       </details>
                     <td class="img h1977 h1997 h2015"><img src="pic/x/tumhanden-1.png">
                     <td class="img h1977 h1997      "><img src="pic/x/tumhanden-2.png">
-                  </table><table class="fb f1 fing två h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
+                  </table><table class="fb f1 open fing två h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1977 h1997 h2015 hweb">􌥋
                     <td class="txt    h1977 h1997 h2015 hweb">
                       <details closed>
@@ -1323,7 +1330,7 @@
                         .22).” [<i>Polysyntetiska tecken</i> s.129]
                       </details>
                     <td class="img h1997 h2015"><img src="pic/x/raka-matthanden-1.png">
-                  </table><table class="fs fv f2 fing två h1989"><tr>
+                  </table><table class="fx fv f2 fing två h1989"><tr>
                     <td class="img"><img src="pic/h-vinklade-tupphanden.svg">
                     <td class="txt">
                       <details closed>
@@ -1509,7 +1516,7 @@
                     <td class="img h1977 h1997 h2015"><img src="pic/x/flyghanden-1.png">
                     <td class="img             h2015"><img src="pic/x/flyghanden-2.png">
                     <td class="img h1977       h2015"><img src="pic/x/flyghanden-3.png">
-                  </table><table class="fs f4 flat hel h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
+                  </table><table class="fs f4 open flat hel h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 fr fv h1977 h1997 h2015 hweb">􌤢
                     <td class="txt    fr fv h1977 h1997 h2015 hweb">
                       <details closed>
@@ -1814,7 +1821,7 @@
                         svenska</i> s.45]
                       </details>
                     <td class="img h1977 h1997 h2015"><img src="pic/x/o-handen-1.png">
-                  </table><table class="f0 knuten fing h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
+                  </table><table class="f0 knuten closed fing h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1997 h2015 hweb">􌤫
                     <td class="txt    h1997 h2015 hweb">
                       <details closed>
@@ -1912,7 +1919,7 @@
                     <td class="img       h1997 h2015"><img src="pic/x/klohanden-2.png" style="margin-right:-4px">
                     <td class="img       h1997      "><img src="pic/x/bojda-sprethanden-1.png" style="margin-left:-2px">
                     <td class="img       h1997      "><img src="pic/x/klohanden-3.png">
-                  </table><table class="fv f1 fing två h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
+                  </table><table class="fv f1 open fing två h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1977 h1997 h2015 hweb">􌥊
                     <td class="txt    h1977 h1997 h2015 hweb">
                       <details closed>
@@ -3978,6 +3985,10 @@
         <p id="sekvens"><b>sekvens</b> –
         Se <a href="#artikulationsgrupp">artikulationsgrupp</a>.
 
+        <p id="sluten-hand"><b>sluten hand</b> – En handform i vilken kontakt
+        sker mellan tumme och fingertoppar [<a href="#ref1977">Tecknad
+        Svenska</a> s.45] (Se även <a href="#oppen-hand">öppen hand</a>.)
+
         <p id="tvahandstecken"><b>tvåhandstecken</b> – Ett tecken i vilka båda
         händerna används. Kan vara en tecken
         med <a href="#dubbel-artikulator">dubbel artikulator</a> eller med
@@ -3988,6 +3999,10 @@
         av <a href="#attityd">attityden</a> som beskriver åt vilket håll
         handflatan är vänd. <span class=FIXME>infoga symboler för
         vridning</span>
+
+        <p id="oppen-hand"><b>öppen hand</b> – En handform utan kontakt mellan
+        tumme och fingertoppar [<a href="#ref1977">Tecknad Svenska</a> s.45]
+        (Se även <a href="#sluten-hand">sluten hand</a>.)
       </div>
     </details></section>
 
