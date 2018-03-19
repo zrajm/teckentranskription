@@ -80,11 +80,7 @@
     Useful when one is searching for one of multiple hand shapes.
 *** TODO Way to match end of words in search queries
     ^..$ (?), or use '*' to denote non-end of words?
-** [0/2] Search result
-*** TODO Updating of search result should be interruptable
-    When search result is being updated, performing a new search should abort
-    the updating of the previous result. One should also be able to abort the
-    updating (e.g. by pressing Esc).
+** [1/2] Search result
 *** TODO Sortable search results
     Present search result in a sortable table? Should be able to sort by swedish
     word, and by sign language.
@@ -96,8 +92,7 @@
     http://localhost/teckentranskription/lexicon.html#@*%F4%8C%A5%A0
     Actually, last segment should be '#' in these words. Fix the data generator
     script!
-** [0/8] GUI
-*** TODO Fix click-eating bug
+** [1/8] GUI
 *** TODO Make Javascript generated CSS neater
     Instead of using jQuery to apply CSS in 'style' attribute, should generate
     random ID for a prefix, and use CSS rules.
@@ -182,9 +177,41 @@
    front of' symbol could be interpreted in relation to the attitude of passive
    hand, while I argued that is is about the location of the two hand in
    relation to the body.
+** TODO In symbol lists
+   Make deprecated symbols striped red by default.
+   https://css-tricks.com/stripes-css/
+
+   background: repeating-linear-gradient(
+       45deg,
+       #606dbc,
+       #606dbc 10px,
+       #465298 10px,
+       #465298 20px
+   );
+
+   $('p').css('background', 'repeating-linear-gradient(-45deg,red,red 2px,transparent 2px,transparent 20px)')
 ** TODO Search function
    Javascript search function that automatically unfolds the relevant/matching
    sections.
+
+   One unanswered question: Can we search in the DOM for text that is present
+   in hidden <details> sections? Or is that text not present in the DOM because
+   the element is hidden?
+
+   Article on how to do this:
+   https://j11y.io/javascript/replacing-text-in-the-dom-solved/
+
+   Maybe using this:
+   https://github.com/padolsey/findAndReplaceDOMText/blob/master/src/findAndReplaceDOMText.js
+
+
+   https://stackoverflow.com/questions/32783336/find-text-in-source-code-of-page-and-create-hyperlink
+   https://developer.mozilla.org/en-US/docs/Web/API/TreeWalker
+
+   It would be cool if just the browser-native search function automatically
+   opened up the relevant section when you searched... But interacting with the
+   browser search function seems to be highly idiomatic in different browsers,
+   and not worth the effort.
 ** TODO Put all footnote texts inside <aside> tags
 ** TODO Lone tables should not be in <figure> tags
    Tables that are the only content in a <figure> tag should use their own
@@ -420,6 +447,13 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Updating of search result should be interruptible
+   CLOSED: [2018-03-19 Mon 19:21]
+   When search result is being updated, performing a new search should abort
+   the updating of the previous result. One should also be able to abort the
+   updating (e.g. by pressing Esc).
+** DONE Lexicon: Fix click-eating bug
+   CLOSED: [2018-03-19 Mon 16:51]
 ** DONE Replace weak/strong with left/right in intro article
    CLOSED: [2018-03-08 Thu 13:47]
 ** DONE Whole handshapes vs. finger handshapes

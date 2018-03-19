@@ -379,36 +379,47 @@ function htmlifyEntry(match) {
     ].join(" ");
 }
 
-function outputMatching(elem, htmlQueue, startSize) {
+// A function that interatively displays the result of a search. `chunksize`
+// items are displayed at a time, thereafter the function calls itself with a
+// setTimeout of zero (which allows other stuff to run as well, and not
+// monopolize the event loop).
+//
+// If the function is invoked again with a new search result, then any still
+// ongoing processing is aborted and only the new result is displayed.
+var outputMatching = (function () {
     "use strict";
-    var chunksize = 500;
-    var chunk;
-    var percent;
-    if (!startSize) {
-        startSize = htmlQueue.length;
-        logTiming.reset();
-    }
-    // Output one chunk of search result (in own <div> for speed).
-    chunk = htmlQueue.splice(0, chunksize);
-    elem.append("<div>" + chunk.join("") + "</div>");
+    var chunksize = 500;                       // setting (never changes)
+    var elem;
+    var htmlQueue;
+    var startSize;
+    function process(args) {
+        var chunk;
+        var percent;
+        if (args) {
+            elem = args.elem;
+            htmlQueue = args.html;
+            startSize = htmlQueue.length;
+            logTiming.reset();
+        }
+        // Output one chunk of search result (in own <div> for speed).
+        chunk = htmlQueue.splice(0, chunksize);
+        elem.append("<div>" + chunk.join("") + "</div>");
 
-    // Update progress bar & debug output to console.
-    percent = 100 - Math.round((htmlQueue.length / (startSize || 1)) * 100);
-    progressBar(percent);
-    logTiming.step("  " + percent + "% – Showing chunk took %s.");
+        // Update progress bar & debug output to console.
+        percent = 100 - Math.round((htmlQueue.length / (startSize || 1)) * 100);
+        progressBar(percent);
+        logTiming.step("  " + percent + "% – Showing chunk took %s.");
 
-    // Process next chunk (using recursion).
-    if (htmlQueue.length > 0) {            // if moar chunks remain
-        setTimeout(function () {           //   process them
-            outputMatching(elem, htmlQueue, startSize);
-        }, 0);
-    } else {                               // if all chunks done
-        logTiming.total("Showing " + startSize + " results took %s.");
-        setTimeout(function () {           //   hide progress bar
-            progressBar();
-        }, 250);
+        // Process next chunk (using recursion).
+        if (htmlQueue.length > 0) {            // if moar chunks remain
+            setTimeout(process, 0);            //   process them
+        } else {                               // if all chunks done
+            logTiming.total("Showing " + startSize + " results took %s.");
+            setTimeout(progressBar, 250);      //   hide progress bar
+        }
     }
-}
+    return process;
+}());
 
 function searchLexicon(queryStr) {
     "use strict";
@@ -431,13 +442,13 @@ function searchLexicon(queryStr) {
             }, []);
         logTiming.total("Search took %s.");
 
-        outputMatching(
-            $("#results")
+        outputMatching({
+            elem: $("#results")
                 .html("<div class=gray>Visar " + matches.length + " träffar…</div>"),
-            matches.map(function (entry) {
+            html: matches.map(function (entry) {
                 return "<div>" + htmlifyEntry(entry) + "</div>\n";
             })
-        );
+        });
     }, 0);
 }
 
