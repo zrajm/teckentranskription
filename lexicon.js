@@ -446,10 +446,18 @@ function searchLexicon(queryStr) {
 // Main program
 //
 urlFragment.onChange(searchLexicon); // URL fragment change
-$("#q").change(function (e) {        // form input change
+
+(function (selector) {
     "use strict";
-    var queryStr = $(e.target).val() || "";
-    searchLexicon(queryStr);
-});
+    var jqElem = $(selector);
+    var oldValue = jqElem.val();
+    jqElem.change(function () {      // form input change
+        var queryStr = jqElem.val() || "";
+        if (queryStr !== oldValue) {
+            oldValue = queryStr;
+            searchLexicon(queryStr);
+        }
+    });
+}("#q"));
 
 //[eof]
