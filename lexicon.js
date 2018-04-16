@@ -362,6 +362,47 @@ function hilite(str, regex) {
     });
 }
 
+// Process transcription strings, adding <span class=spelled>...</span> around
+// all latin-1 (non-space, non-control) parts of transcription. If there are
+// <mark>/</mark> tags inside the transcript string, make sure we add the
+// matching number of tags on the relevant <span> tag (to make sure HTML
+// remains valid).
+function htmlifyTranscription(hilitedTransStr) {
+    "use strict";
+    return hilitedTransStr.replace(/[\x21-\xff]+/gu, function (spelledStr) {
+        var stack = [];
+        var begTag = "<span class=spelled>";
+        var endTag = "</span>";
+
+        // If substring is HTML only (i.e. no text): Keep it as-is.
+        if (spelledStr.match(/^(<[^<>]+>)*$/)) {
+            return spelledStr;
+        }
+
+        // Go through HTML tags in substring using a stack to keep track of
+        // completed tags. For each end tag remove correspending start tag, so
+        // that result final stack reflects all unfinished tags.
+        spelledStr.replace(/<(\/?)([a-zA-Z0-9]+)>/g, function (tag, type, name) {
+            if (type === "/" && stack[stack.length - 1] === name) {
+                stack.pop();
+            } else {
+                stack.push(type + name);
+            }
+        });
+
+        // Go through remaining stack and add corresponding tags to wrapper
+        // <span>.
+        stack.forEach(function (tag) {
+            if (tag.match(/^\//)) {
+                begTag = "</mark>" + begTag + "<mark>";
+            } else {
+                endTag = "</mark>" + endTag + "<mark>";
+            }
+        });
+        return begTag + spelledStr + endTag;
+    });
+}
+
 function htmlifyEntry(match) {
     "use strict";
     var hiliteRegex = match.hilite;
@@ -370,9 +411,13 @@ function htmlifyEntry(match) {
     var trans = entry[1];                      // 2nd field
     var swe = entry.slice(2);                  // remaining fields
     return [
-        "<a href=\"http://teckensprakslexikon.su.se/ord/" + id + "\" target=_blank>" +
+        "<a href=\"http://teckensprakslexikon.su.se/ord/" + id + "\" " +
+                "target=_blank title=\"Öppna video i ny tab.\">" +
                 hilite(id, hiliteRegex) + "</a>",
-        hilite(trans, hiliteRegex),
+        "<a href=\"#" + trans + "\" class=trans " +
+                "title=\"Sök ord med samma transkription.\">" +
+                htmlifyTranscription(hilite(trans, hiliteRegex)) +
+                "</a>",
         swe.map(function (txt) {
             return hilite(txt, hiliteRegex);
         }).join(", ")
