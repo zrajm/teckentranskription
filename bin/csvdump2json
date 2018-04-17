@@ -1,0 +1,99 @@
+#!/usr/bin/perl
+#
+# To convert UTF-16 to UTF-8 use:
+#
+#     iconv -f UTF-16 -t UTF-8 <soklista.csv >soklista-8.csv
+#
+use strict;
+use warnings;
+#binmode(STDOUT, ":utf8");
+
+# Use UTF8 for EVERYTHING.
+use utf8;
+use open qw(:std :utf8);
+@ARGV = do {
+    use Encode qw(decode_utf8);
+    map { decode_utf8($_, 1) } @ARGV;
+};
+
+sub jsonify {
+    my @object = @_;
+    use JSON::PP;
+    my $json_str = JSON::PP->new->sort_by(
+        sub { $JSON::PP::a->[0] cmp $JSON::PP::b->[0] }
+    )->encode(\@object);
+
+    $json_str =~ s#(?!^)\[#\n[#g;
+
+    return "var lexicon = $json_str;\n";
+}
+
+use Data::Dumper;
+$Data::Dumper::Sortkeys = 1;
+
+$/ = "\r\n"; #"\0d\0a";
+use CSV;
+my $csv = new CSV({
+    #delimiter_in  => ",",    # use comma as input delimiter
+    #delimiter_out => "\t",   # use tab as output delimiter
+    #quote         => '"',    # quote values with doublequote
+    #quote_empty   => 0,      # don't quote empty fields
+    #quote_number  => 1,      # quote numbers
+});
+
+################################################################################
+
+# 0=ID; 1=transcription; 2=swedish; 3=category; 4=genuine
+
+my @thingy;
+while (my @field = $csv->split(scalar(<>))) {
+    my $id         = sprintf("%05d", $field[0]);       # USED
+    my $transcript = $field[1];                        # USED
+    my @swedish    = @field[2..5];                     # USED
+    my @category   = split /\x1d/, $field[6];          # NOT USED YET
+    my $desc       = join " ", split/\x0b/, $field[7]; # NOT USED YET
+    my $genuine    = $field[8];                        # NOT USED YET
+    my $glosa      = join "", split /\x1d/, $field[9]; # NOT USED YET
+
+    @swedish = grep !/^$/, map {
+        # ^K (\x0b) occur at the end of some words, and sometimes separating
+        # words, therefore split on ^K, then remove all empty words.
+        split(/\x0b/);
+    } @swedish;
+    @swedish = do {
+        # Remove all erroneous occurrences of '0', i.e. all occurrences except
+        # those which also 'noll' as one of the translations.
+        my $has_noll = 0;
+        grep {
+            /^noll$/ and $has_noll = 1;
+            $has_noll ? 1 : /^0$/ ? 0 : 1;
+        } @swedish;
+    };
+
+    # Replace any occurrences of '#' in transcription with the corresponding
+    # fingerspelling string from the description of the sign.
+    if ($transcript =~ /\#/) {
+        my @spelled = $desc =~ m{
+            (?:^|//\s+|Bokstaveras\s*:\s+)?
+            \b([[:alnum:]](?:-[[:alnum:]])*)
+            (?:\s+//|$)
+        }gx;
+
+        my $i = 0;
+        $transcript =~ s{ \# }{
+            $spelled[$i++] // "BADNESS!";
+        }gex;
+    }
+
+    if ($transcript) {
+        push(@thingy, [
+            $id,
+            $transcript,
+            @swedish,
+        ]);
+    }
+}
+
+print jsonify(@thingy);
+
+#[eof]
