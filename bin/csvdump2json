@@ -47,11 +47,15 @@ my $csv = new CSV({
 
 my @thingy;
 while (my @field = $csv->split(scalar(<>))) {
+
+    # Strip leading/trailing space in all fields.
+    s#^\s*(.*?)\s*$#$1# foreach @field;
+
     my $id         = sprintf("%05d", $field[0]);       # USED
     my $transcript = $field[1];                        # USED
     my @swedish    = @field[2..5];                     # USED
-    my @category   = split /\x1d/, $field[6];          # NOT USED YET
-    my $desc       = join " ", split/\x0b/, $field[7]; # NOT USED YET
+    my @category   = split /\s*\x1d\s*/, $field[6];         # NOT USED YET
+    my $desc       = join " ", split/\s*\x0b\s*/, $field[7];# NOT USED YET
     my $genuine    = $field[8];                        # NOT USED YET
     my $glosa      = join "", split /\x1d/, $field[9]; # NOT USED YET
 
