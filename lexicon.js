@@ -516,4 +516,20 @@ urlFragment.onChange(searchLexicon); // URL fragment change
     });
 }("#q"));
 
+(function () {
+    "use strict";
+    function updateLexiconDate() {
+        if (lexiconDate === undefined) {
+            setTimeout(x, 250);
+        } else {
+            $("#lexicon-updated")
+                .html("Lexikon uppdaterat: " + lexiconDate.toLocaleString(
+                    "sv",
+                    { year: "numeric", month: "long", day: "numeric" },
+                ) + ".");
+        }
+    }
+    $(updateLexiconDate);
+}());
+
 //[eof]

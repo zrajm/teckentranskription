@@ -17,7 +17,7 @@ use open qw(:std :utf8);
 };
 
 sub jsonify {
-    my @object = @_;
+    my ($mtime, @object) = @_;
     use JSON::PP;
     my $json_str = JSON::PP->new->sort_by(
         sub { $JSON::PP::a->[0] cmp $JSON::PP::b->[0] }
@@ -25,7 +25,17 @@ sub jsonify {
 
     $json_str =~ s#(?!^)\[#\n[#g;
 
-    return "var lexicon = $json_str;\n";
+    my $time_str = do {
+        my ($sec, $min, $hour, $mday, $month, $year) = gmtime($mtime);
+        sprintf(
+            "%04d-%02d-%02dT%02d:%02d:%02dZ",
+            1900 + $year, $month, $mday, $hour, $min, $sec,
+        );
+    };
+    return <<END_OUTPUT;
+var lexiconDate = new Date("$time_str");
+var lexicon = $json_str;
+END_OUTPUT
 }
 
 use Data::Dumper;
@@ -43,7 +53,16 @@ my $csv = new CSV({
 
 ################################################################################
 
-# 0=ID; 1=transcription; 2=swedish; 3=category; 4=genuine
+if (@ARGV != 1) {
+    die "Usage: $0 FILE\n",
+        "$0: Not enough arguments\n";
+}
+if (not -e $ARGV[0]) {
+    die "Usage: $0 FILE\n",
+        "$0: Input file '$ARGV[0]' not found\n";
+}
+
+my $mtime = (stat ($ARGV[0]))[9];
 
 my @thingy;
 while (my @field = $csv->split(scalar(<>))) {
@@ -98,6 +117,6 @@ while (my @field = $csv->split(scalar(<>))) {
     }
 }
 
-print jsonify(@thingy);
+print jsonify($mtime, @thingy);
 
 #[eof]

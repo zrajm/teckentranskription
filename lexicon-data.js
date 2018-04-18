@@ -1,3 +1,4 @@
+var lexiconDate = new Date("2018-03-18T14:42:06Z");
 var lexicon = [
 ["00001","􌤀􌦫􌥓􌤷􌤟􌥼􌥻","taxi"],
 ["00002","􌤀􌤢􌥓􌥘􌥲􌦀􌥼􌤟","dop","döpa"],
