@@ -246,12 +246,13 @@ function parseQuery(queryStr) {
         };
     }());
     var metachars = {
-        "*": "[^ 􌥠]*",           // all non-space, non-'/' delimiter
+        "*": "[^ 􌥠]*?",          // all non-space, non-'/' delimiter
         "@":                     // one place symbol (+ optional relation)
                 "[􌦳􌤆􌤂􌥞􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛􌤜􌤞􌤠􌥀􌤡􌥜􌤑􌦲􌤒􌤓􌤕􌤔􌤖􌤗􌤙􌤘􌤚][􌤺􌥛􌤻􌤹􌥚]?",
         "#":                     // one handshape symbol (+ optional relation)
                 "[􌤤􌥄􌤣􌤧􌥋􌥉􌦫􌤩􌤎􌥇􌦬􌤦􌤲􌤱􌥑􌤢􌥂􌤪􌥎􌥈􌤨􌤿􌥌􌥆􌤫􌦭􌤬􌥅􌤥􌥊􌦱􌤽􌤯􌤭􌤮􌤰􌤳􌥃􌥒􌥟􌦪][􌤺􌥛􌤻􌤹􌥚]?",
         "^": "[􌤺􌥛􌤻􌤹􌥚]",          // one relation symbol
+        "$": "( +|^|$)",
         ":": "[􌥓􌥔􌤴􌥕􌤵􌥖][􌤶􌥗􌤷􌥘􌤸􌥙]"  // one attitude symbol
     };
     // Unquoted place/handshape symbols should also match a following

@@ -1,5 +1,14 @@
 -*- org -*-
 
+* Microsoft browser problems
+** Edge (version 41.16299.371.0)
+*** TODO Pressing enter in input field does not result in a search
+*** TODO Onscreen keyboard have too small buttons
+** Internet Explorer 11 (version 11.371.16299.0)
+*** TODO Pressing enter in input field does not result in a search
+*** TODO Placeholder icon is not displayed
+*** TODO Onscreen keyboard have too small buttons
+
 * General
 ** TODO Date for latest update of typeface
    There should also be a link to a page with instructions for how to
@@ -18,7 +27,7 @@
    These are some cool BSL examples:
    http://vhg.cmp.uea.ac.uk/demo/BSLExamples/
 * Lexicon
-** [0/12] Query syntax
+** [1/12] Query syntax
 *** TODO Help section for query syntax
     * = match 'word' characters (i.e. not space and segment separator, '􌥠', but
       everything else)
@@ -78,8 +87,6 @@
     Curving, (all types of) circling, hitting and turning.
 *** TODO Character classes [...] to search query
     Useful when one is searching for one of multiple hand shapes.
-*** TODO Way to match end of words in search queries
-    ^..$ (?), or use '*' to denote non-end of words?
 ** [1/2] Search result
 *** TODO Sortable search results
     Present search result in a sortable table? Should be able to sort by swedish
@@ -439,6 +446,12 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Character to match end-of-word in searches
+   CLOSED: [2018-04-19 Thu 16:58]
+
+   '$' now matches (any number of) spaces or the end or beginning of a word,
+   use '$sak$' to search for the word 'sak' but ignore words like 'sakna' or
+   'orsak'.
 ** DONE Lexicon: Updating of search result should be interruptible
    CLOSED: [2018-03-19 Mon 19:21]
    When search result is being updated, performing a new search should abort
