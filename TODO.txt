@@ -84,14 +84,6 @@
 *** TODO Sortable search results
     Present search result in a sortable table? Should be able to sort by swedish
     word, and by sign language.
-** [0/2] Transcripts
-*** TODO Missing slash in transcription between segments 1 & 2
-    E.g. in #􌤵􌥗􌤩􌤩􌤵􌤶􌥣􌥱􌦋􌦇􌥻􌥠#
-
-*** TODO Separator-at-end bug
-    http://localhost/teckentranskription/lexicon.html#@*%F4%8C%A5%A0
-    Actually, last segment should be '#' in these words. Fix the data generator
-    script!
 ** [1/8] GUI
 *** TODO Make Javascript generated CSS neater
     Instead of using jQuery to apply CSS in 'style' attribute, should generate

@@ -17,25 +17,25 @@ use open qw(:std :utf8);
 };
 
 sub jsonify {
-    my ($mtime, @object) = @_;
+    my @object = @_;
+    # Produce JSON without newlines or indent.
     use JSON::PP;
-    my $json_str = JSON::PP->new->sort_by(
+    my $x = JSON::PP->new->sort_by(
         sub { $JSON::PP::a->[0] cmp $JSON::PP::b->[0] }
     )->encode(\@object);
+    # Insert enter before each '[' (except first).
+    $x =~ s#(?!^)\[#\n[#g;
+    return $x;
+}
 
-    $json_str =~ s#(?!^)\[#\n[#g;
-
-    my $time_str = do {
-        my ($sec, $min, $hour, $mday, $month, $year) = gmtime($mtime);
-        sprintf(
-            "%04d-%02d-%02dT%02d:%02d:%02dZ",
-            1900 + $year, $month, $mday, $hour, $min, $sec,
-        );
-    };
-    return <<END_OUTPUT;
-var lexiconDate = new Date("$time_str");
-var lexicon = $json_str;
-END_OUTPUT
+# Convert UTC epoch number into string (e.g. '2018-03-15T11:26:23Z').
+sub time_str {
+    my ($utc_epoch) = @_;
+    my ($sec, $min, $hour, $mday, $month, $year) = gmtime($utc_epoch);
+    return sprintf(
+        "%04d-%02d-%02dT%02d:%02d:%02dZ",
+        1900 + $year, $month, $mday, $hour, $min, $sec,
+    );
 }
 
 use Data::Dumper;
@@ -117,6 +117,8 @@ while (my @field = $csv->split(scalar(<>))) {
     }
 }
 
-print jsonify($mtime, @thingy);
+print
+    "var lexiconDate = new Date(\"" . time_str($mtime) . "\");\n" .
+    "var lexicon = " . jsonify(@thingy) . ";\n";
 
 #[eof]
