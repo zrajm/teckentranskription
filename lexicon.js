@@ -252,7 +252,7 @@ function parseQuery(queryStr) {
         "#":                     // one handshape symbol (+ optional relation)
                 "[􌤤􌥄􌤣􌤧􌥋􌥉􌦫􌤩􌤎􌥇􌦬􌤦􌤲􌤱􌥑􌤢􌥂􌤪􌥎􌥈􌤨􌤿􌥌􌥆􌤫􌦭􌤬􌥅􌤥􌥊􌦱􌤽􌤯􌤭􌤮􌤰􌤳􌥃􌥒􌥟􌦪][􌤺􌥛􌤻􌤹􌥚]?",
         "^": "[􌤺􌥛􌤻􌤹􌥚]",          // one relation symbol
-        "$": "( +|^|$)",
+        "$": "(?:[ 􌥠]+|^|$)",
         ":": "[􌥓􌥔􌤴􌥕􌤵􌥖][􌤶􌥗􌤷􌥘􌤸􌥙]"  // one attitude symbol
     };
     // Unquoted place/handshape symbols should also match a following
