@@ -39,7 +39,7 @@ a:hover { text-decoration: underline; }
 
 mark {
     background: rgba(255, 193, 0, .6);
-    color: #332700;
+    color: inherit;
 }
 
 img { max-height: 175px; }
