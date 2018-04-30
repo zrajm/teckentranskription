@@ -173,11 +173,10 @@
     .columns > table >         tr > td,
     .columns > table > tbody > tr > th,
     .columns > table > tbody > tr > td {
-        border: 1px solid green;
         line-height: 25px;
         box-sizing: content-box;
         height: 50px;
-        XXpadding: 2px;
+        padding: 2px;
     }
     .columns > table >         tr > th,
     .columns > table > tbody > tr > th {
@@ -210,86 +209,9 @@
     .columns > table > tbody > tr > td > img[src^="pic/x/"] {
         padding: 0;
     }
-    .group:after {
-        content: "";
-        display: table;
-        clear: both;
-    }
-    /**********************************/
-    /*
-    */
-    .columns > table {
-        XXbackground: red;
-        overflow: hidden;
-    }
-    .columns > table >         tr > td > details,
-    .columns > table > tbody > tr > td > details {
-        XXborder: 1px solid blue;
-        XXbackground: yellow;
-        padding: 2px;
-        display: table-row;
-    }
-    .columns > table >         tr > td > div.img,
-    .columns > table > tbody > tr > td > div.img {
-        XXbackground: red;
-    }
-    .columns > table >         tr > td > details > summary:before,
-    .columns > table > tbody > tr > td > details > summary:before {
-        XXwidth: 5px;        /* XXX */
-        XXbackground: green; /* XXX */
-        content: "";
-        display: inline-block;
-        vertical-align: middle;
-        min-height: 50px;
-    }
-    .columns > table >         tr > td > div.img,
-    .columns > table > tbody > tr > td > div.img {
-        position: absolute;
-        right: 0;
-        top: 0;
-        padding: 4px 3px;
-        XXz-index: -1;
-        white-space: nowrap;
-    }
-    .columns > table >         tr > td > div.img > *,
-    .columns > table > tbody > tr > td > div.img > * {
-        vertical-align: middle;
-    }
-    .columns > table >         tr > td > div.img > img,
-    .columns > table > tbody > tr > td > div.img > img {
-        height: 50px;
-    }
-    .columns > table >         tr > td > details > summary > span,
-    .columns > table > tbody > tr > td > details > summary > span {
-        display: inline-block;
-        background:red;
-    }
-    .columns > table >         tr > td > details > summary,
-    .columns > table > tbody > tr > td > details > summary {
-        border: 1px solid red;
-        text-overflow: ellipsis;  /* XXX -- no effect */
-        padding: auto;
-        margin: auto;
-        margin: 0;
-        padding: 0;
-        height: 50px;
-        width: 100%;
-        vertical-align: middle;
-        display: inline;
-        XXXtext-shadow:
-            0   -1px 2px #fff,
-            1px -1px 2px #fff,
-            1px  0   2px #fff,
-            1px  1px 2px #fff,
-            0px  1px 2px #fff,
-           -1px  1px 2px #fff,
-           -1px  0   2px #fff,
-           -1px -1px 2px #fff;
-    }
-    /**********************************/
     .columns > table >         tr > td:last-child,
     .columns > table > tbody > tr > td:last-child {
-        XXpadding-right: 4px;
+        padding-right: 4px;
     }
     // Sometimes <details> breaks out of and overlaps the surrounding <table>
     // border. This stops that from happening (for the price of a 1px border).
@@ -1257,39 +1179,12 @@
                 </select>
 
                 <div class="list columns">
-
-                  <table class="fs f2 fing closed grepp h1993 h1997 h2015 hweb"><tr>
-                    <td class="img x2 fb fv h1997 h2015 hweb">􌤎
-                    <td class="txt    fb fv h1997 h2015 hweb">
-                      <!--div class=img>
-                        <img class="fb h1997 h2015" src="pic/x/lilla-o-handen-1.png">
-                        <img class="fv h1997 h2015" src="pic/x/lilla-o-handen-2.png">
-                      </div-->
-                      <!--div class=img>
-                        <img class="fx fb h1977 h1997 h2015" src="pic/x/stora-nyphanden-1.png">
-                        <img class="fx fv h1977 h1997      " src="pic/x/stora-nyphanden-2.png">
-                        <img class="fs fb h1977 h1997      " src="pic/x/stora-nyphanden-3.png">
-                        <img class="fx fv       h1997      " src="pic/x/stora-nyphanden-4.png">
-                        <img class="fs fb       h1997 h2015" src="pic/x/stora-nyphanden-5.png">
-                      </div-->
-                      <details closed style="">
-                        <summary><span>Lilla O-handen (NA-handen)</span></summary>
-
-                        <p>Används istället för <i>NA-handen</i>, och <i>böjda
-                        N-handen/NO-handen</i>.
-
-                        <p class=FIXME>(Beskrivning saknas)
-                      </details></td></tr>
-                  </table><p>
-
                   <table class="fs fv f4 grepp closed hel h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1977 h1994 h1997 h2015 hweb">􌤤
                     <td class="txt h1977 h1994 h1997 h2015 hweb">
-                      <div class=img>
-                        <img src="pic/x/a-handen-1.png">
-                      </div>
                       <details closed>
                         <summary>A-handen</summary>
+
                         <details closed>
                           <summary>[<a href="#ref1977">Tecknad svenska</a>
                           s.45]</summary>
@@ -1313,13 +1208,10 @@
                           långfingrarnas flatsida vid ytterknogen.”
                         </details>
                       </details>
-                    <!--td class="img h1977 h1994 h1997 h2015"><img src="pic/x/a-handen-1.png"-->
+                    <td class="img h1977 h1994 h1997 h2015"><img src="pic/x/a-handen-1.png">
                   </table><table class="fs fv f2 fing två h1989 h1994"><tr>
                     <td class="img"><img src="pic/h-lilla-a-handen.svg">
                     <td class="txt">
-                      <div class=img>
-                        <img class="h1989 h1993 h1994" src="pic/x/lilla-o-handen-2.png">
-                      </div>
                       <details closed>
                         <summary>NA-handen</summary>
 
@@ -1352,12 +1244,10 @@
                           infoga den/dem här.
                         </details>
                       </details>
+                    <td class="img h1989 h1993 h1994"><img src="pic/x/lilla-o-handen-2.png">
                   </table><table class="fs fv f4 flat hel h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1997 h2015 hweb">􌥄
                     <td class="txt    h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="h1997 h2015" src="pic/x/tumvinkelhanden-1.png">
-                      </div>
                       <details closed>
                         <summary>Tumvinkelhanden</summary>
 
@@ -1366,13 +1256,10 @@
                         Ibland kan fingrarna vara något böjda i yttre knogarna.
                         [<i>Polysyntetiska tecken</i> s.125]
                       </details>
+                    <td class="img h1997 h2015"><img src="pic/x/tumvinkelhanden-1.png">
                   </table><table class="fs fv f4 flat hel h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1977 h1997 h2015 hweb">􌤣
                     <td class="txt    h1977 h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="h1977 h1997 h2015" src="pic/x/vinkelhanden-1.png">
-                        <img class="      h1997 h2015" src="pic/x/vinkelhanden-2.png">
-                      </div>
                       <details closed>
                         <summary>Vinkelhanden</summary>
 
@@ -1391,27 +1278,22 @@
                         <hr><p>”Den vinklade handens bokstav är ett uppochnervänt
                         V.” [<a href="#ref1977">Tecknad svenska</a> s.80]
                       </details>
+                    <td class="img h1977 h1997 h2015"><img src="pic/x/vinkelhanden-1.png">
+                    <td class="img       h1997 h2015"><img src="pic/x/vinkelhanden-2.png">
                   </table><table class="f0 knuten fing h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1977 h1997 h2015 hweb">􌤧
                     <td class="txt    h1977 h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="h1977 h1997 h2015" src="pic/x/tumhanden-1.png">
-                        <img class="h1977 h1997      " src="pic/x/tumhanden-2.png">
-                      </div>
                       <details closed>
                         <summary>Tumhanden (tummen)</summary>
 
                         <p><b>Tummen</b> är vanligen rak, men böjda varianter
                         förekommer också. [<a href="#ref1977">Tecknad svenska</a> s.46]
                       </details>
+                    <td class="img h1977 h1997 h2015"><img src="pic/x/tumhanden-1.png">
+                    <td class="img h1977 h1997      "><img src="pic/x/tumhanden-2.png">
                   </table><table class="fb f1 open fing två h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1977 h1997 h2015 hweb">􌥋
                     <td class="txt    h1977 h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="h1977 h1997 h2015" src="pic/x/matthanden-1.png">
-                        <img class="      h1997      " src="pic/x/matthanden-2.png">
-                        <img class="      h1997      " src="pic/x/matthanden-3.png">
-                      </div>
                       <details closed>
                         <summary>Måtthanden</summary>
 
@@ -1425,12 +1307,12 @@
                         <hr><p>”Måtthandens ikoniska symbol är ett bakvänt C”
                         [<a href="#ref1977">Tecknad svenska</a> s.80]
                       </details>
+                    <td class="img h1977 h1997 h2015"><img src="pic/x/matthanden-1.png">
+                    <td class="img       h1997      "><img src="pic/x/matthanden-2.png">
+                    <td class="img       h1997      "><img src="pic/x/matthanden-3.png">
                   </table><table class="fv f1 fing två h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1997 h2015 hweb">􌥉
                     <td class="txt    h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="h1997 h2015" src="pic/x/raka-matthanden-1.png">
-                      </div>
                       <details closed>
                         <summary>Raka måtthanden</summary>
 
@@ -1447,12 +1329,10 @@
                         långfingret hålls intill pekfingret (jfr. N-måtthand,
                         .22).” [<i>Polysyntetiska tecken</i> s.129]
                       </details>
+                    <td class="img h1997 h2015"><img src="pic/x/raka-matthanden-1.png">
                   </table><table class="fx fv f2 fing två h1989"><tr>
                     <td class="img"><img src="pic/h-vinklade-tupphanden.svg">
                     <td class="txt">
-                      <div class=img>
-                        <img class="h1989" src="pic/x/vinklade-tupphanden-1.png">
-                      </div>
                       <details closed>
                         <summary>Vinklade tupphanden</summary>
 
@@ -1467,24 +1347,19 @@
                           </figure>
                         </details>
                       </details>
+                    <td class="img h1989"><img src="pic/x/vinklade-tupphanden-1.png">
                   </table><table class="fs fr f4 flat fing h1982 h1993 h1994 h2015 hweb"><tr>
                     <td class="img x2 h2015 hweb">􌦫
                     <td class="txt    h2015 hweb">
-                      <div class=img>
-                        <img class="h2015" src="pic/x/d-handen-1.png">
-                      </div>
                       <details closed>
                         <summary>D-handen</summary>
 
                         <p class=FIXME>(Beskrivning saknas)
                       </details>
+                    <td class="img h2015"><img src="pic/x/d-handen-1.png">
                   </table><table class="f1 fing closed grepp h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 fv fb h1977 h1997 h2015 hweb">􌤩
                     <td class="txt    fv fb h1977 h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="fv h1977 h1997 h2015" src="pic/x/nyphanden-1.png">
-                        <img class="fb h1977 h1997 h2015" src="pic/x/nyphanden-2.png">
-                      </div>
                       <details closed>
                         <summary>Nyphanden</summary>
 
@@ -1498,13 +1373,11 @@
                         spets som tummen och pekfingret bildar i nyphanden.”
                         [<a href="#ref1977">Tecknad svenska</a> s.80]
                       </details>
+                    <td class="img fv h1977 h1997 h2015"><img src="pic/x/nyphanden-1.png">
+                    <td class="img fb h1977 h1997 h2015"><img src="pic/x/nyphanden-2.png">
                   </table><table class="fs f2 fing closed grepp h1993 h1997 h2015 hweb"><tr>
                     <td class="img x2 fb fv h1997 h2015 hweb">􌤎
                     <td class="txt    fb fv h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="fb h1997 h2015" src="pic/x/lilla-o-handen-1.png">
-                        <img class="fv h1997 h2015" src="pic/x/lilla-o-handen-2.png">
-                      </div>
                       <details closed>
                         <summary>Lilla O-handen (NA-handen)</summary>
 
@@ -1513,35 +1386,29 @@
 
                         <p class=FIXME>(Beskrivning saknas)
                       </details>
+                    <td class="img fb h1997 h2015"><img src="pic/x/lilla-o-handen-1.png">
+                    <td class="img fv h1997 h2015"><img src="pic/x/lilla-o-handen-2.png">
                   </table><table class="f0 closed knuten hel h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1997 h2015 hweb">􌥇
                     <td class="txt    h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="h1997 h2015" src="pic/x/e-handen-1.png">
-                      </div>
                       <details closed>
                         <summary>E-handen</summary>
 
                         <p class=FIXME>(Beskrivning saknas)
                       </details>
+                    <td class="img h1997 h2015"><img src="pic/x/e-handen-1.png">
                   </table><table class="fs fb f3 tre fing h2015 hweb"><tr>
                     <td class="img x2 h2015 hweb">􌦬
                     <td class="txt    h2015 hweb">
-                      <div class=img>
-                        <img class="h2015" src="pic/x/stora-nyphanden-5.png">
-                      </div>
                       <details closed>
                         <summary>F-handen</summary>
 
                         <p class=FIXME>(Beskrivning saknas)
                       </details>
+                    <td class="img h2015"><img src="pic/x/stora-nyphanden-5.png">
                   </table><table class="f0 closed knuten hel h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1977 h1997 h2015 hweb">􌤦
                     <td class="txt    h1977 h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="h1977 h1997 h2015" src="pic/x/knutna-handen-1.png">
-                        <img class="      h1997 h2015" src="pic/x/knutna-handen-2.png">
-                      </div>
                       <details closed>
                         <summary>Knutna handen</summary>
 
@@ -1561,16 +1428,11 @@
                         pek- och långfingrarna.” [<i>Polysyntetiska tecken</i>
                         s.123]
                       </details>
+                    <td class="img h1977 h1997 h2015"><img src="pic/x/knutna-handen-1.png">
+                    <td class="img       h1997 h2015"><img src="pic/x/knutna-handen-2.png">
                   </table><table class="f4 fing closed grepp h1977 h1982 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 fs fx fb fv h1977 h1997 h2015 hweb">􌤲
                     <td class="txt    fs fx fb fv h1977 h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="fx fb h1977 h1997 h2015" src="pic/x/stora-nyphanden-1.png">
-                        <img class="fx fv h1977 h1997      " src="pic/x/stora-nyphanden-2.png">
-                        <img class="fs fb h1977 h1997      " src="pic/x/stora-nyphanden-3.png">
-                        <img class="fx fv       h1997      " src="pic/x/stora-nyphanden-4.png">
-                        <img class="fs fb       h1997 h2015" src="pic/x/stora-nyphanden-5.png">
-                      </div>
                       <details closed>
                         <summary>Stora nyphanden</summary>
 
@@ -1597,12 +1459,14 @@
                           dels utsträckta och spretade.”
                         </details>
                       </details>
+                    <td class="img fx fb h1977 h1997 h2015"><img src="pic/x/stora-nyphanden-1.png">
+                    <td class="img fx fv h1977 h1997      "><img src="pic/x/stora-nyphanden-2.png">
+                    <td class="img fs fb h1977 h1997      "><img src="pic/x/stora-nyphanden-3.png">
+                    <td class="img fx fv       h1997      "><img src="pic/x/stora-nyphanden-4.png">
+                    <td class="img fs fb       h1997 h2015"><img src="pic/x/stora-nyphanden-5.png">
                   </table><table class="fx fb f4 fing closed grepp h1994 FIXME"><tr>
                     <td class="img"><img src="pic/h-bojda-stora-nyphanden.svg">
                     <td class="txt">
-                      <div class=img>
-                        <img src="pic/x/stora-nyphanden-1.png">
-                      </div>
                       <details closed>
                         <summary>Böjda stora nyphanden</summary>
 
@@ -1616,13 +1480,10 @@
                           <hr><p>Kallas även ”Runda nyphanden” i bildtext.
                         </details>
                       </details>
+                    <td class="img FIXME"><img src="pic/x/stora-nyphanden-1.png">
                   </table><table class="f1 fing ett h1977 h1982 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 fr fv h1977 h1997 h2015 hweb">􌤱
                     <td class="txt    fr fv h1977 h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="fr h1977 h1997 h2015" src="pic/x/lillfingret-1.png">
-                        <img class="fv h1977 h1997      " src="pic/x/lillfingret-2.png">
-                      </div>
                       <details closed>
                         <summary>Lillfingret</summary>
 
@@ -1630,14 +1491,11 @@
                         inre knogen tillåts för att underlätta artikulationen.
                         Kallas även I-handen.” [<a href="#ref1977">Tecknad svenska</a> s.46]
                       </details>
+                    <td class="img fr h1977 h1997 h2015"><img src="pic/x/lillfingret-1.png">
+                    <td class="img fv h1977 h1997      "><img src="pic/x/lillfingret-2.png">
                   </table><table class="fr f1 fing två h1977 h1982 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1977 h1997 h2015 hweb">􌥑
                     <td class="txt    h1977 h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="h1977 h1997 h2015" src="pic/x/flyghanden-1.png">
-                        <img class="            h2015" src="pic/x/flyghanden-2.png">
-                        <img class="h1977       h2015" src="pic/x/flyghanden-3.png">
-                      </div>
                       <details closed>
                         <summary>Flyghanden</summary>
 
@@ -1655,15 +1513,12 @@
                         drag som skiljer […] flyghanden från I-handen.”
                         [<a href="#ref1977">Tecknad svenska</a> s.80]
                       </details>
+                    <td class="img h1977 h1997 h2015"><img src="pic/x/flyghanden-1.png">
+                    <td class="img             h2015"><img src="pic/x/flyghanden-2.png">
+                    <td class="img h1977       h2015"><img src="pic/x/flyghanden-3.png">
                   </table><table class="fs f4 open flat hel h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 fr fv h1977 h1997 h2015 hweb">􌤢
                     <td class="txt    fr fv h1977 h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="h1977 h1997 h2015   " src="pic/x/flata-handen-1.png">
-                        <img class="fr h1977       h2015" src="pic/x/flata-handen-2.png">
-                        <img class="fr h1977 h1997      " src="pic/x/d-handen-1.png"    >
-                        <img class="fv       h1997      " src="pic/x/vinkelhanden-2.png">
-                      </div>
                       <details closed>
                         <summary>Flata handen</summary>
 
@@ -1691,12 +1546,13 @@
                         pekfingersidan. [<i>Polysyntetiska tecken</i> s.108,
                         s.129]
                       </details>
+                    <td class="img fr h1977 h1997 h2015"><img src="pic/x/flata-handen-1.png">
+                    <td class="img fr h1977       h2015"><img src="pic/x/flata-handen-2.png">
+                    <td class="img fr h1977 h1997      "><img src="pic/x/d-handen-1.png">
+                    <td class="img fv       h1997      "><img src="pic/x/vinkelhanden-2.png">
                   </table><table class="fs fr f4 flat hel h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1997 h2015 hweb">􌥂
                     <td class="txt    h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="h1997 h2015" src="pic/x/flata-tumhanden-1.png">
-                      </div>
                       <details closed>
                         <summary>Flata tumhanden</summary>
 
@@ -1705,12 +1561,10 @@
                         knogarna jämfört med S-handen.” [<i>Polysyntetiska
                         tecken</i> s.129]
                       </details>
+                    <td class="img h1997 h2015"><img src="pic/x/flata-tumhanden-1.png">
                   </table><table class="fb fing f1 ett h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1977 h1997 h2015 hweb">􌤪
                     <td class="txt    h1977 h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="h1977 h1997 h2015" src="pic/x/krokfingret-1.png">
-                      </div>
                       <details closed>
                         <summary>Krokfingret</summary>
 
@@ -1733,24 +1587,19 @@
                         spegelvänd och kroken och pekar åt höger istället för
                         vänster.
                       </details>
+                    <td class="img h1977 h1997 h2015"><img src="pic/x/krokfingret-1.png">
                   </table><table class="fx fv f2 fing tre h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1997 h2015 hweb">􌥎
                     <td class="txt    h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="h1997 h2015" src="pic/x/k-handen-1.png">
-                      </div>
                       <details closed>
                         <summary>K-handen</summary>
 
                         <p class=FIXME>(Beskrivning saknas)
                       </details>
+                    <td class="img h1997 h2015"><img src="pic/x/k-handen-1.png">
                   </table><table class="f1 fing ett h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 fr fv h1977 h1997 h2015 hweb">􌥈
                     <td class="txt    fr fv h1977 h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="fr h1977 h1997 h2015" src="pic/x/pekfingret-1.png">
-                        <img class="fv h1977 h1997 h2015" src="pic/x/vinklade-pekfingret.png">
-                      </div>
                       <details closed>
                         <summary>Pekfingret</summary>
 
@@ -1775,24 +1624,21 @@
                         betecknande ’penna sitter bakom örat’”
                         [<i>Polysyntetiska tecken</i> s.105]
                       </details>
+                    <td class="img fr h1977 h1997 h2015"><img src="pic/x/pekfingret-1.png">
+                    <td class="img fv h1977 h1997 h2015"><img src="pic/x/vinklade-pekfingret.png">
                   </table><table class="fv f1 fing ett h1982 h1989 h1993 h1994 FIXME"><tr>
                     <td class="img"><img src="pic/h-vinklade-pekfingret.svg">
                     <td class="txt">
-                      <div class=img>
-                        <img src="pic/x/vinklade-pekfingret.png">
-                      </div>
                       <details closed>
                         <summary>Vinklade pekfingret</summary>
 
                         <p>”fingret böjs innerknogen” [<i>Polysyntetiska
                         tecken</i> s.106]
                       </details>
+                    <td class="img"><img src="pic/x/vinklade-pekfingret.png">
                   </table><table class="fb f1 fing ett h1989 h1993 h1994"><tr>
                     <td class="img"><img src="pic/h-bojda-pekfingret.svg">
                     <td class="txt">
-                      <div class=img>
-                        <img class="h1989 h1993 h1994" src="pic/x/nyphanden-2.png">
-                      </div>
                       <details closed>
                         <summary>Böjda pekfingret (LO-handen)</summary>
 
@@ -1831,12 +1677,11 @@
                           infoga den/dem här.
                         </details>
                       </details>
+
+                    <td class="img h1989 h1993 h1994"><img src="pic/x/nyphanden-2.png">
                   </table><table class="fr f1 fing två h1997 h1982 h1989 h1993 h1994 h2015 hweb"><tr>
                     <td class="img x2 h1997 h2015 hweb">􌤨
                     <td class="txt    h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="h1997 h2015" src="pic/x/l-handen-1.png">
-                      </div>
                       <details closed>
                         <summary>L-handen</summary>
 
@@ -1844,12 +1689,10 @@
                         förhåller sig vinkelräta mot varandra.”
                         [<i>Polysyntetiska tecken</i>, s.112]
                       </details>
+                    <td class="img h1997 h2015" style="padding-right:2px"><img src="pic/x/l-handen-1.png">
                   </table><table class="fs fr f3 fing tre h1977 h1982 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1977 h1997 h2015 hweb">􌤿
                     <td class="txt    h1977 h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="h1977 h1997 h2015" src="pic/x/m-handen-1.png">
-                      </div>
                       <details closed>
                         <summary>M-handen</summary>
 
@@ -1862,14 +1705,10 @@
                         deltar aktivt i formens bildande. [<i>Tecknad
                         svenska</i> s.46]
                       </details>
+                    <td class="img h1977 h1997 h2015"><img src="pic/x/m-handen-1.png">
                   </table><table class="fs f2 fing två h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 fr fv h1977 h1997 h2015 hweb">􌥌
                     <td class="txt    fr fv h1977 h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="fr h1977 h1997 h2015" src="pic/x/n-handen-1.png">
-                        <img class="fv       h1997      " src="pic/x/vinklade-n-handen-1.png">
-                        <img class="fv       h1997      " src="pic/x/vinklade-n-handen-2.png">
-                      </div>
                       <details closed>
                         <summary>N-handen</summary>
 
@@ -1881,13 +1720,12 @@
                         långfingrar (se 7.15).” [<i>Polysyntetiska tecken</i>
                         s.108]
                       </details>
+                    <td class="img fr h1977 h1997 h2015"><img src="pic/x/n-handen-1.png">
+                    <td class="img fv       h1997      "><img src="pic/x/vinklade-n-handen-1.png">
+                    <td class="img fv       h1997      "><img src="pic/x/vinklade-n-handen-2.png">
                   </table><table class="fs fv f2 fing två h1993 h1994"><tr>
                     <td class="img h1994"><img src="pic/h-vinklade-n-handen.svg">
                     <td class="txt h1994">
-                      <div class=img>
-                        <img class="h1994"       src="pic/x/vinklade-n-handen-1.png">
-                        <img class="h1994 FIXME" src="pic/x/vinklade-n-handen-2.png"><!-- CONFIRM THIS -->
-                      </div>
                       <details closed>
                         <summary>Vinklade N-handen</summary>
 
@@ -1908,12 +1746,11 @@
                           form och böjda i inre knogarna”
                         </details>
                       </details>
+                    <td class="img h1994"><img src="pic/x/vinklade-n-handen-1.png">
+                    <td class="img h1994 FIXME"><img src="pic/x/vinklade-n-handen-2.png"><!-- CONFIRM THIS -->
                   </table><table class="fs fv f2 fing två h1994"><tr>
                     <td class="img"><img src="pic/h-lilla-matthanden.svg">
                     <td class="txt">
-                      <div class=img>
-                        <img src="pic/x/lilla-matthanden-1.png">
-                      </div>
                       <details closed>
                         <summary>N-måtthanden</summary>
 
@@ -1929,12 +1766,10 @@
                           motställd de båda fingrarna.”
                         </details>
                       </details>
+                    <td class="img"><img src="pic/x/lilla-matthanden-1.png">
                   </table><table class="fs fb f2 fing två h1989 h1993 h1994"><tr>
                     <td class="img"><img src="pic/h-bojda-n-handen.svg">
                     <td class="txt">
-                      <div class=img>
-                        <img class="h1989 h1993 h1994" src="pic/x/lilla-o-handen-1.png">
-                      </div>
                       <details closed>
                         <summary>Böjda N-handen (NO-handen)</summary>
 
@@ -1968,12 +1803,10 @@
                           infoga den/dem här.
                         </details>
                       </details>
+                    <td class="img h1989 h1993 h1994"><img src="pic/x/lilla-o-handen-1.png">
                   </table><table class="fs fb f4 closed grepp hel h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1977 h1997 h2015 hweb">􌥆
                     <td class="txt    h1977 h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="h1977 h1997 h2015" src="pic/x/o-handen-1.png">
-                      </div>
                       <details closed>
                         <summary>O-handen</summary>
 
@@ -1987,12 +1820,10 @@
                         antydd, men fingrarna kan också vara samlade. [<i>Tecknad
                         svenska</i> s.45]
                       </details>
+                    <td class="img h1977 h1997 h2015"><img src="pic/x/o-handen-1.png">
                   </table><table class="f0 knuten closed fing h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1997 h2015 hweb">􌤫
                     <td class="txt    h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="h1997 h2015" src="pic/x/hallhanden-1.png">
-                      </div>
                       <details closed>
                         <summary>Hållhanden</summary>
 
@@ -2001,12 +1832,10 @@
                         sidan av pekfingret.” [<i>Polysyntetiska tecken</i>
                         s.126]
                       </details>
+                    <td class="img h1997 h2015"><img src="pic/x/hallhanden-1.png">
                   </table><table class="f0 fing knuten h2015 hweb"><tr>
                     <td class="img x2 h2015 hweb">􌦭
                     <td class="txt    h2015 hweb">
-                      <div class=img>
-                        <img class="h2015" src="pic/x/q-handen-1.png">
-                      </div>
                       <details closed>
                         <summary>Q-handen</summary>
 
@@ -2024,24 +1853,19 @@
                         􌦭􌤵􌤶􌦑 som betyder <a href=08943>Q</a> (bokstaven)
                         eller <a href=15616>dam</a> (i kortspel).
                       </details>
+                    <td class="img h2015"><img src="pic/x/q-handen-1.png">
                   </table><table class="fr f1 fing ett h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1997 h2015 hweb">􌤬
                     <td class="txt    h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="h1997 h2015" src="pic/x/langfingret-1.png">
-                      </div>
                       <details closed>
                         <summary>Långfingret</summary>
 
                         <p class=FIXME>(Beskrivning saknas)
                       </details>
+                    <td class="img h1997 h2015"><img src="pic/x/langfingret-1.png">
                   </table><table class="fs fb f4 open flat hel h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1977 h1997 h2015 hweb">􌥅
                     <td class="txt    h1977 h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="h1977       h1997 h2015" src="pic/x/s-handen-1.png">
-                        <img class="      h1994 h1997      " src="pic/x/s-handen-2.png">
-                      </div>
                       <details closed>
                         <summary>S-handen</summary>
 
@@ -2064,15 +1888,11 @@
                           yttersta leden. Tummen är motställd fingrarna.”
                         </details>
                       </details>
+                    <td class="img h1977       h1997 h2015"><img src="pic/x/s-handen-1.png">
+                    <td class="img       h1994 h1997      "><img src="pic/x/s-handen-2.png">
                   </table><table class="fx fb f4 fem open hel h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1977 h1997 h2015 hweb">􌤥
                     <td class="txt    h1977 h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="h1977 h1997 h2015" src="pic/x/klohanden-1.png">
-                        <img class="      h1997 h2015" src="pic/x/klohanden-2.png" style="margin-right:-6px">
-                        <img class="      h1997      " src="pic/x/bojda-sprethanden-1.png" style="margin-left:-2px">
-                        <img class="      h1997      " src="pic/x/klohanden-3.png">
-                      </div>
                       <details closed>
                         <summary>Klohanden</summary>
 
@@ -2095,13 +1915,13 @@
                         mitt på fingertopparna och inte vid nagelområdet.”
                         [<i>Polysyntetiska tecken</i> s.109, 126]
                       </details>
+                    <td class="img h1977 h1997 h2015"><img src="pic/x/klohanden-1.png">
+                    <td class="img       h1997 h2015"><img src="pic/x/klohanden-2.png" style="margin-right:-4px">
+                    <td class="img       h1997      "><img src="pic/x/bojda-sprethanden-1.png" style="margin-left:-2px">
+                    <td class="img       h1997      "><img src="pic/x/klohanden-3.png">
                   </table><table class="fv f1 open fing två h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1977 h1997 h2015 hweb">􌥊
                     <td class="txt    h1977 h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="h1977 h1997 h2015" src="pic/x/t-handen-1.png">
-                        <img class="      h1997      " src="pic/x/t-handen-2.png">
-                      </div>
                       <details closed>
                         <summary>T-handen</summary>
 
@@ -2125,25 +1945,21 @@
                         ovan numera kallas L-handen (och transkriberas ”􌤨”),
                         enbart den andra handformen kallas idag T-handen.
                       </details>
+                    <td class="img h1977 h1997 h2015"><img src="pic/x/t-handen-1.png">
+                    <td class="img       h1997      "><img src="pic/x/t-handen-2.png">
                   </table><table class="fing FIXME"><tr>
                     <td class="img x2" style="font-weight:normal">􌦱
                     <td class="txt">
-                      <div class=img>
-                        <span class="x2">?</span>
-                      </div>
                       <details closed>
                         <summary>Lamahanden / U-handen</summary>
 
                         <p>Inlånad från ASL. Förekommer i ord som
                         U􌤵􌤷􌥵􌥼􌥻 <a href="15602">Lama</a>.
                       </details>
+                    <td class="img x2">?
                   </table><table class="fb f2 fing två h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 fx fs h1977 h1997 h2015 hweb">􌤽
                     <td class="txt    fx fs h1977 h1997 h2015 hweb">
-                      <div class=img>
-                        <img  class="fx h1977 h1997 h2015" src="pic/x/dubbelkroken-1.png">
-                        <span class="fs h1977             FIXME x2">?</span>
-                      </div>
                       <details closed>
                         <summary>Dubbelkroken</summary>
 
@@ -2166,12 +1982,11 @@
                           <p>”Dubbelkroken skrivs med ett uppochnervänt U.”
                         </details>
                       </details>
+                    <td class="img fx h1977 h1997 h2015"><img src="pic/x/dubbelkroken-1.png">
+                    <td class="img fs h1977             FIXME x2">?
                   </table><table class="fx fb f2 fing tre h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1997 h2015 hweb">􌤯
                     <td class="txt    h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="h1997 h2015" src="pic/x/bojda-tupphanden-1.png">
-                      </div>
                       <details closed>
                         <summary>Böjda tupphanden</summary>
 
@@ -2185,13 +2000,10 @@
                           yttersta leden.”
                         </details>
                       </details>
+                    <td class="img h1997 h2015"><img src="pic/x/bojda-tupphanden-1.png">
                   </table><table class="fx f2 fing två h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 fr fv h1977 h1997 h2015 hweb">􌤭
                     <td class="txt    fr fv h1977 h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="fr h1977 h1997 h2015" src="pic/x/v-handen-1.png">
-                        <img class="fv       h1997      " src="pic/x/vinklade-v-handen-1.png">
-                      </div>
                       <details closed>
                         <summary>V-handen</summary>
 
@@ -2208,13 +2020,11 @@
                           t ex i tecknen TVÅ, BÅDA, ELLER.”
                         </details>
                       </details>
+                    <td class="img fr h1977 h1997 h2015"><img src="pic/x/v-handen-1.png">
+                    <td class="img fv       h1997      "><img src="pic/x/vinklade-v-handen-1.png">
                   </table><table class="fx f2 fing tre h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 fr fv h1977 h1997 h2015 hweb">􌤮
                     <td class="txt    fr fv h1977 h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="fr h1977 h1997 h2015" src="pic/x/tupphanden-1.png">
-                        <img class="fv       h1997      " src="pic/x/vinklade-tupphanden-1.png">
-                      </div>
                       <details closed>
                         <summary>Tupphanden</summary>
 
@@ -2230,23 +2040,20 @@
                         drag som skiljer tupphanden från V-handen […]
                         [<a href="#ref1977">Tecknad svenska</a> s.80]
                       </details>
+                    <td class="img fr h1977 h1997 h2015"><img src="pic/x/tupphanden-1.png">
+                    <td class="img fv       h1997      "><img src="pic/x/vinklade-tupphanden-1.png">
                   </table><table class="fx fr f3 fing tre h1997 h1982 h1993 h1994 h2015 hweb"><tr>
                     <td class="img x2 h1997 h2015 hweb">􌤰
                     <td class="txt    h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="h1997 h2015" src="pic/x/w-handen-1.png">
-                      </div>
                       <details closed>
                         <summary>W-handen</summary>
 
                         <p class=FIXME>(Beskrivning saknas)
                       </details>
+                    <td class="img h1997 h2015"><img src="pic/x/w-handen-1.png">
                   </table><table class="fb fx f3 fing tre hweb"><tr>
                     <td class="img x2 hweb FIXME">?
                     <td class="txt    hweb">
-                      <div class=img>
-                        <span class="x2 FIXME">?</span>
-                      </div>
                       <details closed>
                         <summary>Böjda W-handen</summary>
 
@@ -2264,25 +2071,19 @@
                           <tr><td>􌤢􌤴􌥗􌤰􌤴􌤶􌥣􌤟􌥲􌥿􌥻  <td><a href=01363>var tredje vecka</a>
                         </table>
                       </details>
+                    <td class="img x2 FIXME">?
                   </table><table class="fs fr f2 fing två h1997 h2015 hweb"><tr>
                     <td class="img x2 h1997 h2015 hweb">􌤳
                     <td class="txt    h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="h1997 h2015" src="pic/x/x-handen-1.png">
-                      </div>
                       <details closed>
                         <summary>X-handen</summary>
 
                         <p class=FIXME>(Beskrivning saknas)
                       </details>
+                    <td class="img h1997 h2015"><img src="pic/x/x-handen-1.png">
                   </table><table class="fx fr f4 fem open hel h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1977 h1997 h2015 hweb">􌥃
                     <td class="txt    h1977 h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="h1977 h1997 h2015" src="pic/x/sprethanden-1.png">
-                        <img class="h1977 h1997      " src="pic/x/4-handen-1.png">
-                        <img class="      h1997 h2015" src="pic/x/sprethanden-3.png">
-                      </div>
                       <details closed>
                         <summary>Sprethanden</summary>
 
@@ -2311,12 +2112,12 @@
                         spretade och utsträckta i alla knogarna.”
                         [<i>Polysyntetiska tecken</i> s.113]
                       </details>
+                    <td class="img h1977 h1997 h2015"><img src="pic/x/sprethanden-1.png">
+                    <td class="img h1977 h1997      "><img src="pic/x/4-handen-1.png">
+                    <td class="img       h1997 h2015"><img src="pic/x/sprethanden-3.png">
                   </table><table class="FIXME fv fx f4 hel fem h1994"><tr>
                     <td class="img"><img src="pic/h-vinklade-sprethanden.svg">
                     <td class="txt">
-                      <div class=img>
-                        <span class="x2 FIXME">?</span>
-                      </div>
                       <details closed>
                         <summary>Vinklade sprethanden</summary>
 
@@ -2327,12 +2128,10 @@
                         <hr><p>På bild i figur 6.20 och 6.21, <i>Polysyntetiska
                         tecken</i> s.88.
                       </details>
+                    <td class="img x2 FIXME">?
                   </table><table class="FIXME fx fb f4 hel fem h1994 hweb"><tr>
                     <td class="img hweb"><img src="pic/h-bojda-sprethanden.svg">
                     <td class="txt hweb">
-                      <div class=img>
-                        <img src="pic/x/bojda-sprethanden-1.png">
-                      </div>
                       <details closed>
                         <summary>Böjda sprethanden</summary>
 
@@ -2358,37 +2157,31 @@
                         omnämns i beskrivningen av
                         􌤢􌤴􌥗􌥃􌤴􌤶􌤟􌥼􌥣􌥲􌥿 <a href=01388>fem veckor</a>.
                       </details>
+                    <td class="img"><img src="pic/x/bojda-sprethanden-1.png">
                   </table><table class="fv fx f4 fing fem h1982 h1993 h1994 h1997 h2015 hweb"><tr>
                     <td class="img x2 h1997 h2015 hweb">􌥒
                     <td class="txt    h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="h1997 h2015" src="pic/x/stora-langfingret-1.png">
-                        <img class="h1997      " src="pic/x/stora-langfingret-2.png">
-                        <img class="h1997      " src="pic/x/stora-langfingret-3.png">
-                      </div>
                       <details closed>
                         <summary>Stora långfingret</summary>
 
                         <p class=FIXME>(Beskrivning saknas)
                       </details>
+                    <td class="img h1997 h2015"><img src="pic/x/stora-langfingret-1.png">
+                    <td class="img h1997      "><img src="pic/x/stora-langfingret-2.png">
+                    <td class="img h1997      "><img src="pic/x/stora-langfingret-3.png">
                   </table><table class="fx f4 fing closed grepp h1997 h1982 h1993 h1994 h2015 hweb"><tr>
                     <td class="img x2 fv fb h1997 h2015 hweb">􌥟
                     <td class="txt    fv fb h1997 h2015 hweb">
-                      <div class=img>
-                        <img class="fb h1997 h2015" src="pic/x/runda-langfingret-1.png">
-                        <img class="fv h1997      " src="pic/x/runda-langfingret-2.png" style="margin-left:-4px">
-                      </div>
                       <details closed>
                         <summary>Runda långfingret</summary>
 
                         <p class=FIXME>(Beskrivning saknas)
                       </details>
+                    <td class="img fb h1997 h2015"><img src="pic/x/runda-langfingret-1.png">
+                    <td class="img fv h1997      "><img src="pic/x/runda-langfingret-2.png">
                   </table><table class="fx fb f4 fing fem h1994"><tr>
                     <td class="img"><img src="pic/h-bojda-langfingret.svg">
                     <td class="txt">
-                      <div class=img>
-                        <img src="pic/x/stora-langfingret-2.png">
-                      </div>
                       <details closed>
                         <summary>Böjda långfingret</summary>
                         <details closed>
@@ -2405,23 +2198,19 @@
                           tummen öppet motställd långfingret”
                         </details>
                       </details>
+                    <td class="img"><img src="pic/x/stora-langfingret-2.png">
                   </table><table class="fr fx f4 fyra fing h1982 h1993 h1994 h2015 hweb"><tr>
                     <td class="img x2 h2015 hweb">􌦪
                     <td class="txt    h2015 hweb">
-                      <div class=img>
-                        <img class="h2015" src="pic/x/4-handen-1.png">
-                      </div>
                       <details closed>
                         <summary>4-handen</summary>
 
                         <p class=FIXME>(Beskrivning saknas)
                       </details>
+                    <td class="img h2015"><img src="pic/x/4-handen-1.png">
                   </table><table class="fb fx f4 fyra fing hweb"><tr>
                     <td class="img x2 hweb FIXME">?
                     <td class="txt    hweb">
-                      <div class=img>
-                        <img class="hweb" src="pic/x/bojda-4-handen-1.png">
-                      </div>
                       <details closed>
                         <summary>Böjda 4-handen</summary>
 
@@ -2439,6 +2228,7 @@
                           <tr><td>􌤢􌤴􌥗􌦪􌤴􌤶􌥣􌤟􌥲􌥿􌥻  <td><a href=01409>var fjärde vecka</a>
                         </table>
                       </details>
+                    <td class="img hweb"><img src="pic/x/bojda-4-handen-1.png">
                   </table>
                 </div>
                 <figcaption>Ordningen ovan är grovt alfabetisk. Symboler som
@@ -5552,7 +5342,7 @@
     });
 
     // Expand all when loading page.
-    $('#toggle').click();
+    //$('#toggle').click();
     ////////////////////////////////////////////////////////////////////////////
     $('table img[src^="pic/x/"]').hover(
         function () {
