@@ -73,10 +73,21 @@ while (my @field = $csv->split(scalar(<>))) {  # main loop
     my $id         = sprintf("%05d", $field[0]);       # USED
     my $transcript = $field[1];                        # USED
     my @swedish    = @field[2..5];                     # USED
-    my @category   = split /\s*\x1d\s*/, $field[6];         # NOT USED YET
-    my $desc       = join " ", split/\s*\x0b\s*/, $field[7];# NOT USED YET
-    my $genuine    = $field[8];                        # NOT USED YET
-    my $glosa      = join "", split /\x1d/, $field[9]; # NOT USED YET
+    my @hidden     = @field[3..12];                    # NOT USED YET
+    my @category   = split /\s*\x1d\s*/, $field[13];   # NOT USED YET
+    my $desc       = join " ", split/\s*\x0b\s*/, $field[14];# NOT USED YET
+    my $genuine    = $field[15];                        # NOT USED YET
+    my $glosa      = join "", split /\x1d/, $field[16]; # NOT USED YET
+
+    ##########################################################################
+    ## @hidden = Swedish translations that aren't shown but are searchable in
+    ## the official dictionary. These are inflected versions of the Swedish
+    ## translations (röker, rökte, rökt), common spelling variations (djävla,
+    ## djävel, jävel), common names for genuine signs (HAPP, HYFF, PI) etc.
+    ##
+    ## NOTA BENE: These also seem to suffer from unwanted zeroes (just like
+    ## @swedish). Make sure to remove these if starting to use @hidden!
+    ##########################################################################
 
     @swedish = grep !/^$/, map {
         # ^K (\x0b) occur at the end of some words, and sometimes separating
