@@ -34,7 +34,7 @@ sub time_str {
     my ($sec, $min, $hour, $mday, $month, $year) = gmtime($utc_epoch);
     return sprintf(
         "%04d-%02d-%02dT%02d:%02d:%02dZ",
-        1900 + $year, $month, $mday, $hour, $min, $sec,
+        $year + 1900, $month + 1, $mday, $hour, $min, $sec,
     );
 }
 
@@ -65,7 +65,7 @@ if (not -e $ARGV[0]) {
 my $mtime = (stat ($ARGV[0]))[9];
 
 my @thingy;
-while (my @field = $csv->split(scalar(<>))) {
+while (my @field = $csv->split(scalar(<>))) {  # main loop
 
     # Strip leading/trailing space in all fields.
     s#^\s*(.*?)\s*$#$1# foreach @field;
