@@ -2,7 +2,7 @@
 <head>
   <!-- Copyright 2018 by zrajm. Released under GPLv3 license. -->
   <meta charset="UTF-8">
-  <title>SSLWrite</title>
+  <title>SSLWrite – Adapting ASLWrite for SSL</title>
   <link rel=stylesheet href="intro.css">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <style>
@@ -41,27 +41,54 @@
   </style>
 </head>
 <body>
+<h1>SSLWrite – Adapting ASLWrite for SSL</h1>
 
-<h1>SSLWrite</h1>
+<section>
+  <h2>Background</h2>
 
-<h2>Adapting ASLWrite for Swedish Sign Language</h2>
+  <p>This is an attempt at adapting <a href="http://aslwrite.com">ASLWrite</a>
+  for writing Swedish Sign Language (SSL). This attempt is not ’official’ or
+  ’endorsed’ in any way (whatever that would mean), but is simply my own stab
+  at creating a writing system for a language I'm learning, in order to
+  facilitate my own learning.
 
-<p>Below is a table of handshape glyphs (called the digibet
-in <a href="http://aslwrite.com">ASLWrite</a> nomenclature).
+  <p>I am a (hearing) student of SSL. As of May 2018 I'm just finishing the
+  second semester of the sign language interpreter program at Stockholm
+  University. This attempt at adapting ASLWrite for SSL was born out of my
+  desire to be able take notes, and to improve my language skills by reading
+  (reading lots of books – have been an immensely important factor in learning
+  syntax and in increasing my vocabulary in all languages I've studied so far –
+  though in this case I'll have to write those books myself).
 
-<p>Even though there is much overlap of handshapes between American and Swedish
-Sign Language both languages have a number of handshapes that are unique to
-them. The following table of handshapes is a preliminary effort for creating
-all the digibet glyphs needed for SSLWrite (a Swedish version
-of ASLWrite).
+  <p>My own interest in sign language was initially sparked by an encounter
+  with the transcription system commonly used in sign language research here in
+  Sweden (it looks like
+  this: <a href="http://zrajm.github.io/teckentranskription/lexicon.html#%F4%8C%A4%B4%F4%8C%A5%97%F4%8C%A5%83%F4%8C%A5%83%F4%8C%A4%B4%F4%8C%A4%B6%F4%8C%A4%9F%F4%8C%A5%B0%F4%8C%A6%8B%F4%8C%A5%A0%F4%8C%A4%A2%F4%8C%A5%94%F4%8C%A4%B8%F4%8C%A4%A9%F4%8C%A4%B4%F4%8C%A5%99%F4%8C%A5%A3%F4%8C%A4%9F%F4%8C%A5%BB">􌤴􌥗􌥃􌥃􌤴􌤶􌤟􌥰􌦋􌥠􌤢􌥔􌤸􌤩􌤴􌥙􌥣􌤟􌥻</a>).
+  I have since worked with <a href="http://teckensprakslexikon.su.se">The
+  Swedish Sign Language Lexicon</a> to develop a typeface
+  (<a href="https://zrajm.github.io/teckentranskription/freesans-swl.html">FreeSans-SWL</a>)
+  for that transcription system.
 
-<p>Different PDF documents found on the ASLWrite website have different
-versions of the ASLWrite digibet (presumably reflecting different development
-stages of the writing system). In order to make sense of them I've here tried
-to document all the differing versions I've found.
+  <p>But, for various reasons<a href="#fn1"><sup>[1]</sup></a>, I don't think
+  that that transcription system is suitable for everyday use.
+</section>
 
 <section>
   <h2>Handshapes</h2>
+
+  <p>Below is a table of handshape glyphs (called the digibet
+  in <a href="http://aslwrite.com">ASLWrite</a> nomenclature).
+
+  <p>Even though there is much overlap of handshapes between American and
+  Swedish Sign Language both languages have a number of handshapes that are
+  unique to them. The following table of handshapes is a preliminary effort for
+  creating all the digibet glyphs needed for SSLWrite (a Swedish version of
+  ASLWrite).
+
+  <p>Different PDF documents found on the ASLWrite website have different
+  versions of the ASLWrite digibet (presumably reflecting different development
+  stages of the writing system). In order to make sense of them I've here tried
+  to document all the differing versions I've found.
 
   <p><table class="border-example">
     <caption>
@@ -77,7 +104,7 @@ to document all the differing versions I've found.
       <p><span style="border:1px solid #000;padding:2px" class=blue>blue</span>
       New symbol, inspired by ASLWrite.
 
-      <p id=fn1><b><sup>1</sup> Hand Description</b>: Each hand consists of
+      <p id="tfn1"><b><sup>1</sup> Hand Description</b>: Each hand consists of
       five finger description in the order <i>thumb–index–long–ring–little
       finger</i>. The following letters are used to indicate finger shape.
 
@@ -112,7 +139,7 @@ to document all the differing versions I've found.
       </ul>
     </caption>
     <tr>
-      <th rowspan=2><a href="#fn1">Hand Description<sup>1</sup></a>
+      <th rowspan=2><a href="#tfn1">Hand Description<sup>1</sup></a>
       <th rowspan=2>Handshape
       <th colspan=3>Swedish Sign Language
       <th colspan=4>ASL
@@ -899,6 +926,55 @@ to document all the differing versions I've found.
       <td class=symbol>
       <td class=trans>
     </table>
+</section>
+
+<section>
+  <h1>Footnotes</h1>
+
+  <figure style="margin:1em 2em;background:lightblue;font-size:smaller;width:33%;float:right;line-height:1.5em;">
+    <figcaption style="caption-side:bottom;margin-bottom:1em;">An example of
+      what larger chunk of text in the Swedish Sign Language transcription
+      system might look like. (This is just a jumble of random transcriptions
+      from the dictionary, not an actual text.)</figcaption>
+
+    <h1>2. 􌤀􌦫􌥓􌤷􌤟􌥼􌥻  􌤊􌤢􌤵􌤶􌤟􌥧  􌤀􌤢􌥓􌥙􌤟􌥼􌥻?</h1>
+
+    <p style="margin-bottom:0">􌤆􌤢􌤵􌤶􌥧􌥠􌤆􌤢􌥓􌥙􌥣.  􌤌􌤢􌤵􌥘􌤟􌥼􌦃  􌤦􌤴􌤶􌥣􌥦􌥲􌦀  􌤓􌥔􌥘􌤫􌤫􌥓􌥘􌤟􌥼􌥸􌦅􌥼􌤟 
+    􌤆􌤢􌤵􌤶􌥤  􌤧􌥓􌥘􌥰􌦉  􌤆􌤢􌤵􌥘􌥧􌥢􌥱􌦈 – 􌤆􌤢􌤵􌥘􌥧􌥢􌥱􌦈  􌤆􌤢􌤵􌥘􌥧􌥢􌥱􌦈.  􌤆􌤢􌤵􌥘􌥶  􌤃􌤢􌤵􌤷􌦄􌥲􌦊􌥼􌤟 
+    􌤃􌤺􌤢􌥓􌥘􌤟􌥼􌥲􌥾􌥼􌤟  􌤌􌤢􌤵􌥘􌤟􌥠􌤢􌥔􌤸􌤢􌤴􌥙􌥧􌥼􌤟  􌤌􌤢􌤵􌥘􌤟􌥼􌦃  􌤃􌤢􌥓􌥘􌥣􌥡􌦆􌤣  􌤃􌤢􌥓􌥘􌤟􌥼􌦆􌤣􌥼􌥻  􌤃􌤢􌥓􌥘􌤟􌥼􌥷􌥲􌦀 
+    􌤌􌥃􌤴􌥙􌦃  􌤢􌤹􌤴􌥙􌤢􌤴􌥙􌥦􌥣􌥻?
+
+    <p style="margin-top:0;text-indent:2em">􌤃􌤢􌥕􌥗􌥢􌥡􌥱􌦈􌥼􌥣􌥡􌥱􌥽􌥼􌥻 􌤃􌤢􌤵􌤶􌤟􌥠􌤛􌤢􌤵􌤶􌤟: 
+    􌤃􌤢􌤵􌤶􌥣􌤟􌥻  􌤃􌤺􌦫􌤵􌤷􌤟􌥠􌥖􌥘􌤢􌤢􌤴􌥙􌦅􌥼􌤟,  􌤌􌤵􌥗􌥄􌤻􌥄􌤵􌤶􌥳􌥠􌤵􌥘􌥑􌥑􌤵􌥘􌥰􌦂,  􌤃􌤺􌤢􌤵􌤷􌤟􌥼􌦃􌥣 􌤃􌤺􌦫􌤵􌤷􌤟􌥼􌥻, 
+    􌤃􌤺􌤢􌤵􌥘􌤟􌥼􌥻.  􌤃􌤺􌤢􌤵􌥘􌤟􌥼􌥻  􌤌􌤢􌤵􌥘􌤟􌥼􌥻  􌤃􌤺􌤢􌤵􌥘􌤟􌥼􌥧􌦆􌤣􌥼􌥻  􌤼􌤢􌥓􌥙􌤟􌥠􌤓􌤢􌥓􌥙􌤟􌥧  􌤌􌤢􌤵􌥘􌤟􌥠􌤢􌤴􌥙􌥢􌥲􌦈􌦆􌤣 
+    􌤌􌤢􌤵􌥘􌤟􌥠􌤢􌥔􌥘􌤢􌤴􌥙􌥧􌥡  􌤼􌤢􌤵􌥘􌤟􌥠􌤢􌥔􌤸􌤢􌤴􌤶􌥧􌥲􌦀􌥼􌤟.  􌤇􌤢􌤵􌤶􌥢􌥼􌤟  􌤇􌤢􌤵􌤶􌥢􌥼􌤟􌥠􌤵􌥘􌤢􌤢􌤵􌥘􌤟􌥼􌥻  􌤇􌤢􌤵􌤷􌤟 
+    􌤇􌤢􌤵􌤷􌦃􌥡􌥼􌥻 􌤂􌤺􌤢􌤵􌥘􌦄􌥱􌦊  􌤊􌤢􌤵􌥘􌥶􌦆􌤣􌥼􌥻  􌤊􌤢􌥕􌥙􌤟􌥼􌥦􌥱􌥿􌥼􌥻  􌤊􌤢􌤵􌤶􌤟  􌤊􌤢􌤵􌤶􌤟.
+
+    <section>
+      <h1>2.1. 􌤢􌤴􌤸􌤢􌤵􌤶􌥧􌥱􌥾􌥼􌤟  􌤀􌤢􌥓􌥙􌦄  􌤆􌤢􌥓􌥘􌥧  􌤆􌤢􌥓􌥘􌥧􌥲􌦋</h1>
+
+      <p>􌤢􌥔􌤸􌤢􌤴􌥙􌤟􌥢􌥼􌥲􌥿􌥼􌥣  􌤀􌤢􌥓􌥙􌥣􌥯􌥿􌥱􌥿  􌤴􌥙􌤢􌤢􌤴􌥙􌥮􌥼􌥧􌥹  􌤛􌤢􌤵􌤶􌤟􌥠􌤴􌥗􌤢􌤢􌤴􌤶􌥮􌥼􌥧􌥹, 
+      􌤌􌥈􌤵􌤶􌤟􌥠􌤴􌥗􌤢􌤢􌤴􌤶􌥧􌥹,  􌤌􌤢􌤵􌥘􌤟􌥼􌦃􌥼􌥻  􌤛􌤢􌤵􌥘􌤟􌥼􌦃􌥲􌥾  􌤌􌤢􌤵􌥘􌦃  􌤢􌥔􌥘􌤢􌥖􌥘􌦃􌥼􌤟􌥠􌤢􌤴􌥗􌤢􌥓􌥘􌤟􌥼􌥣. 
+      􌤌􌤵􌥗􌤢􌤢􌤵􌤶􌦅􌥼􌦎􌥼􌥻 􌤼􌤢􌤵􌥘􌤟􌥼􌦃􌥲􌥾  􌤌􌤢􌤵􌥘􌤟􌥠􌤢􌥔􌤸􌤢􌤴􌥙􌤟􌥣  􌤊􌥅􌤴􌤶􌤟􌥠􌤴􌥗􌥅􌥅􌤴􌤶􌦅􌥼􌤟.  􌤌􌤢􌥓􌥘􌥣􌥡􌦆􌤧 
+      􌤌􌤢􌥓􌥘􌥣􌥡􌥼􌥦􌥱􌥿  􌤥􌤵􌤷􌦃􌦆􌤦  􌤢􌤴􌤸􌤢􌤴􌥙􌤟􌥼􌥻  􌤌􌤢􌤵􌥘􌤟􌥠􌤢􌤴􌤸􌤢􌤴􌥙􌤟􌥼􌥻  􌥔􌥘􌤦􌤦􌥓􌥘􌦃􌥲􌦀􌥼􌥻 
+      􌤌􌤢􌤵􌥘􌤟􌥠􌤢􌤵􌥘􌤢􌤴􌥙􌤟􌥦􌥼􌥱􌥿􌥼􌤟􌥧􌥼􌥻.
+    </section>
+  </figure>
+
+  <p id="fn1"><sup>[1]</sup> On the whole this transcription system for Swedish
+  Sign Language is pretty good. (Yeah, sure, certain things are a little bit
+  awkward – like the fact that the single hand movement in the word ’ball’
+  require <i>five</i> distinct symbols [􌤴􌥙􌤣􌤣􌤴􌥙􌤟􌥼<mark>􌥧􌥯􌦉􌥲􌥿</mark>􌥼􌤟].) But it
+  is pretty flexible, and some excellent artistry has been executed in it –
+  like Lars Wallin’s idea of writing polysynthetic signs from <i>the inside
+  out</i> (with the articulation of the non-dominant hand being written
+  backwards <i>in front of</i> the hand configuration).
+
+  <p>My main gripe with the system is that it just <i>isn't pretty enough</i>.
+  It wasn't designed with readability in mind: in a larger chunk of text (see
+  example to the right) it is hard to see where one word ends and the next
+  begins, and the abundance of straight lines ruin all chances of easily
+  recognizable <a href="https://en.wikipedia.org/wiki/Bouma">bouma</a>.
 </section>
 </body>
 </html>
