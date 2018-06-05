@@ -5,10 +5,10 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   version="1.1"
-   id="svg2"
+   width="676.10913"
    height="725.58789"
-   width="596.08807">
+   id="svg2"
+   version="1.1">
   <metadata
      id="metadata10">
     <rdf:RDF>
@@ -24,11 +24,11 @@
   <defs
      id="defs8" />
   <path
-     id="path4924-5"
-     d="M 20.226238,703.18323 455.57357,368.48071 575.86183,276.00103"
-     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 20.23676,703.18323 C 169.10058,620.23686 437.14117,402.92701 655.87235,276.00103"
+     id="path4924-5" />
   <path
-     id="path4"
-     d="m 438.37519,20.284788 c 3.38582,162.546022 7.69029,338.222522 -4.99892,485.963622 -7.82547,51.97171 -12.08913,91.41254 -46.03552,137.83357 -33.9464,46.42104 -73.68693,66.7131 -150.70162,60.37671 C 159.62444,698.12232 105.51561,652.33916 81.331565,580.2057 57.147515,508.07225 66.672935,419.06266 63.591405,338.42779 61.728495,213.5555 62.361275,31.877763 58.275195,23.434788"
-     style="fill:none;stroke:#000000;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+     style="fill:none;stroke:#000000;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+     d="m 518.38571,20.284788 c 3.38582,162.546022 7.69029,338.222522 -4.99892,485.963622 -7.82547,51.97171 -12.08913,91.41254 -46.03552,137.83357 -33.9464,46.42104 -73.68693,66.7131 -150.70162,60.37671 C 239.63496,698.12232 185.52613,652.33916 161.34209,580.2057 137.15804,508.07225 146.68346,419.06266 143.60193,338.42779 141.73902,213.5555 142.3718,31.877763 138.28572,23.434788"
+     id="path4" />
 </svg>
