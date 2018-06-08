@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="718.396"
+   height="561.3371"
+   id="svg8867"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="b11.svg">
+  <metadata
+     id="metadata8875">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs8873" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1280"
+     inkscape:window-height="751"
+     id="namedview8871"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.44612476"
+     inkscape:cx="421.54031"
+     inkscape:cy="422.48089"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg8867" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+     d="M 286.79644,541.0685 C 350.25839,370.12073 403.36207,194.49552 469.6054,25.006651 c 110.84795,0.298332 228.79057,-9.624177 228.79057,63.731894 0,93.265485 -155.71625,104.476935 -286.36625,104.476935 M 203.84644,20.2685 c -61.56798,173.12906 -122.394962,346.53616 -183.75,519.75 m 310.8,-518.7 c -63.45963,178.34346 -129.16274,365.78402 -183.75,519.75"
+     id="path9755"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccsccccc" />
+</svg>
