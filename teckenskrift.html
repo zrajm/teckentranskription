@@ -1,0 +1,945 @@
+<html><!--*- ispell-dictionary: "svenska" -*-->
+<head>
+  <!-- Copyright 2018 by zrajm. Released under GPLv3 license. -->
+  <meta charset="UTF-8">
+  <title>SSLWrite – Adapting ASLWrite for SSL</title>
+  <link rel=stylesheet href="intro.css">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    ul { margin-left: 1em; }
+
+    body { margin: .25em .5em; }
+    section { margin-top: 1em; margin-bottom: 1em; }
+    table[border] {
+      border-collapse: collapse;
+      border: 1px solid black;
+    }
+    table[border] th,
+    table[border] td {
+      text-align: center;
+      padding: .125em .25em;
+      border: 1px solid black;
+    }
+    .shaded { background: rgba(127, 127, 127, .25); opacity: .6; }
+    .blue { background: rgba(0, 0, 255, .2); }
+    .hand img { height: 100px; }
+    .symbol img { height: 6.4%; }
+    .symbol2 img { height: 12%; }
+    .trans { font-size: 200%; }
+    .trans img { height: 28px; }
+    .grey { background: rgba(127, 127, 127, .25); }
+    table.border-example {
+        caption-side: bottom;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    table.border-example caption {
+        text-align: left;
+        padding: 0.5em 1em;
+    }
+    table.border-example th,
+    table.border-example td {
+        border: 1px solid black;
+        padding: .25em .5em;
+    }
+    .columns {
+        column-count: auto;
+        column-gap: 12px;
+        column-width: 370px;
+        -moz-column-count: auto;
+        -moz-column-gap: 12px;
+        -moz-column-width: 370px;
+        -webkit-column-count: auto;
+        -webkit-column-gap: 12px;
+        -webkit-column-width: 370px;
+    }
+    .columns > table {
+        break-inside: avoid-column;
+        border-collapse: collapse;
+        border: 1px solid black;
+        margin-bottom: 4px;
+        width: 100%;
+    }
+    dl {
+        margin: 1em 0;
+    }
+    dt {
+        font-weight: bold;
+    }
+    a[href^="#"] {
+        font-style: italic;
+    }
+
+    .hanging > p, p.hanging {
+        padding-left: 1em;
+        text-indent: -1em;
+    }
+    .glossary > p { margin: 0; }
+    .glossary > p > a:first-child { font-weight: bold; }
+
+    h1:first-letter { text-transform: uppercase; }
+
+    div.handform > table { display: inline-table; margin: .25em .125em; }
+    div.handform > table td[colspan="2"] { font-size: small; }
+
+    .x2 { font-size: 1.8em; line-height: 50px !important; }
+  </style>
+</head>
+<body>
+<h1>Teckenskrift – Att skriva teckenspråk</h1>
+
+<p>Nedanstående är en <i style="background:#ff0">ännu ofärdig</i> anpassning
+av <a href="http://aslwrite.com">ASLWrite</a> till svenskt teckenspråk. Du är
+varmt välkommen att använda dig av de delar som finns. Idéer,
+åsikter och erfarenheter av skrivet teckenspråk mottages tacksamt
+på &lt;<a href="sslwrite@klingonska.org">sslwrite@<wbr>klingonska<wbr>.org</a>&gt;.
+
+<ul style="margin:1em 2em;">
+  <li><a href="#bakgrund">Bakgrund</a>
+  <li><a href="#handalfabetet">Handalfabetet</a>
+  <li><a href="#hand">Handsymboler</a>
+    <ul>
+      <li><a href="#oppna">Öppna handformer</a>
+      <li><a href="#slutna">Slutna handformer</a>
+      <li><a href="#blandade">Blandade handformer</a>
+    </ul>
+  <li><a href="#rorelse">Rörelsesymboler</a>
+    <ul>
+      <li><a href="#kontakt">Kontaktpunkter</a>
+      <li><a href="#tva">Två händer</a>
+    </ul>
+  <li><a href="#lage">Läge</a>
+  <li><a href="#diakritiska">Diakritiska markörer</a>
+  <li><a href="#ogon">Ögonbryn</a>
+  <li><a href="#mun">Mun</a>
+  <li><a href="#skilje">Skiljesymboler</a>
+  <li><a href="#termer">Termer</a>
+</ul>
+
+<section>
+  <h1 id=bakgrund>Bakgrund</h1>
+
+  <p>Den här sidan är tänkt att vara en kort och lättbegriplig introduktion
+  till <i>teckenskrift</i> – en skrift för svenskt teckenspråk. (Det finns
+  en <a href="sslwrite.html">detaljerad lista över symbolerna på engelska</a>
+  för den som är nyfiken.)
+
+  <p>Denna skrift (också känd som SSLWrite) är baserad
+  på <a href="http://aslwrite.com">ASLWrite</a> (för amerikanskt teckenspråk)
+  som i sin tur skapats av Adrean Clark, Jules Dameron, Robert Arnold och många
+  andra. Den här sidan är till stora delar en översättning och bearbetning av
+  Adrean
+  Clarks <i><a href="http://www.aslwrite.com/free/22HWASLebookfree.pdf">How to
+  Write American Sign Language</a></i> med många anpassningar gjorda för
+  svenskt teckenspråk.
+
+  <p>Vem är då jag? Jag heter <a href="http://zrajm.org">zrajm</a>, och jag är
+  en (hörande) student av svenskt teckenspråk (vid Stockholms universitet).
+  Teckenskriften som jag beskriver på den här sidan föddes ur min önskan att
+  kunna anteckna och läsa direkt på teckenspråk utan att behöva gå omvägen över
+  svenska.
+
+  <p>P.S. För att undvika förvirring i den här texten så använder jag ordet
+  ’tecken’ enbart för att referera till tecken i teckenspråket. När jag talar
+  om skrivna krumelurer kallar jag dem istället ’markör’, ‘symbol’ etc.
+</section>
+
+<section>
+  <h1 id=handalfabetet>handalfabetet</h1>
+
+  <p>Så här ser handalfabetet ut (om du tecknar med höger hand – använder du
+  vänster blir alla symboler spegelvända).
+
+  <figure class="x2" style="border:1px solid black;margin:1em;word-spacing:.5em;letter-spacing:.1em;padding:0 .25em;font-size:2em;line-height:1.5em!important;text-align:center">
+    <nobr>A<img src="pic/digibet/c02.svg"    style="height:.35em"></nobr>
+    <nobr>B<img src="pic/handalfa/b.svg"     style="height:.9em"></nobr>
+    <nobr>C<img src="pic/handalfa/c.svg"     style="height:.5em"></nobr>
+    <nobr>D<img src="pic/handalfa/d.svg"     style="height:.7em"></nobr>
+    <nobr>E<img src="pic/handalfa/e.svg"     style="height:.3em"></nobr>
+    <nobr>F<img src="pic/digibet/f-hand.svg" style="height:.9em"></nobr>
+    <nobr>G<img src="pic/digibet/b01-b.svg"  style="height:.5em"></nobr>
+    <nobr>H<img src="pic/digibet/a15.svg"    style="height:.7em"></nobr>
+    <nobr>I<img src="pic/digibet/c23.svg"    style="height:.5em"></nobr>
+    <nobr>J<img src="pic/digibet/a11.svg"    style="height:.7em"></nobr>
+    <nobr>K<img src="pic/digibet/c15.svg"    style="height:.7em"></nobr>
+    <nobr>L<img src="pic/handalfa/l.svg"     style="height:.7em"></nobr>
+    <nobr>M<img src="pic/digibet/m-hand.svg" style="height:.4em"></nobr>
+    <nobr>N<img src="pic/digibet/c24.svg"    style="height:.4em"></nobr>
+    <nobr>O<img src="pic/digibet/b04-c.svg"  style="height:.5em"></nobr>
+    <nobr>P<img src="pic/handalfa/p.svg"     style="height:.5em"></nobr>
+    <nobr>Q<img src="pic/digibet/q-hand.svg" style="height:.5em;position:relative;top:.15em"></nobr>
+    <nobr>R<img src="pic/handalfa/r.svg"     style="height:.5em"></nobr>
+    <nobr>S<img src="pic/digibet/a07-c.svg"  style="height:.6em"></nobr>
+    <nobr>T<img src="pic/handalfa/t.svg"     style="height:.7em;"></nobr>
+    <nobr>U<img src="pic/handalfa/u.svg"     style="height:.8em"></nobr>
+    <nobr>V<img src="pic/handalfa/v.svg"     style="height:.7em"></nobr>
+    <nobr>W<img src="pic/handalfa/w.svg"     style="height:.7em"></nobr>
+    <nobr>X<img src="pic/handalfa/x.svg"     style="height:.4em"></nobr>
+    <nobr>Y<img src="pic/handalfa/y.svg"     style="height:.9em;position:relative;top:.2em;"></nobr>
+    <nobr>Z<img src="pic/handalfa/z.svg"     style="height:.3em"></nobr>
+    <nobr>Å<img src="pic/handalfa/aa.svg"    style="height:.8em"></nobr>
+    <nobr>Ä<img src="pic/handalfa/ae.svg"    style="height:.8em"></nobr>
+    <nobr>Ö<img src="pic/handalfa/oe.svg"    style="height:.8em"></nobr>
+  </figure>
+</section>
+
+<section>
+  <h1 id=hand>handsymboler</h1>
+
+  <p>De olika handformerna betecknas av handsymboler. Här följer en lista av
+  handsymboler, deras handform och det namn som används
+  av <a href="http://teckensprakslexikon.su.se/handformer">Svenskt
+  Teckenspråkslexikon</a>.
+
+  <p><span class=shaded>Ovanliga handformer</span> (finns med som ’varianter’ i
+  bokformen av svenskt teckenspråkslexikon) är
+  ljusare. <span class=blue>Svenska symboler</span> är blåa (de finns inte i
+  ASLWrite, men är byggda på samma principer) – ingen av symbolerna här är
+  satta i sten (än) och förslag mottages tacksamt!
+
+  <section>
+    <h1 id=oppna>öppna handformer</h1>
+    <div class=handform>
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/a01.png">
+          <td class=symbol><img src="pic/digibet/a01.svg">
+        <tr><td colspan=2>sprethand
+      </table>
+      <table border=1 class=shaded>
+        <tr><td class=hand><img src="pic/hand2/a10.png">
+          <td class=symbol><img src="pic/digibet/a10.svg">
+        <tr><td colspan=2>vinklad sprethand (variant)
+      </table>
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/a02.png">
+          <td class=symbol><img src="pic/digibet/a02.svg">
+        <tr><td colspan=2>klohand<!--böjd sprethand -->
+      </table>
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/a03.png">
+          <td class=symbol><img src="pic/digibet/a03.svg">
+        <tr><td colspan=2>4-hand
+      </table>
+      <table border=1 class=shaded>
+        <tr><td class=hand><img src="pic/hand2/a04.png">
+          <td class=symbol><img src="pic/digibet/a04.svg">
+        <tr><td colspan=2>böjd 4-hand (variant)
+      </table>
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/a05.png">
+          <td class=symbol><img src="pic/digibet/a05.svg">
+        <tr><td colspan=2>W-hand
+      </table>
+      <table border=1 class=shaded>
+        <tr><td class=hand><img src="pic/hand2/a06.png">
+          <td class=symbol><img src="pic/digibet/a06.svg">
+        <tr><td colspan=2>böjd W-hand (variant)
+      </table>
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/a07.png">
+          <td class=symbol><img src="pic/digibet/a07-c.svg">
+        <tr><td colspan=2>S-hand
+      </table>
+      <table border=1 class=shaded>
+        <tr><td class=hand><img src="pic/hand2/a08.png">
+          <td class=symbol><img src="pic/digibet/a08-x.svg">
+        <tr><td colspan=2>S-hand (variant)
+      </table>
+      <table border=1 class=blue>
+        <tr><td class=hand><img src="pic/x/vinkelhanden-1.png">
+          <td class=symbol><img src="pic/digibet/a09-x.svg">
+        <tr><td colspan=2>vinkelhand
+      </table>
+      <table border=1 class=shaded>
+        <tr><td class=hand><img src="pic/hand2/a09.png">
+          <td class=symbol><img src="pic/digibet/a09-c.svg">
+        <tr><td colspan=2>vinkelhand (variant)
+      </table>
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/a11.png">
+          <td class=symbol><img src="pic/digibet/a11.svg">
+        <tr><td colspan=2>flat hand
+      </table>
+      <!--
+      <table border=1 class=shaded>
+        <tr><td class=hand><img src="pic/hand2/a13.png">
+          <td class=symbol><img src="pic/digibet/a13.svg">
+        <tr><td colspan=2>flat hand (variant)
+      </table>
+      -->
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/a12.png">
+          <td class=symbol><img src="pic/digibet/a12-b.svg">
+        <tr><td colspan=2>D-hand
+      </table>
+      <table border=1 class=blue>
+        <tr><td class=hand><img src="pic/x/flata-tumhanden-1.png">
+          <td class=symbol><img src="pic/digibet/flat-tumhand.svg">
+        <tr><td colspan=2>flat tumhand
+      </table>
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/a15.png">
+          <td class=symbol><img src="pic/digibet/a15.svg">
+        <tr><td colspan=2>stor nyphand<!--böjd stor nyphand / rund nyphand-->
+      </table>
+      <table border=1 class=shaded>
+        <tr><td class=hand><img src="pic/hand2/a16.png">
+          <td class=symbol><img src="pic/digibet/a16.svg">
+        <tr><td colspan=2>stor nyphand (variant)
+      </table>
+      <table border=1 class=shaded>
+        <tr><td class=hand><img src="pic/x/stora-nyphanden-3.png">
+          <td class=symbol><img src="pic/digibet/a15-x.svg">
+        <tr><td colspan=2>stor nyphand (variant)
+      </table>
+      <table border=1 class=shaded>
+        <tr><td class=hand><img src="pic/x/stora-nyphanden-4.png">
+          <td class=symbol><img src="pic/digibet/c01-x.svg">
+        <tr><td colspan=2>stor nyphand (variant)
+      </table>
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/a22.png">
+          <td class=symbol><img src="pic/digibet/a22.svg">
+        <tr><td colspan=2>stort långfinger
+      </table>
+      <table border=1 class=shaded>
+        <tr><td class=hand><img src="pic/hand2/a19.png">
+          <td class=symbol><img src="pic/digibet/a19-b.png">
+        <tr><td colspan=2>stort långfinger (variant)<!--böjt långfinger-->
+      </table>
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/a20.png">
+          <td class=symbol><img src="pic/digibet/a20.png">
+        <tr><td colspan=2>runt långfinger
+      </table>
+      <table border=1 class=shaded>
+        <tr><td class=hand><img src="pic/x/runda-langfingret-2.png ">
+          <td class=symbol><img src="pic/digibet/a20-x.svg">
+        <tr><td colspan=2>runt långfinger (variant)
+      </table>
+      <table border=1 class=blue>
+        <tr><td class=hand><img src="pic/x/stora-nyphanden-5.png">
+          <td class=symbol><img src="pic/digibet/f-hand.svg">
+        <tr><td colspan=2>F-hand
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h1 id=slutna>slutna handformer</h1>
+    <div class=handform>
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/b01.png">
+          <td class=symbol><img src="pic/digibet/b01-b.svg">
+        <tr><td colspan=2>knuten hand
+      </table>
+      <table border=1 class=shaded>
+        <tr><td class=hand><img src="pic/hand2/b06.png">
+          <td class=symbol><img src="pic/digibet/b06.svg">
+        <tr><td colspan=2>knuten hand (variant)
+      </table>
+      <table border=1 class=blue>
+        <tr><td class=hand><img src="pic/x/e-handen-1.png">
+          <td class=symbol><img src="pic/digibet/e-hand.svg">
+        <tr><td colspan=2>E-hand
+      </table>
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/b02.png">
+          <td class=symbol><img src="pic/digibet/c01.svg">
+        <tr><td colspan=2>tumvinkelhand
+      </table>
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/b03.png">
+          <td class=symbol><img src="pic/digibet/c02.svg">
+        <tr><td colspan=2>A-hand
+      </table>
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/b04.png">
+          <td class=symbol><img src="pic/digibet/b04-c.svg">
+        <tr><td colspan=2>O-hand
+      </table>
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/b05.png">
+          <td class=symbol><img src="pic/digibet/b05.svg">
+        <tr><td colspan=2>tumhand
+      </table>
+      <table border=1 class="blue shaded">
+        <tr><td class=hand><img src="pic/x/tumhanden-2.png">
+          <td class=symbol><img src="pic/digibet/b05-x.svg">
+        <tr><td colspan=2>tumhand (variant)
+      </table>
+      <table border=1 class=blue>
+        <tr><td class=hand><img src="pic/x/q-handen-1.png">
+          <td class=symbol><img src="pic/digibet/q-hand.svg">
+        <tr><td colspan=2>Q-hand
+      </table>
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/b07.png">
+          <td class=symbol><img src="pic/digibet/b07-b.svg">
+        <tr><td colspan=2>hållhand
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h1 id=blandade>blandade handformer</h1>
+    <div class=handform>
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/c02.png">
+          <td class=symbol><img src="pic/digibet/c02-x.svg">
+        <tr><td colspan=2>nyphand
+      </table>
+      <table border=1 class=shaded>
+        <tr><td class=hand><img src="pic/hand2/c03.png">
+          <td class=symbol><img src="pic/digibet/c03-c.svg">
+        <tr><td colspan=2>nyphand (variant)<!--böjt pekfinger/LO-hand-->
+      </table>
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/c01.png">
+          <td class=symbol><img src="pic/digibet/c01-c.svg">
+        <tr><td colspan=2>rak måtthand
+      </table>
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/c04.png">
+          <td class=symbol><img src="pic/digibet/c04-c.svg">
+        <tr><td colspan=2>måtthand
+      </table>
+      <table border=1 class="shaded blue">
+        <tr><td class=hand><img src="pic/x/matthanden-3.png">
+          <td class=symbol><img src="pic/digibet/c04-x.svg">
+        <tr><td colspan=2>måtthand (variant)
+      </table>
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/c06.png">
+          <td class=symbol><img src="pic/digibet/c06.svg">
+        <tr><td colspan=2>krokfinger
+      </table>
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/c08.png">
+          <td class=symbol><img src="pic/digibet/c08.svg">
+        <tr><td colspan=2>L-hand
+      </table>
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/c10.png">
+          <td class=symbol><img src="pic/digibet/c10.svg">
+        <tr><td colspan=2>pekfinger
+      </table>
+      <table border=1 class=shaded>
+        <tr><td class=hand><img src="pic/hand2/c09.png">
+          <td class=symbol><img src="pic/digibet/c09.svg">
+        <tr><td colspan=2>pekfinger (variant)
+      </table>
+      <table border=1 class="blue shaded">
+        <tr><td class=hand><img src="pic/x/vinklade-pekfingret.png">
+          <td class=symbol><img src="pic/digibet/vinklat-pekfinger.svg">
+        <tr><td colspan=2>vinklat pekfinger (variant)
+      </table>
+      <table border=1 class=blue>
+        <tr><td class=hand><img src="pic/x/t-handen-1.png">
+          <td class=symbol><img src="pic/digibet/t-hand.svg">
+        <tr><td colspan=2>T-hand
+      </table>
+      <table border=1 class="blue shaded">
+        <tr><td class=hand><img src="pic/x/t-handen-2.png">
+          <td class=symbol><img src="pic/digibet/t-hand-2.svg">
+        <tr><td colspan=2>T-hand (variant)
+      </table>
+      <table border=1 class=blue>
+        <tr><td class=hand><img src="pic/x/langfingret-1.png">
+          <td class=symbol><img src="pic/digibet/langfinger.svg">
+        <tr><td colspan=2>långfinger
+      </table>
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/c11.png">
+          <td class=symbol><img src="pic/digibet/c11.svg">
+        <tr><td colspan=2>V-hand
+      </table>
+      <table border=1 class=shaded>
+        <tr><td class=hand><img src="pic/x/vinklade-v-handen-1.png">
+          <td class=symbol><big><big><big>?</big></big></big>
+        <tr><td colspan=2>V-hand (variant)<!--FIXME symbol?-->
+      </table>
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/c12.png">
+          <td class=symbol><img src="pic/digibet/c12.svg">
+        <tr><td colspan=2>dubbelkrok<!--(spretad) dubbelkrok-->
+      </table>
+      <!--
+      <table border=1 class=shaded>
+        <tr><td class=hand><img src="pic/hand2/c13.png">
+          <td class=symbol><img src="pic/digibet/c13.svg">
+        <tr><td colspan=2>*samlad dubbelkrok
+      </table>
+      -->
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/c15.png">
+          <td class=symbol><img src="pic/digibet/c15.svg">
+        <tr><td colspan=2>K-hand
+      </table>
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/c16.png">
+          <td class=symbol><img src="pic/digibet/c16.svg">
+        <tr><td colspan=2>X-hand
+      </table>
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/c19.png">
+          <td class=symbol><img src="pic/digibet/c19-c.svg">
+        <tr><td colspan=2>flyghand
+      </table>
+      <!--
+      <table border=1 class=shaded>
+        <tr><td class=hand><img src="pic/hand2/c20.png">
+          <td class=symbol><img src="pic/digibet/c20.svg">
+        <tr><td colspan=2>*flyghand (B)
+      </table>
+      <table border=1 class=shaded>
+        <tr><td class=hand><img src="pic/hand2/c21.png">
+          <td class=symbol><img src="pic/digibet/c21.svg">
+        <tr><td colspan=2>*flyghand (C)
+      </table>
+      -->
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/c22.png">
+          <td class=symbol><img src="pic/digibet/c22.png">
+        <tr><td colspan=2>U-hand
+      </table>
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/c23.png">
+          <td class=symbol><img src="pic/digibet/c23.svg">
+        <tr><td colspan=2>lillfinger
+      </table>
+      <table border=1 class=shaded>
+        <tr><td class=hand><img src="pic/x/lillfingret-2.png">
+          <td class=symbol><big><big><big>?</big></big></big>
+        <tr><td colspan=2>lillfinger (variant)
+      </table>
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/c24.png">
+          <td class=symbol><img src="pic/digibet/c24.svg">
+        <tr><td colspan=2>N-hand
+      </table>
+      <table border=1 class=shaded>
+        <tr><td class=hand><img src="pic/hand2/c25.png">
+          <td class=symbol><img src="pic/digibet/c25.svg">
+        <tr><td colspan=2>N-hand (variant)<!--pistolhand-->
+      </table>
+      <table border=1 class="shaded blue">
+        <tr><td class=hand><img src="pic/x/vinklade-n-handen-1.png">
+          <td class=symbol><img src="pic/digibet/vinklad-n-hand.svg">
+        <tr><td colspan=2>N-hand (variant)<!--vinklad N-hand-->
+      </table>
+      <table border=1 class="shaded blue">
+        <tr><td class=hand><img src="pic/x/vinklade-n-handen-2.png">
+          <td class=symbol><img src="pic/digibet/vinklad-n-hand-2.svg">
+        <tr><td colspan=2>N-hand (variant)
+      </table>
+      <table border=1 class=blue>
+        <tr><td class=hand><img src="pic/x/m-handen-1.png">
+          <td class=symbol><img src="pic/digibet/m-hand.svg">
+        <tr><td colspan=2>M-hand
+      </table>
+      <table border=1 class=shaded>
+        <tr><td class=hand><img src="pic/hand2/c26.png">
+          <td class=symbol><img src="pic/digibet/c26.svg">
+        <tr><td colspan=2>liten tumvinkelhand<!--N-måtthand-->
+      </table>
+      <table border=1>
+        <tr><td class=hand><img src="pic/x/lilla-o-handen-1.png">
+          <td class=symbol><img src="pic/digibet/b04.svg">
+        <tr><td colspan=2>liten O-hand<!--böjd N-hand/NO-hand-->
+      </table>
+      <table border=1 class=shaded>
+        <tr><td class=hand><img src="pic/hand2/c28.png">
+          <td class=symbol><img src="pic/digibet/b03.svg">
+        <tr><td colspan=2>liten O-hand (variant)<!--NA-hand/liten A-hand-->
+      </table>
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/c30.png">
+          <td class=symbol><img src="pic/digibet/c30.svg">
+        <tr><td colspan=2>tupphand
+      </table>
+      <table border=1 class=shaded>
+        <tr><td class=hand><img src="pic/hand2/c27.png">
+          <td class=symbol><img src="pic/digibet/c27.svg">
+        <tr><td colspan=2>vinklad tupphand (variant)
+      </table>
+      <table border=1 class=shaded>
+        <tr><td class=hand><img src="pic/hand2/c32.png">
+          <td class=symbol><img src="pic/digibet/c32.svg">
+        <tr><td colspan=2>tupphand (variant)<!--jasåhand/fysikerhand/dimensionshand-->
+      </table>
+      <table border=1>
+        <tr><td class=hand><img src="pic/hand2/c31.png">
+          <td class=symbol><img src="pic/digibet/c31.svg">
+        <tr><td colspan=2>böjd tupphand
+      </table>
+    </div>
+  </section>
+</section>
+
+<hr>
+
+<section id=rorelse>
+  <h1>rörelsesymboler</h1>
+
+  <section><h1 id=kontakt>kontaktpunkter</h1></section>
+  <!-- contact point near locative/digit/in empty space -->
+
+  <section><h1 id=linje>rörelselinjer</h1>
+
+    <p><b id=slut>Slutpunkt</b> (med och utan upprepningar)
+
+    <p><b id=tvar>Tvärslutpunkt</b>
+
+    <p>byte av handform
+
+    <p><b id=vertikal>Vertikalmarkör</b>
+
+    <p><b id=forandring>Förändringslinjer</b> ser ut som vanliga rörelselinjer,
+    men beskriver att en handform förändras utan förflyttning. Vanligtvis
+    används förändringslinjen som understrykning till handformerna ifråga. Vill
+    man vara extra tydligt kan man använda en <b id=fix>fixpunkt</b> för
+    att ’spika fast’ rörelselinjen.
+
+    <figure>
+      <table style="display:inline-table">
+        <tr><td style="text-align:center"><img src="pic/asl/ja.svg" style="height:4em;">
+        <tr><td style="text-align:center;padding-top:.5em">’Ja’ (utan fixpunkt)
+      </table>
+          
+      <table style="display:inline-table">
+        <tr><td style="text-align:center"><img src="pic/asl/ja2.svg" style="height:4.1em;">
+        <tr><td style="text-align:center;padding-top:.5em">’Ja’ (med fixpunkt)
+      </table>
+    </figure>
+  </section>
+
+  <section>
+    <h1 id=tva>Två händer</h1>
+
+    <p>Följande symboler visar hur två händer rör sig i förhållande till
+    varandra.
+
+    <p><b id=krympande>Krympande linjer</b>
+
+    <p><b id=växande>Växande linjer</b>
+
+    <p><b id=tur>Turmarkör</b>
+
+    <p><b id=krets>Kretsmarkör</b>
+
+    <p><b id=ratt>Rattmarkör</b>
+
+    <p><b id=vev>Vevmarkör</b>
+
+    <p><b id=flat>Flätmarkör</b>
+  </section>
+</section>
+
+<hr>
+
+<section id=lage>
+  <h1>lägessymboler</h1>
+
+  <p><b id=neutral>Neutrala läget</b> – Ett tecken utan lägessymbol utförs i
+    det neutrala läget. Det betyder att tecknet utförs horisontellt, dvs att en
+    rörelse uppåt på pappret motsvarar en rörelse framåt i verkligheten, och
+    att handflatorna är vända antingen uppåt eller nedåt. (För att bryta mot
+    denna horisontalitet kan man använda <a href="#vertikal">vertikal-</a>
+    och <a href="#kant">kantmarkörer</a>.)
+
+<!--
+
+    
+    Om inte annat markerats utförs tecknet horisontellt, dvs
+  handflatorna är vända uppåt eller nedåt (om inte
+  en <a href="#kant">kantmarkör</a> använts), och rörelselinje som går uppåt på
+  pappret, motsvarar en rörelse framåt (ut från kroppen) då man tecknar.
+
+  <p><a href="#neutral" title="ASLWrite: neutral space">neutrala läget</a> – A
+  sign which does not have a <a href="#locative">locative mark</a> is said to
+  take place in neutral space. Neutral space signs by default take place in the
+  horizontal plane. This means that hands by default have the palm facing
+  either up or down (unless the edge diacritic is used), and that
+  unmarked <a href="#motion">motion lines</a> (i.e. those without
+  the <a href="#vertical">vertical mark</a> describe horizontal motion).
+    -->
+
+  <p><b id=kropp>Kroppsläget</b> har två olika perspektiv: <i>framåt</i>
+  och <i>från sidan</i>.
+
+  <figure>
+    <style>
+      table.stouhsoeuh td {
+          padding:.5em 1em;
+      }
+    </style>
+    <table border=1 class=stouhsoeuh>
+      <tr>
+        <td><img src="pic/asl/framifran.svg" style="height:14em;max-height:none;">
+        <td><img src="pic/asl/fran_sidan.svg" style="height:18.8em;max-height:none;">
+      <tr>
+        <td>Framåt
+        <td>Från sidan
+    </table>
+    <figcaption><b>Lägessymboler (höger hand).</b> Symbolerna spegelvänds när
+      tecknandet sker med vänster hand. <i>Halsen</i> har två streck,
+      medan de andra lägessymbolerna bara har ett.</figcaption>
+  </figure>
+
+  <p id=framat><b>Framåt</b> – När perspektivet är <i>framåt</i> används
+  rörelselinjer precis som i neutrala läget, bortsett ifrån att
+  vertikalmarkörer inte behövs. Tecknet skrivs från den tecknande personens
+  egna synvinkel (dvs högerhanden skrivs till höger, vänsterhanden till
+  vänster, precis som för neutrala läget).
+
+  <!--FIXME: exempeltecken-->
+
+  <p id=sidan><b>Från sidan</b> – Om ett tecken har en rörelse framåt (ut från
+  kroppen) så skrivs tecknet med en av lägessymbolerna <i>från sidan</i>
+  (istället för ur tecknarens eget perspektiv).
+
+  <!--FIXME: exempeltecken-->
+</section>
+
+<hr>
+
+<section id=diakritiska>
+  <h1>diakritiska markörer</h1>
+
+  <p>Dessa markörer beskriver rörelse i handled eller fingrar.
+
+  <p><b id=gangjarn>Gångjärnsmarkör</b>
+  <figure>
+    <table class=symbol2>
+      <tr><td align=center><img src="pic/digibet/a01.svg">
+      <tr><td align=center><img src="pic/asl/gangjarn.svg"></td>
+    </table>
+  </figure>
+
+  <p><b id=vrid>Vridmarkör</b>
+  <figure>
+    <table class=symbol2>
+      <tr><td align=center><img src="pic/digibet/a01.svg">
+      <tr><td align=center><img src="pic/asl/vrids.svg">
+    </table>
+  </figure>
+
+  <p><b id=skak>Skakmarkör</b>
+  <figure>
+    <table class=symbol2>
+      <tr><td><img src="pic/digibet/a01.svg"><img src="pic/asl/skak.svg" style="margin-left:-10px;margin-bottom:.5em">
+    </table>
+  </figure>
+
+  <p><b id=fladder>Fladdermarkör</b>
+  <figure>
+    <table class=symbol2>
+      <tr><td align=center><img src="pic/asl/fladder.svg">
+      <tr><td align=center><img src="pic/digibet/a01.svg">
+    </table>
+  </figure>
+
+  <p><b id=kant>Kantmarkörer</b>
+  <figure>
+    <table>
+      <tr>
+        <td><img style="display:block;" width=66 height=87 src="pic/digibet/a01.svg">
+        <td rowspan=2 width=10>
+        <td><img width=66 height=87 src="pic/digibet/a01.svg"
+          ><img style="margin-left:-5px" width=5  height=58 src="pic/asl/kant-sida.svg">
+      <tr>
+        <td><img style="display:block;padding-top:3px" width=66 height=8 src="pic/asl/kant-nere.svg">
+    </table>
+  </figure>
+
+  <p class=blue><b id=stro>Strömarkör</b>
+
+  <p class=blue><b id=vink>Vinkmarkör</b>
+
+  <p class=blue><b id=bojs>Böjsmarkör</b>
+</section>
+
+<hr>
+
+<section id=ogon>
+  <h1>ögonbryn</h1>
+</section>
+
+<hr>
+
+<section id=mun>
+  <h1>mun</h1>
+</section>
+
+<hr>
+
+<section id=skilje>
+  <h1>skiljesymboler</h1>
+
+  <p><b id=mening>Meningsslut</b> – För att markera slutet på en mening (i ett
+  längre sammanhang) används en liten cirkel. I kortare sammanhang (enskilda
+  fraser tex) är det ofta tydligt var meningen slutar och meningsslutet kan
+  utelämnas.
+
+    <!-- FIXME: Inkludera exempel på meningsslut i ett sammanhang.
+    ASL exempel: https://www.facebook.com/photo.php?fbid=10155290084740818
+    -->
+
+  <figure>
+    <table class=symbol2>
+      <tr><td align=center><img src="pic/asl/vrids.svg">
+    </table>
+  </figure>
+</section>
+
+<hr>
+
+<section id=termer>
+  <h1>Termer</h1>
+
+  <div class="hanging glossary">
+    <!-- Svensk transkription: 'böjs'. -->
+    <p><a href="#bojs" title="ASLWrite: ingen motsvarighet">böjsmarkör</a>
+      (<a href="#diakritiska">diakritisk markör</a>)
+
+    <p><a href="#diakritiska" title="ASLWrite: diacritics">diakritiska
+      markörer</a> (se <a href="#fladder">fladder-</a>,
+      <a href="#gangjarn">gångjärns-</a>, <a href="#kant">kant-</a>,
+      <a href="#skak">skak-</a>, <a href="#vink">vink-</a> och
+      <a href="#vrid">vridmarkör</a>)
+
+    <!-- Svensk transkription: 'spelar'. -->
+    <p><a href="#fladder" title="ASLWrite: flutter diacritic">fladdermarkör</a>
+      (<a href="#diakritiska">diakritisk markör</a>)
+
+    <!-- Ingen motsvarighet i svensk transkription. -->
+    <p><a href="#flat" title="ASLWrite: ”hands intersect, fingers interweave”"
+      >flätmarkör</a> (<a href="#rorelse">rörelsesymbol</a>)
+
+    <!-- Svensk transkription: finns ingen motsvarighet. -->
+    <p><a href="#fix" title="ASLWrite: static mark">fixpunkt</a>
+      (<a href="#rorelse">rörelsesymbol</a>)
+
+    <!-- Svensk transkription: 'förändras'. -->
+    <p><a href="#forandring" title="ASLWrite: morphing lines">förändringslinjer</a>
+      (<a href="#rorelse">rörelsesymbol</a>)
+
+    <!-- Svensk transkription: 'slås'. -->
+    <p><a href="#gangjarn" title="ASLWrite: hinge diacritic">gångjärnsmarkör</a>
+      (<a href="#diakritiska">diakritisk markör</a>)
+
+    <p><a href="#hand" title="ASLWrite: digit (in digibet)">handsymbol</a>
+
+    <!-- Svensk transkription: attitydsymboler. -->
+    <p><a href="#kant" title="ASLWrite: edge diacritic">kantmarkör</a>
+      (<a href="#diakritiska">diakritisk markör</a>)
+
+    <!-- Svensk transkription: 'kontakt'. -->
+    <p><a href="#kontakt" title="ASLWrite: contact points">kontaktpunkt</a>
+      (<a href="#rorelse">rörelsesymbol</a>)
+
+    <!-- Svensk transkription: 'cirkel'. -->
+    <p><a href="#krets" title="ASLWrite: orbit mark/(full) steering mark">kretsmarkör</a>
+      (<a href="#rorelse">rörelsesymbol</a>)
+
+    <!-- Svensk transkription: lägessymboler. -->
+    <p><a href="#kropp" title="ASLWrite: locative space / locative mark / locatives">kroppsläge</a> (<a href="#lage">läge</a>)
+
+    <!-- Svensk transkription: lägessymboler. -->
+    <p><a href="#lage" title="ASLWrite: locative space / locative mark / locatives"
+      >läge</a> (se <a href="#kropp">kroppsläge</a>
+      och <a href="#neutral">neutrala läget</a>)
+
+    <!-- Svensk transkription: 'konvergerar'. -->
+    <p><a href="#krympande" title="ASLWrite: contraction mark">krympande
+      linjer</a> (<a href="#rorelse">rörelsesymbol</a>)
+
+    <!-- Svensk transkription har inga skiljesymboler. -->
+    <p><a href="#mening" title="ASLWrite: ?">meningsslut</a>
+      (<a href="#skilje">skiljesymboler</a>)
+
+    <!-- Svensk transkription har inga extramanuella markörer. -->
+    <p><a href="#mun" title="ASLWrite: ?">mun</a>
+
+    <!-- Svensk transkription: ingen lägessymbol eller 'neutrala läget'. -->
+    <p><a href="#neutral" title="ASLWrite: neutral space">neutrala läget</a>
+      (<a href="#lage">läge</a>)
+
+    <!-- Svensk transkription: -->
+    <p><a href="#ratt"
+      title="ASLWrite: steering mark / half steering mark (vertical/horizontal)"
+      >rattmarkör</a> (<a href="#rorelse">rörelsesymbol</a>)
+
+    <!-- Svensk transkription: rörelseriktningssymboler + 'båge'. -->
+    <p><a href="#linje" title="ASLWrite: motion lines">rörelselinje</a>
+      (<a href="#rorelse">rörelsesymbol</a>)
+
+    <!-- Svensk transkription: interaktionsarter -->
+    <p><a href="#rorelse" title="ASLWrite: movement marks">rörelsesymboler</a> (se
+      <a href="#flat">flät-</a>,
+      <a href="#krets">krets-</a>,
+      <a href="#ratt">ratt-</a>,
+      <a href="#tur">tur-</a>,
+      <a href="#vertikal">vertikal-</a> och
+      <a href="#vev">vevmarkör</a> –
+      <a href="#fix">fix-</a>,
+      <a href="#kontakt">kontakt-</a> och
+      <a href="#slut">slutpunkt</a> –
+      <a href="#forandring">förändrings-</a>,
+      <a href="#linjer">rörelse-</a>,
+      <a href="#krympande">krympande</a> och
+      <a href="#vaxande">växande linjer</a>)
+
+    <!-- Svensk transkription: finns ej i svenskt teckenspråk. -->
+    <p><a href="#skak" title="ASLWrite: rattle diacritic">skakmarkör</a>
+      (<a href="#diakritiska">diakritisk markör</a>)
+
+    <!-- Svensk transkription: 'divergerar' -->
+    <p><a href="#vaxande" title="ASLWrite: expanding mark">växande linjer</a>
+      (<a href="#rorelse">rörelsesymbol</a>)
+
+    <!-- Svensk transkription: ingen motsvarighet. -->
+    <p><a href="#slut" title="ASLWrite: endpoint">slutpunkt</a>
+      (<a href="#rorelse">rörelsesymbol</a>)
+
+    <!-- Svensk transkription: 'växelvis'. -->
+    <p><a href="#tur" title="ASLWrite: alternating mark">turmarkör</a>
+      (<a href="#rorelse">rörelsesymbol</a>)
+
+    <!-- Svensk transkription: kort eller distinkt rörelsesymbol. -->
+    <p><a href="#tvar" title="ASLWrite: firmpoint">tvärslutpunkt</a>
+      (<a href="#rorelse">rörelsesymbol</a>)
+
+    <!-- Svensk transkription: rörelse upp/ner/upp–ner + varianter av 'båge'. -->
+    <p><a href="#vertikal" title="ASLWrite: vertical mark">vertikalmarkör</a>
+      (<a href="#rorelse">rörelsesymbol</a>)
+
+    <!-- Svensk transkription: 'strör'. -->
+    <p><a href="#stro" title="ASLWrite: ingen motsvarighet">strömarkör</a>
+      (<a href="#diakritiska">diakritisk markör</a>)
+
+    <!-- Svensk transkription: 'cirkel'. -->
+    <p><a href="#vev" title="ASLWrite: crank mark">vevmarkör</a>
+      (<a href="#rorelse">rörelsesymbol</a>)
+
+    <!-- Svensk transkription: 'vinkar'. -->
+    <p><a href="#vink" title="ASLWrite: ingen motsvarighet">vinkmarkör</a>
+      (<a href="#diakritiska">diakritisk markör</a>)
+
+    <!-- Svensk transkription: 'vrids'. -->
+    <p><a href="#vrid" title="ASLWrite: rotational diacritic">vridmarkör</a>
+      (<a href="#diakritiska">diakritisk markör</a>)
+
+    <!-- Svensk transkription har inga extramanuella markörer. -->
+    <p><a href="#ogon" title="ASLWrite: ?">ögonbryn</a>
+  </div>
+
+  <footer>
+    <hr>
+    <p>Copyright 2018 <a href="http://zrajm.org">zrajm</a> (Uppsala, Sverige)
+  </footer>
+</section>
+
+</body>
+</html>
