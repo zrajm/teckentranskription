@@ -5,38 +5,10 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   version="1.1"
+   width="33.985699"
+   height="37.390209"
    id="svg8574"
-   height="747.80414"
-   width="679.71399"
-   inkscape:version="0.91 r13725"
-   sodipodi:docname="a22.svg">
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1280"
-     inkscape:window-height="751"
-     id="namedview5009"
-     showgrid="false"
-     inkscape:zoom="0.31559066"
-     inkscape:cx="-77.921208"
-     inkscape:cy="373.9021"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg8574"
-     fit-margin-top="0"
-     fit-margin-left="0"
-     fit-margin-right="0"
-     fit-margin-bottom="0" />
+   version="1.1">
   <metadata
      id="metadata8582">
     <rdf:RDF>
@@ -52,9 +24,7 @@
   <defs
      id="defs8580" />
   <path
-     id="path8576"
-     d="M 81.30582,27.645262 372.03572,727.80743 659.60551,20.264034 M 20.266466,439.93955 333.87006,320.99401 c 21.30896,2.3406 33.38252,17.33758 36.57087,41.08922 l 1.76861,325.96882"
-     style="fill:none;stroke:#030303;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
-     inkscape:connector-curvature="0"
-     sodipodi:nodetypes="ccccccc" />
+     style="fill:none;stroke:#030303;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+     d="M 4.0652933,1.3822617 18.601783,36.390372 32.980273,1.0132017 M 1.0133233,21.996982 16.693503,16.049702 c 1.06545,0.11703 1.66912,0.86688 1.82854,2.05446 l 0.0884,16.29844"
+     id="path8576" />
 </svg>

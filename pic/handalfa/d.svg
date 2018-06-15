@@ -5,10 +5,10 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   version="1.1"
+   width="33.806564"
+   height="36.279396"
    id="svg2"
-   height="725.58789"
-   width="676.10913">
+   version="1.1">
   <metadata
      id="metadata10">
     <rdf:RDF>
@@ -23,16 +23,12 @@
   </metadata>
   <defs
      id="defs8" />
-  <g
-     transform="matrix(-1,0,0,1,676.10667,0)"
-     id="g17637">
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 20.23676,703.18323 C 169.10058,620.23686 437.14117,402.92701 655.87235,276.00103"
-       id="path4924-5" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
-       d="m 518.38571,20.284788 c 3.38582,162.546022 7.69029,338.222522 -4.99892,485.963622 -7.82547,51.97171 -12.08913,91.41254 -46.03552,137.83357 -33.9464,46.42104 -73.68693,66.7131 -150.70162,60.37671 C 239.63496,698.12232 185.52613,652.33916 161.34209,580.2057 137.15804,508.07225 146.68346,419.06266 143.60193,338.42779 141.73902,213.5555 142.3718,31.877763 138.28572,23.434788"
-       id="path4" />
-  </g>
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 32.794112,35.159162 C 25.350921,31.011843 11.948892,20.146351 1.0123325,13.800052"
+     id="path4924-5" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+     d="M 7.8866645,1.0142394 C 7.7173735,9.1415405 7.50215,17.925366 8.1366105,25.312421 c 0.3912735,2.598585 0.6044565,4.570627 2.3017765,6.891678 1.69732,2.321052 3.684346,3.335655 7.535081,3.018836 3.850734,-0.316819 6.556176,-2.605977 7.765378,-6.21265 1.209202,-3.606672 0.732931,-8.057152 0.887008,-12.088895 0.09314,-6.243615 0.06151,-15.3275018 0.26581,-15.7496506"
+     id="path4" />
 </svg>

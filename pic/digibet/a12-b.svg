@@ -5,10 +5,10 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   width="676.10913"
-   height="725.58789"
+   version="1.1"
    id="svg2"
-   version="1.1">
+   height="36.279392"
+   width="33.806568">
   <metadata
      id="metadata10">
     <rdf:RDF>
@@ -24,11 +24,11 @@
   <defs
      id="defs8" />
   <path
-     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-     d="M 20.23676,703.18323 C 169.10058,620.23686 437.14117,402.92701 655.87235,276.00103"
-     id="path4924-5" />
+     id="path4924-5"
+     d="m 1.0124541,35.159159 c 7.44319,-4.14732 20.8452199,-15.01281 31.7817799,-21.35911"
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   <path
-     style="fill:none;stroke:#000000;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
-     d="m 518.38571,20.284788 c 3.38582,162.546022 7.69029,338.222522 -4.99892,485.963622 -7.82547,51.97171 -12.08913,91.41254 -46.03552,137.83357 -33.9464,46.42104 -73.68693,66.7131 -150.70162,60.37671 C 239.63496,698.12232 185.52613,652.33916 161.34209,580.2057 137.15804,508.07225 146.68346,419.06266 143.60193,338.42779 141.73902,213.5555 142.3718,31.877763 138.28572,23.434788"
-     id="path4" />
+     id="path4"
+     d="m 25.919894,1.0142394 c 0.1693,8.1273 0.38452,16.9111296 -0.24994,24.2981796 -0.39128,2.59859 -0.60446,4.57063 -2.30178,6.89168 -1.69732,2.32105 -3.68434,3.33565 -7.53508,3.01883 -3.85073,-0.31681 -6.5561699,-2.60597 -7.7653799,-6.21265 -1.2092,-3.60667 -0.73293,-8.05715 -0.887,-12.08889 -0.0931,-6.24362 -0.0615,-15.3274996 -0.26582,-15.7496496"
+     style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
 </svg>

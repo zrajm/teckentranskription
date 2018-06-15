@@ -5,10 +5,10 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   width="634.9223"
-   height="329.74826"
+   version="1.1"
    id="svg10980"
-   version="1.1">
+   height="16.487413"
+   width="31.746105">
   <metadata
      id="metadata10996">
     <rdf:RDF>
@@ -24,7 +24,7 @@
   <defs
      id="defs10994" />
   <path
-     id="path10988"
-     style="fill:none;stroke:#020202;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
-     d="M 20.179323,126.94444 C 104.58163,22.05554 235.03148,5.2750171 369.96853,29.716767 504.90558,54.158517 599.16558,152.11529 614.92248,307.11837 417.87136,313.94941 220.82023,306.24438 23.769116,297.91795 67.61301,236.92852 268.27154,138.06297 420.17932,140.94444" />
+     d="m 1.0089662,6.3472193 c 4.22011,-5.24444 10.7425998,-6.08347001 17.4894598,-4.86138 6.74685,1.22209 11.45985,6.11993 12.24769,13.8700797 -9.85255,0.34155 -19.70511,-0.0437 -29.5576598,-0.46002 2.19219,-3.04947 12.2251198,-7.9927497 19.8205098,-7.8486797"
+     style="fill:none;stroke:#020202;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+     id="path10988" />
 </svg>

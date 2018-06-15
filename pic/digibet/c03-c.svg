@@ -5,10 +5,10 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   width="816.76331"
-   height="519.73627"
+   version="1.1"
    id="svg2"
-   version="1.1">
+   height="25.98595"
+   width="40.838169">
   <metadata
      id="metadata10">
     <rdf:RDF>
@@ -24,11 +24,11 @@
   <defs
      id="defs8" />
   <path
-     d="M 743.70928,396.7937 A 158.10802,158.10802 0 0 1 543.5375,361.498 a 158.10802,158.10802 0 0 1 10e-6,-203.25975 158.10802,158.10802 0 0 1 200.17178,-35.29567"
-     style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-     id="path4191" />
+     id="path4191"
+     style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="m 37.185469,19.83883 a 7.905401,7.905401 0 0 1 -10.00859,-1.76479 7.905401,7.905401 0 0 1 0,-10.16299 7.905401,7.905401 0 0 1 10.00859,-1.76478" />
   <path
-     style="fill:none;stroke:#020202;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
-     d="m 796.76331,259.84598 c 0,118.0543 -99.16967,239.89031 -292.38042,239.89031 C 302.42134,499.73629 148.96393,388.86588 19.999048,259.901 162.84255,117.05749 321.89843,20.017205 495.53511,20.017205 c 207.13202,0 301.2282,121.774475 301.2282,239.828775 z"
-     id="path4-6" />
+     id="path4-6"
+     d="m 39.838169,12.99144 c 0,5.90271 -4.95848,11.99451 -14.61902,11.99451 -10.09808,0 -17.7709504,-5.54352 -24.21919041,-11.99176 C 8.1421286,5.85201 16.094919,1 24.776759,1 c 10.3566,0 15.06141,6.08872 15.06141,11.99144 z"
+     style="fill:none;stroke:#020202;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
 </svg>

@@ -5,14 +5,10 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="716.396"
-   height="549.85303"
-   id="svg8867"
    version="1.1"
-   inkscape:version="0.91 r13725"
-   sodipodi:docname="b12.svg">
+   id="svg8867"
+   height="27.492666"
+   width="35.819798">
   <metadata
      id="metadata8875">
     <rdf:RDF>
@@ -27,34 +23,8 @@
   </metadata>
   <defs
      id="defs8873" />
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1280"
-     inkscape:window-height="751"
-     id="namedview8871"
-     showgrid="false"
-     fit-margin-top="0"
-     fit-margin-left="0"
-     fit-margin-right="0"
-     fit-margin-bottom="0"
-     inkscape:zoom="0.63091569"
-     inkscape:cx="358.1404"
-     inkscape:cy="275.8689"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg8867" />
   <path
-     style="fill:none;stroke:#030303;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
-     d="M 171.35292,529.61182 C 299.25635,327.33954 357.39796,172.2477 461.5133,20.613425 c 121.24109,-0.225311 234.88267,-9.922509 234.88267,63.433562 0,93.265483 -147.78452,104.701623 -324.36625,104.476933 M 312.05292,20.613425 C 207.2737,183.00364 112.31086,383.53512 20.152922,529.61182"
      id="path8869"
-     inkscape:connector-curvature="0"
-     sodipodi:nodetypes="ccsccc" />
+     d="M 8.5676461,26.480606 C 14.962816,16.366986 17.869896,8.6123957 23.075666,1.0306857 c 6.06206,-0.0113 11.74413,-0.49613003 11.74413,3.17167 0,4.66328 -7.38922,5.23509 -16.21831,5.22385 m -2.99884,-8.39552 C 10.363686,9.1501957 5.6155461,19.176766 1.0076461,26.480606"
+     style="fill:none;stroke:#030303;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
 </svg>

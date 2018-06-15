@@ -5,10 +5,10 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   version="1.1"
+   width="45.429379"
+   height="28.277475"
    id="svg2"
-   height="565.54938"
-   width="908.58752">
+   version="1.1">
   <metadata
      id="metadata10">
     <rdf:RDF>
@@ -24,11 +24,11 @@
   <defs
      id="defs8" />
   <path
-     id="path4"
-     d="M 619.64352,533.63825 C 537.75268,558.49815 471.26863,506.79242 426.22986,454.40165 381.19109,402.01091 339.13992,273.40092 419.95652,135.49182 500.77312,-2.4172808 717.70705,-12.745921 804.11287,83.004119 890.51869,178.75415 907.38437,294.94275 870.12768,397.66359 830.33984,507.36307 698.17091,593.61919 634.98448,515.35497 590.45409,460.19858 626.7836,355.76025 660.63272,293.06469"
-     style="fill:none;stroke:#030303;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+     style="fill:none;stroke:#030303;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+     d="m 30.982178,26.681915 c -4.09454,1.243 -7.41874,-1.34229 -9.67068,-3.96183 -2.25194,-2.61954 -4.3545,-9.05004 -0.31367,-15.9454903 4.04083,-6.89545997 14.88753,-7.41188997 19.20782,-2.62439 4.32029,4.78751 5.16357,10.5969403 3.30074,15.7329803 -1.98939,5.48497 -8.59784,9.79778 -11.75716,5.88457 -2.22652,-2.75782 -0.41004,-7.97974 1.28241,-11.11452"
+     id="path4" />
   <path
-     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-     d="m 20.28236,294.13413 c 98.678,-13.17985 295.6482,5.81409 369.89084,-2.61113"
-     id="path12453" />
+     id="path12453"
+     d="m 1.014118,14.706705 c 4.9339,-0.65899 14.78241,0.29071 18.49455,-0.13055"
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
 </svg>

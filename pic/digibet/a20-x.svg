@@ -5,11 +5,11 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   viewBox="0 0 729.81628 889.33252"
-   height="889.33252"
-   width="729.81628"
+   id="svg7183"
    version="1.1"
-   id="svg7183">
+   width="36.49081"
+   height="44.466621"
+   viewBox="0 0 36.49081 44.466621">
   <metadata
      id="metadata7189">
     <rdf:RDF>
@@ -25,15 +25,15 @@
   <defs
      id="defs7187" />
   <path
-     id="path8750"
-     d="M 288.48568,20.274456 C 518.39564,693.58219 518.39564,693.58219 518.39564,693.58219 l 1.82468,0"
-     style="fill:#ffff00;fill-rule:evenodd;stroke:#000000;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+     style="fill:#ffff00;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="m 14.424282,1.0137231 c 11.4955,33.6653899 11.4955,33.6653899 11.4955,33.6653899 l 0.0912,0"
+     id="path8750" />
   <path
-     id="path8750-6"
-     d="M 709.73833,20.274461 522.045,693.58219 l -1.82468,0"
-     style="fill:#ffff00;fill-rule:evenodd;stroke:#000000;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+     style="fill:#ffff00;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="m 35.486912,1.0137231 -9.38467,33.6653899 -0.0912,0"
+     id="path8750-6" />
   <path
-     style="fill:none;stroke:#020202;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
-     d="m 519.40238,651.59171 c 0,167.26563 -78.53436,217.74081 -158.93511,217.74081 -171.9975,0 -307.668327,-132.49582 -340.46844,-218.68255 25.074933,5.25444 372.47007,5.69006 499.40355,0.94174 z"
-     id="path4-6-7" />
+     id="path4-6-7"
+     d="m 25.970112,32.579583 c 0,8.36328 -3.92671,10.88704 -7.94675,10.88704 -8.5998805,0 -15.3834205,-6.62479 -17.0234205,-10.93412 1.25374,0.26272 18.6235005,0.2845 24.9701705,0.0471 z"
+     style="fill:none;stroke:#020202;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
 </svg>

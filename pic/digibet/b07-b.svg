@@ -5,47 +5,10 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   version="1.1"
+   width="30.24896"
+   height="34.008041"
    id="svg6204"
-   height="680.16083"
-   width="604.97931"
-   inkscape:version="0.91 r13725"
-   sodipodi:docname="b07-b.svg">
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1280"
-     inkscape:window-height="751"
-     id="namedview16"
-     showgrid="false"
-     inkscape:snap-global="true"
-     inkscape:snap-others="false"
-     inkscape:snap-bbox="true"
-     inkscape:snap-bbox-midpoints="false"
-     inkscape:object-paths="true"
-     inkscape:snap-intersection-paths="true"
-     inkscape:object-nodes="true"
-     inkscape:snap-midpoints="true"
-     inkscape:snap-smooth-nodes="true"
-     fit-margin-top="0"
-     fit-margin-left="0"
-     fit-margin-right="0"
-     fit-margin-bottom="0"
-     inkscape:zoom="0.69395184"
-     inkscape:cx="349.21272"
-     inkscape:cy="387.84921"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg6204" />
+   version="1.1">
   <metadata
      id="metadata6212">
     <rdf:RDF>
@@ -61,9 +24,7 @@
   <defs
      id="defs6210" />
   <path
-     id="path6206"
-     style="fill:none;stroke:#030303;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
-     d="M 20.002,245.66956 C 20.002,163.92308 101.48842,20 302.49065,20 503.49288,20 584.9793,163.9231 584.9793,245.66958 c 0,147.99881 -138.44071,291.81168 -281.78095,414.49358 l 0,-436.30958"
-     inkscape:connector-curvature="0"
-     sodipodi:nodetypes="ccscc" />
+     d="M 1.0001,12.28348 C 1.0001,8.19615 5.07442,1 15.12453,1 c 10.05011,0 14.12443,7.19615 14.12443,11.28348 0,7.39994 -6.92203,14.59058 -14.08905,20.72468 l 0,-21.81548"
+     style="fill:none;stroke:#030303;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+     id="path6206" />
 </svg>

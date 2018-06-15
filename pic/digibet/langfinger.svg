@@ -5,10 +5,10 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   width="565.54938"
-   height="908.59003"
+   version="1.1"
    id="svg2"
-   version="1.1">
+   height="45.429379"
+   width="28.27747">
   <metadata
      id="metadata10">
     <rdf:RDF>
@@ -24,11 +24,11 @@
   <defs
      id="defs8" />
   <path
-     style="fill:none;stroke:#030303;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
-     d="M 31.911162,619.646 C 7.0512614,537.75516 58.756991,471.27111 111.14776,426.23234 163.5385,381.19357 292.14849,339.1424 430.05759,419.959 c 137.9091,80.8166 148.23774,297.75053 52.4877,384.15635 -95.75003,86.40582 -211.93863,103.2715 -314.65947,66.01481 C 58.186338,830.34232 -28.069783,698.17339 50.194435,634.98696 105.35083,590.45657 209.78916,626.78608 272.48472,660.6352"
-     id="path4" />
+     id="path4"
+     d="m 1.5955606,30.982178 c -1.24300002,-4.09454 1.34229,-7.41874 3.96183,-9.67068 2.61953,-2.25194 9.0500304,-4.3545 15.9454904,-0.31367 6.89545,4.04083 7.41189,14.88753 2.62438,19.20782 -4.7875,4.32029 -10.59693,5.16357 -15.7329704,3.30074 -5.48497,-1.98939 -9.79778,-8.59784 -5.88457,-11.75716 2.75782,-2.22652 7.9797404,-0.41004 11.1145204,1.28241"
+     style="fill:none;stroke:#030303;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
   <path
-     id="path12453"
-     d="m 271.41528,20.284842 c 13.17985,98.677998 -5.81409,295.648198 2.61113,369.890838"
-     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="m 13.570761,1.014118 c 0.659,4.9339 -0.2907,14.78241 0.13056,18.49455"
+     id="path12453" />
 </svg>

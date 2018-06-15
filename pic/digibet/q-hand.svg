@@ -5,39 +5,10 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   version="1.1"
+   width="43.873146"
+   height="28.106394"
    id="svg2"
-   height="560.30609"
-   width="877.75854"
-   inkscape:version="0.91 r13725"
-   sodipodi:docname="q-hand.svg">
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1280"
-     inkscape:window-height="751"
-     id="namedview11202"
-     showgrid="false"
-     inkscape:zoom="0.71983701"
-     inkscape:cx="293.50627"
-     inkscape:cy="245.12753"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg2"
-     fit-margin-top="0"
-     fit-margin-left="0"
-     fit-margin-right="0"
-     fit-margin-bottom="0"
-     inkscape:object-nodes="true" />
+   version="1.1">
   <metadata
      id="metadata10">
     <rdf:RDF>
@@ -53,9 +24,7 @@
   <defs
      id="defs8" />
   <path
-     inkscape:connector-curvature="0"
-     style="fill:none;stroke:#000000;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
-     d="M 20.574916,542.07044 C 190.9422,508.07004 180.46437,335.73045 183.3321,305.46024 191.48072,219.44785 213.95605,132.31362 294.22707,72.336592 374.49808,12.359562 557.90679,8.8641019 648.34484,37.256952 c 90.43805,28.39286 123.49307,68.020678 159.53841,119.469238 36.04534,51.44856 57.53423,92.90564 47.48075,146.49319 -14.80498,33.48951 -28.17781,22.9469 -106.64955,16.16449 -69.96595,-7.76764 -382.23299,-6.79476 -563.24554,-2.05679"
      id="path4-3"
-     sodipodi:nodetypes="cssssccc" />
+     d="m 1.013969,27.103527 c 8.51836,-1.70002 7.99447,-10.317 8.13786,-11.83051 0.40743,-4.30062 1.5312,-8.6573403 5.54475,-11.6561903 4.01355,-2.99884995 13.18398,-3.17361995 17.70588,-1.75398 4.52191,1.41964 6.17466,3.40104 7.97693,5.97346 1.80226,2.5724303 2.87671,4.6452903 2.37403,7.3246603 -0.74025,1.67448 -1.40889,1.14735 -5.33247,0.80823 -3.4983,-0.38838 -19.11165,-0.33974 -28.16228,-0.10284"
+     style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
 </svg>

@@ -5,10 +5,10 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   version="1.1"
+   width="25.952011"
+   height="35.476097"
    id="svg6501"
-   height="709.52191"
-   width="519.04034">
+   version="1.1">
   <metadata
      id="metadata6509">
     <rdf:RDF>
@@ -24,7 +24,7 @@
   <defs
      id="defs6507" />
   <path
-     id="path6503-5"
-     d="M 498.93645,20.271154 240.61131,689.27115 20.090548,20.271154 m 134.414282,0 C 202.77332,169.68999 239.44203,253.0799 244.77015,291.4318 223.76668,340.13093 106.88506,558.01385 35.842172,689.27115"
-     style="fill:none;stroke:#030303;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+     style="fill:none;stroke:#030303;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+     d="M 24.946817,1.0135577 12.030567,34.463558 1.0045274,1.0135577 m 6.72071,0 c 2.4134296,7.47094 4.2468596,11.6404403 4.5132696,13.5580303 -1.05018,2.43496 -6.8942596,13.32911 -10.4463996,19.89197"
+     id="path6503-5" />
 </svg>
