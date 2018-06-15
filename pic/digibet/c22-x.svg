@@ -5,11 +5,11 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   viewBox="0 0 37.106506 46.466625"
-   height="46.466625"
-   width="37.106506"
+   id="svg7183"
    version="1.1"
-   id="svg7183">
+   width="37.106506"
+   height="46.466625"
+   viewBox="0 0 37.106506 46.466625">
   <metadata
      id="metadata7189">
     <rdf:RDF>
@@ -25,15 +25,19 @@
   <defs
      id="defs7187" />
   <path
-     id="path8750"
+     style="fill:#ffff00;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
      d="m 15.03998,1.0137231 c 11.4955,33.6653899 11.4955,33.6653899 11.4955,33.6653899 l 0.0912,0"
-     style="fill:#ffff00;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+     id="path8750" />
   <path
-     id="path8750-6"
+     style="fill:#ffff00;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
      d="m 36.10261,1.0137231 -9.38467,33.6653899 -0.0912,0"
-     style="fill:#ffff00;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+     id="path8750-6" />
   <path
-     id="path20354"
+     style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
      d="m 26.641824,32.23662 c 0.184484,1.34957 0.01914,2.728457 -0.01012,4.053241 -0.05853,2.649567 -0.70326,5.082722 -2.569035,6.632107 -3.080838,2.558403 -8.1359,3.18156 -11.43963,1.79256 C 7.5741901,42.591818 3.9085001,37.972398 0.99993989,31.875358 12.41684,32.117018 24.679408,32.467171 25.89417,32.019285"
-     style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+     id="path20354" />
+  <path
+     id="path6056"
+     d="m 9.0740686,35.829085 c 5.0467734,0.409711 9.1922864,0.09466 13.5425254,-0.05579"
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
 </svg>
