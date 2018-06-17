@@ -81,6 +81,8 @@
     div.handform > table td[colspan="2"] { font-size: small; }
 
     .x2 { font-size: 1.8em; line-height: 50px !important; }
+
+    .padded img, img.padded { margin: 10px; }
   </style>
 </head>
 <body>
@@ -638,13 +640,13 @@ på &lt;<a href="sslwrite@klingonska.org">sslwrite@<wbr>klingonska<wbr>.org</a>&
       <figure>
         <table border=1 style="display:inline-table">
           <tr>
-            <td style="padding: .5em .5em;"><img src="pic/asl/fungera.svg">
+            <td><img class=padded src="pic/asl/fungera.svg">
           <tr>
             <td style="padding:.25em .5em"><a href="http://teckensprakslexikon.su.se/ord/05419">fungera</a>
         </table>
         <table border=1 style="display:inline-table">
           <tr>
-            <td style="padding: .5em .5em;"><img src="pic/asl/amerika.svg">
+            <td><img class=padded src="pic/asl/amerika.svg">
           <tr>
             <td style="padding:.25em .5em"><a href="http://teckensprakslexikon.su.se/ord/00997">Amerika</a>
         </table>
@@ -698,9 +700,9 @@ på &lt;<a href="sslwrite@klingonska.org">sslwrite@<wbr>klingonska<wbr>.org</a>&
         <td>Framåt
         <td>Från sidan
     </table>
-    <figcaption><b>Lägessymboler (höger hand).</b> Symbolerna spegelvänds när
-      tecknandet sker med vänster hand. <i>Halsen</i> har två streck,
-      medan de andra lägessymbolerna bara har ett.</figcaption>
+    <figcaption><b>Lägessymboler (för höger hand).</b> Symbolerna spegelvänds
+      när tecknandet sker med vänster hand. <i>Halsen</i> har två streck, medan
+      de andra lägessymbolerna bara har ett.</figcaption>
   </figure>
 
   <p id=framat><b>Framåt</b> – När perspektivet är <i>framåt</i> används
@@ -802,9 +804,28 @@ på &lt;<a href="sslwrite@klingonska.org">sslwrite@<wbr>klingonska<wbr>.org</a>&
 <section id=kropprorelse>
   <h1>kroppsrörelser</h1>
 
-  <p>Saknas.
-  (Se ’<a href="http://www.aslwrite.com/writeaslnow/extramanualmarks/#body">ASWrite:
-  Body movements</a>’.)
+  <figure class=padded>
+    <table border=1 style="display:inline-table" id=nickning>
+      <tr><td align=center><img src="pic/asl/nickning.svg">
+      <tr><td>Nickning
+    </table>
+    <table border=1 style="display:inline-table" id=skakning>
+      <tr><td align=center><img src="pic/asl/skakning.svg">
+      <tr><td>Huvudskakning
+      <!--[https://www.handspeak.com/write/asl/index.php?id=561]-->
+    </table>
+    <table id=axel border=1 style="display:inline-table">
+      <tr><td align=center><img src="pic/asl/axelrorelse.svg">
+      <tr><td>Axelrörelse
+    </table>
+    <table id=rynkad border=1 style="display:inline-table">
+      <tr><td align=center><img src="pic/asl/rynkad_nasa.svg">
+      <tr><td>Rynkad<br>näsa
+    </table>
+    <figcaption><b>Kroppsrörelser</b> skrivs som en kombination av
+      kroppssymboler och rörelselinjer. Det finns också en särskild symbol
+      för <b>rynkad näsa</b>.</figcaption>
+  </figure>
 </section>
 
 <hr>
@@ -814,7 +835,7 @@ på &lt;<a href="sslwrite@klingonska.org">sslwrite@<wbr>klingonska<wbr>.org</a>&
 
   <p><b id=mening>Meningsslut</b> – För att markera slutet på en mening (i ett
   längre sammanhang) används en liten cirkel. I kortare sammanhang (enskilda
-  fraser tex) är det ofta tydligt var meningen slutar och meningsslutet kan
+  fraser tex) är det ofta tydligt var meningen slutar och symbolen kan
   utelämnas.
 
     <!-- FIXME: Inkludera exempel på meningsslut i ett sammanhang.
@@ -834,6 +855,9 @@ på &lt;<a href="sslwrite@klingonska.org">sslwrite@<wbr>klingonska<wbr>.org</a>&
   <h1>Termer</h1>
 
   <div class="hanging glossary">
+    <p><a href="#axel" title="ASLWrite: shoulder shift">axelrörelse</a>
+      (<a href="#kropprorelse">kroppsrörelse</a>)
+
     <!-- Svensk transkription: 'böjs'. -->
     <p><a href="#bojs" title="ASLWrite: ingen motsvarighet">böjsmarkör</a>
       (<a href="#diakritiska">diakritisk markör</a>)
@@ -866,6 +890,12 @@ på &lt;<a href="sslwrite@klingonska.org">sslwrite@<wbr>klingonska<wbr>.org</a>&
 
     <p><a href="#hand" title="ASLWrite: digit (in digibet)">handsymbol</a>
 
+    <p><b>huvud</b> (se <a href="#kropprorelse">kroppsrörelse:</a>
+      <a href="#nickning">nickning</a> och <a href="#skakning">skakning</a>)
+
+    <p><a href="#axel" title="ASLWrite: head shake">huvudskakning</a>
+      (<a href="#kropprorelse">kroppsrörelse</a>)
+
     <!-- Svensk transkription: attitydsymboler. -->
     <p><a href="#kant" title="ASLWrite: edge diacritic">kantmarkör</a>
       (<a href="#diakritiska">diakritisk markör</a>)
@@ -881,14 +911,14 @@ på &lt;<a href="sslwrite@klingonska.org">sslwrite@<wbr>klingonska<wbr>.org</a>&
     <!-- Svensk transkription: lägessymboler. -->
     <p><a href="#kropp" title="ASLWrite: locative space / locative mark / locatives">kroppsläge</a> (<a href="#lage">läge</a>)
 
+    <!-- Svensk transkription: 'konvergerar'. -->
+    <p><a href="#krympande" title="ASLWrite: contraction mark">krympande
+      linjer</a> (<a href="#rorelse">rörelsesymbol</a>)
+
     <!-- Svensk transkription: lägessymboler. -->
     <p><a href="#lage" title="ASLWrite: locative space / locative mark / locatives"
       >läge</a> (se <a href="#kropp">kroppsläge</a>
       och <a href="#neutral">neutrala läget</a>)
-
-    <!-- Svensk transkription: 'konvergerar'. -->
-    <p><a href="#krympande" title="ASLWrite: contraction mark">krympande
-      linjer</a> (<a href="#rorelse">rörelsesymbol</a>)
 
     <!-- Svensk transkription har inga skiljesymboler. -->
     <p><a href="#mening" title="ASLWrite: ?">meningsslut</a>
@@ -901,10 +931,15 @@ på &lt;<a href="sslwrite@klingonska.org">sslwrite@<wbr>klingonska<wbr>.org</a>&
     <p><a href="#neutral" title="ASLWrite: neutral space">neutrala läget</a>
       (<a href="#lage">läge</a>)
 
+    <p><a href="#nickning">nicka</a> (se <a href="#kropprorelse">kroppsrörelse</a)
+
     <!-- Svensk transkription: -->
     <p><a href="#ratt"
       title="ASLWrite: steering mark / half steering mark (vertical/horizontal)"
       >rattmarkör</a> (<a href="#rorelse">rörelsesymbol</a>)
+
+    <p><a href="#rynkad" title="ASLWrite: nose crinkle">rynkad näsa</a>
+      (<a href="#kroppsrorelse">kroppsrörelse</a>)
 
     <!-- Svensk transkription: rörelseriktningssymboler + 'båge'. -->
     <p><a href="#linje" title="ASLWrite: motion lines">rörelselinje</a>
@@ -926,17 +961,20 @@ på &lt;<a href="sslwrite@klingonska.org">sslwrite@<wbr>klingonska<wbr>.org</a>&
       <a href="#krympande">krympande</a> och
       <a href="#vaxande">växande linjer</a>)
 
+    <p><a href="#skakning">skaka på huvudet</a>
+      (se <a href="#kropprorelse">kroppsrörelse</a>)
+
     <!-- Svensk transkription: finns ej i svenskt teckenspråk. -->
     <p><a href="#skak" title="ASLWrite: rattle diacritic">skakmarkör</a>
       (<a href="#diakritiska">diakritisk markör</a>)
 
-    <!-- Svensk transkription: 'divergerar' -->
-    <p><a href="#vaxande" title="ASLWrite: expanding mark">växande linjer</a>
-      (<a href="#rorelse">rörelsesymbol</a>)
-
     <!-- Svensk transkription: ingen motsvarighet. -->
     <p><a href="#slut" title="ASLWrite: endpoint">slutpunkt</a>
       (<a href="#rorelse">rörelsesymbol</a>)
+
+    <!-- Svensk transkription: 'strör'. -->
+    <p><a href="#stro" title="ASLWrite: ingen motsvarighet">strömarkör</a>
+      (<a href="#diakritiska">diakritisk markör</a>)
 
     <!-- Svensk transkription: 'växelvis'. -->
     <p><a href="#tur" title="ASLWrite: alternating mark">turmarkör</a>
@@ -950,10 +988,6 @@ på &lt;<a href="sslwrite@klingonska.org">sslwrite@<wbr>klingonska<wbr>.org</a>&
     <p><a href="#vertikal" title="ASLWrite: vertical mark">vertikalmarkör</a>
       (<a href="#rorelse">rörelsesymbol</a>)
 
-    <!-- Svensk transkription: 'strör'. -->
-    <p><a href="#stro" title="ASLWrite: ingen motsvarighet">strömarkör</a>
-      (<a href="#diakritiska">diakritisk markör</a>)
-
     <!-- Svensk transkription: 'cirkel'. -->
     <p><a href="#vev" title="ASLWrite: crank mark">vevmarkör</a>
       (<a href="#rorelse">rörelsesymbol</a>)
@@ -965,6 +999,10 @@ på &lt;<a href="sslwrite@klingonska.org">sslwrite@<wbr>klingonska<wbr>.org</a>&
     <!-- Svensk transkription: 'vrids'. -->
     <p><a href="#vrid" title="ASLWrite: rotational diacritic">vridmarkör</a>
       (<a href="#diakritiska">diakritisk markör</a>)
+
+    <!-- Svensk transkription: 'divergerar' -->
+    <p><a href="#vaxande" title="ASLWrite: expanding mark">växande linjer</a>
+      (<a href="#rorelse">rörelsesymbol</a>)
 
     <!-- Svensk transkription har inga extramanuella markörer. -->
     <p><a href="#ogon" title="ASLWrite: ?">ögonbryn</a>
