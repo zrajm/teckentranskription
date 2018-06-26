@@ -5,10 +5,10 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   version="1.1"
+   width="25.158106"
+   height="38.288933"
    id="svg16683"
-   height="38.288929"
-   width="21.761538">
+   version="1.1">
   <metadata
      id="metadata16691">
     <rdf:RDF>
@@ -24,7 +24,11 @@
   <defs
      id="defs16689" />
   <path
-     id="path27723"
+     d="m 2.7083312,1.0105485 c 6.977,7.05113 13.7053298,15.2986105 15.6065198,26.5750205 0.27704,1.64315 0.21643,2.95651 0.10755,3.88271 -0.23848,2.028551 -1.38565,4.188891 -3.00704,5.175491 -1.62139,0.98661 -3.65314,0.70189 -5.16064,0 -1.5074998,-0.70188 -3.0803198,-3.13428 -3.0629898,-5.144451 -0.13866,-2.41999 0.89353,-5.70692 1.9862,-8.1665 C 11.700261,17.655109 17.868381,6.0334785 22.450191,1.0105485"
      style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-     d="m 1.0100473,1.0105485 c 6.977,7.05113 13.7053297,15.2986105 15.6065197,26.5750205 0.27704,1.64315 0.21643,2.95651 0.10755,3.88271 -0.23848,2.02855 -1.38565,4.18889 -3.00704,5.17549 -1.62139,0.98661 -3.65314,0.70189 -5.1606397,0 -1.5075,-0.70188 -3.08032,-3.13428 -3.06299,-5.14445 -0.13866,-2.41999 0.89353,-5.70692 1.9862,-8.1665 C 10.001977,17.655109 16.170097,6.0334785 20.751907,1.0105485" />
+     id="path27723" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 1.0125643,35.562759 24.145541,23.160998"
+     id="path4164" />
 </svg>
