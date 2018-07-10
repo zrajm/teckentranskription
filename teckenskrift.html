@@ -7,11 +7,12 @@
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <!--
       (Approx prioordning.)
-      * TODO Lägg till bild på ögonbryn
       * TODO Lägg till bild på munformer
       * TODO Kombination ögonbryn/mun och näsrynkning
              [http://www.aslwrite.com/writeaslnow/extramanualmarks/]
              (Under 'Kroppsrörelser' eller som egen rubrik?)
+      * TODO Begripliga namn på handformernas SVG-filer
+      * TODO Gör ansiktsillustrationer till SVG
       * TODO Lägg till meningsexempel (från Bergmans grammatik?)
              (relativsats, frågesats, retorisk fråga, vanligt påstående)
              Om-sats: https://www.facebook.com/photo.php?fbid=10155275501528404
@@ -19,17 +20,27 @@
       * TODO Lägg till något kortfatat om handformernas designprinciper
              [http://www.aslwrite.com/whats-secret-asl-digits-2/]
       * TODO Exempel på skrift i början av texten
-         * TODO: mitt persontecken sist i 'Bakgrund'
          * TODO: Tvåspråkig trafikskylt
                  Med namn på stad/städer [Stockholm + Uppsala] fotoshoppad så
                  text är på både svenska och SSL.
          * TODO: Titeln på artikeln
     -->
   <style>
+    h1 { margin: 1em 0; }
+
     ul { margin-left: 1em; }
 
     body { margin: .25em .5em; }
     section { margin-top: 1em; margin-bottom: 1em; }
+
+    table.inline {
+      display: inline-table;
+      margin: 0em;
+    }
+    table th,
+    table td {
+        text-align: center;
+    }
     table[border]:not([border="0"]) {
       border-collapse: collapse;
       border: 1px solid black;
@@ -40,12 +51,18 @@
       padding: .125em .25em;
       border: 1px solid black;
     }
+    .border { border: 1px solid black; }
+    .noborder { border: 0; }
     .shaded { background: rgba(127, 127, 127, .25); opacity: .6; }
     .blue { background: rgba(0, 0, 255, .2); }
     .hand img { height: 100px; }
     .trans { font-size: 200%; }
     .trans img { height: 28px; }
     .grey { background: rgba(127, 127, 127, .25); }
+    .space + .space { margin-left: 20px; }
+
+    table { font-size: inherit; }
+
     table.border-example {
         caption-side: bottom;
         border: 1px solid black;
@@ -99,20 +116,24 @@
 
     div.handform > table { display: inline-table; margin: .25em .125em; }
     div.handform > table td[colspan="2"] { font-size: small; }
+    div.handform > table td { border: 0 !important }
 
     .x2 { font-size: 1.8em; line-height: 50px !important; }
 
     .padded img, img.padded { margin: 10px; }
+
+    .FIXME { background: #ff0; }
   </style>
 </head>
 <body>
+
 <h1>Teckenskrift – Att skriva teckenspråk</h1>
 
-<p>Nedanstående är en <i style="background:#ff0">ännu ofärdig</i> anpassning
+<p>Nedanstående är en <i class=FIXME>ännu ofärdig</i> anpassning
 av <a href="http://aslwrite.com">ASLWrite</a> till svenskt teckenspråk. Du är
-varmt välkommen att använda dig av de delar som finns. Idéer,
-åsikter och erfarenheter av skrivet teckenspråk mottages tacksamt
-på &lt;<a href="sslwrite@klingonska.org">sslwrite@<wbr>klingonska<wbr>.org</a>&gt;.
+varmt välkommen att använda dig av de delar som finns. Idéer, åsikter och
+erfarenheter av skrivet teckenspråk mottages tacksamt på
+&lt;<a href="sslwrite@klingonska.org">sslwrite@<wbr>klingonska<wbr>.org</a>&gt;.
 
 <ul style="margin:1em 2em;">
   <li><a href="#bakgrund">Bakgrund</a>
@@ -130,11 +151,14 @@ på &lt;<a href="sslwrite@klingonska.org">sslwrite@<wbr>klingonska<wbr>.org</a>&
     </ul>
   <li><a href="#lage">Läge</a>
   <li><a href="#diakritiska">Diakritiska markörer</a>
-  <li><a href="#ogon">Ögonbryn</a>
-  <li><a href="#mun">Mun</a>
+  <li><a href="#ansikte">Ansikte</a>
+    <ul>
+      <li><a href="#ogon">Ögonbryn</a>
+      <li><a href="#mun">Mun</a>
+    </ul>
   <li><a href="#kropp">Kroppsrörelser</a>
   <li><a href="#skilje">Skiljesymboler</a>
-  <li><a href="#termer">Termer</a>
+  <li><a href="#index">Index</a>
 </ul>
 
 <section>
@@ -145,31 +169,40 @@ på &lt;<a href="sslwrite@klingonska.org">sslwrite@<wbr>klingonska<wbr>.org</a>&
   en <a href="sslwrite.html">detaljerad lista över symbolerna på engelska</a>
   för den som är nyfiken.)
 
-  <p>Denna skrift (också känd som SSLWrite) är baserad
+  <p>Denna skrift (som också kan benämnas SSLWrite) är baserad
   på <a href="http://aslwrite.com">ASLWrite</a> (för amerikanskt teckenspråk)
   som i sin tur skapats av Adrean Clark, Jules Dameron, Robert Arnold och många
-  andra. Den här sidan är till stora delar en översättning och bearbetning av
-  Adrean
-  Clarks <i><a href="http://www.aslwrite.com/free/22HWASLebookfree.pdf">How to
-  Write American Sign Language</a></i> med många anpassningar gjorda för
-  svenskt teckenspråk.
+  andra. Den här texten är skapad med utgångspunkt i Adrean Clarks
+  bok <i><a href="http://www.aslwrite.com/free/22HWASLebookfree.pdf">How to
+  Write American Sign Language</a></i> men med många uppdateringar. Dels har
+  jag tagit med nyare praxis
+  från <a href="https://www.facebook.com/groups/ASLwrite">ASLWrites
+  fejsbokgrupp</a>, dels har jag justerat och gjort tillägg för att kunna
+  skriva svenskt teckenspråk.
 
-  <p>Vem är då jag? Jag heter <a href="http://zrajm.org">zrajm</a>, och jag är
+  <p>Så vem är jag? Jag heter <a href="http://zrajm.org">zrajm</a>, och jag är
   en (hörande) student av svenskt teckenspråk (vid Stockholms universitet).
   Teckenskriften som jag beskriver på den här sidan föddes ur min önskan att
   kunna anteckna och läsa direkt på teckenspråk utan att behöva gå omvägen över
   svenska.
 
+  <figure>
+    <table>
+      <tr><td style="text-align:center">zrajm<br><img src="pic/ssl/zrajm.svg" style="margin-top:.25em">
+    </table>
+  </figure>
+
   <p>P.S. För att undvika förvirring i den här texten så använder jag ordet
-  ’tecken’ enbart för att referera till tecken i teckenspråket. När jag talar
-  om skrivna krumelurer kallar jag dem istället ’markör’, ‘symbol’ etc.
+  ’tecken’ bara när jag talar om tecken i teckenspråket. När jag talar om
+  krumelurer skrivna på ett papper kallar jag dem istället ’markör’, ‘symbol’
+  eller liknande.
 </section>
 
 <section>
   <h1 id=handalfabetet>handalfabetet</h1>
 
   <p>Så här ser handalfabetet ut (om du tecknar med höger hand – använder du
-  vänster blir alla symboler spegelvända).
+  vänster blir symbolerna spegelvända).
 
   <figure class="x2" style="border:1px solid black;margin:1em;word-spacing:.5em;letter-spacing:.1em;padding:.125em .25em;font-size:2em;line-height:1.5em!important;text-align:center">
     <nobr>A<img src="pic/digibet/c02.svg"></nobr>
@@ -222,7 +255,7 @@ på &lt;<a href="sslwrite@klingonska.org">sslwrite@<wbr>klingonska<wbr>.org</a>&
     <h1 id=oppna>öppna handformer</h1>
     <div class=handform>
       <table border=1>
-        <tr><td class=hand><img src="pic/hand2/a01.png">
+        <tr><td class="hand noborder"><img src="pic/hand2/a01.png">
           <td><img src="pic/digibet/a01.svg">
         <tr><td colspan=2>sprethand
       </table>
@@ -532,7 +565,7 @@ på &lt;<a href="sslwrite@klingonska.org">sslwrite@<wbr>klingonska<wbr>.org</a>&
       <table border=1 class=shaded>
         <tr><td class=hand><img src="pic/x/lillfingret-2.png">
           <td><big><big><big>?</big></big></big>
-        <tr><td colspan=2>lillfinger (variant)
+        <tr><td colspan=2>lillfinger (variant)<!--FIXME symbol?-->
       </table>
       <table border=1>
         <tr><td class=hand><img src="pic/hand2/c24.png">
@@ -615,53 +648,95 @@ på &lt;<a href="sslwrite@klingonska.org">sslwrite@<wbr>klingonska<wbr>.org</a>&
   exemplet ’klicka’ nedan).
 
   <figure>
-    <table border=1 style="display:inline-table">
-      <tr><td><img src="pic/asl/tanke.svg" style="margin:5px 10px">
-      <tr><td>’<a href="http://teckensprakslexikon.su.se/ord/03789">tanke</a>’
+    <table class=inline>
+      <tr><td><img src="pic/ssl/tanke.svg" style="margin:5px 10px">
+      <tr><td align=center>’<a href="http://teckensprakslexikon.su.se/ord/03789">tanke</a>’
     </table>
-    <table border=1 style="display:inline-table">
-      <tr><td><img src="pic/asl/glad.svg" style="margin:5px 10px">
+    <table class=inline>
+      <tr><td><img src="pic/ssl/glad.svg" style="margin:5px 10px">
       <tr><td>’<a href="http://teckensprakslexikon.su.se/ord/00165">glad</a>’
     </table>
-    <table border=1 style="display:inline-table">
-      <tr><td><img src="pic/asl/popular.svg" style="margin:5px 10px">
+    <table class=inline>
+      <tr><td><img src="pic/ssl/popular.svg" style="margin:5px 10px">
       <tr><td>’<a href="http://teckensprakslexikon.su.se/ord/00097">populär</a>’
     </table>
-    <table border=1 style="display:inline-table">
-      <tr><td><img src="pic/asl/jobba.svg" style="margin:5px 10px">
+    <table class=inline>
+      <tr><td><img src="pic/ssl/jobba.svg" style="margin:5px 10px">
       <tr><td>’<a href="http://teckensprakslexikon.su.se/ord/02063">jobba</a>’
     </table>
-    <table border=1 style="display:inline-table">
-      <tr><td><img src="pic/asl/klicka.svg" style="margin:5px 10px">
+    <table class=inline>
+      <tr><td><img src="pic/ssl/klicka.svg" style="margin:5px 10px">
       <tr><td>’<a href="http://teckensprakslexikon.su.se/ord/17314">klicka</a>’
     </table>
   </figure>
 
-  <section><h1 id=linje>rörelselinjer</h1>
+  <!--section><h1 id=linje>rörelselinjer (<img src="pic/ssl/linje.svg"
+    style="position:relative; bottom:.2em">)</h1-->
 
-    <p><b id=slut>Slutpunkt</b> (med och utan upprepningar)
+  <section><h1 id=linje>Rörelse</h1>
 
-    <p><b id=tvar>Tvärslutpunkt</b>
+    <p><b>Rörelselinjer</b> och <b id=slut>slutpunkter</b>
+    (<img src="pic/ssl/linje.svg">  <img src="pic/ssl/linje-dubbelpunkt.svg"> 
+    <img src="pic/ssl/linje-trippelpunkt.svg">  etc) visar en hands rörelse. Om
+    en rörelse upprepas sätts en slutpunkt ut för varje upprepning.
+
+    <figure>
+      <table class=inline>
+        <tr><td><img src="pic/ssl/niva.svg" style="margin:5px 10px">
+        <tr><td>’<a href="http://teckensprakslexikon.su.se/ord/00243">nivå</a>’
+      </table>
+      <table class=inline>
+        <tr><td><img src="pic/ssl/vaning.svg" style="margin:5px 10px">
+        <tr><td>’<a href="http://teckensprakslexikon.su.se/ord/01124">våning</a>’
+      </table>
+      <table class=inline>
+        <tr><td><img src="pic/ssl/varm.svg" style="margin:5px 10px">
+        <tr><td>’<a href="http://teckensprakslexikon.su.se/ord/11320">varm</a>’
+      </table>
+      <table class=inline>
+        <tr><td><img src="pic/ssl/barn.svg" style="margin:5px 10px">
+        <tr><td>’<a href="http://teckensprakslexikon.su.se/ord/00257">barn</a>’
+      </table>
+    </figure>
+
+    <figure>
+      <table class=inline>
+        <tr><td><img src="pic/ssl/rygg.svg" style="margin:5px 10px">
+        <tr><td>’<a href="http://teckensprakslexikon.su.se/ord/02352">rygg</a>’
+      </table>
+      <table class=inline>
+        <tr><td><img src="pic/ssl/fisk.svg" style="margin:5px 10px">
+        <tr><td>’<a href="http://teckensprakslexikon.su.se/ord/02895">fisk</a>’ (mat)
+      </table>
+      <table class=inline>
+        <tr><td><img src="pic/ssl/gullig.svg" style="margin:5px 10px">
+        <tr><td>’<a href="http://teckensprakslexikon.su.se/ord/00478">gullig</a>’
+      </table>
+    </figure>
 
     <p>byte av handform
 
-    <p><b id=vertikal>Vertikalmarkör</b>
+    <p><b id=tvar>Tvärslutpunkt</b> (<img src="pic/ssl/tvarslutpunkt.svg">)
+    används istället för en vanlig slutpunkt för att markera att en rörelse
+    slutar mer tvärt än vanligt.
 
-    <p><b id=forandring>Förändringslinjer</b> ser ut som vanliga rörelselinjer,
-    men beskriver att en handform förändras utan förflyttning. Vanligtvis
-    används förändringslinjen som understrykning till handformerna ifråga. Vill
-    man vara extra tydligt kan man använda en <b id=fix>fixpunkt</b> för
-    att ’spika fast’ rörelselinjen.
+    <p><b id=vertikal>Vertikalmarkör</b> (<img src="pic/ssl/linje-vertikal.svg">)
+
+    <p><b id=forandring>Förändringslinjer</b> (<img src="pic/ssl/linje.svg">)
+    ser ut som vanliga rörelselinjer, men visar att en handform förändras utan
+    förflyttning. Vanligtvis används förändringslinjen som understrykning till
+    handformerna ifråga. För att vara extra tydlig att det rör sig om en
+    förändringslinje (utan rörelse) kan man ’spika fast’ den med
+    en <b id=fix>fixpunkt</b> (<img src="pic/ssl/linje-fixpunkt.svg">).
 
     <figure>
-      <table style="display:inline-table">
-        <tr><td style="text-align:center"><img src="pic/asl/ja.svg">
-        <tr><td style="text-align:center;padding-top:.5em">’Ja’ (utan fixpunkt)
+      <table class=inline>
+        <tr><td><img src="pic/ssl/ja.svg">
+        <tr><td>’<a href="http://teckensprakslexikon.su.se/ord/09027">ja</a>’ (utan fixpunkt)
       </table>
-          
-      <table style="display:inline-table">
-        <tr><td style="text-align:center"><img src="pic/asl/ja2.svg">
-        <tr><td style="text-align:center;padding-top:.5em">’Ja’ (med fixpunkt)
+      <table class=inline>
+        <tr><td><img src="pic/ssl/ja2.svg">
+        <tr><td>’<a href="http://teckensprakslexikon.su.se/ord/09027">ja</a>’ (med fixpunkt)
       </table>
     </figure>
   </section>
@@ -673,35 +748,74 @@ på &lt;<a href="sslwrite@klingonska.org">sslwrite@<wbr>klingonska<wbr>.org</a>&
     varandra.
 
     <p><b id=krympande>Krympande linjer</b>
+    (<img src="pic/ssl/linje-krympande.svg">  <img src="pic/ssl/linje-krympande-vertikal.svg">)
 
-    <p><b id=växande>Växande linjer</b>
+    <p><b id=växande>Växande linjer</b> (<img src="pic/ssl/linje-vaxande.svg">  <img src="pic/ssl/linje-vaxande-vertikal.svg">)
 
-    <p><b id=tur>Turmarkör</b>
+    <p><b id=tur>Turmarkör</b> (<img src="pic/ssl/linje-tur.svg">) visar vilken
+    hand som rör sig först vid växelvis rörelse.
 
-    <p><b id=krets>Kretsmarkör</b>
+    <p><b id=flat>Flätmarkör</b> (<img src="pic/ssl/flata.svg">) visar att
+    fingrarna flätas samman.
 
-    <p><b id=ratt>Rattmarkör</b>
+    <figure>
+      <table class=inline>
+        <tr><td><img src="pic/ssl/fungera.svg">
+        <tr><td>’<a href="http://teckensprakslexikon.su.se/ord/05419">fungera</a>’
+      </table>
+      <table class=inline>
+        <tr><td><img src="pic/ssl/amerika.svg">
+        <tr><td>’<a href="http://teckensprakslexikon.su.se/ord/00997">Amerika</a>’
+      </table>
+    </figure>
 
-    <p><b id=vev>Vevmarkör</b>
+    <p><b id=kors>Korsmarkör</b> (<img src="pic/ssl/kors.svg">) visar att
+    armarna är korsade.
 
-    <p><b id=flat>Flätmarkören</b> (<img src="pic/asl/flata.svg"
-      style="height:.5em">) används för att beskriva att fingrarna flätas
-      samman/korsas.
+    <figure>
+      <table class=inline>
+        <tr><td><img src="pic/ssl/kram.svg">
+        <tr><td>’<a href="http://teckensprakslexikon.su.se/ord/00523">kram</a>’
+      </table>
+    </figure>
 
-      <figure>
-        <table border=1 style="display:inline-table">
-          <tr>
-            <td><img class=padded src="pic/asl/fungera.svg">
-          <tr>
-            <td style="padding:.25em .5em"><a href="http://teckensprakslexikon.su.se/ord/05419">fungera</a>
-        </table>
-        <table border=1 style="display:inline-table">
-          <tr>
-            <td><img class=padded src="pic/asl/amerika.svg">
-          <tr>
-            <td style="padding:.25em .5em"><a href="http://teckensprakslexikon.su.se/ord/00997">Amerika</a>
-        </table>
-      </figure>
+    <p><b id=omlopps>Omloppsmarkör</b> (<img src="pic/ssl/omlopps.svg">) visar
+    att händerna kretsar kring varandra.
+
+    <figure class=FIXME>
+      EXEMPEL: sjunga
+    </figure>
+    <figure class=FIXME>
+      EXEMPEL: intresse
+    </figure>
+
+    <p><b id=ratt>Rattmarkörer</b> (<img src="pic/ssl/ratt-vertikal.svg"
+    style="position:relative; top:6.4px"> <img src="pic/ssl/ratt-horisontell.svg">
+    <img src="pic/ssl/ratt-diagonal.svg" style="position:relative;
+    top:2.75px">) visar att händerna rör sig som på en ratt, strecket avgränsar
+    rörelsen (med en hand på var sin sida om strecket).
+
+    <figure>
+      <table class=inline>
+        <tr><td><img src="pic/ssl/bil.svg">
+        <tr><td>’<a href="http://teckensprakslexikon.su.se/ord/02158">bil</a>’
+      </table>
+    </figure>
+
+    <p><b id=vev>Vevmarkör</b> (<img src="pic/ssl/vev.svg">) visar att händerna
+    gör cirkelrörelser brevid varandra (som om de satt fast i var sin ända på
+    en vev).
+
+    <figure>
+      <table class=inline>
+        <tr><td><img src="pic/ssl/cykel.svg">
+        <tr><td>’<a href="http://teckensprakslexikon.su.se/ord/08433">cykel</a>’
+      </table>
+      <table class=inline>
+        <tr><td><img src="pic/ssl/teckna.svg">
+        <tr><td>’<a href="http://teckensprakslexikon.su.se/ord/00998">teckna</a>’
+      </table>
+    </figure>
   </section>
 </section>
 
@@ -710,144 +824,296 @@ på &lt;<a href="sslwrite@klingonska.org">sslwrite@<wbr>klingonska<wbr>.org</a>&
 <section id=lage>
   <h1>lägessymboler</h1>
 
-  <p><b id=neutral>Neutrala läget</b> – Ett tecken utan lägessymbol utförs i
-    det neutrala läget. Det betyder att tecknet utförs horisontellt, dvs att en
-    rörelse uppåt på pappret motsvarar en rörelse framåt i verkligheten, och
-    att handflatorna är vända antingen uppåt eller nedåt. (För att bryta mot
-    denna horisontalitet kan man använda <a href="#vertikal">vertikal-</a>
-    och <a href="#kant">kantmarkörer</a>.)
-
-<!--
-
-    
-    Om inte annat markerats utförs tecknet horisontellt, dvs
-  handflatorna är vända uppåt eller nedåt (om inte
-  en <a href="#kant">kantmarkör</a> använts), och rörelselinje som går uppåt på
-  pappret, motsvarar en rörelse framåt (ut från kroppen) då man tecknar.
-
-  <p><a href="#neutral" title="ASLWrite: neutral space">neutrala läget</a> – A
-  sign which does not have a <a href="#locative">locative mark</a> is said to
-  take place in neutral space. Neutral space signs by default take place in the
-  horizontal plane. This means that hands by default have the palm facing
-  either up or down (unless the edge diacritic is used), and that
-  unmarked <a href="#motion">motion lines</a> (i.e. those without
-  the <a href="#vertical">vertical mark</a> describe horizontal motion).
-    -->
-
-  <p><b id=kropp>Kroppsläget</b> har två olika perspektiv: <i>framåt</i>
-  och <i>från sidan</i>.
-
-  <figure>
-    <style>
-      table.stouhsoeuh td {
-          padding: .5em 1em;
-      }
-    </style>
-    <table border=1 class=stouhsoeuh>
-      <tr>
-        <td><img src="pic/asl/framifran.svg" style="max-height:none;">
-        <td><img src="pic/asl/fran_sidan.svg" style="max-height:none;">
-      <tr>
-        <td>Framåt
-        <td>Från sidan
+  <figure style="float:left; margin-right:1.5em">
+    <table class=inline>
+      <tr><td><img src="pic/ssl/lage-profil.svg" style="max-height:none;">
+      <tr><td>profil
     </table>
-    <figcaption><b>Lägessymboler (för höger hand).</b> Symbolerna spegelvänds
-      när tecknandet sker med vänster hand. <i>Halsen</i> har två streck, medan
-      de andra lägessymbolerna bara har ett.</figcaption>
+    <table class=inline>
+      <tr><td><img src="pic/ssl/lage-framat.svg" style="max-height:none;">
+      <tr><td>framåt
+    </table>
   </figure>
 
-  <p id=framat><b>Framåt</b> – När perspektivet är <i>framåt</i> används
-  rörelselinjer precis som i neutrala läget, bortsett ifrån att
-  vertikalmarkörer inte behövs. Tecknet skrivs från den tecknande personens
-  egna synvinkel (dvs högerhanden skrivs till höger, vänsterhanden till
-  vänster, precis som för neutrala läget).
+  <p><b id=neutral>Neutrala läget</b> är den position där ett tecken utförs i
+  om den inte har någon specifik lägessymbol. Tecken i neutrala läget avbildas
+  ovanifrån (som om den som tecknar tittar ner på sina egna händer). Det
+  betyder att en rörelselinje uppåt på pappret motsvaras av en rörelse framåt i
+  verkligheten, och att handflatorna är vända antingen uppåt eller nedåt om
+  inget annat sägs. (För att markera att en rörelse sker vertikalt används
+  en <a href="#vertikal">vertikalmarkör</a>, och för att visa att en hand är
+  annorlunda orienterad används någon av <a href="#kant">kantmarkörerna</a>.)
+
+  <p><b id=kropp>Kroppsläget</b> kan skrivas ur två olika perspektiv: <i>i
+  profil</i> och <i>framåt</i>. (Den enda lägessymbolen som har med fler än ett
+  streck är <i id=halsen>halsen</i> som har två.)
+
+  <p id=profil><b>Profil</b> – Om ett tecken har en rörelse framåt (ut från
+  kroppen) så skrivs tecknet med en av lägessymbolerna i profil (istället för
+  ur tecknarens eget perspektiv).
 
   <!--FIXME: exempeltecken-->
 
-  <p id=sidan><b>Från sidan</b> – Om ett tecken har en rörelse framåt (ut från
-  kroppen) så skrivs tecknet med en av lägessymbolerna <i>från sidan</i>
-  (istället för ur tecknarens eget perspektiv).
+  <p id=framat><b>Framåt</b> – När perspektivet är <i>framåt</i> används
+  rörelselinjer precis som i neutrala läget (men
+  utan <a href="#vertikal">vertikalmarkörer</a>). Tecknet skrivs från den
+  tecknande personens egna synvinkel (dvs högerhanden skrivs till höger,
+  vänsterhanden till vänster, precis som för neutrala läget).
 
   <!--FIXME: exempeltecken-->
 </section>
 
-<hr>
+<hr style="clear:both">
 
 <section id=diakritiska>
   <h1>diakritiska markörer</h1>
 
-  <p>Dessa markörer beskriver rörelse i handled eller fingrar (se
+  <p><b>Diakritiska markörer</b> beskriver handens orientering i rummet och
+  rörelse i fingrar och handled. Det finns några rörelser i svenskt teckenspråk
+  (<span class=blue>blåmarkerade</span> nedan) som inte finns i det
+  amerikanska. (Se
   också <a href="http://www.aslwrite.com/writeaslnow/asl_diacritics/#how">ASLWrite:
   How To Capture Wrist Motion</a>).
 
-  <p><b id=gangjarn>Gångjärnsmarkör</b>
-  <figure>
-    <table>
-      <tr><td align=center><img src="pic/digibet/a01.svg">
-      <tr><td align=center><img src="pic/asl/gangjarn.svg"></td>
-    </table>
-  </figure>
-
-  <p><b id=vrid>Vridmarkör</b>
-  <figure>
-    <table>
-      <tr><td align=center><img src="pic/digibet/a01.svg">
-      <tr><td align=center><img src="pic/asl/vrids.svg">
-    </table>
-  </figure>
-
-  <p><b id=skak>Skakmarkör</b>
-  <figure>
-    <table>
-      <tr><td><img src="pic/digibet/a01.svg"><img src="pic/asl/skak.svg" style="margin-left:-5px;margin-bottom:5px">
-    </table>
-  </figure>
-
-  <p><b id=fladder>Fladdermarkör</b>
-  <figure>
-    <table>
-      <tr><td align=center><img src="pic/asl/fladder.svg">
-      <tr><td align=center><img src="pic/digibet/a01.svg">
-    </table>
-  </figure>
-
-  <p><b id=kant>Kantmarkörer</b>
-  <figure>
-    <table>
+  <figure class=padded>
+    <table class=inline id=kant>
       <tr>
-        <td><img src="pic/digibet/a01.svg">
-        <td rowspan=2>    
-        <td><img src="pic/digibet/a01.svg"><img src="pic/asl/kant-sida.svg">
-      <tr>
-        <td><img src="pic/asl/kant-nere.svg">
+        <td><img src="pic/ssl/kant-exempel-sida.svg">
+        <td><img src="pic/ssl/kant-exempel-nere.svg">
+      <tr><td colspan=2>kant-<br>markörer
+    </table>
+    <table class=inline id=gangjarn>
+      <tr><td><img src="pic/ssl/gangjarn-exempel.svg">
+      <tr><td>gångjärns-<br>markör
+    </table>
+    <table class=inline id=vrid>
+      <tr><td><img src="pic/ssl/vrids-exempel.svg">
+      <tr><td>vrid-<br>markör
+    </table>
+    <table class=inline id=skak>
+      <tr><td><img src="pic/ssl/skak-exempel.svg">
+      <tr><td>skak-<br>markör
+    </table>
+    <table class=inline id=fladder>
+      <tr><td><img src="pic/ssl/fladder-exempel.svg">
+      <tr><td>fladder-<br>markör
+    </table>
+    <table class="inline blue" id=stro>
+      <td><img src="pic/ssl/stro-exempel.svg">
+      <tr><td>strö-<br>markör<!--FIXME symbol?-->
+    </table>
+    <table class="inline blue" id=vink>
+      <tr><td><img src="pic/ssl/vink-exempel.svg">
+      <tr><td>vink-<br>markör<!--FIXME symbol?-->
+    </table>
+    <table class="inline blue" id=bojs>
+      <tr><td><img src="pic/ssl/bojs-exempel.svg">
+      <tr><td>böjs-<br>markör<!--FIXME symbol?-->
     </table>
   </figure>
 
-  <p class=blue><b id=stro>Strömarkör</b>
+  <p><b>Kantmarkörerna</b> används för att beskriva <i>handens orientering i
+  rummet</i>. Utan en kantmarkör antas en handen vara vänd så att antingen
+  handflatan eller handryggen är vänd bortåt i bild, med en kantmarkör är det
+  istället den markerade sidan av handen som är vänd bortåt.
 
-  <p class=blue><b id=vink>Vinkmarkör</b>
+  <!--
+    <li>
+      <ul>Neutrala läget: Kantmarkören visar nedåt.
+      <ul>Framåt: Kantmarkören visar bortåt.
+      <ul>
+    </li>
+  -->
 
-  <p class=blue><b id=bojs>Böjsmarkör</b>
+  <p>Kantmarkören visar att en av handens kanter är vänd bortåt (istället för
+  handflata/handrygg) relativt tecknets perspektiv i skriften. (Det betyder
+  nedåt i <a href="#neutral">neutrala läget</a>, framåt
+  i <a href="#framat">framåtperspektivet</a> och, <a href="#profil">i
+  profil</a> åt den bortre kroppshalvan – dvs åt vänster om tecknet avbildats
+  från höger [högerhänt tecknare], och höger om tecknet avbildats från vänster
+  [vänsterhänt tecknare].)
+
+  <!--
+      TODO: Beskriv kantmarkörerna i neutrala läget (framåt och åt sidan?)
+      Ge exempel!
+    -->
+
+  <p><b>Gångjärns-</b> och <b>vridmarkörerna</b> används för att beskriva
+  <i>handledsrörelse</i>.
+
+  <p><b>Böjs-</b>, <b>fladder-</b>, <b>skak-</b>, <b>strö-</b>
+  och <b>vinkmarkörerna</b> visar <i>fingerrörelse</i>.
+
+  <figure>
+    <table class=inline>
+      <tr><td><img src="pic/ssl/kosta.svg">
+      <tr><td>’<a href="http://teckensprakslexikon.su.se/ord/01281">kosta</a>’/
+        <br>’<a href="http://teckensprakslexikon.su.se/ord/01282">kontanter</a>’
+    </table>
+    <table class=inline>
+      <tr><td><img src="pic/ssl/mutter.svg">
+      <tr><td>’<a href="http://teckensprakslexikon.su.se/ord/15029">mutter</a>’
+    </table>
+    <table class=inline>
+      <tr><td><img src="pic/ssl/stro.svg">
+      <tr><td>’<a href="http://teckensprakslexikon.su.se/ord/16453">strö</a>’
+    </table>
+  </figure>
+
+  <figure>
+    <table class=inline>
+      <tr><td><img src="pic/ssl/vem.svg">
+      <tr><td>’<a href="http://teckensprakslexikon.su.se/ord/00123">vem</a>’
+    </table>
+  </figure>
+
 </section>
 
 <hr>
 
-<section id=ogon>
-  <h1>ögonbryn</h1>
+<section id=ansikte>
+  <h1>Ansiktet</h1>
 
-  <p>Saknas.
-  (Se ’<a href="http://www.aslwrite.com/writeaslnow/extramanualmarks/#brow">ASWrite:
-  Eyebrow Marks</a>’.)
-</section>
+  <p>Ansiktssymbolerna
+  (<a href="#ogon">ögonbryns-</a>, <a href="#mun">munsymbol</a> och
+  eventuell <a href="#rynkad">rynkad näsa</a>) och
+  lägessymbolen <i>ansiktet</i> (<a href="#profil">i profil</a>) kan skrivas
+  ihop med varandra om man vill.
 
-<hr>
+  <!-- FIXME: EXEMPEL på kombinerad mun och ögonbrynssymbol -->
+  <figure>
+    <table class="inline space">
+      <tr><td align=center><img src="pic/ssl/ledsen.svg">
+      <tr><td>’<a href="https://teckensprakslexikon.su.se/ord/00185">ledsen</a>’
+    </table>
+  </figure>
 
-<section id=mun>
-  <h1>mun</h1>
+  <p id=rynkad><b>Rynkad näsa</b> (<img src="pic/ssl/rynkad-nasa.svg">) är den
+  enda symbolen som involverar näsan:
 
-  <p>Saknas.
-  (Se ’<a href="http://www.aslwrite.com/writeaslnow/extramanualmarks/#mouth">ASWrite:
-  Mouth Morphemes</a>’.)
+  <figure>
+    <table class="inline space">
+      <tr><td align=center><img src="pic/ssl/rynkad-nasa.svg">
+      <tr><td>rynkad<br>näsa
+    </table>
+  </figure>
+
+  <section id=ogon>
+    <h1>Ögonbryn</h1>
+
+    <figure>
+      <table class=inline style="margin:.5em 0" id=hojda>
+        <tr><td><img src="pic/ssl/ogon-hojda-ansikte.png">
+          <br><img src="pic/ssl/ogon-hojda.svg">
+          <br>höjda<!--raised-->
+      </table>
+      <table class=inline style="margin:.5em 0" id=sankta>
+        <tr><td><img src="pic/ssl/ogon-sankta-ansikte.png">
+          <br><img src="pic/ssl/ogon-sankta.svg">
+          <br>sänkta<!--knit-->
+      </table>
+      <table class=inline style="margin:.5em 0" id=sorgsna>
+        <tr><td><img src="pic/ssl/ogon-sorgsna-ansikte.png">
+          <br><img src="pic/ssl/ogon-sorgsna.svg">
+          <br>sorgsna<!--wan-->
+      </table>
+      <table class=inline style="margin:.5em 0" id=ett-hojt>
+        <tr><td><img src="pic/ssl/ogon-ett-hojt-ansikte.png">
+          <br><img src="pic/ssl/ogon-ett-hojt.svg">
+          <br>ett höjt<!--slanted-->
+      </table>
+      <table class=inline style="margin:.5em 0" id=kisande>
+        <tr><td><img src="pic/ssl/ogon-kisande-ansikte.png">
+          <br><img src="pic/ssl/ogon-kisande.svg">
+          <br>kisande<!--squint-->
+      </table>
+    </figure>
+
+    <p>Symboler som visar ögonbrynens position och används både för skriva
+    känslomässiga och syntaktiska uttryck. De skrivs upptill på raden och
+    antingen framför ett enskilt tecken, eller (lite på sned) som en parentes
+    runtomkring kring ett eller flera tecken.
+
+    <p><b>Sänkta ögonbryn</b> används vid frågeordsfrågor:
+
+    <figure>
+      <table class="inline space">
+        <tr>
+          <td>
+            <img src="pic/ssl/ogon-sankta.svg" valign=top>
+            <img src="pic/ssl/klocka.svg">
+          <td style="padding:0 1em 0 1.5em">eller
+          <td>
+            <img src="pic/ssl/ogon-sankta-start.svg" valign=top>
+            <img src="pic/ssl/klocka.svg">
+            <img src="pic/ssl/ogon-sankta-slut.svg" valign=top>
+        <tr>
+          <td colspan=3>’<a href="http://teckensprakslexikon.su.se/ord/12908">Vad
+            är klockan?</a>’
+      </table>
+      <table class="inline space">
+        <tr><td>
+          <img class=space src="pic/ssl/ogon-sankta-start.svg" valign=top>
+          <img class=space src="pic/ssl/vad.svg">
+          <img class=space src="pic/ssl/heta.svg">
+          <img class=space src="pic/ssl/du.svg">
+          <img class=space src="pic/ssl/ogon-sankta-slut.svg" valign=top>
+        <tr><td>’<a href="http://teckensprakslexikon.su.se/ord/11831">Vad heter du?</a>’
+          <!--Se också: https://www.sprakochfolkminnen.se/sprak/minoritetssprak/svenskt-teckensprak/det-svenska-teckensprakets-grammatik/grammatik/satsbildning/satstyp.html#vadhetaprox-->
+      </table>
+      <table class="inline space">
+        <tr><td>
+          <img src="pic/ssl/ogon-sankta-start.svg" valign=top>
+          <img class=space src="pic/ssl/din.svg">
+          <img class=space src="pic/ssl/person.svg">
+          <img class=space src="pic/ssl/tecken.svg">
+          <img class=space src="pic/ssl/vad.svg">
+          <img src="pic/ssl/ogon-sankta-slut.svg" valign=top>
+        <tr><td>’<a href="https://www.spreadthesign.com/sv.se/sentence/2814/">Vad är ditt persontecken?</a>’
+      </table>
+    </figure>
+
+    <b>Höjda ögonbryn</b> används vid ja/nej-frågor, för att markera topik, och
+    frågeordsfrågor med artighetstiltal:
+
+    <figure>
+      <table class=inline style="margin-right:2em">
+        <tr><td>
+          <img src="pic/ssl/ogon-hojda-start.svg" style="vertical-align:top">
+          <img src="pic/ssl/dov.svg" class=space>
+          <img src="pic/ssl/du.svg" class=space>
+          <img src="pic/ssl/ogon-hojda-slut.svg" style="vertical-align:top">
+        <tr><td>’Är du döv?’<br>(ja/nej-fråga)
+      </table>
+      <table class=inline>
+        <tr><td>
+          <img src="pic/ssl/ogon-hojda.svg" valign=top>
+          <img class=space src="pic/ssl/idag.svg">
+          <img class=space src="pic/ssl/ogon-sankta-start.svg" valign=top>
+          <img class=space src="pic/ssl/nummer.svg">
+          <img class=space src="pic/ssl/vad.svg">
+          <img src="pic/ssl/ogon-sankta-slut.svg" valign=top>
+        <tr><td>’Vad är det för datum idag?’
+          <br>(frågreordsfråga med topik)
+          <!--
+              [Bergman (1995) ’Några satstyper…’ s.12]
+              ___t ________ff
+               IDAG NUMMER VAD
+            -->
+      </table>
+    </figure>
+
+    <p>De övriga ögonbrynssymbolerna har ingen syntaktisk funktion utan används
+    när man skriver känslouttryck.
+  </section>
+
+  <section id=mun>
+    <h1>mun</h1>
+
+    <p>Saknas. (Se
+    ’<a href="http://www.aslwrite.com/writeaslnow/extramanualmarks/#mouth">ASWrite:
+    Mouth Morphemes</a>’.)
+  </section>
 </section>
 
 <hr>
@@ -855,27 +1121,23 @@ på &lt;<a href="sslwrite@klingonska.org">sslwrite@<wbr>klingonska<wbr>.org</a>&
 <section id=kropprorelse>
   <h1>kroppsrörelser</h1>
 
+  <p><b>Kroppsrörelser</b> skrivs som en kombination av kroppssymboler och
+  rörelselinjer.
+
   <figure class=padded>
-    <table border=1 style="display:inline-table" id=nickning>
-      <tr><td align=center><img src="pic/asl/nickning.svg">
-      <tr><td>Nickning
+    <table class="inline space" id=nickning>
+      <tr><td align=center><img src="pic/ssl/nickning.svg">
+      <tr><td>nickning
     </table>
-    <table border=1 style="display:inline-table" id=skakning>
-      <tr><td align=center><img src="pic/asl/skakning.svg">
-      <tr><td>Huvudskakning
+    <table class="inline space" id=skakning>
+      <tr><td align=center><img src="pic/ssl/skakning.svg">
+      <tr><td>huvud-<br>skakning
       <!--[https://www.handspeak.com/write/asl/index.php?id=561]-->
     </table>
-    <table id=axel border=1 style="display:inline-table">
-      <tr><td align=center><img src="pic/asl/axelrorelse.svg">
-      <tr><td>Axelrörelse
+    <table class="inline space" id=axel>
+      <tr><td align=center><img src="pic/ssl/axelrorelse.svg">
+      <tr><td>axelrörelse
     </table>
-    <table id=rynkad border=1 style="display:inline-table">
-      <tr><td align=center><img src="pic/asl/rynkad_nasa.svg">
-      <tr><td>Rynkad<br>näsa
-    </table>
-    <figcaption><b>Kroppsrörelser</b> skrivs som en kombination av
-      kroppssymboler och rörelselinjer. Det finns också en särskild symbol
-      för <b>rynkad näsa</b>.</figcaption>
   </figure>
 </section>
 
@@ -884,10 +1146,10 @@ på &lt;<a href="sslwrite@klingonska.org">sslwrite@<wbr>klingonska<wbr>.org</a>&
 <section id=skilje>
   <h1>skiljesymboler</h1>
 
-  <p><b id=mening>Meningsslut</b> – För att markera slutet på en mening (i ett
-  längre sammanhang) används en liten cirkel. I kortare sammanhang (enskilda
-  fraser tex) är det ofta tydligt var meningen slutar och symbolen kan
-  utelämnas.
+  <p><b id=paus>Paus</b> (<img class=space src="pic/ssl/paus.svg">) – För att
+  markera slutet på en mening (i ett längre sammanhang) används en liten
+  cirkel. I kortare sammanhang (enskilda fraser tex) är det ofta tydligt var
+  meningen slutar och symbolen kan utelämnas.
 
     <!-- FIXME: Inkludera exempel på meningsslut i ett sammanhang.
     ASL exempel: https://www.facebook.com/photo.php?fbid=10155290084740818
@@ -895,17 +1157,27 @@ på &lt;<a href="sslwrite@klingonska.org">sslwrite@<wbr>klingonska<wbr>.org</a>&
 
   <figure>
     <table>
-      <tr><td align=center><img src="pic/asl/vrids.svg">
+      <tr><td>
+        <img class=space src="pic/ssl/jag.svg">
+        <img class=space src="pic/ssl/heta.svg">
+        <img class=space src="pic/ssl/zrajm.svg">
+        <img class=space src="pic/ssl/paus.svg">
+        <img class=space src="pic/ssl/ogon-sankta-start.svg" valign=top>
+        <img class=space src="pic/ssl/vad.svg">
+        <img class=space src="pic/ssl/heta.svg">
+        <img class=space src="pic/ssl/du.svg">
+        <img class=space src="pic/ssl/ogon-sankta-slut.svg" valign=top>
+      <tr><td>’Jag heter Zrajm. Vad heter du?’
     </table>
   </figure>
 </section>
 
 <hr>
 
-<section id=termer>
-  <h1>Termer</h1>
+<section id=index>
+  <h1>index</h1>
 
-  <div class="hanging glossary">
+  <div class="hanging glossary columns">
     <p><a href="#axel" title="ASLWrite: shoulder shift">axelrörelse</a>
       (<a href="#kropprorelse">kroppsrörelse</a>)
 
@@ -939,7 +1211,7 @@ på &lt;<a href="sslwrite@klingonska.org">sslwrite@<wbr>klingonska<wbr>.org</a>&
     <p><a href="#gangjarn" title="ASLWrite: hinge diacritic">gångjärnsmarkör</a>
       (<a href="#diakritiska">diakritisk markör</a>)
 
-    <p><a href="#hand" title="ASLWrite: digit (in digibet)">handsymbol</a>
+    <p><a href="#hand" title="ASLWrite: digit (in digibet)">handsymboler</a>
 
     <p><b>huvud</b> (se <a href="#kropprorelse">kroppsrörelse:</a>
       <a href="#nickning">nickning</a> och <a href="#skakning">skakning</a>)
@@ -955,9 +1227,16 @@ på &lt;<a href="sslwrite@klingonska.org">sslwrite@<wbr>klingonska<wbr>.org</a>&
     <p><a href="#kontakt" title="ASLWrite: contact points">kontaktpunkt</a>
       (<a href="#rorelse">rörelsesymbol</a>)
 
-    <!-- Svensk transkription: 'cirkel'. -->
-    <p><a href="#krets" title="ASLWrite: orbit mark/(full) steering mark">kretsmarkör</a>
+    <!-- Svensk transkription: 'kors'. -->
+    <p><a href="#kors" title="ASLWrite: orbit mark/(full) steering mark">korsmarkör</a>
       (<a href="#rorelse">rörelsesymbol</a>)
+
+    <!-- Svensk transkription: 'cirkel'. -->
+    <p><a href="#omlopps" title="ASLWrite: orbit mark/(full) steering mark">omloppsmarkör</a>
+      (<a href="#rorelse">rörelsesymbol</a>)
+
+    <p><b>orientering</b> (se <a href="#diakritiska">diakritiska markörer:</a>
+      <a href="#kant">kantmarkör</a>)
 
     <!-- Svensk transkription: lägessymboler. -->
     <p><a href="#kropp" title="ASLWrite: locative space / locative mark / locatives">kroppsläge</a> (<a href="#lage">läge</a>)
@@ -971,20 +1250,18 @@ på &lt;<a href="sslwrite@klingonska.org">sslwrite@<wbr>klingonska<wbr>.org</a>&
       >läge</a> (se <a href="#kropp">kroppsläge</a>
       och <a href="#neutral">neutrala läget</a>)
 
-    <!-- Svensk transkription har inga skiljesymboler. -->
-    <p><a href="#mening" title="ASLWrite: ?">meningsslut</a>
-      (<a href="#skilje">skiljesymboler</a>)
-
-    <!-- Svensk transkription har inga extramanuella markörer. -->
-    <p><a href="#mun" title="ASLWrite: ?">mun</a>
+    <p><a href="#mun" title="ASLWrite: mouthing marks">mun</a>
 
     <!-- Svensk transkription: ingen lägessymbol eller 'neutrala läget'. -->
     <p><a href="#neutral" title="ASLWrite: neutral space">neutrala läget</a>
       (<a href="#lage">läge</a>)
 
-    <p><a href="#nickning">nicka</a> (se <a href="#kropprorelse">kroppsrörelse</a)
+    <p><a href="#nickning" title="ASLWrite: head nod">nicka</a>
+      (se <a href="#kropprorelse">kroppsrörelse</a>)
 
-    <!-- Svensk transkription: -->
+    <p><a href="#paus" title="ASLWrite: pause">paus</a>
+      (<a href="#skilje">skiljesymboler</a>)
+
     <p><a href="#ratt"
       title="ASLWrite: steering mark / half steering mark (vertical/horizontal)"
       >rattmarkör</a> (<a href="#rorelse">rörelsesymbol</a>)
@@ -999,21 +1276,21 @@ på &lt;<a href="sslwrite@klingonska.org">sslwrite@<wbr>klingonska<wbr>.org</a>&
     <!-- Svensk transkription: interaktionsarter -->
     <p><a href="#rorelse" title="ASLWrite: movement marks">rörelsesymboler</a> (se
       <a href="#flat">flät-</a>,
-      <a href="#krets">krets-</a>,
+      <a href="#omlopps">omlopps-</a>,
       <a href="#ratt">ratt-</a>,
       <a href="#tur">tur-</a>,
       <a href="#vertikal">vertikal-</a> och
-      <a href="#vev">vevmarkör</a> –
+      <a href="#vev">vevmarkör</a><i>;</i>
       <a href="#fix">fix-</a>,
       <a href="#kontakt">kontakt-</a> och
-      <a href="#slut">slutpunkt</a> –
+      <a href="#slut">slutpunkt</a><i>;</i>
       <a href="#forandring">förändrings-</a>,
       <a href="#linjer">rörelse-</a>,
       <a href="#krympande">krympande</a> och
       <a href="#vaxande">växande linjer</a>)
 
     <p><a href="#skakning">skaka på huvudet</a>
-      (se <a href="#kropprorelse">kroppsrörelse</a>)
+      (<a href="#kropprorelse">kroppsrörelse</a>)
 
     <!-- Svensk transkription: finns ej i svenskt teckenspråk. -->
     <p><a href="#skak" title="ASLWrite: rattle diacritic">skakmarkör</a>
@@ -1055,8 +1332,10 @@ på &lt;<a href="sslwrite@klingonska.org">sslwrite@<wbr>klingonska<wbr>.org</a>&
     <p><a href="#vaxande" title="ASLWrite: expanding mark">växande linjer</a>
       (<a href="#rorelse">rörelsesymbol</a>)
 
-    <!-- Svensk transkription har inga extramanuella markörer. -->
-    <p><a href="#ogon" title="ASLWrite: ?">ögonbryn</a>
+    <p><a href="#ogon" title="ASLWrite: eyebrow marks">ögonbryn</a>
+      (<a href="#ett-hojt">ett höjt</a>, <a href="#hojda">höjda</a>,
+      <a href="#kisande">kisande</a>, <a href="#sankta">sänkta</a> och
+      <a href="#sorgsna">sorgsna</a>)
   </div>
 
   <footer>

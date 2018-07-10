@@ -7,8 +7,8 @@
    xmlns="http://www.w3.org/2000/svg"
    version="1.1"
    id="svg2"
-   height="24.250694"
-   width="2.0002">
+   height="11.002456"
+   width="39.755398">
   <metadata
      id="metadata10">
     <rdf:RDF>
@@ -24,7 +24,15 @@
   <defs
      id="defs8" />
   <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3.00000048;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="m 38.233034,5.5013785 10e-4,0"
+     id="path7294-5" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="m 1.0142425,5.5012278 c 31.7269185,0 31.7269185,0 31.7269185,0"
+     id="path7294" />
+  <path
      style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-     d="m 1.0001,1.0142425 0,22.2222095"
-     id="path6996" />
+     d="m 1.0142425,1.0142425 0,8.9739706"
+     id="path13718-9-0-5" />
 </svg>
