@@ -108,8 +108,9 @@ The font uses Unicode’s *Supplementary Private Use Area-B,* specifically the
 codepoints between `U+10c900` and `U+10c9ff`.
 
 An attempt was made to register this writing system with the Under-ConScript
-Unicode Registry ([UCSUR]) in October 2017, but the request was denied with
-UCSUR suggesting this should be registered with the Unicode Technical Committee (UTC)
+Unicode Registry ([UCSUR]) in October 2017, but the request was denied by UCSUR
+with the suggestion it should be registered with the Unicode Technical
+Committee ([UTC]).
 
 [lexicon]: https://zrajm.github.io/teckentranskription/lexicon.html
 [transcription tool]: https://zrajm.github.io/teckentranskription/
