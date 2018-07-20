@@ -5,10 +5,42 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   width="48.795189"
-   height="75.988281"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="96.442139"
+   height="43.551243"
    id="svg2"
-   version="1.1">
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="rektangel.svg">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1280"
+     inkscape:window-height="751"
+     id="namedview8486"
+     showgrid="false"
+     inkscape:snap-bbox="true"
+     inkscape:object-nodes="true"
+     inkscape:snap-smooth-nodes="true"
+     inkscape:zoom="3.105742"
+     inkscape:cx="4.753195"
+     inkscape:cy="5.5571041"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:bbox-nodes="true" />
   <metadata
      id="metadata10">
     <rdf:RDF>
@@ -24,23 +56,28 @@
   <defs
      id="defs8" />
   <path
+     inkscape:connector-curvature="0"
+     d="M 77.55591,11.571467 95.434964,42.538896 M 95.295942,27.720965 86.879957,42.298329"
+     style="fill:none;stroke:#030303;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+     id="path14692" />
+  <path
+     inkscape:connector-curvature="0"
+     d="M 18.886225,11.571467 1.0071712,42.538896 M 1.1461932,27.720965 9.562178,42.298329"
+     style="fill:none;stroke:#030303;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+     id="path14692-5" />
+  <path
      style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-     d="m 24.397594,1.0142425 0,8.97397"
-     id="path13718-9-0-5" />
+     d="m 48.221067,1.0142425 0,8.97397"
+     id="path13718-9-0-5"
+     inkscape:connector-curvature="0" />
   <path
      id="path7294-5-2"
-     d="m 24.397595,36.097444 -5.95e-4,0"
-     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-  <path
-     id="path9207"
-     d="M 19.062752,43.571467 C 12.082697,56.684816 10.025242,58.234253 1.732108,74.849162 M 2.659905,59.38063 c 1.757925,5.784325 3.971093,10.069285 6.335491,15.594549"
-     style="fill:none;stroke:#030303;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
-  <path
-     id="path9207-7"
-     d="m 29.732437,43.571467 c 6.980055,13.113349 9.03751,14.662786 17.330644,31.277695 M 46.135284,59.38063 c -1.757925,5.784325 -3.971093,10.069285 -6.335491,15.594549"
-     style="fill:none;stroke:#030303;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+     d="m 48.221068,36.097444 -5.95e-4,0"
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     inkscape:connector-curvature="0" />
   <path
      id="path8052-5"
-     d="M 18.817262,36.097444 1,36.097444 1,5.5010775 l 46.795189,0 0,30.5963655 -17.818261,1e-6"
-     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+     d="m 42.640735,36.097444 -17.817262,0 0,-30.5963665 46.795189,0 0,30.5963655 -17.818261,1e-6"
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     inkscape:connector-curvature="0" />
 </svg>

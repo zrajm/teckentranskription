@@ -5,10 +5,10 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   width="25.158106"
-   height="38.288933"
+   version="1.1"
    id="svg16683"
-   version="1.1">
+   height="38.010944"
+   width="24.755816">
   <metadata
      id="metadata16691">
     <rdf:RDF>
@@ -24,11 +24,11 @@
   <defs
      id="defs16689" />
   <path
-     d="m 2.7083312,1.0105485 c 6.977,7.05113 13.7053298,15.2986105 15.6065198,26.5750205 0.27704,1.64315 0.21643,2.95651 0.10755,3.88271 -0.23848,2.028551 -1.38565,4.188891 -3.00704,5.175491 -1.62139,0.98661 -3.65314,0.70189 -5.16064,0 -1.5074998,-0.70188 -3.0803198,-3.13428 -3.0629898,-5.144451 -0.13866,-2.41999 0.89353,-5.70692 1.9862,-8.1665 C 11.700261,17.655109 17.868381,6.0334785 22.450191,1.0105485"
-     style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-     id="path27723" />
+     id="path4164"
+     d="M 1.0123478,33.683298 23.743468,20.55948"
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   <path
-     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-     d="M 1.0125643,35.562759 24.145541,23.160998"
-     id="path4164" />
+     id="path11679-8-7"
+     d="M 4.4638618,1.0098872 C 14.192551,10.332019 18.221257,19.933353 18.221257,29.852066 c 0,2.563664 -1.105497,4.932588 -2.900062,6.214421 -1.794565,1.281832 -4.00556,1.281832 -5.8001242,-1e-6 -1.794565,-1.281833 -2.900062,-3.650757 -2.900062,-6.214422 0,-9.918713 4.0287062,-19.520047 13.7573952,-28.8421794"
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
 </svg>
