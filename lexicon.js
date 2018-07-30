@@ -363,14 +363,17 @@ function hilite(str, regex) {
     });
 }
 
-// Process transcription strings, adding <span class=spelled>...</span> around
-// all latin-1 (non-space, non-control) parts of transcription. If there are
-// <mark>/</mark> tags inside the transcript string, make sure we add the
-// matching number of tags on the relevant <span> tag (to make sure HTML
-// remains valid).
+// Turn a (hilited) transcription string into HTML.
 function htmlifyTranscription(hilitedTransStr) {
     "use strict";
-    return hilitedTransStr.replace(/[\x21-\xff]+/gu, function (spelledStr) {
+    return hilitedTransStr
+        // Insert <wbr> tag after all segment separators.
+        .replace(/􌥠/gu, '􌥠<wbr>')
+        // Add <span class=spelled>...</span> around substrings of printable
+        // latin-1 chars. If there are <mark>/</mark> tags inside the
+        // transcript string, make sure we add the matching number of tags on
+        // the relevant <span> tag (to make sure HTML remains valid).
+        .replace(/[\x21-\xff]+/gu, function (spelledStr) {
         var stack = [];
         var begTag = "<span class=spelled>";
         var endTag = "</span>";
