@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   width="83.843956"
+   height="54.719311"
+   id="svg2"
+   version="1.1">
+  <metadata
+     id="metadata10">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs8" />
+  <g
+     transform="matrix(0.8660254,0.5,-0.5,0.8660254,43.794228,29.327205)"
+     id="g8114">
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3.00000048;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 38.233034,5.5013785 10e-4,0"
+       id="path7294-5" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 1.0142425,5.5012278 c 31.7269185,0 31.7269185,0 31.7269185,0"
+       id="path7294" />
+  </g>
+  <path
+     id="path13718-9-0-5"
+     d="m 41.921974,30.111544 0,11.990918"
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <g
+     transform="matrix(0.8660254,-0.5,0.5,0.8660254,38.293,30.341447)"
+     id="g8118">
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3.00000048;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m -36.204548,5.5013785 -10e-4,0"
+       id="path7294-5-2" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 1.0142425,5.5012278 c -31.7269175,0 -31.7269175,0 -31.7269175,0"
+       id="path7294-9" />
+  </g>
+  <g
+     id="g6308-7"
+     transform="matrix(0.5,-0.8660254,0.8660254,0.5,41.591162,24.593983)">
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 1.0142324,23.279392 7.91631,0"
+       id="path4924-8" />
+    <path
+       style="fill:none;stroke:#030303;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 27.821572,1.0142394 c 0.16929,8.1273 0.38451,16.9111296 -0.24995,24.2981796 -0.39127,2.59859 -0.60446,4.57063 -2.30177,6.89168 -1.69732,2.32105 -3.68435,3.33565 -7.53509,3.01883 -3.85073,-0.31681 -6.55617,-2.60597 -7.7653696,-6.21265 -1.20921,-3.60667 -0.73294,-8.05715 -0.88701,-12.08889 -0.0931,-6.24362 -0.0615,-15.3274996 -0.26581,-15.7496496"
+       id="path4-45" />
+  </g>
+  <g
+     id="g6308-7-0"
+     transform="matrix(-0.5,-0.8660254,-0.8660254,0.5,42.25279,24.593985)">
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 1.0142324,23.279392 7.91631,0"
+       id="path4924-8-3" />
+    <path
+       style="fill:none;stroke:#030303;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 27.821572,1.0142394 c 0.16929,8.1273 0.38451,16.9111296 -0.24995,24.2981796 -0.39127,2.59859 -0.60446,4.57063 -2.30177,6.89168 -1.69732,2.32105 -3.68435,3.33565 -7.53509,3.01883 -3.85073,-0.31681 -6.55617,-2.60597 -7.7653696,-6.21265 -1.20921,-3.60667 -0.73294,-8.05715 -0.88701,-12.08889 -0.0931,-6.24362 -0.0615,-15.3274996 -0.26581,-15.7496496"
+       id="path4-45-6" />
+  </g>
+</svg>
