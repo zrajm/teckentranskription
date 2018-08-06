@@ -1,0 +1,73 @@
+#!/bin/sh
+
+set -e
+
+# If first arg is '-' output usage info after error message. First line of
+# error message is prefixed by command name, remaining lines are not.
+die() {
+    {
+        local USAGE ARG
+        [ "$1" = "-" ] && USAGE="-" && shift
+        [ "$#" -gt 0 ] && echo "${0##*/}: $1" && shift
+        for ARG; do echo "$ARG"; done
+        if [ -n "$USAGE" ]; then
+            echo "Usage: ${0##*/} USER <PASSFILE"
+            echo "or     echo PASS | ${0##*/} USER"
+        fi
+    } >&2
+    exit 1
+}
+
+[ "$#" -ne 1 ] && die - "Exactly one arg required"
+[ -t 0 ] && die - "Password must be given on STDIN"
+
+read GMAIL_PASS
+BINFILE="$(readlink -f $0)"
+BINDIR="${BINFILE%/*}"
+WORKDIR="${BINFILE%/*/*}"
+GMAIL_COMMAND="${BINFILE%/*}/gmail-fetch"
+GMAIL_USER="$1"
+GMAIL_FILE="$WORKDIR/lexicon-data.csv"
+JS_OUTFILE="$WORKDIR/lexicon-data.js"
+
+echo "cd $WORKDIR"
+cd "$WORKDIR"
+
+echo --------------------------------------------------------------------------------
+echo "RUNNING COMMAND: git pull"
+git pull
+
+# Fetch relevant email attachment from Gmail.
+echo --------------------------------------------------------------------------------
+echo "RUNNING COMMAND: $GMAIL_COMMAND"
+cat <<CONFIG_END | "$GMAIL_COMMAND" -
+user = $GMAIL_USER
+pass = $GMAIL_PASS
+file = $GMAIL_FILE
+CONFIG_END
+
+# Convert CSV -> JSON.
+echo --------------------------------------------------------------------------------
+echo "RUNNING COMMAND: $BINDIR/csvdump2json \\"
+echo "    $GMAIL_FILE \\"
+echo "    >|$JS_OUTFILE"
+"$BINDIR/csvdump2json" "$GMAIL_FILE" >|"$JS_OUTFILE"
+
+# Commit the new data files to git repo.
+echo --------------------------------------------------------------------------------
+echo "COMMITING TO GIT"
+read DATE <lexicon-data.js
+DATE="${DATE#*\"}"
+DATE="${DATE%%T*}"
+
+git commit lexicon-data.csv lexicon-data.js \
+    -m "Imported data from official lexicon $DATE." >/dev/null \
+    || die "Files to commit are identical to old files" \
+           "Most probably no new dictionary dump was received since last update."
+
+# Push to GitHub.
+echo --------------------------------------------------------------------------------
+echo "PUSHING GIT REPO"
+git push
+
+#[eof]

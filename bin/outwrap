@@ -1,0 +1,77 @@
+#!/bin/sh
+#
+help() {
+    cat <<-EOF
+	mailwrap [OPTION] COMMAND [COMMAND-ARG...]
+
+	  -h,--help             display this help and exit
+	  -q,--quiet            only send output on non-zero exit code
+	                        (silently discarding output otherwise)
+	  -s,--send EMAIL[,...] send output to specified email address(es)
+	                        (producing no output on standard out)
+
+	Runs COMMAND and passes through its standard out and standard error to
+	standard out, or, when using --send, sends output to specified email
+	recipients. Any given COMMAND-ARG(s) are passed along unmodified to
+	COMMAND.
+	EOF
+}
+
+
+# parse args
+SILENT=""
+EMAILS=""
+while true; do
+    case $1 in
+	--)         shift; break;;
+	-q|--quiet) shift; SILENT=1;;
+	-s|--send)  shift; EMAILS="${EMAILS:+$EMAILS,}$1"; shift;;
+	-h|--help)  shift; help; exit 0;;
+	-*)
+	    echo "Uknown option \"$1\"" >&2
+	    exit 5 ;;
+	*) break;;
+    esac
+done
+
+
+# main
+OUTPUT="$("$@" 2>&1)"   # run COMMAND with OPTION(s) & capture output
+RETURN="$?"             # get return value from COMMAND
+
+# silent mode: just quit if command returned 0
+[ -n "$SILENT" -a "$RETURN" -eq 0 ] && exit "$RETURN"
+
+# no output and returned true
+[ "$RETURN" -eq 0 -a -z "$OUTPUT" ] && exit "$RETURN"
+
+# if these was output, *or* non-zero exit value, send email
+if [ -z "$EMAILS" ]; then
+    echo "Command: \"$*\""
+    echo "--------------------"
+    if [ -n "$OUTPUT" ]; then
+	echo "$OUTPUT"
+    else
+	echo "No output."
+    fi
+    echo "--------------------"
+    echo "Exit code: $RETURN"
+else
+    IFS=,               # set EMAILADDRESS separator
+    for EMAIL in $EMAILS; do
+	IFS=" "         # restore Internal Field Separator -- for "$*" benefit
+	cat <<-EOF | sendmail -t
+		From: $(whoami)@$(hostname)
+		To: $EMAIL
+		Subject: "$*"
+
+		Output:
+		$OUTPUT
+		--------------------
+		Exit code: $RETURN
+		EOF
+    done
+fi
+exit "$RETURN"
+
+#[eof]

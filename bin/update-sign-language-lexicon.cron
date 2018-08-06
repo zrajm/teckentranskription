@@ -1,0 +1,16 @@
+# /etc/cron.d/anacron: crontab entries for the anacron package
+
+# Add the password/email address below and copy this file to
+# /etc/cron.d/update-sign-language-lexicon in order run a cronjob at nine
+# o'clock in the morning every monday. /zrajm [2018-08-06]
+
+GMAIL_PASS=[password]
+GMAIL_USER=[Gmail login]
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+DIR=/home/zrajm/Web/teckentranskription.cron
+
+0  9    * * 1   zrajm	export PERL5LIB="$DIR/bin"; cd $DIR; echo $GMAIL_PASS | ./bin/outwrap --send test-mail@klingonska.org ./bin/update-sign-language-lexicon $GMAIL_USER
+
+#[eof]

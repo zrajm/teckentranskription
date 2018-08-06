@@ -139,7 +139,7 @@ email_ids = search_email(
 print("Looking for newest email...")
 newest_id = newest_id(connection, email_ids)
 
-print("Fetching email...")
+print("Fetching email attachment...")
 mail = fetch_email(connection, newest_id, "(RFC822)")
 
 print("Disconnecting from IMAP server...")
