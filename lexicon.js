@@ -530,7 +530,7 @@ urlFragment.onChange(searchLexicon); // URL fragment change
                 .html("Lexikon uppdaterat: " + lexiconDate.toLocaleString(
                     "sv",
                     { year: "numeric", month: "long", day: "numeric" },
-                ) + ".");
+                ) + " (" + Object.keys(lexicon).length + " tecken).");
         }
     }
     $(updateLexiconDate);
