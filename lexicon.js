@@ -524,12 +524,12 @@ urlFragment.onChange(searchLexicon); // URL fragment change
     "use strict";
     function updateLexiconDate() {
         if (lexiconDate === undefined) {
-            setTimeout(x, 250);
+            setTimeout(updateLexiconDate, 250);
         } else {
             $("#lexicon-updated")
                 .html("Lexikon uppdaterat: " + lexiconDate.toLocaleString(
                     "sv",
-                    { year: "numeric", month: "long", day: "numeric" },
+                    { year: "numeric", month: "long", day: "numeric" }
                 ) + " (" + Object.keys(lexicon).length + " tecken).");
         }
     }
