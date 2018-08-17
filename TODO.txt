@@ -27,6 +27,11 @@
    These are some cool BSL examples:
    http://vhg.cmp.uea.ac.uk/demo/BSLExamples/
 * Lexicon
+** TODO Progress bar should updated every x milliseconds
+   Instead every x number of entries.
+** TODO Module for lexicon
+   Module have methods for returning named entry properties (i.e. the ID,
+   transcription, translation etc. of an entry).
 ** [1/12] Query syntax
 *** TODO Help section for query syntax
     * = match 'word' characters (i.e. not space and segment separator, '􌥠', but
@@ -87,11 +92,42 @@
     Curving, (all types of) circling, hitting and turning.
 *** TODO Character classes [...] to search query
     Useful when one is searching for one of multiple hand shapes.
-** [1/2] Search result
+** [0/1] Search result
 *** TODO Sortable search results
     Present search result in a sortable table? Should be able to sort by swedish
     word, and by sign language.
-** [1/8] GUI
+** [1/9] GUI
+*** TODO Non-critical video search result
+**** TODO Video poster frame handling
+     Display 'waiting' GIF while loading, replace by error msg on fail.
+**** TODO Video load handling
+     Display 'waiting' GIF while loading (after replacing <img> with a <video>
+     tag), replace by error msg on fail.
+**** TODO Swedish translation should have mouseover text
+     So that can be seen in its entirety even if it is truncated by ellipsis.
+**** TODO Multiple <mark> in same entry not working
+     A search for 'OTRANSKRIBERAD,72,har' should hilite three different things
+     in entry 00072, but only the transcription is hilited. Why?
+     http://localhost/teckentranskription.lexicon/lexicon.html#otranskr%2C%2072%2C%20har
+**** TODO Use poster images served through GitHub page?
+         var videoTmpl = "video/{firstDigits}/{file}-{id}-tecken.mp4";
+         var imageTmpl = "lexicon/{firstDigits}/{file}-{id}-tecken.jpg";
+**** TODO Fix indentation of htmlifyTranscription()
+**** TODO Click on translation to display overlay with all info
+     The htmlifyTranscription() function will probably need to insert <wbr>
+     each segment separator in the transcript. The following snippet was
+     previously used, for this.
+
+         return hilitedTransStr
+             // Insert <wbr> tag after all segment separators.
+             .replace(/􌥠/gu, '􌥠<wbr>')
+**** TODO Update time in search status field
+**** TODO Double click on unplayed video doesn't work           :BUG:Firefox:
+     The first click on a video <im> replaces it with a <video>, and starts
+     playing. On Firefox the first click after the element do not trigger a click
+     event.
+       + one have to click twice to pause video after playing it the 1st time.
+       + double clicking on an unviewed image does not cause it to fullscreen.
 *** TODO Make Javascript generated CSS neater
     Instead of using jQuery to apply CSS in 'style' attribute, should generate
     random ID for a prefix, and use CSS rules.
@@ -112,6 +148,20 @@
     When scrolling down over the search results, the search form should slide
     upwards, and reveal a button which can be pressed to drop down the search
     form on top of the results.
+*** DONE Basic video search result (required for push to GitHub)
+    CLOSED: [2018-08-17 Fri 05:46]
+**** DONE Sync script to update image names
+     CLOSED: [2018-08-17 Fri 05:46]
+     Retained old format as image & video names can be calculated from the
+     translations.
+**** DONE Link to http://teckensprakslexikon.su.se in each result
+     CLOSED: [2018-08-17 Fri 05:39]
+**** DONE Double click to toggle fullscreen
+     CLOSED: [2018-08-16 Thu]
+**** DONE Click to toggle play/pause
+     CLOSED: [2018-08-16 Thu]
+**** DONE Display videos in search result
+     CLOSED: [2018-08-13 Mon]
 ** TODO Display date of last lexicon update
 ** TODO Display date of last font update
 ** TODO Use ECMAScript6 or not?

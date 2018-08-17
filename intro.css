@@ -46,6 +46,7 @@ img { max-height: 175px; }
 
 body {
     font-size: 22px;
+    line-height: 1.2;
 }
 
 noscript {
@@ -58,7 +59,7 @@ noscript {
 }
 noscript.required {
     font-size: 72px;
-    line-height: 150%;
+    line-height: 1.5;
     padding: .25em .5em;
     box-shadow: .25em .25em .25em rgba(0, 0, 0, .5),
         0 0 0 3000px rgba(0, 0, 0, .5);

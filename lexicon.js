@@ -1,5 +1,52 @@
 /*jslint browser fudge */
-/*global window $ lexicon */
+/*global window $ lexicon lexiconDate */
+
+// String method `STR.supplant(OBJ)`. Replace all {...} expressions in STR with
+// OBJ property of same name. Return the new string.
+//
+//   "Hello {str}!".supplant({str: "world"})       => "Hello world!"
+//   "Hello {0} & {1}!".supplant(["Alice", "Bob"]) => "Hello Alice & Bob!"
+//
+String.prototype.supplant = function (o) {
+    "use strict";
+    return this.replace(/\{([^{}]*)\}/g, function (a, b) {
+        var r = o[b];
+        return typeof r === 'string' || typeof r === 'number' ? r : a;
+    });
+};
+
+// Toggle fullscreen for one element or (with no arg) the whole window.
+// [thewebflash.com/toggling-fullscreen-mode-using-the-html5-fullscreen-api]
+function toggleFullscreen(elem) {
+    "use strict";
+    elem = elem || document.documentElement;
+    if (
+        document.fullscreenElement ||
+        document.mozFullScreenElement ||
+        document.webkitFullscreenElement ||
+        document.msFullscreenElement
+    ) {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        }
+    } else {
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.msRequestFullscreen) {
+            elem.msRequestFullscreen();
+        } else if (elem.mozRequestFullScreen) {
+            elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) {
+            elem.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+        }
+    }
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -367,8 +414,6 @@ function hilite(str, regex) {
 function htmlifyTranscription(hilitedTransStr) {
     "use strict";
     return hilitedTransStr
-        // Insert <wbr> tag after all segment separators.
-        .replace(/􌥠/gu, '􌥠<wbr>')
         // Add <span class=spelled>...</span> around substrings of printable
         // latin-1 chars. If there are <mark>/</mark> tags inside the
         // transcript string, make sure we add the matching number of tags on
@@ -407,25 +452,48 @@ function htmlifyTranscription(hilitedTransStr) {
     });
 }
 
+// Downcase string, remove all non-alphanumenic characters and space (by
+// replacing Swedish chars with aao, and space with '-') and collapse all
+// repetitions of '-'.
+function unicodeTo7bit(str) {
+    return str.toLowerCase().replace(/[^a-z0-9-]/gu, function (m) {
+        return {
+            " ": "-", "é": "e", "ü": "u", "å": "a", "ä": "a", "ö": "o"
+        }[m] || "";
+    }).replace(/-{2,}/, "-");
+}
+
 function htmlifyEntry(match) {
     "use strict";
     var hiliteRegex = match.hilite;
     var entry = match.entry;
     var id = entry[0];                         // 1st field
-    var trans = entry[1];                      // 2nd field
+    var transcr = entry[1];                    // 2nd field
     var swe = entry.slice(2);                  // remaining fields
-    return [
-        "<a href=\"http://teckensprakslexikon.su.se/ord/" + id + "\" " +
-                "target=_blank title=\"Öppna video i ny tab.\">" +
-                hilite(id, hiliteRegex) + "</a>",
-        "<a href=\"#" + trans + "\" class=trans " +
-                "title=\"Sök ord med samma transkription.\">" +
-                htmlifyTranscription(hilite(trans, hiliteRegex)) +
-                "</a>",
-        swe.map(function (txt) {
+    return (
+        "<div class=video-container>" +
+            "<img src=\"{baseUrl}/photos/{dir}/{file}-{id}-tecken.jpg\"" +
+            " data-video=\"{baseUrl}/movies/{dir}/{file}-{id}-tecken.mp4\">" +
+            "<div class=video-id>" +
+                "<a href=\"{baseUrl}/ord/{id}\" target=_blank>{htmlId}</a>" +
+            "</div>" +
+            "<div class=video-subs>" +
+                "<a href=\"#{transcr}\">{htmlTranscr}</a>" +
+            "</div>" +
+        "</div>" +
+        "{swedish}"
+    ).supplant({
+        id: id,
+        htmlId: hilite(id, hiliteRegex),
+        baseUrl: "https://teckensprakslexikon.su.se",
+        dir: id.substring(0, 2),
+        file: unicodeTo7bit(swe[0]),
+        transcr: transcr,
+        htmlTranscr: htmlifyTranscription(hilite(transcr, hiliteRegex)),
+        swedish: swe.map(function (txt) {
             return hilite(txt, hiliteRegex);
         }).join(", ")
-    ].join(" ");
+    });
 }
 
 // A function that interatively displays the result of a search. `chunksize`
@@ -450,9 +518,9 @@ var outputMatching = (function () {
             startSize = htmlQueue.length;
             logTiming.reset();
         }
-        // Output one chunk of search result (in own <div> for speed).
+        // Output one chunk of search result.
         chunk = htmlQueue.splice(0, chunksize);
-        elem.append("<div>" + chunk.join("") + "</div>");
+        elem.append(chunk.join(""));
 
         // Update progress bar & debug output to console.
         percent = 100 - Math.round((htmlQueue.length / (startSize || 1)) * 100);
@@ -491,15 +559,43 @@ function searchLexicon(queryStr) {
             }, []);
         logTiming.total("Search took %s.");
 
+        $("#xstatus").html(matches.length + " träffar");
         outputMatching({
-            elem: $("#results")
-                .html("<div class=gray>Visar " + matches.length + " träffar…</div>"),
+            elem: $("#results").empty(),
             html: matches.map(function (entry) {
-                return "<div>" + htmlifyEntry(entry) + "</div>\n";
+                return "<div class=match>" + htmlifyEntry(entry) + "</div>\n";
             })
         });
     }, 0);
 }
+
+function clickVideo(event) {
+    "use strict";
+    var jqElem = $(event.target);
+    var videoTagTmpl =
+        "<video loop muted playsinline src=\"{0}\" poster=\"{1}\"></video>";
+    if (jqElem.is("img")) {                    // image: replace with video
+        jqElem = $(
+            videoTagTmpl.supplant([jqElem.data("video"), jqElem.attr("src")])
+        ).replaceAll(jqElem);
+    }
+    if (jqElem.is("video")) {                  // video: toggle play/pause
+        jqElem.trigger(jqElem.prop("paused") ? "play" : "pause");
+    }
+}
+
+function doubleClickVideo(event) {
+    "use strict";
+    var elem = event.target;
+    var jqElem = $(elem);
+    if ($(elem).is("video")) {
+        toggleFullscreen(elem);
+    }
+}
+
+$("#results")
+    .click(clickVideo)
+    .dblclick(doubleClickVideo);
 
 ////////////////////////////////////////////////////////////////////////////////
 //

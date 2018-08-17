@@ -24,7 +24,7 @@ sub jsonify {
         sub { $JSON::PP::a->[0] cmp $JSON::PP::b->[0] }
     )->encode(\@object);
     # Insert enter before each '[' (except first).
-    $x =~ s#(?!^)\[#\n[#g;
+    $x =~ s#(?<=,|^\[)\[#\n[#g;
     return $x;
 }
 
@@ -36,6 +36,13 @@ sub time_str {
         "%04d-%02d-%02dT%02d:%02d:%02dZ",
         $year + 1900, $month + 1, $mday, $hour, $min, $sec,
     );
+}
+
+sub unicode_to_file {
+    local $_ = lc shift @_;
+    tr# éüåäö()&,.:/+?!’#-euaao#d;
+    s#-{2,}#-#g;
+    return $_;
 }
 
 use Data::Dumper;
@@ -121,13 +128,11 @@ while (my @field = $csv->split(scalar(<>))) {  # main loop
         }gex;
     }
 
-    if ($transcript) {
-        push(@thingy, [
-            $id,
-            $transcript,
-            @swedish,
-        ]);
-    }
+    push(@thingy, [
+        $id,
+        $transcript || "OTRANSKRIBERAD",
+        @swedish,
+    ]);
 }
 
 print

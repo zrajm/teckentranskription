@@ -8,13 +8,9 @@
   <link rel=stylesheet href="intro.css">
   <link rel=license href="LICENSE.txt">
   <style>
-    body { font-size: 2.5em; }
-    .gray { color: #7f7f7f; }
-    footer { opacity: .33; !important; font-size: 50%; }
-
     /* Search query <textarea> */
     #q {
-        padding-left: .5em; line-height: 1.4em;
+        padding-left: .5em; line-height: 1.4;
         border: 0; border-radius: 4px;
         transition: background 0.2s ease-out;
         background:
@@ -25,24 +21,96 @@
     #q:focus,
     #kb-icon:focus { background-color: white; }
     #kb-icon { background: transparent; }
-    #results {
-      margin: .5em 1em;
-      padding-left: 1em;
-      text-indent: -1em;
+
+    main { margin: 0 1em; }
+    footer, #xstatus {
+      font-size: smaller;
+      margin: .25em 0;
+      opacity: .5;
     }
-    #results > *:first-child { margin: .5em 0; }
     header {
       background: #07BCCD;
       padding: .5em 1em;
       box-shadow: 0 0 8px 4px rgba(0, 0, 0, .14);
     }
-    .trans {
-      color: #444;
+
+    #results {
+      margin: .25em 0;
+      text-align: left;
     }
-    .trans:hover {
-      text-decoration: underline;
+    /* space between #result matches */
+    #results { word-spacing: .5em; }
+    #results > * { word-spacing: normal; }
+
+    #results > div.match {
+      display: inline-block;
+      width: 270px;                            /* same as .video-container */
+      margin: .25em 0 .25em 0;
+
+      /* text: center or truncate if too long */
+      white-space: nowrap;
+      text-align: center;
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
-    .trans .spelled {
+    .video-container {
+      background: #07BCCD; /* turquoise */
+      position: relative;  /* for subtitle+id positioning */
+      border-radius: 4px;
+
+      /* center video + truncate sides for 16:19 videos */
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      width: 270px;                            /* same as #results > div.match */
+      height: 202px;
+
+      /* text color + outline */
+      color: #fff;
+      text-shadow:
+         1px  1px 1px #000,
+         1px -1px 1px #000,
+        -1px  1px 1px #000,
+        -1px -1px 1px #000,
+         0    0   2px #000;
+    }
+    .video-container a { color: inherit; }
+    .video-container video,
+    .video-container img {
+      /* z-index fixes Firefox where subs disappear when clicking
+         video content a second time (to stop video playback) */
+      z-index: auto;
+      max-height: none;
+      flex: none;
+      margin: auto;
+      height: 100%;
+    }
+    .video-id {
+      /* top-right corner */
+      position: absolute; right: .5em; top: .25em;
+      font-size: smaller;
+      opacity: .75;
+    }
+    .video-id:hover { opacity: 1; }
+    .video-subs {
+      /* place as subtitles */
+      line-height: 1.6; /* needed for top of font + shadow */
+      position: absolute; right: 0; bottom: 0; left: 0;
+
+      /* text: center or truncate if too long */
+      white-space: nowrap;
+      text-align: center;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    .video-container a mark {
+      background: rgba(255, 193, 0, .3);
+      color: rgb(255, 193, 47);
+    }
+    .video-container a:hover mark {
+      text-decoration: underline rgb(255, 193, 47);
+    }
+    .video-container .spelled {
       text-transform: lowercase;
       font-variant: small-caps;
     }
@@ -53,7 +121,10 @@
   <header>
     <textarea id=q rows=1 required></textarea>
   </header>
-  <div id=results></div>
+  <main>
+    <div id=xstatus></div>
+    <div id=results></div>
+  </main>
   <footer>
     <a href="." title="A page to help with transcription."
        >Transcribe</a> |
