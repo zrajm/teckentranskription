@@ -111,7 +111,6 @@
 **** TODO Use poster images served through GitHub page?
          var videoTmpl = "video/{firstDigits}/{file}-{id}-tecken.mp4";
          var imageTmpl = "lexicon/{firstDigits}/{file}-{id}-tecken.jpg";
-**** TODO Fix indentation of htmlifyTranscription()
 **** TODO Click on translation to display overlay with all info
      The htmlifyTranscription() function will probably need to insert <wbr>
      each segment separator in the transcript. The following snippet was
@@ -127,6 +126,8 @@
      event.
        + one have to click twice to pause video after playing it the 1st time.
        + double clicking on an unviewed image does not cause it to fullscreen.
+**** DONE Fix indentation of htmlifyTranscription()
+     CLOSED: [2018-08-18 Sat 06:11]
 **** DONE Screen width on mobile
      CLOSED: [2018-08-18 Sat 05:42]
 **** DONE Video poster frame handling
