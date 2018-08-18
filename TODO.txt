@@ -99,7 +99,6 @@
 ** [1/9] GUI
 *** TODO Non-critical video search result
 **** TODO Lazy image loading
-**** TODO Screen width on mobile
 **** TODO Video load handling
      Display 'waiting' GIF while loading (after replacing <img> with a <video>
      tag), replace by error msg on fail.
@@ -128,6 +127,8 @@
      event.
        + one have to click twice to pause video after playing it the 1st time.
        + double clicking on an unviewed image does not cause it to fullscreen.
+**** DONE Screen width on mobile
+     CLOSED: [2018-08-18 Sat 05:42]
 **** DONE Video poster frame handling
      CLOSED: [2018-08-18 Sat 05:16]
      Display 'waiting' GIF while loading, replace by error msg on fail.
