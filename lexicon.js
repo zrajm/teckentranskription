@@ -104,13 +104,14 @@ var progressBar = (function () {
         left: 0,
         right: 0,
         height: 3,
-        boxShadow: "inset 0 -4px 2px #eee"
+        boxShadow: "inset 0 -4px 2px #eee",
+        zIndex: 1
     }).hide();
     var jqContent = jqContainer.children().css({
         width: 0,
         height: 3,
         opacity: 0.75,
-        background: "#900"
+        background: "#000"
     });
     return function (percent) {
         jqContainer[percent === undefined
