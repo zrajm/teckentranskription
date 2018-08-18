@@ -53,8 +53,19 @@
       text-overflow: ellipsis;
       overflow: hidden;
     }
+    .video-container.is-loading {
+      background-image: url(pic/gui/image-loading.jpg);
+    }
+    .video-container.is-broken {
+      background-image: url(pic/gui/image-broken.svg),
+        url(pic/gui/image-loading.jpg);
+    }
+    .video-container.is-loading img,
+    .video-container.is-broken img {
+      opacity: 0;                              /* hide but allow clicks etc. */
+    }
     .video-container {
-      background: #07BCCD; /* turquoise */
+      background: no-repeat center url(pic/gui/image-loading.jpg) #07BCCD;
       position: relative;  /* for subtitle+id positioning */
       border-radius: 4px;
 
@@ -84,6 +95,7 @@
       flex: none;
       margin: auto;
       height: 100%;
+      min-width: 100%;
     }
     .video-id {
       /* top-right corner */
@@ -144,6 +156,7 @@
     <div style="margin-top:.5em"><span id=lexicon-updated></span></div>
   </footer>
   <script src="jquery-3.3.1.min.js"></script>
+  <script src="imagesloaded.pkgd.min.js"></script>
   <script src="lexicon.js"></script>
   <script src="lexicon-data.js"></script>
   <script src="keyboard.js"></script>

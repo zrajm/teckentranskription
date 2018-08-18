@@ -471,7 +471,7 @@ function htmlifyEntry(match) {
     var transcr = entry[1];                    // 2nd field
     var swe = entry.slice(2);                  // remaining fields
     return (
-        "<div class=video-container>" +
+        "<div class=\"video-container is-loading\">" +
             "<img src=\"{baseUrl}/photos/{dir}/{file}-{id}-tecken.jpg\"" +
             " data-video=\"{baseUrl}/movies/{dir}/{file}-{id}-tecken.mp4\">" +
             "<div class=video-id>" +
@@ -522,6 +522,8 @@ var outputMatching = (function () {
         chunk = htmlQueue.splice(0, chunksize);
         elem.append(chunk.join(""));
 
+        elem.imagesLoaded().progress(onImageLoad);
+
         // Update progress bar & debug output to console.
         percent = 100 - Math.round((htmlQueue.length / (startSize || 1)) * 100);
         progressBar(percent);
@@ -537,6 +539,15 @@ var outputMatching = (function () {
     }
     return process;
 }());
+
+function onImageLoad(imgLoad, image) {
+    // change class if image is loaded or broken
+    var parentElem = $(image.img).parent();
+    parentElem.removeClass('is-loading');
+    if (!image.isLoaded) {
+        parentElem.addClass('is-broken');
+    }
+}
 
 function searchLexicon(queryStr) {
     "use strict";
