@@ -463,7 +463,7 @@ function unicodeTo7bit(str) {
     }).replace(/-{2,}/, "-");
 }
 
-function htmlifyEntry(match) {
+function htmlifyMatch(match) {
     "use strict";
     var hiliteRegex = match.hilite;
     var entry = match.entry;
@@ -471,17 +471,19 @@ function htmlifyEntry(match) {
     var transcr = entry[1];                    // 2nd field
     var swe = entry.slice(2);                  // remaining fields
     return (
-        "<div class=\"video-container is-loading\">" +
-            "<img src=\"{baseUrl}/photos/{dir}/{file}-{id}-tecken.jpg\"" +
-            " data-video=\"{baseUrl}/movies/{dir}/{file}-{id}-tecken.mp4\">" +
-            "<div class=video-id>" +
-                "<a href=\"{baseUrl}/ord/{id}\" target=_blank>{htmlId}</a>" +
+        "<div class=match>" +
+            "<div class=\"video-container is-loading\">" +
+                "<img src=\"{baseUrl}/photos/{dir}/{file}-{id}-tecken.jpg\"" +
+                " data-video=\"{baseUrl}/movies/{dir}/{file}-{id}-tecken.mp4\">" +
+                "<div class=video-id>" +
+                    "<a href=\"{baseUrl}/ord/{id}\" target=_blank>{htmlId}</a>" +
+                "</div>" +
+                "<div class=video-subs>" +
+                    "<a href=\"#{transcr}\">{htmlTranscr}</a>" +
+                "</div>" +
             "</div>" +
-            "<div class=video-subs>" +
-                "<a href=\"#{transcr}\">{htmlTranscr}</a>" +
-            "</div>" +
-        "</div>" +
-        "{swedish}"
+            "{swedish}" +
+        "</div>\n"
     ).supplant({
         id: id,
         htmlId: hilite(id, hiliteRegex),
@@ -573,9 +575,7 @@ function searchLexicon(queryStr) {
         $("#xstatus").html(matches.length + " träffar");
         outputMatching({
             elem: $("#results").empty(),
-            html: matches.map(function (entry) {
-                return "<div class=match>" + htmlifyEntry(entry) + "</div>\n";
-            })
+            html: matches.map(htmlifyMatch)
         });
     }, 0);
 }

@@ -98,7 +98,14 @@
     word, and by sign language.
 ** [1/9] GUI
 *** TODO Non-critical video search result
-**** TODO Lazy image loading
+**** TODO Keyboard navigation
+     * Tab/shift-tab move focus from one video to the next
+     * 1234567890 -- move to % percent of matches
+     * <space>? display video overlay info
+     * key to go to ID/external site
+     * key to search for transcription
+     * <Esc>(?) key to focus search input area
+**** TODO Use infinite scroll + lazy loading of images?
 **** TODO Video load handling
      Display 'waiting' GIF while loading (after replacing <img> with a <video>
      tag), replace by error msg on fail.
