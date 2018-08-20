@@ -27,7 +27,7 @@
     main { margin: 0 1em; }
     footer, #xstatus {
       font-size: smaller;
-      margin: .25em 0;
+      margin: .5em 0;
       opacity: .5;
     }
     header {
@@ -128,6 +128,11 @@
       text-transform: lowercase;
       font-variant: small-caps;
     }
+    #more {
+      display: none;
+      padding: .25em .5em;
+      background: #07bccd;
+    }
   </style>
 </head>
 <body>
@@ -139,6 +144,7 @@
     <div id=xstatus></div>
     <div id=results></div>
   </main>
+  <center><button id=more>Visa fler träffar…</button></center>
   <footer>
     <a href="." title="A page to help with transcription."
        >Transcribe</a> |

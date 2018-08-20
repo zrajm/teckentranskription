@@ -499,47 +499,67 @@ function htmlifyMatch(match) {
 }
 
 // A function that interatively displays the result of a search. `chunksize`
-// items are displayed at a time, thereafter the function calls itself with a
-// setTimeout of zero (which allows other stuff to run as well, and not
-// monopolize the event loop).
+// items are displayed at a time, thereafter an additional `chunksize` items
+// are shown if user scrolls to the end of the page or press the 'Show more…'
+// button.
 //
 // If the function is invoked again with a new search result, then any still
 // ongoing processing is aborted and only the new result is displayed.
 var outputMatching = (function () {
     "use strict";
-    var chunksize = 500;                       // setting (never changes)
-    var elem;
+    var chunksize = 100;                       // setting (never changes)
+    var hasListener = false;
+    var statusElem;
+    var resultElem;
+    var buttonElem;
     var htmlQueue;
     var startSize;
-    function process(args) {
+    var count;
+
+    function scrolledToBottom() {
+        var pageOffset = window.pageYOffset || window.scrollY;
+        var pageHeight = document.body.offsetHeight;
+        var winHeight = window.innerHeight;
+        return (pageOffset + winHeight >= pageHeight - 2) ? true : false
+    }
+
+    function outputNext(args) {
         var chunk;
-        var percent;
         if (args) {
-            elem = args.elem;
+            statusElem = args.status;
+            resultElem = args.result;
+            buttonElem = args.button;
             htmlQueue = args.html;
             startSize = htmlQueue.length;
-            logTiming.reset();
+            count = 0;
         }
+
         // Output one chunk of search result.
         chunk = htmlQueue.splice(0, chunksize);
-        elem.append(chunk.join(""));
+        count += chunk.length;
+        statusElem.html(startSize + " träffar – " + count + " visas just nu");
+        resultElem.append(chunk.join(""));
+        resultElem.imagesLoaded().progress(onImageLoad);
 
-        elem.imagesLoaded().progress(onImageLoad);
-
-        // Update progress bar & debug output to console.
-        percent = 100 - Math.round((htmlQueue.length / (startSize || 1)) * 100);
-        progressBar(percent);
-        logTiming.step("  " + percent + "% – Showing chunk took %s.");
-
-        // Process next chunk (using recursion).
-        if (htmlQueue.length > 0) {            // if moar chunks remain
-            setTimeout(process, 0);            //   process them
-        } else {                               // if all chunks done
-            logTiming.total("Showing " + startSize + " results took %s.");
-            setTimeout(progressBar, 250);      //   hide progress bar
+        if (htmlQueue.length === 0) {          // nothing more to display
+            buttonElem.hide();
+            $(window).off("scroll");
+        } else {                               // moar to display
+            if (!hasListener) {
+                buttonElem.click(function () { outputNext(); });
+                hasListener = true;
+            }
+            if (args) {
+                buttonElem.show();
+                $(window).on("scroll", function () {
+                    if (scrolledToBottom()) {
+                        outputNext();
+                    }
+                });
+            }
         }
     }
-    return process;
+    return outputNext;
 }());
 
 function onImageLoad(imgLoad, image) {
@@ -572,9 +592,10 @@ function searchLexicon(queryStr) {
             }, []);
         logTiming.total("Search took %s.");
 
-        $("#xstatus").html(matches.length + " träffar");
         outputMatching({
-            elem: $("#results").empty(),
+            status: $("#xstatus"),
+            result: $("#results").empty(),
+            button: $("#more"),
             html: matches.map(htmlifyMatch)
         });
     }, 0);
