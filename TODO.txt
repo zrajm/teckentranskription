@@ -105,7 +105,12 @@
      * key to go to ID/external site
      * key to search for transcription
      * <Esc>(?) key to focus search input area
-**** TODO Use infinite scroll + lazy loading of images?
+**** TODO Use lazy loading of images?
+**** TODO Visual feedback on play/pause/fullscreen
+     YouTube has play/pause icon that animates on top of the video when
+     triggering play/pause. This would be a nice feedback for the user, might
+     be wise to make sure this icon does not cover the middle of the video
+     though.
 **** TODO Video load handling
      Display 'waiting' GIF while loading (after replacing <img> with a <video>
      tag), replace by error msg on fail.
@@ -133,6 +138,11 @@
      event.
        + one have to click twice to pause video after playing it the 1st time.
        + double clicking on an unviewed image does not cause it to fullscreen.
+**** DONE Use infinite scroll
+     CLOSED: [2018-08-20 Mon 03:10]
+     First 100 search results are displayed immediately, successive 100 results
+     are displayed when scrolling to bottom of page, or pressing the 'Visa fler
+     träffar…' button at the end of the page.
 **** DONE Better color for progress bar
      CLOSED: [2018-08-18 Sat 06:31]
 **** DONE Fix indentation of htmlifyTranscription()
