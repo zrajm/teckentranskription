@@ -102,15 +102,14 @@
     }
     .video-id {
       /* top-right corner */
-      position: absolute; right: .5em; top: .25em;
+      position: absolute; right: 8px; top: 4px;
       font-size: smaller;
       opacity: .75;
     }
     .video-id:hover { opacity: 1; }
     .video-subs {
-      /* place as subtitles */
-      line-height: 1.6; /* needed for top of font + shadow */
-      position: absolute; right: 0; bottom: 0; left: 0;
+      position: absolute; bottom: 4px;         /* subtitle placement */
+      padding: 3px 2px 1px 2px;                /* don't truncate shadow */
 
       /* text: center or truncate if too long */
       white-space: nowrap;
@@ -122,6 +121,7 @@
       background: rgba(255, 193, 0, .3);
       color: rgb(255, 193, 47);
     }
+    .video-container a:focus mark,
     .video-container a:hover mark {
       text-decoration: underline rgb(255, 193, 47);
     }

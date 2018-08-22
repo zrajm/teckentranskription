@@ -476,12 +476,9 @@ function htmlifyMatch(match) {
                 "<img src=\"{baseUrl}/photos/{dir}/{file}-{id}-tecken.jpg\"" +
                 " data-video=\"{baseUrl}/movies/{dir}/{file}-{id}-tecken.mp4\">" +
                 "<div class=video-feedback></div>" +
-                "<div class=video-id>" +
-                    "<a href=\"{baseUrl}/ord/{id}\" target=_blank>{htmlId}</a>" +
-                "</div>" +
-                "<div class=video-subs>" +
-                    "<a href=\"#{transcr}\">{htmlTranscr}</a>" +
-                "</div>" +
+                "<a class=video-id href='{baseUrl}/ord/{id}'" +
+                " target=_blank>{htmlId}</a>" +
+                "<a class=video-subs href='#{transcr}'>{htmlTranscr}</a>" +
             "</div>" +
             "{swedish}" +
         "</div>\n"
