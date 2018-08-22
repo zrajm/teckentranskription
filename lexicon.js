@@ -475,6 +475,7 @@ function htmlifyMatch(match) {
             "<div class=\"video-container is-loading\">" +
                 "<img src=\"{baseUrl}/photos/{dir}/{file}-{id}-tecken.jpg\"" +
                 " data-video=\"{baseUrl}/movies/{dir}/{file}-{id}-tecken.mp4\">" +
+                "<div class=video-feedback></div>" +
                 "<div class=video-id>" +
                     "<a href=\"{baseUrl}/ord/{id}\" target=_blank>{htmlId}</a>" +
                 "</div>" +
@@ -601,33 +602,45 @@ function searchLexicon(queryStr) {
     }, 0);
 }
 
-function clickVideo(event) {
+function onPlayPauseToggle(event) {
     "use strict";
-    var jqElem = $(event.target);
-    var videoTagTmpl =
-        "<video loop muted playsinline src=\"{0}\" poster=\"{1}\"></video>";
-    if (jqElem.is("img")) {                    // image: replace with video
-        jqElem = $(
-            videoTagTmpl.supplant([jqElem.data("video"), jqElem.attr("src")])
-        ).replaceAll(jqElem);
+    var feedbackElem;
+    if ($(event.target).is("a")) {             // a link was clicked: abort
+        return;
     }
-    if (jqElem.is("video")) {                  // video: toggle play/pause
-        jqElem.trigger(jqElem.prop("paused") ? "play" : "pause");
-    }
-}
+    var jqContainer = $(event.currentTarget);
+    var jqVideo = $(">video,>img[data-video]", jqContainer);
 
-function doubleClickVideo(event) {
-    "use strict";
-    var elem = event.target;
-    var jqElem = $(elem);
-    if ($(elem).is("video")) {
-        toggleFullscreen(elem);
+    if (jqVideo.is("img")) {                    // replace <img> with <video>
+        jqVideo = $(
+            "<video loop muted playsinline src='{0}' poster='{1}'></video>"
+                .supplant([jqVideo.data("video"), jqVideo.attr("src")])
+        ).replaceAll(jqVideo);
     }
+
+    // Get state of video and toggle play/pause state.
+    // (Everything that remains after this is visual feedback.)
+    var action = jqVideo.prop("paused") ? "play" : "pause";
+    jqVideo.trigger(action);
+
+    // Add icon to feedback overlay & animate it.
+    feedbackElem = $(">.video-feedback", jqContainer)
+        .removeClass("anim pause play")
+        .addClass(action);                     // display play/pause icon
+    setTimeout(function () {                   // animate icon
+        feedbackElem
+            .addClass("anim")
+            .one("transitionend", function() {
+                feedbackElem.removeClass("anim pause play");
+            });
+    }, 10);
 }
 
 $("#results")
-    .click(clickVideo)
-    .dblclick(doubleClickVideo);
+    .on("click", ".video-container", onPlayPauseToggle)
+    .on("dblclick", ".video-container", function (event) {
+        toggleFullscreen($(">video", event.currentTarget)[0]);
+    });
 
 ////////////////////////////////////////////////////////////////////////////////
 //

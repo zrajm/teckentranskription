@@ -88,8 +88,8 @@
          0    0   2px #000;
     }
     .video-container a { color: inherit; }
-    .video-container video,
-    .video-container img {
+    .video-container > video,
+    .video-container > img {
       /* z-index fixes Firefox where subs disappear when clicking
          video content a second time (to stop video playback) */
       z-index: auto;
@@ -129,6 +129,20 @@
       text-transform: lowercase;
       font-variant: small-caps;
     }
+    .video-feedback {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background: no-repeat center/45px;
+    }
+    .video-feedback.anim {
+      transition: all .5s ease-out;
+      background-size: 90px;
+      opacity: 0;
+    }
+    .video-feedback.play { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="45" height="45"><circle r="22.5" cy="22.5" cx="22.5" style="isolation:auto;mix-blend-mode:normal" color="#000" overflow="visible" opacity=".75" fill-rule="evenodd"/><path color="#000" fill="#fff" style="isolation:auto;mix-blend-mode:normal" overflow="visible" d="M33.25 22.5l-16.5 9.53V12.97z"/></svg>'); }
+    .video-feedback.pause { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="45" height="45"><circle r="22.5" cy="22.5" cx="22.5" style="isolation:auto;mix-blend-mode:normal" color="#000" overflow="visible" opacity=".75" fill-rule="evenodd"/><path color="#000" fill="#fff" style="isolation:auto;mix-blend-mode:normal" overflow="visible" d="M15 15h5v15h-5zM25 15h5v15h-5z" fill-rule="evenodd"/></svg>'); }
+
     #more {
       display: none;
       padding: .25em .5em;
