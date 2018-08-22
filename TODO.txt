@@ -99,6 +99,7 @@
 ** [1/9] GUI
 *** TODO Non-critical video search result
 **** TODO Keyboard navigation
+     Is there a non-Javascript way of doing this?
      * Tab/shift-tab move focus from one video to the next
      * 1234567890 -- move to % percent of matches
      * <space>? display video overlay info
@@ -109,7 +110,7 @@
 **** TODO Video load handling
      Display 'waiting' GIF while loading (after replacing <img> with a <video>
      tag), replace by error msg on fail.
-**** TODO Multiple <mark> in same entry not working
+**** TODO Multiple <mark> in same entry not working                     :BUG:
      A search for 'OTRANSKRIBERAD,72,har' should hilite three different things
      in entry 00072, but only the transcription is hilited. Why?
      http://localhost/teckentranskription.lexicon/lexicon.html#otranskr%2C%2072%2C%20har
@@ -124,7 +125,8 @@
          return hilitedTransStr
              // Insert <wbr> tag after all segment separators.
              .replace(/􌥠/gu, '􌥠<wbr>')
-**** TODO Double click on unplayed video doesn't work           :BUG:Firefox:
+**** DONE Double click on unplayed video doesn't work           :BUG:Firefox:
+     CLOSED: [2018-08-22 Wed 17:11]
      The first click on a video <im> replaces it with a <video>, and starts
      playing. On Firefox the first click after the element do not trigger a click
      event.
