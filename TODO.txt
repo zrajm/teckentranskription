@@ -127,6 +127,18 @@
          return hilitedTransStr
              // Insert <wbr> tag after all segment separators.
              .replace(/􌥠/gu, '􌥠<wbr>')
+**** DONE Optimize search speed
+     CLOSED: [2018-08-22 Wed 19:56]
+     Originally intended to add a progress bar for the search itself as
+     searching for '*' took more that two seconds without any page updates at
+     all. Frustrating!
+
+     In my attempts make the search function asynchronous to allow for the
+     progress bar updating, I accidentally discovered that using a `for` loop
+     (rather than the previous `reduce`) resulted in 20 *millisecond* search
+     times instead of the previous 2 seconds!
+
+     Need for progress bar therefore eliminated!
 **** DONE Allow loading of more matches from top of page
      CLOSED: [2018-08-22 Wed 17:17]
 **** DONE Double click on unplayed video doesn't work           :BUG:Firefox:

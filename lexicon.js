@@ -584,20 +584,25 @@ function searchLexicon(queryStr) {
     $("#q").val(queryStr);
     setTimeout(function () {
         var query = parseQuery(queryStr);
+        var i;
+        var len;
+        var subquery;
+        var matches = [];
         urlFragment.set(queryStr);
 
         logTiming.reset();
-        var matches = query.length === 0
-            ? []
-            : lexicon.reduce(function (matches, entry) {
-                var subquery = queryInEntry(query, entry);
-                return subquery === -1
-                    ? matches
-                    : matches.concat({
+        if (query.length > 0) {
+            len = lexicon.length;
+            for (i = 0; i < len; i += 1) {
+                subquery = queryInEntry(query, lexicon[i]);
+                if (subquery > -1) {
+                    matches.push({
                         hilite: query[subquery].hilite,
-                        entry: entry
+                        entry: lexicon[i]
                     });
-            }, []);
+                }
+            }
+        }
         logTiming.total("Search took %s.");
 
         outputMatching({
