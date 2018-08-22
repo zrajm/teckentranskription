@@ -106,16 +106,9 @@
      * key to search for transcription
      * <Esc>(?) key to focus search input area
 **** TODO Use lazy loading of images?
-**** TODO Visual feedback on play/pause/fullscreen
-     YouTube has play/pause icon that animates on top of the video when
-     triggering play/pause. This would be a nice feedback for the user, might
-     be wise to make sure this icon does not cover the middle of the video
-     though.
 **** TODO Video load handling
      Display 'waiting' GIF while loading (after replacing <img> with a <video>
      tag), replace by error msg on fail.
-**** TODO Swedish translation should have mouseover text
-     So that can be seen in its entirety even if it is truncated by ellipsis.
 **** TODO Multiple <mark> in same entry not working
      A search for 'OTRANSKRIBERAD,72,har' should hilite three different things
      in entry 00072, but only the transcription is hilited. Why?
@@ -131,13 +124,21 @@
          return hilitedTransStr
              // Insert <wbr> tag after all segment separators.
              .replace(/􌥠/gu, '􌥠<wbr>')
-**** TODO Update time in search status field
 **** TODO Double click on unplayed video doesn't work           :BUG:Firefox:
      The first click on a video <im> replaces it with a <video>, and starts
      playing. On Firefox the first click after the element do not trigger a click
      event.
        + one have to click twice to pause video after playing it the 1st time.
        + double clicking on an unviewed image does not cause it to fullscreen.
+**** DONE Swedish translation should have mouseover text
+     CLOSED: [2018-08-22 Wed 17:00]
+     So that can be seen in its entirety even if it is truncated by ellipsis.
+**** DONE Visual feedback on play/pause/fullscreen
+     CLOSED: [2018-08-22 Wed 15:15]
+     YouTube has play/pause icon that animates on top of the video when
+     triggering play/pause. This would be a nice feedback for the user, might
+     be wise to make sure this icon does not cover the middle of the video
+     though.
 **** DONE Use infinite scroll
      CLOSED: [2018-08-20 Mon 03:10]
      First 100 search results are displayed immediately, successive 100 results

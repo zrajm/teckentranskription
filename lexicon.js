@@ -480,7 +480,7 @@ function htmlifyMatch(match) {
                 " target=_blank>{htmlId}</a>" +
                 "<a class=video-subs href='#{transcr}'>{htmlTranscr}</a>" +
             "</div>" +
-            "{swedish}" +
+            "<span title='{swedish}'>{htmlSwedish}</span>" +
         "</div>\n"
     ).supplant({
         id: id,
@@ -490,7 +490,8 @@ function htmlifyMatch(match) {
         file: unicodeTo7bit(swe[0]),
         transcr: transcr,
         htmlTranscr: htmlifyTranscription(hilite(transcr, hiliteRegex)),
-        swedish: swe.map(function (txt) {
+        swedish: swe.join(", "),
+        htmlSwedish: swe.map(function (txt) {
             return hilite(txt, hiliteRegex);
         }).join(", ")
     });
