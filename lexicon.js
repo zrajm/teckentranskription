@@ -11,7 +11,7 @@ String.prototype.supplant = function (o) {
     "use strict";
     return this.replace(/\{([^{}]*)\}/g, function (a, b) {
         var r = o[b];
-        return typeof r === 'string' || typeof r === 'number' ? r : a;
+        return typeof r === "string" || typeof r === "number" ? r : a;
     });
 };
 
@@ -173,7 +173,7 @@ var logTiming = (function (perf, log) {
     "use strict";
     var oldTop = 0;
     var jqContainer = $(
-        "<img src=\"pic/gui/up-arrow.svg\" title=\"Scroll to top\">"
+        "<img src='pic/gui/up-arrow.svg' title='Scroll to top'>"
     ).prependTo(document.body).hide().css({
         background: "#fff",
         position: "fixed",
@@ -472,9 +472,9 @@ function htmlifyMatch(match) {
     var swe = entry.slice(2);                  // remaining fields
     return (
         "<div class=match>" +
-            "<div class=\"video-container is-loading\">" +
-                "<img src=\"{baseUrl}/photos/{dir}/{file}-{id}-tecken.jpg\"" +
-                " data-video=\"{baseUrl}/movies/{dir}/{file}-{id}-tecken.mp4\">" +
+            "<div class='video-container is-loading'>" +
+                "<img src='{baseUrl}/photos/{dir}/{file}-{id}-tecken.jpg'" +
+                " data-video='{baseUrl}/movies/{dir}/{file}-{id}-tecken.mp4'>" +
                 "<div class=video-feedback></div>" +
                 "<a class=video-id href='{baseUrl}/ord/{id}'" +
                 " target=_blank>{htmlId}</a>" +
@@ -543,7 +543,7 @@ var outputMatching = (function () {
                 "{1} träffar (visar {0}) – <a>Visa {2} till</a>"
                     .supplant([count, startSize, chunksize])
             );
-            $('>a',statusElem).click(function () { outputNext(); });
+            $(">a",statusElem).click(function () { outputNext(); });
         }
 
         resultElem.append(chunk.join(""));
@@ -573,9 +573,9 @@ var outputMatching = (function () {
 function onImageLoad(imgLoad, image) {
     // change class if image is loaded or broken
     var parentElem = $(image.img).parent();
-    parentElem.removeClass('is-loading');
+    parentElem.removeClass("is-loading");
     if (!image.isLoaded) {
-        parentElem.addClass('is-broken');
+        parentElem.addClass("is-broken");
     }
 }
 
