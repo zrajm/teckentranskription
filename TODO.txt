@@ -98,6 +98,8 @@
     word, and by sign language.
 ** [1/9] GUI
 *** TODO Non-critical video search result
+**** TODO Does play/pause feedback work in MS browsers?         :TEST:Windows:
+**** TODO Does play/pause feedback work in Safari?              :TEST:Mac:
 **** TODO Keyboard navigation
      Is there a non-Javascript way of doing this?
      * Tab/shift-tab move focus from one video to the next
@@ -125,6 +127,8 @@
          return hilitedTransStr
              // Insert <wbr> tag after all segment separators.
              .replace(/􌥠/gu, '􌥠<wbr>')
+**** DONE Allow loading of more matches from top of page
+     CLOSED: [2018-08-22 Wed 17:17]
 **** DONE Double click on unplayed video doesn't work           :BUG:Firefox:
      CLOSED: [2018-08-22 Wed 17:11]
      The first click on a video <im> replaces it with a <video>, and starts

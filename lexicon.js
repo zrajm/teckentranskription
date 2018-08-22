@@ -536,7 +536,16 @@ var outputMatching = (function () {
         // Output one chunk of search result.
         chunk = htmlQueue.splice(0, chunksize);
         count += chunk.length;
-        statusElem.html(startSize + " träffar – " + count + " visas just nu");
+        if (count === startSize) {
+            statusElem.html("{0} träffar (visar alla)".supplant([count]));
+        } else {
+            statusElem.html(
+                "{1} träffar (visar {0}) – <a>Visa {2} till</a>"
+                    .supplant([count, startSize, chunksize])
+            );
+            $('>a',statusElem).click(function () { outputNext(); });
+        }
+
         resultElem.append(chunk.join(""));
         resultElem.imagesLoaded().progress(onImageLoad);
 
