@@ -90,41 +90,6 @@ var urlFragment = (function () {
 
 ////////////////////////////////////////////////////////////////////////////////
 //
-// Progress bar module -- Display thin progress bar line at the top of the
-// window.
-//
-//   progressBar(PERCENT) -- show progress bar, and set to PERCENT
-//   progressBar() -- hide progress bar
-//
-var progressBar = (function () {
-    "use strict";
-    var jqContainer = $("<div><div></div></div>").prependTo(document.body).css({
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        height: 3,
-        boxShadow: "inset 0 -4px 2px #eee",
-        zIndex: 1
-    }).hide();
-    var jqContent = jqContainer.children().css({
-        width: 0,
-        height: 3,
-        opacity: 0.75,
-        background: "#000"
-    });
-    return function (percent) {
-        jqContainer[percent === undefined
-            ? "hide"
-            : "show"]();
-        jqContent.css({
-            width: percent + "%"
-        });
-    };
-}());
-
-////////////////////////////////////////////////////////////////////////////////
-//
 // Timer logging module -- Output msg on console, replacing '%s' in msg with
 // time in seconds or milliseconds (rounded to 3-4 digits).
 //
