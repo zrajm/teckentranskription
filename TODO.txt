@@ -127,6 +127,10 @@
          return hilitedTransStr
              // Insert <wbr> tag after all segment separators.
              .replace(/􌥠/gu, '􌥠<wbr>')
+**** DONE Tooltips which can handle transcription font
+     CLOSED: [2018-08-23 Thu 15:42]
+     Transparency (when hovering above with virtual keyboard button).
+     Make sure hovering image fits on screen.
 **** DONE Optimize search speed
      CLOSED: [2018-08-22 Wed 19:56]
      Originally intended to add a progress bar for the search itself as

@@ -442,8 +442,10 @@ function htmlifyMatch(match) {
                 " data-video='{baseUrl}/movies/{dir}/{file}-{id}-tecken.mp4'>" +
                 "<div class=video-feedback></div>" +
                 "<a class=video-id href='{baseUrl}/ord/{id}'" +
+                " title='Gå till Svenskt tecken­språks­lexikon (ny tabb)'" +
                 " target=_blank>{htmlId}</a>" +
-                "<a class=video-subs href='#{transcr}'>{htmlTranscr}</a>" +
+                "<a class=video-subs href='#{transcr}' title='{transcr}'>" +
+                    "{htmlTranscr}</a>" +
             "</div>" +
             "<span title='{swedish}'>{htmlSwedish}</span>" +
         "</div>\n"
@@ -453,7 +455,7 @@ function htmlifyMatch(match) {
         baseUrl: "https://teckensprakslexikon.su.se",
         dir: id.substring(0, 2),
         file: unicodeTo7bit(swe[0]),
-        transcr: transcr,
+        transcr: transcr.replace(/􌥠/gu, '􌥠<wbr>'), // <wbr> after separators
         htmlTranscr: htmlifyTranscription(hilite(transcr, hiliteRegex)),
         swedish: swe.join(", "),
         htmlSwedish: swe.map(function (txt) {
@@ -618,6 +620,56 @@ $("#results")
     .on("dblclick", ".video-container", function (event) {
         toggleFullscreen($(">video", event.currentTarget)[0]);
     });
+
+// Tooltips: These imitate Chromium tooltip behaviour, but allow us to use any
+// font -- so that sign language transcriptions can be displayed.
+(function () {
+    var timeout;
+    var jqTooltip = $("<div></div>").appendTo(document.body).css({
+        display: "none", color: "#fff", background: "#555", borderRadius: 2,
+        boxShadow: "0 2px 6px rgba(0, 0, 0, .25)", fontSize: 16,
+        lineHeight: "1.6", padding: ".5em", position: "fixed",
+        zIndex: 2147483647 /* max allowed */
+    });
+
+    // Trigger event if pointer is non-moving for half a second.
+    $(document.body).on("mouseover", "[title],[data-title]", function (event) {
+        var jq = $(event.currentTarget);
+        var value = jq.attr("title");
+
+        // Change attribute 'title' => 'data-title' to suppress browser tooltip.
+        if (value !== undefined) {
+            jq.attr("data-title", value).removeAttr("title");
+        }
+
+        clearTimeout(timeout);
+        timeout = setTimeout(function () { onMouseStill(event); }, 500);
+    });
+
+    function onMouseStill(event) {
+        var jqEvent = $(event);
+        var x = event.clientX + 10;
+        var y = event.clientY + 10;
+
+        // Display topleft to get height + width.
+        jqTooltip
+            .css({ left: 0, top: 0 })
+            .html($(event.currentTarget).data("title"))
+            .show();
+
+        // Now use height and width of displayed tooltip, to move it to the
+        // right place (making sure it doesn't stick out of right/bottom corner
+        // of window).
+        var xMax = $(window).width()  - jqTooltip.outerWidth();
+        var yMax = $(window).height() - jqTooltip.outerHeight();
+        jqTooltip.css({
+            left: x < xMax ? x : (xMax < 0 ? 0 : xMax),
+            top:  y < yMax ? y : (yMax < 0 ? 0 : yMax),
+        });
+
+        $(window).one("scroll mousemove", function () { jqTooltip.hide(); });
+    }
+}());
 
 ////////////////////////////////////////////////////////////////////////////////
 //
