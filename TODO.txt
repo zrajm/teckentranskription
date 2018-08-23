@@ -96,108 +96,106 @@
 *** TODO Sortable search results
     Present search result in a sortable table? Should be able to sort by swedish
     word, and by sign language.
-** [1/9] GUI
-*** TODO Non-critical video search result
-**** TODO Does play/pause feedback work in MS browsers?         :TEST:Windows:
-**** TODO Does play/pause feedback work in Safari?              :TEST:Mac:
-**** TODO Keyboard navigation
-     Is there a non-Javascript way of doing this?
-     * Tab/shift-tab move focus from one video to the next
-     * 1234567890 -- move to % percent of matches
-     * <space>? display video overlay info
-     * key to go to ID/external site
-     * key to search for transcription
-     * <Esc>(?) key to focus search input area
-**** TODO Use lazy loading of images?
-**** TODO Video load handling
-     Display 'waiting' GIF while loading (after replacing <img> with a <video>
-     tag), replace by error msg on fail.
-**** TODO Multiple <mark> in same entry not working                     :BUG:
-     A search for 'OTRANSKRIBERAD,72,har' should hilite three different things
-     in entry 00072, but only the transcription is hilited. Why?
-     http://localhost/teckentranskription.lexicon/lexicon.html#otranskr%2C%2072%2C%20har
-**** TODO Use poster images served through GitHub page?
-         var videoTmpl = "video/{firstDigits}/{file}-{id}-tecken.mp4";
-         var imageTmpl = "lexicon/{firstDigits}/{file}-{id}-tecken.jpg";
-**** TODO Click on translation to display overlay with all info
-     The htmlifyTranscription() function will probably need to insert <wbr>
-     each segment separator in the transcript. The following snippet was
-     previously used, for this.
+** [13/28] GUI
+*** TODO Does play/pause feedback work in MS browsers?         :TEST:Windows:
+*** TODO Does play/pause feedback work in Safari?                  :TEST:Mac:
+*** TODO Keyboard navigation
+    Is there a non-Javascript way of doing this?
+    * Tab/shift-tab move focus from one video to the next
+    * 1234567890 -- move to % percent of matches
+    * <space>? display video overlay info
+    * key to go to ID/external site
+    * key to search for transcription
+    * <Esc>(?) key to focus search input area
+*** TODO Use lazy loading of images?
+*** TODO Video load handling
+    Display 'waiting' GIF while loading (after replacing <img> with a <video>
+    tag), replace by error msg on fail.
+*** TODO Multiple <mark> in same entry not working                      :BUG:
+    A search for 'OTRANSKRIBERAD,72,har' should hilite three different things
+    in entry 00072, but only the transcription is hilited. Why?
+    http://localhost/teckentranskription.lexicon/lexicon.html#otranskr%2C%2072%2C%20har
+*** TODO Use poster images served through GitHub page?
+        var videoTmpl = "video/{firstDigits}/{file}-{id}-tecken.mp4";
+        var imageTmpl = "lexicon/{firstDigits}/{file}-{id}-tecken.jpg";
+*** TODO Click on translation to display overlay with all info
+    The htmlifyTranscription() function will probably need to insert <wbr>
+    each segment separator in the transcript. The following snippet was
+    previously used, for this.
 
-         return hilitedTransStr
-             // Insert <wbr> tag after all segment separators.
-             .replace(/􌥠/gu, '􌥠<wbr>')
-**** DONE Tooltips which can handle transcription font
-     CLOSED: [2018-08-23 Thu 15:42]
-     Transparency (when hovering above with virtual keyboard button).
-     Make sure hovering image fits on screen.
-**** DONE Optimize search speed
-     CLOSED: [2018-08-22 Wed 19:56]
-     Originally intended to add a progress bar for the search itself as
-     searching for '*' took more that two seconds without any page updates at
-     all. Frustrating!
-
-     In my attempts make the search function asynchronous to allow for the
-     progress bar updating, I accidentally discovered that using a `for` loop
-     (rather than the previous `reduce`) resulted in 20 *millisecond* search
-     times instead of the previous 2 seconds!
-
-     Need for progress bar therefore eliminated!
-**** DONE Allow loading of more matches from top of page
-     CLOSED: [2018-08-22 Wed 17:17]
-**** DONE Double click on unplayed video doesn't work           :BUG:Firefox:
-     CLOSED: [2018-08-22 Wed 17:11]
-     The first click on a video <im> replaces it with a <video>, and starts
-     playing. On Firefox the first click after the element do not trigger a click
-     event.
-       + one have to click twice to pause video after playing it the 1st time.
-       + double clicking on an unviewed image does not cause it to fullscreen.
-**** DONE Swedish translation should have mouseover text
-     CLOSED: [2018-08-22 Wed 17:00]
-     So that can be seen in its entirety even if it is truncated by ellipsis.
-**** DONE Visual feedback on play/pause/fullscreen
-     CLOSED: [2018-08-22 Wed 15:15]
-     YouTube has play/pause icon that animates on top of the video when
-     triggering play/pause. This would be a nice feedback for the user, might
-     be wise to make sure this icon does not cover the middle of the video
-     though.
-**** DONE Use infinite scroll
-     CLOSED: [2018-08-20 Mon 03:10]
-     First 100 search results are displayed immediately, successive 100 results
-     are displayed when scrolling to bottom of page, or pressing the 'Visa fler
-     träffar…' button at the end of the page.
-**** DONE Better color for progress bar
-     CLOSED: [2018-08-18 Sat 06:31]
-**** DONE Fix indentation of htmlifyTranscription()
-     CLOSED: [2018-08-18 Sat 06:11]
-**** DONE Screen width on mobile
-     CLOSED: [2018-08-18 Sat 05:42]
-**** DONE Video poster frame handling
-     CLOSED: [2018-08-18 Sat 05:16]
-     Display 'waiting' GIF while loading, replace by error msg on fail.
-
-     On handling broken image loads:
-     https://css-tricks.com/snippets/jquery/better-broken-image-handling/
+        return hilitedTransStr
+            // Insert <wbr> tag after all segment separators.
+            .replace(/􌥠/gu, '􌥠<wbr>')
 *** TODO Make Javascript generated CSS neater
     Instead of using jQuery to apply CSS in 'style' attribute, should generate
     random ID for a prefix, and use CSS rules.
-*** TODO Newlines->space when pasting into search query <textarea>
+*** TODO Newlines->space when pasting into search query <textarea>      :BUG:
 *** TODO Add search query help info
     In a dropdown of some kind?
 **** TODO Automatically display search query help
      Before a search is performed, and when a search results in no matches.
 *** TODO Chrome should autodetect lexicon as 'search engine'
     https://martin-thoma.com/search-engine-autodiscovery/#google-chrome-autodiscovery
-*** TODO Page load progress bar should fit in style
-    Dark turquoise + it should be displayed under the search bar (or if the
-    search bar is retracted, at the top of the page)
 *** TODO Make virtual keyboard come sliding out from under the search form
     The on-screen keyboard should be displayed on top of search results, so
     that dropping the keyboard does not scroll the search results.
 *** TODO Make search form drop down on top of search result
-    When scrolling down over the search results, the search form should slide
-    upwards, and reveal a button which can be pressed to drop down the search
-    form on top of the results.
+    When scrolling down the search form should scroll up with the page, when
+    scrolling up it should be immediately revealed -- just like URL bar in the
+    mobile browser.
+*** DONE Transcription ellipsis doesn't work                            :BUG:
+    CLOSED: [2018-08-23 Thu 16:04]
+*** DONE Tooltips which can handle transcription font
+    CLOSED: [2018-08-23 Thu 15:42]
+    Transparency (when hovering above with virtual keyboard button).
+    Make sure hovering image fits on screen.
+*** DONE Optimize search speed
+    CLOSED: [2018-08-22 Wed 19:56]
+    Originally intended to add a progress bar for the search itself as
+    searching for '*' took more that two seconds without any page updates at
+    all. Frustrating!
+
+    In my attempts make the search function asynchronous to allow for the
+    progress bar updating, I accidentally discovered that using a `for` loop
+    (rather than the previous `reduce`) resulted in 20 *millisecond* search
+    times instead of the previous 2 seconds!
+
+    Need for progress bar therefore eliminated!
+*** DONE Allow loading of more matches from top of page
+    CLOSED: [2018-08-22 Wed 17:17]
+*** DONE Double click on unplayed video doesn't work            :BUG:Firefox:
+    CLOSED: [2018-08-22 Wed 17:11]
+    The first click on a video <im> replaces it with a <video>, and starts
+    playing. On Firefox the first click after the element do not trigger a click
+    event.
+      + one have to click twice to pause video after playing it the 1st time.
+      + double clicking on an unviewed image does not cause it to fullscreen.
+*** DONE Swedish translation should have mouseover text
+    CLOSED: [2018-08-22 Wed 17:00]
+    So that can be seen in its entirety even if it is truncated by ellipsis.
+*** DONE Visual feedback on play/pause/fullscreen
+    CLOSED: [2018-08-22 Wed 15:15]
+    YouTube has play/pause icon that animates on top of the video when
+    triggering play/pause. This would be a nice feedback for the user, might
+    be wise to make sure this icon does not cover the middle of the video
+    though.
+*** DONE Use infinite scroll
+    CLOSED: [2018-08-20 Mon 03:10]
+    First 100 search results are displayed immediately, successive 100 results
+    are displayed when scrolling to bottom of page, or pressing the 'Visa fler
+    träffar…' button at the end of the page.
+*** DONE Better color for progress bar
+    CLOSED: [2018-08-18 Sat 06:31]
+*** DONE Fix indentation of htmlifyTranscription()
+    CLOSED: [2018-08-18 Sat 06:11]
+*** DONE Screen width on mobile
+    CLOSED: [2018-08-18 Sat 05:42]
+*** DONE Video poster frame handling
+    CLOSED: [2018-08-18 Sat 05:16]
+    Display 'waiting' GIF while loading, replace by error msg on fail.
+
+    On handling broken image loads:
+    https://css-tricks.com/snippets/jquery/better-broken-image-handling/
 *** DONE Basic video search result (required for push to GitHub)
     CLOSED: [2018-08-17 Fri 05:46]
 **** DONE Sync script to update image names
