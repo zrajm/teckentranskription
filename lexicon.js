@@ -442,7 +442,7 @@ function htmlifyMatch(match) {
                 " data-video='{baseUrl}/movies/{dir}/{file}-{id}-tecken.mp4'>" +
                 "<div class=video-feedback></div>" +
                 "<a class=video-id href='{baseUrl}/ord/{id}'" +
-                " title='Gå till Svenskt tecken­språks­lexikon (ny tabb)'" +
+                " title='Visa i Svenskt tecken­språks­lexikon (ny tabb)'" +
                 " target=_blank>{htmlId}</a>" +
                 "<a class=video-subs href='#{transcr}' title='{transcr}'>" +
                     "{htmlTranscr}</a>" +
@@ -697,7 +697,7 @@ urlFragment.onChange(searchLexicon); // URL fragment change
             setTimeout(updateLexiconDate, 250);
         } else {
             $("#lexicon-updated")
-                .html("Lexikon uppdaterat: " + lexiconDate.toLocaleString(
+                .html("Senast uppdaterat: " + lexiconDate.toLocaleString(
                     "sv",
                     { year: "numeric", month: "long", day: "numeric" }
                 ) + " (" + Object.keys(lexicon).length + " tecken).");
