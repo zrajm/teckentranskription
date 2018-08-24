@@ -25,7 +25,7 @@
     #kb-icon { background: transparent; }
 
     main { margin: 0 1em; }
-    footer, #xstatus {
+    footer, .status {
       font-size: smaller;
       margin: .5em 0;
       opacity: .5;
@@ -36,15 +36,81 @@
       box-shadow: 0 0 8px 4px rgba(0, 0, 0, .14);
     }
 
-    #results {
+    /*************************************************************************/
+    #select { float:right; }
+    #select > .switch {
+      vertical-align: middle;
+      display: inline-block;
+      width: 2em;
+      height: 1em;
+      background: #ccc;
+      border: 1px solid black;
+      border-radius: 4px;
+      box-shadow: inset 0 2px 5px 3px #999;
+      position: relative;
+    }
+    #select > .switch:before {
+      transition: all .05s ease-in;
+      content: '';
+      width: 50%;
+      height: 100%;
+      background: white;
+      position: absolute;
+      border: inherit;
+      border-radius: inherit;
+      margin: -1px;
+    }
+    .text-view #select > .switch:before { right: 0; }
+    .video-view #select > .switch:before { left: 0; }
+    .video-view #select > .video { font-weight: bold; }
+    .text-view #select > .text { font-weight: bold; }
+    /*************************************************************************/
+
+    .text-view #results {
+      column-gap: 1em;
+      column-width: 14em;
       margin: .25em 0;
       text-align: left;
     }
-    /* space between #result matches */
-    #results { word-spacing: .5em; }
-    #results > * { word-spacing: normal; }
+    .text-view #result > div.match {
+      margin: .125em 0;
+      text-indent: -1em;
+      padding-left: 1em;
+    }
+    .text-view .video-container {
+      display: inline;
+    }
+    .text-view .video-container,
+    .text-view .video-container > * {
+      margin: .125em;
+      display: inline;
+    }
+    .text-view .video-container,
+    .text-view .video-container .video-id { margin-left: 0; }
 
-    #results > div.match {
+    .text-view .video-container > img,
+    .text-view .video-feedback {
+      display: none;
+    }
+    .text-view .video-id:hover { opacity: 1; }
+    .text-view .video-subs {
+      opacity: .65;
+      color: #000;
+    }
+    .text-view .video-container .spelled {
+      text-transform: lowercase;
+      font-variant: small-caps;
+    }
+    /*************************************************************************/
+    .video-view #results {
+      margin: .25em 0;
+      text-align: left;
+    }
+    /* space between #results matches */
+    .video-view #results { word-spacing: .5em; }
+    .video-view #results > * { word-spacing: normal; }
+
+    .video-view #results > div.match {
       display: inline-block;
       width: 270px;                            /* same as .video-container */
       margin: .25em 0 .25em 0;
@@ -55,18 +121,18 @@
       text-overflow: ellipsis;
       overflow: hidden;
     }
-    .video-container.is-loading {
+    .video-view .video-container.is-loading {
       background-image: url(pic/gui/image-loading.jpg);
     }
-    .video-container.is-broken {
+    .video-view .video-container.is-broken {
       background-image: url(pic/gui/image-broken.svg),
         url(pic/gui/image-loading.jpg);
     }
-    .video-container.is-loading img,
-    .video-container.is-broken img {
+    .video-view .video-container.is-loading img,
+    .video-view .video-container.is-broken img {
       opacity: 0;                              /* hide but allow clicks etc. */
     }
-    .video-container {
+    .video-view .video-container {
       background: no-repeat center url(pic/gui/image-loading.jpg) #07BCCD;
       position: relative;  /* for subtitle+id positioning */
       border-radius: 4px;
@@ -87,9 +153,9 @@
         -1px -1px 1px #000,
          0    0   2px #000;
     }
-    .video-container a { color: inherit; }
-    .video-container > video,
-    .video-container > img {
+    .video-view .video-container a { color: inherit; }
+    .video-view .video-container > video,
+    .video-view .video-container > img {
       /* z-index fixes Firefox where subs disappear when clicking
          video content a second time (to stop video playback) */
       z-index: auto;
@@ -100,15 +166,15 @@
       min-width: 100%;
       transition: opacity 0.2s ease-in-out;
     }
-    .video-container wbr { display: none; }
-    .video-id {
+    .video-view .video-container wbr { display: none; }
+    .video-view .video-id {
       /* top-right corner */
       position: absolute; right: 8px; top: 4px;
       font-size: smaller;
       opacity: .75;
     }
-    .video-id:hover { opacity: 1; }
-    .video-subs {
+    .video-view .video-id:hover { opacity: 1; }
+    .video-view .video-subs {
       position: absolute; bottom: 4px;         /* subtitle placement */
       padding: 3px 2px 1px 2px;                /* don't truncate shadow */
 
@@ -119,31 +185,32 @@
       overflow: hidden;
       max-width: 100%;
     }
-    .video-container a mark {
+    .video-view .video-container a mark {
       background: rgba(255, 193, 0, .3);
       color: rgb(255, 193, 47);
     }
-    .video-container a:focus mark,
-    .video-container a:hover mark {
+    .video-view .video-container a:focus mark,
+    .video-view .video-container a:hover mark {
       text-decoration: underline rgb(255, 193, 47);
     }
-    .video-container .spelled {
+    .video-view .video-container .spelled {
       text-transform: lowercase;
       font-variant: small-caps;
     }
-    .video-feedback {
+    .video-view .video-feedback {
       width: 100%;
       height: 100%;
       position: absolute;
       background: no-repeat center/45px;
     }
-    .video-feedback.anim {
+    .video-view .video-feedback.anim {
       transition: all .5s ease-out;
       background-size: 90px;
       opacity: 0;
     }
-    .video-feedback.play { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="45" height="45"><circle r="22.5" cy="22.5" cx="22.5" style="isolation:auto;mix-blend-mode:normal" color="%23000" overflow="visible" opacity=".75" fill-rule="evenodd"/><path color="%23000" fill="%23fff" style="isolation:auto;mix-blend-mode:normal" overflow="visible" d="M33.25 22.5l-16.5 9.53V12.97z"/></svg>'); }
-    .video-feedback.pause { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="45" height="45"><circle r="22.5" cy="22.5" cx="22.5" style="isolation:auto;mix-blend-mode:normal" color="%23000" overflow="visible" opacity=".75" fill-rule="evenodd"/><path color="%23000" fill="%23fff" style="isolation:auto;mix-blend-mode:normal" overflow="visible" d="M15 15h5v15h-5zM25 15h5v15h-5z" fill-rule="evenodd"/></svg>'); }
+    .video-view .video-feedback.play { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="45" height="45"><circle r="22.5" cy="22.5" cx="22.5" style="isolation:auto;mix-blend-mode:normal" color="%23000" overflow="visible" opacity=".75" fill-rule="evenodd"/><path color="%23000" fill="%23fff" style="isolation:auto;mix-blend-mode:normal" overflow="visible" d="M33.25 22.5l-16.5 9.53V12.97z"/></svg>'); }
+    .video-view .video-feedback.pause { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="45" height="45"><circle r="22.5" cy="22.5" cx="22.5" style="isolation:auto;mix-blend-mode:normal" color="%23000" overflow="visible" opacity=".75" fill-rule="evenodd"/><path color="%23000" fill="%23fff" style="isolation:auto;mix-blend-mode:normal" overflow="visible" d="M15 15h5v15h-5zM25 15h5v15h-5z" fill-rule="evenodd"/></svg>'); }
+    /*************************************************************************/
     .tooltip mark {
       background: rgba(255, 255, 255, .2);
       color: inherit;
@@ -161,8 +228,15 @@
   <header>
     <textarea id=q rows=1 required></textarea>
   </header>
-  <main>
-    <div id=xstatus></div>
+  <main class=video-view>
+    <div class=status>
+      <span id=xstatus></span>
+      <span id=select>
+        <span class=video>video</span>
+        <span class=switch></span>
+        <span class=text>text</span>
+      </span>
+    </div>
     <div id=results></div>
   </main>
   <center><button id=more>Visa fler träffar…</button></center>

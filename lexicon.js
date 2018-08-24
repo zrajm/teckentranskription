@@ -708,4 +708,8 @@ urlFragment.onChange(searchLexicon); // URL fragment change
     $(updateLexiconDate);
 }());
 
+$("#select").click(function() {
+    $("main").toggleClass("video-view text-view");
+});
+
 //[eof]

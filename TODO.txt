@@ -94,7 +94,7 @@
 *** TODO Sortable search results
     Present search result in a sortable table? Should be able to sort by swedish
     word, and by sign language.
-** [15/30] GUI
+** [16/31] GUI
 *** TODO Tooltip should disappear when on page back/forward             :BUG:
     Currently any opened tooltip remain on screen when one navigates
     backward/forward in the browser.
@@ -144,6 +144,8 @@
     When scrolling down the search form should scroll up with the page, when
     scrolling up it should be immediately revealed -- just like URL bar in the
     mobile browser.
+*** DONE Switch between showing results as video or only text
+    CLOSED: [2018-08-24 Fri 12:05]
 *** DONE Ignore <wbr> in video "subtitle" and description
     CLOSED: [2018-08-24 Fri 09:28]
     This would allow us to use the *exact same* HTML with just slightly
