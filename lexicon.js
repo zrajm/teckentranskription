@@ -379,42 +379,45 @@ function hilite(str, regex) {
 // Turn a (hilited) transcription string into HTML.
 function htmlifyTranscription(hilitedTransStr) {
     "use strict";
-    // Add <span class=spelled>...</span> around substrings of printable
-    // latin-1 chars. If there are <mark>/</mark> tags inside the transcript
-    // string, make sure we add the matching number of tags on the relevant
-    // <span> tag (to make sure HTML remains valid).
-    return hilitedTransStr.replace(/[\x21-\xff]+/gu, function (spelledStr) {
-        var stack = [];
-        var begTag = "<span class=spelled>";
-        var endTag = "</span>";
+    return hilitedTransStr
+        // Insert <wbr> tag after all segment separators.
+        .replace(/􌥠/gu, '􌥠<wbr>')
+        // Add <span class=spelled>...</span> around substrings of printable
+        // latin-1 chars. If there are <mark>/</mark> tags inside the
+        // transcript string, make sure we add the matching number of tags on
+        // the relevant <span> tag (to make sure HTML remains valid).
+        .replace(/[\x21-\xff]+/gu, function (spelledStr) {
+            var stack = [];
+            var begTag = "<span class=spelled>";
+            var endTag = "</span>";
 
-        // If substring is HTML only (i.e. no text): Keep it as-is.
-        if (spelledStr.match(/^(<[^<>]+>)*$/)) {
-            return spelledStr;
-        }
-
-        // Go through HTML tags in substring using a stack to keep track of
-        // completed tags. For each end tag remove correspending start tag, so
-        // that result final stack reflects all unfinished tags.
-        spelledStr.replace(/<(\/?)([a-zA-Z0-9]+)>/g, function (tag, type, name) {
-            if (type === "/" && stack[stack.length - 1] === name) {
-                stack.pop();
-            } else {
-                stack.push(type + name);
+            // If substring is HTML only (i.e. no text): Keep it as-is.
+            if (spelledStr.match(/^(<[^<>]+>)*$/)) {
+                return spelledStr;
             }
-        });
 
-        // Go through remaining stack and add corresponding tags to wrapper
-        // <span>.
-        stack.forEach(function (tag) {
-            if (tag.match(/^\//)) {
-                begTag = "</mark>" + begTag + "<mark>";
-            } else {
-                endTag = "</mark>" + endTag + "<mark>";
-            }
+            // Go through HTML tags in substring using a stack to keep track of
+            // completed tags. For each end tag remove correspending start tag,
+            // so that result final stack reflects all unfinished tags.
+            spelledStr.replace(/<(\/?)([a-zA-Z0-9]+)>/g, function (tag, type, name) {
+                if (type === "/" && stack[stack.length - 1] === name) {
+                    stack.pop();
+                } else {
+                    stack.push(type + name);
+                }
+            });
+
+            // Go through remaining stack and add corresponding tags to wrapper
+            // <span>.
+            stack.forEach(function (tag) {
+                if (tag.match(/^\//)) {
+                    begTag = "</mark>" + begTag + "<mark>";
+                } else {
+                    endTag = "</mark>" + endTag + "<mark>";
+                }
+            });
+            return begTag + spelledStr + endTag;
         });
-        return begTag + spelledStr + endTag;
-    });
 }
 
 // Downcase string, remove all non-alphanumenic characters and space (by
@@ -444,10 +447,10 @@ function htmlifyMatch(match) {
                 "<a class=video-id href='{baseUrl}/ord/{id}'" +
                 " title='Visa i Svenskt tecken­språks­lexikon (ny tabb)'" +
                 " target=_blank>{htmlId}</a>" +
-                "<a class=video-subs href='#{transcr}' title='{transcr}'>" +
+                "<a class=video-subs href='#{transcr}' title='{htmlTranscr}'>" +
                     "{htmlTranscr}</a>" +
             "</div>" +
-            "<span title='{swedish}'>{htmlSwedish}</span>" +
+            "<span title='{htmlSwedish}'>{htmlSwedish}</span>" +
         "</div>\n"
     ).supplant({
         id: id,
@@ -455,9 +458,8 @@ function htmlifyMatch(match) {
         baseUrl: "https://teckensprakslexikon.su.se",
         dir: id.substring(0, 2),
         file: unicodeTo7bit(swe[0]),
-        transcr: transcr.replace(/􌥠/gu, '􌥠<wbr>'), // <wbr> after separators
+        transcr: transcr,
         htmlTranscr: htmlifyTranscription(hilite(transcr, hiliteRegex)),
-        swedish: swe.join(", "),
         htmlSwedish: swe.map(function (txt) {
             return hilite(txt, hiliteRegex);
         }).join(", ")
@@ -625,7 +627,7 @@ $("#results")
 // font -- so that sign language transcriptions can be displayed.
 (function () {
     var timeout;
-    var jqTooltip = $("<div></div>").appendTo(document.body).css({
+    var jqTooltip = $("<div class=tooltip></div>").appendTo(document.body).css({
         display: "none", color: "#fff", background: "#555", borderRadius: 2,
         boxShadow: "0 2px 6px rgba(0, 0, 0, .25)", fontSize: 16,
         lineHeight: "1.6", padding: ".5em", position: "fixed",

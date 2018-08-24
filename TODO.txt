@@ -27,8 +27,6 @@
    These are some cool BSL examples:
    http://vhg.cmp.uea.ac.uk/demo/BSLExamples/
 * Lexicon
-** TODO Progress bar should updated every x milliseconds
-   Instead every x number of entries.
 ** TODO Module for lexicon
    Module have methods for returning named entry properties (i.e. the ID,
    transcription, translation etc. of an entry).
@@ -96,7 +94,10 @@
 *** TODO Sortable search results
     Present search result in a sortable table? Should be able to sort by swedish
     word, and by sign language.
-** [13/28] GUI
+** [15/30] GUI
+*** TODO Tooltip should disappear when on page back/forward             :BUG:
+    Currently any opened tooltip remain on screen when one navigates
+    backward/forward in the browser.
 *** TODO Does play/pause feedback work in MS browsers?         :TEST:Windows:
 *** TODO Does play/pause feedback work in Safari?                  :TEST:Mac:
 *** TODO Keyboard navigation
@@ -143,6 +144,14 @@
     When scrolling down the search form should scroll up with the page, when
     scrolling up it should be immediately revealed -- just like URL bar in the
     mobile browser.
+*** DONE Ignore <wbr> in video "subtitle" and description
+    CLOSED: [2018-08-24 Fri 09:28]
+    This would allow us to use the *exact same* HTML with just slightly
+    different to CSS to produce a search results in list form (without video).
+    As in the list form the transcriptions need to be line breakable (ie have
+    <wbr>s in them).
+*** DONE Tooltips should display <mark>
+    CLOSED: [2018-08-24 Fri 09:27]
 *** DONE Transcription ellipsis doesn't work                            :BUG:
     CLOSED: [2018-08-23 Thu 16:04]
 *** DONE Tooltips which can handle transcription font
