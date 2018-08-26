@@ -345,10 +345,6 @@ function transcriptKeyboard(jqInput) {
         jqKeyboard = insertKeyboardInDom(jqWrapper);
         jqInput.css({
             width: "100%",
-            margin: 0,
-            overflow: "hidden",
-            whiteSpace: "pre",
-            resize: "none"
         }).focus();
 
         jqKeyboard
