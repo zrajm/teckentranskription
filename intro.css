@@ -129,11 +129,13 @@ button.nostyle, select.nostyle, input.nostyle, textarea.nostyle {
     padding: 0;
 }
 
+textarea:not([disabled]):hover,
 button:not([disabled]):hover,
 select:not([disabled]):hover {
     box-shadow: inset 1000px 1000px rgba(255, 255, 255, .25),/* lighten */
         0 3px 6px 2px rgba(0, 0, 0, .1);                     /* shadow */
 }
+textarea:not([disabled]):hover:focus,
 button:not([disabled]):hover:focus,
 select:not([disabled]):hover:focus {
     box-shadow: inset 1000px 1000px rgba(255, 255, 255, .25),/* lighten */
