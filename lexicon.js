@@ -259,6 +259,13 @@ function parseQuery(queryStr) {
         };
     }());
     var metachars = {
+        "􌤆": "[􌤆􌤂􌥞􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛][􌤺􌥛􌤻􌤹􌥚]?", // face
+        "􌤂": "[􌤂􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼][􌤺􌥛􌤻􌤹􌥚]?",     // upper face
+        "􌥞": "[􌥞􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛][􌤺􌥛􌤻􌤹􌥚]?",       // lower face
+        "􌥜": "[􌥜􌤑􌦲􌤒][􌤺􌥛􌤻􌤹􌥚]?",             // arm
+        "􌤠": "[􌤠􌥀􌤡][􌤺􌥛􌤻􌤹􌥚]?",              // shoulders
+        "􌤓": "[􌤓􌤕􌤔][􌤺􌥛􌤻􌤹􌥚]?",              // chest
+        "􌤗": "[􌤗􌤙􌤘][􌤺􌥛􌤻􌤹􌥚]?",              // hips
         "*": "[^ 􌥠]*?",          // all non-space, non-'/' delimiter
         "@":                     // one place symbol (+ optional relation)
                 "[􌦳􌤆􌤂􌥞􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛􌤜􌤞􌤠􌥀􌤡􌥜􌤑􌦲􌤒􌤓􌤕􌤔􌤖􌤗􌤙􌤘􌤚][􌤺􌥛􌤻􌤹􌥚]?",
@@ -271,7 +278,7 @@ function parseQuery(queryStr) {
     // Unquoted place/handshape symbols should also match a following
     // (optional) relation symbol.
     splitIntoChars(
-        "􌦳􌤆􌤂􌥞􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛􌤜􌤞􌤠􌥀􌤡􌥜􌤑􌦲􌤒􌤓􌤕􌤔􌤖􌤗􌤙􌤘􌤚􌤤􌥄􌤣􌤧􌥋􌥉􌦫􌤩􌤎􌥇􌦬􌤦􌤲􌤱􌥑􌤢􌥂􌤪􌥎􌥈􌤨􌤿􌥌􌥆􌤫􌦭􌤬􌥅􌤥􌥊􌦱􌤽􌤯􌤭􌤮􌤰􌤳􌥃􌥒􌥟􌦪"
+        "􌦳􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛􌤜􌤞􌥀􌤡􌤑􌦲􌤒􌤕􌤔􌤖􌤙􌤘􌤚􌤤􌥄􌤣􌤧􌥋􌥉􌦫􌤩􌤎􌥇􌦬􌤦􌤲􌤱􌥑􌤢􌥂􌤪􌥎􌥈􌤨􌤿􌥌􌥆􌤫􌦭􌤬􌥅􌤥􌥊􌦱􌤽􌤯􌤭􌤮􌤰􌤳􌥃􌥒􌥟􌦪"
     ).forEach(function (char) {
         metachars[char] = char + "[􌤺􌥛􌤻􌤹􌥚]?";
     });

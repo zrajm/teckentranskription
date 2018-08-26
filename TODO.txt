@@ -30,7 +30,7 @@
 ** TODO Module for lexicon
    Module have methods for returning named entry properties (i.e. the ID,
    transcription, translation etc. of an entry).
-** [1/12] Query syntax
+** [3/12] Query syntax
 *** TODO Help section for query syntax
     * = match 'word' characters (i.e. not space and segment separator, '􌥠', but
       everything else)
@@ -82,14 +82,24 @@
     Old + new circle symbols
 *** TODO Character class for 'face'
     Combination of upper and lower face.
-*** TODO Character class for 'upper face'
-    Upper/whole face + upper & central facial features (crown, forhead, eye) etc.
-*** TODO Character class for 'lower face'
-    Lower/whole face + lower & central facial features (cheek, chin, mouth) etc.
 *** TODO Character class for 'hand-external type of motion'
     Curving, (all types of) circling, hitting and turning.
 *** TODO Character classes [...] to search query
     Useful when one is searching for one of multiple hand shapes.
+*** DONE Character class for 'face'
+    CLOSED: [2018-08-26 Sun 23:11]
+    An unquoted 'face' symbol now matches all the articulation places in the
+    face.
+*** DONE Character class for 'upper face'
+    CLOSED: [2018-08-26 Sun 23:11]
+    An unquoted 'upper face' symbol now matches ear, nose, cheek and all other
+    articulation places on the head above that (note that ear, nose and cheeks
+    are matched by both the 'upper' and 'lower face' symbols).
+*** DONE Character class for 'lower face'
+    CLOSED: [2018-08-26 Sun 23:11]
+    An unquoted 'lower face' symbol now matches ear, nose, cheek and all other
+    articulation places on the head below that (note that ear, nose and cheeks
+    are matched by both the 'upper' and 'lower face' symbols).
 ** [0/1] Search result
 *** TODO Sortable search results
     Present search result in a sortable table? Should be able to sort by swedish
