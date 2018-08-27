@@ -502,8 +502,10 @@ function htmlifyMatch(match) {
                 "<a class=video-id href='{baseUrl}/ord/{id}'" +
                 " title='Visa i Svenskt tecken­språks­lexikon (ny tabb)'" +
                 " target=_blank>{htmlId}</a>" +
-                "<a class=video-subs href='#{transcr}' title='{htmlTranscr}'>" +
-                    "{htmlTranscr}</a>" +
+                "<div class=video-subs>" +
+                    "<a href='#{transcr}' title='{htmlTranscr}'>" +
+                        "{htmlTranscr}</a>" +
+                "</div>" +
             "</div>" +
             "<span title='{htmlSwedish}'>{htmlSwedish}</span>" +
         "</div>\n"
