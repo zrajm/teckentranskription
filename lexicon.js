@@ -726,7 +726,9 @@ $("#results")
             top:  y < yMax ? y : (yMax < 0 ? 0 : yMax),
         });
 
-        $(window).one("scroll mousemove", function () { jqTooltip.hide(); });
+        $(window).one("scroll mousemove popstate", function () {
+            jqTooltip.hide();
+        });
     }
 }());
 
