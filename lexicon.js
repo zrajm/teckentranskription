@@ -684,6 +684,7 @@ $("#results")
 // font -- so that sign language transcriptions can be displayed.
 (function () {
     var timeout;
+    var shown = false;
     var jqTooltip = $("<div class=tooltip></div>").appendTo(document.body).css({
         display: "none", color: "#fff", background: "#555", borderRadius: 2,
         boxShadow: "0 2px 6px rgba(0, 0, 0, .25)", fontSize: 16,
@@ -711,6 +712,7 @@ $("#results")
         var y = event.clientY + 10;
 
         // Display topleft to get height + width.
+        shown = true;
         jqTooltip
             .css({ left: 0, top: 0 })
             .html($(event.currentTarget).data("title"))
@@ -725,11 +727,14 @@ $("#results")
             left: x < xMax ? x : (xMax < 0 ? 0 : xMax),
             top:  y < yMax ? y : (yMax < 0 ? 0 : yMax),
         });
-
-        $(window).one("scroll mousemove popstate", function () {
-            jqTooltip.hide();
-        });
     }
+
+    $(document).on("scroll mousemove popstate", function () {
+        if (shown) {
+            shown = false
+            jqTooltip.hide();
+        }
+    });
 }());
 
 ////////////////////////////////////////////////////////////////////////////////
