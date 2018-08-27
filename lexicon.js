@@ -50,6 +50,54 @@ function toggleFullscreen(elem) {
 
 ////////////////////////////////////////////////////////////////////////////////
 //
+// Overlay module (for help text).
+//
+//   .hide() -- Hides currently open overlay.
+//
+var overlay = (function () {
+    var button = $("#help");
+    var overlay = $(".overlay.help");
+
+    // Convert <tt> into links (except if they contain '…') by replacing
+    // '<tt>…</tt>' with '<a class=tt href="#…">…</a>'.
+    overlay.find('tt').replaceWith(function () {
+        var jq = $(this);
+        var link = "#" + jq.text().replace(/\s+/g, " ");
+        return link.match(/…/)
+            ? this
+            : $("<a>", { class: "tt", href: link }).append(jq.contents());
+    });
+    function hideOverlay () {
+        overlay.hide();
+        button.focus();
+    }
+    function showOverlay () {
+        overlay.show().find('>*').focus();
+    }
+    button.click(showOverlay)
+    overlay.keyup(function (e) {
+        if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) { return; }
+        if (e.key === "Escape") {
+            hideOverlay();
+        }
+    }).on("mouseover mouseout click", function (e) {
+        var elem = e.target, type = e.type;
+        if (elem === this) {
+            elem = $(elem);
+            if (type === "mouseover") {
+                elem.addClass("hover");
+            } else if (type === "mouseout") {
+                elem.removeClass("hover");
+            } else if (type === "click") {
+                elem.hide();
+            }
+        }
+    });
+    return { hide: hideOverlay };
+}());
+
+////////////////////////////////////////////////////////////////////////////////
+//
 // URL fragment module -- Update/trigger on URL fragment change.
 //
 //   .set(STR) -- set URL fragment to '#STR' w/o triggering `onchange()`
@@ -684,7 +732,10 @@ $("#results")
 //
 // Main program
 //
-urlFragment.onChange(searchLexicon); // URL fragment change
+urlFragment.onChange(function (queryStr) {     // URL fragment change
+    overlay.hide();
+    searchLexicon(queryStr);
+});
 
 (function (selector) {
     "use strict";
@@ -718,39 +769,5 @@ urlFragment.onChange(searchLexicon); // URL fragment change
 $("#select").click(function() {
     $("main").toggleClass("video-view text-view");
 });
-
-// Overlay for help text.
-var overlay = (function () {
-    var button = $("#help");
-    var overlay = $(".overlay.help");
-
-    function hideOverlay () {
-        overlay.hide();
-        button.focus();
-    }
-    function showOverlay () {
-        overlay.show().find('>*').focus();
-    }
-    button.click(showOverlay)
-    overlay.keyup(function (e) {
-        if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) { return; }
-        if (e.key === "Escape") {
-            hideOverlay();
-        }
-    }).on("mouseover mouseout click", function (e) {
-        var elem = e.target, type = e.type;
-        if (elem === this) {
-            elem = $(elem);
-            if (type === "mouseover") {
-                elem.addClass("hover");
-            } else if (type === "mouseout") {
-                elem.removeClass("hover");
-            } else if (type === "click") {
-                elem.hide();
-            }
-        }
-    });
-    return { hide: hideOverlay };
-}());
 
 //[eof]

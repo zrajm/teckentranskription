@@ -286,7 +286,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(0, 0, 0, .8);
+      background: rgba(0, 0, 0, .75);
     }
     .overlay.hover:hover:before { opacity: 1; }
     .overlay:before {
@@ -310,7 +310,10 @@
       right: 0;
       bottom: 0;
     }
+    small { font-size: 90%; }
+    a.tt,
     tt {
+      color: inherit;
       word-spacing: .25em;
       font-family: inherit;
       font-size: 90%;
@@ -488,7 +491,7 @@
 
         <p><p><tt>*</tt> matchar noll eller fler tecken i rad som är av
         alfabetisk karaktär (bokstäver, siffror och transkriptionssymboler –
-        men inte mellanslag eller 􌥠, separatorn mellan segment i
+        men inte mellanslag eller <small>􌥠</small>, separatorn mellan segment i
         transkriptionen).
 
         <p>Säg tex att du letar efter ett tecken som har
@@ -506,9 +509,10 @@
         bara hela ord.
 
         <p><p>Det finns också en uppsättning lägessymboler i tabellen som är
-        lite mer ”fluffiga” – symbolen för <i>ansiktet</i> (􌤆) matchar inte
-        bara alla positioner i ansiktet från pannan ner till hakan. Detta är
-        bra när man har en hum, men inte vet exakt var ett tecken ska uttalas.
+        lite mer ”fluffiga” – symbolen för <i>ansiktet</i> (<small>􌤆</small>)
+        matchar inte bara alla positioner i ansiktet från pannan ner till
+        hakan. Detta är bra när man har en hum, men inte vet exakt var ett
+        tecken ska uttalas.
 
         <p><p>Utöver symbolerna i tabellen så försöker sökmotorn hjälpa dig med
         bra saker så långt som möjligt. Om du inte har skrivit ut
