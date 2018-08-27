@@ -720,29 +720,37 @@ $("#select").click(function() {
 });
 
 // Overlay for help text.
-$(function () {
+var overlay = (function () {
     var button = $("#help");
     var overlay = $(".overlay.help");
-    button.click(function () {
+
+    function hideOverlay () {
+        overlay.hide();
+        button.focus();
+    }
+    function showOverlay () {
         overlay.show().find('>*').focus();
-    });
+    }
+    button.click(showOverlay)
     overlay.keyup(function (e) {
         if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) { return; }
         if (e.key === "Escape") {
-            overlay.hide();
-            button.focus();
+            hideOverlay();
+        }
+    }).on("mouseover mouseout click", function (e) {
+        var elem = e.target, type = e.type;
+        if (elem === this) {
+            elem = $(elem);
+            if (type === "mouseover") {
+                elem.addClass("hover");
+            } else if (type === "mouseout") {
+                elem.removeClass("hover");
+            } else if (type === "click") {
+                elem.hide();
+            }
         }
     });
-    overlay.mouseover(function (e) {
-        if (this !== e.target) { return; }
-        $(e.target).addClass("hover");
-    }).mouseout(function (e) {
-        if (this !== e.target) { return; }
-        $(e.target).removeClass("hover");
-    }).click(function (e) {
-        if (this !== e.target) { return; }
-        $(e.target).hide();
-    });
-});
+    return { hide: hideOverlay };
+}());
 
 //[eof]
