@@ -103,7 +103,7 @@
       margin: .25em 0;
       text-align: left;
     }
-    .text-view #result > div.match {
+    .text-view #result > .match {
       margin: .125em 0;
       text-indent: -1em;
       padding-left: 1em;
@@ -118,6 +118,7 @@
     }
     .text-view .video-container,
     .text-view .video-container .video-id { margin-left: 0; }
+    .text-view .video-container .video-id { font-size: 95%; }
 
     .text-view .video-container > img,
     .text-view .video-container > video,
@@ -125,9 +126,15 @@
       display: none;
     }
     .text-view .video-id:hover { opacity: 1; }
-    .text-view .video-subs {
+    .text-view .video-subs a {
+      font-size: 95%;
       opacity: .65;
       color: #000;
+    }
+    .text-view .match > a {
+      width: 100%;
+      display: inline;
+      color: inherit;
     }
     .text-view .video-container .spelled {
       text-transform: lowercase;
@@ -142,7 +149,7 @@
     .video-view #results { word-spacing: .5em; }
     .video-view #results > * { word-spacing: normal; }
 
-    .video-view #results > div.match {
+    .video-view #results > .match {
       display: inline-block;
       width: 270px;                            /* same as .video-container */
       margin: .25em 0 .25em 0;
@@ -152,6 +159,15 @@
       text-align: center;
       text-overflow: ellipsis;
       overflow: hidden;
+    }
+    .video-view .match > a {
+      width: 100%;
+      display: block;
+      color: inherit;
+    }
+    .video-view .match > a:hover,
+    .video-view .match > a:focus {
+      text-decoration: underline;
     }
     .video-view .video-container.is-loading {
       background-image: url(pic/gui/image-loading.jpg);
@@ -173,7 +189,7 @@
       overflow: hidden;
       display: flex;
       justify-content: center;
-      width: 270px;                            /* same as #results > div.match */
+      width: 270px;                            /* same as #results > .match */
       height: 202px;
 
       /* text color + outline */
@@ -317,7 +333,7 @@
       color: inherit;
       word-spacing: .25em;
       font-family: inherit;
-      font-size: 90%;
+      font-size: 95%;
       background: #ccc;
       border-radius: 4px;
       padding: 0 .125em;
