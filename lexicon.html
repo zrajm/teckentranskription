@@ -12,6 +12,7 @@
     @-ms-viewport{ width: device-width; }
     /* Search query <textarea> */
     #q {
+      flex-grow: 1;
       margin: 0;
       overflow: hidden;
       resize: none;
@@ -24,9 +25,29 @@
           rgba(255, 255, 255, .5);
     }
     #q:valid { background-image: url(); } /* remove placeholder icon */
+    #help:focus,
     #q:focus,
     #kb-icon:focus { background-color: white; }
     #kb-icon { background: transparent; }
+    #help:before {
+      position: absolute;
+      top: 0; bottom: 0; left: 0; right: 0;
+      margin: auto;
+      content: "?";
+      color: black;
+      height: 1.1em;
+      font-size: 125%;
+      font-weight: 900;
+    }
+    #help {
+      flex-shrink: 0;
+      position: relative;
+      left: .4em;
+      width: 1.75em;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .5);
+      color: transparent;
+    }
 
     main { margin: 0 1em; }
     footer, .status {
@@ -35,9 +56,15 @@
       opacity: .5;
     }
     header {
+      display: flex;
       background: #07BCCD;
       padding: .5em 1em;
       box-shadow: 0 0 8px 4px rgba(0, 0, 0, .14);
+    }
+    .columns {
+      columns: 14em 2;
+      column-gap: 1em;
+      column-fill: auto;
     }
 
     /*************************************************************************/
@@ -214,6 +241,82 @@
     }
     .video-view .video-feedback.play { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="45" height="45"><circle r="22.5" cy="22.5" cx="22.5" style="isolation:auto;mix-blend-mode:normal" color="%23000" overflow="visible" opacity=".75" fill-rule="evenodd"/><path color="%23000" fill="%23fff" style="isolation:auto;mix-blend-mode:normal" overflow="visible" d="M33.25 22.5l-16.5 9.53V12.97z"/></svg>'); }
     .video-view .video-feedback.pause { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="45" height="45"><circle r="22.5" cy="22.5" cx="22.5" style="isolation:auto;mix-blend-mode:normal" color="%23000" overflow="visible" opacity=".75" fill-rule="evenodd"/><path color="%23000" fill="%23fff" style="isolation:auto;mix-blend-mode:normal" overflow="visible" d="M15 15h5v15h-5zM25 15h5v15h-5z" fill-rule="evenodd"/></svg>'); }
+      /*************************************************************************/
+    hr {
+      margin: 1em;
+      border: 0;
+      height: 2px;
+      background: #000;
+    }
+    table {
+      margin: .75em 0;
+    }
+    table tr {
+      column-break-inside: avoid;
+      -moz-column-break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+    }
+    table[border="1"] {
+      border-collapse: collapse;
+    }
+    table[border="1"] > tr > th,
+    table[border="1"] > tr > td,
+    table[border="1"] > tbody > tr > th,
+    table[border="1"] > tbody > tr > td {
+      border: 1px solid #000;
+      text-align: left;
+      vertical-align: top;
+      padding: .125em .25em;
+    }
+    table[border="1"] > tr > th,
+    table[border="1"] > tbody > tr > th {
+      text-align: center;
+    }
+    h1 { margin: .75em 0 .5em 0; }
+    p { margin: 0; }
+    p:empty + p { margin-top: 1em; }
+    p:not(:empty) + p { text-indent: 1.5em; }
+
+    .overlay {
+      display: none;
+      z-index: 10000;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, .8);
+    }
+    .overlay.hover:hover:before { opacity: 1; }
+    .overlay:before {
+      opacity: .4;
+      position: absolute;
+      display: block;
+      line-height: 0;
+      top: .5em;
+      right: .5em;
+      content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"><path d="M15 1L1 15M1 1l14 14" fill="none" stroke="%23fff" stroke-width="2"/></svg>');
+      transition: all .1s ease-in-out;
+    }
+    .overlay section {
+      margin: 1em 1.5em;
+      background: #fff;
+      overflow-y: scroll;
+      padding: 0 1em 1em 1em;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+    tt {
+      word-spacing: .25em;
+      font-family: inherit;
+      font-size: 90%;
+      background: #ccc;
+      border-radius: 4px;
+      padding: 0 .125em;
+    }
     /*************************************************************************/
     .tooltip mark {
       background: rgba(255, 255, 255, .2);
@@ -230,7 +333,8 @@
 <body>
   <noscript class=required>Javascript required.</noscript>
   <header>
-    <textarea id=q rows=1 required></textarea>
+    <textarea id=q rows=1 required autofocus></textarea>
+    <button id=help>?</button>
   </header>
   <main class=video-view>
     <div class=status>
@@ -264,12 +368,191 @@
        >Unicodetypsnitt</a>
     <br>© 2017–2018 zrajm, Uppsala.
   </footer>
+  <div class="overlay help">
+    <section tabindex=0>
+      <h1>Kontroll över sökningen</h1>
+      <div class=columns>
+
+        <p>Symboler som används för att kontrollera hur sökningen sker.
+
+        <center><table border=1>
+          <tr>
+            <th><tt>"…"</tt>
+            <td>Exakt sökning
+          <tr>
+            <th><tt>-…</tt>
+            <td>Exkludera träff
+          <tr>
+            <th><tt>… …</tt>
+            <td>Logiskt <i>och</i> (mellanslag)
+          <tr>
+            <th><tt>…, …</tt>
+            <td>Logiskt <i>eller</i>
+        </table></center>
+
+        <p id=exakt><tt>"…"</tt> Exakt sökning – alla tecken som står inom
+        citat­symbolerna måste matcha exakt.
+
+        <p>Används när du vill söka på fraser (tex <tt>"har gjort"</tt>) eller
+        när du vill använda någon av special­symbolerna i sin ursprungliga
+        betydelse (<tt>"􌤆"</tt> hittar alla tecken som har <i>ansiktet</i> som
+        uttalställe, medan <tt>􌤆</tt>, utan citat­symboler, också hittar de som
+        har <i>pannan, munnen, näsan</i> etc).
+
+        <p>Du kan också citera delar av ett ord. Om du tex skulle vilja hitta
+        alla ord med två aktiva händer som har uttalsställe <i>ansiktet</i> så
+        kan du använda <tt>"􌤆":##:</tt>.
+
+        <p><p><tt>-…</tt> Exkludera träffar – används tillsammans med ett annat
+        sökuttryck när du vill ta bort en del av träffarna. Om du tex letar
+        efter ett tecken som använder <i>R-handen</i> och du vet att tecknet
+        inte är sammansatt så kan du söka på <tt>􌤬 -􌥠</tt>.
+
+        <p>Inuti (eller i slutet) på ord har minus ingen särskild effekt, en
+        sökning på <tt>platt-tv</tt> hittar alla förekomster av ’platt-tv’,
+        medan <tt>platt -tv</tt> hittar alla tecken vars översättning
+        innehåller ’platt’ men inte ’tv’. Vill du ha ett minustecken först
+        använder du citatsymboler <tt>"-tv"</tt>.
+
+        <p><p><tt>… …</tt> Logiskt <i>och</i> – betyder att <i>både</i> det som
+        står före och det som står efter mellanslaget måste finnas med för att
+        sökningen ska matcha. Om du söker på <tt>har gjort</tt> hittar du alla
+        tecken vars översättning innehåller både ordet ’har’ och ordet ’gjort’
+        (oavsett vilken ordning de kommer), medan om du söker på <tt>har
+        gjort</tt> så måste orden finnas med som en fras för att matcha.
+
+        <p><p><tt>…, …</tt> Logiskt <i>eller</i> – betyder att <i>antingen</i>
+        det som kommer före kommat, eller det som kommer efter behöver finnas
+        med för att sökningen ska matcha. <tt>har, gjort</tt> hittar således
+        alla tecken som har antingen ’har’ eller ’gjort’ (eller båda) i sin
+        översättning.
+
+        <p>Om du vill skicka en lista med tecken till någon är det smidigt
+        kombinera komma med en sökning på id-nummer,
+        tex <tt>04194,<wbr>02408,<wbr>04888</tt>.
+
+        <p>Komma hanteras alltid först så om du har ett komplicerat uttryck med
+        som du vill söka på i några små variationer, så måste du dessvärre
+        upprepa hela det komplicerade uttrycket på vardera sidan om kommat
+        (tex <tt>@:􌤢#:*􌤟, @:􌥃#:*􌤟</tt>).
+      </div>
+
+      <hr><h1>Mönstermatchning</h1>
+      <div class=columns>
+
+        <p>Dessa symboler matchar fler än en symbol i en sökning, utom om de
+        står inom citat­symboler (<a href="#exakt">se ovan</a>).
+
+        <center><table border=1>
+          <tr>
+            <th><tt>*</tt>
+            <td>Allt utom mellanslag och 􌥠 (i tran­skript­ion)
+          <tr>
+            <th><tt>$</tt>
+            <td><i>Ord-/segmentgräns</i>
+          <tr>
+            <th><tt>#</tt>
+            <td><i>Handform</i>
+          <tr>
+            <th><tt>:</tt>
+            <td><i>Attityd</i> (= <i>riktning</i> + <i>vändning</i>)
+          <tr>
+            <th><tt>^</tt>
+            <td><i>Relationsymbol</i>
+          <tr>
+            <th><tt>@</tt>
+            <td><i>Kroppslägen</i>
+          <tr>
+            <th><tt>􌤆</tt>
+            <td><i>Ansiktet</i>
+          <tr>
+            <th><tt>􌤂</tt>
+            <td><i>Övre ansikte</i> (<i>öra, kind, näsa</i> och uppåt)
+          <tr>
+            <th><tt>􌥞</tt>
+            <td><i>Nedre ansikte</i>  (<i>öra, kind, näsa</i> och nedåt)
+          <tr>
+            <th><tt>􌥜</tt>
+            <td><i>Armen</i>
+          <tr>
+            <th><tt>􌤠</tt>
+            <td><i>Axlarna</i>
+          <tr>
+            <th><tt>􌤓</tt>
+            <td><i>Bröstet</i>
+          <tr>
+            <th><tt>􌤗</tt>
+            <td><i>Höfterna</i>
+        </table></center>
+
+        <p><p><tt>*</tt> matchar noll eller fler tecken i rad som är av
+        alfabetisk karaktär (bokstäver, siffror och transkriptionssymboler –
+        men inte mellanslag eller 􌥠, separatorn mellan segment i
+        transkriptionen).
+
+        <p>Säg tex att du letar efter ett tecken som har
+        uttalsställe <i>bröstet</i> och i vilket handformen förändras – då kan
+        du söka på <tt>􌤓*􌦆</tt> (hade du sökt på <tt>􌤓 􌦆</tt> så skulle du
+        hittat alla tecken som hade bägge symbolerna in sin transkription,
+        oavsett om det var i samma segment eller inte).
+
+        <p><p><tt>$</tt> matchar gränsen mellan ett ord och ett ordmellanrum
+        (eller transkription och transkriptions­separator). Den används för att
+        tvinga ett sökuttryck att matcha i början eller slutet av ett ord
+        (eller transkription). Så <tt>$bo</tt> måste komma först i ett ord, och
+        matchar därför ’bok’ (och ’bo’) men inte ’sambo’. Om du använder ett
+        dollartecken både i början och i slutet (<tt>$bo$</tt>) så matchar det
+        bara hela ord.
+
+        <p><p>Det finns också en uppsättning lägessymboler i tabellen som är
+        lite mer ”fluffiga” – symbolen för <i>ansiktet</i> (􌤆) matchar inte
+        bara alla positioner i ansiktet från pannan ner till hakan. Detta är
+        bra när man har en hum, men inte vet exakt var ett tecken ska uttalas.
+
+        <p><p>Utöver symbolerna i tabellen så försöker sökmotorn hjälpa dig med
+        bra saker så långt som möjligt. Om du inte har skrivit ut
+        en <i>relationssymbol</i> i din sökning, eller har utelämnat en
+        riktnings­specifikation under båge/cirkel/slås/studs/vrids och
+        konvergerar/divergerar så kommer din sökning matcha oavsett vilken
+        relation/riktnings­specifikation som står i lexikonet. Om du <i>har</i>
+        angivit dessa, så matchar förstås din sökning bara om den
+        överrens­stämmer med det som står i lexikonet.
+      </div>
+
+      <hr><h1>Bra-att-ha tips</h1>
+      <div class=columns>
+
+        <p><b><tt>@</tt></b> matchar <i>kroppslägen</i> i transkriptionen.
+        Använd <tt>-@</tt> för att utesluta alla tecken som har ett
+        artikulationsställe på kroppen.
+
+        <p><p><tt>-􌥠</tt> utesluter alla sammansatta tecken (tecken som har än
+        ett segment). Om du istället letar efter sammansatta tecken kan du
+        använda <tt>􌥠</tt>, eller kanske rentav <tt>􌥠*􌥠</tt> (om du vill hitta
+        tecken med tre eller fler segment).
+
+        <p><p><tt>:##:</tt> hittar tvåhandstecken där båda händerna är aktiva.
+
+        <p><p><tt>#:#:</tt> hittar tvåhandstecken med en aktiv och en passiv
+        hand.
+
+        <p><p><tt>-:##: -#:#:</tt> utesluter alla tvåhandstecken (dvs hittar
+        enbart enhandstecken).
+
+        <p><p>Transkriptioner är fiddliga och det är oftast inte helt
+        självklart hur något ska transkriberas om man bara sett ett tecken
+        utföras av någon. Det är oftast lättast att (på svenska) söka upp ett
+        annat tecken med liknande rörelse, och sen utgå ifrån dess
+        transkription för att söka upp tecknet du letar efter.
+      </div>
+    </section>
+  </div>
   <script src="jquery-3.3.1.min.js"></script>
   <script src="imagesloaded.pkgd.min.js"></script>
   <script src="lexicon.js"></script>
   <script src="lexicon-data.js"></script>
   <script src="keyboard.js"></script>
-  <script>transcriptKeyboard($('#q'))</script
+  <script>transcriptKeyboard($('#q'))</script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-5434527-3"></script>
   <script>
@@ -280,3 +563,5 @@
   </script>
 </body>
 </html>
+
+

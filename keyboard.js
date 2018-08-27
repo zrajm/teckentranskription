@@ -323,6 +323,7 @@ function transcriptKeyboard(jqInput) {
 
     $(function () {
         jqWrapper = jqInput.wrap("<div class=wrap>").parent().css({
+            flexGrow: 1,
             lineHeight: "0",
             position: "relative"
         });

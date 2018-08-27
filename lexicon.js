@@ -719,4 +719,30 @@ $("#select").click(function() {
     $("main").toggleClass("video-view text-view");
 });
 
+// Overlay for help text.
+$(function () {
+    var button = $("#help");
+    var overlay = $(".overlay.help");
+    button.click(function () {
+        overlay.show().find('>*').focus();
+    });
+    overlay.keyup(function (e) {
+        if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) { return; }
+        if (e.key === "Escape") {
+            overlay.hide();
+            button.focus();
+        }
+    });
+    overlay.mouseover(function (e) {
+        if (this !== e.target) { return; }
+        $(e.target).addClass("hover");
+    }).mouseout(function (e) {
+        if (this !== e.target) { return; }
+        $(e.target).removeClass("hover");
+    }).click(function (e) {
+        if (this !== e.target) { return; }
+        $(e.target).hide();
+    });
+});
+
 //[eof]

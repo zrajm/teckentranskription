@@ -30,8 +30,35 @@
 ** TODO Module for lexicon
    Module have methods for returning named entry properties (i.e. the ID,
    transcription, translation etc. of an entry).
-** [3/12] Query syntax
-*** TODO Help section for query syntax
+** [4/12] Query syntax
+*** TODO Specify match is to be all in one segment
+    Add a prefix to specify that a match should be all within the same segment.
+    (Maybe 'x:'?)
+
+    This would mean that a query like '*􌤶##:' cannot match across segment
+    borders.
+
+    In practice this means that in fields with this prefix, an asterisk ('*')
+    should match '[^/]*' (where '/' is the segment separator) instead of '.*'.
+*** TODO New search query syntax (require '*' for partial words)
+    There should also be a help section for the new special characters, and if a
+    search resulted in zero matches, something helpful should be displayed to
+    the user.
+*** TODO Character class for 'motion right'
+    'move right', 'short motion right' and, 'curving motion right' and 'hit
+    right', should all be matched by 'move right'.
+
+    The same goes for 'left', 'forward', 'backward', 'up' and 'down'.
+*** TODO Character class for 'förs'
+    All arrows, not including 'contact'.
+*** TODO Character class for 'circle'
+    Old + new circle symbols
+*** TODO Character class for 'hand-external type of motion'
+    Curving, (all types of) circling, hitting and turning.
+*** TODO Character classes [...] to search query
+    Useful when one is searching for one of multiple hand shapes.
+*** DONE Help section for query syntax
+    CLOSED: [2018-08-27 Mon 02:37]
     * = match 'word' characters (i.e. not space and segment separator, '􌥠', but
       everything else)
 
@@ -61,31 +88,6 @@
     (-􌥠), two handed segments (excluding those with a passive secondary hand
     with -#:#:, and those with an active secondary hand with -:##:), more than
     one handshape transition, or a specified position (-@).
-*** TODO Specify match is to be all in one segment
-    Add a prefix to specify that a match should be all within the same segment.
-    (Maybe 'x:'?)
-
-    This would mean that a query like '*􌤶##:' cannot match across segment
-    borders.
-
-    In practice this means that in fields with this prefix, an asterisk ('*')
-    should match '[^/]*' (where '/' is the segment separator) instead of '.*'.
-*** TODO New search query syntax (require '*' for partial words)
-    There should also be a help section for the new special characters, and if a
-    search resulted in zero matches, something helpful should be displayed to
-    the user.
-*** TODO Don't use '#' for special stuff in search queries
-    It is used in the transcriptions to indicate finger spelled words.
-*** TODO Character class for 'förs'
-    All arrows, not including 'contact'.
-*** TODO Character class for 'circle'
-    Old + new circle symbols
-*** TODO Character class for 'face'
-    Combination of upper and lower face.
-*** TODO Character class for 'hand-external type of motion'
-    Curving, (all types of) circling, hitting and turning.
-*** TODO Character classes [...] to search query
-    Useful when one is searching for one of multiple hand shapes.
 *** DONE Character class for 'face'
     CLOSED: [2018-08-26 Sun 23:11]
     An unquoted 'face' symbol now matches all the articulation places in the
