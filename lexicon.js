@@ -98,41 +98,110 @@ var overlay = (function () {
 
 ////////////////////////////////////////////////////////////////////////////////
 //
-// URL fragment module -- Update/trigger on URL fragment change.
+// State module
+// ============
+// Update URL fragment & trigger on URL fragment change.
 //
-//   .set(STR) -- set URL fragment to '#STR' w/o triggering `onchange()`
-//   .onChange(FUNC) -- Call FUNC(STR) on fragment change
+// URL fragment syntax: {#|##}<query>[/<overlay>]
+// ----------------------------------------------
+//   * A single '#' (default) indicates that matches should be displayed with
+//     videos, while '##' indicate a text only listing is desired.
+//   * <query> is a search query (described elsewhere). Search query may
+//     contain URL encdoded slashes.
+//   * <overlay> (if specified) is the name of an overlay (to be displayed on
+//     top of the page). Overlays are built into the HTML structure of the
+//     page, but eventually there will be dynamic overlays for all the words of
+//     the dictionary (in which case the <overlay> will be the 5-digit ID of
+//     the word in question).
 //
-var urlFragment = (function () {
+// Functions
+// ---------
+// .change(STATE) -- Change URL to reflect state (without triggering hooks).
+// .onOverlayChange(FUNC) -- Register FUNC as callback for corresponding event.
+// .onQueryChange(FUNC)
+// .onVideoToggle(FUNC)
+//
+// Register FUNC as callback, called when corresponding part of the URL change.
+//
+// State
+// -----
+// The state object reflects the URL but the separators are removed, and all
+// strings have been decoded. The 'video' value is javascript boolean.
+//
+//   {
+//       base   : "http://zrajm.github.io/teckentranskription/lexicon.html",
+//       overlay: "",
+//       query  : "buss,taxi",
+//       video  : true,
+//   };
+//
+var state = (function () {
     "use strict";
-    // Base URL (w/o hash fragment).
-    function getBaseUrl() {
-        return window.location.href.split("#")[0];
+    var state = { overlay: "", query: undefined, video: true };
+    function getStateFromUrl() {
+        var x = window.location.href
+            .match(/^([^#]*)(?:(#*)([^#\/]*)(?:\/([^#\/]*))?)/u).slice(1);
+        return {
+            base   : x[0],
+            overlay: decodeURIComponent(x[3] || ""),
+            query  : decodeURIComponent(x[2]),
+            video  : (!x[1] || x[1] === "#" ? true : false)
+        };
     }
-    // URL fragment (no leading '#')
-    function getFragment() {
-        return decodeURIComponent(window.location.hash.substr(1));
-    }
-    // Change URL fragment (does not trigger hashchange event).
-    function setFragment(urlFragment) {
-        var url = getBaseUrl() + "#" + encodeURIComponent(urlFragment);
-        if (getFragment() !== urlFragment) {
-            window.history.pushState({}, "", url);
+    function setUrlFromState(state) {
+        var str = encodeURIComponent(state.query) +
+            (state.overlay ? ("/" + encodeURIComponent(state.overlay)) : "");
+        if (str || state.video !== undefined) {
+            str = (state.video ? "#" : "##") + str;
         }
+        return state.base + str;
     }
-    // Set hashchange function callback.
-    function onChange(func) {
-        $(window).on("hashchange", function () {
-            func(getFragment());
+    // change({ query: STR, video: BOOL, overlay: STR })
+    // Update internal state + URL, without triggering hashchange event.
+    function changeState(partial) {
+        //if (partial === undefined) { partial = {}; }
+        var changed = false;
+        ["overlay", "query", "video"].forEach(function (n) {
+            if (partial[n] !== state[n] && partial[n] !== undefined) {
+                state[n] = partial[n];
+                changed = true;
+            }
         });
+        if (changed) {                         // update URL
+            window.history.pushState({}, "", setUrlFromState(state));
+            return true;
+        }
+        return false;
     }
-    // Trigger hashchange on pageload.
-    $(function () {
-        $(window).trigger("hashchange");
+
+    var hooks = {};
+    function onOverlayChange(callback) { hooks.overlay = callback; }
+    function onQueryChange(callback)   { hooks.query = callback; }
+    function onVideoToggle(callback)   { hooks.video = callback; }
+    $(window).on("hashchange", function () {
+        var newState = getStateFromUrl();
+        var run = [];
+        ["base", "overlay", "query", "video"].forEach(function (n) {
+            if (newState[n] !== state[n]) {    // save all state first
+                if (hooks[n] instanceof Function) {
+                    run.push(n);               //   register callback to run
+                }
+                state[n] = newState[n];        //   save state
+            }
+        });
+        run.forEach(function (n) {             // run callbacks
+            hooks[n](state[n]);
+        });
     });
+
+    // Trigger hashchange on initial page load.
+    $(function () { $(window).trigger("hashchange"); });
+
     return {
-        set: setFragment,
-        onChange: onChange
+        change: changeState,
+        onOverlayChange: onOverlayChange,
+        onQueryChange: onQueryChange,
+        onVideoToggle: onVideoToggle
     };
 }());
 
@@ -614,7 +683,6 @@ function searchLexicon(queryStr) {
         var len;
         var subquery;
         var matches = [];
-        urlFragment.set(queryStr);
 
         logTiming.reset();
         if (query.length > 0) {
@@ -741,24 +809,26 @@ $("#results")
 //
 // Main program
 //
-urlFragment.onChange(function (queryStr) {     // URL fragment change
-    overlay.hide();
-    searchLexicon(queryStr);
-});
 
-(function (selector) {
+// URL update events, these are triggered when user follows a page internal
+// link, when user manually edits URL, and on initial page load. These hooks
+// update internal state to reflect URL change (without causing any additional
+// changes to URL).
+state.onQueryChange(searchLexicon);
+state.onVideoToggle(showVideos);
+
+// When search form input changes.
+(function () {
     "use strict";
-    var jqElem = $(selector);
-    var oldValue = jqElem.val();
-    jqElem.change(function () {      // form input change
+    var jqElem = $("#q");
+    jqElem.change(function () {
         var queryStr = jqElem.val() || "";
-        if (queryStr !== oldValue) {
-            oldValue = queryStr;
-            searchLexicon(queryStr);
-        }
+        state.change({ query: queryStr });
+        searchLexicon(queryStr);
     });
-}("#q"));
+}());
 
+// Update lexicon date in page footer.
 (function () {
     "use strict";
     function updateLexiconDate() {
@@ -775,8 +845,16 @@ urlFragment.onChange(function (queryStr) {     // URL fragment change
     $(updateLexiconDate);
 }());
 
+function showVideos (bool) {
+    var hasVideo = $("main")
+        .removeClass("video-view text-view")
+        .addClass(bool ? "video-view" : "text-view");
+}
 $("#select").click(function() {
-    $("main").toggleClass("video-view text-view");
+    var hasVideo = $("main")
+        .toggleClass("video-view text-view")
+        .hasClass("video-view")
+    state.change({ video: hasVideo });
 });
 
 //[eof]

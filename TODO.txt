@@ -27,6 +27,33 @@
    These are some cool BSL examples:
    http://vhg.cmp.uea.ac.uk/demo/BSLExamples/
 * Lexicon
+** [4/7] New URL syntax
+   A syntax to allow for video/text search results + upcoming overlays.
+*** TODO Remove extraneous components in URL
+    Eg '/xx' in the URL http://localhost/tsplex/lexicon.html#he/help/xx
+    or the multiple '####' in http://localhost/tsplex/lexicon.html####he/help/xx
+
+    This URL cleanup thing could probably reside in getStateFromUrl(). However,
+    doing this sort of cleanup would make user *lose* information they've typed
+    into the URL bar, and might not be such a good idea?
+
+    Since this modification of the URL would cause an immediate rewrite of the
+    URL it shouldn't be stored in the browser history, but the faulty URL should
+    simply be replace by the new one using `replaceState()` rather than
+    `pushState()`.
+
+    (Except for the video toggle part; cleaning up the number of '########'
+    sounds like it would always be good, right?)
+*** TODO Overlay by entering in URL
+*** TODO Overlay by clicking on Swedish of sign
+*** DONE Video/text through updating URL
+    CLOSED: [2018-08-27 Mon 23:00]
+*** DONE Search by entering in URL
+    CLOSED: [2018-08-27 Mon 22:49]
+*** DONE Video/text button -- should update URL
+    CLOSED: [2018-08-27 Mon 22:40]
+*** DONE Search through textarea -- should update URL
+    CLOSED: [2018-08-28 Tue 18:12]
 ** TODO Module for lexicon
    Module have methods for returning named entry properties (i.e. the ID,
    transcription, translation etc. of an entry).
@@ -110,6 +137,10 @@
 *** TODO Does play/pause feedback work in MS browsers?         :TEST:Windows:
 *** TODO Does play/pause feedback work in Safari?                  :TEST:Mac:
 *** TODO Keyboard navigation
+    Arrow keys to navigate between matches
+    Up/down/left/right - in video mode.
+    Up/down - in text mode.
+
     Is there a non-Javascript way of doing this?
     * Tab/shift-tab move focus from one video to the next
     * 1234567890 -- move to % percent of matches
