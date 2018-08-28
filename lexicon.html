@@ -332,11 +332,12 @@
     tt {
       color: inherit;
       word-spacing: .25em;
+      white-space: nowrap;
       font-family: inherit;
       font-size: 95%;
       background: #ccc;
       border-radius: 4px;
-      padding: 0 .125em;
+      padding: 0 .25em;
     }
     /*************************************************************************/
     .tooltip mark {
@@ -391,12 +392,10 @@
   </footer>
   <div class="overlay help">
     <section tabindex=0>
-      <h1>Kontroll över sökningen</h1>
+      <h1>Kontrollsymboler</h1>
       <div class=columns>
 
-        <p>Symboler som används för att kontrollera hur sökningen sker.
-
-        <center><table border=1>
+        <center><table border=1 style="margin-top:.25em">
           <tr>
             <th><tt>"…"</tt>
             <td>Exakt sökning
@@ -432,8 +431,8 @@
         <p>Inuti (eller i slutet) på ord har minus ingen särskild effekt, en
         sökning på <tt>platt-tv</tt> hittar alla förekomster av ’platt-tv’,
         medan <tt>platt -tv</tt> hittar alla tecken vars översättning
-        innehåller ’platt’ men inte ’tv’. Vill du ha ett minustecken först
-        använder du citatsymboler <tt>"-tv"</tt>.
+        innehåller ’platt’ men <i>inte</i> ’tv’. Vill du ha ett minustecken
+        först använder du citatsymboler <tt>"-tv"</tt>.
 
         <p><p><tt>… …</tt> Logiskt <i>och</i> – betyder att <i>både</i> det som
         står före och det som står efter mellanslaget måste finnas med för att
@@ -541,31 +540,32 @@
         överrens­stämmer med det som står i lexikonet.
       </div>
 
-      <hr><h1>Bra-att-ha tips</h1>
+      <hr><h1>Några tips</h1>
       <div class=columns>
 
-        <p><b><tt>@</tt></b> matchar <i>kroppslägen</i> i transkriptionen.
+        <p><tt>@</tt> matchar <i>kroppslägen</i> i transkriptionen.
         Använd <tt>-@</tt> för att utesluta alla tecken som har ett
         artikulationsställe på kroppen.
 
-        <p><p><tt>-􌥠</tt> utesluter alla sammansatta tecken (tecken som har än
-        ett segment). Om du istället letar efter sammansatta tecken kan du
-        använda <tt>􌥠</tt>, eller kanske rentav <tt>􌥠*􌥠</tt> (om du vill hitta
-        tecken med tre eller fler segment).
+        <p><p><tt>-􌥠</tt> utesluter sammansatta tecken (tecken med mer än ett
+        segment). Om du istället <i>vill hitta</i> samman­satta tecken kan du
+        använda <tt>􌥠</tt>, eller kanske rentav <tt>􌥠*􌥠</tt>
+        eller <tt>􌥠*􌥠*􌥠</tt> etc (för att hitta tecken med tre eller fler
+        segment).
 
-        <p><p><tt>:##:</tt> hittar tvåhandstecken där båda händerna är aktiva.
+        <p><p><tt>:##:</tt> hittar två­hands­tecken där båda händerna är aktiva.
 
-        <p><p><tt>#:#:</tt> hittar tvåhandstecken med en aktiv och en passiv
+        <p><p><tt>#:#:</tt> hittar två­hands­tecken med en aktiv och en passiv
         hand.
 
-        <p><p><tt>-:##: -#:#:</tt> utesluter alla tvåhandstecken (dvs hittar
-        enbart enhandstecken).
+        <p><p><tt>-:##: -#:#:</tt> utesluter alla två­hands­tecken (dvs hittar
+        en­hands­tecken).
 
         <p><p>Transkriptioner är fiddliga och det är oftast inte helt
         självklart hur något ska transkriberas om man bara sett ett tecken
-        utföras av någon. Det är oftast lättast att (på svenska) söka upp ett
-        annat tecken med liknande rörelse, och sen utgå ifrån dess
-        transkription för att söka upp tecknet du letar efter.
+        utföras. Om man kan ett ord med en liknande rörelse kan det vara värt
+        att söka upp det ordet på svenska, klicka på det ordets transkription
+        och sedan modifiera transkriptionen i sökningen tills man hittar rätt.
       </div>
     </section>
   </div>
