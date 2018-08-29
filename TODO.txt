@@ -133,7 +133,20 @@
 *** TODO Sortable search results
     Present search result in a sortable table? Should be able to sort by swedish
     word, and by sign language.
-** [17/31] GUI
+** [18/32] GUI
+*** TODO Use browser history 'back' to exit overlays
+    This means that using the browser back/forward buttons would scroll through
+    the search history in a reasonable manner (without having overlays pop up).
+
+    When exiting an overlay, it should invoke
+
+       window.history.back();
+
+    To remove itself from history.
+
+    This also means, however, that on initial page load with an overlay
+    specified in the URL, we first need to load a search page, then display the
+    overlay, so that there is something to go back to when exiting the overlay.
 *** TODO Does play/pause feedback work in MS browsers?         :TEST:Windows:
 *** TODO Does play/pause feedback work in Safari?                  :TEST:Mac:
 *** TODO Keyboard navigation
@@ -180,6 +193,10 @@
     When scrolling down the search form should scroll up with the page, when
     scrolling up it should be immediately revealed -- just like URL bar in the
     mobile browser.
+*** DONE Footer should be at bottom of screen/content
+    CLOSED: [2018-08-29 Wed 23:55]
+    If the content of a page all fits in one window, then the page footer
+    should be displayed at the bottom of the window.
 *** DONE Tooltip should disappear when on page back/forward             :BUG:
     CLOSED: [2018-08-27 Mon 06:27]
     Currently any opened tooltip remain on screen when one navigates

@@ -14,7 +14,15 @@ button, input, select, textarea { font-family: inherit; }
     caret-color: rgb(173, 189, 224); /* focus outline color */
 }
 
-html { overflow-y: scroll; }
+/* Make body fill at least first screen. */
+/* http://stackoverflow.com/q/17555682/ */
+html { height: 100%; overflow-y: scroll; }
+body {
+    min-height: 100%;
+    /* allow <footer> placement at bottom */
+    display: flex;
+    flex-direction: column;
+}
 
 *:not(td) { box-sizing: border-box; }
 :focus, .nostyle:focus {
@@ -107,6 +115,7 @@ footer {
     font-size: 80%;
     margin: .5em 0;
     text-align: center;
+    margin-top: auto;
 }
 
 /******************************************************************************/

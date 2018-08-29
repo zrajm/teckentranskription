@@ -52,8 +52,12 @@
     main { margin: 0 1em; }
     footer, .status {
       font-size: smaller;
-      margin: .5em 0;
       opacity: .5;
+    }
+    .status { margin: .5em 0; }
+    body {
+      display: flex;
+      flex-direction: column;
     }
     header {
       display: flex;
@@ -100,7 +104,7 @@
     .text-view #results {
       column-gap: 1em;
       column-width: 14em;
-      margin: .25em 0;
+      margin: .375em 0;
       text-align: left;
     }
     .text-view #result > .match {
@@ -142,7 +146,8 @@
     }
     /*************************************************************************/
     .video-view #results {
-      margin: .25em 0;
+      margin: .375em 0;
+      margin-top: -.125em; /* counter padding above 1st row of match <div>s */
       text-align: left;
     }
     /* space between #results matches */
