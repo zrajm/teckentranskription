@@ -72,6 +72,8 @@
     }
 
     /*************************************************************************/
+    /* Result mode selector switch (video/text). */
+
     #select { float:right; }
     #select > .switch {
       vertical-align: middle;
@@ -99,13 +101,18 @@
     .video-view #select > .switch:before { left: 0; }
     .video-view #select > .video { font-weight: bold; }
     .text-view #select > .text { font-weight: bold; }
+
     /*************************************************************************/
+    /* Stuff common to both result views (video/text). */
 
     .text-view #results > .match {
       column-break-inside: avoid;
       -moz-column-break-inside: avoid;
       -webkit-column-break-inside: avoid;
     }
+
+    /*************************************************************************/
+    /* Stuff for text result view (text/video). */
 
     .text-view #results {
       column-gap: 1em;
@@ -150,7 +157,10 @@
       text-transform: lowercase;
       font-variant: small-caps;
     }
+
     /*************************************************************************/
+    /* Stuff for video result view (text/video). */
+
     .video-view #results {
       margin: .375em 0;
       margin-top: -.125em; /* counter padding above 1st row of match <div>s */
@@ -270,7 +280,9 @@
     }
     .video-view .video-feedback.play { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="45" height="45"><circle r="22.5" cy="22.5" cx="22.5" style="isolation:auto;mix-blend-mode:normal" color="%23000" overflow="visible" opacity=".75" fill-rule="evenodd"/><path color="%23000" fill="%23fff" style="isolation:auto;mix-blend-mode:normal" overflow="visible" d="M33.25 22.5l-16.5 9.53V12.97z"/></svg>'); }
     .video-view .video-feedback.pause { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="45" height="45"><circle r="22.5" cy="22.5" cx="22.5" style="isolation:auto;mix-blend-mode:normal" color="%23000" overflow="visible" opacity=".75" fill-rule="evenodd"/><path color="%23000" fill="%23fff" style="isolation:auto;mix-blend-mode:normal" overflow="visible" d="M15 15h5v15h-5zM25 15h5v15h-5z" fill-rule="evenodd"/></svg>'); }
-      /*************************************************************************/
+
+    /*************************************************************************/
+
     hr {
       margin: 1em;
       border: 0;
@@ -350,7 +362,9 @@
       border-radius: 4px;
       padding: 0 .25em;
     }
+
     /*************************************************************************/
+
     .tooltip mark {
       background: rgba(255, 255, 255, .2);
       color: inherit;
