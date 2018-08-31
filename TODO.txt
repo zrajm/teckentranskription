@@ -26,6 +26,8 @@
 
    These are some cool BSL examples:
    http://vhg.cmp.uea.ac.uk/demo/BSLExamples/
+** DONE Set sensible max-width
+   CLOSED: [2018-08-31 Fri 02:31]
 * Lexicon
 ** [4/7] New URL syntax
    A syntax to allow for video/text search results + upcoming overlays.
@@ -133,7 +135,10 @@
 *** TODO Sortable search results
     Present search result in a sortable table? Should be able to sort by swedish
     word, and by sign language.
-** [18/32] GUI
+** [18/35] GUI
+*** TODO Narrower page margins on mobile
+*** TODO Don't set max overlay column width
+*** TODO Don't perform search if identical to previous search
 *** TODO Use browser history 'back' to exit overlays
     This means that using the browser back/forward buttons would scroll through
     the search history in a reasonable manner (without having overlays pop up).

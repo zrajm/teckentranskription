@@ -308,8 +308,9 @@ function transcriptKeyboard(jqInput) {
             .appendTo(jqWrapper)
             .css({
                 borderRadius: "4px",
-                minWidth: "100%",
+                maxWidth: "30em",
                 position: "absolute",
+                right: 0,
                 zIndex: 1,
                 background: "#fff",
                 boxShadow: "0 16px 24px 2px rgba(0,0,0,.14)," +
