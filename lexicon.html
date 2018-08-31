@@ -34,7 +34,7 @@
       top: 0; bottom: 0; left: 0; right: 0;
       margin: auto;
       content: "?";
-      color: black;
+      color: #000;
       height: 1.1em;
       font-size: 125%;
       font-weight: 900;
@@ -55,13 +55,18 @@
       opacity: .5;
     }
     .status { margin: .5em 0; }
+    .status:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
     body {
       display: flex;
       flex-direction: column;
     }
     header {
       display: flex;
-      background: #07BCCD;
+      background: #07bccd;
       padding: .5em 1em;
       box-shadow: 0 0 8px 4px rgba(0, 0, 0, .14);
     }
@@ -105,6 +110,10 @@
     /*************************************************************************/
     /* Stuff common to both result views (video/text). */
 
+    #results {
+      margin: .25em 0;
+    }
+
     #results > .match {
       column-break-inside: avoid;
       -moz-column-break-inside: avoid;
@@ -117,8 +126,7 @@
     .text-view #results {
       column-gap: 1em;
       columns: 14em;
-      margin: .375em 0;
-      text-align: left;
+      margin-top: -.25em;
     }
     .text-view #results > .match {
       margin: .125em 0;
@@ -130,7 +138,6 @@
     }
     .text-view .video-container,
     .text-view .video-container > * {
-      margin: .125em;
       display: inline;
     }
     .text-view .video-container,
@@ -149,8 +156,6 @@
       color: #000;
     }
     .text-view .match > a {
-      width: 100%;
-      display: inline;
       color: inherit;
     }
     .text-view .video-container .spelled {
@@ -162,29 +167,22 @@
     /* Stuff for video result view (text/video). */
 
     .video-view #results {
-      margin: .375em 0;
       margin-top: -.125em; /* counter padding above 1st row of match <div>s */
-      text-align: left;
+      word-spacing: .5em;  /* space between #results matches */
     }
-    /* space between #results matches */
-    .video-view #results { word-spacing: .5em; }
     .video-view #results > * { word-spacing: normal; }
 
     .video-view #results > .match {
       display: inline-block;
       width: 270px;                            /* same as .video-container */
       margin: .25em 0 .25em 0;
+      text-align: center;
 
       /* text: center or truncate if too long */
       white-space: nowrap;
       text-align: center;
       text-overflow: ellipsis;
       overflow: hidden;
-    }
-    .video-view .match > a {
-      width: 100%;
-      display: block;
-      color: inherit;
     }
     .video-view .match > a:hover,
     .video-view .match > a:focus {
@@ -202,7 +200,7 @@
       opacity: 0;                              /* hide but allow clicks etc. */
     }
     .video-view .video-container {
-      background: no-repeat center url(pic/gui/image-loading.jpg) #07BCCD;
+      background: no-repeat center url(pic/gui/image-loading.jpg) #07bccd;
       position: relative;  /* for subtitle+id positioning */
       border-radius: 4px;
 
@@ -610,5 +608,3 @@
   </script>
 </body>
 </html>
-
-

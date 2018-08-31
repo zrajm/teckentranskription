@@ -504,8 +504,6 @@ function hilite(str, regex) {
 function htmlifyTranscription(hilitedTransStr) {
     "use strict";
     return hilitedTransStr
-        // Insert <wbr> tag after all segment separators.
-        .replace(/􌥠/gu, '􌥠<wbr>')
         // Add <span class=spelled>...</span> around substrings of printable
         // latin-1 chars. If there are <mark>/</mark> tags inside the
         // transcript string, make sure we add the matching number of tags on
@@ -541,7 +539,9 @@ function htmlifyTranscription(hilitedTransStr) {
                 }
             });
             return begTag + spelledStr + endTag;
-        });
+        })
+        // Insert <wbr> tag after all segment separators.
+        .replace(/􌥠/gu, '􌥠<wbr>');
 }
 
 // Downcase string, remove all non-alphanumenic characters and space (by
@@ -570,12 +570,12 @@ function htmlifyMatch(match) {
                 "<div class=video-feedback></div>" +
                 "<a class=video-id href='{baseUrl}/ord/{id}'" +
                 " title='Visa i Svenskt tecken­språks­lexikon (ny tabb)'" +
-                " target=_blank>{htmlId}</a>" +
+                " target=_blank>{htmlId}</a> " +
                 "<div class=video-subs>" +
                     "<a href='#{transcr}' title='{htmlTranscr}'>" +
                         "{htmlTranscr}</a>" +
                 "</div>" +
-            "</div>" +
+            "</div> " +
             "<span title='{htmlSwedish}'>{htmlSwedish}</span>" +
         "</div>\n"
     ).supplant({
