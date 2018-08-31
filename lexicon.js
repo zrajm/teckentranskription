@@ -797,12 +797,14 @@ $("#results")
         });
     }
 
-    $(document).on("scroll mousemove popstate", function () {
+    function hideTooltip() {
         if (shown) {
             shown = false
             jqTooltip.hide();
         }
-    });
+    }
+    $(window).on("hashchange", hideTooltip);
+    $(document).on("scroll mousemove", hideTooltip);
 }());
 
 ////////////////////////////////////////////////////////////////////////////////

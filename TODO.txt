@@ -135,7 +135,7 @@
 *** TODO Sortable search results
     Present search result in a sortable table? Should be able to sort by swedish
     word, and by sign language.
-** [20/35] GUI
+** [21/36] GUI
 *** TODO Narrower page margins on mobile
 *** TODO Use browser history 'back' to exit overlays
     This means that using the browser back/forward buttons would scroll through
@@ -196,6 +196,10 @@
     When scrolling down the search form should scroll up with the page, when
     scrolling up it should be immediately revealed -- just like URL bar in the
     mobile browser.
+*** DONE Tooltip should disappear when on page back/forward             :BUG:
+    CLOSED: [2018-08-31 Fri 18:16]
+    Tooltip didn't always disappear on back/forward, now triggering removal on
+    hashchange, instead of popState.
 *** DONE Don't set max overlay column width
     CLOSED: [2018-08-31 Fri 03:07]
     Only determine columns based on line width.
