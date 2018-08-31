@@ -135,10 +135,9 @@
 *** TODO Sortable search results
     Present search result in a sortable table? Should be able to sort by swedish
     word, and by sign language.
-** [18/35] GUI
+** [19/35] GUI
 *** TODO Narrower page margins on mobile
 *** TODO Don't set max overlay column width
-*** TODO Don't perform search if identical to previous search
 *** TODO Use browser history 'back' to exit overlays
     This means that using the browser back/forward buttons would scroll through
     the search history in a reasonable manner (without having overlays pop up).
@@ -198,6 +197,8 @@
     When scrolling down the search form should scroll up with the page, when
     scrolling up it should be immediately revealed -- just like URL bar in the
     mobile browser.
+*** DONE Don't perform search if identical to previous search
+    CLOSED: [2018-08-31 Fri 02:40]
 *** DONE Footer should be at bottom of screen/content
     CLOSED: [2018-08-29 Wed 23:55]
     If the content of a page all fits in one window, then the page footer

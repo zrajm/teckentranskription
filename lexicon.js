@@ -821,10 +821,14 @@ state.onVideoToggle(showVideos);
 (function () {
     "use strict";
     var jqElem = $("#q");
+    var oldValue = jqElem.val();
     jqElem.change(function () {
         var queryStr = jqElem.val() || "";
         state.change({ query: queryStr });
-        searchLexicon(queryStr);
+        if (queryStr !== oldValue) {
+            oldValue = queryStr;
+            searchLexicon(queryStr);
+        }
     });
 }());
 
