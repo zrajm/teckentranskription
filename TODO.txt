@@ -1,5 +1,8 @@
 -*- org -*-
 
+rewrite video-info selector to match <a class=video-info>, instead of <img
+class=video-info>
+
 * Microsoft browser problems
 ** Edge (version 41.16299.371.0)
 *** TODO Pressing enter in input field does not result in a search
@@ -340,6 +343,8 @@
    the old array, instead of object, approach?)
 ** TODO Repeated search should not reload search result
 ** TODO Add CC license text + note data source
+** DONE Transcription link shouldn't switch video/text mode             :BUG:
+   CLOSED: [2018-09-03 Mon 05:02]
 * Transcription intro article
 ** TODO Describe symbols below circling/curving/hitting/twisting
 ** TODO Add symbols from Riemer 2015

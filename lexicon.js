@@ -156,6 +156,14 @@ var state = (function () {
         }
         return state.base + str;
     }
+    function getHashFromStr(hashStr) {
+        var x = hashStr.split("/");
+        var queryStr = x[0] || state.query;
+        var overlayStr = x[1];
+        return (state.video ? "#" : "##") +
+            encodeURIComponent(queryStr) +
+            (overlayStr ? ("/" + encodeURIComponent(overlayStr)) : "");
+    }
     // change({ query: STR, video: BOOL, overlay: STR })
     // Update internal state + URL, without triggering hashchange event.
     function changeState(partial) {
@@ -199,6 +207,7 @@ var state = (function () {
 
     return {
         change: changeState,
+        getHash: getHashFromStr,
         onOverlayChange: onOverlayChange,
         onQueryChange: onQueryChange,
         onVideoToggle: onVideoToggle
@@ -572,7 +581,7 @@ function htmlifyMatch(match) {
                 " title='Visa i Svenskt tecken­språks­lexikon (ny tabb)'" +
                 " target=_blank>{htmlId}</a> " +
                 "<div class=video-subs>" +
-                    "<a href='#{transcr}' title='{htmlTranscr}'>" +
+                    "<a data-href='{transcr}' title='{htmlTranscr}'>" +
                         "{htmlTranscr}</a>" +
                 "</div>" +
             "</div> " +
@@ -861,6 +870,20 @@ $("#select").click(function() {
         .toggleClass("video-view text-view")
         .hasClass("video-view")
     state.change({ video: hasVideo });
+});
+
+// Update 'href' attr when mouse enters <a data-href=…> tag (used to retain
+// current video/text result setting). 'data-href' syntax: [query][/overlay]
+$(function () {
+    // 'mouseenter' used here since it does not trigger when child elements are
+    // entered, and the event does not bubble.
+    $("#results").on("mouseenter", "a[data-href]", function (e) {
+        var jq = $(e.currentTarget);
+        var hashref = jq.data("href") || "";
+        if (hashref) {
+            jq.attr("href", state.getHash(hashref));
+        }
+    });
 });
 
 //[eof]
