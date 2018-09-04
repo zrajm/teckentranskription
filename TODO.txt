@@ -1,8 +1,5 @@
 -*- org -*-
 
-rewrite video-info selector to match <a class=video-info>, instead of <img
-class=video-info>
-
 * Microsoft browser problems
 ** Edge (version 41.16299.371.0)
 *** TODO Pressing enter in input field does not result in a search
@@ -138,7 +135,7 @@ class=video-info>
 *** TODO Sortable search results
     Present search result in a sortable table? Should be able to sort by swedish
     word, and by sign language.
-** [21/36] GUI
+** [22/36] GUI
 *** TODO Narrower page margins on mobile
 *** TODO Use browser history 'back' to exit overlays
     This means that using the browser back/forward buttons would scroll through
@@ -168,9 +165,6 @@ class=video-info>
     * key to search for transcription
     * <Esc>(?) key to focus search input area
 *** TODO Use lazy loading of images?
-*** TODO Video load handling
-    Display 'waiting' GIF while loading (after replacing <img> with a <video>
-    tag), replace by error msg on fail.
 *** TODO Multiple <mark> in same entry not working                      :BUG:
     A search for 'OTRANSKRIBERAD,72,har' should hilite three different things
     in entry 00072, but only the transcription is hilited. Why?
@@ -199,6 +193,11 @@ class=video-info>
     When scrolling down the search form should scroll up with the page, when
     scrolling up it should be immediately revealed -- just like URL bar in the
     mobile browser.
+*** DONE Video load spinner + broken icon on load fail
+    CLOSED: [2018-09-04 Tue 11:32]
+
+    Display spinner while loading video (after replacing <img> with a <video>
+    tag), replace by error msg on fail.
 *** DONE Tooltip should disappear when on page back/forward             :BUG:
     CLOSED: [2018-08-31 Fri 18:16]
     Tooltip didn't always disappear on back/forward, now triggering removal on

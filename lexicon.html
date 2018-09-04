@@ -191,10 +191,19 @@
     .video-view .video-container.is-loading {
       background-image: url(pic/gui/image-loading.jpg);
     }
-    .video-view .video-container.is-broken {
-      background-image: url(pic/gui/image-broken.svg),
-        url(pic/gui/image-loading.jpg);
+    .video-view .video-container.is-broken:before,
+    .video-view .video-container.is-loading-video:before {
+      content: '';
+      position: absolute;
+      width: 100%; height: 100%;
     }
+    .video-view .video-container.is-broken:before {
+      background: no-repeat center url(pic/gui/image-broken.svg);
+    }
+    .video-view .video-container.is-loading-video:before {
+      background: no-repeat center url(pic/gui/video-loading.svg);
+    }
+
     .video-view .video-container.is-loading img,
     .video-view .video-container.is-broken img {
       opacity: 0;                              /* hide but allow clicks etc. */

@@ -730,7 +730,14 @@ function onPlayPauseToggle(event) {
         jqVideo = $(
             "<video loop muted playsinline src='{0}' poster='{1}'></video>"
                 .supplant([jqVideo.data("video"), jqVideo.attr("src")])
-        ).replaceAll(jqVideo);
+        ).replaceAll(jqVideo).on("canplay error", function (e) {
+            jqVideo.off("canplay error");
+            jqContainer.removeClass("is-loading-video");
+            if (e.type === "error") {
+                jqContainer.addClass("is-broken");
+            }
+        });
+        jqContainer.addClass("is-loading-video");
     }
 
     // Get state of video and toggle play/pause state.
