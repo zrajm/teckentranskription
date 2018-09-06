@@ -513,13 +513,13 @@ function hilite(str, regex) {
 function htmlifyTranscription(hilitedTransStr) {
     "use strict";
     return hilitedTransStr
-        // Add <span class=spelled>...</span> around substrings of printable
-        // latin-1 chars. If there are <mark>/</mark> tags inside the
+        // Add <span class=fingerspell>...</span> around substrings of
+        // printable latin-1 chars. If there are <mark>/</mark> tags inside the
         // transcript string, make sure we add the matching number of tags on
         // the relevant <span> tag (to make sure HTML remains valid).
         .replace(/[\x21-\xff]+/gu, function (spelledStr) {
             var stack = [];
-            var begTag = "<span class=spelled>";
+            var begTag = "<span class=fingerspell>";
             var endTag = "</span>";
 
             // If substring is HTML only (i.e. no text): Keep it as-is.
