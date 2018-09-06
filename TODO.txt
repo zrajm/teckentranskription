@@ -135,7 +135,15 @@
 *** TODO Sortable search results
     Present search result in a sortable table? Should be able to sort by swedish
     word, and by sign language.
-** [22/36] GUI
+** [22/38] GUI
+*** TODO Hide tooltips on window resize(?)
+    It looks kinda strange when the tooltip stays in place, when stuff
+    underneath moves away and when the tooltip resizes itself if it's cut off
+    by the right window border.
+*** TODO Add missing relation symbols when importing(?)
+    This is a lexicon, so for clarity, all two-hand descriptions should have a
+    relation symbol (in my opinion). We could automatically insert this when
+    importing the lexicon.
 *** TODO Narrower page margins on mobile
 *** TODO Use browser history 'back' to exit overlays
     This means that using the browser back/forward buttons would scroll through
@@ -169,7 +177,7 @@
     A search for 'OTRANSKRIBERAD,72,har' should hilite three different things
     in entry 00072, but only the transcription is hilited. Why?
     http://localhost/teckentranskription.lexicon/lexicon.html#otranskr%2C%2072%2C%20har
-*** TODO Use poster images served through GitHub page?
+*** TODO Serve poster images through GitHub page?
         var videoTmpl = "video/{firstDigits}/{file}-{id}-tecken.mp4";
         var imageTmpl = "lexicon/{firstDigits}/{file}-{id}-tecken.jpg";
 *** TODO Click on translation to display overlay with all info

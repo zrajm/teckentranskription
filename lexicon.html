@@ -119,6 +119,10 @@
       -moz-column-break-inside: avoid;
       -webkit-column-break-inside: avoid;
     }
+    .spelled {
+      text-transform: lowercase;
+      font-variant: small-caps;
+    }
 
     /*************************************************************************/
     /* Stuff for text result view (text/video). */
@@ -157,10 +161,6 @@
     }
     .text-view .match > a {
       color: inherit;
-    }
-    .text-view .video-container .spelled {
-      text-transform: lowercase;
-      font-variant: small-caps;
     }
 
     /*************************************************************************/
@@ -269,10 +269,6 @@
     .video-view .video-container a:focus mark,
     .video-view .video-container a:hover mark {
       text-decoration: underline rgb(255, 193, 47);
-    }
-    .video-view .video-container .spelled {
-      text-transform: lowercase;
-      font-variant: small-caps;
     }
     .video-view .video-feedback {
       width: 100%;
