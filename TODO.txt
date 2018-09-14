@@ -135,7 +135,11 @@
 *** TODO Sortable search results
     Present search result in a sortable table? Should be able to sort by swedish
     word, and by sign language.
-** [22/38] GUI
+** [22/39] GUI
+*** TODO Hide broken image icon (if any) on video load                  :BUG:
+    Currently, if the image failed to load and a broken image icon is
+    displayed, this broken icon remains there when the video loads (displayed
+    on top of the video).
 *** TODO Hide tooltips on window resize(?)
     It looks kinda strange when the tooltip stays in place, when stuff
     underneath moves away and when the tooltip resizes itself if it's cut off
@@ -488,6 +492,29 @@
      + ALL <details> opened
 
    Mouseover text should clearly state what will happen upon the next click.
+* SSLWrite article
+** Mouth segment article
+*** Clean up references section
+    Write each reference in an appropriate form.
+*** Add pics from How to Write American Sign Language
+*** Add oral adverb pics from Teckenspråks – Så klart! videos
+*** Clear up confusion of the two oral adverbs [m]
+    Are they the same with two different realisations? (I have yet to find a
+    single source that describes them both with pictures, but one adverb
+    (“‘normally’, ‘with ease’”) is described in ”A Preliminary Analysis of
+    Visual Mouth Segments in Swedish Sign Language” as not being among the
+    mouth segments there described – which the other realization of [m] looks
+    like what they there describe as /bilabial/.
+*** Add [ɧ], [ɕ] and [ŋ] (“Svenska munbilder” section)
+*** Give SSLWrite symbol to all mouth segments (“Svenska munbilder” section)
+*** Categorize all mouth segments (“Svenska munbilder” section)
+*** Compare “Svenska munbilder” section with someone else's work
+    Have we drawn similar conclusions? Categorized the same mouth shapes as
+    similar?
+*** Collect data/write rules for how to produce borrowed mouthings
+    Useful data can be found in:
+    * ”A Preliminary Analysis of Visual Mouth Segments in Swedish Sign
+      Language” has a bunch of useful examples of reductions.
 * Font
 ** TODO Reimport GNU FreeFont from sources
    Found out that the GNU FreeFont suite is actually available in Fontforge

@@ -1,4 +1,4 @@
-<html><!--*- ispell-dictionary: "english" -*-->
+<html><!--*- ispell-dictionary: "svenska" -*-->
 <head>
   <!-- Copyright 2018 by zrajm. Released under GPLv3 license. -->
   <meta charset="UTF-8">
@@ -89,6 +89,29 @@
     .padded img, img.padded { margin: 10px; }
     .inline { display: inline-block; margin: .25em 0; }
     table.inline { display: inline-table; margin: .25em 0; }
+
+    [align="left"] { text-align: left !important; }
+    img.bw {
+      filter: gray; /* IE6-9 */
+      -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+      filter: grayscale(1); /* Microsoft Edge and Firefox 35+ */
+    }
+    blockquote { margin: 1em; }
+    abbr {
+      font-variant: small-caps;
+      text-transform: lowercase;
+    }
+    p.hanging, .hanging p {
+      text-indent: -1em;
+      padding-left: 1em;
+      margin: 0;
+    }
+    sup, sub {
+      vertical-align: baseline;
+      position: relative;
+      top: -0.4em;
+    }
+    sub { top: 0.4em; }
   </style>
 </head>
 <body>
@@ -356,165 +379,179 @@ href="https://www.facebook.com/photo.php?fbid=10155531045426172">15 april
 <hr>
 
 <section>
-  <h1>Mouth Segments in Swedish Sign Language</h1>
+  <h1>Munbilder i genuina tecken</h1>
 
-  <p>The data below is from Brita Bergman & Lars Wallin’s article ”A
-  Preliminary Analysis of Visual Mouth Segments in Swedish Sign Language”
-  (published in <i>The Hands are the Head of the Mouth</i>, edited by Penny
-  Boyes Braem & Rachel Sutton-Spence, Signum Verlag, 2001).
+  <p>Informationen här kommer ifrån
+  ”<a href="../pdf/bergman+wallin-2001-a_preliminary_analysis_of_visual_mouth_segments.pdf">A
+  Preliminary Analysis of Visual Mouth Segments in Swedish Sign Language</a>”
+  av Bergman & Wallin (2001). Alla munbilder i teckenspråket är inte
+  inkluderade i artikeln – detta på grund av att den endast
+  analyserar <i>genuina tecken</i> och således inte beaktar tecken men
+  svenskinlånad munbild.
 
-  <p>The article provides an analysis of a subset of signs in the Swedish Sign
-  Language (focusing on mouth segments found in ’genuine signs’ – signs which
-  have native mouth segments, not borrowed from Swedish). The article itself
-  states that the list of mouth segments that they present is incomplete, but
-  I've used it as a starting point anyway. (One needs to
-  start <i>somewhere,</i> right?)
+  <section>
+    <h1>Huvudsakliga munbilder</h1>
 
-  <p>Below mouthing marks (in <span class=blue>blue</span>) are added by me,
-  while attribute values, illustration and <b>/labels/</b> all come from the
-  Bergman/Wallin article.
+    <p>Nedanstående uppställning innefattar information från Bergman & Wallin
+    (omarkerat) och ny information (<span class=blue>markerat i blått</span>).
+    Frågetecken i de blå fälten markerar osäkerhet, och kan komma att
+    uppdateras/ändras i framtiden.
 
-  <figure>
-    <table border=1 class=inline>
-      <caption>I. /bilabial/ <!--[−open]--></caption>
-      <tr>
-        <td style="text-align:left">−open
-          <br>−in
-          <br>−air
-          <br><span class=shaded> corner
-          <br> forward
-          <br> round
-          <br> jaw
-          <br> tongue</span>
-        <td><img src="pic/ssl/bilabial.png">
-        <td class=blue><img src="pic/hicks/pressed-lips.png" height=50><br>bmp
-    </table>
-    <table border=1 class=inline>
-      <caption>II. /cheeks/ <!--[−open +air]--></caption>
-      <tr>
-        <td style="text-align:left">−open
-          <br>−in
-          <br>+air
-          <br><span class=shaded> corner
-          <br> forward
-          <br> round
-          <br> jaw
-          <br> tongue</span>
-        <td><img src="pic/ssl/cheeks.png">
-        <td class=blue><img src="pic/hicks/puffed-cheeks.png" height=50>
-    </table>
-    <table border=1 class=inline>
-      <caption>III. /labiodental/ <!--[+in]--></caption>
-      <tr>
-        <td style="text-align:left">−open
-          <br>+in
-          <br>−air
-          <br><span class=shaded> corner
-          <br> forward
-          <br> round
-          <br> jaw
-          <br> tongue</span>
-        <td><img src="pic/ssl/labiodental.png">
-        <td class=blue><img src="pic/hicks/biting-lip.png" height=50><br>fv
-    </table>
-    <table border=1 class=inline>
-      <caption>IV. /stretched/ <!--[+corner]--></caption>
-      <tr>
-        <td style="text-align:left">+open
-          <br><span class=shaded> in
-          <br> air</span>
-          <br>+corner
-          <br>−forward
-          <br>−round
-          <br>−jaw
-          <br><span class=shaded> tongue</span>
-        <td><img src="pic/ssl/stretched.png">
-        <td class=blue><img src="pic/hicks/clenched-teeth.png" height=50><br>ei
-    </table>
-    <table border=1 class=inline>
-      <caption>V. /forward/ <!--[+forward <nobr>-round</nobr>]--></caption>
-      <tr>
-        <td style="text-align:left">+open
-          <br><span class=shaded> in
-          <br> air</span>
-          <br>−corner
-          <br>+forward
-          <br>−round
-          <br>−jaw
-          <br><span class=shaded> tongue</span>
-        <td><img src="pic/ssl/forward.png">
-        <td class=blue><img src="pic/hicks/lips-out-sh.png" height=50><br>yö
-    </table>
-    <table border=1 class=inline>
-      <caption>VI. /round/<!--[+forward +round]--></caption>
-      <tr>
-        <td style="text-align:left">+open
-          <br><span class=shaded> in
-          <br> air</span>
-          <br>−corner
-          <br>+forward
-          <br>+round
-          <br>−jaw
-          <br><span class=shaded> tongue</span>
-        <td><img src="pic/ssl/round.png">
-        <td class=blue><img src="pic/hicks/round-mouth.png" height=50><br>ouå
-    </table>
-    <table border=1 class=inline>
-      <caption>VII. /pursed/<!--[-forward -round]--></caption>
-      <tr>
-        <td style="text-align:left">+open
-          <br><span class=shaded> in
-          <br> air</span>
-          <br>−corner
-          <br>−forward
-          <br>−round
-          <br>−jaw
-          <br><span class=shaded> tongue</span>
-        <td><img src="pic/ssl/pursed.png">
-        <td class=blue><img src="pic/hicks/pursed-lips.png" height=50>?
-    </table>
-    <table border=1 class=inline>
-      <caption>VIII. /open/ <!--[+jaw]--></caption>
-      <tr>
-        <td style="text-align:left">+open
-          <br><span class=shaded> in
-          <br> air</span>
-          <br>+corner
-          <br><span class=shaded> forward
-          <br> round</span>
-          <br>+jaw
-          <br><span class=shaded> tongue</span>
-        <td><img src="pic/ssl/open.png">
-        <td class=blue><img src="pic/hicks/wide-open-mouth.png" height=50><br>ahä
-    </table>
-    <table border=1 class=inline>
-      <caption>IX. /airstream/ <!--[+open +air]--></caption>
-      <tr>
-        <td style="text-align:left">+open
-          <br><span class=shaded> in</span>
-          <br>+air
-          <br><span class=shaded> corner
-          <br> forward
-          <br> round
-          <br> jaw
-          <br> tongue</span>
-        <td><img src="pic/ssl/airstream.png">
-    </table>
-    <table border=1 class=inline>
-      <caption>X. /tongue/<!--[+tongue]--></caption>
-      <tr>
-        <td style="text-align:left">+open
-          <br><span class=shaded> in
-          <br> air
-          <br> corner
-          <br> forward
-          <br> round
-          <br> jaw</span>
-          <br>+tongue
-        <td><img src="pic/ssl/tongue.png">
-    </table>
-    <figcaption>
-      <p>“The feature <b>open</b> distinguishes between the two classes open and
+    <figure>
+      <table border=1 class=inline>
+        <caption>I. /bilabial/ <!--[−open]--></caption>
+        <tr>
+          <td class=blue><img src="../pic/ssl/mun/pressed-lips.svg">
+            <br>bmp
+          <td style="text-align:left">−open
+            <br>−in
+            <br>−air
+            <br><span class=shaded> corner
+            <br> forward
+            <br> round
+            <br> jaw
+            <br> tongue</span>
+          <td><img src="pic/ssl/bilabial.png">
+      </table>
+      <table border=1 class=inline>
+        <caption>II. /cheeks/ <!--[−open +air]--></caption>
+        <tr>
+          <td class=blue><img src="../pic/ssl/mun/puffed-cheeks.svg">
+            <br> 
+          <td style="text-align:left">−open
+            <br>−in
+            <br>+air
+            <br><span class=shaded> corner
+            <br> forward
+            <br> round
+            <br> jaw
+            <br> tongue</span>
+          <td><img src="pic/ssl/cheeks.png">
+      </table>
+      <table border=1 class=inline>
+        <caption>III. /labiodental/ <!--[+in]--></caption>
+        <tr>
+          <td class=blue><img src="../pic/ssl/mun/biting-lip.svg">
+            <br>fv
+          <td style="text-align:left">−open
+            <br>+in
+            <br>−air
+            <br><span class=shaded> corner
+            <br> forward
+            <br> round
+            <br> jaw
+            <br> tongue</span>
+          <td><img src="pic/ssl/labiodental.png">
+      </table>
+      <table border=1 class=inline>
+        <caption>IV. /stretched/ <!--[+corner]--></caption>
+        <tr>
+          <td class=blue><img src="../pic/ssl/mun/clenched-teeth.svg">
+            <br>ei
+          <td style="text-align:left">+open
+            <br><span class=shaded> in
+            <br> air</span>
+            <br>+corner
+            <br>−forward
+            <br>−round
+            <br>−jaw
+            <br><span class=shaded> tongue</span>
+          <td><img src="pic/ssl/stretched.png">
+      </table>
+      <table border=1 class=inline>
+        <caption>V. /forward/ <!--[+forward <nobr>-round</nobr>]--></caption>
+        <tr>
+          <td class=blue><img src="../pic/ssl/mun/lips-out-sh.svg">
+            <br>yö
+          <td style="text-align:left">+open
+            <br><span class=shaded> in
+            <br> air</span>
+            <br>−corner
+            <br>+forward
+            <br>−round
+            <br>−jaw
+            <br><span class=shaded> tongue</span>
+          <td><img src="pic/ssl/forward.png">
+      </table>
+      <table border=1 class=inline>
+        <caption>VI. /round/<!--[+forward +round]--></caption>
+        <tr>
+          <td class=blue><img src="../pic/ssl/mun/round-mouth.svg">
+            <br>ouå
+          <td style="text-align:left">+open
+            <br><span class=shaded> in
+            <br> air</span>
+            <br>−corner
+            <br>+forward
+            <br>+round
+            <br>−jaw
+            <br><span class=shaded> tongue</span>
+          <td><img src="pic/ssl/round.png">
+      </table>
+      <table border=1 class=inline>
+        <caption>VII. /pursed/<!--[-forward -round]--></caption>
+        <tr>
+          <td class=blue><img src="../pic/ssl/mun/pursed-lips.svg">
+            <br>β<sup> <a href="#fn1">[1]</a></sup>
+          <td style="text-align:left">+open
+            <br><span class=shaded> in
+            <br> air</span>
+            <br>−corner
+            <br>−forward
+            <br>−round
+            <br>−jaw
+            <br><span class=shaded> tongue</span>
+          <td><img src="pic/ssl/pursed.png">
+      </table>
+      <table border=1 class=inline>
+        <caption>VIII. /open/ <!--[+jaw]--></caption>
+        <tr>
+          <td class=blue><img src="../pic/ssl/mun/wide-open-mouth.svg">
+            <br>ahä
+          <td style="text-align:left">+open
+            <br><span class=shaded> in
+            <br> air</span>
+            <br>+corner
+            <br><span class=shaded> forward
+            <br> round</span>
+            <br>+jaw
+            <br><span class=shaded> tongue</span>
+          <td><img src="pic/ssl/open.png">
+      </table>
+      <table border=1 class=inline>
+        <caption>IX. /airstream/ <!--[+open +air]--></caption>
+        <tr>
+          <td class=blue><img src="../pic/ssl/mun/blow+motor-lips.svg">?
+            <br> 
+          <td style="text-align:left">+open
+            <br><span class=shaded> in</span>
+            <br>+air
+            <br><span class=shaded> corner
+            <br> forward
+            <br> round
+            <br> jaw
+            <br> tongue</span>
+          <td><img src="pic/ssl/airstream.png">
+      </table>
+      <table border=1 class=inline>
+        <caption>X. /tongue/<!--[+tongue]--></caption>
+        <tr>
+          <td class=blue><img src="../pic/ssl/mun/tongue-out.svg">
+            <br> 
+          <td style="text-align:left">+open
+            <br><span class=shaded> in
+            <br> air
+            <br> corner
+            <br> forward
+            <br> round
+            <br> jaw</span>
+            <br>+tongue
+          <td><img src="pic/ssl/tongue.png">
+      </table>
+    </figure>
+
+    <blockquote>
+      ”The feature <b>open</b> distinguishes between the two classes open and
       closed segments and pertains to the position of the lower lip. A segment
       in which the lower lip has contact with the upper lip or the upper teeth
       is marked <b>−open</b>, a segment in which the lower lip is not in
@@ -526,227 +563,696 @@ href="https://www.facebook.com/photo.php?fbid=10155531045426172">15 april
       position of the lower lip, viz. whether the lower lip is inward and thus
       in contact with the upper teeth or not. The feature <b>air</b> refers to
       ”active” air. If the mouth is <b>-open</b>, as in segment II, the result
-      is puffed cheeks.” [page 5]
+      is puffed cheeks.” [s 5]
+    </blockquote>
 
-      <p>”<b>Corner</b> is used for activity in the corners of the
+    <blockquote>
+      ”<b>Corner</b> is used for activity in the corners of the
       mouth, <b>forward</b> refers to lip protrusion and, and <b>round</b> to
       lip contraction. The feature <b>jaw</b> pertains to jaw opening, i.e.
       whether the jaw is markedly lowered or not. Note that in all open
       segments (when the lower lip is <i>not</i> in contact), the jaw is also
       normally lowered but, as it were, in an unmarked, relaxed
-      way. <b>Tongue</b> indicates whether the tongue is protruding or not.”
-      [page 10]
-    </figcaption>
-  </figure>
+      way. <b>Tongue</b> indicates whether the tongue is protruding or not.” [s
+      10]
+    </blockquote>
+  </section>
+  <section>
+    <h1>Varianter</h1>
 
-  <p>The following mouth shapes have variation in tongue placement, or airflow
-  only, and are in the article considered synonymous to their corresponding
-  shapes in the above table (ie <b>/forward<sup>tongue</sup>/</b>
-  and <b>/forward<sub>tongue</sub>/</b> are both considered synonymous
-  to <b>/forward/</b> etc). The variants with <b>air</b> are not illustrated in
-  the article, but are mentioned in the text (hence the lack of pictures here).
+    <p>Följande munbilder avviker från de ovanstående endast i luftflöde och
+    tungans placering. De betraktas i Bergman & Wallin som allofona varianter
+    till de ovanstående. (Dvs <b>/forward<sup>tongue</sup>/</b>
+    och <b>/forward<sub>tongue</sub>/</b> ses bägge som allofoner till
+      <b>/forward/</b> osv.)
 
-  <figure>
-    <table border=1 class=inline>
-      <caption>Va. /forward<sup>tongue</sup>/</caption>
-      <tr>
-        <td style="text-align:left">+open
-          <br><span class=shaded> in
-          <br> air</span>
-          <br>−corner
-          <br>+forward
-          <br>−round
-          <br>−jaw
-          <br>+tongue
-        <td><img src="pic/ssl/forward-tongue-up.png">
-        <td class=blue>l
-    </table>
-    <table border=1 class=inline>
-      <caption>Vb. /forward<sub>tongue</sub>/</caption>
-      <tr>
-        <td style="text-align:left">+open
-          <br><span class=shaded> in
-          <br> air</span>
-          <br>−corner
-          <br>+forward
-          <br>−round
-          <br>−jaw
-          <br>+tongue
-        <td><img src="pic/ssl/forward-tongue-down.png">
-    </table>
-    <table border=1 class=inline>
-      <caption>VIIIa. /open<sup>tongue</sup>/</caption>
-      <tr>
-        <td style="text-align:left">+open
-          <br><span class=shaded> in
-          <br> air</span>
-          <br>+corner
-          <br><span class=shaded> forward
-          <br> round</span>
-          <br>+jaw
-          <br>+tongue
-        <td><img src="pic/ssl/open-tongue-up.png">
-        <td class=blue><img src="pic/hicks/wide-open-mouth.png" height=50>?<br>l
-    </table>
-    <table border=1 class=inline>
-      <caption>VIIIb. /open<sub>tongue</sub>/</caption>
-      <tr>
-        <td style="text-align:left">+open
-          <br><span class=shaded> in
-          <br> air</span>
-          <br>+corner
-          <br><span class=shaded> forward
-          <br> round</span>
-          <br>+jaw
-          <br>+tongue
-        <td><img src="pic/ssl/open-tongue-down.png">
-        <td class=blue><img src="pic/hicks/wide-open-mouth.png" height=50>?<br>ahä
-    </table>
-    <table border=1 class=inline>
-      <caption>Vc. /forward<sup>air</sup>/</caption>
-      <tr>
-        <td style="text-align:left">+open
-          <br><span class=shaded> in</span>
-          <br>+air
-          <br>−corner
-          <br>+forward
-          <br>−round
-          <br>−jaw
-          <br><span class=shaded> tongue</span>
-        <td><span style="font-size:2em;width:119px;height:142px;display:inline-block;line-height:140px">?</span>
-    </table>
-    <table border=1 class=inline>
-      <caption>VIIa. /pursed<sup>air</sup>/</caption>
-      <tr>
-        <td style="text-align:left">+open
-          <br><span class=shaded> in</span>
-          <br>+air
-          <br>−corner
-          <br>−forward
-          <br>−round
-          <br>−jaw
-          <br><span class=shaded> tongue</span>
-        <td><span style="font-size:2em;width:119px;height:142px;display:inline-block;line-height:140px">?</span>
-    </table>
-  </figure>
+    <p><b>/pouted/</b><sup> <a href="#fn2">[2]</a></sup> och varianter
+    med <b>/<sup>air</sup>/</b> illustreras inte i artikeln utan beskrivs
+    endast i artikeltexten (de bilder som förekommer nedan kommer från andra
+    källor).
 
+    <figure>
+      <table border=1 class=inline>
+        <caption>Va. /forward<sup>tongue</sup>/</caption>
+        <tr>
+          <td class=blue>
+            <br><br>l
+          <td style="text-align:left">+open
+            <br><span class=shaded> in
+            <br> air</span>
+            <br>−corner
+            <br>+forward
+            <br>−round
+            <br>−jaw
+            <br>+tongue
+          <td><img src="pic/ssl/forward-tongue-up.png">
+      </table>
+      <table border=1 class=inline>
+        <caption>Vb. /forward<sub>tongue</sub>/</caption>
+        <tr>
+          <td class=blue>
+            <br><br>?
+          <td style="text-align:left">+open
+            <br><span class=shaded> in
+            <br> air</span>
+            <br>−corner
+            <br>+forward
+            <br>−round
+            <br>−jaw
+            <br>+tongue
+          <td><img src="pic/ssl/forward-tongue-down.png">
+      </table>
+      <table border=1 class=inline>
+        <caption>VIIIa. /open<sup>tongue</sup>/</caption>
+        <tr>
+          <td class=blue><img src="../pic/ssl/mun/wide-open-mouth.svg">?
+            <br>l
+          <td style="text-align:left">+open
+            <br><span class=shaded> in
+            <br> air</span>
+            <br>+corner
+            <br><span class=shaded> forward
+            <br> round</span>
+            <br>+jaw
+            <br>+tongue
+          <td><img src="pic/ssl/open-tongue-up.png">
+      </table>
+      <table border=1 class=inline>
+        <caption>VIIIb. /open<sub>tongue</sub>/</caption>
+        <tr>
+          <td class=blue><img src="../pic/ssl/mun/wide-open-mouth.svg">?
+            <br>ahä
+          <td style="text-align:left">+open
+            <br><span class=shaded> in
+            <br> air</span>
+            <br>+corner
+            <br><span class=shaded> forward
+            <br> round</span>
+            <br>+jaw
+            <br>+tongue
+          <td><img src="pic/ssl/open-tongue-down.png">
+      </table>
+      <table border=1 class=inline>
+        <caption>Vc. /forward<sup>air</sup>/</caption>
+        <tr>
+          <td class=blue>
+            <br><br>?
+          <td style="text-align:left">+open
+            <br><span class=shaded> in</span>
+            <br>+air
+            <br>−corner
+            <br>+forward
+            <br>−round
+            <br>−jaw
+            <br><span class=shaded> tongue</span>
+          <td><span style="font-size:2em;width:119px;height:142px;display:inline-block;line-height:140px">?</span>
+      </table>
+      <table border=1 class=inline>
+        <caption>VIIa. /pursed<sup>air</sup>/
+          <small><a href="https://teckensprakslexikon.su.se/ord/00036">(image source)</a></small></caption>
+        <tr>
+          <td class=blue><img src="../pic/ssl/mun/pursed-lips.svg">
+            <br>β<sup> <a href="#fn1">[1]</a></sup>
+          <td style="text-align:left">+open
+            <br><span class=shaded> in</span>
+            <br>+air
+            <br>−corner
+            <br>−forward
+            <br>−round
+            <br>−jaw
+            <br><span class=shaded> tongue</span>
+          <td class=blue><img class=bw src="pic/ssl/pursed-air.png">
+      </table>
+      <table border=1 class="inline blue">
+        <caption class=blue>XI. /pouted/<sup> <a href="#fn2">[2]</a></sup>
+          <small><a href="https://spsmplay.spsm.se/vanten/">(image source)</a></small></caption>
+        <tr>
+          <td><img src="../pic/ssl/mun/lips-out-kiss.svg">
+            <br>m
+          <td style="text-align:left"><span style="background:#fff">−open</span>
+            <br>−in
+            <br>−air
+            <br><span class=shaded> corner</span>
+            <br><span style="background:#fff">+forward</span>
+            <br><span class=shaded> round
+            <br> jaw
+            <br> tongue</span>
+          <td><img class=bw src="pic/ssl/pouted.png">
+        </table>
+    </figure>
 
-  <p>Oral adverbs
+    <p>I sammanställningen ovan markeras ny och extrapolerad information
+    med <span class=blue>blå bakgrund</span>), medan information ifrån Bergman
+    & Wallins artikel har vit bakgrund. Frågetecken i de blå fälten markerar
+    osäkerhet, och kan komma att uppdateras/ändras i framtiden. Beskrivningen
+    av <b>/pouted/</b><sup> <a href="#fn2">[2]</a></sup> härrör ifrån följande
+    text i artikeln:
 
-  <figure>
-    <table border=1 class=inline>
-      <tr>
-        <td><img src="pic/ssl/pursed.png">
-        <td class=blue><img src="pic/hicks/pursed-lips.png" height=50>?
-      <tr><td colspan=2>/pursed/<br>‘small’ (monosegmental form)
-    </table>
-    <table border=1 class=inline>
-      <tr>
-        <td><img src="pic/ssl/stretched.png">
-        <td class=blue height=119><img src="pic/hicks/clenched-teeth.png" height=50><br>ei
-     <tr><td colspan=2>/stretched/<br>‘intense’, ‘with effort’
-    </table>
-    <table border=1 class=inline>
-      <tr>
-        <td><img src="pic/ssl/m.png">
-        <td class=blue><img src="pic/hicks/lips-out-kiss.png" height=50>?
-          <br>m?
-     <tr><td colspan=2>[-open +forward]
-        <br>‘normally’, ‘with ease’
-        <br><small><a href="https://teckensprakslexikon.su.se/ord/00201">(image source)</a></small>
-    </table>
-  </figure>
+    <blockquote>
+      ”However, the oral adverb meaning ‘normally’, ‘with ease’ when used with
+      dynamic verbs does not use any of the segments in our set. It is a closed
+      mouth with protruding lips so a possible description would be <b>-open,
+      +forward.</b>” [s 13]
+    </blockquote>
+
+  </section>
+  <section>
+    <h1>Oral adverbs</h1>
+
+    <figure>
+      <table border=1 class=inline>
+        <tr>
+          <td class=blue><img src="../pic/ssl/mun/pursed-lips.svg">
+            <br>β<sup> <a href="#fn1">[1]</a></sup>
+          <td><img src="pic/ssl/pursed.png">
+        <tr><td colspan=2>/pursed/<br>‘small’ (monosegmental form)
+      </table>
+      <table border=1 class=inline>
+        <tr>
+          <td class=blue height=119><img src="../pic/ssl/mun/clenched-teeth.svg">
+            <br>ei
+          <td><img src="pic/ssl/stretched.png">
+       <tr><td colspan=2>/stretched/<br>‘intense’, ‘with effort’
+      </table>
+      <table border=1 class=inline>
+        <tr>
+          <td class=blue><img src="../pic/ssl/mun/lips-out-kiss.svg">
+            <br>m
+          <td class=blue><img class=bw src="pic/ssl/pouted.png">
+          <tr><td colspan=2><span class=blue>/pouted/</span><sup> <a href="#fn2">[2]</a></sup>
+            <br>‘normally’, ‘with ease’
+        </table>
+    </figure>
+  </section>
 </section>
 
 <hr>
 
 <section>
-  <h1>My Swedish Sign Language Course Notes Combined with ASLWrite</h1>
+  <h1>Summering av orala adverb</h1>
 
-  <p>Description below from my notes on oral adverbs in Swedish Sign Language
-  from course at Stockholm university.
+  <div class=FIXME style="margin:1em">
+    <b>Att göra:</b>
+    <ul>
+      <li>Lägg till TSK videos (bilder från TSK bok finns redan)
+      <li>Finns det verkligen två varianter
+        (<img src="../pic/ssl/mun/lips-out-kiss.svg" style="height:1em"> och
+        <img src="../pic/ssl/mun/pressed-lips.svg" style="height:1em">) av [m]? Vad
+        skiljer dem isf?
+    </ul>
+  </div>
 
-  <p><table border=1 class=inline>
+  <p>Några exempel på hur orala adverb kan realiseras i teckenskrift. (Notera
+  särskilt hur reduplikation skrivs med
+  en <a href="../teckenskrift.html#slut">slutpunkt</a> för varje utförd
+  rörelse.)
+
+  <figure>
+    <table class=inline style="margin: 0 1em">
+      <tr><td><img src="../pic/ssl/skriva.svg">
+        <tr><td>’<a href="https://teckensprakslexikon.su.se/ord/03410">skriva</a>’
+    </table>
+
+    <table class=inline style="margin: 0 1em">
+      <tr><td><img src="../pic/ssl/skriva-normalt.svg">
+        <tr><td>’skriva som vanligt’
+    </table>
+
+    <table class=inline style="margin: 0 1em">
+      <tr><td><img src="../pic/ssl/skriva-modosamt.svg">
+        <tr><td>’skriva mödosamt’
+    </table>
+  </figure>
+
+  <p>Nedan summeras information om orala adverb ifrån ett flertal olika källor.
+  För att göra det tydligt vilken information som kommer varifrån används
+  följande förkortningar:
+
+  <div class=hanging>
+    <p><b><abbr>AVMS</abbr></b>:
+      ”<a href="../pdf/bergman+wallin-2001-a_preliminary_analysis_of_visual_mouth_segments.pdf">A
+      Preliminary Analysis of Visual Mouth Segments in Swedish Sign
+      Language</a>” (2001)
+
+    <p><b><abbr>ISF</abbr></b>: <a href="https://www.sprakochfolkminnen.se/sprak/minoritetssprak/svenskt-teckensprak/det-svenska-teckensprakets-grammatik/grammatik/formforandringar-for-lexikala-tecken/adverb.html">Institutet
+    för språk och folkminnens webbsida om orala adverb</a> (2015)
+
+    <p><b><abbr>TSK</abbr></b>: <i><a href="https://www.ling.su.se/teckenspr%C3%A5ksresurser/studiematerial/grundkursmaterial">Teckenspråk
+      – så klart!</a></i> (2001)
+
+    <p><b><abbr>TS2</abbr></b>: <i><a href="http://www.klockhammar.eu/">Teckenspråk:
+      Steg 2</a></i> (2012)
+
+    <p><b><abbr>ÖST</abbr></b>: <i>Övningskompendium för svenskt teckenspråk</i>
+      (2016)
+  </div>
+
+  <style>
+    .purple { background: rgba(255, 0, 255, .3);
+  </style>
+
+  <p>I de fall då en symbol/munbild har dubbla rader i tabellen nedan,
+  beskriver den första raden måttadverb (som används tillsammans med
+  adjektiv i storleks- och formbeskrivningar) och den andra
+  <span class=purple>lila</span> raden sättsadverb (som används tillsammans med
+  dynamiska verb).
+
+  <p><table border=1 style="width:1%">
     <tr>
-      <td><img src="pic/ssl/round.png"><br>/round/
-      <td><img src="pic/hicks/round-mouth.png" height=50>
-        <br>round mouth(?)
-      <td>[u]
-      <td style="max-width:10em;text-align:left">Munnen formas till ’runda läppar’ och kinderna sugs lite inåt.
-        Munrörelsen kännetecknar ’tunn’, ’liten’, ’syns som en prick långt
-        borta’. Utförs ofta med lätt kisande ögon.
-
-        <p>Betyder också ’lättsamt’, till
-        exempel <B>GÅ-MED-LÄTTA-STEG</B>, <B>CYKLA</B>.
-
-        <p>Uttrycker ’liten’ till storleksbeskrivande tecken.
-  </table>
-
-  <table border=1 class=inline>
+      <th>Symbol
+      <th><abbr>AVMS</abbr> (utom <span class=blue>blåa</span>)
+      <th><abbr>ÖST</abbr>
+      <th><abbr>ISF</abbr>
+      <th><abbr>TS2</abbr>
+      <th><abbr>TSK</abbr>
     <tr>
-      <td><img src="pic/ssl/m.png"><br>[-open +forward]
-        <!-- FIXME: Hitta annan exempelbild, munnen är rätt här, men
-        huvudriktningen är inte relevant, utan kommer av ordets betydelse
-        'förnäm, fint folk, fin i kanten' -->
-        <br><small><a href="https://teckensprakslexikon.su.se/ord/00201">(image source)</a></small>
-      <td><img src="pic/hicks/lips-out-kiss.png" height=50>?
-        <br>lips out
-      <td>[mm]
-      <td style="max-width:10em;text-align:left">Munnen hålls ihop med lite
-        trutande läppar. Munrörelsen kännetecknar ’så här mycket’, ’ungefär
-        så långt’, ’lagom’.
-
-        <p>Kan betyda ’normalt’, ’van’, till
-        exempel <B>GÅ-I-NORMAL-TAKT</B>, <B>KÖRA-BIL</B>, <B>CYKLA</B>.
-  </table>
-
-  <table border=1 class=inline>
+      <td rowspan=2>
+        <img src="../pic/ssl/mun/pursed-lips.svg">
+        <br>[β]<sup> <a href="#fn1">[1]</a></sup>
+      <td rowspan=2 align=left>
+        <img height=100 src="pic/ssl/pursed.png">
+        <br>/pursed/
+      <td align=left>
+        <img class=bw height=100 src="pic/ssl/ost/beta-a.png">
+        <br>liten, tunn, små, kort
+      <td align=left><img class=bw height=100 src="pic/ssl/isf/beta-a.png">
+        <br>liten
+      <td align=left>
+        <img class=bw height=100 src="pic/ssl/ts2/beta-a.png">
+        <br>liten, små, smal, tunn (ögonen kisar)
+      <td align=left>
+        <img class=bw height=100 src="pic/ssl/tsk/beta-a.png">
+        <br>tunn, liten, syns som en prick långt borta (ofta med lätt kisande
+        ögon)
     <tr>
-      <td><img src="pic/ssl/stretched.png"><br>/stretched/
-      <td><img src="pic/hicks/clenched-teeth.png" height=50>
-        <br>clenched teeth
-      <td>[i]
-      <td style="max-width:10em;text-align:left">Uttrycker ’ansträngt’,
-        ’besvärligt’ eller ’mödosamt’, till
-        exempel <B>GÅ-LÅNG-VÄG</B>, <B>KÖRA-LÅNG-VÄG</B>, <B>LÄSA-TUNGT</B>.
-        Visar tänderna.
-  </table>
-
-  <table border=1 class=inline>
+      <td align=left class=purple>
+        <img class=bw height=100 src="pic/ssl/ost/beta-b.png">
+        <br>utan speciell ansträngning, lättsamt; lätt, lugnt, snabbt, sakta
+      <td align=left class=purple>
+        <img class=bw height=100 src="pic/ssl/isf/beta-b.png">
+        <br>lättsamt
+      <td align=left class=purple>
+      <td align=left class=purple>lättsamt
     <tr>
-      <td><img src="pic/ssl/bilabial.png"><br>/bilabial/
-      <td><img src="pic/hicks/pressed-lips.png" height=50>
-        <br>pressed lips
-      <td>[–]
-      <td style="max-width:10em;text-align:left">Orala adverb som uttrycker
-        ’bestämt’ till verbet <b>SKRIVA@rd</b> (’skriva bestämt’).
-        Sammanpressade läppar utdragna till tunt streck.
-  </table>
-
-  <table border=1 class=inline>
+      <td rowspan=2>
+        <img src="../pic/ssl/mun/lips-out-kiss.svg">
+        <br>[m]
+      <td rowspan=2 align=left class=blue>
+        <img height=100 src="pic/ssl/pouted.png">
+        <br>/pouted/<sup> <a href="#fn2">[2]</a></sup>
+      <td align=left>
+        <img class=bw height=100 src="pic/ssl/ost/m1-a.png">
+        <br>normal
+      <td align=left>
+      <td align=left>
+      <td align=left>
+        <img class=bw height=100 src="pic/ssl/tsk/m1-a.png">
+        <br>så här mycket, ungefär så långt, lagom
+      <td rowspan=4 class=FIXME>Olika källor använder [m] på olika sätt?
     <tr>
-      <td><img src="pic/ssl/cheeks.png"><br>/cheeks/
-      <td><img src="pic/hicks/puffed-cheeks.png" height=50>
-        <br>puffed cheeks
-      <td>[()]
-      <td style="max-width:10em;text-align:left">Munnen hålls sluten och
-        kinderna blåses upp. Munrörelsen kännetecknar ’tjock’, ’geleaktig’,
-        ’massa’, ’kraftig’, ’grov’.
-  </table>
-
-  <table border=1 class=inline>
+      <td align=left class=purple>
+        <img class=bw height=100 src="pic/ssl/ost/m1-b.png">
+        <br>normalt, neutralt; normalt, van, neutralt
+      <td align=left class=purple>
+      <td align=left class=purple>
+      <td align=left class=purple>normalt, van
     <tr>
-      <td><img src="pic/ssl/stretched.png"><img src="pic/ssl/open.png">
+      <td rowspan=2>
+        <img src="../pic/ssl/mun/pressed-lips.svg">
+        <br>[m]
+      <td rowspan=2 align=left>
+        <img height=100 src="pic/ssl/bilabial.png">
+        <br>/bilabial/
+      <td align=left>
+      <td align=left>
+      <td align=left>
+        <img class=bw height=100 src="pic/ssl/ts2/m2-a.png">
+        <br>lagom stor, ungefär så här, lagom
+      <td align=left>
+    <tr>
+      <td align=left class=purple>
+      <td align=left class=purple>
+        <img class=bw height=100 src="pic/ssl/isf/m2-b.png">
+        <br>bestämt
+      <td align=left class=purple>
+      <td align=left class=purple>
+        <tr>
+      <td rowspan=2>
+        <img src="../pic/ssl/mun/clenched-teeth.svg">
+        <br>[i]
+      <td rowspan=2 align=left>
+        <img height=100 src="pic/ssl/stretched.png">
+        <br>/stretched/
+      <td align=left>
+        <img class=bw height=100 src="pic/ssl/ost/i-a.png">
+        <br>stor, lång, hög
+      <td align=left>
+      <td align=left>
+        <img class=bw height=100 src="pic/ssl/ts2/i-a.png">
+        <br>mycket lång
+      <td align=left>
+    <tr>
+      <td align=left class=purple>
+        <img class=bw height=100 src="pic/ssl/ost/i-b.png">
+        <br>intensivt, hårt; fort, tungt, ansträngt, besvärligt
+      <td align=left class=purple>
+        <img class=bw height=100 src="pic/ssl/isf/i-b.png">
+        <br>mödosamt
+      <td align=left class=purple>
+      <td align=left class=purple>ansträngt, besvärligt
+    <tr>
+      <td>
+        <img src="../pic/ssl/mun/puffed-cheeks.svg">
+        <br>[()]
+      <td align=left>
+        <img height=100 src="pic/ssl/cheeks.png">
+        <br>/cheeks/
+      <td align=left>
+        <img class=bw height=100 src="pic/ssl/ost/paren-a.png">
+        <br>tjock, mjuk
+      <td align=left>
+      <td align=left>
+        <img class=bw height=100 src="pic/ssl/ts2/paren-a.png">
+        <br>mjuk, tjock
+      <td align=left>
+        <img class=bw height=100 src="pic/ssl/tsk/paren-a.png">
+        <br>tjock, geleaktig, massa, kraftig, grov
+    <tr>
+      <td>
+        <img src="../pic/ssl/mun/clenched-teeth.svg"
+        ><img src="../pic/ssl/mun/wide-open-mouth.svg">
+        <br>[sa]
+      <td align=left>
+        <img height=100 src="pic/ssl/stretched.png"
+        ><img height=100 src="pic/ssl/open.png">
         <br>/stretched/ + /open/
-      <td><img src="pic/hicks/clenched-teeth.png" height=50><img src="pic/hicks/wide-open-mouth.png" height=50>
-        <br>clenched teeth +<br>wide open mouth
-      <td>[ja]
-      <td style="max-width:10em;text-align:left">Består av en rörelse från j till a som kännetecknar ’enorm’, ’stor’,
-        ’oändlig’. Observera att tecknets manuella artikulation är en kort intensiv
-        rörelse framåt-nedåt.
-
-        <p>Uttrycker ’stor’ till storleksbeskrivande tecken.
+      <td align=left>
+        <img class=bw height=100 src="pic/ssl/ost/sa-a1.png"
+        ><img class=bw height=100 src="pic/ssl/ost/sa-a2.png">
+        <br>jättestor, enorm
+      <td align=left>
+        <img class=bw height=100 src="pic/ssl/isf/sa-a1.png"
+        ><img class=bw height=100 src="pic/ssl/isf/sa-a2.png">
+        <br>stor
+      <td align=left>
+        <img class=bw height=100 src="pic/ssl/ts2/sa-a1.png"
+        ><img class=bw height=100 src="pic/ssl/ts2/sa-a2.png">
+        <br>stor, mycket stor, jättestor (markerad rörelse)
+      <td align=left>
+        <img class=bw height=100 src="pic/ssl/tsk/sa-a1.png"
+        ><img class=bw height=100 src="pic/ssl/tsk/sa-a2.png">
+        <br>enorm, stor, oändlig (kort intensiv rörelse)
+    <tr>
+      <td>
+        <img src="../pic/ssl/mun/pressed-lips.svg"
+        ><img src="../pic/ssl/mun/round-mouth.svg">
+        <br>[må]
+      <td align=left>
+        <img height=100 src="pic/ssl/bilabial.png"
+        ><img height=100 src="pic/ssl/round.png">
+        <br>/bilabial/ + /round/
+      <td align=left>
+        <img class=bw height=100 src="pic/ssl/ost/maa-a1.png"
+        ><img class=bw height=100 src="pic/ssl/ost/maa-a2.png">
+        <br>pyttesmå, väldigt liten
+      <td align=left>
+      <td align=left>
+        <img class=bw height=100 src="pic/ssl/ts2/maa-a1.png"
+        ><img class=bw height=100 src="pic/ssl/ts2/maa-a2.png">
+        <br>liten, mycket liten, jätteliten (huvudet slås fram)
+      <td align=left>
   </table>
+
+  <p>Kommentarer:
+
+  <ul>
+    <li><b>[sa]</b> borde kallas [ia] eftersom den första munbilden är samma
+      som [i]. I <i>Teckenspråk – så klart!</i> används beteckningen [ja]
+      istället – ett steg i rätt riktning.
+
+    <li><b>[m]</b> verkar användas för två orala adverb som ser olika ut?
+      Förvirrande.
+  </ul>
+</section>
+
+<hr>
+
+<section>
+  <h1>Svenska munbilder</h1>
+
+  <div class=FIXME style="margin:1em">
+    <b>Att göra:</b>
+    <ul>
+      <li>Lägg till [ɧ], [ɕ] och [ŋ]
+      <li>Ge alla munbilder har en teckenskriftsymbol
+      <li>Kategorisera de återstående symbolerna
+      <li>Jämför med någon annans resultat
+      <li>Regler för hur svenskpåverkade munbilder reduceras
+    </ul>
+  </div>
+
+  <p>Munbilderna nedan är tagna ifrån YouTube-videon
+  <i><a href="https://youtu.be/eA-MX4IKdYQ">Svenska alfabetet, Swedish
+  alphabet</a></i> (by Hassan Khajeh Abdollahi) som demonstrerar det svenska
+  alfabetet. I denna sammanställning saknas [ɧ]
+  (<i><u>ch</u>ock, <u>stj</u>ärna</i>), [ɕ]
+  (<i><u>tj</u>ock, <u>k</u>ärna</i>) och [ŋ] (<i>i<u>ng</u>en, u<u>n</u>ken</i>)
+  då de inte finns med i alfabetet (och således inte fanns med i videon).
+
+  <section>
+    <h1>Uppställning efter likhet</h1>
+
+    <p>Tonalitetspar är skrivna intill varandra nedan. (Ett tonalitetspar är
+    två talspråksfonem som båda har samma artikulationsställe och
+    artikulationssätt – den enda skillnanden är att den ena är tonande, och den
+    andra tonlös, tex B–P och G–K. Eftersom skillnaden i tonalitet inte syns,
+    ser båda fonemen alltid likadana ut.)
+
+    <p><table border=1 class=inline style="border:0;vertical-align:bottom">
+      <tr>
+        <td style="border:0">
+        <td colspan=2>tonalitetspar
+      <tr>
+        <td class=blue><img src="../pic/ssl/mun/pressed-lips.svg">
+        <td><img class=bw height=142 src="pic/ssl/alfa/b.png"><br>b
+        <td><img class=bw height=142 src="pic/ssl/alfa/p.png"><br>p
+        <td><img class=bw height=142 src="pic/ssl/alfa/m.png"><br>m
+    </table>
+
+    <table border=1 class=inline style="border:0;vertical-align:bottom">
+      <tr>
+        <td style="border:0">
+        <td colspan=2>tonalitetspar
+        <td colspan=2>tonalitetspar
+      <tr>
+        <td class=blue><big><b>?</b></big>
+        <td><img class=bw height=142 src="pic/ssl/alfa/d.png"><br>d
+        <td><img class=bw height=142 src="pic/ssl/alfa/t.png"><br>t
+        <td><img class=bw height=142 src="pic/ssl/alfa/g.png"><br>g
+        <td><img class=bw height=142 src="pic/ssl/alfa/k.png"><br>k
+        <td><img class=bw height=142 src="pic/ssl/alfa/n.png"><br>n
+        <td><img class=bw height=142 src="pic/ssl/alfa/e.png"><br>e
+    </table>
+
+    <table border=1 class=inline style="border:0;vertical-align:bottom">
+      <tr>
+        <td style="border:0">
+        <td colspan=2>tonalitetspar
+      <tr>
+        <td class=blue><img src="../pic/ssl/mun/biting-lip.svg">
+        <td><img class=bw height=142 src="pic/ssl/alfa/f.png"><br>f
+        <td><img class=bw height=142 src="pic/ssl/alfa/v.png"><br>v
+    </table>
+
+    <table border=1 class=inline style="vertical-align:bottom">
+      <tr>
+        <td class=blue><img src="../pic/ssl/mun/clenched-teeth.svg">
+        <td><img class=bw height=142 src="pic/ssl/alfa/i.png"><br>i
+        <td><img class=bw height=142 src="pic/ssl/alfa/j.png"><br>j
+        <td><img class=bw height=142 src="pic/ssl/alfa/s.png"><br>s
+    </table>
+
+    <table border=1 class=inline style="vertical-align:bottom">
+      <tr>
+        <td class=blue><big><b>?</b></big>
+        <td><img class=bw height=142 src="pic/ssl/alfa/l.png"><br>l
+        <td><img class=bw height=142 src="pic/ssl/alfa/r.png"><br>r
+    </table>
+
+    <table border=1 class=inline style="vertical-align:bottom">
+      <tr>
+        <td class=blue><img src="../pic/ssl/mun/round-mouth.svg">
+        <td><img class=bw height=142 src="pic/ssl/alfa/o.png"><br>o
+        <td><img class=bw height=142 src="pic/ssl/alfa/u.png"><br>u
+        <td><img class=bw height=142 src="pic/ssl/alfa/aa.png"><br>å
+    </table>
+
+    <table border=1 class=inline style="vertical-align:bottom">
+      <tr>
+        <td class=blue><img src="../pic/ssl/mun/lips-out-sh.svg">
+        <td><img class=bw height=142 src="pic/ssl/alfa/y.png"><br>y
+    </table>
+
+    <table border=1 class=inline style="vertical-align:bottom">
+        <tr>
+          <td class=blue><big><b>?</b></big>
+          <td><img class=bw height=142 src="pic/ssl/alfa/a.png"><br>a
+          <td><img class=bw height=142 src="pic/ssl/alfa/oe.png"><br>ö
+    </table>
+
+    <p>Ännu okategoriserade.
+
+    <p><table border=1 class=inline>
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/h.png"><br>h
+    </table>
+    <table border=1 class=inline>
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/ae.png"><br>ä
+    </table>
+  </section>
+
+  <section>
+    <h1>Alfabetet</h1>
+
+    <p>Nedan är alla de bilder du finner ovan, men i här alfabetisk ordning
+    (vokaler är markerade i <span class=green>grönt</span>).
+
+    <p>I listan finns inte C, Q, W, X och Z med (eftersom de inte utgör egna
+    fonem i talspråket). Saknas gör också fonemen [ɧ]
+    (<i><u>ch</u>ock, <u>stj</u>ärna</i>), [ɕ]
+    (<i><u>tj</u>ock, <u>k</u>ärna</i>) och [ŋ] (<i>i<u>ng</u>en,
+    u<u>n</u>ken</i>) eftersom de inte fanns med i videon varifrån bilderna
+    tagits.
+
+    <p>
+    <table border=1 class="inline green">
+      <tr><td><img class="bw vokal"height=142 src="pic/ssl/alfa/a.png"><br>a
+    </table>
+    <table border=1 class=inline>
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/b.png"><br>b
+    </table>
+    <table border=1 class=inline>
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/d.png"><br>d
+    </table>
+    <table border=1 class="inline green">
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/e.png"><br>e
+    </table>
+    <table border=1 class=inline>
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/f.png"><br>f
+    </table>
+    <table border=1 class=inline>
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/g.png"><br>g
+    </table>
+    <table border=1 class=inline>
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/h.png"><br>h
+    </table>
+    <table border=1 class="inline green">
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/i.png"><br>i
+    </table>
+    <table border=1 class=inline>
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/j.png"><br>j
+    </table>
+    <table border=1 class=inline>
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/k.png"><br>k
+      <!-- K:et taget ur 'x' för att slippa å-rundningen i 'kå'. -->
+    </table>
+    <table border=1 class=inline>
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/l.png"><br>l
+    </table>
+    <table border=1 class=inline>
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/m.png"><br>m
+    </table>
+    <table border=1 class=inline>
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/n.png"><br>n
+    </table>
+    <table border=1 class="inline green">
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/o.png"><br>o
+    </table>
+    <table border=1 class=inline>
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/p.png"><br>p
+    </table>
+    <table border=1 class=inline>
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/r.png"><br>r
+    </table>
+    <table border=1 class=inline>
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/s.png"><br>s
+    </table>
+    <table border=1 class=inline>
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/t.png"><br>t
+    </table>
+    <table border=1 class="inline green">
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/u.png"><br>u
+    </table>
+    <table border=1 class=inline>
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/v.png"><br>v
+    </table>
+    <table border=1 class="inline green">
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/y.png"><br>y
+    </table>
+    <table border=1 class="inline green">
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/aa.png"><br>å
+    </table>
+    <table border=1 class="inline green">
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/ae.png"><br>ä
+      <!-- Ä:et taget ur 'z' pga trasig munbild i 'ä'. -->
+    </table>
+    <table border=1 class="inline green">
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/oe.png"><br>ö
+    </table>
+  </section>
+</section>
+<section>
+  <h1>Referenser</h1>
+
+  <div class=FIXME style=margin:1em>Skriv rent denna sektion.</div>
+
+  <div class=hanging>
+    <p>Bergman, Brita (1995)
+      <i><a href="../pdf/bergman-1995-kompendium_i_teckenspraksgrammatik.pdf">Kompendium
+      i teckenspråksgrammatik</a></i>. Stockholm, Avdelningen för teckenspråk,
+      Institutionen för lingvistik, Stockholms universitet.
+
+    <p><a href="https://www.sprakochfolkminnen.se/sprak/minoritetssprak/svenskt-teckensprak/det-svenska-teckensprakets-grammatik/grammatik/formforandringar-for-lexikala-tecken/adverb.html">Institutet
+      för språk och folkminnen: Det svenska teckenspråkets grammatik |
+      Adverb</a>.
+
+    <p>Brita Bergman &amp; Lars Wallin (2001)
+      ”<a href="../pdf/bergman+wallin-2001-a_preliminary_analysis_of_visual_mouth_segments.pdf">A
+      Preliminary Analysis of Visual Mouth Segments in Swedish Sign
+      Language</a>”. I Boyes Braem, Penny & Sutton-Spence, Rachel
+      (red.). <i>The Hands are the Head of the Mouth: The Mouth as Articulator
+      in Sign Languages</i>. Hamburg. Signum Verlag, s.57–72.
+
+    <p>Johanna Mesch
+      (2001) <i><a href="https://www.ling.su.se/teckenspr%C3%A5ksresurser/studiematerial/grundkursmaterial">Teckenspråk
+      – Så klart!</a></i> (ISBN: 978-91-974237-1-7)
+
+    <p>Birger Sjöberggymnasiet
+      (2012) <i><a href="http://www.klockhammar.eu/">Teckenspråk: Steg
+      2</a></i>.
+
+    <p>Eira Balkstam, Joel Bäckström, Mats Jonsson, Magnus Ryttervik och
+      Nikolaus Riemer Kankkonen (2016) <i>Övningskompendium för svenskt
+      teckenspråk</i>.
+  </div>
+
+</section>
+<section>
+  <h1>Fotnoter</h1>
+
+  <div class=hanging>
+    <p id=fn1><sup>1</sup> I denna text använder jag [u] för den munbild som är
+      förknippad med svenskans u-ljud, och [β] för det som i
+      teckenspråks­literaturen traditionellt skrivs ”[u]” (när man talar om
+      orala adverb). – Munbilden för [β] är densamma som för ljudet <i>bilabial
+      frikativ</i> (som i tex spanskans <i>Ha<u>v</u>ana</i>) vilken i IPA
+      (<a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet">International
+      Phonetic Alphabet</a>) skrivs ”β”.
+
+    <p id=fn2><sup>2</sup> Det jag här kallar <b class=blue>/pouted/</b>
+      namnges inte av Bergman & Wallin (2001) utan beskrivs där endast
+      som <b>[−open, +forward]</b>.
+  </div>
+</section>
 <footer>
   <hr>
   <p>Copyright 2018 <a href="http://zrajm.org">zrajm</a> (Uppsala, Sverige)
