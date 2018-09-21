@@ -19,9 +19,6 @@ button, input, select, textarea { font-family: inherit; }
 html { height: 100%; overflow-y: scroll; }
 body {
     min-height: 100%;
-    /* allow <footer> placement at bottom */
-    display: flex;
-    flex-direction: column;
 }
 
 *:not(td) { box-sizing: border-box; }
