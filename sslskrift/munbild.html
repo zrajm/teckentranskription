@@ -22,6 +22,7 @@
     }
     .FIXME { background: yellow; }
     .shaded { opacity: .4; }
+    .white { background: #fff; }
     .blue { background: rgba(0, 0, 255, .2); }
     .green { background: rgba(0, 191, 0, .4); }
     .hand img { height: 100px; }
@@ -101,6 +102,10 @@
       padding-left: 1em;
       margin: 0;
     }
+    p + p.indent {
+      text-indent: 1em;
+      margin-top: -1em;
+    }
     sup, sub {
       vertical-align: baseline;
       position: relative;
@@ -114,6 +119,7 @@
 <h1>SSL-skrift: Munbilder</h1>
 
 <ul style="margin:1em">
+  <li><a href="#aslwrite">Munsymboler i ASLWrite</a>
   <li><a href="#genuina">Munbilder i genuina tecken</a>
   <ul>
     <li><a href="#genuina-varianter">Varianter</a>
@@ -129,230 +135,260 @@
   <li><a href="#fotnoter">Fotnoter</a>
   <li><a href="#referenser">Referenser</a>
 </ul>
-
 <hr>
-<p>Till vänster (mot <span class=blue>blå bakgrund</span>) är munsymboler
-från <a href="#clark-2012">Clark (2012)</a>, därefter följer (mot vit bakgrund)
-en utökad symboluppsättning från <a href="#hicks-2018">Hicks (2018)</a> och
-sist (mot <span class=green>grön backgrund</span>) min variant av symbolen. De
-delar av beskrivningarna som bara förekommer i tidigare källor
-är <span class=shaded>skuggade</span> nedan.
+<section id=konvention>
+  <h1>Typografiska konventioner</h1>
 
-<figure>
-  <table border=1 class=inline>
-    <tr>
-      <td class=blue><img src="pic/clark/smile.png" height=50>
-      <td><img src="pic/hicks/smile.png" height=50>
-      <td class=green><img src="../pic/ssl/mun/smile.svg" height=50>
-    <tr><td colspan=3>smile
-  </table>
-  <table border=1 class=inline>
-    <tr>
-      <td><img src="pic/hicks/laugh.png" height=50>
-      <td class=green><img src="../pic/ssl/mun/laugh.svg" height=50>
-    <tr><td colspan=2>“laugh”
-  </table>
-  <table border=1 class=inline>
-    <tr>
-      <td class=blue><img src="pic/clark/frown.png" height=50>
-      <td><img src="pic/hicks/frown.png" height=50>
-      <td class=green><img src="../pic/ssl/mun/frown.svg" height=50>
-    <tr><td colspan=3>frown
-  </table>
-  <table border=1 class=inline>
-    <tr>
-      <td><img src="pic/hicks/cry.png" height=50>
-      <td class=green><img src="../pic/ssl/mun/cry.svg" height=50>
-    <tr><td colspan=2>“cry”
-  </table>
-  <table border=1 class=inline>
-    <tr>
-      <td class=blue><img src="pic/clark/flat-lips.png" height=50>
-      <td><img src="pic/hicks/flat-lips.png" height=50>
-      <td class=green><img src="../pic/ssl/mun/flat-lips.svg" height=50>
-    <tr><td colspan=3>flat lips
-  </table>
-  <table border=1 class=inline>
-    <tr>
-      <td><img src="pic/hicks/interest.png" height=50>
-      <td class=green><img src="../pic/ssl/mun/interest.svg" height=50>
-    <tr><td colspan=2>“interest”
-  </table>
-  <table border=1 class=inline>
-    <tr>
-      <td><img src="pic/hicks/blow+motor-lips.png" height=50>
-      <td class=green><img src="../pic/ssl/mun/blow+motor-lips.svg" height=50>
-    <tr><td colspan=2>blow & motor<br>lips
-  </table>
-  <table border=1 class=inline>
-    <tr>
-      <td class=blue><img src="pic/clark/pressed-lips.png" height=50>
-      <td><img src="pic/hicks/pressed-lips.png" height=50>
-      <td class=green><img src="../pic/ssl/mun/pressed-lips.svg" height=50>
-    <tr><td colspan=3>pressed lips<br><span class=shaded>(pensive)</span>
-  </table>
-  <table border=1 class=inline>
-    <tr>
-      <td><img src="pic/hicks/lips-pulled-to-side.png" height=50>
-      <td class=green><img src="../pic/ssl/mun/lips-pulled-to-side.svg" height=50>
-    <tr><td colspan=2>lips pulled<br>to one side
-  </table>
-  <table border=1 class=inline>
-    <tr>
-      <td class=blue><img src="pic/clark/tongue-out.png" height=50>
-      <td><img src="pic/hicks/tongue-out.png" height=50>
-      <td class=green><img src="../pic/ssl/mun/tongue-out.svg" height=50>
-    <tr><td colspan=3>tongue out
-  </table>
-  <table border=1 class=inline>
-    <tr>
-      <td><img src="pic/hicks/blow-raspberry.png" height=50>
-      <td class=green><img src="../pic/ssl/mun/blow-raspberry.svg" height=50>
-    <tr><td colspan=2>blow raspberry
-  </table>
-  <table border=1 class=inline>
-    <tr>
-      <td class=blue><img src="pic/clark/pursed-lips.png" height=50>
-      <td><img src="pic/hicks/pursed-lips.png" height=50>
-      <td class=green><img src="../pic/ssl/mun/pursed-lips.svg" height=50>
-    <tr><td colspan=3>pursed lips
-  </table>
-  <table border=1 class=inline>
-    <tr>
-      <td class=blue><img src="pic/clark/lips-out-kiss.png" height=50>
-      <td><img src="pic/hicks/lips-out-kiss.png" height=50>
-      <td class=green><img src="../pic/ssl/mun/lips-out-kiss.svg" height=50>
-    <tr><td colspan=3>lips out (“kiss”)
-  </table>
-  <table border=1 class=inline>
-    <tr>
-      <td><img src="pic/hicks/kissy.png" height=50>
-      <td class=green><img src="../pic/ssl/mun/kissy.svg" height=50>
-    <tr><td colspan=2>kissy
-  </table>
-  <table border=1 class=inline>
-    <tr>
-      <td class=blue><img src="pic/clark/wide-open-mouth.png" height=50>
-      <td><img src="pic/hicks/wide-open-mouth.png" height=50>
-      <td class=green><img src="../pic/ssl/mun/wide-open-mouth.svg" height=50>
-    <tr><td colspan=3>(wide) open mouth
-  </table>
-  <table border=1 class=inline>
-    <tr>
-      <td><img src="pic/hicks/open-mouth.png" height=50>
-      <td class=green><img src="../pic/ssl/mun/open-mouth.svg" height=50>
-    <tr><td colspan=2>open mouth
-  </table>
-  <table border=1 class=inline>
-    <tr>
-      <td><img src="pic/hicks/lips-out-sh.png" height=50>
-      <td class=green><img src="../pic/ssl/mun/lips-out-sh.svg" height=50>
-    <tr><td colspan=2>lips out<br>“sh”
-  </table>
-  <table border=1 class=inline>
-    <tr>
-      <td><img src="pic/hicks/nut.png" height=50>
-      <td class=green><img src="../pic/ssl/mun/nut.svg" height=50>
-    <tr><td colspan=2>“nut”
-  </table>
-  <table border=1 class=inline>
-    <tr>
-      <td class=blue><img src="pic/clark/clenched-teeth.png" height=50>
-      <td><img src="pic/hicks/clenched-teeth.png" height=50>
-      <td class=green><img src="../pic/ssl/mun/clenched-teeth.svg" height=50>
-    <tr><td colspan=3>clenched teeth<br><span class=shaded>(bared teeth)</span>
-  </table>
-  <table border=1 class=inline>
-    <tr>
-      <td class=blue><img src="pic/clark/clenched+lips-out.png" height=50>
-      <td><img src="pic/hicks/clenched+lips-out.png" height=50>
-      <td class=green><img src="../pic/ssl/mun/clenched+lips-out.svg" height=50>
-    <tr><td colspan=3>clenched &<br>lips out <span class=shaded>(“cha”)</span>
-  </table>
-  <table border=1 class=inline>
-    <tr>
-      <td><img src="pic/hicks/open-mouth+tongue-out.png" height=50>
-      <td class=green><img src="../pic/ssl/mun/open-mouth+tongue-out.svg" height=50>
-    <tr><td colspan=2>open mouth<br>& tongue out
-  </table>
-  <table border=1 class=inline>
-    <tr>
-      <td><img src="pic/hicks/tongue-wiggle.png" height=50>
-      <td class=green><img src="../pic/ssl/mun/tongue-wiggle.svg" height=50>
-    <tr><td colspan=2>tongue wiggle
-  </table>
-  <table border=1 class=inline>
-    <tr>
-      <td><img src="pic/hicks/tongue-out-to-side.png" height=50>
-      <td class=green><img src="../pic/ssl/mun/tongue-out-to-side.svg" height=50>
-    <tr><td colspan=2>tongue out<br>to the side
-  </table>
-  <table border=1 class=inline>
-    <tr>
-      <td><img src="pic/hicks/biting-lip.png" height=50>
-      <td class=green><img src="../pic/ssl/mun/biting-lip.svg" height=50>
-    <tr><td colspan=2>biting lip
-  </table>
-  <table border=1 class=inline>
-    <tr>
-      <td><img src="pic/hicks/th.png" height=50>
-      <td class=green><img src="../pic/ssl/mun/th.svg" height=50>
-    <tr><td colspan=2>“th”
-  </table>
-  <table border=1 class=inline>
-    <tr>
-      <td class=blue><img src="pic/clark/round-mouth.png" height=50>
-      <td><img src="pic/hicks/round-mouth.png" height=50>
-      <td class=green><img src="../pic/ssl/mun/round-mouth.svg" height=50>
-    <tr><td colspan=3>round mouth
-  </table>
-  <table border=1 class=inline>
-    <tr>
-      <td class=blue><img src="pic/clark/puffed+round.png" height=50>
-      <td><img src="pic/hicks/puffed+round.png" height=50>
-      <td class=green><img src="../pic/ssl/mun/puffed+round.svg" height=50>
-    <tr><td colspan=3>puffed & round
-  </table>
-  <table border=1 class=inline>
-    <tr>
-      <td><img src="pic/hicks/sucked-cheeks.png" height=50>
-      <td class=green><img src="../pic/ssl/mun/sucked-cheeks.svg" height=50>
-    <tr><td colspan=2>sucked<br>cheeks
-  </table>
-  <table border=1 class=inline>
-    <tr>
-      <td class=blue><img src="pic/clark/puffed-cheeks.png" height=50>
-      <td><img src="pic/hicks/puffed-cheeks.png" height=50>
-      <td class=green><img src="../pic/ssl/mun/puffed-cheeks.svg" height=50>
-    <tr><td colspan=3>puffed cheeks
-  </table>
-  <table border=1 class=inline>
-    <tr>
-      <td class=blue><img src="pic/clark/pulled-to-side.png" height=50>
-      <td><img src="pic/hicks/pulled-to-side.png" height=50>
-      <td class=green><img src="../pic/ssl/mun/pulled-to-side.svg" height=50>
-    <tr><td colspan=3>pulled to the side<br><span class=shaded>(“recently”)</span>
-  </table>
-  <table border=1 class=inline>
-    <tr>
-      <td><img src="pic/hicks/disgust.png" height=50>
-      <td class=green><img src="../pic/ssl/mun/disgust.svg" height=50>
-    <tr><td colspan=2>“disgust”
-  </table>
-</figure>
+  <p>I det här dokumentet används […] för talspråksfonem, {…} för munbilder och
+  <b>/…/</b> för beskrivningar ur <a href="#bergman-wallin-2001">Bergman &
+  Wallin (2001)</a>.
 
-<p>Clark and Hicks use symbols similar enough as to be indistinguishable, and I
-think that many of Hicks’ generalizations are perfectly straightforward (like
-the double circle-segment for ’motion’ – either of the lips or the tongue).
+  <p class=indent>Det finns alltid fler än ett talspråksfonem som kan ligga
+  bakom en given munbild. Munbilden <b>/bilabial/</b> (också kallad {p}) kan
+  tex orsakas antingen av ett av de svenska fonemen [p], [b] eller [m] (som
+  alla ser likadana ut) eller av att munbilden formas utan något ljud, eller
+  genom att ett klick- eller smackljud görs med läpparna etc. De svenska
+  fonemen är dock av särskilt intresse här eftersom deras munbilder ofta lånas
+  in i teckenspråket.
 
-<p>However in the symbols of Clark I see a distinction between <i>cheek</i>
-and <i>wide open mouth</i> which I think is missing from Hicks. I would suggest
-that <i>cheek</i> (regardless of whether it is sucked or puffed) should be
-portrayed by a circle segment that is <i>less than a half circle</i>, while
-the <i>wide open mouth</i> should be written as a circle segment larger than a
-half circle. This way <i>sucked cheeks</i> and <i>wide open mouth</i> are
-clearly distinguishable from each other, while <i>sucked</i> and <i>puffed
-cheeks</i> remain consistent with each other.
+  <p class=indent>Bokstäverna som används för att representera munbilder
+  (skrivna inom krullparenteser i denna text) har mestadels tagits från namn
+  som brukar användas för vanligaste genuina tecken – HYFF, OPS, PAFF, PY etc.
+  Munbilden för [y] och [ö] skrivs {y} (och aldrig *{ö}) därför att ’y’
+  återfinns i namnen på flera genuina tecken (tex HYFF och PY), medan ’ö’ inte
+  verkar förekomma i något genuint teckennamn överhuvudtaget. Oftast innebär
+  detta (iaf för konsonanter) att bokstäver med låg sonoritet föredrages
+  (tecknet heter PAFF – inte tex *MAGG, fastän detta skulle ge upphov till
+  samma munbild).
+</section>
+<hr>
+<section id=aslwrite>
+  <h1>Munsymboler i ASLWrite</h1>
+
+  <p>Till vänster (mot <span class=blue>blå bakgrund</span>) är munsymboler
+  från <a href="#clark-2012">Clark (2012)</a>, därefter följer (mot vit
+  bakgrund) en utökad symboluppsättning från <a href="#hicks-2018">Hicks
+  (2018)</a> och sist (mot <span class=green>grön bakgrund</span>) min variant
+  av symbolen. De delar av beskrivningarna som bara förekommer i tidigare
+  källor är <span class=shaded>skuggade</span> nedan.
+
+  <figure>
+    <table border=1 class=inline>
+      <tr>
+        <td class=blue><img src="pic/clark/smile.png" height=50>
+        <td><img src="pic/hicks/smile.png" height=50>
+        <td class=green><img src="../pic/ssl/mun/smile.svg" height=50>
+      <tr><td colspan=3>smile
+    </table>
+    <table border=1 class=inline>
+      <tr>
+        <td><img src="pic/hicks/laugh.png" height=50>
+        <td class=green><img src="../pic/ssl/mun/laugh.svg" height=50>
+      <tr><td colspan=2>“laugh”
+    </table>
+    <table border=1 class=inline>
+      <tr>
+        <td class=blue><img src="pic/clark/frown.png" height=50>
+        <td><img src="pic/hicks/frown.png" height=50>
+        <td class=green><img src="../pic/ssl/mun/frown.svg" height=50>
+      <tr><td colspan=3>frown
+    </table>
+    <table border=1 class=inline>
+      <tr>
+        <td><img src="pic/hicks/cry.png" height=50>
+        <td class=green><img src="../pic/ssl/mun/cry.svg" height=50>
+      <tr><td colspan=2>“cry”
+    </table>
+    <table border=1 class=inline>
+      <tr>
+        <td class=blue><img src="pic/clark/flat-lips.png" height=50>
+        <td><img src="pic/hicks/flat-lips.png" height=50>
+        <td class=green><img src="../pic/ssl/mun/flat-lips.svg" height=50>
+      <tr><td colspan=3>flat lips
+    </table>
+    <table border=1 class=inline>
+      <tr>
+        <td><img src="pic/hicks/interest.png" height=50>
+        <td class=green><img src="../pic/ssl/mun/interest.svg" height=50>
+      <tr><td colspan=2>“interest”
+    </table>
+    <table border=1 class=inline>
+      <tr>
+        <td><img src="pic/hicks/blow+motor-lips.png" height=50>
+        <td class=green><img src="../pic/ssl/mun/blow+motor-lips.svg" height=50>
+      <tr><td colspan=2>blow & motor<br>lips
+    </table>
+    <table border=1 class=inline>
+      <tr>
+        <td class=blue><img src="pic/clark/pressed-lips.png" height=50>
+        <td><img src="pic/hicks/pressed-lips.png" height=50>
+        <td class=green><img src="../pic/ssl/mun/pressed-lips.svg" height=50>
+      <tr><td colspan=3>pressed lips<br><span class=shaded>(pensive)</span>
+    </table>
+    <table border=1 class=inline>
+      <tr>
+        <td><img src="pic/hicks/lips-pulled-to-side.png" height=50>
+        <td class=green><img src="../pic/ssl/mun/lips-pulled-to-side.svg" height=50>
+      <tr><td colspan=2>lips pulled<br>to one side
+    </table>
+    <table border=1 class=inline>
+      <tr>
+        <td class=blue><img src="pic/clark/tongue-out.png" height=50>
+        <td><img src="pic/hicks/tongue-out.png" height=50>
+        <td class=green><img src="../pic/ssl/mun/tongue-out.svg" height=50>
+      <tr><td colspan=3>tongue out
+    </table>
+    <table border=1 class=inline>
+      <tr>
+        <td><img src="pic/hicks/blow-raspberry.png" height=50>
+        <td class=green><img src="../pic/ssl/mun/blow-raspberry.svg" height=50>
+      <tr><td colspan=2>blow raspberry
+    </table>
+    <table border=1 class=inline>
+      <tr>
+        <td class=blue><img src="pic/clark/pursed-lips.png" height=50>
+        <td><img src="pic/hicks/pursed-lips.png" height=50>
+        <td class=green><img src="../pic/ssl/mun/pursed-lips.svg" height=50>
+      <tr><td colspan=3>pursed lips
+    </table>
+    <table border=1 class=inline>
+      <tr>
+        <td class=blue><img src="pic/clark/lips-out-kiss.png" height=50>
+        <td><img src="pic/hicks/lips-out-kiss.png" height=50>
+        <td class=green><img src="../pic/ssl/mun/lips-out-kiss.svg" height=50>
+      <tr><td colspan=3>lips out (“kiss”)
+    </table>
+    <table border=1 class=inline>
+      <tr>
+        <td><img src="pic/hicks/kissy.png" height=50>
+        <td class=green><img src="../pic/ssl/mun/kissy.svg" height=50>
+      <tr><td colspan=2>kissy
+    </table>
+    <table border=1 class=inline>
+      <tr>
+        <td class=blue><img src="pic/clark/wide-open-mouth.png" height=50>
+        <td><img src="pic/hicks/wide-open-mouth.png" height=50>
+        <td class=green><img src="../pic/ssl/mun/wide-open-mouth.svg" height=50>
+      <tr><td colspan=3>(wide) open mouth
+    </table>
+    <table border=1 class=inline>
+      <tr>
+        <td><img src="pic/hicks/open-mouth.png" height=50>
+        <td class=green><img src="../pic/ssl/mun/open-mouth.svg" height=50>
+      <tr><td colspan=2>open mouth
+    </table>
+    <table border=1 class=inline>
+      <tr>
+        <td><img src="pic/hicks/lips-out-sh.png" height=50>
+        <td class=green><img src="../pic/ssl/mun/lips-out-sh.svg" height=50>
+      <tr><td colspan=2>lips out<br>“sh”
+    </table>
+    <table border=1 class=inline>
+      <tr>
+        <td><img src="pic/hicks/nut.png" height=50>
+        <td class=green><img src="../pic/ssl/mun/nut.svg" height=50>
+      <tr><td colspan=2>“nut”
+    </table>
+    <table border=1 class=inline>
+      <tr>
+        <td class=blue><img src="pic/clark/clenched-teeth.png" height=50>
+        <td><img src="pic/hicks/clenched-teeth.png" height=50>
+        <td class=green><img src="../pic/ssl/mun/clenched-teeth.svg" height=50>
+      <tr><td colspan=3>clenched teeth<br><span class=shaded>(bared teeth)</span>
+    </table>
+    <table border=1 class=inline>
+      <tr>
+        <td class=blue><img src="pic/clark/clenched+lips-out.png" height=50>
+        <td><img src="pic/hicks/clenched+lips-out.png" height=50>
+        <td class=green><img src="../pic/ssl/mun/clenched+lips-out.svg" height=50>
+      <tr><td colspan=3>clenched &<br>lips out <span class=shaded>(“cha”)</span>
+    </table>
+    <table border=1 class=inline>
+      <tr>
+        <td><img src="pic/hicks/open-mouth+tongue-out.png" height=50>
+        <td class=green><img src="../pic/ssl/mun/open-mouth+tongue-out.svg" height=50>
+      <tr><td colspan=2>open mouth<br>& tongue out
+    </table>
+    <table border=1 class=inline>
+      <tr>
+        <td><img src="pic/hicks/tongue-wiggle.png" height=50>
+        <td class=green><img src="../pic/ssl/mun/tongue-wiggle.svg" height=50>
+      <tr><td colspan=2>tongue wiggle
+    </table>
+    <table border=1 class=inline>
+      <tr>
+        <td><img src="pic/hicks/tongue-out-to-side.png" height=50>
+        <td class=green><img src="../pic/ssl/mun/tongue-out-to-side.svg" height=50>
+      <tr><td colspan=2>tongue out<br>to the side
+    </table>
+    <table border=1 class=inline>
+      <tr>
+        <td><img src="pic/hicks/biting-lip.png" height=50>
+        <td class=green><img src="../pic/ssl/mun/biting-lip.svg" height=50>
+      <tr><td colspan=2>biting lip
+    </table>
+    <table border=1 class=inline>
+      <tr>
+        <td><img src="pic/hicks/th.png" height=50>
+        <td class=green><img src="../pic/ssl/mun/th.svg" height=50>
+      <tr><td colspan=2>“th”
+    </table>
+    <table border=1 class=inline>
+      <tr>
+        <td class=blue><img src="pic/clark/round-mouth.png" height=50>
+        <td><img src="pic/hicks/round-mouth.png" height=50>
+        <td class=green><img src="../pic/ssl/mun/round-mouth.svg" height=50>
+      <tr><td colspan=3>round mouth
+    </table>
+    <table border=1 class=inline>
+      <tr>
+        <td class=blue><img src="pic/clark/puffed+round.png" height=50>
+        <td><img src="pic/hicks/puffed+round.png" height=50>
+        <td class=green><img src="../pic/ssl/mun/puffed+round.svg" height=50>
+      <tr><td colspan=3>puffed & round
+    </table>
+    <table border=1 class=inline>
+      <tr>
+        <td><img src="pic/hicks/sucked-cheeks.png" height=50>
+        <td class=green><img src="../pic/ssl/mun/sucked-cheeks.svg" height=50>
+      <tr><td colspan=2>sucked<br>cheeks
+    </table>
+    <table border=1 class=inline>
+      <tr>
+        <td class=blue><img src="pic/clark/puffed-cheeks.png" height=50>
+        <td><img src="pic/hicks/puffed-cheeks.png" height=50>
+        <td class=green><img src="../pic/ssl/mun/puffed-cheeks.svg" height=50>
+      <tr><td colspan=3>puffed cheeks
+    </table>
+    <table border=1 class=inline>
+      <tr>
+        <td class=blue><img src="pic/clark/pulled-to-side.png" height=50>
+        <td><img src="pic/hicks/pulled-to-side.png" height=50>
+        <td class=green><img src="../pic/ssl/mun/pulled-to-side.svg" height=50>
+      <tr><td colspan=3>pulled to the side<br><span class=shaded>(“recently”)</span>
+    </table>
+    <table border=1 class=inline>
+      <tr>
+        <td><img src="pic/hicks/disgust.png" height=50>
+        <td class=green><img src="../pic/ssl/mun/disgust.svg" height=50>
+      <tr><td colspan=2>“disgust”
+    </table>
+  </figure>
+
+  <p>Clark and Hicks use symbols similar enough as to be indistinguishable, and
+  I think that many of Hicks’ generalizations are perfectly straightforward
+  (like the double circle-segment for ’motion’ – either of the lips or the
+  tongue).
+
+  <p class=indent>However in the symbols of Clark I see a distinction
+  between <i>cheek</i> and <i>wide open mouth</i> which I think is missing from
+  Hicks. I would suggest that <i>cheek</i> (regardless of whether it is sucked
+  or puffed) should be portrayed by a circle segment that is <i>less than a
+  half circle</i>, while the <i>wide open mouth</i> should be written as a
+  circle segment larger than a half circle. This way <i>sucked cheeks</i>
+  and <i>wide open mouth</i> are clearly distinguishable from each other,
+  while <i>sucked</i> and <i>puffed cheeks</i> remain consistent with each
+  other.
 
 <figure style="width:400px;margin:1em 0" class=inline>
   <a href="pic/clark/mouth_morphemes.png"><img src="pic/clark/mouth_morphemes.png" style="max-height:none;width:80%"></a>
@@ -363,24 +399,51 @@ cheeks</i> remain consistent with each other.
   <a href="pic/hicks/mouth_morphemes.png"><img src="pic/hicks/mouth_morphemes.png" style="max-height:none;width:100%"></a>
   <figcaption style="margin:.5em 0">Symboler ur <a href="#hicks-2018">Hicks (2018)</a>.</figcaption>
 </figure>
-
+</section>
 <hr>
 <section id=genuina>
   <h1>Munbilder i genuina tecken</h1>
 
-  <p>Den informationen i nedanstående sammanställning är hämtad ifrån en analys
-  av munbilder i <i>genuina tecken</i>
-  skriven <a href="#bergman-wallin-2001">Bergman & Wallin (2001)</a>,
-  information <span class=blue>i blått</span> markerar motsvarande information
-  för ASLWrite ur <a href="#clark-2012">Clark (2012)</a>. Oviss information har
-  markerats med ett frågetecken.
+  <div class=FIXME style="margin:1em">
+    <b>Att göra:</b>
+    <ul>
+      <li>Hur realiseras <b>/airstream/</b> egentligen?
+        Är <a href="https://sv.wikipedia.org/wiki/Bilabial_tremulant">bilabial
+        tremulant</a> [ʙ] korrekt?
+      <li>Hur transkribera munbilden för <b>/tongue/</b>?
+      <li>Har [h] en plats i nedanstående uppställning eller spelar [h]-fonemet
+        ingen roll för munbilden vid inlånande till teckenspråk?
+    </ul>
+  </div>
+
+  <p>Nedanstående sammanställning är baserad på analysen av genuina teckens
+  munbilder i <a href="#bergman-wallin-2001">Bergman & Wallin (2001)</a>,
+  kompletterande information från andra källor och egna extrapolationer
+  är <span class=blue>markerade i blått</span>.
+
+  <p class=indent>I fältet längst till vänster om varje bild återfinns följande
+  (uppifrån och ned) 1) ASLWrite-symbol, 2) transkriptions­symbol för munbilden
+  (inom {…}) och 3) de talspråksfonem som ger upphov till munbilden.
+
+  <p class=indent>Vad det gäller talspråksfonemen kan konstateras att det i
+  somliga fall är tämligen trivialt att dra gränsen mellan vilken munbild som
+  hör till vilket talspråksfonem (tex är det lätt att skilja munbilden för [f]
+  och [v] ifrån övriga munbilder) medan i andra fall (bla vokalerna) är
+  gränsdragningen betydligt svårare. – Lyckligtvis beskrivs just vokalernas
+  munbilder (utom ’u’) i <a href="#bergman-wallin-2001">Bergman & Wallin (2001,
+  11–13, kap ”’Adaption to Native Pattern’ Hypothesis”)</a>.
+
+  <p>Nedan är talspråksfonem som extrapolerats ur annan literatur
+  än <a href="#bergman-wallin-2001">Bergman & Wallin (2001)</a> markerade med
+  blå bakgrund.
 
   <figure>
     <table border=1 class=inline>
       <caption>I. /bilabial/ <!--[−open]--></caption>
       <tr>
-        <td class=blue><img src="../pic/ssl/mun/pressed-lips.svg">
-          <br>bmp
+        <td class=blue><img src="../pic/ssl/mun/flat-lips.svg">
+          <p>{p}
+          <p><span class=white>[p/b/m]</span>
         <td style="text-align:left">−open
           <br>−in
           <br>−air
@@ -395,7 +458,8 @@ cheeks</i> remain consistent with each other.
       <caption>II. /cheeks/ <!--[−open +air]--></caption>
       <tr>
         <td class=blue><img src="../pic/ssl/mun/puffed-cheeks.svg">
-          <br>()
+          <p>{()}
+          <p>–
         <td style="text-align:left">−open
           <br>−in
           <br>+air
@@ -410,7 +474,8 @@ cheeks</i> remain consistent with each other.
       <caption>III. /labiodental/ <!--[+in]--></caption>
       <tr>
         <td class=blue><img src="../pic/ssl/mun/biting-lip.svg">
-          <br>fv
+          <p>{f}
+          <p>[f/v]
         <td style="text-align:left">−open
           <br>+in
           <br>−air
@@ -425,7 +490,8 @@ cheeks</i> remain consistent with each other.
       <caption>IV. /stretched/ <!--[+corner]--></caption>
       <tr>
         <td class=blue><img src="../pic/ssl/mun/clenched-teeth.svg">
-          <br>ei
+          <p>{i}
+          <p><span class=white>[i/e]</span>
         <td style="text-align:left">+open
           <br><span class=shaded> in
           <br> air</span>
@@ -440,7 +506,8 @@ cheeks</i> remain consistent with each other.
       <caption>V. /forward/ <!--[+forward <nobr>-round</nobr>]--></caption>
       <tr>
         <td class=blue><img src="../pic/ssl/mun/lips-out-sh.svg">
-          <br>yö
+          <p>{y}
+          <p><span class=white>[y/ö]</span>
         <td style="text-align:left">+open
           <br><span class=shaded> in
           <br> air</span>
@@ -455,7 +522,8 @@ cheeks</i> remain consistent with each other.
       <caption>VI. /round/<!--[+forward +round]--></caption>
       <tr>
         <td class=blue><img src="../pic/ssl/mun/round-mouth.svg">
-          <br>ouå
+          <p>{å}
+          <p>[<span class=white>å/o</span>/u]
         <td style="text-align:left">+open
           <br><span class=shaded> in
           <br> air</span>
@@ -470,7 +538,8 @@ cheeks</i> remain consistent with each other.
       <caption>VII. /pursed/<!--[-forward -round]--></caption>
       <tr>
         <td class=blue><img src="../pic/ssl/mun/pursed-lips.svg">
-          <br>β<sup> <a href="#fn1">[1]</a></sup>
+          <p>{β}<sup><a href="#fn1">[1]</a></sup>
+          <p>–
         <td style="text-align:left">+open
           <br><span class=shaded> in
           <br> air</span>
@@ -485,7 +554,9 @@ cheeks</i> remain consistent with each other.
       <caption>VIII. /open/ <!--[+jaw]--></caption>
       <tr>
         <td class=blue><img src="../pic/ssl/mun/wide-open-mouth.svg">
-          <br>ahä
+          <p>{a}
+          <p><span class=white>[a/ä]</span><!--
+          --><br><span class=FIXME>[h]?</span>
         <td style="text-align:left">+open
           <br><span class=shaded> in
           <br> air</span>
@@ -499,8 +570,9 @@ cheeks</i> remain consistent with each other.
     <table border=1 class=inline>
       <caption>IX. /airstream/ <!--[+open +air]--></caption>
       <tr>
-        <td class=blue><img src="../pic/ssl/mun/blow+motor-lips.svg">?
-          <br> 
+        <td class=FIXME><img style="display:inline-block" src="../pic/ssl/mun/blow+motor-lips.svg">?
+          <p>{ʙ}?
+          <p>–
         <td style="text-align:left">+open
           <br><span class=shaded> in</span>
           <br>+air
@@ -515,7 +587,8 @@ cheeks</i> remain consistent with each other.
       <caption>X. /tongue/<!--[+tongue]--></caption>
       <tr>
         <td class=blue><img src="../pic/ssl/mun/tongue-out.svg">
-          <br> 
+          <p class=FIXME>{?}?
+          <p>–
         <td style="text-align:left">+open
           <br><span class=shaded> in
           <br> air
@@ -558,22 +631,16 @@ cheeks</i> remain consistent with each other.
     <h1 id="genuina-varianter">Varianter</h1>
 
     <p>Följande munbilder avviker från de ovanstående endast i luftflöde och
-    tungans placering. De betraktas i Bergman & Wallin som allofona varianter
-    till de ovanstående. (Dvs <b>/forward<sup>tongue</sup>/</b>
-    och <b>/forward<sub>tongue</sub>/</b> ses bägge som allofoner till
-      <b>/forward/</b> osv.)
-
-    <p><b>/pouted/</b><sup> <a href="#fn2">[2]</a></sup> och varianter
-    med <b>/<sup>air</sup>/</b> illustreras inte i artikeln utan beskrivs
-    endast i artikeltexten (de bilder som förekommer nedan kommer från andra
-    källor).
+    tungans placering. De betraktas i <a href="#bergman-wallin-2001">Bergman &
+    Wallin (2001)</a> som allofona varianter till motsvarande munbild
+    utan <b>tongue</b> eller <b>air</b>. (Dvs <b>/forward<sup>tongue</sup>/</b>
+    och <b>/forward<sub>tongue</sub>/</b> ses bägge som allofoner
+    till <b>/forward/</b> osv.)
 
     <figure>
       <table border=1 class=inline>
         <caption>Va. /forward<sup>tongue</sup>/</caption>
         <tr>
-          <td class=blue>
-            <br><br>l
           <td style="text-align:left">+open
             <br><span class=shaded> in
             <br> air</span>
@@ -587,8 +654,6 @@ cheeks</i> remain consistent with each other.
       <table border=1 class=inline>
         <caption>Vb. /forward<sub>tongue</sub>/</caption>
         <tr>
-          <td class=blue>
-            <br><br>?
           <td style="text-align:left">+open
             <br><span class=shaded> in
             <br> air</span>
@@ -602,8 +667,6 @@ cheeks</i> remain consistent with each other.
       <table border=1 class=inline>
         <caption>VIIIa. /open<sup>tongue</sup>/</caption>
         <tr>
-          <td class=blue><img src="../pic/ssl/mun/wide-open-mouth.svg">?
-            <br>l
           <td style="text-align:left">+open
             <br><span class=shaded> in
             <br> air</span>
@@ -617,8 +680,6 @@ cheeks</i> remain consistent with each other.
       <table border=1 class=inline>
         <caption>VIIIb. /open<sub>tongue</sub>/</caption>
         <tr>
-          <td class=blue><img src="../pic/ssl/mun/wide-open-mouth.svg">?
-            <br>ahä
           <td style="text-align:left">+open
             <br><span class=shaded> in
             <br> air</span>
@@ -629,11 +690,21 @@ cheeks</i> remain consistent with each other.
             <br>+tongue
           <td><img src="pic/ssl/open-tongue-down.png">
       </table>
+    </figure>
+
+    <p class=indent><b>/pouted/</b><sup><a href="#fn2">[2]</a></sup> och
+    varianter med <b>/<sup>air</sup>/</b> illustreras inte
+    i <a href="#bergman-wallin-2001">Bergman & Wallin (2001)</a> utan beskrivs
+    endast i artikeltexten (de bilder som förekommer nedan kommer från andra
+    källor).
+
+    <figure>
       <table border=1 class=inline>
         <caption>Vc. /forward<sup>air</sup>/</caption>
         <tr>
-          <td class=blue>
-            <br><br>?
+          <td class=blue><img src="../pic/ssl/mun/lips-out-sh.svg">
+            <p>{y}
+            <p>–
           <td style="text-align:left">+open
             <br><span class=shaded> in</span>
             <br>+air
@@ -642,14 +713,15 @@ cheeks</i> remain consistent with each other.
             <br>−round
             <br>−jaw
             <br><span class=shaded> tongue</span>
-          <td><span style="font-size:2em;width:119px;height:142px;display:inline-block;line-height:140px">?</span>
+          <td><div class=bw style="height:142px;width:119px;display:inline-block;background:#aaa;line-height:142px">[bild saknas]</div>
       </table>
       <table border=1 class=inline>
         <caption>VIIa. /pursed<sup>air</sup>/
           <small><a href="https://teckensprakslexikon.su.se/ord/00036">(image source)</a></small></caption>
         <tr>
           <td class=blue><img src="../pic/ssl/mun/pursed-lips.svg">
-            <br>β<sup> <a href="#fn1">[1]</a></sup>
+            <p>{β}<sup><a href="#fn1">[1]</a></sup>
+            <p>–
           <td style="text-align:left">+open
             <br><span class=shaded> in</span>
             <br>+air
@@ -661,11 +733,12 @@ cheeks</i> remain consistent with each other.
           <td class=blue><img class=bw src="pic/ssl/pursed-air.png">
       </table>
       <table border=1 class="inline blue">
-        <caption class=blue>XI. /pouted/<sup> <a href="#fn2">[2]</a></sup>
+        <caption class=blue>XI. /pouted/<sup><a href="#fn2">[2]</a></sup>
           <small><a href="https://spsmplay.spsm.se/vanten/">(image source)</a></small></caption>
         <tr>
           <td><img src="../pic/ssl/mun/lips-out-kiss.svg">
-            <br>m
+            <p>{m<sub>1</sub>}
+            <p>–
           <td style="text-align:left"><span style="background:#fff">−open</span>
             <br>−in
             <br>−air
@@ -679,10 +752,11 @@ cheeks</i> remain consistent with each other.
     </figure>
 
     <p>I sammanställningen ovan markeras ny och extrapolerad information
-    med <span class=blue>blå bakgrund</span>), medan information ifrån Bergman
-    & Wallins artikel har vit bakgrund. Frågetecken i de blå fälten markerar
-    osäkerhet, och kan komma att uppdateras/ändras i framtiden. Beskrivningen
-    av <b>/pouted/</b><sup> <a href="#fn2">[2]</a></sup> härrör ifrån följande
+    med <span class=blue>blå bakgrund</span>, medan information
+    från <a href="#bergman-wallin-2001">Bergman & Wallin (2001)</a> har vit
+    bakgrund. Frågetecken i de blå fälten markerar osäkerhet, och kan komma att
+    uppdateras/ändras i framtiden. Beskrivningen
+    av <b>/pouted/</b><sup><a href="#fn2">[2]</a></sup> härrör ifrån följande
     text i artikeln:
 
     <blockquote>
@@ -691,19 +765,18 @@ cheeks</i> remain consistent with each other.
       mouth with protruding lips so a possible description would be <b>-open,
       +forward.</b>” [s 13]
     </blockquote>
-
   </section>
   <section>
     <h1 id="genuina-adverb">En kommentar om orala adverb</h1>
 
-    <p>Ett fåtal <i>orala adverb</i> nämns också i förbigående på s.17
-    i <a href="#bergman-wallin-2001">Bergman & Wallin (2001)</a>.
+    <p>Ett fåtal <i>orala adverb</i> nämns också i förbigående
+    i <a href="#bergman-wallin-2001">Bergman & Wallin (2001, 17)</a>.
 
     <figure>
       <table border=1 class=inline>
         <tr>
           <td class=blue><img src="../pic/ssl/mun/pursed-lips.svg">
-            <br>β<sup> <a href="#fn1">[1]</a></sup>
+            <p>{β}<sup><a href="#fn1">[1]</a></sup>
           <td><img src="pic/ssl/pursed.png">
         <tr><td colspan=2><b>/pursed/</b>
           <br>‘small’ (monosegmental form)
@@ -711,7 +784,7 @@ cheeks</i> remain consistent with each other.
       <table border=1 class=inline>
         <tr>
           <td class=blue height=119><img src="../pic/ssl/mun/clenched-teeth.svg">
-            <br>ei
+            <p>{i}
           <td><img src="pic/ssl/stretched.png">
           <tr><td colspan=2><b>/stretched/</b>
             <br>‘intense’, ‘with effort’
@@ -719,9 +792,9 @@ cheeks</i> remain consistent with each other.
       <table border=1 class=inline>
         <tr>
           <td class=blue><img src="../pic/ssl/mun/lips-out-kiss.svg">
-            <br>m
+            <p>{m<sub>1</sub>}
           <td class=blue><img class=bw src="pic/ssl/pouted.png">
-        <tr><td colspan=2><b class=blue>/pouted/</b><sup> <a href="#fn2">[2]</a></sup>
+        <tr><td colspan=2><b class=blue>/pouted/</b><sup><a href="#fn2">[2]</a></sup>
             <br>‘normally’, ‘with ease’
         </table>
     </figure>
@@ -734,11 +807,15 @@ cheeks</i> remain consistent with each other.
   <div class=FIXME style="margin:1em">
     <b>Att göra:</b>
     <ul>
-      <li>Lägg till TSK videos (bilder från TSK bok finns redan)
-      <li>Finns det verkligen två varianter
-        (<img src="../pic/ssl/mun/lips-out-kiss.svg" style="height:1em"> och
-        <img src="../pic/ssl/mun/pressed-lips.svg" style="height:1em">) av [m]? Vad
-        skiljer dem isf?
+      <li>Lägg till bilder ifrån videorna i <a href="#mesch-2001">Mesch
+        (2001)</a> (bilder från boken finns redan med nedan)
+      <li>Finns det verkligen två varianter av {m}? (<img src="../pic/ssl/mun/lips-out-kiss.svg"
+        style="height:1em"> {m<sub>1</sub>} och
+        <img src="../pic/ssl/mun/flat-lips.svg" style="height:1em">
+        {m<sub>2</sub>} nedan.) Jag har inte hittat en enda källa som
+        kontrasterar dem mot varandra (eller ens beskriver de bägge
+        varianterna) – alla källor tar bara upp en av dem. Är de allofona?
+        Om inte – vad är det som skiljer dem åt?
     </ul>
   </div>
 
@@ -784,10 +861,11 @@ cheeks</i> remain consistent with each other.
     <tr>
       <td rowspan=2>
         <img src="../pic/ssl/mun/pursed-lips.svg">
-        <br>[β]<sup> <a href="#fn1">[1]</a></sup>
+        <p>{β}<sup><a href="#fn1">[1]</a></sup>
+        <p>”[u]”
       <td rowspan=2 align=left>
         <img height=100 src="pic/ssl/pursed.png">
-        <br>/pursed/
+        <br><b>/pursed/</b>
       <td align=left>
         <img class=bw height=100 src="pic/ssl/ost/beta-a.png">
         <br>liten, tunn, små, kort
@@ -810,12 +888,12 @@ cheeks</i> remain consistent with each other.
       <td align=left class=purple>
       <td align=left class=purple>lättsamt
     <tr>
-      <td rowspan=2>
+      <td rowspan=2 class=FIXME>
         <img src="../pic/ssl/mun/lips-out-kiss.svg">
-        <br>[m]
+        <p>{m<sub>1</sub>}
       <td rowspan=2 align=left class=blue>
         <img height=100 src="pic/ssl/pouted.png">
-        <br>/pouted/<sup> <a href="#fn2">[2]</a></sup>
+        <br><b>/pouted/</b><sup><a href="#fn2">[2]</a></sup>
       <td align=left>
         <img class=bw height=100 src="pic/ssl/ost/m1-a.png">
         <br>normal
@@ -824,7 +902,7 @@ cheeks</i> remain consistent with each other.
       <td align=left>
         <img class=bw height=100 src="pic/ssl/tsk/m1-a.png">
         <br>så här mycket, ungefär så långt, lagom
-      <td rowspan=4 class=FIXME>Olika källor använder [m] på olika sätt?
+      <td rowspan=4 class=FIXME>Olika källor använder {m} på olika sätt?
     <tr>
       <td align=left class=purple>
         <img class=bw height=100 src="pic/ssl/ost/m1-b.png">
@@ -833,12 +911,12 @@ cheeks</i> remain consistent with each other.
       <td align=left class=purple>
       <td align=left class=purple>normalt, van
     <tr>
-      <td rowspan=2>
-        <img src="../pic/ssl/mun/pressed-lips.svg">
-        <br>[m]
+      <td rowspan=2 class=FIXME>
+        <img src="../pic/ssl/mun/flat-lips.svg">
+        <p>{m<sub>2</sub>}
       <td rowspan=2 align=left>
         <img height=100 src="pic/ssl/bilabial.png">
-        <br>/bilabial/
+        <br><b>/bilabial/</b>
       <td align=left>
       <td align=left>
       <td align=left>
@@ -855,10 +933,10 @@ cheeks</i> remain consistent with each other.
         <tr>
       <td rowspan=2>
         <img src="../pic/ssl/mun/clenched-teeth.svg">
-        <br>[i]
+        <p>{i}
       <td rowspan=2 align=left>
         <img height=100 src="pic/ssl/stretched.png">
-        <br>/stretched/
+        <br><b>/stretched/</b>
       <td align=left>
         <img class=bw height=100 src="pic/ssl/ost/i-a.png">
         <br>stor, lång, hög
@@ -879,10 +957,10 @@ cheeks</i> remain consistent with each other.
     <tr>
       <td>
         <img src="../pic/ssl/mun/puffed-cheeks.svg">
-        <br>[()]
+        <p>{()}
       <td align=left>
         <img height=100 src="pic/ssl/cheeks.png">
-        <br>/cheeks/
+        <br><b>/cheeks/</b>
       <td align=left>
         <img class=bw height=100 src="pic/ssl/ost/paren-a.png">
         <br>tjock, mjuk
@@ -897,11 +975,12 @@ cheeks</i> remain consistent with each other.
       <td>
         <img src="../pic/ssl/mun/clenched-teeth.svg"
         ><img src="../pic/ssl/mun/wide-open-mouth.svg">
-        <br>[sa]
+        <p>{ia}
+        <p>”[sa]”
       <td align=left>
         <img height=100 src="pic/ssl/stretched.png"
         ><img height=100 src="pic/ssl/open.png">
-        <br>/stretched/ + /open/
+        <br><b>/stretched/ + /open/</b>
       <td align=left>
         <img class=bw height=100 src="pic/ssl/ost/sa-a1.png"
         ><img class=bw height=100 src="pic/ssl/ost/sa-a2.png">
@@ -917,16 +996,17 @@ cheeks</i> remain consistent with each other.
       <td align=left>
         <img class=bw height=100 src="pic/ssl/tsk/sa-a1.png"
         ><img class=bw height=100 src="pic/ssl/tsk/sa-a2.png">
-        <br>enorm, stor, oändlig (kort intensiv rörelse)
+        <br>[ja] enorm, stor, oändlig (kort intensiv rörelse)
     <tr>
       <td>
-        <img src="../pic/ssl/mun/pressed-lips.svg"
+        <img src="../pic/ssl/mun/flat-lips.svg"
         ><img src="../pic/ssl/mun/round-mouth.svg">
-        <br>[må]
+        <p>{på}
+        <p>”[må]”
       <td align=left>
         <img height=100 src="pic/ssl/bilabial.png"
         ><img height=100 src="pic/ssl/round.png">
-        <br>/bilabial/ + /round/
+        <br><b>/bilabial/ + /round/</b>
       <td align=left>
         <img class=bw height=100 src="pic/ssl/ost/maa-a1.png"
         ><img class=bw height=100 src="pic/ssl/ost/maa-a2.png">
@@ -938,17 +1018,6 @@ cheeks</i> remain consistent with each other.
         <br>liten, mycket liten, jätteliten (huvudet slås fram)
       <td align=left>
   </table>
-
-  <p>Kommentarer:
-
-  <ul>
-    <li><b>[sa]</b> borde kallas [ia] eftersom den första munbilden är samma
-      som [i]. I <i>Teckenspråk – Så klart!</i> används beteckningen [ja]
-      istället – ett steg i rätt riktning.
-
-    <li><b>[m]</b> verkar användas för två orala adverb som ser olika ut?
-      Förvirrande.
-  </ul>
 </section>
 <hr>
 <section>
@@ -957,7 +1026,6 @@ cheeks</i> remain consistent with each other.
   <div class=FIXME style="margin:1em">
     <b>Att göra:</b>
     <ul>
-      <li>Lägg till [ɧ], [ɕ] och [ŋ]
       <li>Ge alla munbilder en teckenskriftsymbol
       <li>Kategorisera de återstående symbolerna
       <li>Jämför med någon annans resultat
@@ -977,156 +1045,207 @@ cheeks</i> remain consistent with each other.
     ASLWrites munsymboler med de munformer som kan observeras i den talade
     svenskan).
 
-    <p>Jag har ännu inte haft möjligheten att jämföra dessa munbilder med
-    svenskt teckenspråk och det är därför osäkert om gränserna i
-    kategoriseringen överensstämmer med gängse teckenspråkspraxis. (Kanske gör
-    man skillnad på munbilderna u, o och å? Eller e och ä? Kanske gör man det
-    inte mellan y och ö?)
+    <p class=indent>Ordningen i vokalfyrsidingen nedan är baserad på Figur 2
+    i <a href="#linjer-fridefors-2018">Linjer Fridefors (2018, 8)</a>.
+    <b>/benämning/</b> kommer ifrån <a href="#bergman-wallin-2001">Bergman &
+    Wallin (2001, 11–13, kap ”’Adaption to Native Pattern’ Hypothesis”)</a> –
+    förutom för ’u’ som inte finns upptagen i deras sammanställning.
 
     <figure>
       <table border=1>
         <tr>
-          <th rowspan=2 border=0 style="max-width:1.4em">
-          <th colspan=2>mjuka vokaler
-          <th colspan=2>hårda vokaler
+          <th rowspan=2>
+          <th colspan=2>mjuka
+          <th colspan=2>hårda
         <tr>
-          <th>orundad
-          <th>putande
-          <th>
-          <th>rundad
+          <th>putade
+          <th>orundade
+          <th>halvrundade
+          <th>rundade
         <tr>
-          <th style="max-width:1.4em"><div style="transform:rotate(-90deg);margin-bottom:-9em">sluten</div>
-          <td><img class=bw height=142 src="pic/ssl/alfa/i.png">
-            <br><img src="../pic/ssl/mun/clenched-teeth.svg"> i
-          <td><img class=bw height=142 src="pic/ssl/alfa/y.png">
-            <br><img src="../pic/ssl/mun/clenched+lips-out.svg"> y
-          <td><img class=bw height=142 src="pic/ssl/alfa/u.png">
-            <br><img src="../pic/ssl/mun/round-mouth.svg"> u
-          <td><img class=bw height=142 src="pic/ssl/alfa/o.png">
-            <br><img src="../pic/ssl/mun/round-mouth.svg"> o
+          <th style="max-width:1.4em"><div style="transform:rotate(-90deg);margin-bottom:-9em">slutna</div>
+          <td><b>/forward/</b>
+            <br><img class=bw height=142 src="pic/ssl/alfa/y.png">
+            <br><img src="../pic/ssl/mun/lips-out-sh.svg"> [y]
+          <td><b>/stretched/</b>
+            <br><img class=bw height=142 src="pic/ssl/alfa/i.png">
+            <br><img src="../pic/ssl/mun/clenched-teeth.svg"> [i]
+          <td><b class=blue>/round/</b>
+            <br><img class=bw height=142 src="pic/ssl/alfa/u.png">
+            <br><img src="../pic/ssl/mun/round-mouth.svg"> [u]
+          <td><b>/round/</b>
+            <br><img class=bw height=142 src="pic/ssl/alfa/o.png">
+            <br><img src="../pic/ssl/mun/round-mouth.svg"> [o]
         <tr>
           <th style="max-width:1.4em"><div style="transform:rotate(-90deg);margin-bottom:-9em">mellan</div>
-          <td><img class=bw height=142 src="pic/ssl/alfa/e.png">
-            <br><img src="../pic/ssl/mun/open-mouth.svg"> e
           <td>
+          <td><b>/stretched/</b>
+            <br><img class=bw height=142 src="pic/ssl/alfa/e.png">
+            <br><img src="../pic/ssl/mun/clenched-teeth.svg"> [e]
           <td>
-          <td><img class=bw height=142 src="pic/ssl/alfa/aa.png">
-            <br><img src="../pic/ssl/mun/round-mouth.svg"> å
+          <td><b>/round/</b>
+            <br><img class=bw height=142 src="pic/ssl/alfa/aa.png">
+            <br><img src="../pic/ssl/mun/round-mouth.svg"> [å]
         <tr>
-          <th style="max-width:1.4em"><div style="transform:rotate(-90deg);margin-bottom:-9em">öppen</div>
-          <td><img class=bw height=142 src="pic/ssl/alfa/ae.png">
-            <br><img src="../pic/ssl/mun/open-mouth.svg"> ä
-          <td><img class=bw height=142 src="pic/ssl/alfa/oe.png">
-            <br><img src="../pic/ssl/mun/lips-out-sh.svg"> ö
+          <th style="max-width:1.4em"><div style="transform:rotate(-90deg);margin-bottom:-9em">öppna</div>
+          <td><b>/forward/</b>
+            <br><img class=bw height=142 src="pic/ssl/alfa/oe.png">
+            <br><img src="../pic/ssl/mun/lips-out-sh.svg"> [ö]
+          <td><b>/open/</b>
+            <br><img class=bw height=142 src="pic/ssl/alfa/ae.png">
+            <br><img src="../pic/ssl/mun/wide-open-mouth.svg"> [ä]
           <td>
-          <td><img class="bw vokal"height=142 src="pic/ssl/alfa/a.png">
-            <br><img src="../pic/ssl/mun/wide-open-mouth.svg"> a
+          <td><b>/open/</b>
+            <br><img class="bw vokal"height=142 src="pic/ssl/alfa/a.png">
+            <br><img src="../pic/ssl/mun/wide-open-mouth.svg"> [a]
       </table>
-      <figcaption>Uppställningen av vokaler ovan är baserad på Figur 2
-        i <a href="#linjer-fridefors-2018">Linjer Fridefors (2018,
-        8)</a>.</figcaption>
     </figure>
   </section>
   <section>
     <h1 id="svenskinlanat-likhet">Uppställning efter likhet</h1>
 
-    <p>Denna data är ännu mindre vederlagt än vokaluppställningen ovan vad det
-    gäller gränsdragning mellan de olika munbilderna. De mindre kategorierna
-    har (uppskattningsvis) större chans att förbli intakta i framtida
-    revideringar. Därtill kan a och p (med tillhörande b och m) betraktas som
-    tämligen definitiva, medan
+    <p>Gränsdragningen mellan de olika munbilderna är inte alltid helt klar i
+    uppställningen nedan. De mindre kategorierna har (uppskattningsvis) större
+    chans att förbli intakta i framtida revideringar. Därtill kan a och p (med
+    tillhörande b och m) betraktas som tämligen definitiva, medan
     kategorin <img src="../pic/ssl/mun/open-mouth.svg" style="height:1em">
     sannolikt kommer brytas ner på en eller annan ledd.
 
-    <p>De fonem som ingår i tonalitetspar<sup> <a href="#fn3">[3]</a></sup> är
-    skrivna intill varandra och vokaler
-    är <span class=green>grönmarkerade</span> i uppställningen nedan.
+    <p class=indent>De fonem som ingår i
+    tonalitetspar<sup><a href="#fn3">[3]</a></sup> är skrivna intill varandra
+    och vokaler är <span class=green>grönmarkerade</span> i uppställningen
+    nedan.
 
-    <p><table border=1 class=inline style="border:0;vertical-align:bottom">
+    <p><table border=1 class=inline style="border:0;vertical-align:top">
       <tr>
         <td style="border:0">
-        <td colspan=2>tonalitetspar
+        <td colspan=3><b>/bilabial/</b>
       <tr>
         <td class=blue><img src="../pic/ssl/mun/flat-lips.svg">
-        <td><img class=bw height=142 src="pic/ssl/alfa/b.png"><br>b
-        <td><img class=bw height=142 src="pic/ssl/alfa/p.png"><br>p
-        <td><img class=bw height=142 src="pic/ssl/alfa/m.png"><br>m
-    </table>
-
-    <table border=1 class=inline style="border:0;vertical-align:bottom">
+          <p>{p}
+        <td><img class=bw height=142 src="pic/ssl/alfa/p.png"><br>[p]
+        <td><img class=bw height=142 src="pic/ssl/alfa/b.png"><br>[b]
+        <td><img class=bw height=142 src="pic/ssl/alfa/m.png"><br>[m]
       <tr>
         <td style="border:0">
         <td colspan=2>tonalitetspar
-        <td colspan=2>tonalitetspar
-      <tr>
-        <td class=blue><img src="../pic/ssl/mun/open-mouth.svg">
-        <td><img class=bw height=142 src="pic/ssl/alfa/d.png"><br>d
-        <td><img class=bw height=142 src="pic/ssl/alfa/t.png"><br>t
-        <td><img class=bw height=142 src="pic/ssl/alfa/g.png"><br>g
-        <td><img class=bw height=142 src="pic/ssl/alfa/k.png"><br>k
-        <td><img class=bw height=142 src="pic/ssl/alfa/n.png"><br>n
-        <td class=green><img class=bw height=142 src="pic/ssl/alfa/e.png"><br>e
-        <td class=green><img class=bw height=142 src="pic/ssl/alfa/ae.png"><br>ä
     </table>
 
-    <table border=1 class=inline style="border:0;vertical-align:bottom">
+    <table border=1 class=inline style="border:0;vertical-align:top">
       <tr>
         <td style="border:0">
-        <td colspan=2>tonalitetspar
+        <td colspan=2><b>/labiodental/</b>
       <tr>
         <td class=blue><img src="../pic/ssl/mun/biting-lip.svg">
-        <td><img class=bw height=142 src="pic/ssl/alfa/f.png"><br>f
-        <td><img class=bw height=142 src="pic/ssl/alfa/v.png"><br>v
-    </table>
-
-    <table border=1 class=inline style="vertical-align:bottom">
+          <p>{f}
+        <td><img class=bw height=142 src="pic/ssl/alfa/f.png"><br>[f]
+        <td><img class=bw height=142 src="pic/ssl/alfa/v.png"><br>[v]
       <tr>
-        <td class=blue><img src="../pic/ssl/mun/clenched-teeth.svg">
-        <td class=green><img class=bw height=142 src="pic/ssl/alfa/i.png"><br>i
-        <td><img class=bw height=142 src="pic/ssl/alfa/j.png"><br>j
-        <td><img class=bw height=142 src="pic/ssl/alfa/s.png"><br>s
+        <td style="border:0">
+        <td colspan=2>tonalitetspar
     </table>
 
-    <table border=1 class=inline style="vertical-align:bottom">
+    <table border=1 class=inline style="border:0;vertical-align:top">
+      <tr>
+        <td style="border:0">
+        <td colspan=3><b>/round/</b>
       <tr>
         <td class=blue><img src="../pic/ssl/mun/round-mouth.svg">
-        <td class=green><img class=bw height=142 src="pic/ssl/alfa/o.png"><br>o
-        <td class=green><img class=bw height=142 src="pic/ssl/alfa/u.png"><br>u
-        <td class=green><img class=bw height=142 src="pic/ssl/alfa/aa.png"><br>å
+          <p>{å}
+        <td class=green><img class=bw height=142 src="pic/ssl/alfa/o.png"><br>[o]
+        <td class=green><img class=bw height=142 src="pic/ssl/alfa/u.png"><br>[u]
+        <td class=green><img class=bw height=142 src="pic/ssl/alfa/aa.png"><br>[å]
     </table>
 
-    <table border=1 class=inline style="vertical-align:bottom">
+    <table border=1 class=inline style="border:0;vertical-align:top">
       <tr>
-        <td class=blue><img src="../pic/ssl/mun/clenched+lips-out.svg">
-        <td class=green><img class=bw height=142 src="pic/ssl/alfa/y.png"><br>y
-    </table>
-
-    <table border=1 class=inline style="vertical-align:bottom">
+        <td style="border:0">
+        <td colspan=2><b>/open/</b>
       <tr>
         <td class=blue><img src="../pic/ssl/mun/wide-open-mouth.svg">
-        <td class=green><img class=bw height=142 src="pic/ssl/alfa/a.png"><br>a
+          <p>{a}
+        <td class=green><img class=bw height=142 src="pic/ssl/alfa/a.png"><br>[a]
+        <td class=green><img class=bw height=142 src="pic/ssl/alfa/ae.png"><br>[ä]
     </table>
 
-    <table border=1 class=inline style="vertical-align:bottom">
+    <table border=1 class=inline style="border:0;vertical-align:top">
+      <tr>
+        <td style="border:0">
+        <td colspan=2><b>/forward/</b>
       <tr>
         <td class=blue><img src="../pic/ssl/mun/lips-out-sh.svg">
-        <td class=green><img class=bw height=142 src="pic/ssl/alfa/oe.png"><br>ö
+          <p>{y}
+        <td class=green><img class=bw height=142 src="pic/ssl/alfa/y.png"><br>[y]
+        <td class=green><img class=bw height=142 src="pic/ssl/alfa/oe.png"><br>[ö]
+    </table>
+
+    <table border=1 class=inline style="border:0;vertical-align:top">
+      <tr>
+        <td style="border:0">
+        <td colspan=2><b>/stretched/</b>
+        <td colspan=4 class=FIXME><b>/stretched/</b> (?)
+        <td colspan=6 class=FIXME><b>/stretched/</b> (??)
+      <tr>
+        <td class=blue><img src="../pic/ssl/mun/clenched-teeth.svg">
+          <p>{i}
+        <td class=green><img class=bw height=142 src="pic/ssl/alfa/e.png"><br>[e]
+        <td class=green><img class=bw height=142 src="pic/ssl/alfa/i.png"><br>[i]
+        <td><img class=bw height=142 src="pic/ssl/alfa/j.png"><br>[j]
+        <td><img class=bw height=142 src="pic/ssl/alfa/s.png"><br>[s]
+        <td><div class=bw style="height:142px;width:119px;display:inline-block;background:#aaa;line-height:142px">[bild saknas]</div>[ɕ]
+        <td><div class=bw style="height:142px;width:119px;display:inline-block;background:#aaa;line-height:142px">[bild saknas]</div>[ɧ]
+        <td><img class=bw height=142 src="pic/ssl/alfa/t.png"><br>[t]
+        <td><img class=bw height=142 src="pic/ssl/alfa/d.png"><br>[d]
+        <td><img class=bw height=142 src="pic/ssl/alfa/n.png"><br>[n]
+        <td><img class=bw height=142 src="pic/ssl/alfa/k.png"><br>[k]
+        <td><img class=bw height=142 src="pic/ssl/alfa/g.png"><br>[g]
+        <td><div class=bw style="height:142px;width:119px;display:inline-block;background:#aaa;line-height:142px">[bild saknas]</div>[ŋ]
+      <tr>
+        <td colspan=7 style="border:0">
+        <td colspan=2>tonalitetspar
+        <td style="border:0">
+        <td colspan=2>tonalitetspar
     </table>
 
     <p>Ännu okategoriserade.
 
-    <p><table border=1 class=inline>
+    <p>
+    <table border=1 class=inline style="border:0;vertical-align:top">
+      <tr>
+        <td style="border:0">
+        <td class=FIXME><b>?</b>
       <tr>
         <td class=blue><big><b>?</b></big>
-        <td><img class=bw height=142 src="pic/ssl/alfa/h.png"><br>h
+        <td><img class=bw height=142 src="pic/ssl/alfa/h.png"><br>[h]
     </table>
 
-    <table border=1 class=inline style="vertical-align:bottom">
+    <table border=1 class=inline style="border:0;vertical-align:top">
+      <tr>
+        <td style="border:0">
+        <td colspan=2 class=FIXME><b>/open<sup>tongue</sup>/</b> (?)
       <tr>
         <td class=blue><big><b>?</b></big>
-        <td><img class=bw height=142 src="pic/ssl/alfa/l.png"><br>l
-        <td><img class=bw height=142 src="pic/ssl/alfa/r.png"><br>r
+          <p>{l}
+        <td><img class=bw height=142 src="pic/ssl/alfa/l.png"><br>[l]
+        <td><img class=bw height=142 src="pic/ssl/alfa/r.png"><br>[r]
     </table>
+
+    <p>Ovanstående munbilder är inte kategoriserade. Jag misstänker starkt att
+    [h] inte har någon egen realisation som munbild (den förekommer förvisso i
+    det genuina
+    tecknet <a href="https://teckensprakslexikon.su.se/ord/00112">HYFF</a>, men
+    jag kan då inte se skillnad på [hyf] och bara [yf]) och jag misstänker att
+    [h] reduceras alltid på detta sätt.
+
+    <p class=indent>Munpositionen {l} <b>/open<sup>tongue</sup>/</b> förekommer
+    (i tecken som
+    ’<a href="https://teckensprakslexikon.su.se/ord/01594">landsting</a>’) men
+    tungan är, enligt <a href="#bergman-wallin-2001">Bergman & Wallin (2001,
+    10)</a>, inte ett distingerade drag för munbilderna <b>/forward/</b>
+    och <b>/open/</b>, så denna munbild kan således lika gärna artikuleras (och
+    skrivas) utan <b>/<sup>tongue</sup>/</b>. (”Tongue protrusion may also be
+    used as reinforcement of the segments <b>/forward/</b> and <b>/open/,</b>
+    but for those segments the feature tongue is not distinctive.”)
   </section>
   <section>
     <h1 id="svenskinlanat-aslwrite">I ASLWrite</h1>
@@ -1146,104 +1265,127 @@ cheeks</i> remain consistent with each other.
     <p>Av detta kan vi dra slutsatsen att följande munbilder måste vara
     korrekta.
 
-    <p><table border=1 class=inline style="border:0;vertical-align:bottom">
+    <p><table border=1 class=inline style="border:0;vertical-align:top">
+      <tr>
+        <td style="border:0">
+        <td colspan=3><b>/bilabial/</b>
       <tr>
         <td class=blue><img src="../pic/ssl/mun/flat-lips.svg">
-        <td><img class=bw height=142 src="pic/ssl/alfa/p.png"><br>p
+          <p>{p}
+        <td><img class=bw height=142 src="pic/ssl/alfa/p.png"><br>[p]
+        <td><img class=bw height=142 src="pic/ssl/alfa/b.png"><br>[b]
+        <td><img class=bw height=142 src="pic/ssl/alfa/m.png"><br>[m]
+      <tr>
+        <td style="border:0">
+        <td colspan=2>tonalitetspar
     </table>
-    <table border=1 class=inline style="vertical-align:bottom">
+
+    <table border=1 class=inline style="border:0;vertical-align:top">
+      <tr>
+        <td style="border:0">
+        <td colspan=2><b>/open/</b>
       <tr>
         <td class=blue><img src="../pic/ssl/mun/wide-open-mouth.svg">
-        <td><img class=bw height=142 src="pic/ssl/alfa/a.png"><br>a
+          <p>{a}
+        <td class=green><img class=bw height=142 src="pic/ssl/alfa/a.png"><br>[a]
+        <td class=green><img class=bw height=142 src="pic/ssl/alfa/ae.png"><br>[ä]
     </table>
   </section>
   <section>
     <h1 id="svenskinlanat-alfabetet">Alfabetet</h1>
 
-    <p>Nedan är alla de bilder du finner ovan, men i här alfabetisk ordning
-    (vokaler är markerade i <span class=green>grönt</span>).
-
-    <p>I listan finns inte C, Q, W, X och Z med (eftersom de inte utgör egna
-    fonem i talspråket). Saknas gör också fonemen [ɧ]
-    (<i><u>ch</u>ock, <u>stj</u>ärna</i>), [ɕ]
+    <p>I listan nedan finns inte C, Q, W, X och Z med (eftersom de inte utgör
+    egna fonem). Fonemen [ɧ] (<i><u>ch</u>ock, <u>stj</u>ärna</i>), [ɕ]
     (<i><u>tj</u>ock, <u>k</u>ärna</i>) och [ŋ] (<i>i<u>ng</u>en,
-    u<u>n</u>ken</i>) eftersom de inte fanns med i videon varifrån bilderna
-    tagits.
+    u<u>n</u>ken</i>) har endast platshållare (och inga bilder) eftersom de
+    inte fanns med i videon varifrån bilderna tagits.
+
+    <p class=indent>Bilderna nedan är samma bilder som ovan, men i här
+    alfabetisk ordning (vokaler är markerade i <span class=green>grönt</span>).
 
     <p>
     <table border=1 class="inline green">
-      <tr><td><img class="bw vokal"height=142 src="pic/ssl/alfa/a.png"><br>a
+      <tr><td><img class="bw vokal"height=142 src="pic/ssl/alfa/a.png"><br>[a]
     </table>
     <table border=1 class=inline>
-      <tr><td><img class=bw height=142 src="pic/ssl/alfa/b.png"><br>b
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/b.png"><br>[b]
     </table>
     <table border=1 class=inline>
-      <tr><td><img class=bw height=142 src="pic/ssl/alfa/d.png"><br>d
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/d.png"><br>[d]
     </table>
     <table border=1 class="inline green">
-      <tr><td><img class=bw height=142 src="pic/ssl/alfa/e.png"><br>e
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/e.png"><br>[e]
     </table>
     <table border=1 class=inline>
-      <tr><td><img class=bw height=142 src="pic/ssl/alfa/f.png"><br>f
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/f.png"><br>[f]
     </table>
     <table border=1 class=inline>
-      <tr><td><img class=bw height=142 src="pic/ssl/alfa/g.png"><br>g
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/g.png"><br>[g]
     </table>
     <table border=1 class=inline>
-      <tr><td><img class=bw height=142 src="pic/ssl/alfa/h.png"><br>h
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/h.png"><br>[h]
     </table>
     <table border=1 class="inline green">
-      <tr><td><img class=bw height=142 src="pic/ssl/alfa/i.png"><br>i
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/i.png"><br>[i]
     </table>
     <table border=1 class=inline>
-      <tr><td><img class=bw height=142 src="pic/ssl/alfa/j.png"><br>j
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/j.png"><br>[j]
     </table>
     <table border=1 class=inline>
-      <tr><td><img class=bw height=142 src="pic/ssl/alfa/k.png"><br>k
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/k.png"><br>[k]
       <!-- K:et taget ur 'x' för att slippa å-rundningen i 'kå'. -->
     </table>
     <table border=1 class=inline>
-      <tr><td><img class=bw height=142 src="pic/ssl/alfa/l.png"><br>l
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/l.png"><br>[l]
     </table>
     <table border=1 class=inline>
-      <tr><td><img class=bw height=142 src="pic/ssl/alfa/m.png"><br>m
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/m.png"><br>[m]
     </table>
     <table border=1 class=inline>
-      <tr><td><img class=bw height=142 src="pic/ssl/alfa/n.png"><br>n
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/n.png"><br>[n]
     </table>
     <table border=1 class="inline green">
-      <tr><td><img class=bw height=142 src="pic/ssl/alfa/o.png"><br>o
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/o.png"><br>[o]
     </table>
     <table border=1 class=inline>
-      <tr><td><img class=bw height=142 src="pic/ssl/alfa/p.png"><br>p
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/p.png"><br>[p]
     </table>
     <table border=1 class=inline>
-      <tr><td><img class=bw height=142 src="pic/ssl/alfa/r.png"><br>r
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/r.png"><br>[r]
     </table>
     <table border=1 class=inline>
-      <tr><td><img class=bw height=142 src="pic/ssl/alfa/s.png"><br>s
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/s.png"><br>[s]
     </table>
     <table border=1 class=inline>
-      <tr><td><img class=bw height=142 src="pic/ssl/alfa/t.png"><br>t
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/t.png"><br>[t]
     </table>
     <table border=1 class="inline green">
-      <tr><td><img class=bw height=142 src="pic/ssl/alfa/u.png"><br>u
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/u.png"><br>[u]
     </table>
     <table border=1 class=inline>
-      <tr><td><img class=bw height=142 src="pic/ssl/alfa/v.png"><br>v
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/v.png"><br>[v]
     </table>
     <table border=1 class="inline green">
-      <tr><td><img class=bw height=142 src="pic/ssl/alfa/y.png"><br>y
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/y.png"><br>[y]
     </table>
     <table border=1 class="inline green">
-      <tr><td><img class=bw height=142 src="pic/ssl/alfa/aa.png"><br>å
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/aa.png"><br>[å]
     </table>
     <table border=1 class="inline green">
-      <tr><td><img class=bw height=142 src="pic/ssl/alfa/ae.png"><br>ä
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/ae.png"><br>[ä]
       <!-- Ä:et taget ur 'z' pga trasig munbild i 'ä'. -->
     </table>
     <table border=1 class="inline green">
-      <tr><td><img class=bw height=142 src="pic/ssl/alfa/oe.png"><br>ö
+      <tr><td><img class=bw height=142 src="pic/ssl/alfa/oe.png"><br>[ö]
+    </table>
+    <table border=1 class="inline">
+      <td><div class=bw style="height:142px;width:119px;display:inline-block;background:#aaa;line-height:142px">[bild saknas]</div><br>[ɕ]
+    </table>
+    <table border=1 class="inline">
+      <td><div class=bw style="height:142px;width:119px;display:inline-block;background:#aaa;line-height:142px">[bild saknas]</div><br>[ɧ]
+    </table>
+    <table border=1 class="inline">
+      <td><div class=bw style="height:142px;width:119px;display:inline-block;background:#aaa;line-height:142px">[bild saknas]</div><br>[ŋ]
     </table>
   </section>
 </section>
@@ -1252,21 +1394,23 @@ cheeks</i> remain consistent with each other.
   <h1 id="fotnoter">Fotnoter</h1>
 
   <div class=hanging style="margin-top:1em">
-    <p id=fn1><sup>1</sup> I denna text använder jag [u] för den munbild som är
-      förknippad med svenskans u-ljud, och [β] för det som i
-      teckenspråks­literaturen traditionellt skrivs ”[u]” (när man talar om
-      orala adverb). – Munbilden för [β] är densamma som för ljudet <i>bilabial
-      frikativ</i> (som i tex spanskans <i>Ha<u>v</u>ana</i>) vilken i IPA
-      (<a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet">International
-      Phonetic Alphabet</a>) skrivs ”β”.
+    <p id=fn1><sup>1</sup> Här används {β} som transkription för munbilden i
+      det orala adverbet <i>liten, tunn</i> (som i alla andra källor skrivs
+      ”[u]”). Anledningen till att vi valt att göra annorlunda här är att
+      munbilden inte påminner om svenskans [u] utan istället ser ut som
+      <i>bilabial frikativa</i> (som i spanskans <i>Ha<u>v</u>ana</i>) vilken
+      skrivs [β] med det <i>internationella fonetiska alfabetet</i>
+      (<a href="https://sv.wikipedia.org/wiki/Internationella_fonetiska_alfabetet">IPA</a>).
 
-    <p id=fn2><sup>2</sup> Det jag här kallar <b class=blue>/pouted/</b>
-      namnges inte av Bergman och Wallin (2001) utan beskrivs där endast
-      som <b>[−open, +forward]</b>.
+
+    <p id=fn2><sup>2</sup> Det jag här kallar
+      {m<sub>1</sub>} <b class=blue>/pouted/</b> namnges inte
+      av <a href="#bergman-wallin-2001">Bergman och Wallin (2001)</a> utan
+      beskrivs där endast som <b>[−open, +forward]</b>.
 
     <p id=fn3><sup>3</sup> Ett tonalitetspar är två (talspråks-)fonem som båda
       har samma artikulationsställe och artikulationssätt – den enda skillnaden
-      är att den ena är tonande och den andra tonlös (tex B–P och G–K).
+      är att den ena är tonande och den andra tonlös (tex [b]–[p] och [g]–[k]).
       Eftersom en skillnad i tonalitet inte syns, ser båda fonemen i dessa par
       alltid likadana ut.
   </div>

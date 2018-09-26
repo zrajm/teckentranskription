@@ -357,6 +357,8 @@
 ** DONE Transcription link shouldn't switch video/text mode             :BUG:
    CLOSED: [2018-09-03 Mon 05:02]
 * Transcription intro article
+** TODO Incorporate Bergman handshape attribute value table
+   bergman_sardrag.pdf
 ** TODO Describe symbols below circling/curving/hitting/twisting
 ** TODO Add symbols from Riemer 2015
 ** TODO # links should auto-uncollapse sections
