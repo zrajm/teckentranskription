@@ -357,7 +357,7 @@
 ** DONE Transcription link shouldn't switch video/text mode             :BUG:
    CLOSED: [2018-09-03 Mon 05:02]
 * Transcription intro article
-** [0/4] Use <details> instead of <tables> for glyph lists
+** [1/4] Use <details> instead of <tables> for glyph lists
 *** TODO Make long glyph descriptions multiline (now marked 'TODO')
     Some glyphs have very long descriptions which do not fit on one line (eg
     'Förs kort åt vänster med distinkt avslutning') -- these should wrap and be
@@ -367,8 +367,9 @@
 *** TODO Descriptions in glyph lists should be 60px high
     So that the relation diacritic do not overlap the edge. Also '?' fields
     should fill out the height of the description fields vertically.
-*** TODO Does hand image <div> need 'class=img'?
 *** TODO Make sure glyph lists filters still work
+*** DONE Remove unneeded 'class=img'
+    CLOSED: [2018-10-14 Sun 17:14]
 ** TODO Add missing newer glyphs
 *** TODO Add the other new glyphs here in TODO
 *** TODO Armvecket
