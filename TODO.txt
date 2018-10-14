@@ -357,8 +357,43 @@
 ** DONE Transcription link shouldn't switch video/text mode             :BUG:
    CLOSED: [2018-09-03 Mon 05:02]
 * Transcription intro article
-** TODO Incorporate Bergman handshape attribute value table
-   bergman_sardrag.pdf
+** [0/4] Use <details> instead of <tables> for glyph lists
+*** TODO Make long glyph descriptions multiline (now marked 'TODO')
+    Some glyphs have very long descriptions which do not fit on one line (eg
+    'Förs kort åt vänster med distinkt avslutning') -- these should wrap and be
+    displayed on two lines in the lists.
+
+    When done, also remove 'TODO' from CSS.
+*** TODO Descriptions in glyph lists should be 60px high
+    So that the relation diacritic do not overlap the edge. Also '?' fields
+    should fill out the height of the description fields vertically.
+*** TODO Does hand image <div> need 'class=img'?
+*** TODO Make sure glyph lists filters still work
+** TODO Add missing newer glyphs
+*** TODO Add the other new glyphs here in TODO
+*** TODO Armvecket
+** [0/6] Improve handshape images
+*** TODO Böjda 4-handen
+    The fingers should be as bent as in klohanden.
+*** TODO Q-handen
+    The thumb should be straight out, not semi-bent.
+*** TODO Add missing U-handen
+*** TODO Add missing samlade dubbelkroken
+*** TODO Add missing böjda W-handen
+*** TODO Add missing vinklade sprethanden
+** TODO Remove dead CSS
+** TODO Change all references into '<author> (<year>)' format
+** TODO Source references should list titles and be expandable (as in A-handen)
+   (needs to be fixed from Tumvinkelhanden onwards)
+** TODO Remove unnecessary quotes in href attributes
+   href="00000" -> href=00000
+** TODO Glyph list should all use same casing
+   Some tables now have capitalized descriptions, some have lower cased. This
+   should be the same everywhere.
+** TODO Add Bergman attribute values to handshape glyph lists
+   One should be able to filter the list using the values in Bergmans attribute
+   value table (that I got in the course 'Tecknets struktur och variation' --
+   'bergman_sardrag.pdf').
 ** TODO Describe symbols below circling/curving/hitting/twisting
 ** TODO Add symbols from Riemer 2015
 ** TODO # links should auto-uncollapse sections
