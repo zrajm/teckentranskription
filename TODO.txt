@@ -357,7 +357,7 @@
 ** DONE Transcription link shouldn't switch video/text mode             :BUG:
    CLOSED: [2018-09-03 Mon 05:02]
 * Transcription intro article
-** [1/4] Use <details> instead of <tables> for glyph lists
+** [2/5] Use <details> instead of <tables> for glyph lists
 *** TODO Make long glyph descriptions multiline (now marked 'TODO')
     Some glyphs have very long descriptions which do not fit on one line (eg
     'Förs kort åt vänster med distinkt avslutning') -- these should wrap and be
@@ -368,6 +368,8 @@
     So that the relation diacritic do not overlap the edge. Also '?' fields
     should fill out the height of the description fields vertically.
 *** TODO Make sure glyph lists filters still work
+*** DONE Gather all glyph list CSS in one place
+    CLOSED: [2018-10-14 Sun 17:17]
 *** DONE Remove unneeded 'class=img'
     CLOSED: [2018-10-14 Sun 17:14]
 ** TODO Add missing newer glyphs
