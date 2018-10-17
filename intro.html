@@ -37,7 +37,6 @@
 
     p + hr { display: none; }
 
-    .TODO { background: rgba(0, 255, 0, .75); }
     .FIXME { background: rgba(255, 255, 0, .75); font-weight: bold; }
     :not(td,tr).FIXME:before { content: "FIXME: "; }
     .FIXME:empty:before { content: "FIXME"; }
@@ -178,44 +177,36 @@
     /*** (middle) <details> summary ***/
     .columns > details > summary {
       position: relative;
-      line-height: 55px;
-      display: block;
-      margin: 0 -.75em; /* override parent element's padding */
+      margin: 0 -.75em;      /* override parent element's horisontal padding */
+      height: 55px;
+      display: flex;
+      align-items: center;
     }
 
     .columns > details.head { background: #ccc; }
     .columns > details.head > summary { font-weight: bold; }
     /*** (on left) transcription symbol (one char or SVG) ***/
-   .columns > details > summary > span > img {
-      height: .9em;
-      vertical-align: baseline;
-    }
+    .columns > details > summary > span > img { height: .9em; }
+    .columns > details > summary > div > span,
     .columns > details > summary > span {
+      display: inline-block;
+      line-height: 55px;    /* = parent summary height */
       font-weight: normal;
-      float: left;
-      width: 1.25em;
-      font-size: 1.8em; /* same as .x2 */
-      height: 100%;
-      display: block;
-      vertical-align: middle;
+      font-size: 1.8em;     /* same as .x2 */
+      vertical-align: top;  /* to align with <img> in same container */
+      min-width: 1.25em;
       text-align: center;
     }
     /*** (on right) handshape picture(s) ***/
     .columns > details > summary > div {
-      padding: 0px 2px;
       height: 100%;
       position: absolute;
       right: 0;
       top: 0;
     }
-    .columns > details > summary > div > img { height: 100%; }
-    .columns > details > summary > div > span {
-      display: inline-block;
+    .columns > details > summary > div > img {
       height: 100%;
-      vertical-align: top;
-      padding: 0 2px;
-      font-weight: normal;
-      font-size: 1.8em; /* same as .x2 */
+      padding: 2px 2px 0 2px;
     }
     /*** expanded <details> ***/
     /*
@@ -1155,8 +1146,8 @@
                   <details closed class="fs fv f4 flat hel h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb">
                     <summary><span class="h1977 h1997 h2015 hweb">􌤣</span>Vinkelhanden
                       <div class="h1977 h1997 h2015 hweb">
-                        <img class="h1977 h1997 h2015" src="pic/x/vinkelhanden-1.png">
-                        <img class="      h1997 h2015" src="pic/x/vinkelhanden-2.png">
+                        <img class="h1977 h1997 h2015" src="pic/x/vinkelhanden-1.png"
+                       ><img class="      h1997 h2015" src="pic/x/vinkelhanden-2.png">
                       </div>
                     </summary>
                     <p><img src="pic/x/vinkelhanden-1.png" class="float-left
@@ -1178,8 +1169,8 @@
                   <details closed class="f0 knuten fing h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb">
                     <summary><span class="h1977 h1997 h2015 hweb">􌤧</span>Tumhanden (tummen)
                       <div class="h1977 h1997 h2015 hweb">
-                        <img class="h1977 h1997 h2015" src="pic/x/tumhanden-1.png">
-                        <img class="h1977 h1997      " src="pic/x/tumhanden-2.png">
+                        <img class="h1977 h1997 h2015" src="pic/x/tumhanden-1.png"
+                       ><img class="h1977 h1997      " src="pic/x/tumhanden-2.png">
                       </div>
                     </summary>
                     <p><b>Tummen</b> är vanligen rak, men böjda varianter
@@ -1190,9 +1181,9 @@
                   <details closed class="fb f1 open fing två h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb">
                     <summary><span class="h1977 h1997 h2015 hweb">􌥋</span>Måtthanden
                       <div class="h1977 h1997 h2015 hweb">
-                        <img class="h1977 h1997 h2015" src="pic/x/matthanden-1.png">
-                        <img class="      h1997      " src="pic/x/matthanden-2.png">
-                        <img class="      h1997      " src="pic/x/matthanden-3.png">
+                        <img class="h1977 h1997 h2015" src="pic/x/matthanden-1.png"
+                       ><img class="      h1997      " src="pic/x/matthanden-2.png"
+                       ><img class="      h1997      " src="pic/x/matthanden-3.png">
                       </div>
                     </summary>
                     <p>”<b>Måtthanden</b> formas av tummen och pekfingret som
@@ -1255,8 +1246,8 @@
                   <details closed class="f1 fing closed grepp h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb">
                     <summary><span class="fv fb h1977 h1997 h2015 hweb">􌤩</span>Nyphanden
                       <div class="fv fb h1977 h1997 h2015 hweb">
-                        <img class="fv h1977 h1997 h2015" src="pic/x/nyphanden-1.png">
-                        <img class="fb h1977 h1997 h2015" src="pic/x/nyphanden-2.png">
+                        <img class="fv h1977 h1997 h2015" src="pic/x/nyphanden-1.png"
+                       ><img class="fb h1977 h1997 h2015" src="pic/x/nyphanden-2.png">
                       </div>
                     </summary>
                     <p>”<b>Nyphanden</b> skiljer sig från måtthanden genom att
@@ -1273,8 +1264,8 @@
                   <details closed class="fs f2 fing closed grepp h1993 h1997 h2015 hweb">
                     <summary><span class="fb fv h1997 h2015 hweb">􌤎</span>Lilla O-handen
                       <div class="fb fv h1997 h2015 hweb">
-                        <img class="fb h1997 h2015" src="pic/x/lilla-o-handen-1.png">
-                        <img class="fv h1997 h2015" src="pic/x/lilla-o-handen-2.png">
+                        <img class="fb h1997 h2015" src="pic/x/lilla-o-handen-1.png"
+                       ><img class="fv h1997 h2015" src="pic/x/lilla-o-handen-2.png">
                       </div>
                     </summary>
                     <p>Används istället för <i>NA-handen</i>, och <i>böjda
@@ -1304,8 +1295,8 @@
                   <details closed class="f0 closed knuten hel h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb">
                     <summary><span class="h1977 h1997 h2015 hweb">􌤦</span>Knutna handen
                       <div class="h1977 h1997 h2015 hweb">
-                        <img class="h1977 h1997 h2015" src="pic/x/knutna-handen-1.png">
-                        <img class="      h1997 h2015" src="pic/x/knutna-handen-2.png">
+                        <img class="h1977 h1997 h2015" src="pic/x/knutna-handen-1.png"
+                       ><img class="      h1997 h2015" src="pic/x/knutna-handen-2.png">
                       </div>
                     </summary>
                     <p>”<b>Den knutna handen</b> är böjd i inre och yttre
@@ -1327,11 +1318,11 @@
                   <details closed class="f4 fing closed grepp h1977 h1982 h1993 h1994 h1997 h2015 hweb">
                     <summary><span class="fs fx fb fv h1977 h1997 h2015 hweb">􌤲</span>Stora nyphanden
                       <div class="fs fx fb fv h1977 h1997 h2015 hweb">
-                        <img class="fx fb h1977 h1997 h2015" src="pic/x/stora-nyphanden-1.png">
-                        <img class="fx fv h1977 h1997      " src="pic/x/stora-nyphanden-2.png">
-                        <img class="fs fb h1977 h1997      " src="pic/x/stora-nyphanden-3.png">
-                        <img class="fx fv       h1997      " src="pic/x/stora-nyphanden-4.png">
-                        <img class="fs fb       h1997 h2015" src="pic/x/stora-nyphanden-5.png">
+                        <img class="fx fb h1977 h1997 h2015" src="pic/x/stora-nyphanden-1.png"
+                       ><img class="fx fv h1977 h1997      " src="pic/x/stora-nyphanden-2.png"
+                       ><img class="fs fb h1977 h1997      " src="pic/x/stora-nyphanden-3.png"
+                       ><img class="fx fv       h1997      " src="pic/x/stora-nyphanden-4.png"
+                       ><img class="fs fb       h1997 h2015" src="pic/x/stora-nyphanden-5.png">
                       </div>
                     </summary>
                     <details closed>
@@ -1375,8 +1366,8 @@
                   <details closed class="f1 fing ett h1977 h1982 h1993 h1994 h1997 h2015 hweb">
                     <summary><span class="fr fv h1977 h1997 h2015 hweb">􌤱</span>Lillfingret (I-handen)
                       <div class="fr fv h1977 h1997 h2015 hweb">
-                        <img class="fr h1977 h1997 h2015" src="pic/x/lillfingret-1.png">
-                        <img class="fv h1977 h1997      " src="pic/x/lillfingret-2.png">
+                        <img class="fr h1977 h1997 h2015" src="pic/x/lillfingret-1.png"
+                       ><img class="fv h1977 h1997      " src="pic/x/lillfingret-2.png">
                       </div>
                     </summary>
                     <p>”<b>Lillfingret</b> är rakt, men en viss böjning i inre
@@ -1388,9 +1379,9 @@
                   <details closed class="fr f1 fing två h1977 h1982 h1993 h1994 h1997 h2015 hweb">
                     <summary><span class="h1977 h1997 h2015 hweb">􌥑</span>Flyghanden
                       <div class="h1977 h1997 h2015 hweb">
-                        <img class="h1977 h1997 h2015" src="pic/x/flyghanden-1.png">
-                        <img class="            h2015" src="pic/x/flyghanden-2.png">
-                        <img class="h1977       h2015" src="pic/x/flyghanden-3.png">
+                        <img class="h1977 h1997 h2015" src="pic/x/flyghanden-1.png"
+                       ><img class="            h2015" src="pic/x/flyghanden-2.png"
+                       ><img class="h1977       h2015" src="pic/x/flyghanden-3.png">
                       </div>
                     </summary>
                     <p>”<b>Flyghanden</b> utgörs av tummen och lillfingret och
@@ -1411,10 +1402,10 @@
                   <details closed class="fs f4 open flat hel h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb">
                     <summary><span class="fr fv h1977 h1997 h2015 hweb">􌤢</span>Flata handen
                       <div class="fr fv h1977 h1997 h2015 hweb">
-                        <img class="h1977 h1997 h2015   " src="pic/x/flata-handen-1.png">
-                        <img class="fr h1977       h2015" src="pic/x/flata-handen-2.png">
-                        <img class="fr h1977 h1997      " src="pic/x/d-handen-1.png"    >
-                        <img class="fv       h1997      " src="pic/x/vinkelhanden-2.png">
+                        <img class="h1977 h1997 h2015   " src="pic/x/flata-handen-1.png"
+                       ><img class="fr h1977       h2015" src="pic/x/flata-handen-2.png"
+                       ><img class="fr h1977 h1997      " src="pic/x/d-handen-1.png"
+                       ><img class="fv       h1997      " src="pic/x/vinkelhanden-2.png">
                       </div>
                     </summary>
                     <p>”<b>Den flata handen</b> är en rak hand utan böjning i
@@ -1490,8 +1481,8 @@
                   <details closed class="f1 fing ett h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb">
                     <summary><span class="fr fv h1977 h1997 h2015 hweb">􌥈</span>Pekfingret
                       <div class="fr fv h1977 h1997 h2015 hweb">
-                        <img class="fr h1977 h1997 h2015" src="pic/x/pekfingret-1.png">
-                        <img class="fv h1977 h1997 h2015" src="pic/x/vinklade-pekfingret.png">
+                        <img class="fr h1977 h1997 h2015" src="pic/x/pekfingret-1.png"
+                       ><img class="fv h1977 h1997 h2015" src="pic/x/vinklade-pekfingret.png">
                       </div>
                     </summary>
                     <p>”<b>Pekfingret</b> är rakt, men kan i enstaka tecken
@@ -1593,9 +1584,9 @@
                   <details closed class="fs f2 fing två h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb">
                     <summary><span class="fr fv h1977 h1997 h2015 hweb">􌥌</span>N-handen
                       <div class="fr fv h1977 h1997 h2015 hweb">
-                        <img class="fr h1977 h1997 h2015" src="pic/x/n-handen-1.png">
-                        <img class="fv       h1997      " src="pic/x/vinklade-n-handen-1.png">
-                        <img class="fv       h1997      " src="pic/x/vinklade-n-handen-2.png">
+                        <img class="fr h1977 h1997 h2015" src="pic/x/n-handen-1.png"
+                       ><img class="fv       h1997      " src="pic/x/vinklade-n-handen-1.png"
+                       ><img class="fv       h1997      " src="pic/x/vinklade-n-handen-2.png">
                       </div>
                     </summary>
                     <p>”<b>N-handen</b> utgörs av rakt lång- och pekfinger.
@@ -1610,8 +1601,8 @@
                   <details closed class="fs fv f2 fing två h1993 h1994">
                     <summary><span class="h1994"><img src="pic/h-vinklade-n-handen.svg"></span>Vinklade N-handen
                       <div class="h1994">
-                        <img class="h1994"       src="pic/x/vinklade-n-handen-1.png">
-                        <img class="h1994 FIXME" src="pic/x/vinklade-n-handen-2.png"><!-- CONFIRM THIS -->
+                        <img class="h1994"       src="pic/x/vinklade-n-handen-1.png"
+                       ><img class="h1994 FIXME" src="pic/x/vinklade-n-handen-2.png"><!-- CONFIRM THIS -->
                       </div>
                     </summary>
                     <p><i>Används inte längre</i> – idag används
@@ -1747,8 +1738,8 @@
                   <details closed class="fs fb f4 open flat hel h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb">
                     <summary><span class="h1977 h1997 h2015 hweb">􌥅</span>S-handen
                       <div class="h1977 h1997 h2015 hweb">
-                        <img class="h1977       h1997 h2015" src="pic/x/s-handen-1.png">
-                        <img class="      h1994 h1997      " src="pic/x/s-handen-2.png">
+                        <img class="h1977       h1997 h2015" src="pic/x/s-handen-1.png"
+                       ><img class="      h1994 h1997      " src="pic/x/s-handen-2.png">
                       </div>
                     </summary>
                     <details closed>
@@ -1771,10 +1762,10 @@
                   <details closed class="fx fb f4 fem open hel h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb">
                     <summary><span class="h1977 h1997 h2015 hweb">􌤥</span>Klohanden
                       <div class="h1977 h1997 h2015 hweb">
-                        <img class="h1977 h1997 h2015" src="pic/x/klohanden-1.png">
-                        <img class="      h1997 h2015" src="pic/x/klohanden-2.png" style="margin-right:-6px">
-                        <img class="      h1997      " src="pic/x/bojda-sprethanden-1.png" style="margin-left:-2px">
-                        <img class="      h1997      " src="pic/x/klohanden-3.png">
+                        <img class="h1977 h1997 h2015" src="pic/x/klohanden-1.png"
+                       ><img class="      h1997 h2015" src="pic/x/klohanden-2.png" style="margin-right:-6px"
+                       ><img class="      h1997      " src="pic/x/bojda-sprethanden-1.png" style="margin-left:-2px"
+                       ><img class="      h1997      " src="pic/x/klohanden-3.png">
                       </div>
                     </summary>
                     <p>”<b>Klo-handen</b> är rak i de inre knogarna men böjd i
@@ -1800,8 +1791,8 @@
                   <details closed class="fv f1 open fing två h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb">
                     <summary><span class="h1977 h1997 h2015 hweb">􌥊</span>T-handen
                       <div class="h1977 h1997 h2015 hweb">
-                        <img class="h1977 h1997 h2015" src="pic/x/t-handen-1.png">
-                        <img class="      h1997      " src="pic/x/t-handen-2.png">
+                        <img class="h1977 h1997 h2015" src="pic/x/t-handen-1.png"
+                       ><img class="      h1997      " src="pic/x/t-handen-2.png">
                       </div>
                     </summary>
                     <details closed>
@@ -1875,8 +1866,8 @@
                   <details closed class="fx f2 fing två h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb">
                     <summary><span class="fr fv h1977 h1997 h2015 hweb">􌤭</span>V-handen
                       <div class="fr fv h1977 h1997 h2015 hweb">
-                        <img class="fr h1977 h1997 h2015" src="pic/x/v-handen-1.png">
-                        <img class="fv       h1997      " src="pic/x/vinklade-v-handen-1.png">
+                        <img class="fr h1977 h1997 h2015" src="pic/x/v-handen-1.png"
+                       ><img class="fv       h1997      " src="pic/x/vinklade-v-handen-1.png">
                       </div>
                     </summary>
                     <details closed>
@@ -1894,8 +1885,8 @@
                   <details closed class="fx f2 fing tre h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb">
                     <summary><span class="fr fv h1977 h1997 h2015 hweb">􌤮</span>Tupphanden
                       <div class="fr fv h1977 h1997 h2015 hweb">
-                        <img class="fr h1977 h1997 h2015" src="pic/x/tupphanden-1.png">
-                        <img class="fv       h1997      " src="pic/x/vinklade-tupphanden-1.png">
+                        <img class="fr h1977 h1997 h2015" src="pic/x/tupphanden-1.png"
+                       ><img class="fv       h1997      " src="pic/x/vinklade-tupphanden-1.png">
                       </div>
                     </summary>
                     <p><img src="pic/x/tupphanden-1.png" class="float-left
@@ -1952,9 +1943,9 @@
                   <details closed class="fx fr f4 fem open hel h1977 h1982 h1989 h1993 h1994 h1997 h2015 hweb">
                     <summary><span class="h1977 h1997 h2015 hweb">􌥃</span>Sprethanden
                       <div class="h1977 h1997 h2015 hweb">
-                        <img class="h1977 h1997 h2015" src="pic/x/sprethanden-1.png">
-                        <img class="h1977 h1997      " src="pic/x/4-handen-1.png">
-                        <img class="      h1997 h2015" src="pic/x/sprethanden-3.png">
+                        <img class="h1977 h1997 h2015" src="pic/x/sprethanden-1.png"
+                       ><img class="h1977 h1997      " src="pic/x/4-handen-1.png"
+                       ><img class="      h1997 h2015" src="pic/x/sprethanden-3.png">
                       </div>
                     </summary>
                     <p><img src="pic/x/sprethanden-1.png" class="float-left
@@ -2025,9 +2016,9 @@
                   <details closed class="fv fx f4 fing fem h1982 h1993 h1994 h1997 h2015 hweb">
                     <summary><span class="h1997 h2015 hweb">􌥒</span>Stora långfingret
                       <div class="h1997 h2015 hweb">
-                        <img class="h1997 h2015" src="pic/x/stora-langfingret-1.png">
-                        <img class="h1997      " src="pic/x/stora-langfingret-2.png">
-                        <img class="h1997      " src="pic/x/stora-langfingret-3.png">
+                        <img class="h1997 h2015" src="pic/x/stora-langfingret-1.png"
+                       ><img class="h1997      " src="pic/x/stora-langfingret-2.png"
+                       ><img class="h1997      " src="pic/x/stora-langfingret-3.png">
                       </div>
                     </summary>
                     <p class=FIXME>(Beskrivning saknas)
@@ -2036,8 +2027,8 @@
                   <details closed class="fx f4 fing closed grepp h1997 h1982 h1993 h1994 h2015 hweb">
                     <summary><span class="fv fb h1997 h2015 hweb">􌥟</span>Runda långfingret
                       <div class="fv fb h1997 h2015 hweb">
-                        <img class="fb h1997 h2015" src="pic/x/runda-langfingret-1.png">
-                        <img class="fv h1997      " src="pic/x/runda-langfingret-2.png" style="margin-left:-4px">
+                        <img class="fb h1997 h2015" src="pic/x/runda-langfingret-1.png"
+                       ><img class="fv h1997      " src="pic/x/runda-langfingret-2.png" style="margin-left:-4px">
                       </div>
                     </summary>
                     <p class=FIXME>(Beskrivning saknas)
@@ -2276,42 +2267,42 @@
                 <summary><span class="r1977">􌥨</span>Förs i höjdled (uppåt–nedåt)</summary>
               </details>
               <!-- Förs kort åt vänster med distinkt avslutning -->
-              <details closed class="TODO r1994">
+              <details closed class="r1994">
                 <summary><span><img src="pic/kort-vanster-distinkt-avslutning.svg"></span>Förs kort åt vänster med distinkt avslutning</summary>
 
                 <p>Förekommer bara i <a href="#ref1994">Polysyntetiska
                 tecken</a>.
               </details>
               <!-- Förs kort åt höger med distinkt avslutning -->
-              <details closed class="TODO r1994">
+              <details closed class="r1994">
                 <summary><span><img src="pic/kort-hoger-distinkt-avslutning.svg"></span>Förs kort åt höger med distinkt avslutning</summary>
 
                 <p>Förekommer bara i <a href="#ref1994">Polysyntetiska
                 tecken</a>.
               </details>
               <!-- Förs kort framåt med distinkt avslutning -->
-              <details closed class="TODO r1994">
+              <details closed class="r1994">
                 <summary><span><img src="pic/kort-fram-distinkt-avslutning.svg"></span>Förs kort framåt med distinkt avslutning</summary>
 
                 <p>Förekommer bara i <a href="#ref1994">Polysyntetiska
                 tecken</a>.
               </details>
               <!-- Förs kort inåt med distinkt avslutning -->
-              <details closed class="TODO r1994">
+              <details closed class="r1994">
                 <summary><span><img src="pic/kort-in-distinkt-avslutning.svg"></span>Förs kort inåt med distinkt avslutning</summary>
 
                 <p>Förekommer bara i <a href="#ref1994">Polysyntetiska
                 tecken</a>.
               </details>
               <!-- Förs kort uppåt med distinkt avslutning -->
-              <details closed class="TODO r1994">
+              <details closed class="r1994">
                 <summary><span><img src="pic/kort-upp-distinkt-avslutning.svg"></span>Förs kort uppåt med distinkt avslutning</summary>
 
                 <p>Förekommer bara i <a href="#ref1994">Polysyntetiska
                 tecken</a>.
               </details>
               <!-- Förs kort nedåt med distinkt avslutning -->
-              <details closed class="TODO r1994">
+              <details closed class="r1994">
                 <summary><span><img src="pic/kort-ner-distinkt-avslutning.svg"></span>Förs kort nedåt med distinkt avslutning</summary>
 
                 <p>Förekommer bara i <a href="#ref1994">Polysyntetiska
@@ -2342,84 +2333,84 @@
                 <summary><span>􌥸</span>Förs kort nedåt</summary>
               </details>
               <!-- Förs kort åt vänster med distinkt början -->
-              <details closed class="TODO r1994">
+              <details closed class="r1994">
                 <summary><span><img src="pic/kort-vanster-distinkt-borjan.svg"></span>Förs kort åt vänster med distinkt början</summary>
 
                 <p>Förekommer bara i <a href="#ref1994">Polysyntetiska
                 tecken</a>.
               </details>
               <!-- Förs kort åt höger med distinkt början -->
-              <details closed class="TODO r1994">
+              <details closed class="r1994">
                 <summary><span><img src="pic/kort-hoger-distinkt-borjan.svg"></span>Förs kort åt höger med distinkt början</summary>
 
                 <p>Förekommer bara i <a href="#ref1994">Polysyntetiska
                 tecken</a>.
               </details>
               <!-- Förs kort framåt med distinkt början -->
-              <details closed class="TODO r1994">
+              <details closed class="r1994">
                 <summary><span><img src="pic/kort-fram-distinkt-borjan.svg"></span>Förs kort framåt med distinkt början</summary>
 
                 <p>Förekommer bara i <a href="#ref1994">Polysyntetiska
                 tecken</a>.
               </details>
               <!-- Förs kort inåt med distinkt början -->
-              <details closed class="TODO r1994">
+              <details closed class="r1994">
                 <summary><span><img src="pic/kort-in-distinkt-borjan.svg"></span>Förs kort inåt med distinkt början</summary>
 
                 <p>Förekommer bara i <a href="#ref1994">Polysyntetiska
                 tecken</a>.
               </details>
               <!-- Förs kort uppåt med distinkt början -->
-              <details closed class="TODO r1994">
+              <details closed class="r1994">
                 <summary><span><img src="pic/kort-upp-distinkt-borjan.svg"></span>Förs kort uppåt med distinkt början</summary>
 
                 <p>Förekommer bara i <a href="#ref1994">Polysyntetiska
                 tecken</a>.
               </details>
               <!-- Förs kort nedåt med distinkt början -->
-              <details closed class="TODO r1994">
+              <details closed class="r1994">
                 <summary><span><img src="pic/kort-ner-distinkt-borjan.svg"></span>Förs kort nedåt med distinkt början</summary>
 
                 <p>Förekommer bara i <a href="#ref1994">Polysyntetiska
                 tecken</a>.
               </details>
               <!-- Förs kort åt vänster med distinkt början och avslutning -->
-              <details closed class="TODO r1994">
+              <details closed class="r1994">
                 <summary><span><img src="pic/kort-vanster-distinkt-borjan-och-avslutning.svg"></span>Förs kort åt vänster med distinkt början och avslutning</summary>
 
                 <p>Förekommer bara i <a href="#ref1994">Polysyntetiska
                 tecken</a>.
               </details>
               <!-- Förs kort åt höger med distinkt början och avslutning -->
-              <details closed class="TODO r1994">
+              <details closed class="r1994">
                 <summary><span><img src="pic/kort-hoger-distinkt-borjan-och-avslutning.svg"></span>Förs kort åt höger med distinkt början och avslutning</summary>
 
                 <p>Förekommer bara i <a href="#ref1994">Polysyntetiska
                 tecken</a>.
               </details>
               <!-- Förs kort framåt med distinkt början och avslutning -->
-              <details closed class="TODO r1994">
+              <details closed class="r1994">
                 <summary><span><img src="pic/kort-fram-distinkt-borjan-och-avslutning.svg"></span>Förs kort framåt med distinkt början och avslutning</summary>
 
                 <p>Förekommer bara i <a href="#ref1994">Polysyntetiska
                 tecken</a>.
               </details>
               <!-- Förs kort inåt med distinkt början och avslutning -->
-              <details closed class="TODO r1994">
+              <details closed class="r1994">
                 <summary><span><img src="pic/kort-in-distinkt-borjan-och-avslutning.svg"></span>Förs kort inåt med distinkt början och avslutning</summary>
 
                 <p>Förekommer bara i <a href="#ref1994">Polysyntetiska
                 tecken</a>.
               </details>
               <!-- Förs kort uppåt med distinkt början och avslutning -->
-              <details closed class="TODO r1994">
+              <details closed class="r1994">
                 <summary><span><img src="pic/kort-upp-distinkt-borjan-och-avslutning.svg"></span>Förs kort uppåt med distinkt början och avslutning</summary>
 
                 <p>Förekommer bara i <a href="#ref1994">Polysyntetiska
                 tecken</a>.
               </details>
               <!-- Förs kort nedåt med distinkt början och avslutning -->
-              <details closed class="TODO r1994">
+              <details closed class="r1994">
                 <summary><span><img src="pic/kort-ner-distinkt-borjan-och-avslutning.svg"></span>Förs kort nedåt med distinkt början och avslutning</summary>
 
                 <p>Förekommer bara i <a href="#ref1994">Polysyntetiska
@@ -3314,7 +3305,7 @@
                 istället.
               </details>
               <!-- Divergerar med distinkt avslutning -->
-              <details closed class="TODO r1994">
+              <details closed class="r1994">
                 <summary><span>􌥹􌦧</span>Divergerar med distinkt avslutning</summary>
 
                 <p>Förekommer bara i <a href="#ref1994">Polysyntetiska
@@ -3328,14 +3319,14 @@
                 tecken</a>.
               </details>
               <!-- Divergerar med distinkt början och avslutning -->
-              <details closed class="TODO r1994">
+              <details closed class="r1994">
                 <summary><span>􌦧􌥹􌦧</span>Divergerar med distinkt början och avslutning</summary>
 
                 <p>Förekommer bara i <a href="#ref1994">Polysyntetiska
                 tecken</a>.
               </details>
               <!-- Konvergerar med distinkt avslutning -->
-              <details closed class="TODO r1994">
+              <details closed class="r1994">
                 <summary><span>􌦅􌦧</span>Konvergerar med distinkt avslutning</summary>
 
                 <p>Förekommer bara i <a href="#ref1994">Polysyntetiska
@@ -3349,7 +3340,7 @@
                 tecken</a>.
               </details>
               <!-- Konvergerar med distinkt början och avslutning -->
-              <details closed class="TODO r1994">
+              <details closed class="r1994">
                 <summary><span>􌦧􌦅􌦧</span>Konvergerar med distinkt början och avslutning</summary>
 
                 <p>Förekommer bara i <a href="#ref1994">Polysyntetiska
@@ -3385,7 +3376,7 @@
                 </details>
               </details>
               <!-- Separator för artikulationsgrupper -->
-              <details closed class="TODO r1993 r1994 r1997 r2015 rweb">
+              <details closed class="r1993 r1994 r1997 r2015 rweb">
                 <summary><span>􌥼</span>Separator för artikulationsgrupper</summary>
                 <p>Den här symbolen delar in artikulationen i grupper. Alla
                 symboler inom en grupp utförs samtidigt, medan grupperna
@@ -3408,11 +3399,11 @@
                 </details>
               </details>
               <!-- Separator för sammansatta tecken -->
-              <details closed class="TODO r1977 r1982 r1989 r1993 r1994 r1997 r2015 rweb">
+              <details closed class="r1977 r1982 r1989 r1993 r1994 r1997 r2015 rweb">
                 <summary><span>􌥠</span>Separator för sammansatta tecken</summary>
               </details>
               <!-- Separator för höger/vänster hand -->
-              <details closed class="TODO r1997 rweb">
+              <details closed class="r1997 rweb">
                 <summary><span>􌦩</span>Separator för höger/vänster hand</summary>
 
                 <p>I somliga tecken (som i t ex

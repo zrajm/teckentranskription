@@ -357,26 +357,37 @@
 ** DONE Transcription link shouldn't switch video/text mode             :BUG:
    CLOSED: [2018-09-03 Mon 05:02]
 * Transcription intro article
-** [3/7] Use <details> instead of <tables> for glyph lists
+** [6/9] Use <details> instead of <tables> for glyph lists
+*** TODO Check apperance in MSIE/Edge/Safari
+**** TODO Multiline glyph list entries
+     Eg 'Förs kort åt vänster med distinkt avslutning'.
+**** TODO <details> arrows
+     Should exist, but should not shrink when shrinking browser window.
+**** TODO Relations' symbols should not overlap surrounding border
 *** TODO <details> missing arrow in handshape list in Firefox           :BUG:
-
-*** TODO Hand images in handshape list aligns badly in Firefox          :BUG:
-*** TODO Make long glyph descriptions multiline (now marked 'TODO')
+*** TODO Make sure glyph lists filters still work
+*** DONE Descriptions in glyph lists should be 55px high
+    CLOSED: [2018-10-17 Wed 02:37]
+    So that the relation diacritic do not overlap the edge. Also '?' fields
+    should fill out the height of the description fields vertically.
+*** DONE Make long glyph descriptions multiline (now marked 'TODO')
+    CLOSED: [2018-10-17 Wed 02:34]
     Some glyphs have very long descriptions which do not fit on one line (eg
     'Förs kort åt vänster med distinkt avslutning') -- these should wrap and be
     displayed on two lines in the lists.
 
     When done, also remove 'TODO' from CSS.
-*** TODO Descriptions in glyph lists should be 60px high
-    So that the relation diacritic do not overlap the edge. Also '?' fields
-    should fill out the height of the description fields vertically.
-*** TODO Make sure glyph lists filters still work
+*** DONE Hand images in handshape list aligns badly in Firefox          :BUG:
+    CLOSED: [2018-10-17 Wed 02:33]
 *** DONE Intro: Margins in <details> look wrong in firefox              :BUG:
     CLOSED: [2018-10-14 Sun 22:49]
 *** DONE Gather all glyph list CSS in one place
     CLOSED: [2018-10-14 Sun 17:17]
 *** DONE Remove unneeded 'class=img'
     CLOSED: [2018-10-14 Sun 17:14]
+** TODO New filter hilite color in glyph tables
+   The filter hilite should be clearly distinguishable even when the table
+   entries are expanded and/or focused.
 ** TODO Glyph list should all use same casing
    Some tables now have capitalized descriptions, some have lower cased. This
    should be the same everywhere.
