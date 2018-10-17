@@ -182,6 +182,19 @@
       display: flex;
       align-items: center;
     }
+    /* <details> folding arrow */
+    details > summary::-webkit-details-marker { display: none; }
+    details > summary::-moz-list-bullet { list-style-type: none;  }
+    details[open] > summary:before { content: "\25bc"; }
+    details       > summary:before {
+      content: "\25b6";
+      padding-right: .25em;
+    }
+    .columns > details:not(.head) > summary:before {
+      /* remove extra padding in glyph lists */
+      padding-right: 0;
+      margin-right: -.15em;
+    }
 
     .columns > details.head { background: #ccc; }
     .columns > details.head > summary { font-weight: bold; }
@@ -480,13 +493,13 @@
               </div>
 
               <figure>
-                <select class=tags data-placeholder="Välj kategorier att visa…" multiple>
+                <select class=tags data-placeholder="Filtrera lista…" multiple>
                   <optgroup label="Källa">
                     <option value=l1977>1977 – Tecknad svenska</option>
                     <option value=l1982>1982 – Teckenspråkstranskription</option>
                     <option value=l1989>1989 – Persontecken</option>
                     <option value=l1993>1993 – Kompendium i teckentranskription</option>
-                    <option value=l1994 class=FIXME title="FIXME: Ev. dubblerade lägessymboler i bokens brödtext är inte taggade i tabellen nedan.">1994 – Polysyntetiska tecken</option>
+                    <option value=l1994>1994 – Polysyntetiska tecken</option>
                     <option value=l1997>1997 – Svenskt teckenspråkslexikon</option>
                     <option value=l2015>2015 – Teckentranskription</option>
                     <option value=lweb>webb – Svenskt teckenspråkslexikon</option>
@@ -499,7 +512,7 @@
                 <span class=count style="color:#888" data-fmt="Visar {msg} {count} lägen."></span>
                 <br><select class=mode>
                   <option value=mark>Markera matchande</option>
-                  <option value=hide>Göm icke-matchande</option>
+                  <option value=hide>Visa bara matchande</option>
                 </select>
                 <select class=bool>
                   <option value=and>Och</option>
@@ -926,7 +939,12 @@
                 </div>
                 <figcaption>Symbolerna är ordnade uppifrån och ner, med de
                   symboler som vanligtvis inte involverar kontakt först i
-                  tabellen.</figcaption>
+                  tabellen.
+
+                  <p class="indent FIXME">FIXME Eventuellt dubblerade
+                  kroppslägen från <i>Polysyntetiska teckens</i> nämns inte i
+                  bokens appendix och är inte (än) markerade ovan.
+                </figcaption>
               </figure>
 
               <p>I 1982 års beskrivning av transkriptionssystemet
@@ -1007,7 +1025,7 @@
               se <a href="handform.html">Inventering av handformer</a>.
 
               <figure>
-                <select class=tags data-placeholder="Välj kategorier att visa…" multiple>
+                <select class=tags data-placeholder="Filtrera lista…" multiple>
                   <optgroup label="Källa">
                     <option value=h1977>1977 – Tecknad svenska</option>
                     <option value=h1982>1982 – Teckenspråkstranskription</option>
@@ -1061,7 +1079,7 @@
                 <span class=count style="color:#888" data-fmt="Visar {msg} {count} handformer."></span>
                 <br><select class=mode>
                   <option value=mark>Markera matchande</option>
-                  <option value=hide>Göm icke-matchande</option>
+                  <option value=hide>Visa bara matchande</option>
                 </select>
                 <select class=bool>
                   <option value=and>Och</option>
@@ -2199,7 +2217,7 @@
           <p>Dessa symboler beskriver handens/händernas förflyttning.
 
           <figure>
-            <select class=tags data-placeholder="Välj kategorier att visa…" multiple>
+            <select class=tags data-placeholder="Filtrera lista…" multiple>
               <optgroup label="Källa">
                 <option value=r1977>1977 – Tecknad svenska</option>
                 <option value=r1982>1982 – Teckenspråkstranskription</option>
@@ -2214,7 +2232,7 @@
             <span class=count style="color:#888" data-fmt="Visar {msg} {count} artikulationer."></span>
             <br><select class=mode>
               <option value=mark>Markera matchande</option>
-              <option value=hide>Göm icke-matchande</option>
+              <option value=hide>Visa bara matchande</option>
             </select>
             <select class=bool>
               <option value=and>Och</option>
@@ -3426,7 +3444,7 @@
         rörelsearter och beskriver rörelseartens riktning.
 
         <figure>
-          <select class=tags data-placeholder="Välj kategorier att visa…" multiple>
+          <select class=tags data-placeholder="Filtrera lista…" multiple>
             <option value=circling>Används med cirkel (􌥰)</option>
             <optgroup label="Källa">
               <option value=x1977>1977 – Tecknad svenska</option>
@@ -3442,7 +3460,7 @@
           <span class=count style="color:#888" data-fmt="Visar {msg} {count} artikulationer."></span>
           <br><select class=mode>
             <option value=mark>Markera matchande</option>
-            <option value=hide>Göm icke-matchande</option>
+            <option value=hide>Visa bara matchande</option>
           </select>
           <select class=bool>
             <option value=and>Och</option>
