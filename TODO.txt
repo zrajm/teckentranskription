@@ -389,7 +389,6 @@
     CLOSED: [2018-10-18 Thu 14:25]
 *** DONE 'manuellt läge'
     CLOSED: [2018-10-18 Thu 14:14]
-** TODO Make expansion icon (top-right) normal sized in Firefox         :BUG:
 ** TODO <details> polyfill for MSIE & Edge                              :BUG:
    Maybe this page can help? It links to `details.js` and also mentions usage
    for styling <details> among people on GitHub.
@@ -720,6 +719,8 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Intro: Make expansion icon (top-right) normal sized in Firefox  :BUG:
+   CLOSED: [2018-10-18 Thu 20:29]
 ** [3/3] Intro: References section
 ** DONE Prettier positioning of the hand images in the handshape table
    The handshape images in the table of handshapes should not be in separate
