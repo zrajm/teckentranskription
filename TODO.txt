@@ -363,12 +363,13 @@
     standard before doing this.
 *** TODO 'handform'
 *** TODO 'relation'
-** [0/3] References
+** [1/3] References
 *** TODO Reference IDs should be 'xYEAR' with optional 'abc' after
     Eg 'x1977' for 'Tecknad Svenska', 'x2015b' for 'Diagonala handpositioner i
     svenskt teckenspråk'.
-*** TODO Sort references alphabetically
 *** TODO Article names should be in quotes, books names in italic
+*** DONE Sort references alphabetically
+    CLOSED: [2018-10-18 Thu 02:30]
 ** TODO Move 'Udda transkriptioner' into an appendix
 ** TODO Make expansion icon (top-right) normal sized in Firefox         :BUG:
 ** TODO <details> polyfill for MSIE & Edge                              :BUG:
