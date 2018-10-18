@@ -357,6 +357,12 @@
 ** DONE Transcription link shouldn't switch video/text mode             :BUG:
    CLOSED: [2018-09-03 Mon 05:02]
 * Transcription intro article
+** TODO Remove 'Förord'
+   Incorporate a few words on the limitations of the transcription into the
+   leading paragraphs of the document, and delete the current 'Förord'.
+** TODO Check intro of each chapter
+*** TODO Does it align with document goal?
+*** TODO Does it tie in to chapter name?
 ** TODO Redo word wrapping in source
 ** TODO Standardize source references
 *** TODO References should all be in '<author> (<year>)' format
@@ -724,6 +730,8 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Intro: Narrow topmost margin in document
+   CLOSED: [2018-10-19 Fri 00:44]
 ** DONE Intro: Restructure chapter order
    CLOSED: [2018-10-18 Thu 22:04]
    Target audience is better defined now, restructure text to reflect this.
