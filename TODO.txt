@@ -402,6 +402,8 @@
 *** TODO <details> arrows
     Should exist, but should not shrink when shrinking browser window.
 *** TODO Relations' symbols should not overlap surrounding border
+** TODO Move 'Handformskategorier' to where it's relevant
+   Under 'korskontakt'.
 ** TODO New filter hilite color in glyph tables
    The filter hilite should be clearly distinguishable even when the table
    entries are expanded and/or focused.
