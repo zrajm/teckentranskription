@@ -357,12 +357,25 @@
 ** DONE Transcription link shouldn't switch video/text mode             :BUG:
    CLOSED: [2018-09-03 Mon 05:02]
 * Transcription intro article
-** [0/3] Glossary
-*** TODO All glossary ID should start with '_'
+** [7/9] Glossary
+*** TODO 'artikulation'
+*** TODO 'handform'
+*** DONE All glossary ID should start with '_'
+    CLOSED: [2018-10-18 Thu 16:24]
     Check that ID names are allowed to start with '_' according to HTML5
     standard before doing this.
-*** TODO 'handform'
-*** TODO 'relation'
+*** DONE 'fingerhandform'
+    CLOSED: [2018-10-18 Thu 15:17]
+*** DONE 'hel handform'
+    CLOSED: [2018-10-18 Thu 15:17]
+*** DONE 'fasta tecken'/'lexikala tecken'
+    CLOSED: [2018-10-18 Thu 14:29]
+*** DONE 'avbildande tecken'/'polysyntetiska tecken' ('polytecken')
+    CLOSED: [2018-10-18 Thu 14:27]
+*** DONE 'relation'
+    CLOSED: [2018-10-18 Thu 14:25]
+*** DONE 'manuellt läge'
+    CLOSED: [2018-10-18 Thu 14:14]
 ** [2/3] References
 *** TODO Reference IDs should be 'xYEAR' with optional 'abc' after
     Eg 'x1977' for 'Tecknad Svenska', 'x2015b' for 'Diagonala handpositioner i
