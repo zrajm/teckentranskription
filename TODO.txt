@@ -357,6 +357,19 @@
 ** DONE Transcription link shouldn't switch video/text mode             :BUG:
    CLOSED: [2018-09-03 Mon 05:02]
 * Transcription intro article
+** TODO Redo word wrapping in source
+** TODO Standardize source references
+*** TODO References should all be in '<author> (<year>)' format
+*** TODO References should all be expandable (as in A-handen)
+    Everywhere where a source is quoted as an aside (as opposed to an
+    integrated part of reasoning text) it should be done using a <details> tag,
+    with name + page of source in the <summary>. E.g.:
+
+      <details closed>
+        <summary><a href="#1977">Bergman (1977)</a></summary>
+
+        <p>.....
+      </details>
 ** [7/9] Glossary
 *** TODO 'artikulation'
 *** TODO 'handform'
@@ -376,14 +389,6 @@
     CLOSED: [2018-10-18 Thu 14:25]
 *** DONE 'manuellt läge'
     CLOSED: [2018-10-18 Thu 14:14]
-** [2/3] References
-*** TODO Reference IDs should be 'xYEAR' with optional 'abc' after
-    Eg 'x1977' for 'Tecknad Svenska', 'x2015b' for 'Diagonala handpositioner i
-    svenskt teckenspråk'.
-*** DONE Article names should be in quotes, books names in italic
-    CLOSED: [2018-10-18 Thu 02:51]
-*** DONE Sort references alphabetically
-    CLOSED: [2018-10-18 Thu 02:30]
 ** TODO Make expansion icon (top-right) normal sized in Firefox         :BUG:
 ** TODO <details> polyfill for MSIE & Edge                              :BUG:
    Maybe this page can help? It links to `details.js` and also mentions usage
@@ -404,9 +409,10 @@
 ** TODO Glyph list should all use same casing
    Some tables now have capitalized descriptions, some have lower cased. This
    should be the same everywhere.
-** TODO Change all references into '<author> (<year>)' format
-** TODO Source references should list titles and be expandable (as in A-handen)
-   (needs to be fixed from Tumvinkelhanden onwards)
+
+   Argument for lowercase: Lowercase is used throughout the wordlist (it might
+   make difference for some of the terms). So maybe use lowercase in all
+   tables/lists?
 ** TODO Add missing newer glyphs
 *** TODO Add the other new glyphs here in TODO
 *** TODO Armvecket
@@ -489,13 +495,13 @@
    made? (Is there a rule of some kind? -- Or does the transcription need some
    way of specifying the contact point?)
 
-   Kankkonen (2015) has a way of describing 'contact' point.
+   Riemer (2015) has a way of describing 'contact' point.
 ** TODO Ponder replacing 'toward' and 'away from' with converge/diverge
    Explore/ponder/research the fact that the modifier symbols '--> <--' and
    '<-- -->' (which are written under circling, curving, hitting, twisting)
    could maybe be better written with converging and diverging symbols
    underneath the symbol it modifies.
-** [0/4] Table filtering
+** [0/4] Glyph list filtering
 *** TODO Go through handshape symbols in 'my' lexicon
     To verify which handshapes are actually used in the web lexicon.
 *** TODO Add missing symbols from 1994 source to position table
@@ -518,15 +524,6 @@
      + Kompendium i teckentranskription (1993)
      + Teckentranskription (2015)
 ** TODO All mentions of a reference should link to relevant reference section
-** TODO Standardize citing of sources
-   Everywhere where a source is quoted, it should be done using a <details>
-   tag, with name + page of source in the <summary>. E.g.:
-
-     <details closed>
-       <summary>[<a href="#ref1977">Tecknad svenska</a>]</summary>
-
-       <p>.....
-   </details>
 ** TODO Add symbol descriptions from "Kompendium in teckenspråkstranskription"
    Symbols for "lilla A-handen" etc. that occur in this source should be
    included in the article.
@@ -539,12 +536,6 @@
    sort of has a body position, but the sign isn't transcribed that way in the
    lexicon: http://teckensprakslexikon.su.se/ord/00497 -- Is there even a way
    to understand the sign from the current transcription in the lexicon?
-** TODO Prettier positioning of the hand images in the handshape table
-   The handshape images in the table of handshapes should not be in separate
-   <td>, but should instead be floated left, so that the description text of
-   the handshape in question can fill out the entire width of the column (right
-   now the text column becomes very narrow when there are multiple hand shapes
-   show on the right hand side of the text).
 ** TODO Source citations (<details>) should be more clearly delineated
    Currently is kinda hard to see difference between an expanded source
    citation and the surrounding text, maybe put a border or something around
@@ -729,6 +720,21 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** [3/3] Intro: References section
+** DONE Prettier positioning of the hand images in the handshape table
+   The handshape images in the table of handshapes should not be in separate
+   <td>, but should instead be floated left, so that the description text of
+   the handshape in question can fill out the entire width of the column (right
+   now the text column becomes very narrow when there are multiple hand shapes
+   show on the right hand side of the text).
+*** DONE Reference IDs should be 'YEAR' with optional 'abc' after
+    CLOSED: [2018-10-18 tor 17:42]
+    Eg 'x1977' for 'Tecknad Svenska', 'x2015b' for 'Diagonala handpositioner i
+    svenskt teckenspråk'.
+*** DONE Article names should be in quotes, books names in italic
+    CLOSED: [2018-10-18 Thu 02:51]
+*** DONE Sort references alphabetically
+    CLOSED: [2018-10-18 Thu 02:30]
 ** DONE Intro: Move 'Udda transkriptioner' into an appendix
    CLOSED: [2018-10-18 Thu 02:41]
 ** DONE Intro: Use table-of-contents instead of expandable headings
