@@ -370,7 +370,6 @@
 *** TODO Article names should be in quotes, books names in italic
 *** DONE Sort references alphabetically
     CLOSED: [2018-10-18 Thu 02:30]
-** TODO Move 'Udda transkriptioner' into an appendix
 ** TODO Make expansion icon (top-right) normal sized in Firefox         :BUG:
 ** TODO <details> polyfill for MSIE & Edge                              :BUG:
    Maybe this page can help? It links to `details.js` and also mentions usage
@@ -716,6 +715,8 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Intro: Move 'Udda transkriptioner' into an appendix
+   CLOSED: [2018-10-18 Thu 02:41]
 ** DONE Intro: Use table-of-contents instead of expandable headings
    CLOSED: [2018-10-18 Thu 02:21]
 ** [8/8] Intro: Use <details> instead of <tables> in glyph lists
