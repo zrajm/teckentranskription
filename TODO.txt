@@ -357,7 +357,20 @@
 ** DONE Transcription link shouldn't switch video/text mode             :BUG:
    CLOSED: [2018-09-03 Mon 05:02]
 * Transcription intro article
-** TODO use table-of-contents instead of use expandable headings
+** [0/3] Glossary
+*** TODO All glossary ID should start with '_'
+    Check that ID names are allowed to start with '_' according to HTML5
+    standard before doing this.
+*** TODO 'handform'
+*** TODO 'relation'
+** [0/3] References
+*** TODO Reference IDs should be 'xYEAR' with optional 'abc' after
+    Eg 'x1977' for 'Tecknad Svenska', 'x2015b' for 'Diagonala handpositioner i
+    svenskt teckenspråk'.
+*** TODO Sort references alphabetically
+*** TODO Article names should be in quotes, books names in italic
+** TODO Move 'Udda transkriptioner' into an appendix
+** TODO Make expansion icon (top-right) normal sized in Firefox         :BUG:
 ** TODO <details> polyfill for MSIE & Edge                              :BUG:
    Maybe this page can help? It links to `details.js` and also mentions usage
    for styling <details> among people on GitHub.
@@ -702,6 +715,8 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Intro: Use table-of-contents instead of expandable headings
+   CLOSED: [2018-10-18 Thu 02:21]
 ** [8/8] Intro: Use <details> instead of <tables> in glyph lists
 *** DONE Make sure glyph lists filters still work
     CLOSED: [2018-10-17 Wed 16:19]
