@@ -7,45 +7,10 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.1"
    width="11"
    height="12"
-   id="svg2"
-   inkscape:version="0.91 r13725"
-   sodipodi:docname="expand-all2.svg">
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1440"
-     inkscape:window-height="900"
-     id="namedview6"
-     showgrid="false"
-     inkscape:zoom="28.5"
-     inkscape:cx="2.3388986"
-     inkscape:cy="6.3140054"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="svg2"
-     inkscape:snap-bbox="true"
-     inkscape:bbox-nodes="false"
-     inkscape:snap-bbox-edge-midpoints="false"
-     inkscape:object-paths="true"
-     inkscape:bbox-paths="true"
-     inkscape:snap-nodes="true"
-     inkscape:snap-others="false"
-     inkscape:snap-intersection-paths="true"
-     inkscape:object-nodes="true"
-     inkscape:snap-smooth-nodes="true"
-     inkscape:snap-midpoints="true" />
+   id="svg2">
   <metadata
      id="metadata8">
     <rdf:RDF>
@@ -54,7 +19,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -68,9 +33,4 @@
      style="fill:#000000;fill-opacity:1;stroke:none"
      d="M 0 0 L 0 10 L 11 10 L 11 0 L 0 0 z M 5 2 L 6 2 L 6 2.5 L 6 4.5664062 L 7.15625 3.4101562 L 7.5 3.0351562 L 8.21875 3.7539062 L 7.84375 4.0976562 L 6 5.9414062 L 6 7.3125 L 7.15625 6.15625 L 7.5 5.78125 L 8.21875 6.5 L 7.84375 6.84375 L 5.84375 8.84375 L 5.5 9.21875 L 5.15625 8.84375 L 3.15625 6.84375 L 2.78125 6.5 L 3.5 5.78125 L 3.84375 6.15625 L 5 7.3125 L 5 5.9414062 L 3.15625 4.0976562 L 2.78125 3.7539062 L 3.5 3.0351562 L 3.84375 3.4101562 L 5 4.5664062 L 5 2.5 L 5 2 z "
      id="path3361" />
-  <path
-     inkscape:connector-curvature="0"
-     style="fill:#ff0000;fill-opacity:1;stroke:none"
-     d="m -3.631579,1061.6889 1,0 0,0.5 0,4.8125 1.15625,-1.1563 0.34375,-0.375 0.71875,0.7188 -0.375,0.3437 -2,2 -0.34375,0.375 -0.34375,-0.375 -1.9999999,-2 -0.375,-0.3437 0.71875,-0.7188 0.34375,0.375 1.1562499,1.1563 0,-4.8125 0,-0.5 z"
-     id="rect2987-3-3-5" />
 </svg>
