@@ -95,24 +95,53 @@ function share_close() {
     $('.share .bubble').hide();
     share_opened = false;
 }
+
+function copy_to_clipboard(elem, goodMsg, failMsg) {
+    var msg = failMsg;
+    // Copy to clipboard if possible.
+    try {
+        if (document.execCommand('copy')) {
+            msg = goodMsg;
+        }
+    } catch (err) {}
+    $('.share .msg').html(msg);
+}
+var create_png_preview = (function () {
+    var jqPreview = $('<div><div>').prependTo('body').css({
+        position: 'fixed',
+        left: 99999,
+        top: 0,
+    }).children().css({
+        whiteSpace: 'nowrap',
+        display: 'table-cell',
+        padding: '.125em 0 .025em',
+    });
+    return function (text) {
+        jqPreview.text(text);
+        return domtoimage.toPng(jqPreview[0]);
+    }
+}());
 function share_toggle() {
     if (share_opened) { return share_close(); }
     share_opened = true;
     var hash = encodeURIComponent(jqTextarea.val());
     var url  = location.href.replace(location.hash, '') + '#' + hash;
-    var msg  = 'Press Ctrl-C (or &#8984;-C) to copy link to clipboard!';
+    var failMsg  = 'Press Ctrl-C (or &#8984;-C) to copy link to clipboard!';
     $('.share .bubble').show();
-
-    // Insert URL into share bubble & select it.
-    $('.share .url').text(url).selectText();
-
-    // Copy to clipboard if possible.
-    try {
-        if (document.execCommand('copy')) {
-            msg = 'Link copied to clipboard!';
-        }
-    } catch (err) {}
-    $('.share .msg').html(msg);
+    create_png_preview(hash)
+        .then(function (dataUrl) {
+            // Insert URL + image into share bubble & select it.
+            $('.share .url').html(
+                "<img style='margin:0;display:block' src='" + dataUrl + "'>" +
+                url
+            ).selectText();
+            copy_to_clipboard($('.share .msg'), "Link + image copied to clipboard!", failMsg);
+        })
+        .catch(function (error) {
+            // Insert URL into share bubble & select it.
+            $('.share .url').html(url).selectText();
+            copy_to_clipboard($('.share .msg'), "Link copied to clipboard!", failMsg);
+        });
 }
 
 function share_clicked(event) {
