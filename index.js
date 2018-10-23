@@ -124,11 +124,12 @@ var create_png_preview = (function () {
 function share_toggle() {
     if (share_opened) { return share_close(); }
     share_opened = true;
-    var hash = encodeURIComponent(jqTextarea.val());
+    var text = jqTextarea.val();
+    var hash = encodeURIComponent(text);
     var url  = location.href.replace(location.hash, '') + '#' + hash;
     var failMsg  = 'Press Ctrl-C (or &#8984;-C) to copy link to clipboard!';
     $('.share .bubble').show();
-    create_png_preview(hash)
+    create_png_preview(text)
         .then(function (dataUrl) {
             // Insert URL + image into share bubble & select it.
             $('.share .url').html(
