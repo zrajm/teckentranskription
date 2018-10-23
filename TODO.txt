@@ -357,9 +357,7 @@
 ** DONE Transcription link shouldn't switch video/text mode             :BUG:
    CLOSED: [2018-09-03 Mon 05:02]
 * Transcription intro article
-** TODO Remove 'Förord'
-   Incorporate a few words on the limitations of the transcription into the
-   leading paragraphs of the document, and delete the current 'Förord'.
+** TODO Write (better) overview chapter
 ** TODO Check intro of each chapter
 *** TODO Does it align with document goal?
 *** TODO Does it tie in to chapter name?
@@ -376,10 +374,11 @@
 
         <p>.....
       </details>
-** [7/9] Glossary
+** [7/10] Glossary
+*** TODO 'kirem'
 *** TODO 'artikulation'
 *** TODO 'handform'
-*** DONE All glossary ID should start with '_'
+*** DONE All glossary IDs should start with '_'
     CLOSED: [2018-10-18 Thu 16:24]
     Check that ID names are allowed to start with '_' according to HTML5
     standard before doing this.
@@ -730,6 +729,10 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Intro: Remove 'Förord'
+   CLOSED: [2018-10-23 Tue 17:18]
+   Incorporate a few words on the limitations of the transcription into the
+   leading paragraphs of the document, and delete the current 'Förord'.
 ** DONE Intro: Narrow topmost margin in document
    CLOSED: [2018-10-19 Fri 00:44]
 ** DONE Intro: Restructure chapter order
