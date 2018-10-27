@@ -720,7 +720,9 @@
 *** TODO Lexicon 1997
 *** TODO Björkstrand 1998
 *** TODO Bergman & Björkstrand 2015
-* Transcription app
+* Transcript app
+** TODO Handshape preview should be displayed topmost                   :BUG:
+   Currently in winds up under the <textarea>. :(
 ** TODO Should use same virtual keyboard code as lexicon
 ** TODO Run code + HTML + CSS through validator.
 ** TODO Add tests for Javascript code
@@ -729,6 +731,14 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Transcript app: Share preview image should work in Firefox
+   CLOSED: [2018-10-27 Sat 17:03]
+** DONE Transcript app: "Share…" should have preview
+   The share button should generate image as well as URL, so that when
+   copy/pasting will include a preview of the transcription. This is good when
+   including a transcription in an email etc. (the recipient will then have
+   some clue of the content without having to click the link).
+   CLOSED: [2018-10-22 Mon 04:14]
 ** DONE Intro: Remove 'Förord'
    CLOSED: [2018-10-23 Tue 17:18]
    Incorporate a few words on the limitations of the transcription into the
