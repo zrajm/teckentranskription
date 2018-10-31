@@ -74,7 +74,7 @@ var overlay = (function () {
     function showOverlay () {
         overlay.show().find('>*').focus();
     }
-    button.click(showOverlay)
+    button.click(showOverlay);
     overlay.keyup(function (e) {
         if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) { return; }
         if (e.key === "Escape") {
@@ -93,7 +93,10 @@ var overlay = (function () {
             }
         }
     });
-    return { hide: hideOverlay };
+    return {
+        hide: hideOverlay,
+        show: showOverlay
+    };
 }());
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -693,6 +696,9 @@ function searchLexicon(queryStr) {
         var subquery;
         var matches = [];
 
+        // If there's no query, display info text.
+        $("#noresults")[query.length === 0 ? "show" : "hide"]();
+
         logTiming.reset();
         if (query.length > 0) {
             len = lexicon.length;
@@ -857,11 +863,10 @@ state.onVideoToggle(showVideos);
         if (lexiconDate === undefined) {
             setTimeout(updateLexiconDate, 250);
         } else {
-            $("#lexicon-updated")
-                .html("Senast uppdaterat: " + lexiconDate.toLocaleString(
-                    "sv",
-                    { year: "numeric", month: "long", day: "numeric" }
-                ) + " (" + Object.keys(lexicon).length + " tecken).");
+            $("#lexicon-date").html(lexiconDate.toLocaleString(
+                "sv", { year: "numeric", month: "long", day: "numeric" }
+            ));
+            $("#lexicon-size").html(Object.keys(lexicon).length);
         }
     }
     $(updateLexiconDate);

@@ -53,6 +53,7 @@
     footer, .status {
       font-size: smaller;
       opacity: .5;
+      margin-top: 1em;
     }
     .status { margin: .5em 0; }
     .status:after {
@@ -398,25 +399,22 @@
     <div id=results></div>
   </main>
   <center><button id=more>Visa fler träffar…</button></center>
+  <aside id=noresults style="display:table;min-width:12em;max-width:22em;width:75%;margin:auto">
+    <h1>Tecken­språks­lexikon</h1>
+
+    <p>Sök på svenska, tecken­språk (tran­skrip­tion) eller ID-nummer!
+
+    <p>Skriv tran­skrip­tion med tangent­bordet i
+    sök­fältet <nobr>(<img src="pic/gui/keyboard.svg"
+    style="height:.6em">)</nobr> eller genom att klicka på en tran­skrip­tion i
+    sök­resul­tatet. <a href="javascript:overlay.show()">Mer sök­hjälp.</a>
+
+    <p><p>Data från <i><a href="https://teckensprakslexikon.su.se/">Svenskt
+    tecken­språks­lexikon</a></i> (upp­date­rat <span id=lexicon-date>0x månad
+    20xx</span>). Inne­håller <span id=lexicon-size>00000</span> tecken.
+  </aside>
   <footer>
-    <div style="margin-bottom:.5em"><span id=lexicon-updated></span>
-      <br>Data från <a href="https://teckensprakslexikon.su.se/">Svenskt
-      teckenspråkslexikon</a>.</div>
-    <a href="." title="En sida för att transkribera teckenspråk."
-       >Transkription</a> |
-    <a href="https://github.com/zrajm/teckentranskription/blob/master/README.md"
-       title="Engelsk beskrivning av det här projektet."
-       >Om</a> |
-    <a href="https://github.com/zrajm/teckentranskription/issues"
-       title="GitHubs issue tracker för det här projektet."
-       >Rapportera fel</a> |
-    <a href="https://github.com/zrajm/teckentranskription"
-       title="GitHub-repo för den här sidan sida."
-       >GitHub</a> |
-    <a href="freesans-swl.html"
-       title="Ett typsnitt för att transkribera teckenspråk."
-       >Unicodetypsnitt</a>
-    <br>© 2017–2018 zrajm, Uppsala.
+    © 2017–2018 <a href="mailto:lexikon@zrajm.org">zrajm</a>, Uppsala.
   </footer>
   <div class="overlay help">
     <section tabindex=0>

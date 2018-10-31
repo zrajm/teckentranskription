@@ -331,7 +331,7 @@ function transcriptKeyboard(jqInput) {
         jqKeyboardIcon = $(
             "<button id=\"kb-icon\" class=nostyle>" +
                 "<img title=\"Transkriptionssymboler (Esc)\" " +
-                "src=\"pic/gui/keyboard.svg\" style=\"height:1em;display:block\">" +
+                "src=\"pic/gui/keyboard.svg\" style=\"height:1em;display:block;opacity:.5\">" +
                 "</button>"
         ).appendTo(jqWrapper).css({
             margin: "auto",
