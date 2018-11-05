@@ -418,13 +418,45 @@
   </footer>
   <div class="overlay help">
     <section tabindex=0>
+      <h1>Tips</h1>
+      <div class=columns>
+
+        <p><tt>04194,<wbr>02408,<wbr>04888</tt> id-nummer med komma­tecken
+        emellan är ett enkelt sätt att göra en gloslista att skicka till någon
+        annan.
+
+        <p><p><tt>@</tt> matchar alla <i>kroppslägen</i> i
+        transkriptionen. <tt>-@</tt> kan användas för att utesluta alla tecken
+        med kroppsläge.
+
+        <p><p><tt>-􌥠</tt> utesluter sammansatta tecken (tecken med mer än ett
+        segment). Om du istället vill <i>hitta</i> samman­satta tecken kan du
+        <i>lägga till</i> <tt>􌥠</tt> till din sökning (eller kanske
+        rentav <tt>􌥠*􌥠</tt> eller <tt>􌥠*􌥠*􌥠</tt> för att hitta tecken med fler
+        segment).
+
+        <p><p><tt>:##:</tt> hittar två­hands­tecken där båda händerna är aktiva.
+
+        <p><tt>#:#:</tt> hittar två­hands­tecken med en aktiv och en passiv
+        hand.
+
+        <p><tt>-:##: -#:#:</tt> utesluter alla två­hands­tecken (dvs hittar
+        bara en­hands­tecken).
+
+        <p><p>Transkriptioner är fiddliga och det är oftast inte helt
+        självklart hur något ska transkriberas om man bara sett ett tecken
+        utföras. Om man kan ett ord med en liknande rörelse kan det vara värt
+        att söka upp det ordet på svenska, klicka på det ordets transkription
+        och sedan modifiera transkriptionen i sökningen tills man hittar rätt.
+      </div>
+
       <h1>Kontrollsymboler</h1>
       <div class=columns>
 
         <center><table border=1 style="margin-top:.25em">
           <tr>
             <th><tt>"…"</tt>
-            <td>Exakt sökning
+            <td>Frassökning
           <tr>
             <th><tt>-…</tt>
             <td>Exkludera träff
@@ -436,14 +468,15 @@
             <td>Logiskt <i>eller</i>
         </table></center>
 
-        <p id=exakt><tt>"…"</tt> Exakt sökning – alla tecken som står inom
-        citat­symbolerna måste matcha exakt.
+        <p id=fras><tt>"…"</tt> Frassökning – mellanslag och andra tecken som
+        står inom citat­symbolerna måste matcha exakt.
 
-        <p>Används när du vill söka på fraser (tex <tt>"har gjort"</tt>) eller
-        när du vill använda någon av special­symbolerna i sin ursprungliga
-        betydelse (<tt>"􌤆"</tt> hittar alla tecken som har <i>ansiktet</i> som
-        uttalställe, medan <tt>􌤆</tt>, utan citat­symboler, också hittar de som
-        har <i>pannan, munnen, näsan</i> etc).
+        <p>Används när du vill söka efter en fras (tex <tt>"har gjort"</tt>)
+        eller när du vill använda någon av special­symbolerna i sin
+        ursprungliga betydelse. (<tt>"􌤆"</tt> hittar alla tecken som
+        har <i>ansiktet</i> som uttalställe, medan <tt>􌤆</tt> (utan
+        citat­symboler) också hittar de som har <i>pannan, munnen, näsan</i>
+        etc).
 
         <p>Du kan också citera delar av ett ord. Om du tex skulle vilja hitta
         alla ord med två aktiva händer som har uttalsställe <i>ansiktet</i> så
@@ -473,21 +506,17 @@
         alla tecken som har antingen ’har’ eller ’gjort’ (eller båda) i sin
         översättning.
 
-        <p>Om du vill skicka en lista med tecken till någon är det smidigt
-        kombinera komma med en sökning på id-nummer,
-        tex <tt>04194,<wbr>02408,<wbr>04888</tt>.
-
         <p>Komma hanteras alltid först så om du har ett komplicerat uttryck med
         som du vill söka på i några små variationer, så måste du dessvärre
         upprepa hela det komplicerade uttrycket på vardera sidan om kommat
         (tex <tt>@:􌤢#:*􌤟, @:􌥃#:*􌤟</tt>).
       </div>
 
-      <hr><h1>Mönstermatchning</h1>
+      <h1>Mönstermatchning</h1>
       <div class=columns>
 
         <p>Dessa symboler matchar fler än en symbol i en sökning, utom om de
-        står inom citat­symboler (<a href="#exakt">se ovan</a>).
+        står inom citat­symboler (<a href="#fras">se ovan</a>).
 
         <center><table border=1>
           <tr>
@@ -564,34 +593,6 @@
         relation/riktnings­specifikation som står i lexikonet. Om du <i>har</i>
         angivit dessa, så matchar förstås din sökning bara om den
         överrens­stämmer med det som står i lexikonet.
-      </div>
-
-      <hr><h1>Några tips</h1>
-      <div class=columns>
-
-        <p><tt>@</tt> matchar <i>kroppslägen</i> i transkriptionen.
-        Använd <tt>-@</tt> för att utesluta alla tecken som har ett
-        artikulationsställe på kroppen.
-
-        <p><p><tt>-􌥠</tt> utesluter sammansatta tecken (tecken med mer än ett
-        segment). Om du istället <i>vill hitta</i> samman­satta tecken kan du
-        använda <tt>􌥠</tt>, eller kanske rentav <tt>􌥠*􌥠</tt>
-        eller <tt>􌥠*􌥠*􌥠</tt> etc (för att hitta tecken med tre eller fler
-        segment).
-
-        <p><p><tt>:##:</tt> hittar två­hands­tecken där båda händerna är aktiva.
-
-        <p><p><tt>#:#:</tt> hittar två­hands­tecken med en aktiv och en passiv
-        hand.
-
-        <p><p><tt>-:##: -#:#:</tt> utesluter alla två­hands­tecken (dvs hittar
-        en­hands­tecken).
-
-        <p><p>Transkriptioner är fiddliga och det är oftast inte helt
-        självklart hur något ska transkriberas om man bara sett ett tecken
-        utföras. Om man kan ett ord med en liknande rörelse kan det vara värt
-        att söka upp det ordet på svenska, klicka på det ordets transkription
-        och sedan modifiera transkriptionen i sökningen tills man hittar rätt.
       </div>
     </section>
   </div>
