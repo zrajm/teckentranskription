@@ -22,6 +22,11 @@
       border: 1px solid black;
     }
     h1 { margin: 1em 0 .5em 0; }
+    .FIXME { background: yellow; }
+    .font-example {
+      font-size: 2em;
+      vertical-align: top;
+    }
     p.hanging, .hanging p {
         text-indent: -1em;
         padding-left: 1em;
@@ -29,9 +34,47 @@
     p.hanging:not(:first-child), .hanging p:not(:first-child) {
         margin-top: -1em;
     }
+    table[border]:not([border="0"]) {
+      border-collapse: collapse;
+      border: 1px solid black;
+    }
+    table[border]:not([border="0"]) th,
+    table[border]:not([border="0"]) td {
+      text-align: center;
+      padding: .125em .25em;
+      border: 1px solid black;
+    }
   </style>
 </head>
 <body>
+<!--
+------------------------------
+  hel spretning  : 􌧾
+  parspretning   : 􌧿
+------------------------------
+  rakt finger    : 􌧬
+  vinklat finger : 􌧭
+  böjt finger    : 􌧯
+  knutet finger  : 􌧲
+  lätt böjt finger: 􌧮
+  F-form finger  : 􌧰
+  hållhand finger: 􌧱
+  korsade finger : 􌧳
+------------------------------
+  rak tumme      : 􌧴
+  böjd tumme     : 􌧵
+  parallell tumme: 􌧶
+  knuten tumme   : 􌧷
+  böjd opposition tumme: 􌧸
+  rak opposition tumme : 􌧹
+------------------------------
+  spetskontakt    : 􌧺
+  mittkontakt     : 􌧻
+  mellankontakt   : 􌧼
+  handflatekontakt: 􌧽
+------------------------------
+-->
+
   <h1>Fingerfonetik</h1>
 
   <p>Detta är en skiss till ett system varmed handformer kan transkriberas i
@@ -49,8 +92,23 @@
     <li><a href=#tumme>Tummen</a>
     <li><a href=#kontakt>Kontakt</a>
     <li><a href=#lista>Handformer</a>
+    <li><a href=#font>Typsnitt</a>
     <li><a href=#referenser>Referenser</a>
   </ul>
+  <div class=FIXME>
+    <b>ATT GÖRA – Typsnittet är i användbart skick, men följande återstår att göra:</b>
+    <ul style="margin:1em 2em">
+      <li><a href=#FIXME1>Rita om <i>korsade fingrar</i> i typsnittet.</a>
+      <li><a href=#FIXME6>Lägg till ligatur för <i>korsade fingrar</i> i typsnittet.</a>
+      <li><a href=#FIXME2>Rita om <i>böjd tumme</i> i typsnittet.</a>
+      <li><a href=#FIXME3>Rita om <i>tumme i rak opposition</i> i
+        typsnittet.</a> (Och se till <a href=#FIXME4>att den inte överlappar
+        symbolen för <i>hel spretning</i>.</a>)
+      <li><a href=#FIXME5>Placering av kontaktsymbol när tummen är mellan två
+        andra fingrar?</a> (Som T-, N- och M-hand i ASL.) <!-- Jämför
+        kontaktpunktens placering i ASL T-hand och svenskans F-hand! -->
+    </ul>
+  </div>
 
   <section id=spret>
     <h1>Spretning</h1>
@@ -64,9 +122,11 @@
 
     <p><div class=inline
       ><img height=100 src="pic/part/spretad-alla.svg"
+      ><span class=font-example>◌􌧾◌</span
       ><br>hel hand<br>spretad
     </div><div class=inline
       ><img height=100 src="pic/part/spretad-par.svg"
+      ><span class=font-example>◌􌧿◌</span
       ><br>fingerpar<br>spretat
     </div>
 
@@ -75,29 +135,37 @@
 
     <p><div class=inline
       ><img height=100 src="pic/flat-hand.svg"
+      ><span class=font-example>􌧬􌧬􌧬􌧬􌧴</span
       ><br>flat hand
     </div><div class=inline
       ><img height=100 src="pic/sprethand.svg"
+      ><span class=font-example>􌧬􌧬􌧾􌧬􌧬􌧴</span
       ><br>sprethand
     </div><div class=inline
       ><img height=100 src="pic/s-hand.svg"
+      ><span class=font-example>􌧯􌧯􌧯􌧯􌧸</span
       ><br>S-hand
     </div><div class=inline
       ><img height=100 src="pic/klohand.svg"
+      ><span class=font-example>􌧯􌧯􌧾􌧯􌧯􌧸</span
       ><br>klohand
     </div>
 
     <div class=inline
       ><img height=100 src="pic/m-hand.svg"
+      ><span class=font-example>􌧲􌧬􌧬􌧬􌧷</span
       ><br>M-hand
     </div><div class=inline
       ><img height=100 src="pic/w-hand.svg"
+      ><span class=font-example>􌧲􌧬􌧾􌧬􌧬􌧷</span
       ><br>W-hand
     </div><div class=inline
       ><img height=100 src="pic/n-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧬􌧬􌧷</span
       ><br>N-hand
     </div><div class=inline
       ><img height=100 src="pic/v-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧾􌧬􌧬􌧷</span
       ><br>V-hand
     </div>
 
@@ -115,6 +183,7 @@
 
     <p><div class=inline
       ><img height=100 src="pic/spockhand.svg"
+      ><span class=font-example>􌧬􌧬􌧿􌧬􌧬􌧴</span
       ><br>spockhand
     </div>
   </section>
@@ -128,27 +197,35 @@
 
     <p><div class=inline
       ><img height=100 src="pic/part/finger-rakt.svg"
+      ><span class=font-example>􌧬</span
       ><br>rakt
     </div><div class=inline
       ><img height=100 src="pic/part/finger-vinklat.svg"
+      ><span class=font-example>􌧭</span
       ><br>vinklat
     </div><div class=inline
       ><img height=100 src="pic/part/finger-bojt.svg"
+      ><span class=font-example>􌧯</span
       ><br>böjt
     </div><div class=inline
       ><img height=100 src="pic/part/finger-knutet.svg"
+      ><span class=font-example>􌧲</span
       ><br>knutet
     </div><div class=inline
       ><img height=100 src="pic/part/finger-latt-bojt.svg"
+      ><span class=font-example>􌧮</span
       ><br>lätt<br>böjt
     </div><div class=inline
       ><img height=100 src="pic/part/finger-f.svg"
+      ><span class=font-example>􌧰</span
       ><br>F-form
     </div><div class=inline
       ><img height=100 src="pic/part/finger-hallhand.svg"
+      ><span class=font-example>􌧱</span
       ><br>håll-<br>hand
     </div><div class=inline
       ><img height=100 src="pic/part/finger-x.svg"
+      ><span class=font-example>􌧳</span
       ><br>korsade
     </div>
 
@@ -156,15 +233,19 @@
 
     <p><div class=inline
       ><img height=100 src="pic/pekfinger.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧬􌧷</span
       ><br>pekfinger
     </div><div class=inline
       ><img height=100 src="pic/vinklat-pekfinger.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧭􌧷</span
       ><br>vinklat<br>pekfinger
     </div><div class=inline
       ><img height=100 src="pic/krokfinger.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧯􌧷</span
       ><br>krok-<br>finger
     </div><div class=inline
       ><img height=100 src="pic/knuten-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧲􌧷</span
       ><br>knuten<br>hand
     </div>
 
@@ -174,15 +255,19 @@
 
     <p><div class=inline
       ><img height=100 src="pic/hallhand.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧱􌧻􌧶􌧺</span
       ><br>hållhand
     </div><div class=inline
       ><img height=100 src="pic/nyphand2.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧱􌧺􌧶􌧺􌧷</span
       ><br>nyphand<br>(variant)
     </div><div class=inline
       ><img height=100 src="pic/asl-e-hand.svg"
+      ><span class=font-example>􌧱􌧺􌧱􌧺􌧱􌧺􌧱􌧺􌧷􌧺</span
       ><br>ASL<br>E-hand
     </div><div class=inline
       ><img height=100 src="pic/asl-skrikande-e-hand.svg"
+      ><span class=font-example>􌧱􌧱􌧱􌧱􌧽􌧷􌧺</span
       ><br>ASL<br>skrikande<br>E-hand
     </div>
 
@@ -192,19 +277,23 @@
 
     <p><div class=inline
       ><img height=100 src="pic/f-hand.svg"
+      ><span class=font-example>􌧬􌧬􌧬􌧰􌧻􌧶􌧺</span
       ><br>F-hand
     </div><div class=inline
       ><img height=100 src="pic/stor-nyphand5.svg"
+      ><span class=font-example>􌧬􌧬􌧬􌧰􌧻􌧶􌧺</span
       ><br>stor<br>nyphand<br>(variant)
     </div><div class=inline
       ><img height=100 src="pic/stor-nyphand6.svg"
+      ><span class=font-example>􌧬􌧬􌧾􌧬􌧰􌧺􌧶􌧺</span
       ><br>stor<br>nyphand<br>(variant)
     </div>
 
     <p>Korsade fingrar skrivs med korsade fingerstreck:
 
-    <p><div class=inline
+    <p><div class="inline FIXME" id=FIXME1
       ><img height=100 src="pic/x-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧳􌧷</span
       ><br>X-hand
     </div>
 
@@ -216,6 +305,7 @@
 
     <p><div class=inline
       ><img height=100 src="pic/bojd-sprethand.svg"
+      ><span class=font-example>􌧮􌧮􌧾􌧮􌧮􌧴</span
       ><br>böjd<br>sprethand
     </div>
   </section>
@@ -228,21 +318,27 @@
 
     <p><div class=inline
       ><img height=100 src="pic/part/tumme-rak.svg"
+      ><span class=font-example>􌧴</span
       ><br>rak
-    </div><div class=inline
+    </div><div class="inline FIXME" id=FIXME2
       ><img height=100 src="pic/part/tumme-bojd.svg"
+      ><span class=font-example>􌧵</span
       ><br>böjd
     </div><div class=inline
       ><img height=100 src="pic/part/tumme-parallell.svg"
+      ><span class=font-example>􌧶</span
       ><br>parallell
     </div><div class=inline
       ><img height=100 src="pic/part/tumme-knuten.svg"
+      ><span class=font-example>􌧷</span
       ><br>knuten
     </div><div class=inline
       ><img height=100 src="pic/part/tumme-opposition-bojd.svg"
+      ><span class=font-example>􌧸</span
       ><br>böjd<br>opposition
-    </div><div class=inline
+    </div><div class="inline FIXME" id=FIXME3
       ><img height=100 src="pic/part/tumme-opposition-rak.svg"
+      ><span class=font-example>􌧹</span
       ><br>rak<br>opposition
     </div>
 
@@ -263,32 +359,41 @@
 
     <p><div class=inline
       ><img height=100 src="pic/e-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧲􌧽􌧷􌧺</span
       ><br>E-hand
     </div><div class=inline
       ><img height=100 src="pic/knuten-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧲􌧷</span
       ><br>knuten<br>hand
     </div><div class=inline
       ><img height=100 src="pic/knuten-hand2.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧲􌧶</span
       ><br>knuten<br>hand<br>(variant)
     </div><div class=inline
       ><img height=100 src="pic/tumhand.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧲􌧴</span
       ><br>tumhand
     </div><div class=inline
       ><img height=100 src="pic/q-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧲􌧹</span
       ><br>Q-hand
     </div><div class=inline
       ><img height=100 src="pic/60-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧲􌧵</span
       ><br>60-hand
     </div>
 
     <p><div class=inline
       ><img height=100 src="pic/s-hand.svg"
+      ><span class=font-example>􌧯􌧯􌧯􌧯􌧸</span
       ><br>S-hand
     </div><div class=inline
       ><img height=100 src="pic/tumvinkelhand.svg"
+      ><span class=font-example>􌧭􌧭􌧭􌧭􌧹</span
       ><br>tumvinkel-<br>hand
     </div><div class=inline
       ><img height=100 src="pic/vinkelhand2.svg"
+      ><span class=font-example>􌧭􌧭􌧭􌧭􌧴</span
       ><br>vinkelhand<br>(variant)
     </div>
   </section>
@@ -303,15 +408,19 @@
 
     <div class=inline
       ><img height=100 src="pic/part/kontakt-spets.svg"
+      ><span class=font-example>◌􌧺</span
       ><br>spets-<br>kontakt
     </div><div class=inline
       ><img height=100 src="pic/part/kontakt-mitt.svg"
+      ><span class=font-example>◌􌧻</span
       ><br>mitt-<br>kontakt
     </div><div class=inline
       ><img height=100 src="pic/part/kontakt-mellan.svg"
+      ><span class=font-example>◌􌧼</span
       ><br>mellan-<br>kontakt
     </div><div class=inline
       ><img height=100 src="pic/part/kontakt-handflata.svg"
+      ><span class=font-example>◌􌧽</span
       ><br>hand-<br>flate-<br>kontakt
     </div>
 
@@ -321,6 +430,7 @@
 
     <p><div class=inline
       ><img height=100 src="pic/x-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧳􌧷</span
       ><br>X-hand
     </div>
 
@@ -333,50 +443,65 @@
 
     <p><div class=inline
       ><img height=100 src="pic/a-hand.svg"
+      ><span class=font-example>􌧭􌧺􌧭􌧺􌧭􌧺􌧭􌧺􌧹􌧺</span
       ><br>A-hand
     </div><div class=inline
       ><img height=100 src="pic/o-hand.svg"
+      ><span class=font-example>􌧯􌧺􌧯􌧺􌧯􌧺􌧯􌧺􌧸􌧺</span
       ><br>O-hand
     </div><div class=inline
       ><img height=100 src="pic/nyphand.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧭􌧺􌧹􌧺</span
       ><br>nyphand
     </div><div class=inline
       ><img height=100 src="pic/bojt-pekfinger.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧯􌧺􌧸􌧺</span
       ><br>böjt<br>pekfinger
     </div><div class=inline
       ><img height=100 src="pic/na-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧭􌧺􌧭􌧺􌧹􌧺</span
       ><br>NA-hand
     </div><div class=inline
       ><img height=100 src="pic/no-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧯􌧺􌧯􌧺􌧸􌧺</span
       ><br>NO-hand
     </div>
 
     <p><div class=inline
       ><img height=100 src="pic/hallhand.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧱􌧻􌧶􌧺</span
       ><br>hållhand
     </div><div class=inline
       ><img height=100 src="pic/nyphand2.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧱􌧺􌧶􌧺</span
       ><br>nyphand<br>(variant)
     </div><div class=inline
       ><img height=100 src="pic/f-hand.svg"
+      ><span class=font-example>􌧬􌧬􌧬􌧰􌧻􌧶􌧺</span
       ><br>F-hand/<br>stor<br>nyphand
     </div><div class=inline
       ><img height=100 src="pic/stor-nyphand.svg"
+      ><span class=font-example>􌧬􌧬􌧾􌧬􌧯􌧺􌧸􌧺</span
       ><br>stor<br>nyphand
-    </div><div class=inline
+    </div><div class=inline id=FIXME4
       ><img height=100 src="pic/stor-nyphand2.svg"
+      ><span class="font-example FIXME">􌧬􌧬􌧾􌧬􌧭􌧺􌧹􌧺</span
       ><br>stor<br>nyphand<br> (variant)
     </div><div class=inline
       ><img height=100 src="pic/stor-nyphand3.svg"
+      ><span class=font-example>􌧬􌧬􌧬􌧯􌧺􌧸􌧺</span
       ><br>stor<br>nyphand<br> (variant)
     </div><div class=inline
       ><img height=100 src="pic/stor-nyphand5.svg"
+      ><span class=font-example>􌧬􌧬􌧬􌧰􌧻􌧶􌧺</span
       ><br>stor<br>nyphand<br> (variant)
     </div><div class=inline
       ><img height=100 src="pic/stor-nyphand6.svg"
+      ><span class=font-example>􌧬􌧬􌧾􌧬􌧰􌧺􌧶􌧺</span
       ><br>stor<br>nyphand<br> (variant)
     </div><div class=inline
       ><img height=100 src="pic/u-hand.svg"
+      ><span class=font-example>􌧬􌧭􌧺􌧭􌧺􌧬􌧹􌧺</span
       ><br>U-hand
     </div>
 
@@ -386,6 +511,7 @@
 
     <p><div class=inline
       ><img height=100 src="pic/flat-hand2.svg"
+      ><span class=font-example>􌧬􌧬􌧬􌧬􌧶</span
       ><br>flat hand<br>(variant)
     </div>
 
@@ -394,12 +520,15 @@
 
     <p><div class=inline
       ><img height=100 src="pic/vinkelhand.svg"
+      ><span class=font-example>􌧭􌧭􌧭􌧭􌧻􌧶􌧻</span
       ><br>vinkelhand
     </div><div class=inline
       ><img height=100 src="pic/t-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧭􌧻􌧶􌧻</span
       ><br>T-hand
     </div><div class=inline
       ><img height=100 src="pic/k-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧭􌧻􌧬􌧶􌧺</span
       ><br>K-hand
     </div>
 
@@ -409,41 +538,53 @@
 
     <p><div class=inline
       ><img height=100 src="pic/knuten-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧲􌧷</span
       ><br>knuten<br>hand
     </div><div class=inline
       ><img height=100 src="pic/pekfinger.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧬􌧷</span
       ><br>pekfinger
     </div><div class=inline
       ><img height=100 src="pic/n-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧬􌧬􌧷</span
       ><br>N-hand
     </div><div class=inline
       ><img height=100 src="pic/m-hand.svg"
+      ><span class=font-example>􌧲􌧬􌧬􌧬􌧷</span
       ><br>M-hand
     </div><div class=inline
       ><img height=100 src="pic/d-hand.svg"
+      ><span class=font-example>􌧬􌧬􌧬􌧬􌧷</span
       ><br>D-hand
     </div><div class=inline
       ><img height=100 src="pic/4-hand.svg"
+      ><span class=font-example>􌧬􌧬􌧾􌧬􌧬􌧷</span
       ><br>4-hand
     </div>
 
     <p><div class=inline
       ><img height=100 src="pic/knuten-hand-kontakt.svg"
+      ><span class=font-example>􌧲􌧲􌧻􌧲􌧻􌧲􌧻􌧷􌧺</span
       ><br>knuten<br>hand
     </div><div class=inline
       ><img height=100 src="pic/pekfinger-kontakt.svg"
+      ><span class=font-example>􌧲􌧲􌧻􌧲􌧻􌧬􌧷􌧺</span
       ><br>pekfinger
     </div><div class=inline
       ><img height=100 src="pic/n-hand-kontakt.svg"
+      ><span class=font-example>􌧲􌧺􌧲􌧺􌧬􌧬􌧷􌧺</span
       ><br>N-hand
     </div><div class=inline
       ><img height=100 src="pic/m-hand-kontakt.svg"
+      ><span class=font-example>􌧲􌧺􌧬􌧬􌧬􌧷􌧺</span
       ><br>M-hand
     </div><div class=inline
       ><img height=100 src="pic/d-hand-kontakt.svg"
+      ><span class=font-example>􌧬􌧬􌧬􌧬􌧽􌧷􌧺</span
       ><br>D-hand
     </div><div class=inline
       ><img height=100 src="pic/4-hand-kontakt.svg"
+      ><span class=font-example>􌧬􌧬􌧾􌧬􌧬􌧽􌧷􌧺</span
       ><br>4-hand
     </div>
 
@@ -453,21 +594,27 @@
 
     <p><div class=inline
       ><img height=100 src="pic/e-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧲􌧽􌧷􌧺</span
       ><br>E-hand
-    </div><div class=inline
+    </div><div class="inline FIXME" id=FIXME5
       ><img height=100 src="pic/asl-t-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧼􌧲􌧷􌧺</span
       ><br>ASL<br>T-hand
-    </div><div class=inline
+    </div><div class="inline FIXME"
       ><img height=100 src="pic/asl-n-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧼􌧲􌧲􌧷􌧺</span
       ><br>ASL<br>N-hand
-    </div><div class=inline
+    </div><div class="inline FIXME"
       ><img height=100 src="pic/asl-m-hand.svg"
+      ><span class=font-example>􌧲􌧼􌧲􌧲􌧲􌧷􌧺</span
       ><br>ASL<br>M-hand
     </div><div class=inline
       ><img height=100 src="pic/asl-n-hand2.svg"
+      ><span class=font-example>􌧲􌧲􌧼􌧯􌧯􌧷􌧺</span
       ><br>ASL<br>N-hand<br>(variant)
     </div><div class=inline
       ><img height=100 src="pic/asl-m-hand2.svg"
+      ><span class=font-example>􌧲􌧼􌧯􌧯􌧯􌧷􌧺</span
       ><br>ASL<br>M-hand,<br>variant<br>(variant)
     </div>
 
@@ -476,9 +623,11 @@
 
     <p><div class=inline
       ><img height=100 src="pic/asl-e-hand.svg"
+      ><span class=font-example>􌧱􌧺􌧱􌧺􌧱􌧺􌧱􌧺􌧷􌧺</span
       ><br>ASL<br>E-hand
     </div><div class=inline
       ><img height=100 src="pic/asl-skrikande-e-hand.svg"
+      ><span class=font-example>􌧱􌧱􌧱􌧱􌧽􌧷􌧺</span
       ><br>ASL<br>skrikande<br>E-hand
     </div>
   </section>
@@ -499,284 +648,420 @@
 
     <p><div class=inline
       ><img height=100 src="pic/a-hand.svg"
+      ><span class=font-example>􌧭􌧺􌧭􌧺􌧭􌧺􌧭􌧺􌧹􌧺</span
       ><br>A-hand
     </div><div class=inline
       ><img height=100 src="pic/d-hand.svg"
+      ><span class=font-example>􌧬􌧬􌧬􌧬􌧷</span
       ><br>D-hand
     </div><div class=inline
       ><img height=100 src="pic/dubbelkrok.svg"
+      ><span class=font-example>􌧲􌧲􌧾􌧯􌧯􌧷</span
       ><br>dubbelkrok
     </div><div class=inline
       ><img height=100 src="pic/e-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧲􌧽􌧷􌧺</span
       ><br>E-hand
     </div><div class=inline
       ><img height=100 src="pic/asl-e-hand.svg"
+      ><span class=font-example>􌧱􌧺􌧱􌧺􌧱􌧺􌧱􌧺􌧷􌧺</span
       ><br>E-hand<br>(ASL)
     </div><div class=inline
       ><img height=100 src="pic/asl-skrikande-e-hand.svg"
+      ><span class=font-example>􌧱􌧱􌧱􌧱􌧽􌧷􌧺</span
       ><br>E-hand,<br>skrikande<br>(ASL)
     </div><div class=inline
       ><img height=100 src="pic/f-hand.svg"
+      ><span class=font-example>􌧬􌧬􌧬􌧰􌧻􌧶􌧺</span
       ><br>F-hand
     </div><div class=inline
       ><img height=100 src="pic/flyghand.svg"
+      ><span class=font-example>􌧬􌧲􌧲􌧲􌧴</span
       ><br>flyghand
     </div><div class=inline
       ><img height=100 src="pic/flyghand2.svg"
+      ><span class=font-example>􌧬􌧲􌧲􌧬􌧴</span
       ><br>flyghand<br>(variant)
     </div><div class=inline
       ><img height=100 src="pic/flyghand3.svg"
+      ><span class=font-example>􌧬􌧲􌧲􌧬􌧷</span
       ><br>flyghand<br>(variant)
     </div><div class=inline
       ><img height=100 src="pic/flat-hand.svg"
+      ><span class=font-example>􌧬􌧬􌧬􌧬􌧴</span
       ><br>flat hand
     </div><div class=inline
       ><img height=100 src="pic/flat-hand2.svg"
+      ><span class=font-example>􌧬􌧬􌧬􌧬􌧶</span
       ><br>flat hand<br>(variant)
     </div><div class=inline
       ><img height=100 src="pic/flat-hand3.svg"
+      ><span class=font-example>􌧬􌧬􌧬􌧬􌧷</span
       ><br>flat hand<br>(variant)
     </div><div class=inline
       ><img height=100 src="pic/flat-hand4.svg"
+      ><span class=font-example>􌧭􌧭􌧭􌧭􌧴</span
       ><br>flat hand<br>(variant)
     </div><div class=inline
       ><img height=100 src="pic/flat-tumhand.svg"
+      ><span class=font-example>􌧬􌧬􌧬􌧬􌧹</span
       ><br>flat tumhand
     </div><div class=inline
       ><img height=100 src="pic/hallhand.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧱􌧻􌧶􌧺</span
       ><br>hållhand
     </div><div class=inline
       ><img height=100 src="pic/jasahand.svg"
+      ><span class=font-example>􌧲􌧲􌧭􌧬􌧴</span
       ><br>jasåhand
     </div><div class=inline
       ><img height=100 src="pic/k-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧭􌧻􌧬􌧶􌧺</span
       ><br>K-hand
     </div><div class=inline
       ><img height=100 src="pic/klohand.svg"
+      ><span class=font-example>􌧯􌧯􌧾􌧯􌧯􌧸</span
       ><br>klohand
     </div><div class=inline
       ><img height=100 src="pic/klohand2.svg"
+      ><span class=font-example>􌧯􌧯􌧾􌧯􌧯􌧴</span
       ><br>klohand<br>(variant)
     </div><div class=inline
       ><img height=100 src="pic/klohand3.svg"
+      ><span class=font-example>􌧮􌧮􌧾􌧮􌧮􌧴</span
       ><br>klohand<br>(variant)
     </div><div class=inline
       ><img height=100 src="pic/knuten-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧲􌧷</span
       ><br>knuten<br>hand
     </div><div class=inline
       ><img height=100 src="pic/knuten-hand2.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧲􌧶</span
       ><br>knuten<br>hand<br>(variant)
     </div><div class=inline
       ><img height=100 src="pic/krokfinger.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧯􌧷</span
       ><br>krokfinger
     </div><div class=inline
       ><img height=100 src="pic/krokfinger2.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧯􌧴</span
       ><br>krokfinger<br>(variant)
     </div><div class=inline
       ><img height=100 src="pic/l-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧬􌧴</span
       ><br>L-hand
     </div><div class=inline
       ><img height=100 src="pic/lillfinger.svg"
+      ><span class=font-example>􌧬􌧲􌧲􌧲􌧷</span
       ><br>lillfinger
     </div><div class=inline
       ><img height=100 src="pic/lillfinger2.svg"
+      ><span class=font-example>􌧭􌧲􌧲􌧲􌧷</span
       ><br>lillfinger<br>(variant)
     </div><div class=inline
       ><img height=100 src="pic/langfinger.svg"
+      ><span class=font-example>􌧲􌧲􌧬􌧲􌧷</span
       ><br>långfinger
     </div><div class=inline
       ><img height=100 src="pic/bojt-langfinger.svg"
+      ><span class=font-example>􌧬􌧬􌧾􌧯􌧬􌧸</span
       ><br>långfinger<br>(böjt)
     </div><div class=inline
       ><img height=100 src="pic/stort-langfinger.svg"
+      ><span class=font-example>􌧬􌧬􌧾􌧭􌧬􌧴</span
       ><br>långfinger<br>(stort)
     </div><div class=inline
       ><img height=100 src="pic/stort-langfinger2.svg"
+      ><span class=font-example>􌧬􌧬􌧾􌧯􌧬􌧸</span
       ><br>långfinger<br>(stort)
     </div><div class=inline
       ><img height=100 src="pic/stort-langfinger3.svg"
+      ><span class=font-example>􌧬􌧬􌧾􌧭􌧬􌧹</span
       ><br>långfinger<br>(stort)
     </div><div class=inline
       ><img height=100 src="pic/runt-langfinger.svg"
+      ><span class=font-example>􌧬􌧬􌧾􌧯􌧺􌧬􌧸􌧺</span
       ><br>långfinger<br>(runt)
     </div><div class=inline
       ><img height=100 src="pic/runt-langfinger2.svg"
+      ><span class=font-example>􌧬􌧬􌧾􌧭􌧺􌧬􌧹􌧺</span
       ><br>långfinger<br>(runt)
     </div><div class=inline
       ><img height=100 src="pic/m-hand.svg"
+      ><span class=font-example>􌧲􌧬􌧬􌧬􌧷</span
       ><br>M-hand
     </div><div class=inline
       ><img height=100 src="pic/asl-m-hand.svg"
+      ><span class=font-example>􌧲􌧼􌧲􌧲􌧲􌧷􌧺</span
       ><br>M-hand<br>(ASL)
     </div><div class=inline
       ><img height=100 src="pic/asl-m-hand2.svg"
+      ><span class=font-example>􌧲􌧼􌧯􌧯􌧯􌧷􌧺</span
       ><br>M-hand,<br>variant<br>(ASL)
     </div><div class=inline
       ><img height=100 src="pic/matthand.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧯􌧸</span
       ><br>måtthand
     </div><div class=inline
       ><img height=100 src="pic/matthand2.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧯􌧹</span
       ><br>måtthand<br>(variant)
     </div><div class=inline
       ><img height=100 src="pic/matthand3.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧯􌧴</span
       ><br>måtthand<br>(variant)
     </div><div class=inline
       ><img height=100 src="pic/rak-matthand.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧭􌧹</span
       ><br>måtthand<br>(rak)
     </div><div class=inline
       ><img height=100 src="pic/na-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧭􌧺􌧭􌧺􌧹􌧺</span
       ><br>NA-hand
     </div><div class=inline
       ><img height=100 src="pic/n-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧬􌧬􌧷</span
       ><br>N-hand
     </div><div class=inline
       ><img height=100 src="pic/n-hand2.svg"
+      ><span class=font-example>􌧲􌧲􌧭􌧭􌧷</span
       ><br>N-hand<br>(variant)
     </div><div class=inline
       ><img height=100 src="pic/n-hand3.svg"
+      ><span class=font-example>􌧲􌧲􌧭􌧭􌧴</span
       ><br>N-hand<br>(variant)
     </div><div class=inline
       ><img height=100 src="pic/n-matthand.svg"
+      ><span class=font-example>􌧲􌧲􌧭􌧭􌧹</span
       ><br>N-måtthand
     </div><div class=inline
       ><img height=100 src="pic/no-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧯􌧺􌧯􌧺􌧸􌧺</span
       ><br>NO-hand
     </div><div class=inline
       ><img height=100 src="pic/bojd-n-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧯􌧯􌧷</span
       ><br>N-hand<br>(böjd)
     </div><div class=inline
       ><img height=100 src="pic/asl-n-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧼􌧲􌧲􌧷􌧺</span
       ><br>N-hand<br>(ASL)
     </div><div class=inline
       ><img height=100 src="pic/asl-n-hand2.svg"
+      ><span class=font-example>􌧲􌧲􌧼􌧯􌧯􌧷􌧺</span
       ><br>N-hand,<br>variant<br>(ASL)
     </div><div class=inline
       ><img height=100 src="pic/nyphand.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧭􌧺􌧹􌧺</span
       ><br>nyphand
     </div><div class=inline
       ><img height=100 src="pic/nyphand2.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧱􌧺􌧶􌧺</span
       ><br>nyphand<br>(variant)
     </div><div class=inline
       ><img height=100 src="pic/stor-nyphand.svg"
+      ><span class=font-example>􌧬􌧬􌧾􌧬􌧯􌧺􌧸􌧺</span
       ><br>nyphand,<br>stor
     </div><div class=inline
       ><img height=100 src="pic/stor-nyphand2.svg"
+      ><span class=font-example>􌧬􌧬􌧾􌧬􌧭􌧺􌧹􌧺</span
       ><br>nyphand,<br>stor<br> (variant)
     </div><div class=inline
       ><img height=100 src="pic/stor-nyphand3.svg"
+      ><span class=font-example>􌧬􌧬􌧬􌧯􌧺􌧸􌧺</span
       ><br>nyphand,<br>stor<br> (variant)
     </div><div class=inline
       ><img height=100 src="pic/stor-nyphand4.svg"
+      ><span class=font-example>􌧬􌧬􌧾􌧬􌧭􌧹</span
       ><br>nyphand,<br>stor<br> (variant)
     </div><div class=inline
       ><img height=100 src="pic/stor-nyphand5.svg"
+      ><span class=font-example>􌧬􌧬􌧬􌧰􌧻􌧶􌧺</span
       ><br>nyphand,<br>stor<br> (variant)
     </div><div class=inline
       ><img height=100 src="pic/stor-nyphand6.svg"
+      ><span class=font-example>􌧬􌧬􌧾􌧬􌧰􌧺􌧶􌧺</span
       ><br>nyphand,<br>stor<br> (variant)
     </div><div class=inline
       ><img height=100 src="pic/o-hand.svg"
+      ><span class=font-example>􌧯􌧺􌧯􌧺􌧯􌧺􌧯􌧺􌧸􌧺</span
       ><br>O-hand
     </div><div class=inline
       ><img height=100 src="pic/pistolhand.svg"
+      ><span class=font-example>􌧲􌧲􌧬􌧬􌧴</span
       ><br>pistolhand
     </div><div class=inline
       ><img height=100 src="pic/tumhand.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧲􌧴</span
       ><br>tumhand
     </div><div class=inline
       ><img height=100 src="pic/pekfinger.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧬􌧷</span
       ><br>pekfinger
     </div><div class=inline
       ><img height=100 src="pic/pekfinger2.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧭􌧷</span
       ><br>pekfinger<br>(variant)
     </div><div class=inline
       ><img height=100 src="pic/bojt-pekfinger.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧯􌧺􌧸􌧺</span
       ><br>pekfinger<br>(böjt)
     </div><div class=inline
       ><img height=100 src="pic/vinklat-pekfinger.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧭􌧷</span
       ><br>pekfinger<br>(vinklat)
     </div><div class=inline
       ><img height=100 src="pic/q-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧲􌧹</span
       ><br>Q-hand
     </div><div class=inline
       ><img height=100 src="pic/s-hand.svg"
+      ><span class=font-example>􌧯􌧯􌧯􌧯􌧸</span
       ><br>S-hand
     </div><div class=inline
       ><img height=100 src="pic/s-hand2.svg"
+      ><span class=font-example>􌧯􌧯􌧯􌧯􌧴</span
       ><br>S-hand<br>(variant)
     </div><div class=inline
       ><img height=100 src="pic/sprethand.svg"
+      ><span class=font-example>􌧬􌧬􌧾􌧬􌧬􌧴</span
       ><br>sprethand
     </div><div class=inline
       ><img height=100 src="pic/sprethand2.svg"
+      ><span class=font-example>􌧬􌧬􌧾􌧬􌧬􌧷</span
       ><br>sprethand<br>(variant)
     </div><div class=inline
       ><img height=100 src="pic/sprethand3.svg"
+      ><span class=font-example>􌧬􌧬􌧾􌧬􌧬􌧹</span
       ><br>sprethand<br>(variant)
     </div><div class=inline
       ><img height=100 src="pic/bojd-sprethand.svg"
+      ><span class=font-example>􌧮􌧮􌧾􌧮􌧮􌧴</span
       ><br>sprethand<br>(böjd)
     </div><div class=inline
       ><img height=100 src="pic/vinklad-sprethand.svg"
+      ><span class=font-example>􌧭􌧭􌧾􌧭􌧭􌧹</span
       ><br>sprethand<br>(vinklad)
     </div><div class=inline
       ><img height=100 src="pic/tumvinkelhand.svg"
+      ><span class=font-example>􌧭􌧭􌧭􌧭􌧹</span
       ><br>tumvinkel-<br>hand
     </div><div class=inline
       ><img height=100 src="pic/t-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧭􌧻􌧶􌧻</span
       ><br>T-hand
     </div><div class=inline
       ><img height=100 src="pic/t-hand2.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧭􌧴</span
       ><br>T-hand<br>(variant)
     </div><div class=inline
       ><img height=100 src="pic/asl-t-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧼􌧲􌧷􌧺</span
       ><br>T-hand (ASL)
     </div><div class=inline
       ><img height=100 src="pic/tupphand.svg"
+      ><span class=font-example>􌧲􌧲􌧾􌧬􌧬􌧴</span
       ><br>tupphand
     </div><div class=inline
       ><img height=100 src="pic/bojd-tupphand.svg"
+      ><span class=font-example>􌧲􌧲􌧾􌧯􌧯􌧸</span
       ><br>tupphand<br>(böjd)
     </div><div class=inline
       ><img height=100 src="pic/vinklad-tupphand.svg"
+      ><span class=font-example>􌧲􌧲􌧾􌧭􌧭􌧹</span
       ><br>tupphand<br>(vinklad)
     </div><div class=inline
       ><img height=100 src="pic/u-hand.svg"
+      ><span class=font-example>􌧬􌧭􌧺􌧭􌧺􌧬􌧹􌧺</span
       ><br>U-hand
     </div><div class=inline
       ><img height=100 src="pic/v-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧾􌧬􌧬􌧷</span
       ><br>V-hand
     </div><div class=inline
       ><img height=100 src="pic/v-hand2.svg"
+      ><span class=font-example>􌧲􌧲􌧾􌧭􌧭􌧷</span
       ><br>V-hand<br>(variant)
     </div><div class=inline
       ><img height=100 src="pic/vinkelhand.svg"
+      ><span class=font-example>􌧭􌧭􌧭􌧭􌧻􌧶􌧻</span
       ><br>vinkelhand
     </div><div class=inline
       ><img height=100 src="pic/vinkelhand2.svg"
+      ><span class=font-example>􌧭􌧭􌧭􌧭􌧴</span
       ><br>vinkelhand<br>(variant)
     </div><div class=inline
       ><img height=100 src="pic/vinkelhand3.svg"
+      ><span class=font-example>􌧭􌧭􌧭􌧭􌧷</span
       ><br>vinkelhand<br>(variant)
     </div><div class=inline
       ><img height=100 src="pic/w-hand.svg"
+      ><span class=font-example>􌧲􌧬􌧾􌧬􌧬􌧷</span
       ><br>W-hand
     </div><div class=inline
       ><img height=100 src="pic/bojd-w-hand.svg"
+      ><span class=font-example>􌧲􌧯􌧾􌧯􌧯􌧷</span
       ><br>W-hand<br>(böjd)
     </div><div class=inline
       ><img height=100 src="pic/x-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧳􌧷</span
       ><br>X-hand
     </div><div class=inline
       ><img height=100 src="pic/4-hand.svg"
+      ><span class=font-example>􌧬􌧬􌧾􌧬􌧬􌧷</span
       ><br>4-hand
     </div><div class=inline
       ><img height=100 src="pic/bojd-4-hand.svg"
+      ><span class=font-example>􌧯􌧯􌧾􌧯􌧯􌧷</span
       ><br>4-hand<br>(böjd)
     </div><div class=inline
       ><img height=100 src="pic/60-hand.svg"
+      ><span class=font-example>􌧲􌧲􌧲􌧲􌧵</span
       ><br>60-hand
     </div>
+  </section>
+  <section id=font>
+    <h1>Typsnitt</h1>
+
+    <p>Fingerfonetiksymbolerna består av 20 symboler som är till för att
+    beskriva handformer för vilka ingen annan symbol existerar. De utgör en del
+    av <a href="../freesans-swl.html">typsnittet FreeSans-SWL</a> (som används
+    för <a href="../intro.html">transkription av svenskt teckenspråk</a>) och
+    kan således sömlöst användas tillsammans med den vanliga transkriptionen.
+
+    <p>Följande tabell innehåller alla fingerfonetiksymboler i den ordning de
+    beskrivits ovan:
+
+    <table border=1>
+      <tr><td rowspan=2><a href=#spret>Spretning</a><br>(2st)
+        <td>hel        <td> 􌧾
+        <tr><td>parvis <td> 􌧿
+      <tr><td rowspan=8><a href=#fingrar>Fingrar</a><br>(8st)
+        <td>rakt         <td> 􌧬
+        <tr><td>vinklat  <td> 􌧭
+        <tr><td>böjt     <td> 􌧯
+        <tr><td>knutet   <td> 􌧲
+        <tr><td>lätt böjt<td> 􌧮
+        <tr><td>F-form   <td> 􌧰
+        <tr><td>hållhand <td> 􌧱
+        <tr><td>korsade  <td> 􌧳
+      <tr><td rowspan=6><a href=#tumme>Tumme</a><br>(6st)
+        <td>rak                <td> 􌧴
+        <tr><td>böjd           <td> 􌧵
+        <tr><td>parallell      <td> 􌧶
+        <tr><td>knuten         <td> 􌧷
+        <tr><td>böjd opp.<td> 􌧸
+        <tr><td>rak opp. <td> 􌧹
+      <tr><td rowspan=4><a href=#kontakt>Kontakt</a><br>(4st)
+        <td>spets        <td> 􌧺
+        <tr><td>mitt     <td> 􌧻
+        <tr><td>mellan   <td> 􌧼
+        <tr><td>handflata<td> 􌧽
+    </table>
+
+    <p class=FIXME id=FIXME6>FIXME: Korsade fingrar (􌧳) är tänkta att vara en
+    ligatur för två fingrar intill varandra med mittkontakt (􌧬􌧻􌧬􌧻). Detta är
+    dock ännu ej implementerat i typsnittet.
   </section>
   <section id=referenser>
     <h1>Referenser</h1>
