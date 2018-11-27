@@ -135,7 +135,31 @@
 *** TODO Sortable search results
     Present search result in a sortable table? Should be able to sort by swedish
     word, and by sign language.
-** [22/39] GUI
+** [22/40] GUI
+*** [0/2] Redesign
+    Moar intuitive design for newbies, also good with space on cell phones.
+    (https://www.ecosia.org/ has a nice design).
+**** TODO No query: display search field in middle of screen
+     (To make it obvious that this is the main feature of the page.)
+
+     + Search field in middle of screen (slightly bigger that on search results
+       list).
+     + Hamburger menu at top right.
+     + Copyright + information links at window lower edge.
+     + Informational 'Click here for transcription symbols' + arrow pointing at
+       keyboard icon in search form.
+**** TODO Query: display search field at top of window
+     + Search field + hamburger menu at top of screen.
+     + Search result counter + video/text toggle below search form.
+     + Copyright + information links at bottom of window.
+*** TODO Make virtual keyboard come sliding out from under the search form
+    The on-screen keyboard should be displayed on top of search results, so
+    that dropping the keyboard does not scroll the search results.
+*** TODO Make search form drop down on top of search result
+    When scrolling down the search form should scroll up with the page, when
+    scrolling up it should be immediately revealed -- just like URL bar in the
+    mobile browser.
+*** TODO Should be able to zoom out on mobile
 *** TODO Hide broken image icon (if any) on video load                  :BUG:
     Currently, if the image failed to load and a broken image icon is
     displayed, this broken icon remains there when the video loads (displayed
@@ -198,13 +222,6 @@
 *** TODO Newlines->space when pasting into search query <textarea>      :BUG:
 *** TODO Chrome should autodetect lexicon as 'search engine'
     https://martin-thoma.com/search-engine-autodiscovery/#google-chrome-autodiscovery
-*** TODO Make virtual keyboard come sliding out from under the search form
-    The on-screen keyboard should be displayed on top of search results, so
-    that dropping the keyboard does not scroll the search results.
-*** TODO Make search form drop down on top of search result
-    When scrolling down the search form should scroll up with the page, when
-    scrolling up it should be immediately revealed -- just like URL bar in the
-    mobile browser.
 *** DONE Video load spinner + broken icon on load fail
     CLOSED: [2018-09-04 Tue 11:32]
 
