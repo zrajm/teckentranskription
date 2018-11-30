@@ -1,0 +1,276 @@
+<!doctype html><!--*- ispell-dictionary: "svenska" -*-->
+<html lang=sv>
+<head>
+  <!-- Copyright 2018 by zrajm. Released under GPLv3 license. -->
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" type="image/x-icon" href=favicon.ico>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Grammatisk skiss av teckenspråk</title>
+  <link rel=license href=LICENSE.txt>
+  <style>
+    /* Default font: FreeSans-SWL */
+    @font-face {
+      font-family: "FreeSans-SWL";
+      src: url("freesans-swl.ttf");
+    }
+    html {
+      font-family: "FreeSans-SWL", "FreeSans", sans-serif;
+      line-height: 1.4;
+    }
+    button, input, select, textarea { font-family: inherit; }
+    * {
+      caret-color: rgb(173, 189, 224); /* focus outline color */
+      line-height: inherit;
+    }
+    body {
+      background: #fff;
+      padding: .25em 1em;
+      font-size: 22px;
+    }
+    p.hanging, .hanging p {
+      text-indent: -1em !important;
+      padding-left: 1em;
+    }
+    section { margin: 1em 0em; }
+    table[border]:not([border="0"]) {
+      border-collapse: collapse;
+      border: 1px solid transparent;
+    }
+    table[border]:not([border="0"]) th,
+    table[border]:not([border="0"]) td {
+      text-align: center;
+      padding: .125em .25em;
+      border: 1px solid black;
+      vertical-align: baseline;
+    }
+    *[border]:not([border="0"]) {
+      border: 1px solid black;
+    }
+    .inline {
+      display: inline;
+    }
+    .rrg td,
+    .rrg th {
+      padding: .25em .5em !important;
+    }
+    .rrg caption,
+    .rrg th {
+      font-weight: bold;
+      font-size: smaller;
+    }
+    h1 { margin: .75em 0 .5em; }
+    p { margin: 0; }
+    p:empty + p { margin-top: 1em; }
+    p:not(:empty) + p { text-indent: 1.5em; }
+
+    figcaption { margin: .5em 0; }
+
+    footer {
+      opacity: .75;
+      font-size: smaller;
+      margin: .5em 0;
+      text-align: center;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Grammatisk skiss av teckenspråk</h1>
+  <ul>
+    <li><a href=#introduktion>Introduktion</a>
+      <li><a href=#referenser>Referenser</a>
+    <li><a href=#ordlista>Ordlista</a>
+  </ul>
+  <section>
+    <h1 id=introduktion>Introduktion</h1>
+
+    <script>/*
+    <figure style="vertical-align:middle;margin:1em 0;text-align:center">
+      <table border=1 class="rrg inline" style="margin:1em 0">
+        <tr>
+          <td>
+            <table border=1 class=inline>
+              <tr><td>Predikat
+            </table> + Argument
+          <td>Icke-argument
+      </table>
+      <figcaption>Figure 1.1: Universal oppositions underlying clause
+        structure</figcaption>
+    </figure>
+
+    <figure style="vertical-align:middle;margin:1em 0;text-align:center">
+      <table border=1 class="rrg inline" style="margin:1em 0;vertical-align:middle;display:inline-table;">
+        <tr>
+          <th colspan=2 style="border:0">SATS<!--CLAUSE-->
+        <tr>
+          <td>
+            <table border=1 class=inline>
+              <caption>KÄRNA<!--CORE--></caption>
+              <tr><th>INRE KÄRNA<!--NUCLEUS-->
+            </table>
+          <th>TILLÄGG<!--PERIPHERY-->
+      </table>
+      <table border=1 class="rrg inline" style="margin:1em 0;vertical-align:middle;display:inline-table;margin:1em">
+        <tr>
+          <th colspan=2 style="border:0">SATS<!--CLAUSE-->
+        <tr style="height:.5em">
+          <td style="width:50%;border:0;border-right:1px solid">
+          <td style="width:50%;border:0">
+        <tr>
+          <th style="border-bottom:0;border-right:0;padding-top:.5em!important">KÄRNA<!--CORE-->
+          <th style="border-bottom:0;border-left:0">TILLÄGG<!--PERIPHERY-->
+        <tr style="height:.5em">
+          <td style="border:0">
+          <td style="border:0">
+        <tr>
+          <td>Dana
+            <table border=1 class=inline>
+              <caption>INRE<br>KÄRNA<!--NUCLEUS--></caption>
+              <tr><td>saw
+            </table> Pat
+          <td>yesterday in the library
+      </table>
+      <figcaption>Figure 1.2: Components of the layered structure of the
+        clause</figcaption>
+    </figure>
+    */</script>
+
+    <p>När jag läste <a href=2013>Jantunen (2013)</a> stötte jag för första
+    gången på <i>roll- och referensgrammatik</i> – Äntligen en lättbegriplig
+    beskrivning av en sats! En platt struktur, grafiskt åskådliggjord och utan
+    en massa svårnavigerade trädstrukturer! Precis vad min hjärna behöver! Den
+    här texten är ett försök beskriva svenskt teckenspråk med samma metod.
+
+    <p><p>Såhär funkar en sats enligt roll- och referensgrammatiken (fritt
+    översatt från Jantunen, s 307–308):
+
+    <figure style="vertical-align:middle;margin:1em 0;text-align:center">
+      <table class="rrg inline" style="border-collapse:collapse;margin:0">
+        <tr>
+          <th style="padding-bottom:0!important" colspan=7>
+            ENKEL MENING<!--Simple sentence (full)-->
+            <div style="border-left:1px solid black;width:0;height:.5em;margin:auto"></div>
+        <tr style="height:.5em">
+          <th style="border:1px solid black;border-bottom:0" colspan=7>
+        <tr style="height:.5em">
+          <td style="border-left:1px solid">
+          <td>
+          <th style="padding-bottom:0!important" colspan=2>KÄRNA
+            <div style="border-left:1px solid black;width:0;height:.5em;margin:auto;"></div>
+          <td>
+          <td>
+          <td style="border-right:1px solid">
+        <tr style="height:.5em">
+          <td colspan=2 style="border-left:1px solid">
+          <td colspan=2 border=1 style="border-bottom:0">
+          <td colspan=3 style="border-right:1px solid">
+        <tr style="height:.5em"><td><td><td><td><td><td>
+        <tr>
+          <th border=1>VÄNSTER FRISTÅENDE POSITION
+          <td>
+          <td border=1 style="border-left-width:.3em;border-right:0;padding-right:0!important">
+            <table border=1 class=inline>
+              <tr><th>INRE KÄRNA<!--Nucleus-->
+            </table>
+          <th border=1 style="border-left:0">
+            + KÄRN­ARGUMENT
+          <th border=1 style="border-right-width:.3em">TILLÄGG
+          <td>
+          <th border=1>HÖGER FRISTÅENDE POSITION
+        <tr style="height:.5em"><td><td><td><td><td><td>
+        <tr style="height:.5em">
+          <td colspan=2>
+          <th border=1 style="border-top:0" colspan=3>
+          <td colspan=2>
+        <tr>
+          <td colspan=2>
+          <th colspan=3 style="border:0;padding-top:0!important">
+            <div style="border-left:1px solid black;width:0;height:.5em;margin: 0 auto .125em"></div>
+            SATS<!--Clause (full)-->
+          <td colspan=2>
+      </table>
+      <figcaption><i><b>Figur 1.</b> Schematisk bild av satsstrukturen (enligt
+        roll- och referensgrammatik)</i></figcaption>
+    </figure>
+
+    <p>Den <b style=font-size:smaller>INRE KÄRNAN</b> består av ett predikat
+    (antingen verbalt eller nominalt) och utgör den syntaktiska
+    huvudingrediensen i en sats. <b style=font-size:smaller>KÄRNARGUMENT</b> är
+    argumenten till predikatet. Satsens <b style=font-size:smaller>KÄRNA</b>
+    består av den <i>inre kärnan</i> och dess <i>kärnargument</i> tillsammans.
+    <b style=font-size:smaller>TILLÄGG</b> består av icke-argument (dvs enheter
+    med adverbiell funktion).
+
+    <!--The predicate, which may be a verbal or a nominal of some sort, defines
+    the NUCLEUS, which is the main syntactic constituent in the clause. The
+    arguments of the predicate are syntactically CORE ARGUMENTS which, together
+    with the nucleus, constitute the clausal CORE; non-arguments (e.g., units
+    with an adverbial function) form the PERIPHERY.-->
+
+    <!-- tag question = påhängsfråga -->
+
+    <p>Satsens kärna och tillägg kan kompletteras med kärnexterna och
+    satsexterna element. Typiska kärnexterna (men satsinterna) element
+    inkluderar frågeord som, beroende på språk, kommer antingen före eller
+    efter kärnan. Typiska satsexterna element, å andra sidan, är topik och
+    påhäng. Topik kommer oftast i <b style=font-size:smaller>VÄNSTER FRISTÅENDE
+    POSITION</b> och påhäng oftast i <b style=font-size:smaller>HÖGER
+    FRISTÅENDE POSITION</b>. Den mest påtagliga skillnaden mellan positionerna
+    före och efter kärnan, och de fristående positionerna är att de fristående
+    positionerna separeras från satsen med intonationsbrott eller paus.
+
+    <!--<p>The core plus periphery structure of the clause may be complemented with
+    several core-external and clause-external elements. Typical core-external
+    (yet clauseinternal) elements include question words that, depending on the
+    language, occur either in PRE-CORE SLOTS or POST-CORE SLOTS. Typical
+    clause-external elements, in turn, are topics and tags. Of these, the
+    former tend to occur in the LEFT-DETACHED POSITION whereas the latter
+    usually occupy the RIGHT-DETACHED POSITION. The most notable difference
+    between pre- and post-core slots and left- and right-detached positions is
+    that the detached positions are separated from the clause by an intonation
+    break or a pause (Van Valin & LaPolla 1997, Van Valin 2005).-->
+
+    <p>En sats utgör alltid en <b style=font-size:smaller>ENKEL MENING</b> som,
+    åtminstone teoretiskt, kan bestå av alla ovan beskrivna element. I den
+    schematiska strukturen ovan, visas alla enheter utom positionerna före och
+    efter kärnan (dom dock markerats med grövre linjer). Satser av det här
+    slaget kan också kombineras linjärt och/eller hierarkiskt för att bilda
+    komplexa meningar.
+
+    <!-- <p>The clause always constitutes a simple SENTENCE that may, at least
+    theoretically, consist of all of the above-mentioned elements. Such a
+    structure, without pre- and post-core slots, is displayed schematically in
+    Figure 1 (Jantunen 2007, following Van Valin & LaPolla 1997). Linear and/or
+    hierarchical combinations of two or more clauses are treated as COMPLEX
+    SENTENCES (see Section 3.4).-->
+
+  </section>
+  <section id=referenser>
+    <h1>Referenser</h1>
+    <div class=hanging>
+      <p id=2013>Jantunen, Tommi (2013) ”Ellipsis in Finnish Sign
+        Language.” <i>Nordic Journal of Linguistics</i> 36(3),
+        s 303–332. <a href="https://doi.org/10.1017/S0332586513000292">doi:10.1017/<wbr>S0332586513000292</a>
+    </div>
+  </section>
+  <section id=ordlista>
+    <h1>Ordlista</h1>
+    <div class=hanging>
+      <p id=_enkel_mening><b>enkel mening</b> – <i>(Simple sentence)</i>.
+      <p id=_kärna><b>kärna</b> – <i>(Core)</i>.
+      <p id=_kärnargument><b>kärnaargument</b> – <i>(Core arguments)</i>.
+      <p id=_höger_fristående_position><b>höger fristående position</b> – <i>(Right-Detached Position)</i>.
+      <p id=_inre_kärna><b>inre kärna</b> – <i>(Nucleus)</i>.
+      <p id=_predikat><b>predikat</b> – <i>(Predicate)</i>.
+      <p id=_roll_och_referensgrammatik><b>roll- och referensgrammatik</b> –
+        <i>(Role and Reference Grammar, RRG)</i>.
+      <p id=_tillägg><b>tillägg</b> – <i>(Periphery)</i>.
+      <p id=_sats><b>sats</b> – <i>(Clause)</i>.
+      <p id=_vänster_fristående_position><b>vänster fristående position</b> – <i>(Left-Detached Position)</i>.
+    </div>
+  </section>
+  <footer>
+    © 2018 <a href="mailto:lexikon@zrajm.org">zrajm</a>, Uppsala.
+  </footer>
+</body>
+</html>
