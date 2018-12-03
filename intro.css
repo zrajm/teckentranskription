@@ -4,6 +4,7 @@
 @font-face {
     font-family: "FreeSans-SWL";
     src: url("freesans-swl.ttf");
+    font-display: swap;
 }
 html { font-family: "FreeSans-SWL", "FreeSans", sans-serif; }
 button, input, select, textarea { font-family: inherit; }
