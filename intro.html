@@ -54,7 +54,7 @@
     }
     .center-content { text-align: center; }
 
-    p + p {
+    p:not(:empty) + p:not(:empty) {
         margin-top: -1em;
         text-indent: 1em;
     }
@@ -79,7 +79,8 @@
     }
 
     p.hanging, .hanging p {
-        text-indent: -1em;
+        /* override text-indent specificity of 'p:not(:empty) + p:not(:empty)' rule */
+        text-indent: -1em !important;
         padding-left: 1em;
     }
 
@@ -122,13 +123,19 @@
         line-height: initial !important;
     }
 
-    sup {
-        line-height: 25px;
-        font-size: 80%;
-        vertical-align: top;
-        position: relative;
-        top: -5px;
+
+    /****************************************************************************/
+    /* From: https://gist.github.com/unruthless/413930 */
+    sub, sup, .fn {
+      font-size: 75%;
+      line-height: 0;
+      position: relative;
+      vertical-align: baseline;
+      display: inline-block;
     }
+    sup, .fn { top: -0.5em; }
+    sub { bottom: -0.25em; }
+    /****************************************************************************/
 
     th > details { font-weight: normal; }
     th > details > summary { font-weight: bold; }
@@ -154,6 +161,8 @@
         vertical-align: top;
     }
     figure.inline figcaption img { max-height: 1em; }
+
+    figcaption { margin: .5em 0; }
 
     .columns {
         column-count: auto;
@@ -237,6 +246,33 @@
       margin-bottom: .5em; /* same as .column > details vpadding */
     }
     .columns > details[open] > summary > span { font-weight: normal; }
+
+    /*** transcription examples with field names ***/
+    .field-example {
+      Xoutline: 1em solid rgba(255, 0, 255, .5);
+    }
+    .field-example table,
+    table.field-example {
+      border-collapse: collapse;
+      margin: 0 -.25em;     /* negate td/th horiz padding */
+    }
+    .field-example th {
+      font-size: smaller;
+      color: rgba(0, 0, 0, .25);
+      font-weight: inherit;
+    }
+    .field-example th + th,
+    .field-example td + td {
+      border-left: 1px solid rgba(0, 0, 0, .25);
+    }
+    .field-example th,
+    .field-example td {
+      padding: 0 .125em;
+      text-align: center;
+    }
+    .field-example td {
+      font-size: 1.8em; /* same as .x2 */
+    }
   </style>
 </head>
 <body lang=sv>
@@ -276,7 +312,12 @@
     <section>
       <h1>Innehåll</h1>
       <ul style="margin:1em">
-        <li><a href=#hur>Överblick</a>
+        <li><a href=#struktur>Övergripande struktur</a>
+          <ul style="margin-left:1em">
+            <li><a href=#en_hand>En hand</a>
+            <li><a href=#tva_hander>Två händer</a>
+            <li><a href=#segment>Segment</a>
+          </ul>
         <li><a href=#artikulator>Hand</a>
           <ul style="margin-left:1em">
             <li><a href=#handform>Handform</a>
@@ -304,20 +345,190 @@
       </ul>
     </section>
 
-    <section id=hur>
-      <h1>Överblick</h1>
+    <section id=struktur>
+      <h1>Övergripande struktur</h1>
 
-      <figure>
-        <table border=1>
-          <tr>
-            <td title="Fält I: Artikulationsställe"><a href=#artikulationsstalle>I<br><span class=x4>􌤆</span></a>
-            <td title="Fält II: Artikulator"><a href=#artikulator>II<br><span class=x4>􌥈􌥕􌥙</span></a>
-            <td title="Fält III: Artikulation"><a href=#artikulation>III<br><span class=x4>􌥰􌥿</span></a>
-        </table>
-        <figcaption>De tre fälten (I–III) beskriver varsin aspekt hos uttalet
-          av ett tecken. Här tecknet <a href=02544>ansikte</a>.
-        </figcaption>
-      </figure>
+      <p>Transkriptionen har tre olika fält: <i>läge, hand</i>
+      och <i>rörelse</i> <a href=#struktur-1 class=fn>[1]</a>. De kommer alltid
+      i den ordningen, och vart och ett av fälten har sin egen uppsättning
+      symboler (lägessymbolerna används bara i lägesfältet etc) med några
+      undantag. De olika fälten beskrivs i varsitt kapitel nedan.
+
+      <ul style="margin:1em 2em">
+        <li><b><a href=#artikulationsstalle>Läge</a></b> – Kroppsdel eller
+          passiv hand. (Utelämnas för tecken i neutrala läget.)
+        <li><b><a href=#artikulator>Hand</a></b> – Den (eller de) aktiva
+          händernas form och attityd.
+        <li><b><a href=#artikulation>Rörelse</a></b> – Hur händerna rör sig.
+      </ul>
+
+      <section id=en_hand>
+        <h1>En hand</h1>
+
+        <p>Ett enhandstecken med kroppsläge använder sig av alla tre fält:
+
+        <figure>
+          <table class=field-example>
+            <tr><th>läge <th>hand <th>rörelse
+            <tr><td>􌤕    <td>􌤢􌥓􌥙  <td>􌤟􌥼􌥻
+          </table>
+          <figcaption><a href=00204>finns</a> (Läge: Vänster sida av bröstet.
+            Hand: Flata handen, vänsterriktad och nedåtvänd. Rörelse: Upprepad
+            kontakt.)</figcaption>
+        </figure>
+
+        <p>Om ett tecken utförs i det neutrala läget utelämnas lägesfältet:
+
+        <figure>
+          <table class=field-example>
+            <tr><th>hand <th>rörelse
+            <tr><td>􌤢􌥓􌤸  <td>􌦄
+          </table>
+          <figcaption><a href=00192>välkommen</a> (Läge: Neutrala läget. Hand:
+            Flata handen, vänsterriktad och uppåtvänd. Rörelse: Förs
+            inåt.)</figcaption>
+        </figure>
+      </section>
+
+      <section id=tva_hander>
+        <h1>Två händer</h1>
+
+        <p>När ett tecken utförs med två händer skrivs bägge händerna ut med
+        egna hand- och attitydsymboler. Den icke-dominanta handen skrivs först,
+        därefter den dominanta handen, men vilket fält den icke-dominanta
+        tillhör beror på om den har en passiv eller aktiv roll i tecknet.
+
+        <p>Om den icke-dominanta handen är passiv utgör den ett läge för aktiva
+        handen och tillhör därför lägesfältet. I det fallet skrivs den
+        icke-dominanta handens attitydsymboler efter handformssymbolen (mellan
+        de två handsymbolerna):
+
+        <figure>
+          <table class=field-example>
+            <tr><th>läge <th>hand <th>rörelse
+            <tr><td>􌤢􌥔􌤸  <td>􌥌􌤴􌥙  <td>􌥧􌥼􌤟
+          </table>
+          <figcaption><a href=03990>sant, sann</a> (Läge: Flata handen,
+            högerriktad och uppåtvänd. Hand: N-handen, framåtriktad och
+            nedåtvänd. Rörelse: Förs nedåt till kontakt.)</figcaption>
+        </figure>
+
+        <p>Om bägge händerna är aktiva och agerar tillsammans så skrivs de två
+        handformssymbolerna närmare varandra genom att den icke-dominanta
+        handens attityd skrivs före dess handform. Bägge händerna tillhör då
+        handfältet:
+
+        <figure>
+          <table class=field-example>
+            <tr><th>hand   <th>rörelse
+            <tr><td>􌤴􌥗􌤢􌤢􌤴􌤶 <td>􌦃
+          </table>
+          <figcaption><a href=00587>gata</a> (Läge: Neutrala läget. Händer:
+            Flata händer, framåtriktade och vända mot varandra. Rörelse: Förs
+            framåt.)</figcaption>
+        </figure>
+
+        <p>I sällsynta fall agerar de båda händerna samtidigt, men asymmetriskt
+        och utan att ha kontakt med varandra. I dessa fall använder man
+        <i>handseparatorn</i> [􌦩] och transkriberar de två händerna var och en
+        för sig:
+
+        <figure>
+          <table class=field-example>
+            <tr>
+              <th style=padding-bottom:.75em colspan=2>icke-dominant<br>hand
+              <th>
+              <th style=padding-bottom:.75em colspan=3>dominant<br>hand
+            <tr>         <th>hand <th>rörelse <th>
+                <th>läge <th>hand <th>rörelse
+            <tr>         <td>􌥅􌤴􌤸  <td>􌦑       <td>􌦩
+                <td>􌤔    <td>􌤲􌥓􌥘  <td>􌥱􌦀􌥼􌥻
+          </table>
+          <figcaption><a href=01567>gitarr</a> (Läge: Neutrala läget. Hand:
+            S-handen, framåtriktad och uppåtvänd. Rörelse: Hålls stilla. +
+            Läge: Högra bröstet. Hand: Stora nyphanden, vänsterriktad och
+            inåtvänd. Rörelse: Slås upprepat nedåt.)
+          </figcaption>
+        </figure>
+      </section>
+
+      <section id=segment>
+        <h1>Segment</h1>
+
+        <p>Ibland behöver ett tecken delas upp i flera segment för att kunna
+        transkriberas. <i>Segmentseparatorn</i> [􌥠] används för att visa att
+        att segmenten tillhör samma tecken, och för vart och ett av segmenten anges
+        <i>läge, hand</i> och <i>rörelse</i> precis som ovan.
+
+        <p>Det finns flera skäl att dela upp ett tecken i flera segment, tex om
+        tecknet behöver fler än en lägessymbol:
+
+        <figure>
+          <table class=field-example>
+            <tr><th>läge <th>hand <th>rörelse <th>
+                <th>läge <th>hand <th>rörelse
+            <tr><td>􌤃    <td>􌥈􌥓􌥙  <td>􌤟       <td>􌥠
+                <td>􌤛    <td>􌥈􌥓􌥙  <td>􌤟
+          </table>
+          <figcaption><a href=02557>pappa</a> – Delas i två segment därför att
+            det har två lägen som skrivs med varsin symbol. Man skulle också
+            kunnat transkribera det [􌤆􌥈􌥓􌥙􌤟􌥼􌥖􌥼􌤟] men då förloras informationen
+            om exakt var i ansiktet kontakten sker. (Notera också att hand- och
+            rörelsefälten inte förkortas, inte ens när de är exakt likadana i
+            de bägge segmenten.)</figcaption>
+        </figure>
+
+        <figure>
+          <table class=field-example>
+            <tr><th>läge <th>hand <th>rörelse
+            <tr><td>􌤓    <td>􌤤􌥓􌥘  <td>􌤟􌥼􌥣􌥼􌤟
+          </table>
+          <figcaption><a href=01275>värd</a> – Ett tecken som kan skrivas med
+            bara ett segment trots att det har kontakt vid två olika lägen (först
+            vänster, sedan höger sida av bröstet).</figcaption>
+        </figure>
+
+        <p>En annan anledning att dela upp ett tecken är att tecknet har flera
+        distinkta rörelser:
+
+        <figure>
+          <table class=field-example>
+            <tr><th>läge <th>hand <th>rörelse <th>
+                <th>läge <th>hand <th>rörelse
+            <tr><td>􌤢􌥔􌤸    <td>􌤩􌤴􌥙  <td>􌥢􌥡􌥡􌦄  <td>􌥠
+                <td>􌤢􌥔􌤸    <td>􌤩􌤴􌥙  <td>􌥣􌥡􌥡􌦄
+          </table>
+          <figcaption><a href=05395>tips</a> – Här är det bara rörelsen som
+            skiljer sig mellan de två segmenten. (I detta tecken är
+            läget <a href=#handlage>den passiva handen</a>. De kombinerade
+            rörelsepilarna indikerar diagonal rörelse.)</figcaption>
+        </figure>
+
+        <p>Ett tecken kan också delas upp i segment om vilka händer som är
+        aktiva/passiva varierar mellan olika delar av tecknet:
+
+        <figure>
+          <table class=field-example>
+            <tr><th>läge <th>hand <th>rörelse <th>
+                <th>hand <th>rörelse
+            <tr><td>􌤃    <td>􌥈􌤵􌤶  <td>􌤟  <td>􌥠
+                <td>􌤵􌥗􌥈􌥈􌤵􌤶  <td>􌥣
+          </table>
+          <figcaption><a href=02575>människa</a> – Här är läge och handform densamma
+            i bägge segment men rörelsen skiljer. (De kombinerade rörelsepilarna
+            indikerar diagonal rörelse.)</figcaption>
+        </figure>
+      </section>
+
+      <aside style="margin:1em 0">
+        <h1>Fotnoter</h1>
+
+        <p id=struktur-1><sup><b>[1]</b></sup> I teckenspråkslitteraturen
+          föredrar man oftast termerna <i>artikulationsställe</i>
+          (läge), <i>artikulator</i> (hand) och <i>artikulation</i> (rörelse)
+          men jag har här försökt välja enklare ord som skiljer sig mer ifrån
+          varandra.
+      </aside>
     </section>
 
     <section id=artikulator>
@@ -2854,20 +3065,42 @@
     <section id=artikulationsstalle>
       <h1>Läge</h1>
 
-      <p>Artikulationsstället är den plats där den aktiva handen befinner
-      sig då ett tecken utförs.
+      <p><i>Läge</i> (eller <i>artikulationsställe</i>) är den plats där den
+      aktiva handen befinner sig då ett tecken utförs. Läget kan utgöras av
+      en <a href=#handlage>passiv hand</a> (med handform och attityd) eller
+      en <a href=#kroppslage>plats på kroppen</a>. Vid handläge är den ena
+      handen är passiv och den andra aktiv. Vid dubbelartikulation är båda
+      händerna aktiva, och handläge är därför inte möjligt.
 
-      <p>Vid handläge är den ena handen är passiv och den andra aktiv. Vid
-      dubbelartikulation är båda händerna aktiva, och handläge är därför
-      inte möjligt.
+      <p>Läge kan förekomma med en aktiv hand:
 
-      <p>Kroppsläge är möjligt i kombination med alla sorters tecken.
+      <figure>
+        <table class=field-example>
+          <tr><th>läge <th>hand <th>rörelse
+          <tr><td>􌤕    <td>􌤢􌥓􌥙  <td>􌤟􌥼􌥻
+        </table>
+        <figcaption><a href=00204>finns</a> (Läge: Vänster sida av bröstet.
+          Hand: Flata handen, vänsterriktad och nedåtvänd. Rörelse: Upprepad
+          kontakt.)</figcaption>
+      </figure>
+
+      <p>Eller med två aktiva händer:
+
+      <figure>
+        <table class=field-example>
+          <tr><th>läge  <th>hand   <th>rörelse
+              <tr><td>􌤓 <td>􌥔􌥘􌥃􌥃􌥓􌥘 <td>􌤟􌥧
+        </table>
+        <figcaption><a href=00945>tröja</a> (Läge: Bröstet. Händer:
+          Sprethänder, riktade mot varandra och inåtvända. Rörelse: Förs nedåt
+          med bibehållen kontakt.)</figcaption>
+      </figure>
 
       <section id=handlage>
         <h1>Handläge</h1>
 
-        <p>Vid handläge (kallas också <i>manuellt läge</i>) är den
-        dominanta handen aktiv och den icke-dominanta handen passiv.
+        <p>Vid <i>handläge</i> (eller <i>manuellt läge</i>) är den dominanta
+        handen aktiv och den icke-dominanta handen passiv.
 
         <p>Den passiva handen utgör artikulationsställe och skrivs med en
         handform plus symboler för attitydriktning och -vridning. Då bara
@@ -2895,6 +3128,12 @@
 
       <section id=kroppslage>
         <h1>Kroppsläge</h1>
+
+        <p>Kroppläge förekommer ofta i tecken
+        med <a href=lexicon.html#%40%23%3A%20-%40%23%3A%23%3A>en</a>
+        eller <a href=lexicon.html#%40%3A%23%23%3A>två aktiva händer</a>, men
+        är ovanligare i <a href=lexicon.html#%40%23%3A%23%3A>tvåhandstecken med
+        en passiv hand</a>.
 
         <div class=space>
           <details class=button closed>
@@ -3710,6 +3949,11 @@
         klohanden, o-handen, vinkelhanden, a-handen och knutna handen (och dess
         variant hållhanden).
 
+        <p id=_icke_manuell><b>icke-manuell</b> – Det som inte har med händerna
+        att göra. Används för att referera till delar av ett tecken som inte
+        utförs med händerna (tex mun-, ögonbryn-, kroppsrörelser och
+        blickriktning). Motsats: <a href=#_manuell>manuell</a>.
+
         <p id=_icke_manuell_komponent><b>icke-manuell komponent</b> – Alla de
         delar av ett tecken som inte utgörs av händerna, dvs de ansikts- och
         kropprörelser som ingår (jmf <a href=#_manuell_komponent>icke-manuell
@@ -3770,6 +4014,11 @@
 
         <p id=_lexikon><b>lexikon</b> – En ordlista/ordbok, eller (i ett mer
         abstrakt avseende) en talares eller språks samlade ordförråd.
+
+        <p id=_manuell><b>manuell</b> – Det som har med händerna att göra.
+        Eftersom teckenspråkstranskription används för att skriva ner den
+        manuella komponenten hos ett tecken handlar nästan allting ovan om den
+        manuella delen. Motsats: <a href=#_icke_manuell>icke-manuell</a>.
 
         <p id=_manuell_komponent><b>manuell komponent</b> – Det händerna gör
         när man tecknar ett tecken
@@ -3833,6 +4082,8 @@
         av <a href=#_attityd>attityden</a> som beskriver åt vilket håll
         handflatan är riktad. <span class=FIXME>infoga symboler för
         riktning</span>
+
+        <p id=_rorelse class=FIXME><b>rörelse</b> –
 
         <p id=_sammansatt_artikulator><b>sammansatt artikulator</b> – Då ett
         tecken med dubbel artikulator

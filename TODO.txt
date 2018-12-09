@@ -374,10 +374,10 @@
 ** DONE Transcription link shouldn't switch video/text mode             :BUG:
    CLOSED: [2018-09-03 Mon 05:02]
 * Transcription intro article
-** TODO Write (better) overview chapter
+** TODO Move chapter 'Läge' to before 'Hand'
 ** TODO Check intro of each chapter
 *** TODO Does it align with document goal?
-*** TODO Does it tie in to chapter name?
+*** TODO Does it tie in with chapter name?
 ** TODO Redo word wrapping in source
 ** TODO Standardize source references
 *** TODO References should all be in '<author> (<year>)' format
@@ -748,6 +748,8 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Intro: Write (better) overview chapter
+   CLOSED: [2018-12-09 Sun 04:25]
 ** DONE Transcript app: Share preview image should work in Firefox
    CLOSED: [2018-10-27 Sat 17:03]
 ** DONE Transcript app: "Share…" should have preview
