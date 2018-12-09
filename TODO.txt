@@ -747,11 +747,13 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
-** DONE Split content listing into columns
+** DONE Intro: Clarified chapter or 'Läge'
+   CLOSED: [2018-12-09 Sun 17:52]
+** DONE Intro: Split content listing into columns
    CLOSED: [2018-12-09 Sun 08:25]
-** DONE Move all appendices into a super-heading
+** DONE Intro: Move all appendices into a super-heading
    CLOSED: [2018-12-09 Sun 04:51]
-** DONE Move chapter 'Läge' to before 'Hand'
+** DONE Intro: Move chapter 'Läge' to before 'Hand'
    CLOSED: [2018-12-09 Sun 04:32]
 ** DONE Intro: Write (better) overview chapter
    CLOSED: [2018-12-09 Sun 04:25]
