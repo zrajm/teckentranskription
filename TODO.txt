@@ -747,6 +747,8 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Move all appendices into a super-heading
+   CLOSED: [2018-12-09 Sun 04:51]
 ** DONE Move chapter 'Läge' to before 'Hand'
    CLOSED: [2018-12-09 Sun 04:32]
 ** DONE Intro: Write (better) overview chapter
