@@ -135,7 +135,7 @@
 *** TODO Sortable search results
     Present search result in a sortable table? Should be able to sort by swedish
     word, and by sign language.
-** [22/40] GUI
+** [22/41] GUI
 *** [0/2] Redesign
     Moar intuitive design for newbies, also good with space on cell phones.
     (https://www.ecosia.org/ has a nice design).
@@ -159,7 +159,12 @@
     When scrolling down the search form should scroll up with the page, when
     scrolling up it should be immediately revealed -- just like URL bar in the
     mobile browser.
-*** TODO Should be able to zoom out on mobile
+*** TODO Should be able to zoom out on mobile                        :Mobile:
+*** TODO Darker URL bar                                              :Mobile:
+    The theme-color should be a bit darker to contrast with the search bar.
+    (<meta name="theme-color" content="#07bccd">)
+*** TODO Narrower page margins on mobile                             :Mobile:
+    Especially the search field part should use the full width of the screen.
 *** TODO Hide broken image icon (if any) on video load                  :BUG:
     Currently, if the image failed to load and a broken image icon is
     displayed, this broken icon remains there when the video loads (displayed
@@ -172,7 +177,6 @@
     This is a lexicon, so for clarity, all two-hand descriptions should have a
     relation symbol (in my opinion). We could automatically insert this when
     importing the lexicon.
-*** TODO Narrower page margins on mobile
 *** TODO Use browser history 'back' to exit overlays
     This means that using the browser back/forward buttons would scroll through
     the search history in a reasonable manner (without having overlays pop up).
