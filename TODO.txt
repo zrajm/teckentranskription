@@ -383,8 +383,64 @@
 *** TODO Does it tie in with chapter name?
 ** TODO Redo word wrapping in source
 ** TODO Standardize source references
-*** TODO References should all be in '<author> (<year>)' format
-*** TODO References should all be expandable (as in A-handen)
+*** [6/18] References should all be in '<author> (<year>)' format
+**** TODO 'Teckenspråkstranskription' -> 'Bergman (1982)'
+**** TODO Make sure all references to Bergman (1982) are linked
+     Fix all occurrences of '[^>]Bergman' and '<[^a][^>]>Bergman' in main text.
+**** TODO 'Persontecken' -> 'Hedberg (1989)'
+**** TODO Make sure all references to Hedberg (1989) are linked
+     Fix all occurrences of '[^>]Hedberg' and '<[^a][^>]>Hedberg' in main text.
+**** TODO 'Kompendium i teckentranskription' -> 'Bergman & Björkstrand (1993)'
+**** TODO Make sure all references to Bergman & Björkstrand (1993) are linked
+     Fix all occurrences of '[^>]Bergman' and '<[^a][^>]>Bergman' in main text.
+**** TODO 'Kompendium i teckenspråksgrammatik' -> 'Bergman (1995)'
+**** TODO Make sure all references to Bergman (1995) are linked
+     Fix all occurrences of '[^>]Bergman' and '<[^a][^>]>Bergman' in main text.
+**** TODO 'Redundans i teckentranskriptionssystemet' -> 'Björkstrand (1998)'
+**** TODO Make sure all references to Björkstrand (1998) are linked
+     Fix all occurrences of '[^>]Björkstrand' and '<[^a][^>]>Björkstrand' in main text.
+**** TODO 'Teckentranskription' -> 'Björkstrand & Bergman (2015)'
+**** TODO Make sure all references to Björkstrand & Bergman (2015) are linked
+     Fix all occurrences of '[^>]Bergman' and '<[^a][^>]>Bergman' in main text.
+**** DONE 'Diagonala handpositioner i svenskt teckenspråk' -> 'Riemer (2015)'
+     CLOSED: [2018-12-12 Wed 18:26]
+**** DONE Replace 's.' with 's' for page references
+     CLOSED: [2018-12-12 Wed 06:06]
+**** DONE 'Tecknad svenska' -> 'Bergman (1977)'
+     CLOSED: [2018-12-12 Wed 18:02]
+**** DONE Make sure all references to Bergman (1977) are linked
+     CLOSED: [2018-12-12 Wed 18:05]
+     There are now zero occurrences of '[^>]Bergman' and '<[^a][^>]>Bergman' in
+     the main text.
+**** DONE 'Polysyntetiska tecken' -> 'Wallin (1994)'
+     CLOSED: [2018-12-12 Wed 17:59]
+     och 'Polysyntetiska tecken i svenska teckenspråket'.
+**** DONE Make sure all references to Wallin (1994) are linked
+     CLOSED: [2018-12-12 Wed 18:05]
+     There are now zero occurrences of '[^>]Wallin' and '<[^a][^>]>Wallin' in
+     the main text.
+*** [0/4] Further reference cleanup
+**** TODO Make collapsed quotes consistent
+     <details> with collapsed quotes should all have the same format, namely
+     like this.
+
+     <details closed>
+       <summary><a href=#1977>Bergman (1977)</a></summary>
+
+       <p>”Lorem ipsum...” (s52–54)
+     </details>
+**** TODO Un-bracket bracketed sources
+     Sources should look like this 'Bergman (1977)' not like this '[Bergman
+     1977]'.
+**** TODO Sources in italics should be made into links
+     Some sources were previously written '<i>Bergman (1977)</i>' make sure all
+     of them now look like this '<a href=#1977>Bergman (1977)</a>'.
+**** TODO How should source references look in the filter lists?
+     Most likely they should look the same as in the rest of the document, i.e.
+     'Bergman (1977)' (and without titles).
+*** TODO Add all source quotes
+    All references should all be expandable (as they are in A-handen).
+
     Everywhere where a source is quoted as an aside (as opposed to an
     integrated part of reasoning text) it should be done using a <details> tag,
     with name + page of source in the <summary>. E.g.:
