@@ -383,7 +383,7 @@
 *** TODO Does it tie in with chapter name?
 ** TODO Redo word wrapping in source
 ** TODO Standardize source references
-*** [0/4] Further reference cleanup
+*** [1/4] Further reference cleanup
 **** TODO Make collapsed quotes consistent
      <details> with collapsed quotes should all have the same format, namely
      like this.
@@ -396,7 +396,8 @@
 **** TODO Un-bracket bracketed sources
      Sources should look like this 'Bergman (1977)' not like this '[Bergman
      1977]'.
-**** TODO Sources in italics should be made into links
+**** DONE Sources in italics should be made into links
+     CLOSED: [2018-12-14 Fri 10:25]
      Some sources were previously written '<i>Bergman (1977)</i>' make sure all
      of them now look like this '<a href=#1977>Bergman (1977)</a>'.
 **** TODO How should source references look in the filter lists?
