@@ -383,7 +383,6 @@
 *** TODO Does it tie in with chapter name?
 ** TODO Redo word wrapping in source
 ** TODO Standardize source references
-*** TODO Link all occurrences of 'Svenskt teckenspråkslexikon'
 *** [0/4] Further reference cleanup
 **** TODO Make collapsed quotes consistent
      <details> with collapsed quotes should all have the same format, namely
@@ -772,6 +771,8 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Intro: Link all occurrences of 'Svenskt teckenspråkslexikon'
+   CLOSED: [2018-12-14 Fri 10:22]
 ** [18/18] Intro: References should all be in '<author> (<year>)' format
 *** DONE 'Teckenspråkstranskription' -> 'Bergman (1982)'
     CLOSED: [2018-12-13 Thu 21:02]
