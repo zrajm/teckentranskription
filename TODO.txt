@@ -820,6 +820,8 @@
     CLOSED: [2018-12-12 Wed 18:05]
     There are now zero occurrences of '[^>]Wallin' and '<[^a][^>]>Wallin' in
     the main text.
+** DONE Intro: Cleanup of 'References' section
+   CLOSED: [2018-12-14 Fri 09:31]
 ** DONE Intro: Clarified chapter or 'Läge'
    CLOSED: [2018-12-09 Sun 17:52]
 ** DONE Intro: Split content listing into columns
