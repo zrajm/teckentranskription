@@ -378,43 +378,24 @@
 ** DONE Transcription link shouldn't switch video/text mode             :BUG:
    CLOSED: [2018-09-03 Mon 05:02]
 * Transcription intro article
+** TODO Remove <hr> from article
+** TODO Transcriptions should be clearly marked
+   In text where only one or two single transcription symbols are used it is
+   sometimes not very clear what's going on, since the use of transcription is
+   not clearly indicated. An obvious fix would be to always circumscribe
+   transcriptions with eg […]. (This is prolly not needed in tables & figures,
+   but only in the main text.)
+
+   Currently this is pretty inconsistently done, using (…) in some parts of the
+   text, […] in some, and no indicator at all in some parts.
 ** TODO Check intro of each chapter
 *** TODO Does it align with document goal?
 *** TODO Does it tie in with chapter name?
 ** TODO Redo word wrapping in source
-** TODO Standardize source references
-*** [1/4] Further reference cleanup
-**** TODO Make collapsed quotes consistent
-     <details> with collapsed quotes should all have the same format, namely
-     like this.
-
-     <details closed>
-       <summary><a href=#1977>Bergman (1977)</a></summary>
-
-       <p>”Lorem ipsum...” (s52–54)
-     </details>
-**** TODO Un-bracket bracketed sources
-     Sources should look like this 'Bergman (1977)' not like this '[Bergman
-     1977]'.
-**** DONE Sources in italics should be made into links
-     CLOSED: [2018-12-14 Fri 10:25]
-     Some sources were previously written '<i>Bergman (1977)</i>' make sure all
-     of them now look like this '<a href=#1977>Bergman (1977)</a>'.
-**** TODO How should source references look in the filter lists?
-     Most likely they should look the same as in the rest of the document, i.e.
-     'Bergman (1977)' (and without titles).
-*** TODO Add all source quotes
-    All references should all be expandable (as they are in A-handen).
-
-    Everywhere where a source is quoted as an aside (as opposed to an
-    integrated part of reasoning text) it should be done using a <details> tag,
-    with name + page of source in the <summary>. E.g.:
-
-      <details closed>
-        <summary><a href="#1977">Bergman (1977)</a></summary>
-
-        <p>.....
-      </details>
+** TODO Add missing source quotes for all symbols
+** TODO Source references in the filter lists?
+   Most likely they should look the same as in the rest of the document, i.e.
+   'Bergman (1977)' (and without titles).
 ** [7/10] Glossary
 *** TODO 'kirem'
 *** TODO 'artikulation'
@@ -772,6 +753,25 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** [3/3] Intro: Standardize source references
+*** DONE Make collapsed quotes consistent
+    CLOSED: [2018-12-17 Mon 05:26]
+    <details> with collapsed quotes should all have the same format, namely
+    like this.
+
+    <details closed>
+      <summary><a href=#1977>Bergman (1977)</a></summary>
+
+      <p>”Lorem ipsum...” (s52–54)
+    </details>
+*** DONE Un-bracket bracketed sources
+    CLOSED: [2018-12-17 Mon 05:29]
+    Sources should look like this 'Bergman (1977)' not like this '[Bergman
+    1977]'.
+*** DONE Sources in italics should be made into links
+    CLOSED: [2018-12-14 Fri 10:25]
+    Some sources were previously written '<i>Bergman (1977)</i>' make sure all
+    of them now look like this '<a href=#1977>Bergman (1977)</a>'.
 ** DONE Intro: Link all occurrences of 'Svenskt teckenspråkslexikon'
    CLOSED: [2018-12-14 Fri 10:22]
 ** [18/18] Intro: References should all be in '<author> (<year>)' format
