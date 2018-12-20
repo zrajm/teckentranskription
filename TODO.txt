@@ -378,6 +378,9 @@
 ** DONE Transcription link shouldn't switch video/text mode             :BUG:
    CLOSED: [2018-09-03 Mon 05:02]
 * Transcription intro article
+** TODO Width of element with class 'hflip' is zero                     :BUG:
+   It should only be horizontally flipped, but width should remain same.
+** TODO Move HTML comment FIXMEs into TODO file
 ** TODO Remove <hr> from article
 ** TODO Transcriptions should be clearly marked
    In text where only one or two single transcription symbols are used it is

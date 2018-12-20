@@ -18,8 +18,8 @@
         font-style: normal;
         font-weight: bold;
         font-variant: small-caps;
+        text-transform: lowercase;
     }
-    /* FIXME: width of hflip elements become zero */
     span.hflip {
         display: inline-block;
         transform: scale(-1,1);
@@ -162,8 +162,6 @@
     }
     figure.inline figcaption img { max-height: 1em; }
 
-    figcaption { margin: .5em 0; }
-
     .columns {
         column-count: auto;
         column-gap: 12px;
@@ -282,6 +280,12 @@
     }
     .field-example td {
       font-size: 1.8em; /* same as .x2 */
+      padding-top: .25em;
+    }
+    div.inline-figures { margin: -.5em 0 1em;  }
+    div.inline-figures > figure {
+      display: inline-block;
+      margin: .5em 1em;
     }
   </style>
 </head>
@@ -371,40 +375,50 @@
       undantag. De olika fälten beskrivs i varsitt kapitel nedan.
 
       <ul style="margin:1em 2em">
-        <li><b><a href=#artikulationsstalle>Läge</a></b> – Kroppsdel eller
-          passiv hand. (Utelämnas för tecken i neutrala läget.)
-        <li><b><a href=#artikulator>Hand</a></b> – Den (eller de) aktiva
-          händernas form och attityd.
-        <li><b><a href=#artikulation>Rörelse</a></b> – Hur händerna rör sig.
+        <li>(<b><a href=#artikulationsstalle>Läge</a></b>) – Beskriver var ett
+          tecken utförs. (Fältet utelämnas för tecken i neutrala läget.)
+        <li><b><a href=#artikulator>Hand</a></b> – Beskriver aktiva
+          handen/händernas form och attityd.
+        <li><b><a href=#artikulation>Rörelse</a></b> – Beskriver rörelsen.
       </ul>
 
       <section id=enhandstecken>
         <h1>Enhandstecken</h1>
 
-        <p>Ett enhandstecken med kroppsläge använder sig av alla tre fält:
+        <p>Om en transkription bara har en handbeskrivning så är det ett
+        enhandstecken. I dessa fall står attitydsymbolerna ([􌥓􌤸], [􌥓􌥙] och [􌥓􌥘]
+        nedan) alltid till höger om handformen. Några exempel på enhandstecken
+        är <a href=00192>välkommen</a> (som utförs i neutrala läget och därför
+        saknar lägesfält), <a href=00204>finns</a> (som har kroppsläge)
+        och <a href=01382>get</a> (med en lite mer komplex rörelse).
 
-        <figure>
-          <table class=field-example>
-            <tr><th>läge <th>hand <th>rörelse
-            <tr><td>􌤕    <td>􌤢􌥓􌥙  <td>􌤟􌥼􌥻
-          </table>
-          <figcaption><a href=00204>finns</a> (Läge: Vänster sida av bröstet.
-            Hand: Flata handen, vänsterriktad och nedåtvänd. Rörelse: Upprepad
-            kontakt.)</figcaption>
-        </figure>
+        <div class=inline-figures>
+          <figure>
+            <table class=field-example>
+              <tr><th>hand <th>rörelse
+              <tr><td>􌤢􌥓􌤸  <td>􌦄
+            </table>
+            <figcaption><a href=00192>välkommen</a></figcaption>
+          </figure>
 
-        <p>Om ett tecken utförs i det neutrala läget utelämnas lägesfältet:
+          <figure>
+            <table class=field-example>
+              <tr><th>läge <th>hand <th>rörelse
+              <tr><td>􌤕    <td>􌤢􌥓􌥙  <td>􌤟􌥼􌥻
+            </table>
+            <figcaption><a href=00204>finns</a></figcaption>
+          </figure>
 
-        <figure>
-          <table class=field-example>
-            <tr><th>hand <th>rörelse
-            <tr><td>􌤢􌥓􌤸  <td>􌦄
-          </table>
-          <figcaption><a href=00192>välkommen</a> (Läge: Neutrala läget. Hand:
-            Flata handen, vänsterriktad och uppåtvänd. Rörelse: Förs
-            inåt.)</figcaption>
-        </figure>
+          <figure>
+            <table class=field-example>
+              <tr><th>läge <th>hand <th>rörelse
+              <tr><td>􌤛􌥚   <td>􌥅􌥓􌥘  <td>􌤟􌥼􌥧􌥲􌦀􌦆􌤦
+            </table>
+            <figcaption><a href=01382>get</a></figcaption>
+          </figure>
+        </div>
       </section>
+
 
       <section id=tvahandstecken>
         <h1>Tvåhandstecken</h1>
@@ -424,9 +438,7 @@
             <tr><th>läge <th>hand <th>rörelse
             <tr><td>􌤢􌥔􌤸  <td>􌥌􌤴􌥙  <td>􌥧􌥼􌤟
           </table>
-          <figcaption><a href=03990>sant, sann</a> (Läge: Flata handen,
-            högerriktad och uppåtvänd. Hand: N-handen, framåtriktad och
-            nedåtvänd. Rörelse: Förs nedåt till kontakt.)</figcaption>
+          <figcaption><a href=03990>sant, sann</a></figcaption>
         </figure>
 
         <p>Om bägge händerna är aktiva och agerar tillsammans så skrivs de två
@@ -439,9 +451,7 @@
             <tr><th>hand   <th>rörelse
             <tr><td>􌤴􌥗􌤢􌤢􌤴􌤶 <td>􌦃
           </table>
-          <figcaption><a href=00587>gata</a> (Läge: Neutrala läget. Händer:
-            Flata händer, framåtriktade och vända mot varandra. Rörelse: Förs
-            framåt.)</figcaption>
+          <figcaption><a href=00587>gata</a></figcaption>
         </figure>
 
         <p>I sällsynta fall agerar de båda händerna samtidigt, men asymmetriskt
@@ -460,11 +470,7 @@
             <tr>         <td>􌥅􌤴􌤸  <td>􌦑       <td>􌦩
                 <td>􌤔    <td>􌤲􌥓􌥘  <td>􌥱􌦀􌥼􌥻
           </table>
-          <figcaption><a href=01567>gitarr</a> (Läge: Neutrala läget. Hand:
-            S-handen, framåtriktad och uppåtvänd. Rörelse: Hålls stilla. +
-            Läge: Högra bröstet. Hand: Stora nyphanden, vänsterriktad och
-            inåtvänd. Rörelse: Slås upprepat nedåt.)
-          </figcaption>
+          <figcaption><a href=01567>gitarr</a></figcaption>
         </figure>
       </section>
 
@@ -566,21 +572,23 @@
         hålla händerna. Om läget inte skrivits ut i transkriptionen är det det
         neutrala läget som avses.
 
-        <figure>
-          <table class=field-example>
-            <tr><th>hand <th>rörelse
-            <tr><td>􌤢􌥓􌤸  <td>􌦄
-          </table>
-          <figcaption style=margin:0><a href=00192>välkommen</a></figcaption>
-        </figure>
+        <div class=inline-figures>
+          <figure>
+            <table class=field-example>
+              <tr><th>hand <th>rörelse
+              <tr><td>􌤢􌥓􌤸  <td>􌦄
+            </table>
+            <figcaption style=margin:0><a href=00192>välkommen</a></figcaption>
+          </figure>
 
-        <figure>
-          <table class=field-example>
-            <tr><th>hand   <th>rörelse
-            <tr><td>􌤴􌥗􌤢􌤢􌤴􌤶 <td>􌦃
-          </table>
-          <figcaption style=margin:0><a href=00587>gata</a></figcaption>
-        </figure>
+          <figure>
+            <table class=field-example>
+              <tr><th>hand   <th>rörelse
+              <tr><td>􌤴􌥗􌤢􌤢􌤴􌤶 <td>􌦃
+            </table>
+            <figcaption style=margin:0><a href=00587>gata</a></figcaption>
+          </figure>
+        </div>
       </section>
 
       <section id=handlage>
@@ -607,9 +615,7 @@
             <tr><th>läge    <th>hand <th>rörelse
                 <tr><td>􌤢􌥔􌤸 <td>􌥈􌥓􌤸  <td>􌤟􌥣
           </table>
-          <figcaption><a href=02890>namn</a> (Läge: Flata handen, högerriktad
-            och uppåtvänd. Hand: Pekfingret, vänsterriktat och uppåtvänt.
-            Rörelse: Förs åt höger med bibehållen kontakt.)</figcaption>
+          <figcaption><a href=02890>namn</a></figcaption>
         </figure>
 
         <p>Notera: Kroppsläget <i>underarmen</i> [􌤒] skrivs också med
@@ -631,9 +637,7 @@
             <tr><th>läge <th>hand <th>rörelse
             <tr><td>􌤕    <td>􌤢􌥓􌥙  <td>􌤟􌥼􌥻
           </table>
-          <figcaption><a href=00204>finns</a> (Läge: Vänster sida av bröstet.
-            Hand: Flata handen, vänsterriktad och nedåtvänd. Rörelse: Upprepad
-            kontakt.)</figcaption>
+          <figcaption><a href=00204>finns</a></figcaption>
         </figure>
 
         <p>När ett tecken har två aktiva händer agerar de ofta på var sin sida
@@ -645,9 +649,7 @@
             <tr><th>läge  <th>hand   <th>rörelse
                 <tr><td>􌤓 <td>􌥔􌥘􌥃􌥃􌥓􌥘 <td>􌤟􌥧
           </table>
-          <figcaption><a href=00945>tröja</a> (Läge: Bröstet. Händer:
-            Sprethänder, riktade mot varandra och inåtvända. Rörelse: Förs
-            nedåt med bibehållen kontakt.)</figcaption>
+          <figcaption><a href=00945>tröja</a></figcaption>
         </figure>
 
         <p>Men det händer också att bägge händer utför en rörelse på samma sida
@@ -658,9 +660,7 @@
             <tr><th>läge  <th>hand   <th>rörelse
                 <tr><td>􌤇􌤺 <td>􌤵􌥗􌤥􌤥􌤵􌤶 <td>􌥥
           </table>
-          <figcaption><a href=01664>kokos, kokosnöt</a> (Läge: Brevid höger
-            öra. Händer: Klohänder, uppåtriktade och vända mot varandra.
-            Rörelse: Förs fram och in ett par gånger.)</figcaption>
+          <figcaption><a href=01664>kokos, kokosnöt</a></figcaption>
         </figure>
 
         <p>Kroppslägen i tecken med en aktiv och en passiv hand är ovanliga,
@@ -697,9 +697,7 @@
             <tr><th>läge    <th>hand <th>rörelse
                 <tr><td>􌤒􌤹􌤴􌥗 <td>􌤢􌥓􌥘  <td>􌦄􌤟􌥻
           </table>
-          <figcaption><a href=00150>ved</a> (Läge: Underarmen, framåtriktad och
-            högervänd. Hand: Flata handen, vänsterriktad och inåtvänd. Rörelse:
-            Förs inåt med upprepade kontakter ovanpå.)</figcaption>
+          <figcaption><a href=00150>ved</a></figcaption>
         </figure>
 
         <figure>
@@ -1203,7 +1201,7 @@
             </details>
           </div>
           <figcaption>Symbolerna är ordnade uppifrån och ner, med de
-            symboler som vanligtvis inte involverar kontakt först i
+            lägen som vanligtvis inte involverar kontakt [􌤆􌤂􌥞] först i
             tabellen.
 
             <p class="indent FIXME">FIXME Eventuellt dubblerade
@@ -1377,10 +1375,7 @@
             <tr><th>läge     <th>hand <th>rörelse
                 <tr><td>􌤒􌤹􌥔􌥙 <td>􌤢􌤴􌤸  <td>􌥢􌥲􌦀􌥼􌤟
           </table>
-          <figcaption><a href=00157>behärska</a> (Läge: Ovansidan av
-          underarmen, högerriktad och nedåtvänd. Hand: Flata handen,
-          framåtriktad och uppåtvänd. Rörelse: Förs åt vänster samtidigt som
-          den vrids nedåt till kontakt.)</figcaption>
+          <figcaption><a href=00157>behärska</a></figcaption>
         </figure>
 
       </section>
