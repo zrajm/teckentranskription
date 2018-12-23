@@ -378,7 +378,27 @@
 ** DONE Transcription link shouldn't switch video/text mode             :BUG:
    CLOSED: [2018-09-03 Mon 05:02]
 * Transcription intro article
-** [0/10] Position table
+** TODO Add missing newer glyphs
+*** TODO Add the other new glyphs here in TODO
+*** TODO Armvecket
+*** TODO Neutrala läget
+*** TODO Flätad
+*** TODO Från varandra
+*** TODO Studs
+*** TODO Oberoende medial kontakt
+** [1/10] Add missing quotes for position table
+*** DONE Add info from Bergman (1977)
+    CLOSED: [2018-12-23 Sun 07:43]
+*** TODO Add info from Bergman (1982)
+*** TODO Add info from Hedberg (1989)
+*** TODO Add info from Bergman & Björkstrand (1993)
+*** TODO Add info from Wallin (1994)
+*** TODO Add info from Svenskt teckenspråkslexikon (1997)
+*** TODO Add info from Björkstrand (1998)
+*** TODO Add info from Björkstrand & Bergman (2015)
+*** TODO Add info from Riemer (2015)
+*** TODO Add info from Svenskt teckenspråkslexikon (2008)
+** [0/10] Add missing quotes for relation symbols
 *** TODO Add info from Bergman (1977)
 *** TODO Add info from Bergman (1982)
 *** TODO Add info from Hedberg (1989)
@@ -389,7 +409,7 @@
 *** TODO Add info from Björkstrand & Bergman (2015)
 *** TODO Add info from Riemer (2015)
 *** TODO Add info from Svenskt teckenspråkslexikon (2008)
-** [0/10] Relation symbols
+** [0/10] Add missing quotes for handshape table
 *** TODO Add info from Bergman (1977)
 *** TODO Add info from Bergman (1982)
 *** TODO Add info from Hedberg (1989)
@@ -400,7 +420,7 @@
 *** TODO Add info from Björkstrand & Bergman (2015)
 *** TODO Add info from Riemer (2015)
 *** TODO Add info from Svenskt teckenspråkslexikon (2008)
-** [0/10] Handshape table
+** [0/10] Add missing quotes for movement table
 *** TODO Add info from Bergman (1977)
 *** TODO Add info from Bergman (1982)
 *** TODO Add info from Hedberg (1989)
@@ -411,7 +431,7 @@
 *** TODO Add info from Björkstrand & Bergman (2015)
 *** TODO Add info from Riemer (2015)
 *** TODO Add info from Svenskt teckenspråkslexikon (2008)
-** [0/10] Movement table
+** [0/10] Add missing quotes for direction modifier table
 *** TODO Add info from Bergman (1977)
 *** TODO Add info from Bergman (1982)
 *** TODO Add info from Hedberg (1989)
@@ -422,17 +442,9 @@
 *** TODO Add info from Björkstrand & Bergman (2015)
 *** TODO Add info from Riemer (2015)
 *** TODO Add info from Svenskt teckenspråkslexikon (2008)
-** [0/10] Direction modifier table
-*** TODO Add info from Bergman (1977)
-*** TODO Add info from Bergman (1982)
-*** TODO Add info from Hedberg (1989)
-*** TODO Add info from Bergman & Björkstrand (1993)
-*** TODO Add info from Wallin (1994)
-*** TODO Add info from Svenskt teckenspråkslexikon (1997)
-*** TODO Add info from Björkstrand (1998)
-*** TODO Add info from Björkstrand & Bergman (2015)
-*** TODO Add info from Riemer (2015)
-*** TODO Add info from Svenskt teckenspråkslexikon (2008)
+** [0/2] Improved position table filter
+*** TODO Filter for positions without contact (according to Bergman 1977)
+*** TODO Filter for positions with contact (according to Bergman 1977)
 ** TODO Move HTML comment FIXMEs into TODO file
 ** TODO Width of element with class 'hflip' is zero                     :BUG:
    It should only be horizontally flipped, but width should remain same.
@@ -450,7 +462,6 @@
 *** TODO Does it align with document goal?
 *** TODO Does it tie in with chapter name?
 ** TODO Redo word wrapping in source
-** TODO Add missing source quotes for all symbols
 ** TODO Source references in the filter lists?
    Most likely they should look the same as in the rest of the document, i.e.
    'Bergman (1977)' (and without titles).
@@ -502,9 +513,6 @@
    Argument for lowercase: Lowercase is used throughout the wordlist (it might
    make difference for some of the terms). So maybe use lowercase in all
    tables/lists?
-** TODO Add missing newer glyphs
-*** TODO Add the other new glyphs here in TODO
-*** TODO Armvecket
 ** [0/6] Improve handshape images
 *** TODO Böjda 4-handen
     The fingers should be as bent as in klohanden.
