@@ -438,8 +438,6 @@
 *** TODO Filter for positions without contact (according to Bergman 1977)
 *** TODO Filter for positions with contact (according to Bergman 1977)
 ** TODO Move HTML comment FIXMEs into TODO file
-** TODO Width of element with class 'hflip' is zero                     :BUG:
-   It should only be horizontally flipped, but width should remain same.
 ** TODO Remove <hr> from article
 ** TODO Transcriptions should be clearly marked
    In text where only one or two single transcription symbols are used it is
@@ -811,6 +809,9 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Intro: Width of element with class 'hflip' is zero              :BUG:
+   CLOSED: [2018-12-23 Sun 22:13]
+   It should only be horizontally flipped, but width should remain same.
 ** [7/7] Intro: Add missing newer glyphs
 *** DONE Add the other new glyphs here in TODO
     CLOSED: [2018-12-23 Sun 07:40]
