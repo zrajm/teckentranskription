@@ -378,10 +378,11 @@
 ** DONE Transcription link shouldn't switch video/text mode             :BUG:
    CLOSED: [2018-09-03 Mon 05:02]
 * Transcription intro article
-** [1/10] Add missing quotes for position table
+** [2/10] Add missing quotes for position table
 *** DONE Add info from Bergman (1977)
     CLOSED: [2018-12-23 Sun 07:43]
-*** TODO Add info from Bergman (1982)
+*** DONE Add info from Bergman (1982)
+    CLOSED: [2018-12-25 Tue 00:45]
 *** TODO Add info from Hedberg (1989)
 *** TODO Add info from Bergman & Björkstrand (1993)
 *** TODO Add info from Wallin (1994)
@@ -456,9 +457,14 @@
    Most likely they should look the same as in the rest of the document, i.e.
    'Bergman (1977)' (and without titles).
 ** [7/10] Glossary
-*** TODO 'kirem'
 *** TODO 'artikulation'
 *** TODO 'handform'
+*** TODO 'kirem' (Bergman 1977)
+*** TODO 'morfem'
+    Förklara också distinktionen 'fritt morfem' / 'mundet morfem'.
+*** TODO 'segment'
+*** TODO 'signem' (Bergman 1977)
+    Förklara också distinktionen 'fritt signem' / 'mundet signem'.
 *** DONE All glossary IDs should start with '_'
     CLOSED: [2018-10-18 Thu 16:24]
     Check that ID names are allowed to start with '_' according to HTML5
