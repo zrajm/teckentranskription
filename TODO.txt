@@ -378,14 +378,15 @@
 ** DONE Transcription link shouldn't switch video/text mode             :BUG:
    CLOSED: [2018-09-03 Mon 05:02]
 * Transcription intro article
-** [3/10] Add missing quotes for position table
+** [4/10] Add missing quotes for position table
 *** DONE Add info from Bergman (1977)
     CLOSED: [2018-12-23 Sun 07:43]
 *** DONE Add info from Bergman (1982)
     CLOSED: [2018-12-25 Tue 00:45]
 *** DONE Add info from Hedberg (1989)
     CLOSED: [2018-12-25 Tue 03:10]
-*** TODO Add info from Bergman & Björkstrand (1993)
+*** DONE Add info from Bergman & Björkstrand (1993)
+    CLOSED: [2018-12-25 Tue 17:00]
 *** TODO Add info from Wallin (1994)
 *** TODO Add info from Svenskt teckenspråkslexikon (1997)
 *** TODO Add info from Björkstrand (1998)
