@@ -880,7 +880,7 @@ function showVideos (bool) {
 $("#search-wrapper .selector").click(function() {
     var hasVideo = $("#search-wrapper")
         .toggleClass("video-view text-view")
-        .hasClass("video-view")
+        .hasClass("video-view");
     state.change({ video: hasVideo });
 });
 
