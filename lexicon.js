@@ -697,7 +697,7 @@ function searchLexicon(queryStr) {
         var matches = [];
 
         // If there's no query, display info text.
-        $("#noresults")[query.length === 0 ? "show" : "hide"]();
+        $("#noquery")[query.length === 0 ? "show" : "hide"]();
 
         logTiming.reset();
         if (query.length > 0) {
