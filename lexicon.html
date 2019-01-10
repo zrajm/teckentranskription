@@ -463,6 +463,7 @@
         och sedan modifiera transkriptionen i sökningen tills man hittar rätt.
       </div>
 
+      <hr>
       <h1>Kontrollsymboler</h1>
       <div class=columns>
 
@@ -525,6 +526,7 @@
         (tex <tt>@:􌤢#:*􌤟, @:􌥃#:*􌤟</tt>).
       </div>
 
+      <hr>
       <h1>Mönstermatchning</h1>
       <div class=columns>
 
@@ -538,6 +540,9 @@
           <tr>
             <th><tt>$</tt>
             <td><i>Ord-/segmentgräns</i>
+          <tr>
+            <th><tt>~</tt>
+            <td><i>Fältgräns</i>
           <tr>
             <th><tt>#</tt>
             <td><i>Handform</i>
@@ -584,13 +589,19 @@
         hittat alla tecken som hade bägge symbolerna in sin transkription,
         oavsett om det var i samma segment eller inte).
 
-        <p><p><tt>$</tt> matchar gränsen mellan ett ord och ett ordmellanrum
-        (eller transkription och transkriptions­separator). Den används för att
-        tvinga ett sökuttryck att matcha i början eller slutet av ett ord
-        (eller transkription). Så <tt>$bo</tt> måste komma först i ett ord, och
-        matchar därför ’bok’ (och ’bo’) men inte ’sambo’. Om du använder ett
-        dollartecken både i början och i slutet (<tt>$bo$</tt>) så matchar det
-        bara hela ord.
+        <p><p><tt>$</tt> matchar vid början eller slutet på ett ord (eller
+        början/slutet på ett segment av en transkriptions).
+
+        <p><tt>$bo</tt> matchar således ’bo’ först i ett ord (’bo’ och ’bok’
+        men inte ’sambo’) medan <tt>bo$</tt> matchar i slutet på ett ord (’bo’
+        och ’sambo’ men inte ’bok’). Du kan använda dollartecken både i början
+        och slutet (<tt>$bo$</tt>) för att matcha hela ord.
+
+        <p><p><tt>~</tt> fungerar precis som <tt>$</tt> men istället för att
+        matcha i början/slutet på ord, så matchar <tt>~</tt> i början och
+        slutet på fält i databasen. Om du vill så upp tecknet ’upp’ så, men
+        inte vill att din sökning ska matcha uttryck som ’säga upp sig’ eller
+        ’se upp’ så kan du använda <tt>~upp~</tt>.
 
         <p><p>Det finns också en uppsättning lägessymboler i tabellen som är
         lite mer ”fluffiga” – symbolen för <i>ansiktet</i> (<small>􌤆</small>)
@@ -601,10 +612,11 @@
         <p><p>Utöver symbolerna i tabellen så försöker sökmotorn hjälpa dig med
         bra saker så långt som möjligt. Om du inte har skrivit ut
         en <i>relationssymbol</i> i din sökning, eller har utelämnat en
-        riktnings­specifikation under båge/cirkel/slås/studs/vrids och
-        konvergerar/divergerar så kommer din sökning matcha oavsett vilken
-        relation/riktnings­specifikation som står i lexikonet. Om du <i>har</i>
-        angivit dessa, så matchar förstås din sökning bara om den
+        riktnings­specifikation under
+        båge/<wbr>cirkel/<wbr>slås/<wbr>studs/<wbr>vrids och
+        konvergerar/<wbr>divergerar så kommer din sökning matcha oavsett vilken
+        relation/<wbr>riktnings­specifikation som står i lexikonet. Om
+        du <i>har</i> angivit dessa, så matchar förstås din sökning bara om den
         överrens­stämmer med det som står i lexikonet.
       </div>
     </section>
