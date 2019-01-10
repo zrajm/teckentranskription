@@ -52,7 +52,9 @@ img { max-height: 175px; }
 
 body {
     font-size: 22px;
-    line-height: 1.2;
+    /* line-height need to be >1.25 not to leave remains of FreeSans-SWL relation
+    diacritics on previous line when column breaking */
+    line-height: 1.25;
 }
 
 noscript {
