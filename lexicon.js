@@ -715,8 +715,8 @@ function searchLexicon(queryStr) {
         logTiming.total("Search took %s.");
 
         outputMatching({
-            status: $("#xstatus"),
-            result: $("#results").empty(),
+            status: $("#search-count"),
+            result: $("#search-result").empty(),
             button: $("#more"),
             html: matches.map(htmlifyMatch)
         });
@@ -764,7 +764,7 @@ function onPlayPauseToggle(event) {
     }, 10);
 }
 
-$("#results")
+$("#search-result")
     .on("click", ".video-container", onPlayPauseToggle)
     .on("dblclick", ".video-container", function (event) {
         toggleFullscreen($(">video", event.currentTarget)[0]);
@@ -873,12 +873,12 @@ state.onVideoToggle(showVideos);
 }());
 
 function showVideos (bool) {
-    var hasVideo = $("main")
+    var hasVideo = $("#search-wrapper")
         .removeClass("video-view text-view")
         .addClass(bool ? "video-view" : "text-view");
 }
-$("#select").click(function() {
-    var hasVideo = $("main")
+$("#search-wrapper .selector").click(function() {
+    var hasVideo = $("#search-wrapper")
         .toggleClass("video-view text-view")
         .hasClass("video-view")
     state.change({ video: hasVideo });
@@ -889,7 +889,7 @@ $("#select").click(function() {
 $(function () {
     // 'mouseenter' used here since it does not trigger when child elements are
     // entered, and the event does not bubble.
-    $("#results").on("mouseenter", "a[data-href]", function (e) {
+    $("#search-result").on("mouseenter", "a[data-href]", function (e) {
         var jq = $(e.currentTarget);
         var hashref = jq.data("href") || "";
         if (hashref) {

@@ -50,7 +50,7 @@
       color: transparent;
     }
 
-    main {
+    #search-wrapper {
       margin: 0 1em;
       display: table;
     }
@@ -63,12 +63,12 @@
       padding-bottom: 1em;
     }
     footer { margin-top: auto; }
-    footer, .status {
+    footer, #search-brief {
       font-size: smaller;
       opacity: .5;
     }
-    .status { margin: .5em 0; }
-    .status:after {
+    #search-brief { margin: .5em 0; }
+    #search-brief:after {
       content: "";
       display: table;
       clear: both;
@@ -92,8 +92,8 @@
     /*************************************************************************/
     /* Result mode selector switch (video/text). */
 
-    #select { float:right; }
-    #select > .switch {
+    .selector { float:right; }
+    .selector > .switch {
       vertical-align: middle;
       display: inline-block;
       width: 2em;
@@ -104,7 +104,7 @@
       box-shadow: inset 0 2px 5px 3px #999;
       position: relative;
     }
-    #select > .switch:before {
+    .selector > .switch:before {
       transition: all .05s ease-in;
       content: '';
       width: 50%;
@@ -115,15 +115,15 @@
       border-radius: inherit;
       margin: -1px;
     }
-    .text-view #select > .switch:before { right: 0; }
-    .video-view #select > .switch:before { left: 0; }
-    .video-view #select > .video { font-weight: bold; }
-    .text-view #select > .text { font-weight: bold; }
+    .text-view  .selector > .switch:before { right: 0; }
+    .video-view .selector > .switch:before { left:  0; }
+    .video-view .selector > .video { font-weight: bold; }
+    .text-view  .selector > .text  { font-weight: bold; }
 
     /*************************************************************************/
     /* Stuff common to both result views (video/text). */
 
-    #results > .match {
+    #search-result > .match {
       column-break-inside: avoid;
       -moz-column-break-inside: avoid;
       -webkit-column-break-inside: avoid;
@@ -139,12 +139,12 @@
     /*************************************************************************/
     /* Stuff for text result view (text/video). */
 
-    .text-view #results {
+    .text-view #search-result {
       column-gap: 1em;
       columns: 14em;
       margin-bottom: 1em;
     }
-    .text-view #results > .match {
+    .text-view #search-result > .match {
       margin: 0 0 .125em;
       text-indent: -1em;
       padding-left: 1em;
@@ -178,13 +178,13 @@
     /*************************************************************************/
     /* Stuff for video result view (text/video). */
 
-    .video-view #results {
-      word-spacing: .5em;  /* space between #results matches */
+    .video-view #search-result {
+      word-spacing: .5em;  /* space between #search-result matches */
       margin-bottom: .5em;
     }
-    .video-view #results > * { word-spacing: normal; }
+    .video-view #search-result > * { word-spacing: normal; }
 
-    .video-view #results > .match {
+    .video-view #search-result > .match {
       display: inline-block;
       width: 270px;                            /* same as .video-container */
       margin: 0;
@@ -229,7 +229,7 @@
       overflow: hidden;
       display: flex;
       justify-content: center;
-      width: 270px;                            /* same as #results > .match */
+      width: 270px;                            /* same as #search-result > .match */
       height: 202px;
 
       /* text color + outline */
@@ -398,16 +398,16 @@
     <textarea id=q rows=1 required autofocus></textarea>
     <button id=help>?</button>
   </header>
-  <main class=video-view>
-    <div class=status>
-      <span id=xstatus></span>
-      <span id=select>
+  <main id=search-wrapper class=video-view>
+    <div id=search-brief>
+      <span id=search-count></span>
+      <span class=selector>
         <span class=video>video</span>
         <span class=switch></span>
         <span class=text>text</span>
       </span>
     </div>
-    <div id=results></div>
+    <div id=search-result></div>
     <button id=more>Visa fler träffar…</button>
   </main>
 
