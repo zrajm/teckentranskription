@@ -1,0 +1,9 @@
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+  <ShortName>TSP-Lex!</ShortName>
+  <Description>TSP-Lex!: Svenskt teckenspråkslexikon 2.0</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  <Image width="16" height="16" type="image/x-icon">https://zrajm.github.io/teckentranskription/favicon.ico</Image>
+  <Url type="text/html" template="https://zrajm.github.io/teckentranskription/lexicon.html#{searchTerms}"/>
+  <Url type="application/opensearchdescription+xml" rel="self" template="https://zrajm.github.io/teckentranskription/opensearch.xml"/>
+  <moz:SearchForm>https://zrajm.github.io/teckentranskription/lexicon.html</moz:SearchForm>
+</OpenSearchDescription>

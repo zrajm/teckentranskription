@@ -135,7 +135,7 @@
 *** TODO Sortable search results
     Present search result in a sortable table? Should be able to sort by swedish
     word, and by sign language.
-** [22/41] GUI
+** [23/42] GUI
 *** [0/2] Redesign
     Moar intuitive design for newbies, also good with space on cell phones.
     (https://www.ecosia.org/ has a nice design).
@@ -224,8 +224,11 @@
     Instead of using jQuery to apply CSS in 'style' attribute, should generate
     random ID for a prefix, and use CSS rules.
 *** TODO Newlines->space when pasting into search query <textarea>      :BUG:
-*** TODO Chrome should autodetect lexicon as 'search engine'
+*** DONE Chrome should autodetect lexicon as 'search engine'
+    CLOSED: [2019-01-13 Sun 21:42]
     https://martin-thoma.com/search-engine-autodiscovery/#google-chrome-autodiscovery
+    https://stackoverflow.com/questions/14082568/
+    https://github.com/dewitt/opensearch/blob/master/opensearch-1-1-draft-6.md
 *** DONE Video load spinner + broken icon on load fail
     CLOSED: [2018-09-04 Tue 11:32]
 
