@@ -131,11 +131,43 @@
     An unquoted 'lower face' symbol now matches ear, nose, cheek and all other
     articulation places on the head below that (note that ear, nose and cheeks
     are matched by both the 'upper' and 'lower face' symbols).
-** [0/1] Search result
-*** TODO Sortable search results
-    Present search result in a sortable table? Should be able to sort by swedish
-    word, and by sign language.
-** [23/42] GUI
+** TODO Sortable search results
+   Present search result in a sortable table? Should be able to sort by swedish
+   word, and by sign language.
+
+   Search result should be sorted by match score
+
+   Calculated from how much of the matching field was matched by the search
+   query? E.g. if I search for 'hej', this currently gives me the following
+   search results (by order in database, <...> marks the matching part):
+
+       00032 􌤃􌤺􌤢􌤵􌤷􌤟􌥼􌦃􌥣 <hej>
+       01602 􌤵􌥗􌤦􌤦􌤵􌤶􌥵􌥼􌥻 <hej>a på
+       05705 􌤵􌥘􌤦􌤦􌤵􌥘􌦑 <hej>are på, strong, en baddare på
+       07895 􌤴􌤸􌤦􌤦􌤴􌤸􌥰􌦂􌥼􌥻 <hej>a på
+       11736 􌤢􌤵􌤷􌦆􌤣􌥼􌥻 <hej> då
+       11770 􌤃􌤺􌤢􌤵􌤷􌤟􌥼􌦃􌥣 <hej> då
+       12747 h-e-j <hej>
+
+   While a match score algorithm should give me the following:
+
+       00032 􌤃􌤺􌤢􌤵􌤷􌤟􌥼􌦃􌥣 <hej>
+       12747 h-e-j <hej>
+       11736 􌤢􌤵􌤷􌦆􌤣􌥼􌥻 <hej> då
+       11770 􌤃􌤺􌤢􌤵􌤷􌤟􌥼􌦃􌥣 <hej> då
+       01602 􌤵􌥗􌤦􌤦􌤵􌤶􌥵􌥼􌥻 <hej>a på
+       07895 􌤴􌤸􌤦􌤦􌤴􌤸􌥰􌦂􌥼􌥻 <hej>a på
+       05705 􌤵􌥘􌤦􌤦􌤵􌥘􌦑 <hej>are på, strong, en baddare på
+
+   Largest match score is assigned to the two entries for which the entire
+   field matched. The lesser percentage matching, the further down in the
+   results the match comes.
+
+   Eventually other factors should also weigh in, we could for example have a
+   score (in the database) for each individual sign, e.g. giving a lower score
+   to a less common sign, e.g. fingerspelled versions of signs (like 'h-e-j' in
+   list above).
+** [23/41] GUI
 *** [0/2] Redesign
     Moar intuitive design for newbies, also good with space on cell phones.
     (https://www.ecosia.org/ has a nice design).
@@ -328,6 +360,13 @@
      CLOSED: [2018-08-16 Thu]
 **** DONE Display videos in search result
      CLOSED: [2018-08-13 Mon]
+** TODO Link words together                                        :DATABASE:
+   Words should be linked together with other words of the same meaning, like
+   the following:
+
+   + One / two handed variants – BADA(05245) / BADA(00529)
+   + Verb–noun pairs – HETA(02892) / NAMN(02890)
+   + Close-to-synonym – HETA(02892) / KALLAS(07923)
 ** TODO Display date of last lexicon update
 ** TODO Display date of last font update
 ** TODO Use ECMAScript6 or not?
