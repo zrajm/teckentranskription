@@ -60,6 +60,21 @@
    Module have methods for returning named entry properties (i.e. the ID,
    transcription, translation etc. of an entry).
 ** [4/12] Query syntax
+*** TODO Alternate hand symbols
+    Allow usage of annotation handshape in place of the transcription symbols.
+    These are the:
+
+    | A    | A-hand        |
+    | Ao   | Tumvinkelhand |
+    | B    | Tumhand       |
+    | D    | D-hand        |
+    | G    | Knuten hand   |
+    | ..   | ..            |
+    | Jt   | Flat tumhand  |
+    | Lbs  | Liten O-hand  |
+    | etc. |               |
+
+    Complete table in Wallin & Mesch (2018, s 45)
 *** TODO Specify match is to be all in one segment
     Add a prefix to specify that a match should be all within the same segment.
     (Maybe 'x:'?)
@@ -166,7 +181,7 @@
    Eventually other factors should also weigh in, we could for example have a
    score (in the database) for each individual sign, e.g. giving a lower score
    to a less common sign, e.g. fingerspelled versions of signs (like 'h-e-j' in
-   list above).
+   list above). (This should be based on frequency data from the corpus.)
 ** [23/41] GUI
 *** [0/2] Redesign
     Moar intuitive design for newbies, also good with space on cell phones.
@@ -366,6 +381,7 @@
 
    + One / two handed variants – BADA(05245) / BADA(00529)
    + Verb–noun pairs – HETA(02892) / NAMN(02890)
+     (Many of these differing only in repetition.)
    + Close-to-synonym – HETA(02892) / KALLAS(07923)
 ** TODO Display date of last lexicon update
 ** TODO Display date of last font update
