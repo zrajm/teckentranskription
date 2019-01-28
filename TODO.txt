@@ -197,10 +197,10 @@
     (<meta name="theme-color" content="#07bccd">)
 *** TODO Narrower page margins on mobile                             :Mobile:
     Especially the search field part should use the full width of the screen.
-*** TODO Hide broken image icon (if any) on video load                  :BUG:
-    Currently, if the image failed to load and a broken image icon is
-    displayed, this broken icon remains there when the video loads (displayed
-    on top of the video).
+*** TODO If video load fail, click again to try again                   :BUG:
+    Currently, if video fails to load than one have to reload the whole page in
+    order to retry loading the video. Clicking a video that failed to load
+    should attempt to load it again.
 *** TODO Hide tooltips on window resize(?)
     It looks kinda strange when the tooltip stays in place, when stuff
     underneath moves away and when the tooltip resizes itself if it's cut off
@@ -865,6 +865,11 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Hide broken image icon (if any) on video load          :BUG:
+   CLOSED: [2019-01-28 Mon 10:01]
+   Currently, if the image failed to load and a broken image icon is
+   displayed, this broken icon remains there when the video loads (displayed
+   on top of the video).
 ** DONE Intro: Width of element with class 'hflip' is zero              :BUG:
    CLOSED: [2018-12-23 Sun 22:13]
    It should only be horizontally flipped, but width should remain same.

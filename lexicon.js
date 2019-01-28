@@ -739,7 +739,7 @@ function onPlayPauseToggle(event) {
                 .supplant([jqVideo.data("video"), jqVideo.attr("src")])
         ).replaceAll(jqVideo).on("canplay error", function (e) {
             jqVideo.off("canplay error");
-            jqContainer.removeClass("is-loading-video");
+            jqContainer.removeClass("is-loading-video is-broken");
             if (e.type === "error") {
                 jqContainer.addClass("is-broken");
             }
