@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="42.03125"
+   height="67"
+   viewBox="0 -200 420.3125 670.00001"
+   id="svg3013">
+  <metadata
+     id="metadata3023">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs3021">
+    <clipPath
+       id="clipPath4565">
+      <path
+         d="M -3.2836914e-6,-199.99998 420.3,-199.99998 l 0,639.99999 -420.3000032836914,0 z"
+         id="path4567"
+         style="opacity:0.5;fill:#ffff00;fill-opacity:1;stroke:none" />
+    </clipPath>
+    <clipPath
+       id="clipPath4569">
+      <path
+         d="M -3.2836914e-6,-199.99998 420.3,-199.99998 l 0,639.99999 -420.3000032836914,0 z"
+         id="path4571"
+         style="opacity:0.5;fill:#ffff00;fill-opacity:1;stroke:none" />
+    </clipPath>
+    <clipPath
+       id="clipPath4573">
+      <path
+         d="M -3.2836914e-6,-199.99998 420.3,-199.99998 l 0,639.99999 -420.3000032836914,0 z"
+         id="path4575"
+         style="opacity:0.5;fill:#ffff00;fill-opacity:1;stroke:none" />
+    </clipPath>
+    <clipPath
+       id="clipPath4577">
+      <path
+         d="M -3.2836914e-6,-199.99998 420.3,-199.99998 l 0,639.99999 -420.3000032836914,0 z"
+         id="path4579"
+         style="opacity:0.5;fill:#ffff00;fill-opacity:1;stroke:none" />
+    </clipPath>
+    <clipPath
+       id="clipPath4581">
+      <path
+         d="M -3.2836914e-6,-199.99998 420.3,-199.99998 l 0,639.99999 -420.3000032836914,0 z"
+         id="path4583"
+         style="opacity:0.5;fill:#ffff00;fill-opacity:1;stroke:none" />
+    </clipPath>
+    <clipPath
+       id="clipPath4565-5">
+      <path
+         d="M -3.2836914e-6,-199.99998 420.3,-199.99998 l 0,639.99999 -420.3000032836914,0 z"
+         id="path4567-6"
+         style="opacity:0.5;fill:#ffff00;fill-opacity:1;stroke:none" />
+    </clipPath>
+    <clipPath
+       id="clipPath4565-5-9">
+      <path
+         d="M -3.2836914e-6,-199.99998 420.3,-199.99998 l 0,639.99999 -420.3000032836914,0 z"
+         id="path4567-6-1"
+         style="opacity:0.5;fill:#ffff00;fill-opacity:1;stroke:none" />
+    </clipPath>
+  </defs>
+  <path
+     d="m 22.003559,120.00001 376.292871,0"
+     transform="translate(0,30)"
+     clip-path="url(#clipPath4581)"
+     id="path4393"
+     style="fill:none;stroke:#000000;stroke-width:44;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+  <path
+     d="m 210.19,418.00001 1e-5,-298"
+     transform="translate(0,30)"
+     clip-path="url(#clipPath4577)"
+     id="path4391"
+     style="fill:none;stroke:#000000;stroke-width:44;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+  <path
+     d="M 25.437493,-200 210.18979,120 394.94167,-200"
+     transform="translate(0,30)"
+     clip-path="url(#clipPath4573)"
+     id="path4054-3"
+     style="fill:none;stroke:#000000;stroke-width:44;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+  <path
+     d="m 20.622392,268.00003 c 125.891358,0 251.782708,0 377.674048,0"
+     transform="translate(0,13.999957)"
+     clip-path="url(#clipPath4569)"
+     id="path13155-1"
+     style="fill:none;stroke:#000000;stroke-width:43.99998856;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+  <path
+     d="m 20.622392,120.00002 377.674048,0"
+     transform="translate(0,30)"
+     clip-path="url(#clipPath4565)"
+     id="path13155-0"
+     style="fill:none;stroke:#000000;stroke-width:43.99998856;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+</svg>
