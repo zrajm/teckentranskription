@@ -61,7 +61,7 @@ DATE="${DATE#*\"}"
 DATE="${DATE%%T*}"
 
 git commit lexicon-data.csv lexicon-data.js \
-    -m "Imported data from official lexicon $DATE." >/dev/null \
+    -m "Imported data from official lexicon $DATE" >/dev/null \
     || die "Files to commit are identical to old files" \
            "Most probably no new dictionary dump was received since last update."
 
