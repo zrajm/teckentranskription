@@ -1,4 +1,4 @@
-var lexiconDate = new Date("2019-06-03T06:00:40Z");
+var lexiconDate = new Date("2019-06-10T06:00:34Z");
 var lexicon = [
 ["00001","􌤀􌤹􌦫􌥓􌤷􌤟􌥼􌥻","taxi"],
 ["00002","􌤀􌤢􌥓􌥘􌥲􌦀􌥼􌤟","dop","döpa"],
@@ -14394,7 +14394,7 @@ var lexicon = [
 ["14436","􌥈􌥛􌤵􌥗􌥈􌤵􌤶􌦃􌥼􌦄􌥼􌤟􌥠􌤢􌤴􌤸􌤥􌤴􌥙􌦄􌤟􌥻","längdräknare"],
 ["14437","􌥖􌥘􌤢􌤢􌤴􌥙􌥥􌥱􌥾􌥱􌦀􌦇","längdskidåkning","längdskidor"],
 ["14438","􌤴􌥗􌤢􌤢􌤴􌤶􌥹􌥠􌤴􌥗􌤢􌤢􌤴􌤶􌥥􌥡􌦇","längdåkningsskridskor"],
-["14439","􌤴􌤶􌤢􌤢􌤴􌥗􌥥􌥡􌦇􌥠􌤢􌤴􌥙􌥉􌥓􌤸􌦃","längdåkningsskridskor"],
+["14439","􌤴􌥗􌤢􌤢􌤴􌤶􌥥􌥡􌦇􌥠􌤢􌤴􌥙􌥉􌥓􌤸􌦃","längdåkningsskridskor"],
 ["14440","􌥖􌥘􌥈􌥈􌤴􌥙􌦄􌦇􌥱􌦀􌥼􌥻􌥠􌥋􌥔􌤷􌥧","löpare"],
 ["14441","􌤴􌥗􌤦􌤦􌤴􌤶􌥰􌦋􌦇􌥠􌥋􌥔􌤷􌥧","löpare"],
 ["14442","􌥖􌥘􌥈􌥈􌤴􌥙􌦄􌦇􌥱􌦀􌥼􌥻","löpning","löpare"],
