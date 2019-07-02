@@ -1,5 +1,10 @@
 -*- org -*-
 
+* Remove old stuff
+** 'svtsplex-export.tab' seems to be no longer used?
+** 'bin/mklexicon' convert a .tab file to JSON
+** 'UPDATING-DATA.txt' needs to be update to reflect current practice
+** Are there more stuff in 'bin/' that needs to be removed?
 * Microsoft browser problems
 ** Edge (version 41.16299.371.0)
 *** TODO Pressing enter in input field does not result in a search
@@ -8,7 +13,6 @@
 *** TODO Pressing enter in input field does not result in a search
 *** TODO Placeholder icon is not displayed
 *** TODO Onscreen keyboard have too small buttons
-
 * General
 ** TODO Date for latest update of typeface
    There should also be a link to a page with instructions for how to
@@ -881,6 +885,8 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Virtual keyboard: Add handshape images to tooltips
+   CLOSED: [2019-06-29 Sat 17:54]
 ** DONE Lexicon: Hide broken image icon (if any) on video load          :BUG:
    CLOSED: [2019-01-28 Mon 10:01]
    Currently, if the image failed to load and a broken image icon is

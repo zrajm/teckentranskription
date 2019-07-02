@@ -157,45 +157,45 @@ function transcriptKeyboard(jqInput) {
             "<nobr>",
             ["􌤤", "A-hand", "a-handen-1"],
             ["􌥄", "Tumvinkelhand", "tumvinkelhanden-1"],
-            ["􌤣", "Vinkelhand", "vinkelhanden-1 vinkelhanden-2"],
+            ["􌤣", "Vinkelhand", "vinkelhanden-1"],
             "</nobr>",
-            ["􌤧", "Tumhand", "tumhanden-1 tumhanden-2"],
-            ["􌥋", "Måtthand", "matthanden-1 matthanden-2 matthanden-3"],
+            ["􌤧", "Tumhand", "tumhanden-1"],
+            ["􌥋", "Måtthand", "matthanden-1"],
             ["􌥉", "Rak måtthand", "raka-matthanden-1"],
             ["􌦫", "D-hand", "d-handen-1"],
-            ["􌤩", "Nyphand", "nyphanden-1 nyphanden-2"],
-            ["􌤎", "Liten o-hand", "lilla-o-handen-1 lilla-o-handen-2"],
+            ["􌤩", "Nyphand", "nyphanden-1"],
+            ["􌤎", "Liten o-hand", "lilla-o-handen-1"],
             ["􌥇", "E-hand", "e-handen-1"],
             ["􌦬", "F-hand", "stora-nyphanden-5"],
-            ["􌤦", "Knuten hand", "knutna-handen-1 knutna-handen-2"],
-            ["􌤲", "Stor nyphand", "stora-nyphanden-1 stora-nyphanden-2 stora-nyphanden-3 stora-nyphanden-4 stora-nyphanden-5"],
-            ["􌤱", "Lillfinger", "lillfingret-1 lillfingret-2"],
-            ["􌥑", "Flyghand", "flyghanden-1 flyghanden-2 flyghanden-3"],
-            ["􌤢", "Flat hand", "flata-handen-1 flata-handen-2"],
+            ["􌤦", "Knuten hand", "knutna-handen-1"],
+            ["􌤲", "Stor nyphand", "stora-nyphanden-1"],
+            ["􌤱", "Lillfinger", "lillfingret-1"],
+            ["􌥑", "Flyghand", "flyghanden-1"],
+            ["􌤢", "Flat hand", "flata-handen-1"],
             ["􌥂", "Flat tumhand", "flata-tumhanden-1"],
             ["􌤪", "Krokfinger", "krokfingret-1"],
             ["􌥎", "K-hand", "k-handen-1"],
-            ["􌥈", "Pekfinger", "pekfingret-1 vinklade-pekfingret"],
+            ["􌥈", "Pekfinger", "pekfingret-1"],
             ["􌤨", "L-hand", "l-handen-1"],
             ["􌤿", "M-hand", "m-handen-1"],
-            ["􌥌", "N-hand", "n-handen-1 vinklade-n-handen-1 vinklade-n-handen-2"],
+            ["􌥌", "N-hand", "n-handen-1"],
             ["􌥆", "O-hand", "o-handen-1"],
             ["􌤫", "Hållhand", "hallhanden-1"],
             ["􌦭", "Q-hand", "q-handen-1"],
             ["􌤬", "Långfingret", "langfingret-1"],
-            ["􌥅", "S-hand", "s-handen-1 s-handen-2"],
-            ["􌤥", "Klohand", "klohanden-1 klohanden-2 bojda-sprethanden-1 klohanden-3"],
-            ["􌥊", "T-hand", "t-handen-1 t-handen-2"],
+            ["􌥅", "S-hand", "s-handen-1"],
+            ["􌤥", "Klohand", "klohanden-1"],
+            ["􌥊", "T-hand", "t-handen-1"],
             ["􌤽", "Dubbelkrok", "dubbelkroken-1"],
             ["􌤯", "Böjd tupphand", "bojda-tupphanden-1"],
             ["􌤭", "V-hand", "v-handen-1"],
-            ["􌤮", "Tupphand", "tupphanden-1 vinklade-tupphanden-1"],
+            ["􌤮", "Tupphand", "tupphanden-1"],
             ["􌤰", "W-hand", "w-handen-1"],
             ["􌤳", "X-hand", "x-handen-1"],
-            ["􌥃", "Sprethand", "sprethanden-1 4-handen-1 sprethanden-3"],
+            ["􌥃", "Sprethand", "sprethanden-1"],
             "<nobr>",
-            ["􌥒", "Stort långfinger", "stora-langfingret-1 stora-langfingret-2 stora-langfingret-3"],
-            ["􌥟", "Runt långfinger", "runda-langfingret-1 runda-langfingret-2"],
+            ["􌥒", "Stort långfinger", "stora-langfingret-1"],
+            ["􌥟", "Runt långfinger", "runda-langfingret-1"],
             ["􌦪", "4-hand", "4-handen-1"],
             "</nobr>"
         ], [
@@ -284,10 +284,16 @@ function transcriptKeyboard(jqInput) {
             var attr = x[0];
             return "<span class=\"" + attr.class + "\">" + x
                 .splice(1).map(function (y) {
-                    return typeof y === "string"
-                        ? y
-                        : "<button title=\"" + (attr.prefix || "") +
-                                y[1] + "\">" + y[0] + "</button>";
+                    var title;
+                    if (typeof y === "string") {        // raw HTML
+                        return y;
+                    }
+                    title = (attr.prefix || "") + y[1]; // title
+                    if (y[2] !== undefined) {           //   with optional image
+                        title = title + "<img src='pic/x/" + y[2] + ".png' " +
+                            "style='display:block;margin:0 auto;height:150px'>";
+                    }
+                    return "<button title=\"" + title + "\">" + y[0] + "</button>";
                 }).join("") + "<span>";
         }).join(" ");
         return $(
