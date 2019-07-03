@@ -563,7 +563,7 @@ function htmlifyTranscription(hilitedTransStr) {
 function unicodeTo7bit(str) {
     return str.toLowerCase().replace(/[^a-z0-9-]/gu, function (m) {
         return {
-            " ": "-", "é": "e", "ü": "u", "å": "a", "ä": "a", "ö": "o"
+            " ": "-", "é": "e", "ü": "u", "å": "a", "ä": "a", "ö": "o", "–": "-",
         }[m] || "";
     }).replace(/-{2,}/, "-");
 }

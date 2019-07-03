@@ -103,6 +103,11 @@ while (my @field = $csv->split(scalar(<>))) {  # main loop
         # words, therefore split on ^K, then remove all empty words.
         split(/\x0b/);
     } @swedish;
+    @swedish = map {
+        s#\s+-\s+#–#g;
+        s#\s{2,}# #g;
+        $_;
+    } @swedish;
     @swedish = do {
         # Remove all erroneous occurrences of '0', i.e. all occurrences except
         # those which also 'noll' as one of the translations.
