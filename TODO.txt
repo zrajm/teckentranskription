@@ -885,6 +885,9 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: If all search terms are negative: Add implicit '*'
+   CLOSED: [2019-07-06 Sat 20:12]
+   The implicit '*' should not hilight anything.
 ** DONE Virtual keyboard: Add handshape images to tooltips
    CLOSED: [2019-06-29 Sat 17:54]
 ** DONE Lexicon: Hide broken image icon (if any) on video load          :BUG:

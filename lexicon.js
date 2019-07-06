@@ -373,11 +373,14 @@ function parseQuery(queryStr) {
                 // Ignore subqueries without positive search terms, turn all
                 // values to regexes, and add a hilite regex to each subquery.
                 return query.reduce(function (acc, subquery) {
-                    return subquery.include.length === 0
-                        ? acc
-                        : acc.concat({
+                    return (subquery.include.length + subquery.exclude.length) === 0
+                        ? acc                   // remove empty subquery
+                        : acc.concat({          // add non-empty subquery
                             hilite: str2regex(subquery.include.join("|")),
-                            include: subquery.include.map(str2regex),
+                            include: (
+                                // If all terms are negated, add implicit '*'.
+                                subquery.include.length === 0 ? [""] : subquery.include
+                            ).map(str2regex),
                             exclude: subquery.exclude.map(str2regex)
                         });
                 }, []);
