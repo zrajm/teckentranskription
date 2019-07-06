@@ -65,7 +65,9 @@ var overlay = (function () {
         var link = "#" + jq.text().replace(/\s+/g, " ");
         return link.match(/…/)
             ? this
-            : $("<a>", { class: "tt", href: link }).append(jq.contents());
+            : $("<a>", { class: "tt", href: link })
+                .click(hideOverlay)
+                .append(jq.contents());
     });
     function hideOverlay () {
         overlay.hide();

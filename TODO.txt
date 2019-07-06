@@ -33,6 +33,10 @@
 ** DONE Set sensible max-width
    CLOSED: [2018-08-31 Fri 02:31]
 * Lexicon
+** TODO Fix help text hash link                                         :BUG:
+   There's a URL fragment link '<a href=#fras>se ovan</a>' in the help text.
+   Following this link will quietly do a search for 'fras' in the background --
+   messing up any previously existing search result.
 ** [4/7] New URL syntax
    A syntax to allow for video/text search results + upcoming overlays.
 *** TODO Remove extraneous components in URL
@@ -885,6 +889,10 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon help: Close overlay when clicking search example link
+   CLOSED: [2019-07-06 Sat 20:39]
+   The 'help overlay' should close automatically clicking a search example
+   link (so that the search will be displayed).
 ** DONE Lexicon: If all search terms are negative: Add implicit '*'
    CLOSED: [2019-07-06 Sat 20:12]
    The implicit '*' should not hilight anything.
