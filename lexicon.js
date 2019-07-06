@@ -372,10 +372,10 @@ function parseQuery(queryStr) {
             getQuery: function getQuery() {
                 // Ignore subqueries without positive search terms, turn all
                 // values to regexes, and add a hilite regex to each subquery.
-                return query.reduce(function (query, subquery) {
+                return query.reduce(function (acc, subquery) {
                     return subquery.include.length === 0
-                        ? query
-                        : query.concat({
+                        ? acc
+                        : acc.concat({
                             hilite: str2regex(subquery.include.join("|")),
                             include: subquery.include.map(str2regex),
                             exclude: subquery.exclude.map(str2regex)
