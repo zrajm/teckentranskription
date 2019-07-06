@@ -177,11 +177,19 @@
     An unquoted 'lower face' symbol now matches ear, nose, cheek and all other
     articulation places on the head below that (note that ear, nose and cheeks
     are matched by both the 'upper' and 'lower face' symbols).
-** TODO Sortable search results
-   Present search result in a sortable table? Should be able to sort by swedish
-   word, and by sign language.
+** TODO Sort search result by relevance
+   Sorting algorithm:
 
-   Search result should be sorted by match score
+   + Percentage of field matched
+
+     I.e. if searching for '2' then the matching field '2–2' should get lower
+     relevance score than the field '2' (even though '2–2' contains two
+     matches, some of the content of the field is not matched by anything).
+
+   + Should content that is matched by '*' in the search query count towards
+     relevance? (Count as half?)
+
+   ------------------------------------------------------------
 
    Calculated from how much of the matching field was matched by the search
    query? E.g. if I search for 'hej', this currently gives me the following
@@ -195,7 +203,7 @@
        11770 􌤃􌤺􌤢􌤵􌤷􌤟􌥼􌦃􌥣 <hej> då
        12747 h-e-j <hej>
 
-   While a match score algorithm should give me the following:
+   While a relevance-based algorithm should give me the following:
 
        00032 􌤃􌤺􌤢􌤵􌤷􌤟􌥼􌦃􌥣 <hej>
        12747 h-e-j <hej>
@@ -213,6 +221,18 @@
    score (in the database) for each individual sign, e.g. giving a lower score
    to a less common sign, e.g. fingerspelled versions of signs (like 'h-e-j' in
    list above). (This should be based on frequency data from the corpus.)
+** TODO Sortable search result(?)
+   Search result should be sortable in by:
+
+   + Subquery order
+   + ID number
+   + Sign language transcription (sort order?)
+   + Swedish
+
+   Default should be: subquery + sign language.
+
+   Present search result in a sortable table? Should be able to sort by swedish
+   word, and by sign language.
 ** [23/41] GUI
 *** [0/2] Redesign
     Moar intuitive design for newbies, also good with space on cell phones.
@@ -445,15 +465,6 @@
 ** TODO Display search result in subquery order
    Returned result should have one list per subquery (and in the same order as
    the subqueries), and the result should be displayed in that order.
-** TODO Sortable search result
-   Search result should be sortable in by:
-
-   + Subquery order
-   + ID number
-   + Sign language transcription (sort order?)
-   + Swedish
-
-   Default should be: subquery + sign language.
 ** TODO Lexicon/search part should be standalone module
 ** TODO Hover over button should display handshape etc.
 ** TODO Memory optimization
