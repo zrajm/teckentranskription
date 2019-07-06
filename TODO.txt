@@ -67,7 +67,34 @@
 ** TODO Module for lexicon
    Module have methods for returning named entry properties (i.e. the ID,
    transcription, translation etc. of an entry).
-** [4/12] Query syntax
+** [5/14] Query syntax
+*** TODO New syntax: Word-for-word matching
+    Every word in search query must match word-for-word in the corresponding
+    text. To make a query like 'hej' match part of a word one must use '*hej*'.
+**** TODO Require '*' for partial words
+**** TODO Remove meta character '$' (end/beginning of word)
+**** TODO Remove meta character '~' (end/beginning of field)
+**** TODO Add prefix character '=' (match whole field)
+**** TODO Make '-' alphabetic(?)
+     Currently '*' matches a partial segment in transcript if there is a '-'
+     (ie fingerspelling) in the transcription.
+     http://localhost/teckentranskription/lexicon.html#*%C3%A5%20-*%22%20%22*
+**** TODO '[' should not require '*[*' to match in '[HYFF]'
+**** TODO Search for non-alphabet character should match better (eg '􌥠')
+     This should not require that the search term is part of a word. Same goes
+     for search for " ", maybe? (or does a search for '*" "*' make more sense?)
+**** TODO -="ja tack" and =-"ja tack" should match everything BUT 'ja tack'(?)
+**** TODO Rewrite help text to reflect new syntax
+**** TODO When search result in no matches: Give search tips
+     A (non-empty) search query that does not result in any matches should
+     display some tips on how to search (mentioning that '*' is required to
+     match parts of transcriptions/words).
+**** TODO Don't hilite space in front of word in search results
+     The edge-of-word matcher shouldn't hilite the space in front of a word.
+
+     Since we cannot use lookahead assertions (its not supported by a majority
+     of browsers), we'll prolly need some subgroups to split the match into
+     parts-to-be-hilited, and parts-not-to-be-hilited.
 *** TODO Alternate hand symbols
     Allow usage of annotation handshape in place of the transcription symbols.
     These are the:
@@ -92,10 +119,6 @@
 
     In practice this means that in fields with this prefix, an asterisk ('*')
     should match '[^/]*' (where '/' is the segment separator) instead of '.*'.
-*** TODO New search query syntax (require '*' for partial words)
-    There should also be a help section for the new special characters, and if a
-    search resulted in zero matches, something helpful should be displayed to
-    the user.
 *** TODO Character class for 'motion right'
     'move right', 'short motion right' and, 'curving motion right' and 'hit
     right', should all be matched by 'move right'.
