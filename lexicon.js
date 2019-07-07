@@ -357,20 +357,21 @@ function parseQuery(queryStr) {
             });
             negative = false;
         }
+        function addTerm (term) {
+            if (term !== "") {
+                query[query.length - 1][
+                    negative
+                        ? "exclude"
+                        : "include"
+                ].push(term);
+                negative = false;
+            }
+        }
 
         addSubquery();
         return {
             addSubquery: addSubquery,
-            addTerm: function (term) {
-                if (term !== "") {
-                    query[query.length - 1][
-                        negative
-                            ? "exclude"
-                            : "include"
-                    ].push(term);
-                    negative = false;
-                }
-            },
+            addTerm: addTerm,
             getQuery: function getQuery() {
                 // Ignore subqueries without positive search terms, turn all
                 // values to regexes, and add a hilite regex to each subquery.
@@ -440,12 +441,10 @@ function parseQuery(queryStr) {
     var term = "";
     var quote = "";
     splitIntoChars(queryStr).forEach(function (char) {
-        if (quote) {                           // quoted chars
-            switch (char) {
-            case quote:
+        if (quote !== "") {                    // quoted chars
+            if (char === quote) {
                 quote = "";
-                break;
-            default:
+            } else {
                 term += quotemeta(char);
             }
         } else {                               // unquoted chars
@@ -464,7 +463,7 @@ function parseQuery(queryStr) {
                 quote = char;
                 break;
             default:
-                if (char === "-" && !term) {   //   leading '-' (negation)
+                if (char === "-" && term === "") { // leading '-' (negation)
                     queryBuilder.negative();
                 } else {
                     term += metachars[char] || quotemeta(char);
