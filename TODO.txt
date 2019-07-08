@@ -72,20 +72,29 @@
 *** TODO New syntax: Word-for-word matching
     Every word in search query must match word-for-word in the corresponding
     text. To make a query like 'hej' match part of a word one must use '*hej*'.
-**** TODO Require '*' for partial words
-**** TODO Remove meta character '$' (end/beginning of word)
-**** TODO Remove meta character '~' (end/beginning of field)
-**** TODO Add prefix character '=' (match whole field)
-**** TODO Make '-' alphabetic(?)
+**** DONE Require '*' for partial words
+     CLOSED: [2019-07-06 Sat 21:39]
+**** DONE Remove meta character '$' (end/beginning of word)
+     CLOSED: [2019-07-06 Sat 21:39]
+**** DONE Remove meta character '~' (end/beginning of field)
+     CLOSED: [2019-07-06 Sat 21:40]
+**** DONE Add prefix character '=' (match whole field)
+     CLOSED: [2019-07-06 Sat 21:40]
+**** DONE Make '-' alphabetic(?)
+     CLOSED: [2019-07-06 Sat 21:42]
      Currently '*' matches a partial segment in transcript if there is a '-'
      (ie fingerspelling) in the transcription.
      http://localhost/teckentranskription/lexicon.html#*%C3%A5%20-*%22%20%22*
-**** TODO '[' should not require '*[*' to match in '[HYFF]'
-**** TODO Search for non-alphabet character should match better (eg '􌥠')
+**** DONE Search for non-alphabet character should match better (eg '􌥠')
+     CLOSED: [2019-07-06 Sat 23:04]
+     '[' should not require '*[*' to match in '[HYFF]'
+
      This should not require that the search term is part of a word. Same goes
      for search for " ", maybe? (or does a search for '*" "*' make more sense?)
-**** TODO -="ja tack" and =-"ja tack" should match everything BUT 'ja tack'(?)
-**** TODO Rewrite help text to reflect new syntax
+**** DONE -="ja tack" and =-"ja tack" should match everything BUT 'ja tack'(?)
+     CLOSED: [2019-07-06 Sat 23:03]
+**** DONE Rewrite help text to reflect new syntax
+     CLOSED: [2019-07-08 Mon 05:17]
 **** TODO When search result in no matches: Give search tips
      A (non-empty) search query that does not result in any matches should
      display some tips on how to search (mentioning that '*' is required to

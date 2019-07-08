@@ -392,6 +392,8 @@
       padding: .25em .5em;
       background: #07bccd;
     }
+    sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+    sup { top: -0.5em; }
   </style>
 </head>
 <body>
@@ -432,49 +434,74 @@
   </footer>
   <div class="overlay help">
     <section tabindex=0>
+      <h1>Kort intro</h1>
+      <div class=columns>
+        <p>En sökning matchar ord-för-ord – sökningen <tt>katt</tt> hittar bara
+        tecknet för ’katt’ (inte ’kattunge’ eller ’lussekatt’). Om vill du
+        hitta ord som har ’katt’ i sig så använder du stjärna (’*’) för att
+        markera de delar av ordet som kan variera (<tt>katt*</tt>
+        eller <tt>*katt*</tt> – en stjärna matchar noll eller fler bok­stavs-
+        eller tran­skrip­tions­sym­boler).
+
+        <p>En sökning kan också innehålla flera ord (<tt>ett år</tt>) – i dessa
+        fall krävs att bägge orden finns i beskrivningen av ett tecken för att
+        tecknet ska matcha (ordningen på orden spelar däremot ingen roll).
+
+        <p>Du kan också utesluta ord ur sökningen (<tt>år -ett</tt> hittar alla
+        tecken som innehåller ’år’ men inte ’ett’).
+      </div>
+
+      <hr>
       <h1>Tips</h1>
       <div class=columns>
-
-        <p><tt>04194,<wbr>02408,<wbr>04888</tt> id-nummer med komma­tecken
-        emellan är ett enkelt sätt att göra en gloslista att skicka till någon
+        <p><tt>04194,<wbr>02408,<wbr>04888</tt> ID-nummer med komman mellan
+        dem är ett enkelt sätt att skapa en gloslista för att skicka till någon
         annan.
 
-        <p><p><tt>@</tt> matchar alla <i>kroppslägen</i> i
-        transkriptionen. <tt>-@</tt> kan användas för att utesluta alla tecken
-        med kroppsläge.
+        <p><p><tt>*</tt> används för att matcha en del av ett ord (eller
+        transkription). Sök på <tt>avl*</tt> för att hitta alla ord som börjar
+        med ’avl’ eller <tt>*􌥳*</tt> för att hitta alla tecken som innehåller
+        artikulationen <i>spelar</i>.
 
-        <p><p><tt>-􌥠</tt> utesluter sammansatta tecken (tecken med mer än ett
+        <p><p><tt>*@*</tt> kan användas för att hitta alla tecken som
+        har <i>kroppsläge</i> i transkriptionen. (Och <tt>-*@*</tt> för att
+        utesluta alla tecken med kroppsläge.)
+
+        <p><p><tt>-*􌥠*</tt> utesluter sammansatta tecken (tecken med mer än ett
         segment). Om du istället vill <i>hitta</i> samman­satta tecken kan du
-        <i>lägga till</i> <tt>􌥠</tt> till din sökning (eller kanske
-        rentav <tt>􌥠*􌥠</tt> eller <tt>􌥠*􌥠*􌥠</tt> för att hitta tecken med fler
-        segment).
+        <i>lägga till</i> <tt>*􌥠*</tt> till din sökning (eller kanske
+        rentav <tt>*􌥠*􌥠*</tt> eller <tt>*􌥠*􌥠*􌥠*</tt> för att hitta tecken med
+        fler segment).
 
-        <p><p><tt>:##:</tt> hittar två­hands­tecken där båda händerna är aktiva.
+        <p><p><tt>*:##:*</tt> hittar två­hands­tecken där båda händerna är
+        aktiva.
 
-        <p><tt>#:#:</tt> hittar två­hands­tecken med en aktiv och en passiv
+        <p><tt>*#:#:*</tt> hittar två­hands­tecken med en aktiv och en passiv
         hand.
 
-        <p><tt>-:##: -#:#:</tt> utesluter alla två­hands­tecken (dvs hittar
+        <p><tt>-*:##:* -*#:#:*</tt> utesluter alla två­hands­tecken (dvs hittar
         bara en­hands­tecken).
 
-        <p><p>Transkriptioner är fiddliga och det är oftast inte helt
-        självklart hur något ska transkriberas om man bara sett ett tecken
-        utföras. Om man kan ett ord med en liknande rörelse kan det vara värt
-        att söka upp det ordet på svenska, klicka på det ordets transkription
-        och sedan modifiera transkriptionen i sökningen tills man hittar rätt.
+        <p><p>Transkriptioner är känsliga för felstavning och det är oftast
+        inte självklart hur något ska transkriberas om man bara sett ett tecken
+        utföras. Om du kan ett annat tecken med en liknande rörelse kan det
+        vara värt att söka upp det och sedan klicka på dess tran­skript­ion och
+        därefter modifiera sökningen tills du hittar rätt.
       </div>
 
       <hr>
       <h1>Kontrollsymboler</h1>
       <div class=columns>
-
         <center><table border=1 style="margin-top:.25em">
           <tr>
             <th><tt>"…"</tt>
             <td>Frassökning
           <tr>
+            <th><tt>=…</tt>
+            <td>Matcha helt fält
+          <tr>
             <th><tt>-…</tt>
-            <td>Exkludera träff
+            <td>Exkludera term
           <tr>
             <th><tt>… …</tt>
             <td>Logiskt <i>och</i> (mellanslag)
@@ -483,40 +510,58 @@
             <td>Logiskt <i>eller</i>
         </table></center>
 
-        <p id=fras><tt>"…"</tt> Frassökning – mellanslag och andra tecken som
+        <p id=fras><tt>"…"</tt> Frassökning – mellanslag och andra symboler som
         står inom citat­symbolerna måste matcha exakt.
 
         <p>Används när du vill söka efter en fras (tex <tt>"har gjort"</tt>)
         eller när du vill använda någon av special­symbolerna i sin
-        ursprungliga betydelse. (<tt>"􌤆"</tt> hittar alla tecken som
-        har <i>ansiktet</i> som uttalställe, medan <tt>􌤆</tt> (utan
-        citat­symboler) också hittar de som har <i>pannan, munnen, näsan</i>
-        etc).
+        ursprungliga betydelse. (<tt>*"􌤆"*</tt> hittar alla tecken som
+        har <i>ansiktet</i> som uttalställe, medan <tt>*􌤆*</tt> (utan
+        citat­symboler) också hittar de som har <i>pannan, ögat, näsan,
+        munnen,</i> etc).
 
-        <p>Du kan också citera delar av ett ord. Om du tex skulle vilja hitta
-        alla ord med två aktiva händer som har uttalsställe <i>ansiktet</i> så
-        kan du använda <tt>"􌤆":##:</tt>.
+        <p>Du kan också citera delar av en sökterm. Du kan tex
+        använda <tt>*"􌤆"*:##:*</tt> för att hitta alla tecken med två aktiva
+        händer och uttalsställe <i>ansiktet</i>.
 
-        <p><p><tt>-…</tt> Exkludera träffar – används tillsammans med ett annat
+        <p><p><tt>=…</tt> Matcha helt fält – gör så att ett sökuttryck måste
+        matcha ett helt fält (istället för bara ett ord). Varje tecken i
+        lexikonet har ett fält för ID-numret, ett för transkriptionen och sedan
+        ett fält per översättning.
+
+        <p>Sökningen <tt>=så</tt> hittar alla tecken som översatts med ’så’ men
+        inte tecken vars översättning innehåller fler ord (uttryck som ’och så
+        vidare’ och ’så klart’ matchar inte).
+
+        <p>Används på samma sätt med transkriptioner.
+        Sökningen <tt>=􌤢􌤴􌥗􌥆􌤴􌤶􌤟􌥼􌥣􌦆􌥃</tt> matchar bara hela transkriptioner, så
+        den matchar <small>􌤢􌤴􌥗􌥆􌤴􌤶􌤟􌥼􌥣􌦆􌥃</small> (<i>orsak, eftersom</i>) men
+        inte <small>􌤢􌤴􌥗􌤣􌤴􌤶􌤟􌥼􌥻􌥠<wbr>􌤢􌤴􌥗􌥆􌤴􌤶􌤟􌥼􌥣􌦆􌥃</small> (<i>skade­verkning</i>).
+
+        <p>Att matcha hela fältet är användbart när man söker efter småord som
+        är vanliga i längre fraser (tex <tt>=i</tt> eller <tt>=och</tt>). Kan
+        också kombineras med andra symboler (tex <tt>="ja tack"</tt>
+        eller <tt>säga -=säga</tt>).
+
+        <p><p><tt>-…</tt> Exkludera term – används tillsammans med ett annat
         sökuttryck när du vill ta bort en del av träffarna. Om du tex letar
         efter ett tecken som använder <i>R-handen</i> och du vet att tecknet
-        inte är sammansatt så kan du söka på <tt>􌤬 -􌥠</tt>.
+        bara har ett segment så kan du söka på <tt>*􌤬* -*􌥠*</tt>.
 
         <p>Inuti (eller i slutet) på ord har minus ingen särskild effekt, en
         sökning på <tt>platt-tv</tt> hittar alla förekomster av ’platt-tv’,
         medan <tt>platt -tv</tt> hittar alla tecken vars översättning
-        innehåller ’platt’ men <i>inte</i> ’tv’. Vill du ha ett minustecken
-        först använder du citatsymboler <tt>"-tv"</tt>.
+        innehåller ’platt’ men <i>inte</i> ’tv’.
 
         <p><p><tt>… …</tt> Logiskt <i>och</i> – betyder att <i>både</i> det som
         står före och det som står efter mellanslaget måste finnas med för att
         sökningen ska matcha. Om du söker på <tt>har gjort</tt> hittar du alla
         tecken vars översättning innehåller både ordet ’har’ och ordet ’gjort’
-        (oavsett vilken ordning de kommer), medan om du söker på <tt>har
-        gjort</tt> så måste orden finnas med som en fras för att matcha.
+        (oavsett vilken ordning de kommer), medan om du söker på <tt>"har
+        gjort"</tt> så måste orden finnas med som en fras för att matcha.
 
         <p><p><tt>…, …</tt> Logiskt <i>eller</i> – betyder att <i>antingen</i>
-        det som kommer före kommat, eller det som kommer efter behöver finnas
+        det som kommer före kommat eller det som kommer efter behöver finnas
         med för att sökningen ska matcha. <tt>har, gjort</tt> hittar således
         alla tecken som har antingen ’har’ eller ’gjort’ (eller båda) i sin
         översättning.
@@ -524,96 +569,96 @@
         <p>Komma hanteras alltid först så om du har ett komplicerat uttryck med
         som du vill söka på i några små variationer, så måste du dessvärre
         upprepa hela det komplicerade uttrycket på vardera sidan om kommat
-        (tex <tt>@:􌤢#:*􌤟, @:􌥃#:*􌤟</tt>).
+        (tex <tt>@:􌤢#:*􌤟*, @:􌥃#:*􌤟*</tt>).
       </div>
 
       <hr>
       <h1>Mönstermatchning</h1>
       <div class=columns>
 
-        <p>Dessa symboler matchar fler än en symbol i en sökning, utom om de
-        står inom citat­symboler (<a href="#fras">se ovan</a>).
+        <p>Följande symboler har särskild funktion (utom när de står inom
+        citat­symboler, <a href="#fras">se ovan</a>).
 
-        <center><table border=1>
+        <center><table border=1 style=caption-side:bottom>
+          <caption style=margin:.5em;text-align:left><sup>1</sup> Matchar också
+            en eventuell efterföljande relationssymbol.</caption>
+          <tr>
+            <th>
+            <th>Beskrivning
+            <th>Matchar
           <tr>
             <th><tt>*</tt>
-            <td>Allt utom mellanslag och 􌥠 (i tran­skript­ion)
-          <tr>
-            <th><tt>$</tt>
-            <td><i>Ord-/segmentgräns</i>
-          <tr>
-            <th><tt>~</tt>
-            <td><i>Fältgräns</i>
-          <tr>
-            <th><tt>#</tt>
-            <td><i>Handform</i>
+            <td>Del av ord/<wbr>tran­skrip­tion
+            <td>Noll eller fler av A–Ö, 0–9 och tran­skrip­tions­sym­boler (utom <small>􌥠</small>)
           <tr>
             <th><tt>:</tt>
-            <td><i>Attityd</i> (= <i>riktning</i> + <i>vändning</i>)
+            <td><i>Attityd</i>
+            <td><i>riktning</i> plus <i>vändning</i>
           <tr>
             <th><tt>^</tt>
             <td><i>Relationsymbol</i>
+            <td><small><span style=color:#999>x</span>􌤺 <span style=color:#999>x</span>􌥛 <span style=color:#999>x</span>􌤻 <span style=color:#999>x</span>􌤹</small> eller <small><span style=color:#999>x</span>􌥚</small>
+          <tr>
+            <th><tt>#</tt>
+            <td><i>Handform</i><sup>1</sup>
+            <td>En handformssymbol
           <tr>
             <th><tt>@</tt>
-            <td><i>Kroppslägen</i>
+            <td><i>Kroppslägen</i><sup>1</sup>
+            <td>En kroppslägessymbol
           <tr>
             <th><tt>􌤆</tt>
-            <td><i>Ansiktet</i>
+            <td><i>Ansiktet</i><sup>1</sup>
+            <td>En av <small>􌤆 􌤂 􌥞</small> eller från <small>􌤀</small> ner till  <small>􌤛</small>
           <tr>
             <th><tt>􌤂</tt>
-            <td><i>Övre ansikte</i> (<i>öra, kind, näsa</i> och uppåt)
+            <td><i>Övre ansikte</i><sup>1</sup>
+            <td>En av <small>􌤂</small> eller från <small>􌤀</small> ned
+              till <small>􌤼</small>
           <tr>
             <th><tt>􌥞</tt>
-            <td><i>Nedre ansikte</i>  (<i>öra, kind, näsa</i> och nedåt)
+            <td><i>Nedre ansikte</i><sup>1</sup>
+            <td>En av <small>􌥞</small> eller från <small>􌤾</small> ned
+              till <small>􌤛</small>
           <tr>
             <th><tt>􌥜</tt>
-            <td><i>Armen</i>
+            <td><i>Armen</i><sup>1</sup>
+            <td>En av <small>􌥜</small> eller <small>􌤑 􌦲 􌤒</small>
           <tr>
             <th><tt>􌤠</tt>
-            <td><i>Axlarna</i>
+            <td><i>Axlarna</i><sup>1</sup>
+            <td>En av <small>􌤠</small> eller <small>􌥀 􌤡</small>
           <tr>
             <th><tt>􌤓</tt>
-            <td><i>Bröstet</i>
+            <td><i>Bröstet</i><sup>1</sup>
+            <td>En av <small>􌤓</small> eller <small>􌤕 􌤔</small>
           <tr>
             <th><tt>􌤗</tt>
-            <td><i>Höfterna</i>
+            <td><i>Höfterna</i><sup>1</sup>
+            <td>En av <small>􌤗</small> eller <small>􌤙 􌤘</small>
         </table></center>
 
-        <p><p><tt>*</tt> matchar noll eller fler tecken i rad som är av
-        alfabetisk karaktär (bokstäver, siffror och transkriptionssymboler –
-        men inte mellanslag eller <small>􌥠</small>, separatorn mellan segment i
-        transkriptionen).
+        <p><p><tt>*</tt> matchar noll eller fler alfabetiska symboler i ord
+        eller <wbr>tran­skrip­tion. (Med ’alfabetisk’ menas bokstäver, siffror
+        och alla tran­skrip­tions­sym­boler utom seg­ment­se­par­at­orn
+        (<small>􌥠</small>), men inte skilje­sym­boler som parentes, punkt, komma
+        etc).
 
-        <p>Säg tex att du letar efter ett tecken som har
-        uttalsställe <i>bröstet</i> och i vilket handformen förändras – då kan
-        du söka på <tt>􌤓*􌦆</tt> (hade du sökt på <tt>􌤓 􌦆</tt> så skulle du
-        hittat alla tecken som hade bägge symbolerna in sin transkription,
-        oavsett om det var i samma segment eller inte).
+        <p>Om du letar efter ett tecken med läge <i>bröstet</i>
+        (<small>􌤓</small>) i vilket handformen <i>förändras</i>
+        (<small>􌦆</small>) så kan du använda <tt>*􌤓*􌦆*</tt> för att matcha
+        tecken där bägge förekommer i samma segment (som tex
+        i ’Ironman’ <small><mark>􌤓</mark>􌥆􌤵􌤷􌤟<mark>􌦆</mark>􌥃</small>).
 
-        <p><p><tt>$</tt> matchar vid början eller slutet på ett ord (eller
-        början/slutet på ett segment av en transkriptions).
+        <p>Om du istället skriver sökningen som två termer
+        <tt>*􌤓* *􌦆*</tt> så matchar den tecken där <i>bröstet</i>
+        och <i>förändras</i> förekommer oavsett om de är i samma segment eller
+        inte (den sökningen matchar alltså – utöver ’Ironman’ – också tex
+        ’tycka om’ <small><mark>􌤓</mark>􌤢􌥓􌥘􌤟􌥠􌥆􌤴􌥙􌥵<mark>􌦆</mark>􌤢</small>).
 
-        <p><tt>$bo</tt> matchar således ’bo’ först i ett ord (’bo’ och ’bok’
-        men inte ’sambo’) medan <tt>bo$</tt> matchar i slutet på ett ord (’bo’
-        och ’sambo’ men inte ’bok’). Du kan använda dollartecken både i början
-        och slutet (<tt>$bo$</tt>) för att matcha hela ord.
-
-        <p><p><tt>~</tt> fungerar precis som <tt>$</tt> men istället för att
-        matcha i början/slutet på ord, så matchar <tt>~</tt> i början och
-        slutet på fält i databasen. Om du vill så upp tecknet ’upp’ så, men
-        inte vill att din sökning ska matcha uttryck som ’säga upp sig’ eller
-        ’se upp’ så kan du använda <tt>~upp~</tt>.
-
-        <p><p>Det finns också en uppsättning lägessymboler i tabellen som är
-        lite mer ”fluffiga” – symbolen för <i>ansiktet</i> (<small>􌤆</small>)
-        matchar inte bara alla positioner i ansiktet från pannan ner till
-        hakan. Detta är bra när man har en hum, men inte vet exakt var ett
-        tecken ska uttalas.
-
-        <p><p>Utöver symbolerna i tabellen så försöker sökmotorn hjälpa dig med
-        bra saker så långt som möjligt. Om du inte har skrivit ut
-        en <i>relationssymbol</i> i din sökning, eller har utelämnat en
-        riktnings­specifikation under
+        <p><p>Utöver symbolerna i tabellen så försöker sökmotorn hjälpa dig så
+        långt som möjligt. Om du inte har skrivit ut en <i>relationssymbol</i>
+        i din sökning, eller har utelämnat en riktnings­specifikation under
         båge/<wbr>cirkel/<wbr>slås/<wbr>studs/<wbr>vrids och
         konvergerar/<wbr>divergerar så kommer din sökning matcha oavsett vilken
         relation/<wbr>riktnings­specifikation som står i lexikonet. Om

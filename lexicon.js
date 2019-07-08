@@ -346,7 +346,7 @@ function parseQuery(queryStr) {
         var negative;
 
         function str2regex(regex) {
-            // Does lookbehind (?<=..) work on MSIE?
+            // Does lookbehind (?<=..) doesn't work in Edge or Firefox!
             //return new RegExp("(?:^|(?<=\s))" + x + "(?=$|\s)", "gui");
             return new RegExp(regex, "gui");
         }
@@ -357,8 +357,16 @@ function parseQuery(queryStr) {
             });
             negative = false;
         }
-        function addTerm (term) {
+        var nonWord = "[ 􌥠,:!?/.’()[\\]&+–]"; // (FIXME: Removed: '-')
+        var leadingNonAlpha  = new RegExp("^" + nonWord, "ui");
+        var trailingNonAlpha = new RegExp(nonWord + "$", "ui");
+        function addTerm (term, plainTerm, type) {
             if (term !== "") {
+                term = type === "field"
+                    ? "^" + term + "$"          // entire field
+                    : (plainTerm.match(leadingNonAlpha)  ? "" : "(?:" + nonWord + "|^)") +
+                      term +
+                      (plainTerm.match(trailingNonAlpha) ? "" : "(?=" + nonWord + "|$)");
                 query[query.length - 1][
                     negative
                         ? "exclude"
@@ -411,14 +419,12 @@ function parseQuery(queryStr) {
         "􌤠": "[􌤠􌥀􌤡][􌤺􌥛􌤻􌤹􌥚]?",              // shoulders
         "􌤓": "[􌤓􌤕􌤔][􌤺􌥛􌤻􌤹􌥚]?",              // chest
         "􌤗": "[􌤗􌤙􌤘][􌤺􌥛􌤻􌤹􌥚]?",              // hips
-        "*": "[^ 􌥠]*?",          // all non-space, non-'/' delimiter
+        "*": "[^ 􌥠]*",           // all non-space, non-'/' delimiter
         "@":                     // one place symbol (+ optional relation)
                 "[􌦳􌤆􌤂􌥞􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛􌤜􌤞􌤠􌥀􌤡􌥜􌤑􌦲􌤒􌤓􌤕􌤔􌤖􌤗􌤙􌤘􌤚][􌤺􌥛􌤻􌤹􌥚]?",
         "#":                     // one handshape symbol (+ optional relation)
                 "[􌤤􌥄􌤣􌤧􌥋􌥉􌦫􌤩􌤎􌥇􌦬􌤦􌤲􌤱􌥑􌤢􌥂􌤪􌥎􌥈􌤨􌤿􌥌􌥆􌤫􌦭􌤬􌥅􌤥􌥊􌦱􌤽􌤯􌤭􌤮􌤰􌤳􌥃􌥒􌥟􌦪][􌤺􌥛􌤻􌤹􌥚]?",
         "^": "[􌤺􌥛􌤻􌤹􌥚]",          // one relation symbol
-        "$": "(?:[ 􌥠]+|^|$)",    // start/end-of-word
-        "~": "(?:^|$)",          // start/end-of-field
         ":": "[􌥓􌥔􌤴􌥕􌤵􌥖][􌤶􌥗􌤷􌥘􌤸􌥙]"  // one attitude symbol
     };
     // Unquoted place/handshape symbols should also match a following
@@ -439,39 +445,52 @@ function parseQuery(queryStr) {
     });
 
     var term = "";
+    var plainTerm = "";
     var quote = "";
+    var type = "word";
     splitIntoChars(queryStr).forEach(function (char) {
         if (quote !== "") {                    // quoted chars
             if (char === quote) {
                 quote = "";
             } else {
                 term += quotemeta(char);
+                plainTerm += char;
             }
         } else {                               // unquoted chars
             switch (char) {
             case ",":                          //   subquery
-                queryBuilder.addTerm(term);
+                queryBuilder.addTerm(term, plainTerm, type);
                 queryBuilder.addSubquery();
+                type = "word";
                 term = "";
+                plainTerm = "";
                 break;
             case " ":                          //   term
-                queryBuilder.addTerm(term);
+                queryBuilder.addTerm(term, plainTerm, type);
+                type = "word";
                 term = "";
+                plainTerm = "";
                 break;
             case "\"":                         //   quote
             case "'":
                 quote = char;
                 break;
             default:
-                if (char === "-" && term === "") { // leading '-' (negation)
-                    queryBuilder.negative();
-                } else {
-                    term += metachars[char] || quotemeta(char);
+                if (term === "") {             //   leading
+                    if (char === "-") {        //     '-' (negation)
+                        queryBuilder.negative();
+                        break;
+                    } else if (char === "=") { //     '=' (exact match)
+                        type = "field";
+                        break;
+                    }
                 }
+                term += metachars[char] || quotemeta(char);
+                plainTerm += char;
             }
         }
     });
-    queryBuilder.addTerm(term);
+    queryBuilder.addTerm(term, plainTerm, type);
     return queryBuilder.getQuery();
 }
 
