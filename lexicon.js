@@ -729,9 +729,6 @@ function searchLexicon(queryStr) {
         var subquery;
         var matches = [];
 
-        // If there's no query, display info text.
-        $("#noquery")[query.length === 0 ? "show" : "hide"]();
-
         logTiming.reset();
         if (query.length > 0) {
             len = lexicon.length;
@@ -746,6 +743,12 @@ function searchLexicon(queryStr) {
             }
         }
         logTiming.total("Search took %s.");
+
+        // Query without matches, display search tips.
+        $("#nomatch")[(query.length > 0 && matches.length === 0) ? "show" : "hide"]();
+
+        // No query, display info text.
+        $("#noquery")[query.length === 0 ? "show" : "hide"]();
 
         outputMatching({
             status: $("#search-count"),

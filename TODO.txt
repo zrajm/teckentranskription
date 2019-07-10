@@ -69,42 +69,12 @@
    Module have methods for returning named entry properties (i.e. the ID,
    transcription, translation etc. of an entry).
 ** [5/14] Query syntax
-*** TODO New syntax: Word-for-word matching
-    Every word in search query must match word-for-word in the corresponding
-    text. To make a query like 'hej' match part of a word one must use '*hej*'.
-**** DONE Require '*' for partial words
-     CLOSED: [2019-07-06 Sat 21:39]
-**** DONE Remove meta character '$' (end/beginning of word)
-     CLOSED: [2019-07-06 Sat 21:39]
-**** DONE Remove meta character '~' (end/beginning of field)
-     CLOSED: [2019-07-06 Sat 21:40]
-**** DONE Add prefix character '=' (match whole field)
-     CLOSED: [2019-07-06 Sat 21:40]
-**** DONE Make '-' alphabetic(?)
-     CLOSED: [2019-07-06 Sat 21:42]
-     Currently '*' matches a partial segment in transcript if there is a '-'
-     (ie fingerspelling) in the transcription.
-     http://localhost/teckentranskription/lexicon.html#*%C3%A5%20-*%22%20%22*
-**** DONE Search for non-alphabet character should match better (eg '􌥠')
-     CLOSED: [2019-07-06 Sat 23:04]
-     '[' should not require '*[*' to match in '[HYFF]'
+*** TODO Don't hilite space in front of word in search results
+    The edge-of-word matcher shouldn't hilite the space in front of a word.
 
-     This should not require that the search term is part of a word. Same goes
-     for search for " ", maybe? (or does a search for '*" "*' make more sense?)
-**** DONE -="ja tack" and =-"ja tack" should match everything BUT 'ja tack'(?)
-     CLOSED: [2019-07-06 Sat 23:03]
-**** DONE Rewrite help text to reflect new syntax
-     CLOSED: [2019-07-08 Mon 05:17]
-**** TODO When search result in no matches: Give search tips
-     A (non-empty) search query that does not result in any matches should
-     display some tips on how to search (mentioning that '*' is required to
-     match parts of transcriptions/words).
-**** TODO Don't hilite space in front of word in search results
-     The edge-of-word matcher shouldn't hilite the space in front of a word.
-
-     Since we cannot use lookahead assertions (its not supported by a majority
-     of browsers), we'll prolly need some subgroups to split the match into
-     parts-to-be-hilited, and parts-not-to-be-hilited.
+    Since we cannot use lookahead assertions (its not supported by a majority
+    of browsers), we'll prolly need some subgroups to split the match into
+    parts-to-be-hilited, and parts-not-to-be-hilited.
 *** TODO Alternate hand symbols
     Allow usage of annotation handshape in place of the transcription symbols.
     These are the:
@@ -933,6 +903,37 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** [9/9] Lexicon: Word-for-word query syntax
+   Every word in search query must match word-for-word in the corresponding
+   text. To make a query like 'hej' match part of a word one must use '*hej*'.
+*** DONE Require '*' for partial words
+    CLOSED: [2019-07-06 Sat 21:39]
+*** DONE Remove meta character '$' (end/beginning of word)
+    CLOSED: [2019-07-06 Sat 21:39]
+*** DONE Remove meta character '~' (end/beginning of field)
+    CLOSED: [2019-07-06 Sat 21:40]
+*** DONE Add prefix character '=' (match whole field)
+    CLOSED: [2019-07-06 Sat 21:40]
+*** DONE Make '-' alphabetic(?)
+    CLOSED: [2019-07-06 Sat 21:42]
+    Currently '*' matches a partial segment in transcript if there is a '-'
+    (ie fingerspelling) in the transcription.
+    http://localhost/teckentranskription/lexicon.html#*%C3%A5%20-*%22%20%22*
+*** DONE Search for non-alphabet character should match better (eg '􌥠')
+    CLOSED: [2019-07-06 Sat 23:04]
+    '[' should not require '*[*' to match in '[HYFF]'
+
+    This should not require that the search term is part of a word. Same goes
+    for search for " ", maybe? (or does a search for '*" "*' make more sense?)
+*** DONE -="ja tack" and =-"ja tack" should match everything BUT 'ja tack'(?)
+    CLOSED: [2019-07-06 Sat 23:03]
+*** DONE Rewrite help text to reflect new syntax
+    CLOSED: [2019-07-08 Mon 05:17]
+*** DONE When search result in no matches: Give search tips
+    CLOSED: [2019-07-10 Wed 23:11]
+    A (non-empty) search query that does not result in any matches should
+    display some tips on how to search (mentioning that '*' is required to
+    match parts of transcriptions/words).
 ** DONE Lexicon help: Close overlay when clicking search example link
    CLOSED: [2019-07-06 Sat 20:39]
    The 'help overlay' should close automatically clicking a search example

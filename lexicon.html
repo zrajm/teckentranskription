@@ -55,6 +55,7 @@
       margin: 0 1em;
       display: table;
     }
+    #nomatch,
     #noquery {
       display: table;
       min-width: 12em;
@@ -63,6 +64,9 @@
       margin: auto;
       padding-bottom: 1em;
       display: none;
+    }
+    #nomatch li {
+      margin-top: .5em;
     }
     footer { margin-top: auto; }
     footer, #search-brief {
@@ -394,12 +398,13 @@
     }
     sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
     sup { top: -0.5em; }
+    li { margin-left: 1.5em; }
   </style>
 </head>
 <body>
   <noscript class=required>Javascript required.</noscript>
   <header>
-    <textarea id=q rows=1 required autofocus></textarea>
+    <textarea id=q rows=1 autofocus></textarea>
     <button id=help>?</button>
   </header>
   <main id=search-wrapper class=video-view>
@@ -414,7 +419,18 @@
     <div id=search-result></div>
     <button id=more>Visa fler träffar…</button>
   </main>
-
+  <aside id=nomatch>
+    Inga träffar.
+    <p><p>Tips:
+      <ul>
+        <li>Kontrollera att du stavat rätt.
+        <li>Prova att söka efter en synonym.
+        <li>Använd ’*’ för att matcha delar av ord (tex <a class=tt
+          href="#katt*">katt*</a> eller <a class=tt href="#*katt">*katt</a>).
+        <li>Hitta ett ord som tecknas på liknande sätt, klicka på dess
+          tran­skrip­tion och testa dig fram.
+      </ul>
+  </aside>
   <aside id=noquery>
     <h1>Tecken­språks­lexikon</h1>
 
