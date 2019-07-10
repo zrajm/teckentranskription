@@ -103,8 +103,8 @@ var overlay = (function () {
 
 ////////////////////////////////////////////////////////////////////////////////
 //
-// State module
-// ============
+// URL fragment state module
+// =========================
 // Update URL fragment & trigger on URL fragment change.
 //
 // URL fragment syntax: {#|##}<query>[/<overlay>]
@@ -121,7 +121,7 @@ var overlay = (function () {
 //
 // Functions
 // ---------
-// .change(STATE) -- Change URL to reflect state (without triggering hooks).
+// .set(STATE) -- Change URL to reflect state (without triggering hooks).
 // .onOverlayChange(FUNC) -- Register FUNC as callback for corresponding event.
 // .onQueryChange(FUNC)
 // .onVideoToggle(FUNC)
@@ -140,7 +140,7 @@ var overlay = (function () {
 //       video  : true,
 //   };
 //
-var state = (function () {
+var urlFragment = (function () {
     "use strict";
     var state = { overlay: "", query: undefined, video: true };
     function getStateFromUrl() {
@@ -169,18 +169,17 @@ var state = (function () {
             encodeURIComponent(queryStr) +
             (overlayStr ? ("/" + encodeURIComponent(overlayStr)) : "");
     }
-    // change({ query: STR, video: BOOL, overlay: STR })
+    // .set({ query: STR, video: BOOL, overlay: STR })
     // Update internal state + URL, without triggering hashchange event.
-    function changeState(partial) {
-        //if (partial === undefined) { partial = {}; }
-        var changed = false;
+    function setState(partial) {
+        var modified = false;
         ["overlay", "query", "video"].forEach(function (n) {
             if (partial[n] !== state[n] && partial[n] !== undefined) {
                 state[n] = partial[n];
-                changed = true;
+                modified = true;
             }
         });
-        if (changed) {                         // update URL
+        if (modified) {                         // update URL
             window.history.pushState({}, "", setUrlFromState(state));
             return true;
         }
@@ -211,7 +210,7 @@ var state = (function () {
     $(function () { $(window).trigger("hashchange"); });
 
     return {
-        change: changeState,
+        set: setState,
         getHash: getHashFromStr,
         onOverlayChange: onOverlayChange,
         onQueryChange: onQueryChange,
@@ -872,21 +871,16 @@ $("#search-result")
 // link, when user manually edits URL, and on initial page load. These hooks
 // update internal state to reflect URL change (without causing any additional
 // changes to URL).
-state.onQueryChange(searchLexicon);
-state.onVideoToggle(showVideos);
+urlFragment.onQueryChange(searchLexicon);
+urlFragment.onVideoToggle(showVideos);
 
 // When search form input changes.
 (function () {
     "use strict";
     var jqElem = $("#q");
-    var oldValue = jqElem.val();
     jqElem.change(function () {
         var queryStr = jqElem.val() || "";
-        state.change({ query: queryStr });
-        if (queryStr !== oldValue) {
-            oldValue = queryStr;
-            searchLexicon(queryStr);
-        }
+        urlFragment.set({ query: queryStr }) && searchLexicon(queryStr);
     });
 }());
 
@@ -915,7 +909,7 @@ $("#search-wrapper .selector").click(function() {
     var hasVideo = $("#search-wrapper")
         .toggleClass("video-view text-view")
         .hasClass("video-view");
-    state.change({ video: hasVideo });
+    urlFragment.set({ video: hasVideo });
 });
 
 // Update 'href' attr when mouse enters <a data-href=…> tag (used to retain
@@ -927,7 +921,7 @@ $(function () {
         var jq = $(e.currentTarget);
         var hashref = jq.data("href") || "";
         if (hashref) {
-            jq.attr("href", state.getHash(hashref));
+            jq.attr("href", urlFragment.getHash(hashref));
         }
     });
 });
