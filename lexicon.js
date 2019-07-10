@@ -897,7 +897,10 @@ urlFragment.onVideoToggle(showVideos);
             $("#lexicon-date").html(lexiconDate.toLocaleString(
                 "sv", { year: "numeric", month: "long", day: "numeric" }
             ));
-            $("#lexicon-size").html(Object.keys(lexicon).length);
+            $("#lexicon-size").html(
+                (Object.keys(lexicon).length + "")
+                    .replace(/(?=([0-9]{3})+$)/g, " ")
+            );
         }
     }
     $(updateLexiconDate);
