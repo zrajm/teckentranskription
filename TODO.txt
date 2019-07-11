@@ -902,6 +902,10 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Update README.md
+   CLOSED: [2019-07-11 Thu 16:24]
+   Read through and update the thing. Some comments on the lexicon seems
+   especially outdated.
 ** [5/5] Remove old import files
    Before April 2018 the database was manually updated based on a special .tab
    sent to me by the Swedish Sign Language Lexicon office. Before that I used
