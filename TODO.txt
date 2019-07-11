@@ -1,10 +1,9 @@
 -*- org -*-
 
-* Remove old stuff
-** 'svtsplex-export.tab' seems to be no longer used?
-** 'bin/mklexicon' convert a .tab file to JSON
-** 'UPDATING-DATA.txt' needs to be update to reflect current practice
-** Are there more stuff in 'bin/' that needs to be removed?
+* [0/1] Clean up old/irrelevant/unused files
+** TODO Find candidates for cleaning
+   Useful one-liner for finding old files:
+   `for x (**/*(.)) { echo $x; git l $x A 1 } M`
 * Microsoft browser problems
 ** Edge (version 41.16299.371.0)
 *** TODO Pressing enter in input field does not result in a search
@@ -903,6 +902,29 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** [5/5] Remove old import files
+   Before April 2018 the database was manually updated based on a special .tab
+   sent to me by the Swedish Sign Language Lexicon office. Before that I used
+   web scraping of teckensprakslexikon.su.se. Since this hasn't been true for a
+   great long while these old files should be cleaned away.
+*** DONE Remove 'UPDATING-DATA.txt' (obsolete instructions)
+    CLOSED: [2019-07-11 Thu 15:37]
+*** DONE Remove 'bin/mklexicon' (conversion tool no longer used)
+    CLOSED: [2019-07-11 Thu 15:21]
+    This Perl program was used to convert the old .tab export file to JSON.
+*** DONE Remove 'bin/bin/lexiconhtml2words' (web scrape tool no longer used)
+    CLOSED: [2019-07-11 Thu 15:29]
+    This Perl program was used to extract Swedish translations + ID-numbers
+    from web pages scraped off of https://teckensprakslexikon.su.se/.
+*** DONE Remove 'svtsplex-export.tab' (lexicon export file, now unused)
+    CLOSED: [2019-07-11 Thu 15:18]
+    This was an old manual export manually sent to me from the Swedish Sign
+    Language lexicon office, before we settled on (now automated) CSV exports.
+*** DONE Remove 'svtsplex-id2sv.txt' (converted data)
+    CLOSED: [2019-07-11 Thu 15:31]
+    Data converted (using 'bin/mklexicon') from .tab format to simple text
+    format. Data only contain Sign Language Lexicon ID number + Swedish
+    translation.
 ** [9/9] Lexicon: Word-for-word query syntax
    Every word in search query must match word-for-word in the corresponding
    text. To make a query like 'hej' match part of a word one must use '*hej*'.
