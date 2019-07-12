@@ -32,11 +32,32 @@
 ** DONE Set sensible max-width
    CLOSED: [2018-08-31 Fri 02:31]
 * Lexicon
+** TODO Optimize! (use Google Chrome Audits)
+*** TODO Change font format?
+    WOFF is probably smaller than Truetype.
+*** TODO Minify
+*** TODO Hyphenate (server side?)
+*** TODO Optimize jQuery
+    + Maybe use jQuery slim(?)
+      (The slim build excludes the ajax and effects modules.)
+      Need to verify that this works. https://jquery.com/download/
+    + Maybe use (drop-in replacement) alternative to jQuery?
+      (What do we lose if we do this? Compatibility? What compatibility do we
+      have now? How would that change? Which jQuery features are we actually
+      using in the various pages? How can that be investigated?)
+      - Maybe Cash? (https://kenwheeler.github.io/cash/)
+      - Maybe Zepto.js (https://zeptojs.com/)
+      - Maybe something else?
+        http://www.guguncube.com/3297/jquery-alternatives-and-drop-in-replacement-of-jquery-javascript-library
 ** TODO Empty search: Show full screen version of search form
 ** TODO Fix help text hash link                                         :BUG:
    There's a URL fragment link '<a href=#fras>se ovan</a>' in the help text.
    Following this link will quietly do a search for 'fras' in the background --
    messing up any previously existing search result.
+** TODO Make Progressive Web App (PWA)
+   This would allow a user to 'install' the lexicon on their phone (regardless
+   of OS!).
+   + This hides the URL, so probably need a separate share button
 ** [4/7] New URL syntax
    A syntax to allow for video/text search results + upcoming overlays.
 *** TODO Remove extraneous components in URL
