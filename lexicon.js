@@ -911,7 +911,11 @@ function showVideos (bool) {
         .removeClass("video-view text-view")
         .addClass(bool ? "video-view" : "text-view");
 }
-$("#search-wrapper .selector").click(function() {
+$("#search-wrapper .selector").on("click keypress", function(e) {
+    if (e.type === "keypress") {
+        if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) { return; }
+        if (e.which !== 13 && e.which !== 32) { return; }
+    }
     var hasVideo = $("#search-wrapper")
         .toggleClass("video-view text-view")
         .hasClass("video-view");

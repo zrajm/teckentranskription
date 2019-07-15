@@ -137,6 +137,7 @@ button.nostyle, select.nostyle, input.nostyle, textarea.nostyle {
     padding: 0;
 }
 
+.selector:hover,        /* used by lexicon only */
 textarea#q:focus,       /* used by lexicon only */
 button#kb-icon:focus,   /* used by lexicon only */
 button#help:focus,      /* used by lexicon only */
@@ -145,6 +146,9 @@ button:not([disabled]):hover,
 select:not([disabled]):hover {
     box-shadow: /*inset 1000px 1000px rgba(255, 255, 255, .25),*//* lighten */
         0 3px 6px 2px rgba(0, 0, 0, .2);                     /* shadow */
+}
+button:not([disabled]):hover {
+    cursor: pointer;
 }
 textarea:not([disabled]):hover:focus,
 button:not([disabled]):hover:focus,
