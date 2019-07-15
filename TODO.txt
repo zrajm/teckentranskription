@@ -50,6 +50,38 @@
       - Maybe something else?
         http://www.guguncube.com/3297/jquery-alternatives-and-drop-in-replacement-of-jquery-javascript-library
 ** TODO Empty search: Show full screen version of search form
+*** TODO Hilite video/text switch on hover
+    Make it focusable (so that one can enable/disable using keyboard).
+*** TODO Make video/text switch hilite darker
+    Currently the `search-brief` element is rendered with `opacity: .5` meaning
+    that the focus shadow is too dim. Use 'color: rgba(..., .4)' instead.
+*** TODO `keyboard.js` shouldn't modify DOM
+    Instead all styling should be done in the HTML file itself, and
+    `keyboard.js` should only get passed references to the elements it needs to
+    work. Having HTML rendered directly avoids having the DOM being updated
+    late in the load cycle (causing repaints after rest of page has loaded).
+
+    Also, style a wrapper as a <textarea>, having the <textarea> be as plain as
+    possible, and use this to make sure text never overlaps the keyboard icon.
+
+    After this the :hover rule may also brighten the focused content again
+    (since both keyboard and magnifier icon in <textarea> can be brightened
+    now).
+*** TODO Full screen mode
+*** TODO Right hand side menu
+** TODO Add autocompletion to search field
+   Entering words in the search field should give autocomplete similar to
+   Google.
+
+   + Autocomplete textarea
+     https://www.algolia.com/doc/guides/building-search-ui/resources/ui-and-ux-patterns/in-depth/autocomplete/tutorials/autocomplete-textarea/
+
+   + jQuery.textcomplete (Autocomplete for Textarea)
+     http://www.jque.re/plugins/version3/jquery.textcomplete/index.html
+
+   + Autocomplete for textarea elements http://yuku.github.io/textcomplete/
+     GitHub repo: https://github.com/yuku/textcomplete
+     Example site: https://yuku.takahashi.coffee/textcomplete/
 ** TODO Fix help text hash link                                         :BUG:
    There's a URL fragment link '<a href=#fras>se ovan</a>' in the help text.
    Following this link will quietly do a search for 'fras' in the background --
@@ -923,6 +955,8 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: New color scheme/textarea design
+   CLOSED: [2019-07-15 Mon 04:05]
 ** DONE Update README.md
    CLOSED: [2019-07-11 Thu 16:24]
    Read through and update the thing. Some comments on the lexicon seems

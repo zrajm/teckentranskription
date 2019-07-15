@@ -337,18 +337,18 @@ function transcriptKeyboard(jqInput) {
         jqKeyboardIcon = $(
             "<button id=\"kb-icon\" class=nostyle>" +
                 "<img title=\"Transkriptionssymboler (Esc)\" " +
-                "src=\"pic/gui/keyboard.svg\" style=\"height:1em;display:block;opacity:.5\">" +
+                "src=\"pic/gui/keyboard.svg\" style=\"height:1.1em;display:block;opacity:.4\">" +
                 "</button>"
         ).appendTo(jqWrapper).css({
             margin: "auto",
-            padding: "0 .5em",
+            padding: "1px .6em 0",
             top: 0,
             right: 0,
             position: "absolute",
             zIndex: 9999,
             display: "block",
             border: 0,
-            height: "100%"
+            bottom: 0,
         });
         jqKeyboard = insertKeyboardInDom(jqWrapper);
         jqInput.css({

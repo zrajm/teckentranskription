@@ -4,7 +4,7 @@
   <!-- Copyright 2017–2019 by zrajm. Released under GPLv3 license. -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#07bccd">
+  <meta name="theme-color" content="#a5e7ef">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <title>TSP-Lex!</title>
   <link rel=stylesheet href="intro.css">
@@ -13,23 +13,23 @@
   <style>
     @-ms-viewport{ width: device-width; }
     /* Search query <textarea> */
-    #q {
+    textarea {
       flex-grow: 1;
       margin: 0;
       overflow: hidden;
       resize: none;
       white-space: pre;
-      padding-left: .5em; line-height: 1.4;
-      border: 0; border-radius: 4px;
-      transition: background 0.2s ease-out;
+      padding: 0 0 0 .5em;
+      height: 48px;
+      line-height: 46px;         /* height - (top + bottom border) */
+      border: 1px solid #bfbfbf; /* 25% black */
+      border-radius: 4px;
       background:
-          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="17.49" height="17.49" fill="%23fff"><path d="M6.5 11C4.01 11 2 8.99 2 6.5S4.01 2 6.5 2 11 4.01 11 6.5 8.99 11 6.5 11zm6 0h-.79l-.28-.27A6.471 6.471 0 0 0 13 6.5 6.5 6.5 0 1 0 6.5 13c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L17.49 16l-4.99-5z" fill="%23000" fill-opacity=".498"/></svg>') center left .5em/auto 1em no-repeat,
-          rgba(255, 255, 255, .5);
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="17.49" height="17.49" fill="%23fff"><path d="M6.5 11C4.01 11 2 8.99 2 6.5S4.01 2 6.5 2 11 4.01 11 6.5 8.99 11 6.5 11zm6 0h-.79l-.28-.27A6.471 6.471 0 0 0 13 6.5 6.5 6.5 0 1 0 6.5 13c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L17.49 16l-4.99-5z" fill="%23000" fill-opacity=".4"/></svg>') center left .6em/auto 1.1em no-repeat,
+        #fff;
+      box-shadow: 0 2px 3px rgba(0, 0, 0, .09);
     }
-    #q:valid { background-image: url(); } /* remove placeholder icon */
-    #help:focus,
-    #q:focus,
-    #kb-icon:focus { background-color: white; }
+    textarea:valid { background-image: none; } /* remove placeholder icon */
     #kb-icon { background: transparent; }
     #help:before {
       position: absolute;
@@ -44,8 +44,8 @@
     #help {
       flex-shrink: 0;
       position: relative;
-      left: .4em;
-      width: 1.75em;
+      left: .2em;
+      width: 44px;
       border-radius: 50%;
       background: rgba(255, 255, 255, .5);
       color: transparent;
@@ -85,9 +85,9 @@
     }
     header {
       display: flex;
-      background: #07bccd;
-      padding: .5em 1em;
-      box-shadow: 0 0 8px 4px rgba(0, 0, 0, .14);
+      background: #a5e7ef;
+      padding: .25em .5em .35em .5em;
+      color: #4d4d4d; /* 70% black */
     }
     .columns {
       columns: 25em;
@@ -227,7 +227,7 @@
       opacity: 0;                              /* hide but allow clicks etc. */
     }
     .video-view .video-container {
-      background: no-repeat center url(pic/gui/image-loading.jpg) #07bccd;
+      background: no-repeat center url(pic/gui/image-loading.jpg) #a5e7ef;
       position: relative;  /* for subtitle+id positioning */
       border-radius: 4px;
 
@@ -381,7 +381,7 @@
       font-size: 95%;
       background: #ccc;
       border-radius: 4px;
-      padding: 0 .25em;
+      padding: 0 .1875em;
     }
 
     /*************************************************************************/
@@ -394,7 +394,7 @@
     #more {
       display: none;
       padding: .25em .5em;
-      background: #07bccd;
+      background: #a5e7ef;
     }
     sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
     sup { top: -0.5em; }
