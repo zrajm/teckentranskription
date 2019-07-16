@@ -833,7 +833,6 @@ $("#search-result")
     });
 
     function onMouseStill(event) {
-        var jqEvent = $(event);
         var x = event.clientX + 10;
         var y = event.clientY + 10;
 
@@ -861,8 +860,8 @@ $("#search-result")
             jqTooltip.hide();
         }
     }
-    $(window).on("hashchange", hideTooltip);
-    $(document).on("scroll mousemove", hideTooltip);
+    $(window).on("hashchange resize", hideTooltip);
+    $(document).on("scroll mousemove mousedown keydown", hideTooltip);
 }());
 
 ////////////////////////////////////////////////////////////////////////////////
