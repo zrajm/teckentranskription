@@ -950,6 +950,16 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Don't show tooltips if pointer is outside element
+   CLOSED: [2019-07-17 Wed 19:42]
+   Currently a tooltip is displayed even if the mouse pointer only passed
+   through an element with a `data-title` attribute and then stopped. However
+   tooltip should only be displayed if (a) the element is still shown on the
+   page (ie if the element was part of a menu or overlay that has since
+   disappeared from the screen the tooldip should not be shown and (b) mouse
+   pointer is still hovering on the element in question (ie if the mouse
+   pointer only passed through the element but stops outside the element the
+   tooltip should not be displayed).
 ** DONE Lexicon: Hide tooltips on window resize
    CLOSED: [2019-07-16 Tue 04:40]
    It looks kinda strange when the tooltip stays in place, when stuff
