@@ -337,7 +337,7 @@ function parseQuery(queryStr) {
     }
     // Split string into list of Unicode characters.
     function splitIntoChars(str) {
-        return str.split(/(?!$)/mu);
+        return str.split(/(?!$)/u);
     }
 
     var queryBuilder = (function () {
