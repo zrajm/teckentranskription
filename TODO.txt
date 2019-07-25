@@ -949,6 +949,13 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Tooltip bug
+   CLOSED: [2019-07-25 Thu 19:31]
+   Tooltip failed if mouse pointer hovered above an element *inside* the
+   element with the title. Eg on doing a search with Swedish translations
+   containing marked content, if one moved the mouse pointer onto the marked
+   text then the browser default tooltip text was instead used for showing
+   'title'.
 ** DONE Lexicon: Stop textarea input from overlapping keyboard icon
    CLOSED: [2019-07-25 Thu 17:47]
    Also, style a wrapper as a <textarea>, having the <textarea> be as plain as

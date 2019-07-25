@@ -820,7 +820,7 @@ $("#search-result")
 
     // Trigger event if pointer is non-moving for half a second.
     $(document.body).on("mouseover", "[title],[data-title]", function (event) {
-        var jq = $(event.target);
+        var jq = $(event.currentTarget);
         var value = jq.attr("title");
 
         // Change attribute 'title' => 'data-title' to suppress browser tooltip.
@@ -844,7 +844,7 @@ $("#search-result")
         shown = true;
         jqTooltip
             .css({ left: 0, top: 0 })
-            .html($(event.target).data("title"))
+            .html($(event.currentTarget).data("title"))
             .show();
 
         // Now use height and width of displayed tooltip, to move it to the
