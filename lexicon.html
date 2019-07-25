@@ -12,25 +12,49 @@
   <link rel=search type="application/opensearchdescription+xml" title="TSP-Lex!" href="/teckentranskription/lexicon-opensearch.xml">
   <style>
     @-ms-viewport{ width: device-width; }
-    /* Search query <textarea> */
-    textarea {
-      flex-grow: 1;
-      margin: 0;
-      overflow: hidden;
-      resize: none;
-      white-space: pre;
-      padding: 0 0 0 .5em;
+    form {
+      width: 100%;
+      position: relative;
+      padding-right: 69px;       /* width of keyboard icon */
+      background: #fff;
       height: 48px;
       line-height: 46px;         /* height - (top + bottom border) */
       border: 1px solid #bfbfbf; /* 25% black */
       border-radius: 4px;
-      background:
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="17.49" height="17.49" fill="%23fff"><path d="M6.5 11C4.01 11 2 8.99 2 6.5S4.01 2 6.5 2 11 4.01 11 6.5 8.99 11 6.5 11zm6 0h-.79l-.28-.27A6.471 6.471 0 0 0 13 6.5 6.5 6.5 0 1 0 6.5 13c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L17.49 16l-4.99-5z" fill="%23000" fill-opacity=".4"/></svg>') center left .6em/auto 1.1em no-repeat,
-        #fff;
       box-shadow: 0 2px 3px rgba(0, 0, 0, .09);
     }
+    form > * {
+      display: block;
+      border-radius: inherit;
+      background: transparent;
+    }
+    button#kb-icon {
+      padding: 1px .6em 0;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+    }
+    form button#kb-icon > img {
+      height: 1.1em;
+      display: block;
+      opacity: .4;
+    }
+    textarea {
+      margin: 0;
+      padding: 0 0 0 .5em;
+      overflow: hidden;
+      resize: none;
+      white-space: pre;
+      line-height: inherit;
+      box-shadow: none !important;
+      width: 100%;
+    }
+    textarea:invalid {
+      background:
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="17.49" height="17.49" fill="%23fff"><path d="M6.5 11C4.01 11 2 8.99 2 6.5S4.01 2 6.5 2 11 4.01 11 6.5 8.99 11 6.5 11zm6 0h-.79l-.28-.27A6.471 6.471 0 0 0 13 6.5 6.5 6.5 0 1 0 6.5 13c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L17.49 16l-4.99-5z" fill="%23000" fill-opacity=".4"/></svg>') center left .6em/auto 1.1em no-repeat;
+    }
     textarea:valid { background-image: none; } /* remove placeholder icon */
-    #kb-icon { background: transparent; }
     #help:before {
       position: absolute;
       top: 0; bottom: 0; left: 0; right: 0;
@@ -42,7 +66,6 @@
       font-weight: 900;
     }
     #help {
-      flex-shrink: 0;
       position: relative;
       left: .2em;
       width: 44px;
@@ -412,7 +435,10 @@
 <body>
   <noscript class=required>Javascript required.</noscript>
   <header>
-    <textarea id=q rows=1 required autofocus></textarea>
+    <form>
+      <textarea id=q rows=1 required autofocus></textarea>
+      <button id=kb-icon class=nostyle><img title="Transkriptionssymboler (Esc)" src="pic/gui/keyboard.svg"></button>
+    </form>
     <button id=help>?</button>
   </header>
   <main id=search-wrapper class=video-view>
@@ -696,7 +722,7 @@
   <script src="lexicon.js"></script>
   <script src="lexicon-data.js"></script>
   <script src="keyboard.js"></script>
-  <script>transcriptKeyboard($('#q'))</script>
+  <script>transcriptKeyboard($("form"), $("#q"), $("#kb-icon"))</script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-5434527-3"></script>
   <script>

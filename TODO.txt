@@ -49,25 +49,6 @@
       - Maybe Zepto.js (https://zeptojs.com/)
       - Maybe something else?
         http://www.guguncube.com/3297/jquery-alternatives-and-drop-in-replacement-of-jquery-javascript-library
-** TODO Empty search: Show full screen version of search form
-*** TODO `keyboard.js` shouldn't modify DOM
-**** TODO Click on key on virtual keyboard should not submit form
-**** TODO Enter on key on virtual keyboard should cause Lastpass error
-**** TODO Other
-     Instead all styling should be done in the HTML file itself, and
-     `keyboard.js` should only get passed references to the elements it needs
-     to work. Having HTML rendered directly avoids having the DOM being updated
-     late in the load cycle (causing repaints after rest of page has loaded).
-
-     Also, style a wrapper as a <textarea>, having the <textarea> be as plain
-     as possible, and use this to make sure text never overlaps the keyboard
-     icon.
-
-     After this the :hover rule may also brighten the focused content again
-     (since both keyboard and magnifier icon in <textarea> can be brightened
-     now).
-*** TODO Right hand side menu
-*** TODO Full screen mode
 ** TODO Add autocompletion to search field
    Entering words in the search field should give autocomplete similar to
    Google.
@@ -264,23 +245,41 @@
 
    Present search result in a sortable table? Should be able to sort by swedish
    word, and by sign language.
-** [24/41] GUI
-*** [0/2] Redesign
+** TODO Suppress newlines when user is pasting into textarea            :BUG:
+   This is a bug since the textarea cannot handle newlines well, and user
+   really should not be able to enter any. (Manually entered newlines are
+   already suppressed.)
+
+   Make extra sure this is compatible with all browsers (since copy/past
+   handling is known to be finicky).
+** [23/43] GUI
+*** [1/5] Redesign
     Moar intuitive design for newbies, also good with space on cell phones.
     (https://www.ecosia.org/ has a nice design).
-**** TODO No query: display search field in middle of screen
      (To make it obvious that this is the main feature of the page.)
+**** TODO Menu + hamburger icon top/right
+     Menu should contain link to help text, info about the lexicon + links to
+     related articles/web pages.
 
-     + Search field in middle of screen (slightly bigger that on search results
-       list).
-     + Hamburger menu at top right.
-     + Copyright + information links at window lower edge.
-     + Informational 'Click here for transcription symbols' + arrow pointing at
-       keyboard icon in search form.
-**** TODO Query: display search field at top of window
-     + Search field + hamburger menu at top of screen.
-     + Search result counter + video/text toggle below search form.
-     + Copyright + information links at bottom of window.
+     At the bottom there should be information about where the data comes
+     from + copyright info (and CC-license?).
+**** TODO No query: Show full screen version of search form
+**** TODO Copyright at bottom of screen
+     (In both modes).
+*** TODO Add submit button
+*** TODO Add virtual keyboard close button
+    Add x-button top/right inside the keyboard? Or replace virtual keyboard
+    icon with a slashed through keyboard to indicate that it can be used to
+    close the virtual keyboard?
+*** TODO Display text input caret (cursor) with virtual keyboard
+    When the virtual keyboard is shown the caret should always be displayed in
+    the search query. This can be done by making sure the text input element is
+    always in focus – meaning that clicking on a virtual keyboard key, or using
+    tab to navigate around in the keyboard needs be handled "manually" by the
+    script.
+
+    Ie, while the virtual keyboard is up, use a class to show the currently
+    selected button, and modify that based in tab.
 *** TODO Make virtual keyboard come sliding out from under the search form
     The on-screen keyboard should be displayed on top of search results, so
     that dropping the keyboard does not scroll the search results.
@@ -950,6 +949,31 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Stop textarea input from overlapping keyboard icon
+   CLOSED: [2019-07-25 Thu 17:47]
+   Also, style a wrapper as a <textarea>, having the <textarea> be as plain as
+   possible, and use this to make sure text never overlaps the keyboard icon.
+
+   After this the :hover rule may also brighten the focused content again
+   (since both keyboard and magnifier icon in <textarea> can be brightened
+   now).
+*** DONE `keyboard.js` shouldn't insert button element into textarea
+    The virtual keyboard icon button should be present in the basic HTML, so
+    that the behavior of that button can be defined in the base CSS of the
+    page. Only the DOM element with the virtual keyboard itself should be
+    inserted by `keyboard.js`.
+
+    This avoids having the DOM being updated late in the load cycle (causing
+    repaints after rest of page has loaded).
+*** DONE Virtual keyboard buttons should not submit query
+    Pressing a button on the virtual keyboard (with space, enter or mouse
+    click) should result in that symbol being inserted in the textarea (without
+    submitting the form).
+*** DONE Escape should toggle virtual keyboard
+    This should work in textarea, on textarea button in the virtual keyboard.
+*** DONE Textarea: Enter should submit
+*** DONE Keyboard icon: Space/enter/escape/click should toggle keyboard
+*** DONE Virtual button: Enter/space/click should insert symbol in textarea
 ** DONE Lexicon: Don't show tooltips if pointer is outside element
    CLOSED: [2019-07-17 Wed 19:42]
    Currently a tooltip is displayed even if the mouse pointer only passed

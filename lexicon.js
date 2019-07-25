@@ -830,7 +830,7 @@ $("#search-result")
 
         clearTimeout(timeout);
         timeout = setTimeout(function () {
-            if (jq.is(":hover")) {
+            if (jq.is(":visible") && jq.is(":hover")) {
                 onMouseStill(event);
             }
         }, 500);
@@ -880,15 +880,25 @@ $("#search-result")
 urlFragment.onQueryChange(searchLexicon);
 urlFragment.onVideoToggle(showVideos);
 
-// When search form input changes.
-(function () {
+// Form submission.
+$(function () {
     "use strict";
-    var jqElem = $("#q");
-    jqElem.change(function () {
-        var queryStr = jqElem.val() || "";
+    var $form = $("form").on("submit", onSubmit);
+    var $text = $("textarea", $form).on("keydown", onKey);
+
+    function onKey(e) {
+        if (e.which === 13) {                   // Enter
+            e.preventDefault();                 //   don't insert key
+            if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) { return; }
+            $form.submit();
+        }
+    }
+    function onSubmit(e) {
+        var queryStr = $text.val() || "";
+        e.preventDefault();                     // don't submit to server
         urlFragment.set({ query: queryStr }) && searchLexicon(queryStr);
-    });
-}());
+    }
+});
 
 // Update lexicon date in page footer.
 (function () {

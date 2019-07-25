@@ -5,12 +5,10 @@
 // <input> element). This element will be wrapped in a container element
 // (jqWrapper), and a virtual keyboard (jqKeyboard) will added at the end of
 // the container.
-function transcriptKeyboard(jqInput) {
+function transcriptKeyboard(jqWrapper, jqInput, jqKeyboardIcon) {
     "use strict";
     var domInput = jqInput.get(0);
-    var jqWrapper;
     var jqKeyboard;
-    var jqKeyboardIcon;
 
     // Insert text in a textarea.
     function insertAtCursor(str) {
@@ -54,12 +52,6 @@ function transcriptKeyboard(jqInput) {
         }
     }
 
-    // Invoke this on .mousedown() and/or .keydown() (to catch mouse clicks and
-    // keyboard input respectively). This will prevent default function of an
-    // element it is attached to (specifically, if attached to .mousedown(), this
-    // will prevent the button from being focused when clicked -- so that the
-    // previously focused element keeps its focus; this will not worked for
-    // .click() as the element is already focused when that event is triggered).
     function onButton(e) {
         var k = e.which;
         var str;
@@ -73,10 +65,6 @@ function transcriptKeyboard(jqInput) {
                 str = $(e.target).html().replace(/(&nbsp;|◌)/g, "");
                 insertAtCursor(str);
             }
-        } else if (k === 27) {                  // Escape
-            e.preventDefault();
-            jqKeyboard.hide();
-            jqInput.focus();
         }
     }
 
@@ -312,7 +300,7 @@ function transcriptKeyboard(jqInput) {
                 maxWidth: "30em",
                 position: "absolute",
                 right: 0,
-                zIndex: 1,
+                zIndex: 10,
                 background: "#fff",
                 boxShadow: "0 16px 24px 2px rgba(0,0,0,.14)," +
                         "0 6px 30px 5px rgba(0,0,0,.12)," +
@@ -324,63 +312,44 @@ function transcriptKeyboard(jqInput) {
     }
 
     $(function () {
-        jqWrapper = jqInput.wrap("<div class=wrap>").parent().css({
-            flexGrow: 1,
-            lineHeight: "0",
-            position: "relative"
-        });
-        jqKeyboardIcon = $(
-            "<button id=\"kb-icon\" class=nostyle>" +
-                "<img title=\"Transkriptionssymboler (Esc)\" " +
-                "src=\"pic/gui/keyboard.svg\" style=\"height:1.1em;display:block;opacity:.4\">" +
-                "</button>"
-        ).appendTo(jqWrapper).css({
-            margin: "auto",
-            padding: "1px .6em 0",
-            top: 0,
-            right: 0,
-            position: "absolute",
-            zIndex: 9999,
-            display: "block",
-            border: 0,
-            bottom: 0,
-        });
         jqKeyboard = insertKeyboardInDom(jqWrapper);
-        jqInput.css({
-            width: "100%",
-        }).focus();
 
-        jqKeyboard
-            .mousedown(onButton)
-            .keydown(onButton);
-        jqInput
-            .keydown(function (e) {
-                var k = e.which;
-                if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) {
-                    return;
-                }
-                if (k === 27) {                     // Escape
-                    e.preventDefault();
-                    jqKeyboard.toggle();
-                } else if (k === 13) {              // Enter
-                    e.preventDefault();
-                    jqInput.change();
-                }
-            })
-            .change(function () {
-                jqKeyboard.hide();
-            });
+        jqKeyboard.on("click", "button", onButton);
 
-        jqKeyboardIcon.click(function () {
+        // Escape anywhere inside form: Toggle virtual keyboard.
+        jqWrapper.on("keydown", function (e) {
+            var k = e.which;
+            if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) {
+                return;
+            }
+            if (k === 27) {                     // Escape
+                e.preventDefault();
+                jqKeyboard.toggle();
+                if (!$(e.target).is(":visible")) {
+                    jqInput.focus();
+                }
+            }
+        });
+
+        // Click on keyboard icon: Toggle virtual keyboard.
+        jqKeyboardIcon.on("click", function (e) {
+            if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) {
+                return;
+            }
+            e.preventDefault();
             jqKeyboard.toggle();
         });
 
-        // Hide screen keyboard if focus goes outside it or text field.
-        jqWrapper.focusout(function (e) {
-            var domFocused = $(e.relatedTarget);
-            if (domFocused.closest(jqWrapper, jqWrapper).length === 0) {
+        // Click/focus outside it virtual keyboard: Hide it.
+        $(document.body).on("click focus", function (e) {
+            if ($(e.target).closest(jqWrapper).length === 0) {
                 jqKeyboard.hide();
             }
+        });
+
+        // Submit: Hide virtual keyboard.
+        jqWrapper.on("submit", function () {
+            jqKeyboard.hide();
         });
     });
 }
