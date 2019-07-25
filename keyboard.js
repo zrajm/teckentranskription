@@ -60,29 +60,24 @@ function transcriptKeyboard(jqInput) {
     // will prevent the button from being focused when clicked -- so that the
     // previously focused element keeps its focus; this will not worked for
     // .click() as the element is already focused when that event is triggered).
-    function button_clicked(e) {
+    function onButton(e) {
+        var k = e.which;
         var str;
         if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) {
-            return true;
+            return;
         }
-        switch (e.which) {
-        case 27:                     // Escape
-            e.preventDefault();
-            jqKeyboard.hide();
-            jqInput.focus();
-            break;
-        case 1:                      // Left mouse button
-        case 13:                     // Enter
-        case 32:                     // Space
+        if (k === 1 || k === 13 || k === 32) {  // Click, enter or space
             e.preventDefault();
             if ($(e.target).is("button")) {
                 // String inside button (stripping off any &nbsp; + ◌).
                 str = $(e.target).html().replace(/(&nbsp;|◌)/g, "");
                 insertAtCursor(str);
             }
-            break;
+        } else if (k === 27) {                  // Escape
+            e.preventDefault();
+            jqKeyboard.hide();
+            jqInput.focus();
         }
-        return true;
     }
 
     function insertKeyboardInDom(jqWrapper) {
@@ -356,22 +351,20 @@ function transcriptKeyboard(jqInput) {
         }).focus();
 
         jqKeyboard
-            .mousedown(button_clicked)
-            .keydown(button_clicked);
+            .mousedown(onButton)
+            .keydown(onButton);
         jqInput
             .keydown(function (e) {
+                var k = e.which;
                 if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) {
-                    return true;
+                    return;
                 }
-                switch (e.key) {
-                case "Escape":
+                if (k === 27) {                     // Escape
                     e.preventDefault();
                     jqKeyboard.toggle();
-                    break;
-                case "Enter":
+                } else if (k === 13) {              // Enter
                     e.preventDefault();
                     jqInput.change();
-                    break;
                 }
             })
             .change(function () {
