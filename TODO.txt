@@ -256,14 +256,19 @@
 *** [1/5] Redesign
     Moar intuitive design for newbies, also good with space on cell phones.
     (https://www.ecosia.org/ has a nice design).
-     (To make it obvious that this is the main feature of the page.)
+    (To make it obvious that this is the main feature of the page.)
+    Article on how to make "the perfect search box":
+    https://uxplanet.org/design-a-perfect-search-box-b6baaf9599c
 **** TODO Menu + hamburger icon top/right
      Menu should contain link to help text, info about the lexicon + links to
      related articles/web pages.
 
      At the bottom there should be information about where the data comes
      from + copyright info (and CC-license?).
-**** TODO No query: Show full screen version of search form
+**** [1/2] No query: Show full screen version of search form
+***** DONE Use CSS classes to hide/show 'nomatch' & 'noquery' information
+      CLOSED: [2019-07-26 Fri 19:52]
+***** TODO Rewrite 'noquery' stylesheet to present full screen search form
 **** TODO Copyright at bottom of screen
      (In both modes).
 *** TODO Add submit button

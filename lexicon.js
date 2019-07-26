@@ -721,6 +721,8 @@ function onImageLoad(imgLoad, image) {
 
 function searchLexicon(queryStr) {
     "use strict";
+    var $body = $(document.body);
+
     $("#q").val(queryStr);
     setTimeout(function () {
         var query = parseQuery(queryStr);
@@ -744,11 +746,11 @@ function searchLexicon(queryStr) {
         }
         logTiming.total("Search took %s.");
 
-        // Query without matches, display search tips.
-        $("#nomatch")[(query.length > 0 && matches.length === 0) ? "show" : "hide"]();
+        // Query without matches, add 'nomatch' to <body>.
+        $body[(query.length > 0 && matches.length === 0) ? "addClass" : "removeClass"]("nomatch");
 
-        // No query, display info text.
-        $("#noquery")[query.length === 0 ? "show" : "hide"]();
+        // No query, add 'noquery' to body element.
+        $body[query.length === 0 ? "addClass" : "removeClass"]("noquery");
 
         outputMatching({
             status: $("#search-count"),

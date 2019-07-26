@@ -80,13 +80,16 @@
     }
     #nomatch,
     #noquery {
-      display: table;
       min-width: 12em;
       max-width: 22em;
       width: 75%;
       margin: auto;
       padding-bottom: 1em;
       display: none;
+    }
+    body.nomatch #nomatch,
+    body.noquery #noquery {
+      display: block;
     }
     #nomatch li {
       margin-top: .5em;
