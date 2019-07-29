@@ -255,8 +255,8 @@
 
    Make extra sure this is compatible with all browsers (since copy/past
    handling is known to be finicky).
-** [23/45] GUI
-*** [0/3] Redesign
+** [23/46] GUI
+*** [0/1] Redesign
     Moar intuitive design for newbies, also good with space on cell phones.
     (https://www.ecosia.org/ has a nice design).
     (To make it obvious that this is the main feature of the page.)
@@ -268,18 +268,6 @@
 
      At the bottom there should be information about where the data comes
      from + copyright info (and CC-license?).
-**** [3/5] No query: Show fullscreen version of search form
-***** DONE Use CSS classes to hide/show 'nomatch' & 'noquery' information
-      CLOSED: [2019-07-26 Fri 19:52]
-***** DONE Rewrite 'noquery' stylesheet to present fullscreen search form
-      CLOSED: [2019-07-29 Mon 16:19]
-***** DONE Add 'Search help' link to fullscreen form
-      CLOSED: [2019-07-29 Mon 17:09]
-      Add the following after the 'updated date' text.
-      '<a href=>Sökhjälp</a>.'
-***** TODO Place '?' help in top/right corner
-      The help button should use 'position: absolute' placement regardless of
-      whether or not search is in 'noquery' mode.
 *** TODO On pageload: Faster selection of fullscreen or normal search
     Currently, if loading the page without a query, first the 'small' version
     of the query is displayed briefly.
@@ -288,6 +276,7 @@
     should be the same as for the info text specifying update date and number
     of signs.
 *** TODO Add submit button
+*** TODO Use Stackexchange magnifier glass instead of current one?
 *** TODO Add virtual keyboard close button
     Add x-button top/right inside the keyboard? Or replace virtual keyboard
     icon with a slashed through keyboard to indicate that it can be used to
@@ -970,6 +959,19 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** [4/4] Lexicon: No query: Show fullscreen version of search form
+*** DONE Use CSS classes to hide/show 'nomatch' & 'noquery' information
+    CLOSED: [2019-07-26 Fri 19:52]
+*** DONE Rewrite 'noquery' stylesheet to present fullscreen search form
+    CLOSED: [2019-07-29 Mon 16:19]
+*** DONE Add 'Search help' link to fullscreen form
+    CLOSED: [2019-07-29 Mon 17:09]
+    Add the following after the 'updated date' text.
+    '<a href=>Sökhjälp</a>.'
+*** DONE Place '?' help in top/right corner
+    CLOSED: [2019-07-29 Mon 17:49]
+    The help button should use 'position: absolute' placement regardless of
+    whether or not search is in 'noquery' mode.
 ** DONE Lexicon: Tooltip bug
    CLOSED: [2019-07-25 Thu 19:31]
    Tooltip failed if mouse pointer hovered above an element *inside* the
