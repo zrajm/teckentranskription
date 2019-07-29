@@ -6,7 +6,10 @@
     src: url("freesans-swl.ttf");
     font-display: swap;
 }
-html { font-family: "FreeSans-SWL", "FreeSans", sans-serif; }
+html {
+    font-family: "FreeSans-SWL", "FreeSans", sans-serif;
+    font-size: 22px;
+}
 button, input, select, textarea { font-family: inherit; }
 
 * {
@@ -19,6 +22,10 @@ button, input, select, textarea { font-family: inherit; }
 html { height: 100%; overflow-y: scroll; }
 body {
     min-height: 100%;
+
+    /* line-height need to be >1.25 not to leave remains of FreeSans-SWL relation
+    diacritics on previous line when column breaking */
+    line-height: 1.25;
 }
 
 *:not(td) { box-sizing: border-box; }
@@ -48,13 +55,6 @@ mark {
 }
 
 img { max-height: 175px; }
-
-body {
-    font-size: 22px;
-    /* line-height need to be >1.25 not to leave remains of FreeSans-SWL relation
-    diacritics on previous line when column breaking */
-    line-height: 1.25;
-}
 
 noscript {
     z-index: 1;

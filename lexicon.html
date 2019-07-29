@@ -115,10 +115,71 @@
       padding: .25em .5em .35em .5em;
       color: #4d4d4d; /* 70% black */
     }
+    /* FIXME: remove this .form-wrapper and modify some flex property of parent element <header> instead? */
+    .form-wrapper {
+      width: 100%;
+    }
     .columns {
       columns: 25em;
       column-gap: 1em;
       column-fill: auto;
+    }
+
+    /*************************************************************************/
+    /* Full screen search form */
+
+    /* normally hide 'noquery-content' */
+    .noquery-content { display: none; }
+
+    /* in 'noquery' mode: show noquery-content + hide normal search result */
+    body.noquery .noquery-content { display: block; }
+    body.noquery #search-wrapper { display: none; }
+
+    .logo svg {
+      display: block;
+      height: 5em;
+      margin: .5em auto;
+    }
+    .info {
+      font-size: smaller;
+      color: #000;
+      opacity: .5;
+    }
+    @media only screen and (max-width: 450px) { .info .size { display: none; } }
+    @media only screen and (max-width: 330px) { .info .beg  { display: none; } }
+    @media only screen and (max-width: 220px) { .info .date { display: none; } }
+
+    /* form fields changed in 'noquery' mode */
+    body.noquery header {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: block;
+      text-align: center;
+      padding: 0;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    body.noquery .form-wrapper {
+      padding-bottom: 3rem;
+    }
+    body.noquery form {
+      width: 70%;
+      max-width: 590px;
+      margin: 1.5rem auto 1.1rem;
+    }
+    @media only screen and (max-width: 590px) { body.noquery form { width: 80%; }}
+    @media only screen and (max-width: 370px) { body.noquery form { width: 90%; }}
+    /* FIXME placement of help button FIXME */
+    body.noquery button#help {
+      position: absolute;
+      top: 0;
+      height: 44px;
     }
 
     /*************************************************************************/
@@ -438,10 +499,22 @@
 <body>
   <noscript class=required>Javascript required.</noscript>
   <header>
-    <form>
-      <textarea id=q rows=1 required autofocus></textarea>
-      <button id=kb-icon class=nostyle><img title="Transkriptionssymboler (Esc)" src="pic/gui/keyboard.svg"></button>
-    </form>
+    <div class=form-wrapper>
+      <div class="noquery-content logo">
+        <!-- Inline SVG avoids FOUC. -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -200 648 729"><defs><filter id="a" color-interpolation-filters="sRGB"><feFlood flood-color="#000" flood-opacity=".922" result="flood"/><feComposite in="flood" in2="SourceGraphic" operator="out" result="composite1"/><feGaussianBlur in="composite1" result="blur" stdDeviation="15"/><feOffset dx="5" dy="-10" result="offset"/><feComposite in="offset" in2="SourceGraphic" operator="atop" result="composite2"/></filter></defs><path fill="#134141" d="M289.023 297L15 729h115l214-355 208 355h111L395.804 297H616v-78H389V0h-93v219H62v78h227.023z" filter="url(#a)" transform="matrix(1 0 0 -1 -15 529)"/></svg>
+        <big>Svenskt tecken­språks­lexikon</big>
+      </div>
+      <form>
+        <textarea id=q rows=1 required autofocus></textarea>
+        <button id=kb-icon class=nostyle><img title="Transkriptionssymboler (Esc)" src="pic/gui/keyboard.svg"></button>
+      </form>
+      <div class="noquery-content info" style="margin:1em 0">
+        <span class=size><span id=lexicon-size>00000</span> tecken.</span>
+        <span class=date><span class=beg>Upp­date­rad</span> <span id=lexicon-date>0x månad 20xx</span>.</span>
+        <a href="#help">Sökhjälp</a>.
+      </div>
+    </div>
     <button id=help>?</button>
   </header>
   <main id=search-wrapper class=video-view>
@@ -467,20 +540,6 @@
         <li>Hitta ett ord som tecknas på liknande sätt, klicka på dess
           tran­skrip­tion och testa dig fram.
       </ul>
-  </aside>
-  <aside id=noquery>
-    <h1>Tecken­språks­lexikon</h1>
-
-    <p>Sök på svenska, tecken­språk (tran­skrip­tion) eller ID-nummer!
-
-    <p>Skriv tran­skrip­tion med tangent­bordet i
-    sök­fältet <nobr>(<img src="pic/gui/keyboard.svg"
-    style="height:.6em">)</nobr> eller genom att klicka på en tran­skrip­tion i
-    sök­resul­tatet. <a href="javascript:overlay.show()">Mer sök­hjälp.</a>
-
-    <p><p>Data från <i><a href="https://teckensprakslexikon.su.se/">Svenskt
-    tecken­språks­lexikon</a></i> (upp­date­rat <span id=lexicon-date>0x månad
-    20xx</span>). Inne­håller <span id=lexicon-size>00000</span> tecken.
   </aside>
   <footer>
     © 2017–2019 <a href="mailto:lexikon@zrajm.org">zrajm</a>, Uppsala.

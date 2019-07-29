@@ -32,6 +32,9 @@
 ** DONE Set sensible max-width
    CLOSED: [2018-08-31 Fri 02:31]
 * Lexicon
+** TODO Change name of lexicon
+   Lexicon should be distinguishable from the official lexicon by name. Maybe
+   use name 'Snabbt teckenspråklexikon'?
 ** TODO Optimize! (use Google Chrome Audits)
 *** TODO Change font format?
     WOFF is probably smaller than Truetype.
@@ -252,8 +255,8 @@
 
    Make extra sure this is compatible with all browsers (since copy/past
    handling is known to be finicky).
-** [23/43] GUI
-*** [1/5] Redesign
+** [23/45] GUI
+*** [0/3] Redesign
     Moar intuitive design for newbies, also good with space on cell phones.
     (https://www.ecosia.org/ has a nice design).
     (To make it obvious that this is the main feature of the page.)
@@ -265,12 +268,25 @@
 
      At the bottom there should be information about where the data comes
      from + copyright info (and CC-license?).
-**** [1/2] No query: Show full screen version of search form
+**** [3/5] No query: Show fullscreen version of search form
 ***** DONE Use CSS classes to hide/show 'nomatch' & 'noquery' information
       CLOSED: [2019-07-26 Fri 19:52]
-***** TODO Rewrite 'noquery' stylesheet to present full screen search form
-**** TODO Copyright at bottom of screen
-     (In both modes).
+***** DONE Rewrite 'noquery' stylesheet to present fullscreen search form
+      CLOSED: [2019-07-29 Mon 16:19]
+***** DONE Add 'Search help' link to fullscreen form
+      CLOSED: [2019-07-29 Mon 17:09]
+      Add the following after the 'updated date' text.
+      '<a href=>Sökhjälp</a>.'
+***** TODO Place '?' help in top/right corner
+      The help button should use 'position: absolute' placement regardless of
+      whether or not search is in 'noquery' mode.
+*** TODO On pageload: Faster selection of fullscreen or normal search
+    Currently, if loading the page without a query, first the 'small' version
+    of the query is displayed briefly.
+*** TODO Use same color for copyright text as for updated date text
+    In fullscreen mode the text color of the bottom screen copyright notice
+    should be the same as for the info text specifying update date and number
+    of signs.
 *** TODO Add submit button
 *** TODO Add virtual keyboard close button
     Add x-button top/right inside the keyboard? Or replace virtual keyboard

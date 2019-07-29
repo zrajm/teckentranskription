@@ -55,7 +55,7 @@ function toggleFullscreen(elem) {
 //   .hide() -- Hides currently open overlay.
 //
 var overlay = (function () {
-    var button = $("#help");
+    var button = $("#help,a[href='#help']");
     var overlay = $(".overlay.help");
 
     // Convert <tt> into links (except if they contain '…') by replacing
@@ -73,7 +73,8 @@ var overlay = (function () {
         overlay.hide();
         button.focus();
     }
-    function showOverlay () {
+    function showOverlay (e) {
+        e.preventDefault();
         overlay.show().find('>*').focus();
     }
     button.click(showOverlay);
