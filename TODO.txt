@@ -511,8 +511,6 @@
    the old array, instead of object, approach?)
 ** TODO Repeated search should not reload search result
 ** TODO Add CC license text + note data source
-** DONE Transcription link shouldn't switch video/text mode             :BUG:
-   CLOSED: [2018-09-03 Mon 05:02]
 * Transcription intro article
 ** [4/10] Add missing quotes for position table
 *** DONE Add info from Bergman (1977)
@@ -959,6 +957,11 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Firefox help text display bug                          :BUG:
+   CLOSED: [2019-07-30 Tue 17:15]
+   In Firefox the help text had only a single column which used the specified
+   column width (ie leaving the rightmost part of the screen completely blank).
+   Not pretty, solved by removing the CSS line 'column-fill: auto;'.
 ** [4/4] Lexicon: No query: Show fullscreen version of search form
 *** DONE Use CSS classes to hide/show 'nomatch' & 'noquery' information
     CLOSED: [2019-07-26 Fri 19:52]
@@ -1270,9 +1273,10 @@
    href="00000" -> href=00000
 ** DONE Intro: Remove dead CSS
    CLOSED: [2018-10-14 Sun 21:24]
+** DONE Lexicon: Transcription link shouldn't switch video/text mode    :BUG:
+   CLOSED: [2018-09-03 Mon 05:02]
 ** DONE Lexicon: Character to match end-of-word in searches
    CLOSED: [2018-04-19 Thu 16:58]
-
    '$' now matches (any number of) spaces or the end or beginning of a word,
    use '$sak$' to search for the word 'sak' but ignore words like 'sakna' or
    'orsak'.
