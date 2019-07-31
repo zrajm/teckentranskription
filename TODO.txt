@@ -271,11 +271,16 @@
 *** TODO On pageload: Faster selection of fullscreen or normal search
     Currently, if loading the page without a query, first the 'small' version
     of the query is displayed briefly.
-*** TODO Use same color for copyright text as for updated date text
-    In fullscreen mode the text color of the bottom screen copyright notice
-    should be the same as for the info text specifying update date and number
-    of signs.
+*** TODO Distinguish keyboard focus & mouse focus in CSS
+    When an HTML is selected via the keyboard use a border to hilite it. When
+    hovered over using the mouse pointer use box shadow.
+
+    Make sure both kinds of selections look especially good with the search
+    form with text input hilited.
 *** TODO Add submit button
+    Use the magnifier icon that now is the search text placeholder, and use
+    that in the submit button instead. Add placeholder text. Maybe something
+    like 'Sök transkription eller översättning…'
 *** TODO Use Stackexchange magnifier glass instead of current one?
 *** TODO Add virtual keyboard close button
     Add x-button top/right inside the keyboard? Or replace virtual keyboard
@@ -957,6 +962,11 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Use same color for copyright text as for updated date text
+   CLOSED: [2019-07-31 Wed 13:59]
+   In fullscreen mode the text color of the bottom screen copyright notice
+   should be the same as for the info text specifying update date and number of
+   signs.
 ** DONE Lexicon: Firefox help text display bug                          :BUG:
    CLOSED: [2019-07-30 Tue 17:15]
    In Firefox the help text had only a single column which used the specified
