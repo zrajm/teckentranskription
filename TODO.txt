@@ -255,32 +255,33 @@
 
    Make extra sure this is compatible with all browsers (since copy/past
    handling is known to be finicky).
-** [23/46] GUI
-*** [0/1] Redesign
-    Moar intuitive design for newbies, also good with space on cell phones.
-    (https://www.ecosia.org/ has a nice design).
-    (To make it obvious that this is the main feature of the page.)
-    Article on how to make "the perfect search box":
-    https://uxplanet.org/design-a-perfect-search-box-b6baaf9599c
-**** TODO Menu + hamburger icon top/right
-     Menu should contain link to help text, info about the lexicon + links to
-     related articles/web pages.
-
-     At the bottom there should be information about where the data comes
-     from + copyright info (and CC-license?).
+** [23/51] GUI
+*** TODO Add 'Om lexikonet' menu item
+    An info text briefly describing design idea, nature of cooperation with
+    'Svenskt teckenspråkslexikon' and the CC license.
+*** TODO Close menu when clicking outside it
+*** TODO Darken background when opening menu(?)
 *** TODO On pageload: Faster selection of fullscreen or normal search
     Currently, if loading the page without a query, first the 'small' version
     of the query is displayed briefly.
-*** TODO Distinguish keyboard focus & mouse focus in CSS
-    When an HTML is selected via the keyboard use a border to hilite it. When
-    hovered over using the mouse pointer use box shadow.
+*** TODO Show difference between keyboard focus & mouse focus
+    When an HTML element is selected via the keyboard use a border to hilite
+    it. When hovered over using the mouse pointer use box shadow.
 
     Make sure both kinds of selections look especially good with the search
     form with text input hilited.
-*** TODO Add submit button
+*** TODO Add submit button & placeholder text.
     Use the magnifier icon that now is the search text placeholder, and use
     that in the submit button instead. Add placeholder text. Maybe something
     like 'Sök transkription eller översättning…'
+*** TODO Think more about self-explanatory aspect of the GUI
+    Are there additional modifications that can be done to better give a new
+    user a sense of how to use the search? How to make the transcription search
+    feature more self-explanatory for users unaccustomed to the transcription
+    system?
+
+    Article on how to make "the perfect search box":
+    https://uxplanet.org/design-a-perfect-search-box-b6baaf9599c
 *** TODO Use Stackexchange magnifier glass instead of current one?
 *** TODO Add virtual keyboard close button
     Add x-button top/right inside the keyboard? Or replace virtual keyboard
@@ -962,7 +963,14 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
-** DONE Use same color for copyright text as for updated date text
+** DONE Lexicon: Menu + hamburger icon top/right
+   CLOSED: [2019-07-31 Wed 18:01]
+   Menu should contain link to help text, info about the lexicon + links to
+   related articles/web pages.
+
+   At the bottom there should be information about where the data comes from +
+   copyright info (and CC-license?).
+** DONE Lexicon: Use same color for copyright text as for other info
    CLOSED: [2019-07-31 Wed 13:59]
    In fullscreen mode the text color of the bottom screen copyright notice
    should be the same as for the info text specifying update date and number of

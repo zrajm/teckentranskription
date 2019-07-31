@@ -55,7 +55,7 @@ function toggleFullscreen(elem) {
 //   .hide() -- Hides currently open overlay.
 //
 var overlay = (function () {
-    var button = $("#help,a[href='#help']");
+    var button = $("a[href='#help']");
     var overlay = $(".overlay.help");
 
     // Convert <tt> into links (except if they contain '…') by replacing

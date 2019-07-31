@@ -55,28 +55,6 @@
         url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="17.49" height="17.49" fill="%23fff"><path d="M6.5 11C4.01 11 2 8.99 2 6.5S4.01 2 6.5 2 11 4.01 11 6.5 8.99 11 6.5 11zm6 0h-.79l-.28-.27A6.471 6.471 0 0 0 13 6.5 6.5 6.5 0 1 0 6.5 13c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L17.49 16l-4.99-5z" fill="%23000" fill-opacity=".4"/></svg>') center left .6em/auto 1.1em no-repeat;
     }
     textarea:valid { background-image: none; } /* remove placeholder icon */
-    #help:before {
-      position: absolute;
-      top: 0; bottom: 0; left: 0; right: 0;
-      margin: auto;
-      content: "?";
-      color: #000;
-      height: 1.1em;
-      font-size: 125%;
-      font-weight: 900;
-    }
-    #help {
-      position: absolute;
-      top: 0;
-      right: 0;
-      margin: 8px 9px;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, .5);
-      color: transparent;
-    }
-
     #search-wrapper {
       margin: 0 .5em .5em;
       display: table;
@@ -117,7 +95,7 @@
       background: #a5e7ef;
       padding: .25em .5em .35em .5em;
       color: #4d4d4d; /* 70% black */
-      padding-right: 60px;
+      padding-right: 48px;
     }
     /* FIXME: remove this .form-wrapper and modify some flex property of parent element <header> instead? */
     .form-wrapper {
@@ -492,9 +470,118 @@
     sup { top: -0.5em; }
     li { margin-left: 1.5em; }
   </style>
+  <style>
+    /**************************************************************************/
+    /** Side menu. **/
+    .menu {
+      width: 16em;
+      font-size: smaller;
+      overflow: hidden;
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+    }
+    .menu.shown aside {
+      left: 0%;
+    }
+    .menu aside {
+      z-index: 1;
+      margin-left: 5px;
+      padding: 1.5em;
+      box-shadow: -2px 0 3px rgba(0, 0, 0, .09);
+      transition: all .2s ease-in-out;
+      position: relative;
+      background: white;
+      height: 100%;
+      left: 100%;
+    }
+    .menu aside ul {
+      line-height: 2;
+      list-style-type: none;
+    }
+    .menu aside li {
+      margin-left: 0;
+    }
+    .menu aside > * {
+      opacity: .7;
+    }
+    .menu p {
+      text-indent: unset !important;
+      margin: 1em 0;
+    }
+    .menu p.hr {
+      line-height: 2;
+      font-weight: bold;
+      margin: 1em 0 0;
+      padding-top: 1em;
+      border-top: 1px solid rgba(0,0,0,.25);
+    }
+    .menu div.bottom {
+      position: absolute;
+      bottom: 0;opacity: .7;
+      line-height: 1.5;
+      margin-right: .5em;
+    }
+    .menu button {
+      z-index: 1;
+      border-radius: 2px;
+      box-sizing: content-box;
+      position: absolute;
+      width: .85rem;
+      XXtop: .55rem;
+      top: 13px;
+      XXright: .4rem;
+      right: 6px;
+      XXpadding: .4rem;
+      padding: 9px;
+      color: #000;
+      opacity: .5;
+      margin: unset;
+      background: unset;
+      border: unset;
+      box-shadow: unset;
+    }
+    .menu button:hover { box-shadow: unset; }
+    .menu button.menu-close {
+      opacity: .5;
+    }
+    .menu button.menu-close:hover {
+      color: rgba(0,0,0,.95);
+      opacity: 1;
+    }
+    .menu button.menu-open:hover {
+      background: rgba(0,0,0,.95);
+      color: #a5e7ef;
+    }
+    .menu button svg { display: block; }
+  </style>
 </head>
 <body>
   <noscript class=required>Javascript required.</noscript>
+  <aside class=menu>
+    <button class="toggle menu-open"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -200 435.6 400"><path fill="currentColor" d="M435.6 130v70H0v-70h435.6zM435.6-35v70H0v-70h435.6zM435.6-200v70H0v-70h435.6z"/></svg></button>
+    <aside>
+      <button class="toggle menu-close"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -200 435.6 400"><path fill="currentColor" d="M88.541-178.756L39.043-129.26 168.303 0 39.043 129.26l49.498 49.496 129.26-129.26 129.258 129.26 49.498-49.496L267.297 0l129.26-129.26-49.498-49.496L217.8-49.496 88.54-178.756z"/></svg></button>
+      <ul>
+        <li><a href="#help">Sökhjälp</a>
+        <!--li><a href="#">Om lexikonet</a-->
+      </ul>
+      <p class=hr>Relaterade sidor
+      <ul>
+        <li><a href="intro.html" target=_blank>Hur transkriptionen fungerar</a>
+        <li><a href="freesans-swl.html" target=_blank>Transkriptionstypsnitt</a>
+      </ul>
+      <p class=hr>Sidor på GitHub
+        <ul>
+          <li><a href="https://github.com/zrajm/teckentranskription" target=_blank>Lexikonets källkod</a>
+          <li><a href="https://github.com/zrajm/teckentranskription/issues" target=_blank>Rapportera fel</a>
+        </ul>
+      <div class=bottom>
+        <p>Data från <a href="https://teckensprakslexikon.su.se/" target=_blank>Svenskt tecken­språks­lexikon</a>.
+      </div>
+    </aside>
+  </aside>
   <header>
     <div class=form-wrapper>
       <div class="noquery-content logo">
@@ -512,7 +599,6 @@
         <a href="#help">Sökhjälp</a>.
       </div>
     </div>
-    <button id=help>?</button>
   </header>
   <main id=search-wrapper class=video-view>
     <div id=search-brief>
@@ -782,6 +868,16 @@
   <script src="lexicon-data.js"></script>
   <script src="keyboard.js"></script>
   <script>transcriptKeyboard($("form"), $("#q"), $("#kb-icon"))</script>
+  <script>
+    /**************************************************************************/
+    /** Open/close menu. **/
+    $(function () {
+        var $menu = $(".menu");
+        $menu.find("button.toggle").on("click",function () {
+            $menu.toggleClass("shown");
+        });
+    });
+  </script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-5434527-3"></script>
   <script>
