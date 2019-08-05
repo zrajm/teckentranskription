@@ -35,23 +35,67 @@
 ** TODO Change name of lexicon
    Lexicon should be distinguishable from the official lexicon by name. Maybe
    use name 'Snabbt teckenspråklexikon'?
-** TODO Optimize! (use Google Chrome Audits)
-*** TODO Change font format?
-    WOFF is probably smaller than Truetype.
-*** TODO Minify
-*** TODO Hyphenate (server side?)
-*** TODO Optimize jQuery
-    + Maybe use jQuery slim(?)
-      (The slim build excludes the ajax and effects modules.)
-      Need to verify that this works. https://jquery.com/download/
-    + Maybe use (drop-in replacement) alternative to jQuery?
-      (What do we lose if we do this? Compatibility? What compatibility do we
-      have now? How would that change? Which jQuery features are we actually
-      using in the various pages? How can that be investigated?)
-      - Maybe Cash? (https://kenwheeler.github.io/cash/)
-      - Maybe Zepto.js (https://zeptojs.com/)
-      - Maybe something else?
-        http://www.guguncube.com/3297/jquery-alternatives-and-drop-in-replacement-of-jquery-javascript-library
+** TODO Newlines->space when pasting into <textarea>                    :BUG:
+   This is a bug since the textarea cannot handle newlines well, and user
+   really should not be able to enter any. (Manually entered newlines are
+   already suppressed.)
+
+   Make extra sure this is compatible with all browsers (since copy/past
+   handling is known to be finicky).
+** [0/6] Code structure/stink/refactor
+*** TODO Use '$' prefix instead of 'jq' in variables
+*** TODO Memory optimization
+    Leakyness? -- Does a new search completely (or as completely as possible)
+    clear the memory before building up a new search result?
+
+    Is the search result list of an okay size? (Was it smaller with the old
+    array, instead of object, approach?)
+*** TODO Optimize! (use Google Chrome Audits)
+**** TODO Change font format?
+     WOFF is probably smaller than Truetype.
+**** TODO Minify
+**** TODO Hyphenate (server side?)
+**** TODO Optimize jQuery
+     + Maybe use jQuery slim(?)
+       (The slim build excludes the ajax and effects modules.)
+       Need to verify that this works. https://jquery.com/download/
+     + Maybe use (drop-in replacement) alternative to jQuery?
+       (What do we lose if we do this? Compatibility? What compatibility do we
+       have now? How would that change? Which jQuery features are we actually
+       using in the various pages? How can that be investigated?)
+       - Maybe Cash? (https://kenwheeler.github.io/cash/)
+       - Maybe Zepto.js (https://zeptojs.com/)
+       - Maybe something else?
+         http://www.guguncube.com/3297/jquery-alternatives-and-drop-in-replacement-of-jquery-javascript-library
+*** TODO Lexicon/search part should be standalone module
+    Module should have methods for returning named entry properties (i.e. the
+    ID, transcription, translation etc. of an entry).
+*** TODO Use ECMAScript6 or not?
+    Currently using /u regex flag, which turns out to be ES6. This program
+    probably won't work without it, and thus it might be better to go all the
+    way and use `let` and `const` and all the other good stuff from ES6.
+
+    Which browsers support ES6?
+
+    Need to test (get some statistics on what browser ppl have):
+
+    Compatibility data is from here: http://kangax.github.io/compat-table/es6/
+
+    + ES5 standard released in 2009.
+    + ES6 standard released in 2015.
+
+    |-----------------+---------------------|
+    | Browser         | /u support          |
+    |-----------------+--------+------------|
+    | Firefox         | >=v50? | 2016-06-06 |
+    | EdgeHTML        | >=v12  | 2016-08-02 |
+    | Safari          | >=v10  | 2016-09-20 |
+    | Chrome/Chromium | >=v54? | 2016-10-12 |
+    | Explorer        | -      | -          |
+    |-----------------+--------+------------|
+
+    If we need to go ES5, then splitting of the query string can be done with
+    code found here: https://stackoverflow.com/a/38901550/351162
 ** TODO Add autocompletion to search field
    Entering words in the search field should give autocomplete similar to
    Google.
@@ -65,16 +109,16 @@
    + Autocomplete for textarea elements http://yuku.github.io/textcomplete/
      GitHub repo: https://github.com/yuku/textcomplete
      Example site: https://yuku.takahashi.coffee/textcomplete/
-** TODO Fix help text hash link                                         :BUG:
-   There's a URL fragment link '<a href=#fras>se ovan</a>' in the help text.
-   Following this link will quietly do a search for 'fras' in the background --
-   messing up any previously existing search result.
 ** TODO Make Progressive Web App (PWA)
    This would allow a user to 'install' the lexicon on their phone (regardless
    of OS!).
    + This hides the URL, so probably need a separate share button
 ** [4/7] New URL syntax
    A syntax to allow for video/text search results + upcoming overlays.
+*** TODO Fix help text hash link                                        :BUG:
+    There's a URL fragment link '<a href=#fras>se ovan</a>' in the help text.
+    Following this link will quietly do a search for 'fras' in the background --
+    messing up any previously existing search result.
 *** TODO Remove extraneous components in URL
     Eg '/xx' in the URL http://localhost/tsplex/lexicon.html#he/help/xx
     or the multiple '####' in http://localhost/tsplex/lexicon.html####he/help/xx
@@ -92,18 +136,7 @@
     sounds like it would always be good, right?)
 *** TODO Overlay by entering in URL
 *** TODO Overlay by clicking on Swedish of sign
-*** DONE Video/text through updating URL
-    CLOSED: [2018-08-27 Mon 23:00]
-*** DONE Search by entering in URL
-    CLOSED: [2018-08-27 Mon 22:49]
-*** DONE Video/text button -- should update URL
-    CLOSED: [2018-08-27 Mon 22:40]
-*** DONE Search through textarea -- should update URL
-    CLOSED: [2018-08-28 Tue 18:12]
-** TODO Module for lexicon
-   Module have methods for returning named entry properties (i.e. the ID,
-   transcription, translation etc. of an entry).
-** [5/14] Query syntax
+** [0/8] Query syntax
 *** TODO Don't hilite space in front of word in search results
     The edge-of-word matcher shouldn't hilite the space in front of a word.
 
@@ -147,118 +180,72 @@
     Curving, (all types of) circling, hitting and turning.
 *** TODO Character classes [...] to search query
     Useful when one is searching for one of multiple hand shapes.
-*** DONE Help section for query syntax
-    CLOSED: [2018-08-27 Mon 02:37]
-    * = match 'word' characters (i.e. not space and segment separator, '􌥠', but
-      everything else)
+** [0/3] Search result order
+*** TODO Display search result in subquery order
+    Returned result should have one list per subquery (and in the same order as
+    the subqueries), and the result should be displayed in that order.
+*** TODO Sort search result by relevance
+    Sorting algorithm:
 
-    Useful (complex) query:
-    􌥧 􌦆􌥃 -􌥠 -#:#: -:##: -􌦆*􌦆  -@
+    + Percentage of field matched
 
-    Transcriptions are fiddly and finicky, rather than spending time on
-    inputting a transcription, search for a sign that you know is similar to
-    the one you're looking for, then copy/paste the transcription of that sign
-    into the search field and replace parts you're not sure about with
-    asterisks ('*').
+      I.e. if searching for '2' then the matching field '2–2' should get lower
+      relevance score than the field '2' (even though '2–2' contains two
+      matches, some of the content of the field is not matched by anything).
 
-    If you get too many matches, the following search terms can be useful for
-    ignoring some of them:
+    + Should content that is matched by '*' in the search query count towards
+      relevance? (Count as half?)
 
-      -:##: -- exclude signs with two active hands
-      -#:#: -- exclude signs with one active, one passive hand
-      -@    -- exclude signs a body position
-      -􌥠    -- exclude signs with more than one segment
-      -􌥠*􌥠  -- exclude signs with more than two segments
-      :##:  -- include only signs with two active hands
-      #:#:  -- include only signs with one active, one passive hand
-      @     -- include only signs which have a body position
+    ------------------------------------------------------------
 
-    Display signs that contain a downward motion, and a handshape transition to
-    the spread hand (sprethanden), but that does not contain multiple segments
-    (-􌥠), two handed segments (excluding those with a passive secondary hand
-    with -#:#:, and those with an active secondary hand with -:##:), more than
-    one handshape transition, or a specified position (-@).
-*** DONE Character class for 'face'
-    CLOSED: [2018-08-26 Sun 23:11]
-    An unquoted 'face' symbol now matches all the articulation places in the
-    face.
-*** DONE Character class for 'upper face'
-    CLOSED: [2018-08-26 Sun 23:11]
-    An unquoted 'upper face' symbol now matches ear, nose, cheek and all other
-    articulation places on the head above that (note that ear, nose and cheeks
-    are matched by both the 'upper' and 'lower face' symbols).
-*** DONE Character class for 'lower face'
-    CLOSED: [2018-08-26 Sun 23:11]
-    An unquoted 'lower face' symbol now matches ear, nose, cheek and all other
-    articulation places on the head below that (note that ear, nose and cheeks
-    are matched by both the 'upper' and 'lower face' symbols).
-** TODO Sort search result by relevance
-   Sorting algorithm:
+    Calculated from how much of the matching field was matched by the search
+    query? E.g. if I search for 'hej', this currently gives me the following
+    search results (by order in database, <...> marks the matching part):
 
-   + Percentage of field matched
+        00032 􌤃􌤺􌤢􌤵􌤷􌤟􌥼􌦃􌥣 <hej>
+        01602 􌤵􌥗􌤦􌤦􌤵􌤶􌥵􌥼􌥻 <hej>a på
+        05705 􌤵􌥘􌤦􌤦􌤵􌥘􌦑 <hej>are på, strong, en baddare på
+        07895 􌤴􌤸􌤦􌤦􌤴􌤸􌥰􌦂􌥼􌥻 <hej>a på
+        11736 􌤢􌤵􌤷􌦆􌤣􌥼􌥻 <hej> då
+        11770 􌤃􌤺􌤢􌤵􌤷􌤟􌥼􌦃􌥣 <hej> då
+        12747 h-e-j <hej>
 
-     I.e. if searching for '2' then the matching field '2–2' should get lower
-     relevance score than the field '2' (even though '2–2' contains two
-     matches, some of the content of the field is not matched by anything).
+    While a relevance-based algorithm should give me the following:
 
-   + Should content that is matched by '*' in the search query count towards
-     relevance? (Count as half?)
+        00032 􌤃􌤺􌤢􌤵􌤷􌤟􌥼􌦃􌥣 <hej>
+        12747 h-e-j <hej>
+        11736 􌤢􌤵􌤷􌦆􌤣􌥼􌥻 <hej> då
+        11770 􌤃􌤺􌤢􌤵􌤷􌤟􌥼􌦃􌥣 <hej> då
+        01602 􌤵􌥗􌤦􌤦􌤵􌤶􌥵􌥼􌥻 <hej>a på
+        07895 􌤴􌤸􌤦􌤦􌤴􌤸􌥰􌦂􌥼􌥻 <hej>a på
+        05705 􌤵􌥘􌤦􌤦􌤵􌥘􌦑 <hej>are på, strong, en baddare på
 
-   ------------------------------------------------------------
+    Largest match score is assigned to the two entries for which the entire
+    field matched. The lesser percentage matching, the further down in the
+    results the match comes.
 
-   Calculated from how much of the matching field was matched by the search
-   query? E.g. if I search for 'hej', this currently gives me the following
-   search results (by order in database, <...> marks the matching part):
+    Eventually other factors should also weigh in, we could for example have a
+    score (in the database) for each individual sign, e.g. giving a lower score
+    to a less common sign, e.g. fingerspelled versions of signs (like 'h-e-j' in
+    list above). (This should be based on frequency data from the corpus.)
+*** TODO Sortable search result(?)
+    Search result should be sortable in by:
 
-       00032 􌤃􌤺􌤢􌤵􌤷􌤟􌥼􌦃􌥣 <hej>
-       01602 􌤵􌥗􌤦􌤦􌤵􌤶􌥵􌥼􌥻 <hej>a på
-       05705 􌤵􌥘􌤦􌤦􌤵􌥘􌦑 <hej>are på, strong, en baddare på
-       07895 􌤴􌤸􌤦􌤦􌤴􌤸􌥰􌦂􌥼􌥻 <hej>a på
-       11736 􌤢􌤵􌤷􌦆􌤣􌥼􌥻 <hej> då
-       11770 􌤃􌤺􌤢􌤵􌤷􌤟􌥼􌦃􌥣 <hej> då
-       12747 h-e-j <hej>
+    + Subquery order
+    + ID number
+    + Sign language transcription (sort order?)
+    + Swedish
 
-   While a relevance-based algorithm should give me the following:
+    Default should be: subquery + sign language.
 
-       00032 􌤃􌤺􌤢􌤵􌤷􌤟􌥼􌦃􌥣 <hej>
-       12747 h-e-j <hej>
-       11736 􌤢􌤵􌤷􌦆􌤣􌥼􌥻 <hej> då
-       11770 􌤃􌤺􌤢􌤵􌤷􌤟􌥼􌦃􌥣 <hej> då
-       01602 􌤵􌥗􌤦􌤦􌤵􌤶􌥵􌥼􌥻 <hej>a på
-       07895 􌤴􌤸􌤦􌤦􌤴􌤸􌥰􌦂􌥼􌥻 <hej>a på
-       05705 􌤵􌥘􌤦􌤦􌤵􌥘􌦑 <hej>are på, strong, en baddare på
-
-   Largest match score is assigned to the two entries for which the entire
-   field matched. The lesser percentage matching, the further down in the
-   results the match comes.
-
-   Eventually other factors should also weigh in, we could for example have a
-   score (in the database) for each individual sign, e.g. giving a lower score
-   to a less common sign, e.g. fingerspelled versions of signs (like 'h-e-j' in
-   list above). (This should be based on frequency data from the corpus.)
-** TODO Sortable search result(?)
-   Search result should be sortable in by:
-
-   + Subquery order
-   + ID number
-   + Sign language transcription (sort order?)
-   + Swedish
-
-   Default should be: subquery + sign language.
-
-   Present search result in a sortable table? Should be able to sort by swedish
-   word, and by sign language.
-** TODO Suppress newlines when user is pasting into textarea            :BUG:
-   This is a bug since the textarea cannot handle newlines well, and user
-   really should not be able to enter any. (Manually entered newlines are
-   already suppressed.)
-
-   Make extra sure this is compatible with all browsers (since copy/past
-   handling is known to be finicky).
-** [23/51] GUI
+    Present search result in a sortable table? Should be able to sort by swedish
+    word, and by sign language.
+** [0/27] GUI
 *** TODO Add 'Om lexikonet' menu item
     An info text briefly describing design idea, nature of cooperation with
     'Svenskt teckenspråkslexikon' and the CC license.
+
+    + Add CC license text + note data source
 *** TODO Close menu when clicking outside it
 *** TODO Darken background when opening menu(?)
 *** TODO On pageload: Faster selection of fullscreen or normal search
@@ -346,7 +333,7 @@
     * <Esc>(?) key to focus search input area
 *** TODO Use lazy loading of images?
 *** TODO Multiple <mark> in same entry not working                      :BUG:
-    A search for 'OTRANSKRIBERAD,72,har' should hilite three different things
+    A search for '–,72,har' should hilite three different things
     in entry 00072, but only the transcription is hilited. Why?
     http://localhost/teckentranskription.lexicon/lexicon.html#otranskr%2C%2072%2C%20har
 *** TODO Serve poster images through GitHub page?
@@ -363,111 +350,6 @@
 *** TODO Make Javascript generated CSS neater
     Instead of using jQuery to apply CSS in 'style' attribute, should generate
     random ID for a prefix, and use CSS rules.
-*** TODO Newlines->space when pasting into search query <textarea>      :BUG:
-*** DONE Chrome should autodetect lexicon as 'search engine'
-    CLOSED: [2019-01-13 Sun 21:42]
-    https://martin-thoma.com/search-engine-autodiscovery/#google-chrome-autodiscovery
-    https://stackoverflow.com/questions/14082568/
-    https://github.com/dewitt/opensearch/blob/master/opensearch-1-1-draft-6.md
-*** DONE Video load spinner + broken icon on load fail
-    CLOSED: [2018-09-04 Tue 11:32]
-
-    Display spinner while loading video (after replacing <img> with a <video>
-    tag), replace by error msg on fail.
-*** DONE Tooltip should disappear when on page back/forward             :BUG:
-    CLOSED: [2018-08-31 Fri 18:16]
-    Tooltip didn't always disappear on back/forward, now triggering removal on
-    hashchange, instead of popState.
-*** DONE Don't set max overlay column width
-    CLOSED: [2018-08-31 Fri 03:07]
-    Only determine columns based on line width.
-*** DONE Don't perform search if identical to previous search
-    CLOSED: [2018-08-31 Fri 02:40]
-*** DONE Footer should be at bottom of screen/content
-    CLOSED: [2018-08-29 Wed 23:55]
-    If the content of a page all fits in one window, then the page footer
-    should be displayed at the bottom of the window.
-*** DONE Tooltip should disappear when on page back/forward             :BUG:
-    CLOSED: [2018-08-27 Mon 06:27]
-    Currently any opened tooltip remain on screen when one navigates
-    backward/forward in the browser.
-*** DONE Switch between showing results as video or only text
-    CLOSED: [2018-08-24 Fri 12:05]
-*** DONE Ignore <wbr> in video "subtitle" and description
-    CLOSED: [2018-08-24 Fri 09:28]
-    This would allow us to use the *exact same* HTML with just slightly
-    different to CSS to produce a search results in list form (without video).
-    As in the list form the transcriptions need to be line breakable (ie have
-    <wbr>s in them).
-*** DONE Tooltips should display <mark>
-    CLOSED: [2018-08-24 Fri 09:27]
-*** DONE Transcription ellipsis doesn't work                            :BUG:
-    CLOSED: [2018-08-23 Thu 16:04]
-*** DONE Tooltips which can handle transcription font
-    CLOSED: [2018-08-23 Thu 15:42]
-    Transparency (when hovering above with virtual keyboard button).
-    Make sure hovering image fits on screen.
-*** DONE Optimize search speed
-    CLOSED: [2018-08-22 Wed 19:56]
-    Originally intended to add a progress bar for the search itself as
-    searching for '*' took more that two seconds without any page updates at
-    all. Frustrating!
-
-    In my attempts make the search function asynchronous to allow for the
-    progress bar updating, I accidentally discovered that using a `for` loop
-    (rather than the previous `reduce`) resulted in 20 *millisecond* search
-    times instead of the previous 2 seconds!
-
-    Need for progress bar therefore eliminated!
-*** DONE Allow loading of more matches from top of page
-    CLOSED: [2018-08-22 Wed 17:17]
-*** DONE Double click on unplayed video doesn't work            :BUG:Firefox:
-    CLOSED: [2018-08-22 Wed 17:11]
-    The first click on a video <im> replaces it with a <video>, and starts
-    playing. On Firefox the first click after the element do not trigger a click
-    event.
-      + one have to click twice to pause video after playing it the 1st time.
-      + double clicking on an unviewed image does not cause it to fullscreen.
-*** DONE Swedish translation should have mouseover text
-    CLOSED: [2018-08-22 Wed 17:00]
-    So that can be seen in its entirety even if it is truncated by ellipsis.
-*** DONE Visual feedback on play/pause/fullscreen
-    CLOSED: [2018-08-22 Wed 15:15]
-    YouTube has play/pause icon that animates on top of the video when
-    triggering play/pause. This would be a nice feedback for the user, might
-    be wise to make sure this icon does not cover the middle of the video
-    though.
-*** DONE Use infinite scroll
-    CLOSED: [2018-08-20 Mon 03:10]
-    First 100 search results are displayed immediately, successive 100 results
-    are displayed when scrolling to bottom of page, or pressing the 'Visa fler
-    träffar…' button at the end of the page.
-*** DONE Better color for progress bar
-    CLOSED: [2018-08-18 Sat 06:31]
-*** DONE Fix indentation of htmlifyTranscription()
-    CLOSED: [2018-08-18 Sat 06:11]
-*** DONE Screen width on mobile
-    CLOSED: [2018-08-18 Sat 05:42]
-*** DONE Video poster frame handling
-    CLOSED: [2018-08-18 Sat 05:16]
-    Display 'waiting' GIF while loading, replace by error msg on fail.
-
-    On handling broken image loads:
-    https://css-tricks.com/snippets/jquery/better-broken-image-handling/
-*** DONE Basic video search result (required for push to GitHub)
-    CLOSED: [2018-08-17 Fri 05:46]
-**** DONE Sync script to update image names
-     CLOSED: [2018-08-17 Fri 05:46]
-     Retained old format as image & video names can be calculated from the
-     translations.
-**** DONE Link to http://teckensprakslexikon.su.se in each result
-     CLOSED: [2018-08-17 Fri 05:39]
-**** DONE Double click to toggle fullscreen
-     CLOSED: [2018-08-16 Thu]
-**** DONE Click to toggle play/pause
-     CLOSED: [2018-08-16 Thu]
-**** DONE Display videos in search result
-     CLOSED: [2018-08-13 Mon]
 ** TODO Link words together                                        :DATABASE:
    Words should be linked together with other words of the same meaning, like
    the following:
@@ -476,47 +358,6 @@
    + Verb–noun pairs – HETA(02892) / NAMN(02890)
      (Many of these differing only in repetition.)
    + Close-to-synonym – HETA(02892) / KALLAS(07923)
-** TODO Display date of last lexicon update
-** TODO Display date of last font update
-** TODO Use ECMAScript6 or not?
-   Currently using /u regex flag, which turns out to be ES6. This program
-   probably won't work without it, and thus it might be better to go all the
-   way and use `let` and `const` and all the other good stuff from ES6.
-
-   Which browsers support ES6?
-
-   Need to test (get some statistics on what browser ppl have):
-
-   Compatibility data is from here: http://kangax.github.io/compat-table/es6/
-
-   + ES5 standard released in 2009.
-   + ES6 standard released in 2015.
-
-   |-----------------+---------------------|
-   | Browser         | /u support          |
-   |-----------------+--------+------------|
-   | Firefox         | >=v50? | 2016-06-06 |
-   | EdgeHTML        | >=v12  | 2016-08-02 |
-   | Safari          | >=v10  | 2016-09-20 |
-   | Chrome/Chromium | >=v54? | 2016-10-12 |
-   | Explorer        | -      | -          |
-   |-----------------+--------+------------|
-
-   If we need to go ES5, then splitting of the query string can be done with
-   code found here: https://stackoverflow.com/a/38901550/351162
-** TODO Display search result in subquery order
-   Returned result should have one list per subquery (and in the same order as
-   the subqueries), and the result should be displayed in that order.
-** TODO Lexicon/search part should be standalone module
-** TODO Hover over button should display handshape etc.
-** TODO Memory optimization
-   Leakyness? -- Does a new search completely (or as completely as possible)
-   clear the memory before building up a new search result?
-
-   Is the search result list of an okay size? (Was it smaller with
-   the old array, instead of object, approach?)
-** TODO Repeated search should not reload search result
-** TODO Add CC license text + note data source
 * Transcription intro article
 ** [4/10] Add missing quotes for position table
 *** DONE Add info from Bergman (1977)
@@ -609,10 +450,10 @@
 *** TODO 'handform'
 *** TODO 'kirem' (Bergman 1977)
 *** TODO 'morfem'
-    Förklara också distinktionen 'fritt morfem' / 'mundet morfem'.
+    Förklara också distinktionen 'fritt morfem' / 'bundet morfem'.
 *** TODO 'segment'
 *** TODO 'signem' (Bergman 1977)
-    Förklara också distinktionen 'fritt signem' / 'mundet signem'.
+    Förklara också distinktionen 'fritt signem' / 'bundet signem'.
 *** DONE All glossary IDs should start with '_'
     CLOSED: [2018-10-18 Thu 16:24]
     Check that ID names are allowed to start with '_' according to HTML5
@@ -1120,6 +961,11 @@
    Currently, if the image failed to load and a broken image icon is
    displayed, this broken icon remains there when the video loads (displayed
    on top of the video).
+** DONE Lexicon: Chrome should autodetect lexicon as 'search engine'
+   CLOSED: [2019-01-13 Sun 21:42]
+   https://martin-thoma.com/search-engine-autodiscovery/#google-chrome-autodiscovery
+   https://stackoverflow.com/questions/14082568/
+   https://github.com/dewitt/opensearch/blob/master/opensearch-1-1-draft-6.md
 ** DONE Intro: Width of element with class 'hflip' is zero              :BUG:
    CLOSED: [2018-12-23 Sun 22:13]
    It should only be horizontally flipped, but width should remain same.
@@ -1293,11 +1139,164 @@
    CLOSED: [2018-10-14 Sun 21:24]
 ** DONE Lexicon: Transcription link shouldn't switch video/text mode    :BUG:
    CLOSED: [2018-09-03 Mon 05:02]
+** DONE Lexicon: Video load spinner + broken icon on load fail
+   CLOSED: [2018-09-04 Tue 11:32]
+
+   Display spinner while loading video (after replacing <img> with a <video>
+   tag), replace by error msg on fail.
+** DONE Lexicon: Tooltip should disappear when on page back/forward     :BUG:
+   CLOSED: [2018-08-31 Fri 18:16]
+   Tooltip didn't always disappear on back/forward, now triggering removal on
+   hashchange, instead of popState.
+** DONE Lexicon: Don't set max overlay column width
+   CLOSED: [2018-08-31 Fri 03:07]
+   Only determine columns based on line width.
+** DONE Lexicon: Don't perform search if identical to previous search
+   CLOSED: [2018-08-31 Fri 02:40]
+** DONE Lexicon: Footer should be at bottom of screen/content
+   CLOSED: [2018-08-29 Wed 23:55]
+   If the content of a page all fits in one window, then the page footer should
+   be displayed at the bottom of the window.
+** DONE Lexicon: Search through textarea -- should update URL
+   CLOSED: [2018-08-28 Tue 18:12]
+** DONE Lexicon: Video/text through updating URL
+   CLOSED: [2018-08-27 Mon 23:00]
+** DONE Lexicon: Search by entering in URL
+   CLOSED: [2018-08-27 Mon 22:49]
+** DONE Lexicon: Video/text button -- should update URL
+   CLOSED: [2018-08-27 Mon 22:40]
+** DONE Lexicon: Tooltip should disappear when on page back/forward     :BUG:
+   CLOSED: [2018-08-27 Mon 06:27]
+   Currently any opened tooltip remain on screen when one navigates
+   backward/forward in the browser.
+** DONE Lexicon: Help section for query syntax
+   CLOSED: [2018-08-27 Mon 02:37]
+   * = match 'word' characters (i.e. not space and segment separator, '􌥠', but
+     everything else)
+
+   Useful (complex) query:
+   􌥧 􌦆􌥃 -􌥠 -#:#: -:##: -􌦆*􌦆  -@
+
+   Transcriptions are fiddly and finicky, rather than spending time on
+   inputting a transcription, search for a sign that you know is similar to the
+   one you're looking for, then copy/paste the transcription of that sign into
+   the search field and replace parts you're not sure about with asterisks
+   ('*').
+
+   If you get too many matches, the following search terms can be useful for
+   ignoring some of them:
+
+     -:##: -- exclude signs with two active hands
+     -#:#: -- exclude signs with one active, one passive hand
+     -@    -- exclude signs a body position
+     -􌥠    -- exclude signs with more than one segment
+     -􌥠*􌥠  -- exclude signs with more than two segments
+     :##:  -- include only signs with two active hands
+     #:#:  -- include only signs with one active, one passive hand
+     @     -- include only signs which have a body position
+
+   Display signs that contain a downward motion, and a handshape transition to
+   the spread hand (sprethanden), but that does not contain multiple segments
+   (-􌥠), two handed segments (excluding those with a passive secondary hand
+   with -#:#:, and those with an active secondary hand with -:##:), more than
+   one handshape transition, or a specified position (-@).
+** DONE Lexicon: Character class for 'face'
+   CLOSED: [2018-08-26 Sun 23:11]
+   An unquoted 'face' symbol now matches all the articulation places in the
+   face.
+** DONE Lexicon: Character class for 'upper face'
+   CLOSED: [2018-08-26 Sun 23:11]
+   An unquoted 'upper face' symbol now matches ear, nose, cheek and all other
+   articulation places on the head above that (note that ear, nose and cheeks
+   are matched by both the 'upper' and 'lower face' symbols).
+** DONE Lexicon: Character class for 'lower face'
+   CLOSED: [2018-08-26 Sun 23:11]
+   An unquoted 'lower face' symbol now matches ear, nose, cheek and all other
+   articulation places on the head below that (note that ear, nose and cheeks
+   are matched by both the 'upper' and 'lower face' symbols).
+** DONE Lexicon: Switch between showing results as video or only text
+   CLOSED: [2018-08-24 Fri 12:05]
+** DONE Lexicon: Ignore <wbr> in video "subtitle" and description
+   CLOSED: [2018-08-24 Fri 09:28]
+   This would allow us to use the *exact same* HTML with just slightly
+   different to CSS to produce a search results in list form (without video).
+   As in the list form the transcriptions need to be line breakable (ie have
+   <wbr>s in them).
+** DONE Lexicon: Tooltips should display <mark>
+   CLOSED: [2018-08-24 Fri 09:27]
+** DONE Lexicon: Transcription ellipsis doesn't work                    :BUG:
+   CLOSED: [2018-08-23 Thu 16:04]
+** DONE Lexicon: Tooltips which can handle transcription font
+   CLOSED: [2018-08-23 Thu 15:42]
+   Transparency (when hovering above with virtual keyboard button). Make sure
+   hovering image fits on screen.
+** DONE Lexicon: Optimize search speed
+   CLOSED: [2018-08-22 Wed 19:56]
+   Originally intended to add a progress bar for the search itself as searching
+   for '*' took more that two seconds without any page updates at all.
+   Frustrating!
+
+   In my attempts make the search function asynchronous to allow for the
+   progress bar updating, I accidentally discovered that using a `for` loop
+   (rather than the previous `reduce`) resulted in 20 *millisecond* search
+   times instead of the previous 2 seconds!
+
+   Need for progress bar therefore eliminated!
+** DONE Lexicon: Allow loading of more matches from top of page
+   CLOSED: [2018-08-22 Wed 17:17]
+** DONE Lexicon: Double click on unplayed video doesn't work    :BUG:Firefox:
+   CLOSED: [2018-08-22 Wed 17:11]
+   The first click on a video <im> replaces it with a <video>, and starts
+   playing. On Firefox the first click after the element do not trigger a click
+   event.
+     + one have to click twice to pause video after playing it the 1st time.
+     + double clicking on an unviewed image does not cause it to fullscreen.
+** DONE Lexicon: Swedish translation should have mouseover text
+   CLOSED: [2018-08-22 Wed 17:00]
+   So that can be seen in its entirety even if it is truncated by ellipsis.
+** DONE Lexicon: Visual feedback on play/pause/fullscreen
+   CLOSED: [2018-08-22 Wed 15:15]
+   YouTube has play/pause icon that animates on top of the video when
+   triggering play/pause. This would be a nice feedback for the user, might be
+   wise to make sure this icon does not cover the middle of the video though.
+** DONE Lexicon: Use infinite scroll
+   CLOSED: [2018-08-20 Mon 03:10]
+   First 100 search results are displayed immediately, successive 100 results
+   are displayed when scrolling to bottom of page, or pressing the 'Visa fler
+   träffar…' button at the end of the page.
+** DONE Lexicon: Better color for progress bar
+   CLOSED: [2018-08-18 Sat 06:31]
+** DONE Lexicon: Fix indentation of htmlifyTranscription()
+   CLOSED: [2018-08-18 Sat 06:11]
+** DONE Lexicon: Screen width on mobile
+   CLOSED: [2018-08-18 Sat 05:42]
+** DONE Lexicon: Video poster frame handling
+   CLOSED: [2018-08-18 Sat 05:16]
+   Display 'waiting' GIF while loading, replace by error msg on fail.
+
+   On handling broken image loads:
+   https://css-tricks.com/snippets/jquery/better-broken-image-handling/
+** DONE Lexicon: Basic video search result
+   CLOSED: [2018-08-17 Fri 05:46]
+*** DONE Sync script to update image names
+    CLOSED: [2018-08-17 Fri 05:46]
+    Retained old format as image & video names can be calculated from the
+    translations.
+*** DONE Link to http://teckensprakslexikon.su.se in each result
+    CLOSED: [2018-08-17 Fri 05:39]
+*** DONE Double click to toggle fullscreen
+    CLOSED: [2018-08-16 Thu]
+*** DONE Click to toggle play/pause
+    CLOSED: [2018-08-16 Thu]
+*** DONE Display videos in search result
+    CLOSED: [2018-08-13 Mon]
 ** DONE Lexicon: Character to match end-of-word in searches
    CLOSED: [2018-04-19 Thu 16:58]
    '$' now matches (any number of) spaces or the end or beginning of a word,
    use '$sak$' to search for the word 'sak' but ignore words like 'sakna' or
    'orsak'.
+** DONE Lexicon: Display date of last lexicon update
+   CLOSED: [2018-04-18 Wed 18:49]
 ** DONE Lexicon: Updating of search result should be interruptible
    CLOSED: [2018-03-19 Mon 19:21]
    When search result is being updated, performing a new search should abort
