@@ -804,6 +804,8 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Right align video/text selector in Firefox             :BUG:
+   CLOSED: [2019-08-08 Thu 00:30]
 ** DONE Lexicon: Menu + hamburger icon top/right
    CLOSED: [2019-07-31 Wed 18:01]
    Menu should contain link to help text, info about the lexicon + links to
