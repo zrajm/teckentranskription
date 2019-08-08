@@ -67,18 +67,21 @@
        - Maybe Zepto.js (https://zeptojs.com/)
        - Maybe something else?
          http://www.guguncube.com/3297/jquery-alternatives-and-drop-in-replacement-of-jquery-javascript-library
-**** [1/10] Optimize/minify SVGs and favicon
+**** [4/10] Optimize/minify SVGs and favicon
 ***** TODO Minify magnifying glass/search icon
 ***** TODO Minify video play feedback icon
 ***** TODO Minify video pause feedback icon
 ***** TODO Minify video loading (animated)
 ***** TODO Minify broken image
-***** TODO Minify menu (hamburger) icon
-***** TODO Minify menu close icon
-***** TODO Minify overlay close icon
 ***** TODO Minify page logo
       This is the Y shaped 'spread hand' icon that is show in full screen
       search mode (when there is no query).
+***** DONE Minify overlay close icon
+      CLOSED: [2019-08-08 Thu 06:40]
+***** DONE Minify menu close icon
+      CLOSED: [2019-08-08 Thu 06:10]
+***** DONE Minify menu (hamburger) icon
+      CLOSED: [2019-08-08 Thu 06:09]
 ***** DONE Minify virtual keyboard icon
       CLOSED: [2019-08-08 Thu 02:54]
       Redrew SVG and optimized it (with a combination of manual methods and
