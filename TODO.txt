@@ -67,6 +67,30 @@
        - Maybe Zepto.js (https://zeptojs.com/)
        - Maybe something else?
          http://www.guguncube.com/3297/jquery-alternatives-and-drop-in-replacement-of-jquery-javascript-library
+**** [1/10] Optimize/minify SVGs and favicon
+***** TODO Minify magnifying glass/search icon
+***** TODO Minify video play feedback icon
+***** TODO Minify video pause feedback icon
+***** TODO Minify video loading (animated)
+***** TODO Minify broken image
+***** TODO Minify menu (hamburger) icon
+***** TODO Minify menu close icon
+***** TODO Minify overlay close icon
+***** TODO Minify page logo
+      This is the Y shaped 'spread hand' icon that is show in full screen
+      search mode (when there is no query).
+***** DONE Minify virtual keyboard icon
+      CLOSED: [2019-08-08 Thu 02:54]
+      Redrew SVG and optimized it (with a combination of manual methods and
+      SVGOMG). Removed 'fill' attribute (it defaults to black) and 'xmlns'
+      attribute (not required for inline SVGs).
+
+      + [[https://jakearchibald.github.io/svgomg/][SVGOMG online SVG minifier]]
+      + [[https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill#path][SVG 'fill' attribute defaults]]
+      + [[https://stackoverflow.com/questions/18467982/are-svg-parameters-such-as-xmlns-and-version-needed][SVG 'xmlns' and 'version' not needed in inline SVG]]
+
+      This icon is inlined since it is (a) only used once (in the search form)
+      and (b) it is visible on page load.
 *** TODO Lexicon/search part should be standalone module
     Module should have methods for returning named entry properties (i.e. the
     ID, transcription, translation etc. of an entry).
