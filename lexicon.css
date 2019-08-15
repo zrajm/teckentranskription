@@ -1,168 +1,167 @@
-/* Copyright 2016-2018 by zrajm. Released under GPLv3 license. */
-
-/* Default font: FreeSans-SWL */
-@font-face {
-    font-family: "FreeSans-SWL";
-    src: url("freesans-swl.ttf");
-    font-display: swap;
-}
-html {
-    font-family: "FreeSans-SWL", "FreeSans", sans-serif;
-    font-size: 22px;
-}
-button, input, select, textarea { font-family: inherit; }
-
-* {
-    margin: 0;
-    padding: 0;
-}
-
-/* Make body fill at least first screen. */
-/* http://stackoverflow.com/q/17555682/ */
-html { height: 100%; overflow-y: scroll; }
-body {
-    min-height: 100%;
-
-    /* line-height need to be >1.25 not to leave remains of FreeSans-SWL relation
-    diacritics on previous line when column breaking */
-    line-height: 1.25;
-}
-
-*:not(td) { box-sizing: border-box; }
-:focus, .nostyle:focus {
-    outline: 0;
-    box-shadow: 0 0 0 3px rgb(173, 189, 224); /* focus outline */
-    z-index: 10;
-    position: relative;
-}
-
-p, ol, figure { margin: 1em 0; }
-ol, figure {
-    margin-left: 1em;
-    list-style: upper-roman inside none;
-}
-
-a {
-    text-decoration: none;
-    color: #1a0dab;
-}
-a:focus,
-a:hover { text-decoration: underline; }
-
-mark {
-    background: rgba(255, 193, 0, .6);
-    color: inherit;
-}
-
-img { max-height: 175px; }
+/* Copyright 2016-2019 by zrajm. Released under GPLv3 license. */
+/* styles needed beyond first screenfull of content */
 
 noscript {
-    z-index: 1;
-    position: fixed;
-    background: #ff2;
-    text-align: center;
-    top: 0; left: 0; width:100%;
-    font-weight: bold;
-}
-noscript.required {
-    font-size: 72px;
-    line-height: 1.5;
-    padding: .25em .5em;
-    box-shadow: .25em .25em .25em rgba(0, 0, 0, .5),
-        0 0 0 3000px rgba(0, 0, 0, .5);
-    top: 30%; left: 50%; width: inherit;
-    transform: translate(-50%, -30%);
+  z-index: 1;
+  position: fixed;
+  background: #ff4;
+  text-align: center;
+  font-weight: bold;
+  font-size: 50px;
+  line-height: 1.5;
+  padding: .25em .5em;
+  box-shadow: .25em .25em .25em rgba(0, 0, 0, .5),
+    0 0 0 3000px rgba(0, 0, 0, .5);
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
 }
 
-.hide { display: none !important; }
-.left { text-align: left !important; }
-.right { text-align: right !important; }
-
-/* DEBUG: Border for glyph tables. */
-/* table, td { outline: 1px solid rgba(0,0,0,.3); } */
-
-.FIXME {
-    /* background: red; */
+/***************************
+* Side menu (with content).
+*/
+.menu.shown aside {
+  left: 0%;
+}
+.menu aside ul {
+  line-height: 2;
+  list-style-type: none;
+}
+.menu aside li {
+  margin-left: 0;
+}
+.menu aside > * {
+  opacity: .7;
+}
+.menu p {
+  text-indent: unset !important;
+  margin: 1em 0;
+}
+.menu p.hr {
+  line-height: 2;
+  font-weight: bold;
+  margin: 1em 0 0;
+  padding-top: 1em;
+  border-top: 1px solid rgba(0,0,0,.25);
+}
+.menu div.bottom {
+  position: absolute;
+  bottom: 0;opacity: .7;
+  line-height: 1.5;
+  margin-right: .5em;
+}
+.menu button:hover { box-shadow: unset; }
+.menu button.menu-close {
+  opacity: .5;
+}
+.menu button.menu-close:hover {
+  color: rgba(0,0,0,.95);
+  opacity: 1;
+}
+.menu button.menu-open:hover {
+  background: rgba(0,0,0,.95);
+  color: #a5e7ef;
 }
 
-#status {
-    padding: 13px 13px;
-    margin: 6px 0 13px 0;
-    border: 1px inset #eee;
-    background: #eee;
+/*************************
+* Overlays (with content).
+*/
+.overlay.hover:hover:before { opacity: 1; }
+.overlay:before {
+  cursor: pointer;
+  opacity: .4;
+  position: absolute;
+  display: block;
+  line-height: 0;
+  top: .5em;
+  right: .5em;
+  content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="17" width="19"><path d="M11-2v21H8V-2zM-1 7h21v3H-1z" fill="%23fff" transform="rotate(45 9.5,8.5)"/></svg>');
+  transition: all .1s ease-in-out;
+}
+.overlay section {
+  margin: 1em 1.5em;
+  background: #fff;
+  overflow-y: scroll;
+  padding: 0 1em 1em 1em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
-.big { font-size: 75px; }
+/**************
+* Text content.
+*/
+a:focus,
+a:hover {
+  text-decoration: underline;
+}
 
-table[border="1"] td { border: none; }
-table[border="1"] {
-    border-collapse: collapse;
-    border: 1px solid black;
-    text-align: center;
+p { margin: 0; }
+p:empty + p { margin-top: 1em; }
+p:not(:empty) + p { text-indent: 1.5em; }
+
+h1 { margin: .75em 0 .5em 0; }
+
+hr {
+  margin: 1em;
+  border: 0;
+  height: 2px;
+  background: #000;
+}
+
+li {
+  margin-left: 1.5em;
+}
+
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+  top: -0.5em;
+}
+
+small { font-size: 90%; }
+
+a.tt,
+tt {
+  color: inherit;
+  word-spacing: .25em;
+  white-space: nowrap;
+  font-family: inherit;
+  font-size: 95%;
+  background: #ccc;
+  border-radius: 4px;
+  padding: 0 .1875em;
 }
 
 table {
-    position: relative;
-    border-collapse: separate;
-    border-spacing: 3px;
+  border-collapse: collapse;
+  border: 1px solid black;
+  margin: .75em auto;
+  caption-side: bottom;
+}
+table caption {
+  margin: .5em;
+  text-align: left;
+}
+table tr {
+  column-break-inside: avoid;
+  -moz-column-break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+}
+table th,
+table td {
+  border: 1px solid #000;
+  vertical-align: top;
+  padding: .125em .25em;
 }
 
-/******************************************************************************/
-
-footer {
-    opacity: .75;
-    font-size: 80%;
-    margin: .5em 0;
-    text-align: center;
-    margin-top: auto;
+.columns {
+  columns: 25em;
+  column-gap: 1em;
 }
-
-/******************************************************************************/
-
-/* Button margins & layout. */
-button, select, input, textarea {
-    background: #eee;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
-    border: 0;
-    border-radius: 2px;
-    color: inherit;
-    font-size: inherit;
-    margin: 3px;
-    padding: 6px 13px;
-}
-button.nostyle, select.nostyle, input.nostyle, textarea.nostyle {
-    box-shadow: none;
-    border: 0;
-    margin: 0;
-    padding: 0;
-}
-
-.selector:hover,        /* used by lexicon only */
-textarea#q:focus,       /* used by lexicon only */
-button#kb-icon:focus,   /* used by lexicon only */
-button#help:focus,      /* used by lexicon only */
-textarea:not([disabled]):hover,
-button:not([disabled]):hover,
-select:not([disabled]):hover {
-    box-shadow: /*inset 1000px 1000px rgba(255, 255, 255, .25),*//* lighten */
-        0 3px 6px 2px rgba(0, 0, 0, .2);                     /* shadow */
-}
-button:not([disabled]):hover {
-    cursor: pointer;
-}
-textarea:not([disabled]):hover:focus,
-button:not([disabled]):hover:focus,
-select:not([disabled]):hover:focus {
-    box-shadow: /*inset 1000px 1000px rgba(255, 255, 255, .25),*//* lighten */
-        0 3px 6px 2px rgba(0, 0, 0, .2),                     /* shadow */
-        0 0   0   3px rgb(173, 189, 224);                    /* focus outline */
-}
-
-button, select {
-    padding: .2em .125em .125em .125em;
-    margin: 2px 1.5px;
-    color: rgba(0,0,0,.75)
-}
-select option { background-color: #fff; }
 
 /*[eof]*/

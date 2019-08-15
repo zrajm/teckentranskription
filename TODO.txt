@@ -1,5 +1,12 @@
 -*- org -*-
 
+* Browser support
+** Features
+*** flexbox
+** MSIE 8 (and older)
+** Safari 3 (and older)
+** Opera 10 (and older)
+** Opera Mini (all versions)
 * [0/1] Clean up old/irrelevant/unused files
 ** TODO Find candidates for cleaning
    Useful one-liner for finding old files:
@@ -832,6 +839,10 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Optimized CSS
+   CLOSED: [2019-08-15 Thu 16:03]
+   Removed irrelevant CSS, moved everything that is needed for first paint in
+   browser to inline, and put everything else in separate CSS file.
 ** DONE Lexicon: Right align video/text selector in Firefox             :BUG:
    CLOSED: [2019-08-08 Thu 00:30]
 ** DONE Lexicon: Menu + hamburger icon top/right

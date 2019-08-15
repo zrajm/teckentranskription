@@ -11,552 +11,516 @@
   <link rel=license href="LICENSE.txt">
   <link rel=search type="application/opensearchdescription+xml" title="TSP-Lex!" href="/teckentranskription/lexicon-opensearch.xml">
   <style>
-    @-ms-viewport{ width: device-width; }
-    form {
-      width: 100%;
-      position: relative;
-      padding-right: 69px;       /* width of keyboard icon */
-      background: #fff;
-      height: 48px;
-      line-height: 46px;         /* height - (top + bottom border) */
-      border: 1px solid #bfbfbf; /* 25% black */
-      border-radius: 4px;
-      box-shadow: 0 2px 3px rgba(0, 0, 0, .09);
-    }
-    form > * {
-      display: block;
-      border-radius: inherit;
-      background: transparent;
-    }
-    button#kb-icon {
-      padding: 1px .6em 0;
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-    }
-    form button#kb-icon > svg {
-      display: block;
-      opacity: .4;
-    }
-    textarea {
-      margin: 0;
-      padding: 0 0 0 .5em;
-      overflow: hidden;
-      resize: none;
-      white-space: pre;
-      line-height: inherit;
-      box-shadow: none !important;
-      width: 100%;
-    }
-    textarea:invalid {
-      background:
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="17.49" height="17.49" fill="%23fff"><path d="M6.5 11C4.01 11 2 8.99 2 6.5S4.01 2 6.5 2 11 4.01 11 6.5 8.99 11 6.5 11zm6 0h-.79l-.28-.27A6.471 6.471 0 0 0 13 6.5 6.5 6.5 0 1 0 6.5 13c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L17.49 16l-4.99-5z" fill="%23000" fill-opacity=".4"/></svg>') center left .6em/auto 1.1em no-repeat;
-    }
-    textarea:valid { background-image: none; } /* remove placeholder icon */
-    #search-wrapper {
-      margin: 0 .5em .5em;
-    }
-    #nomatch,
-    #noquery {
-      min-width: 12em;
-      max-width: 22em;
-      width: 75%;
-      margin: auto;
-      padding-bottom: 1em;
-      display: none;
-    }
-    body.nomatch #nomatch,
-    body.noquery #noquery {
-      display: block;
-    }
-    #nomatch li {
-      margin-top: .5em;
-    }
-    footer { margin-top: auto; }
-    footer, #search-brief {
-      font-size: smaller;
-      opacity: .55;
-    }
-    #search-brief { margin: .5em 0; }
-    #search-brief:after {
-      content: "";
-      display: table;
-      clear: both;
-    }
-    body {
-      display: flex;
-      flex-direction: column;
-    }
-    header {
-      display: flex;
-      background: #a5e7ef;
-      padding: .25em .5em .35em .5em;
-      color: #4d4d4d; /* 70% black */
-      padding-right: 48px;
-    }
-    /* FIXME: remove this .form-wrapper and modify some flex property of parent element <header> instead? */
-    .form-wrapper {
-      width: 100%;
-    }
-    .columns {
-      columns: 25em;
-      column-gap: 1em;
-    }
+/* styles needed for first screenfull of content */
+@-ms-viewport{ width: device-width; }
+@font-face {
+  font-family: "FreeSans-SWL";
+  src: url("freesans-swl.ttf");
+  font-display: swap;
+}
+html {
+  font-family: "FreeSans-SWL", "FreeSans", sans-serif;
+  font-size: 22px;
+}
 
-    /*************************************************************************/
-    /* Full screen search form */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    /* normally hide 'noquery-content' */
-    .noquery-content { display: none; }
+:focus, .nostyle:focus {
+  outline: 0;
+  box-shadow: 0 0 0 3px rgb(173, 189, 224); /* focus outline */
+  z-index: 10;
+  position: relative;
+}
 
-    /* in 'noquery' mode: show noquery-content + hide normal search result */
-    body.noquery .noquery-content { display: block; }
-    body.noquery #search-wrapper { display: none; }
+/* Make <body> fill first screen. http://stackoverflow.com/q/17555682/ */
+html { height: 100%; overflow-y: scroll; }
+body { min-height: 100%; }
 
-    .logo svg {
-      display: block;
-      height: 5em;
-      margin: .5em auto;
-    }
-    .info {
-      font-size: smaller;
-      color: #000;
-      opacity: .55;
-    }
-    @media only screen and (max-width: 450px) { .info .size { display: none; } }
-    @media only screen and (max-width: 330px) { .info .beg  { display: none; } }
-    @media only screen and (max-width: 220px) { .info .date { display: none; } }
+/* line-height must be >1.25 for FreeSans-SWL relation diacritics
+* not to leave remains on previous line when column breaking
+*/
+body { line-height: 1.25; }
 
-    /* form fields changed in 'noquery' mode */
-    body.noquery header {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      display: block;
-      text-align: center;
-      padding: 0;
+body {
+  display: flex;
+  flex-direction: column;
+}
+header {
+  display: flex;
+  background: #a5e7ef;
+  padding: .25em .5em .35em .5em;
+  color: #4d4d4d; /* 70% black */
+  padding-right: 48px;
+}
+form {
+  width: 100%;
+  position: relative;
+  padding-right: 69px;       /* width of keyboard icon */
+  background: #fff;
+  height: 48px;
+  line-height: 46px;         /* height - (top + bottom border) */
+  border: 1px solid #bfbfbf; /* 25% black */
+  border-radius: 4px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, .09);
+}
+form > * {
+  display: block;
+  border-radius: inherit;
+  background: transparent;
+}
+#kb-icon {
+  padding: 1px .6em 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+#kb-icon > svg {
+  opacity: .4;
+}
+#q {
+  margin: 0;
+  padding: 0 0 0 .5em;
+  color: inherit;
+  overflow: hidden;
+  resize: none;
+  white-space: pre;
+  line-height: inherit;
+  box-shadow: none !important;
+  width: 100%;
+}
+#q:invalid {
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="17.49" height="17.49" fill="%23fff"><path d="M6.5 11C4.01 11 2 8.99 2 6.5S4.01 2 6.5 2 11 4.01 11 6.5 8.99 11 6.5 11zm6 0h-.79l-.28-.27A6.471 6.471 0 0 0 13 6.5 6.5 6.5 0 1 0 6.5 13c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L17.49 16l-4.99-5z" fill="%23000" fill-opacity=".4"/></svg>') center left .6em/auto 1.1em no-repeat;
+}
+#search-wrapper {
+  margin: 0 .5em .5em;
+}
+#nomatch,
+#noquery {
+  min-width: 12em;
+  max-width: 22em;
+  width: 75%;
+  margin: auto;
+  padding-bottom: 1em;
+  display: none;
+}
+body.nomatch #nomatch,
+body.noquery #noquery {
+  display: block;
+}
+#nomatch li {
+  margin-top: .5em;
+}
+footer {
+  margin: auto 0 .5em;
+  text-align: center;
+}
+footer, #search-brief {
+  font-size: smaller;
+  opacity: .55;
+}
+#search-brief { margin: .5em 0; }
+#search-brief:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+#more {
+  display: none;
+  padding: .25em .5em;
+  background: #a5e7ef;
+  margin: 0 auto 1.5em;
+}
+/* FIXME: remove this .form-wrapper and modify some flex property of parent element <header> instead? */
+.form-wrapper {
+  width: 100%;
+}
 
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-    body.noquery .form-wrapper {
-      padding-bottom: 3rem;
-    }
-    body.noquery form {
-      width: 70%;
-      max-width: 590px;
-      margin: 1.5rem auto 1.1rem;
-    }
-    @media only screen and (max-width: 590px) { body.noquery form { width: 80%; }}
-    @media only screen and (max-width: 370px) { body.noquery form { width: 90%; }}
+/*************************
+* Full screen search form.
+*/
+/* normally hide 'noquery-content' */
+.noquery-content {
+  display: none;
+}
 
-    /*************************************************************************/
-    /* Result mode selector switch (video/text). */
+/* in 'noquery' mode: show noquery-content + hide normal search result */
+body.noquery .noquery-content { display: block; }
+body.noquery #search-wrapper { display: none; }
 
-    .selector {
-      float: right;
-      padding: 2px 1px;
-      position: relative;
-      top: -2px;
-      right: -1px;
-      cursor: pointer;
-    }
-    .selector > .switch {
-      vertical-align: top;
-      display: inline-block;
-      width: 1.6em;
-      height: .9em;
-      box-sizing: content-box;
-      background: #eee;          /**/
-      border: 1px solid #888;    /**/
-      border-radius: 1em;
-      box-shadow: inset 0 2px 5px 3px #ccc;
-      position: relative;
-      top: .1em;
-    }
-    .selector > .switch:before {
-      transition: all .05s ease-in;
-      content: '';
-      width: .9em;
-      height: 100%;
-      background: white;
-      position: absolute;
-      border: inherit;
-      border-radius: inherit;
-      margin: -1px;
-    }
-    .text-view  .selector > .switch:before { right: 0; }
-    .video-view .selector > .switch:before { left:  0; }
-    .video-view .selector > .video { font-weight: bold; }
-    .text-view  .selector > .text  { font-weight: bold; }
+.logo svg {
+  height: 5em;
+  margin: .5em auto;
+}
+.info {
+  font-size: smaller;
+  color: #000;
+  opacity: .55;
+  margin: 1em 0;
+}
+@media only screen and (max-width: 450px) { .info .size { display: none; } }
+@media only screen and (max-width: 330px) { .info .beg  { display: none; } }
+@media only screen and (max-width: 220px) { .info .date { display: none; } }
 
-    /*************************************************************************/
-    /* Stuff common to both result views (video/text). */
+/* form fields changed in 'noquery' mode */
+body.noquery header {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  text-align: center;
+  padding: 0;
 
-    #search-result > .match {
-      column-break-inside: avoid;
-      -moz-column-break-inside: avoid;
-      -webkit-column-break-inside: avoid;
-    }
-    button#more {
-      margin: 0 auto 1.5em;
-    }
-    .fingerspell {
-      text-transform: lowercase;
-      font-variant: small-caps;
-    }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+body.noquery .form-wrapper {
+  padding-bottom: 3rem;
+}
+body.noquery form {
+  width: 70%;
+  max-width: 590px;
+  margin: 1.5rem auto 1.1rem;
+}
+@media only screen and (max-width: 590px) { body.noquery form { width: 80%; }}
+@media only screen and (max-width: 370px) { body.noquery form { width: 90%; }}
 
-    /*************************************************************************/
-    /* Stuff for text result view (text/video). */
+/*************************************************************************/
+/* Result mode selector switch (video/text). */
 
-    .text-view #search-result {
-      column-gap: 1em;
-      columns: 14em;
-    }
-    .text-view #search-result > .match {
-      margin: 0 0 .125em;
-      text-indent: -1em;
-      padding-left: 1em;
-    }
-    .text-view .video-container {
-      display: inline;
-    }
-    .text-view .video-container,
-    .text-view .video-container > * {
-      display: inline;
-    }
-    .text-view .video-container,
-    .text-view .video-container .video-id { margin-left: 0; }
-    .text-view .video-container .video-id { font-size: 95%; }
+.selector {
+  float: right;
+  padding: 2px 1px;
+  position: relative;
+  top: -2px;
+  right: -1px;
+  cursor: pointer;
+}
+.selector > .switch {
+  vertical-align: top;
+  display: inline-block;
+  width: 1.6em;
+  height: .9em;
+  box-sizing: content-box;
+  background: #eee;
+  border: 1px solid #888;
+  border-radius: 1em;
+  box-shadow: inset 0 2px 5px 3px #ccc;
+  position: relative;
+  top: .1em;
+}
+.selector > .switch:before {
+  transition: all .05s ease-in;
+  content: '';
+  width: .9em;
+  height: 100%;
+  background: white;
+  position: absolute;
+  border: inherit;
+  border-radius: inherit;
+  margin: -1px;
+}
+.text-view  .selector > .switch:before { right: 0; }
+.video-view .selector > .switch:before { left:  0; }
+.video-view .selector > .video { font-weight: bold; }
+.text-view  .selector > .text  { font-weight: bold; }
 
-    .text-view .video-container > img,
-    .text-view .video-container > video,
-    .text-view .video-feedback {
-      display: none;
-    }
-    .text-view .video-id:hover { opacity: 1; }
-    .text-view .video-subs a {
-      font-size: 95%;
-      opacity: .65;
-      color: #000;
-    }
-    .text-view .match > a {
-      color: inherit;
-    }
+/*************************************************************************/
+/* Stuff common to both result views (video/text). */
 
-    /*************************************************************************/
-    /* Stuff for video result view (text/video). */
+#search-result > .match {
+  column-break-inside: avoid;
+  -moz-column-break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+}
+.fingerspell {
+  text-transform: lowercase;
+  font-variant: small-caps;
+}
 
-    .video-view #search-result {
-      word-spacing: .5em;  /* space between #search-result matches */
-    }
-    .video-view #search-result > * { word-spacing: normal; }
+/*************************************************************************/
+/* Stuff for text result view (text/video). */
 
-    .video-view #search-result > .match {
-      display: inline-block;
-      width: 270px;                            /* same as .video-container */
-      margin: 0;
-      text-align: center;
+.text-view #search-result {
+  column-gap: 1em;
+  columns: 14em;
+}
+.text-view #search-result > .match {
+  margin: 0 0 .125em;
+  text-indent: -1em;
+  padding-left: 1em;
+}
+.text-view .video-container {
+  display: inline;
+}
+.text-view .video-container,
+.text-view .video-container > * {
+  display: inline;
+}
+.text-view .video-container,
+.text-view .video-container .video-id { margin-left: 0; }
+.text-view .video-container .video-id { font-size: 95%; }
 
-      /* text: center or truncate if too long */
-      white-space: nowrap;
-      text-align: center;
-      text-overflow: ellipsis;
-      overflow: hidden;
-    }
-    .video-view .match > a:hover,
-    .video-view .match > a:focus {
-      text-decoration: underline;
-    }
-    .video-view .video-container.is-loading {
-      background-image: url(pic/gui/image-loading.jpg);
-    }
-    .video-view .video-container.is-broken:before,
-    .video-view .video-container.is-loading-video:before {
-      content: '';
-      position: absolute;
-      width: 100%; height: 100%;
-    }
-    .video-view .video-container.is-broken:before {
-      background: no-repeat center url(pic/gui/image-broken.svg);
-    }
-    .video-view .video-container.is-loading-video:before {
-      background: no-repeat center url(pic/gui/video-loading.svg);
-    }
+.text-view .video-container > img,
+.text-view .video-container > video,
+.text-view .video-feedback {
+  display: none;
+}
+.text-view .video-id:hover { opacity: 1; }
+.text-view .video-subs a {
+  font-size: 95%;
+  opacity: .65;
+  color: #000;
+}
+.text-view .match > a {
+  color: inherit;
+}
 
-    .video-view .video-container.is-loading img,
-    .video-view .video-container.is-broken img {
-      opacity: 0;                              /* hide but allow clicks etc. */
-    }
-    .video-view .video-container {
-      background: no-repeat center url(pic/gui/image-loading.jpg) #a5e7ef;
-      position: relative;  /* for subtitle+id positioning */
-      border-radius: 4px;
+/******************************************
+* Stuff for video result view (text/video).
+*/
+.video-view #search-result {
+  word-spacing: .5em;  /* space between #search-result matches */
+}
+.video-view #search-result > * { word-spacing: normal; }
 
-      /* center video + truncate sides for 16:19 videos */
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      width: 270px;                            /* same as #search-result > .match */
-      height: 202px;
+.video-view #search-result > .match {
+  display: inline-block;
+  width: 270px;                            /* same as .video-container */
+  margin: 0;
+  text-align: center;
 
-      /* text color + outline */
-      color: #fff;
-      text-shadow:
-         1px  1px 1px #000,
-         1px -1px 1px #000,
-        -1px  1px 1px #000,
-        -1px -1px 1px #000,
-         0    0   2px #000;
-    }
-    .video-view .video-container a { color: inherit; }
-    .video-view .video-container > video,
-    .video-view .video-container > img {
-      /* z-index fixes Firefox where subs disappear when clicking
-         video content a second time (to stop video playback) */
-      z-index: auto;
-      max-height: none;
-      flex: none;
-      margin: auto;
-      height: 100%;
-      min-width: 100%;
-      transition: opacity 0.2s ease-in-out;
-    }
-    .video-view .video-container wbr { display: none; }
-    .video-view .video-id {
-      /* top-right corner */
-      position: absolute; right: 8px; top: 4px;
-      font-size: smaller;
-      opacity: .75;
-    }
-    .video-view .video-id:hover { opacity: 1; }
-    .video-view .video-subs {
-      position: absolute; bottom: 4px;         /* subtitle placement */
-      left: 0; right: 0;
-      padding: 3px 2px 1px 2px;                /* don't truncate shadow */
+  /* text: center or truncate if too long */
+  white-space: nowrap;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.video-view .match > a:hover,
+.video-view .match > a:focus {
+  text-decoration: underline;
+}
+.video-view .video-container.is-loading {
+  background-image: url(pic/gui/image-loading.jpg);
+}
+.video-view .video-container.is-broken:before,
+.video-view .video-container.is-loading-video:before {
+  content: '';
+  position: absolute;
+  width: 100%; height: 100%;
+}
+.video-view .video-container.is-broken:before {
+  background: no-repeat center url(pic/gui/image-broken.svg);
+}
+.video-view .video-container.is-loading-video:before {
+  background: no-repeat center url(pic/gui/video-loading.svg);
+}
 
-      /* text: center or truncate if too long */
-      white-space: nowrap;
-      text-align: center;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      max-width: 100%;
-    }
-    .video-view .video-container a mark {
-      background: rgba(255, 193, 0, .3);
-      color: rgb(255, 193, 47);
-    }
-    .video-view .video-container a:focus mark,
-    .video-view .video-container a:hover mark {
-      text-decoration: underline rgb(255, 193, 47);
-    }
-    .video-view .video-feedback {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      background: no-repeat center/45px;
-    }
-    .video-view .video-feedback.anim {
-      transition: all .5s ease-out;
-      background-size: 90px;
-      opacity: 0;
-    }
-    .video-view .video-feedback.play { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="45" height="45"><circle r="22.5" cy="22.5" cx="22.5" style="isolation:auto;mix-blend-mode:normal" color="%23000" overflow="visible" opacity=".75" fill-rule="evenodd"/><path color="%23000" fill="%23fff" style="isolation:auto;mix-blend-mode:normal" overflow="visible" d="M33.25 22.5l-16.5 9.53V12.97z"/></svg>'); }
-    .video-view .video-feedback.pause { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="45" height="45"><circle r="22.5" cy="22.5" cx="22.5" style="isolation:auto;mix-blend-mode:normal" color="%23000" overflow="visible" opacity=".75" fill-rule="evenodd"/><path color="%23000" fill="%23fff" style="isolation:auto;mix-blend-mode:normal" overflow="visible" d="M15 15h5v15h-5zM25 15h5v15h-5z" fill-rule="evenodd"/></svg>'); }
+.video-view .video-container.is-loading img,
+.video-view .video-container.is-broken img {
+  opacity: 0;                              /* hide but allow clicks etc. */
+}
+.video-view .video-container {
+  background: no-repeat center url(pic/gui/image-loading.jpg) #a5e7ef;
+  position: relative;  /* for subtitle+id positioning */
+  border-radius: 4px;
 
-    /*************************************************************************/
+  /* center video + truncate sides for 16:19 videos */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  width: 270px;                            /* same as #search-result > .match */
+  height: 202px;
 
-    hr {
-      margin: 1em;
-      border: 0;
-      height: 2px;
-      background: #000;
-    }
-    table {
-      margin: .75em 0;
-    }
-    table tr {
-      column-break-inside: avoid;
-      -moz-column-break-inside: avoid;
-      -webkit-column-break-inside: avoid;
-    }
-    table[border="1"] {
-      border-collapse: collapse;
-    }
-    table[border="1"] > tr > th,
-    table[border="1"] > tr > td,
-    table[border="1"] > tbody > tr > th,
-    table[border="1"] > tbody > tr > td {
-      border: 1px solid #000;
-      text-align: left;
-      vertical-align: top;
-      padding: .125em .25em;
-    }
-    table[border="1"] > tr > th,
-    table[border="1"] > tbody > tr > th {
-      text-align: center;
-    }
-    h1 { margin: .75em 0 .5em 0; }
-    p { margin: 0; }
-    p:empty + p { margin-top: 1em; }
-    p:not(:empty) + p { text-indent: 1.5em; }
+  /* text color + outline */
+  color: #fff;
+  text-shadow:
+     1px  1px 1px #000,
+     1px -1px 1px #000,
+    -1px  1px 1px #000,
+    -1px -1px 1px #000,
+     0    0   2px #000;
+}
+.video-view .video-container a { color: inherit; }
+.video-view .video-container > video,
+.video-view .video-container > img {
+  /* z-index fixes Firefox where subs disappear when clicking
+  *  video content a second time (to stop video playback) */
+  z-index: auto;
+  max-height: none;
+  flex: none;
+  margin: auto;
+  height: 100%;
+  min-width: 100%;
+  transition: opacity 0.2s ease-in-out;
+}
+.video-view .video-container wbr { display: none; }
+.video-view .video-id {
+  /* top-right corner */
+  position: absolute; right: 8px; top: 4px;
+  font-size: smaller;
+  opacity: .75;
+}
+.video-view .video-id:hover { opacity: 1; }
+.video-view .video-subs {
+  position: absolute; bottom: 4px;         /* subtitle placement */
+  left: 0; right: 0;
+  padding: 3px 2px 1px 2px;                /* don't truncate shadow */
 
-    .overlay {
-      display: none;
-      z-index: 10000;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, .75);
-    }
-    .overlay.hover:hover:before { opacity: 1; }
-    .overlay:before {
-      cursor: pointer;
-      opacity: .4;
-      position: absolute;
-      display: block;
-      line-height: 0;
-      top: .5em;
-      right: .5em;
-      content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="17" width="19"><path d="M11-2v21H8V-2zM-1 7h21v3H-1z" fill="%23fff" transform="rotate(45 9.5,8.5)"/></svg>');
-      transition: all .1s ease-in-out;
-    }
-    .overlay section {
-      margin: 1em 1.5em;
-      background: #fff;
-      overflow-y: scroll;
-      padding: 0 1em 1em 1em;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-    }
-    small { font-size: 90%; }
-    a.tt,
-    tt {
-      color: inherit;
-      word-spacing: .25em;
-      white-space: nowrap;
-      font-family: inherit;
-      font-size: 95%;
-      background: #ccc;
-      border-radius: 4px;
-      padding: 0 .1875em;
-    }
+  /* text: center or truncate if too long */
+  white-space: nowrap;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+}
+.video-view .video-container a mark {
+  background: rgba(255, 193, 0, .3);
+  color: rgb(255, 193, 47);
+}
+.video-view .video-container a:focus mark,
+.video-view .video-container a:hover mark {
+  text-decoration: underline rgb(255, 193, 47);
+}
+.video-view .video-feedback {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: no-repeat center/45px;
+}
+.video-view .video-feedback.anim {
+  transition: all .5s ease-out;
+  background-size: 90px;
+  opacity: 0;
+}
+.video-view .video-feedback.play { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="45" height="45"><circle r="22.5" cy="22.5" cx="22.5" style="isolation:auto;mix-blend-mode:normal" color="%23000" overflow="visible" opacity=".75" fill-rule="evenodd"/><path color="%23000" fill="%23fff" style="isolation:auto;mix-blend-mode:normal" overflow="visible" d="M33.25 22.5l-16.5 9.53V12.97z"/></svg>'); }
+.video-view .video-feedback.pause { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="45" height="45"><circle r="22.5" cy="22.5" cx="22.5" style="isolation:auto;mix-blend-mode:normal" color="%23000" overflow="visible" opacity=".75" fill-rule="evenodd"/><path color="%23000" fill="%23fff" style="isolation:auto;mix-blend-mode:normal" overflow="visible" d="M15 15h5v15h-5zM25 15h5v15h-5z" fill-rule="evenodd"/></svg>'); }
 
-    /*************************************************************************/
+/**************
+* Text content.
+*/
+svg { display: block; }
+img { max-height: 175px; }
+mark {
+  background: rgba(255, 193, 0, .6);
+  color: inherit;
+}
+.tooltip mark {
+  background: rgba(255, 255, 255, .2);
+  color: inherit;
+  padding: .125em 0;
+}
 
-    .tooltip mark {
-      background: rgba(255, 255, 255, .2);
-      color: inherit;
-      padding: .125em 0;
-    }
-    #more {
-      display: none;
-      padding: .25em .5em;
-      background: #a5e7ef;
-    }
-    sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
-    sup { top: -0.5em; }
-    li { margin-left: 1.5em; }
-  </style>
-  <style>
-    /**************************************************************************/
-    /** Side menu. **/
-    .menu {
-      width: 16em;
-      font-size: smaller;
-      overflow: hidden;
-      position: absolute;
-      right: 0;
-      top: 0;
-      height: 100%;
-    }
-    .menu.shown aside {
-      left: 0%;
-    }
-    .menu aside {
-      z-index: 1;
-      margin-left: 5px;
-      padding: 1.5em;
-      box-shadow: -2px 0 3px rgba(0, 0, 0, .09);
-      transition: all .2s ease-in-out;
-      position: relative;
-      background: white;
-      height: 100%;
-      left: 100%;
-    }
-    .menu aside ul {
-      line-height: 2;
-      list-style-type: none;
-    }
-    .menu aside li {
-      margin-left: 0;
-    }
-    .menu aside > * {
-      opacity: .7;
-    }
-    .menu p {
-      text-indent: unset !important;
-      margin: 1em 0;
-    }
-    .menu p.hr {
-      line-height: 2;
-      font-weight: bold;
-      margin: 1em 0 0;
-      padding-top: 1em;
-      border-top: 1px solid rgba(0,0,0,.25);
-    }
-    .menu div.bottom {
-      position: absolute;
-      bottom: 0;opacity: .7;
-      line-height: 1.5;
-      margin-right: .5em;
-    }
-    .menu button {
-      z-index: 1;
-      border-radius: 2px;
-      box-sizing: content-box;
-      position: absolute;
-      width: .85rem;
-      XXtop: .55rem;
-      top: 13px;
-      XXright: .4rem;
-      right: 6px;
-      XXpadding: .4rem;
-      padding: 9px;
-      color: #000;
-      opacity: .5;
-      margin: unset;
-      background: unset;
-      border: unset;
-      box-shadow: unset;
-    }
-    .menu button:hover { box-shadow: unset; }
-    .menu button.menu-close {
-      opacity: .5;
-    }
-    .menu button.menu-close:hover {
-      color: rgba(0,0,0,.95);
-      opacity: 1;
-    }
-    .menu button.menu-open:hover {
-      background: rgba(0,0,0,.95);
-      color: #a5e7ef;
-    }
-    .menu button svg { display: block; }
+/***************************
+* Side menu (with content).
+*/
+.menu {
+  width: 16em;
+  font-size: smaller;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+}
+.menu aside {
+  z-index: 1;
+  margin-left: 5px;
+  padding: 1.5em;
+  box-shadow: -2px 0 3px rgba(0, 0, 0, .09);
+  transition: all .2s ease-in-out;
+  position: relative;
+  background: white;
+  height: 100%;
+  left: 100%;
+}
+.menu button {
+  z-index: 1;
+  border-radius: 2px;
+  box-sizing: content-box;
+  position: absolute;
+  width: .85rem;
+  top: 13px;
+  right: 6px;
+  padding: 9px;
+  color: #000;
+  opacity: .5;
+  margin: 0;
+  box-shadow: unset;
+}
+
+/*************************
+* Overlays (with content).
+*/
+.overlay {
+  display: none;
+  z-index: 10000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, .75);
+}
+
+/**************
+* Text content.
+*/
+a {
+  text-decoration: none;
+  color: #1a0dab;
+}
+
+/*********
+* Buttons.
+*/
+button, textarea {
+  background: transparent;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+  border: 0;
+  border-radius: 2px;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  padding: .2em .125em .125em .125em;
+  margin: 2px 1.5px;
+  color: rgba(0, 0, 0, .75)
+}
+button.nostyle {
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+}
+
+.selector:hover,
+#kb-icon:focus,
+#q:focus,
+#q:hover,
+button:hover {
+  box-shadow: /*inset 1000px 1000px rgba(255, 255, 255, .25),*//* lighten */
+    0 3px 6px 2px rgba(0, 0, 0, .2);                           /* shadow */
+}
+button:hover {
+    cursor: pointer;
+}
+#q:hover:focus,
+button:hover:focus {
+  box-shadow: /*inset 1000px 1000px rgba(255, 255, 255, .25),*//* lighten */
+    0 3px 6px 2px rgba(0, 0, 0, .2),                           /* shadow */
+    0 0   0   3px rgb(173, 189, 224);                          /* focus outline */
+}
   </style>
 </head>
 <body>
-  <noscript class=required>Javascript required.</noscript>
+  <noscript>Den här sidan behöver Javascript för att fungera.</noscript>
   <aside class=menu>
     <button class="toggle menu-open"><svg height="17" width="19"><path d="M0 0h19v3H0zm0 14h19v3H0zm0-7h19v3H0z" fill="currentColor"/></svg></button>
     <aside>
@@ -591,7 +555,7 @@
         <textarea id=q rows=1 required autofocus></textarea>
         <button id=kb-icon class=nostyle title="Transkriptionssymboler (Esc)"><svg width="42" height="24" viewBox="0 0 21 12"><path d="M8 5h2v2H8zm0-3h2v2H8zM5 8h11v2H5zM2 8h2v2H2zm15 0h2v2h-2zm0-3h2v2h-2zm0-3h2v2h-2zm-3 3h2v2h-2zm0-3h2v2h-2zm-3 3h2v2h-2zm0-3h2v2h-2zM5 5h2v2H5zm0-3h2v2H5zM2 5h2v2H2zm0-3h2v2H2zM0 0v12h21V0zm1 1h19v10H1z"/></svg></button>
       </form>
-      <div class="noquery-content info" style="margin:1em 0">
+      <div class="noquery-content info">
         <span class=size><span id=lexicon-size>00000</span> tecken.</span>
         <span class=date><span class=beg>Upp­date­rad</span> <span id=lexicon-date>0x månad 20xx</span>.</span>
         <a href="#help">Sökhjälp</a>.
@@ -685,7 +649,7 @@
       <hr>
       <h1>Kontrollsymboler</h1>
       <div class=columns>
-        <center><table border=1 style="margin-top:.25em">
+        <table style="margin-top:.25em">
           <tr>
             <th><tt>"…"</tt>
             <td>Frassökning
@@ -701,7 +665,7 @@
           <tr>
             <th><tt>…, …</tt>
             <td>Logiskt <i>eller</i>
-        </table></center>
+        </table>
 
         <p id=fras><tt>"…"</tt> Frassökning – mellanslag och andra symboler som
         står inom citat­symbolerna måste matcha exakt.
@@ -772,9 +736,9 @@
         <p>Följande symboler har särskild funktion (utom när de står inom
         citat­symboler, <a href="#fras">se ovan</a>).
 
-        <center><table border=1 style=caption-side:bottom>
-          <caption style=margin:.5em;text-align:left><sup>1</sup> Matchar också
-            en eventuell efterföljande relationssymbol.</caption>
+        <table>
+          <caption><sup>1</sup> Matchar också en eventuell efterföljande
+            relationssymbol.</caption>
           <tr>
             <th>
             <th>Beskrivning
@@ -829,7 +793,7 @@
             <th><tt>􌤗</tt>
             <td><i>Höfterna</i><sup>1</sup>
             <td>En av <small>􌤗</small> eller <small>􌤙 􌤘</small>
-        </table></center>
+        </table>
 
         <p><p><tt>*</tt> matchar noll eller fler alfabetiska symboler i ord
         eller <wbr>tran­skrip­tion. (Med ’alfabetisk’ menas bokstäver, siffror
