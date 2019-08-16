@@ -3,6 +3,8 @@
 * Browser support
 ** Features
 *** flexbox
+*** .selectionStart/.selectionEnd
+    Chrome, Firefox, MSIE 9+, Edge, Safari 4+, Opera, Android etc.
 ** MSIE 8 (and older)
 ** Safari 3 (and older)
 ** Opera 10 (and older)
@@ -42,13 +44,6 @@
 ** TODO Change name of lexicon
    Lexicon should be distinguishable from the official lexicon by name. Maybe
    use name 'Snabbt teckenspråklexikon'?
-** TODO Newlines->space when pasting into <textarea>                    :BUG:
-   This is a bug since the textarea cannot handle newlines well, and user
-   really should not be able to enter any. (Manually entered newlines are
-   already suppressed.)
-
-   Make extra sure this is compatible with all browsers (since copy/past
-   handling is known to be finicky).
 ** [0/6] Code structure/stink/refactor
 *** TODO Use '$' prefix instead of 'jq' in variables
 *** TODO Memory optimization
@@ -839,6 +834,14 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Newlines->space when pasting into <textarea>           :BUG:
+   CLOSED: [2019-08-16 Fri 11:08]
+   This is a bug since the textarea cannot handle newlines well, and user
+   really should not be able to enter any. (Manually entered newlines are
+   already suppressed.)
+
+   Make extra sure this is compatible with all browsers (since copy/past
+   handling is known to be finicky).
 ** DONE Lexicon: Optimized CSS
    CLOSED: [2019-08-15 Thu 16:03]
    Removed irrelevant CSS, moved everything that is needed for first paint in

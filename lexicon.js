@@ -15,6 +15,32 @@ String.prototype.supplant = function (o) {
     });
 };
 
+// jQuery plugin to insert a string at caret position in <textarea> &
+// <input> and also scroll element content to caret after paste. (Does
+// not work with 'contenteditable'.)
+//
+// Uses .selectionStart/.selectionEnd, i.e. works on:
+// Chrome, Firefox, MSIE 9+, Edge, Safari 4+, Opera, Android etc.
+jQuery.fn.paste = function(str) {
+    "use strict";
+    var prefocused = document.activeElement;
+    str += "";                            // make sure it's a string
+    this.each(function (_, el) {
+        var beg = el.selectionStart;
+        var val = el.value;
+
+        // Insert string & move caret.
+        el.value = val.slice(0, beg) + str + val.slice(el.selectionEnd);
+        el.selectionEnd = el.selectionStart = beg + str.length;
+
+        // Scroll content to caret (non-DOM, non-chainable).
+        el.blur();
+        el.focus();
+    });
+    prefocused.focus();
+    return this;
+};
+
 // Toggle fullscreen for one element or (with no arg) the whole window.
 // [thewebflash.com/toggling-fullscreen-mode-using-the-html5-fullscreen-api]
 function toggleFullscreen(elem) {
@@ -889,6 +915,10 @@ $(function () {
     var $form = $("form").on("submit", onSubmit);
     var $text = $("textarea", $form).on("keydown", onKey);
 
+    if ($text[0].selectionEnd !== undefined) {  // if supported by browser
+        $text.on("paste", onPaste);             //   remove newlines in pasting
+    }
+
     function onKey(e) {
         if (e.which === 13) {                   // Enter
             e.preventDefault();                 //   don't insert key
@@ -900,6 +930,18 @@ $(function () {
         var queryStr = $text.val() || "";
         e.preventDefault();                     // don't submit to server
         urlFragment.set({ query: queryStr }) && searchLexicon(queryStr);
+    }
+
+    // Filter out newlines on paste in textarea (uses jQuery .paste plugin).
+    function onPaste(e) {
+        e.preventDefault();
+        $text.paste(
+            (
+                window.clipboardData !== undefined
+                ? window.clipboardData          // MSIE, Safari, Chrome
+                : e.originalEvent.clipboardData // WebKit
+            ).getData("text").replace(/[\n\r\u0020]+/g, " ")
+        ).trigger("input");
     }
 });
 
@@ -951,5 +993,7 @@ $(function () {
         }
     });
 });
+
+
 
 //[eof]
