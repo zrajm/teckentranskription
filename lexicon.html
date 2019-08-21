@@ -11,7 +11,7 @@
   <link rel=license href="LICENSE.txt">
   <link rel=search type="application/opensearchdescription+xml" title="TSP-Lex!" href="/teckentranskription/lexicon-opensearch.xml">
   <style>
-/* styles needed for first screenfull of content */
+/* styles for first screenful of content */
 @-ms-viewport{ width: device-width; }
 @font-face {
   font-family: "FreeSans-SWL";
@@ -29,7 +29,8 @@ html {
   box-sizing: border-box;
 }
 
-:focus, .nostyle:focus {
+:focus,
+.nostyle:focus {
   outline: 0;
   box-shadow: 0 0 0 3px rgb(173, 189, 224); /* focus outline */
   z-index: 10;
@@ -119,7 +120,8 @@ footer {
   margin: auto 0 .5em;
   text-align: center;
 }
-footer, #search-brief {
+footer,
+#search-brief {
   font-size: smaller;
   opacity: .55;
 }
@@ -193,9 +195,9 @@ body.noquery form {
 @media only screen and (max-width: 590px) { body.noquery form { width: 80%; }}
 @media only screen and (max-width: 370px) { body.noquery form { width: 90%; }}
 
-/*************************************************************************/
-/* Result mode selector switch (video/text). */
-
+/******************************************
+* Result mode selector switch (video/text).
+*/
 .selector {
   float: right;
   padding: 2px 1px;
@@ -233,9 +235,9 @@ body.noquery form {
 .video-view .selector > .video { font-weight: bold; }
 .text-view  .selector > .text  { font-weight: bold; }
 
-/*************************************************************************/
-/* Stuff common to both result views (video/text). */
-
+/************************************************
+* Stuff common to both result views (video/text).
+*/
 #search-result > .match {
   column-break-inside: avoid;
   -moz-column-break-inside: avoid;
@@ -246,9 +248,9 @@ body.noquery form {
   font-variant: small-caps;
 }
 
-/*************************************************************************/
-/* Stuff for text result view (text/video). */
-
+/*****************************************
+* Stuff for text result view (text/video).
+*/
 .text-view #search-result {
   column-gap: 1em;
   columns: 14em;
@@ -419,7 +421,7 @@ mark {
   padding: .125em 0;
 }
 
-/***************************
+/**************************
 * Side menu (with content).
 */
 .menu {
@@ -482,7 +484,8 @@ a {
 /*********
 * Buttons.
 */
-button, textarea {
+button,
+textarea {
   background: transparent;
   box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
   border: 0;
@@ -547,7 +550,6 @@ button:hover:focus {
   <header>
     <div class=form-wrapper>
       <div class="noquery-content logo">
-        <!-- Inline SVG avoids FOUC. -->
         <svg viewBox="0 0 648 729"><defs><filter id="a" color-interpolation-filters="sRGB"><feFlood/><feComposite in2="SourceGraphic" operator="out"/><feGaussianBlur stdDeviation="15"/><feOffset dx="5" dy="10"/><feComposite in2="SourceGraphic" operator="atop"/></filter></defs><path fill="#134141" d="M0 0H115L329 355L537 0H648L381 432H601v78H374V729H281V510H47V432H274z" filter="url(#a)"/></svg>
         <big>Svenskt tecken­språks­lexikon</big>
       </div>
@@ -831,11 +833,12 @@ button:hover:focus {
   <script src="keyboard.js"></script>
   <script>transcriptKeyboard($("form"), $("#q"), $("#kb-icon"))</script>
   <script>
-    /**************************************************************************/
-    /** Open/close menu. **/
+    /*****************
+    * Open/close menu.
+    */
     $(function () {
         var $menu = $(".menu");
-        $menu.find("button.toggle").on("click",function () {
+        $menu.find("button.toggle").on("click", function () {
             $menu.toggleClass("shown");
         });
     });
