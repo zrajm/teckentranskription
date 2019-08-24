@@ -1,10 +1,46 @@
 -*- org -*-
 
 * Browser support
+  + Function:  IE9+ (?)  Safari(?)  -- search functionality must work
+  + Cosmetics: IE10+     Safari(?)  -- minor difference in appearance is ok
+
+  KNOWN ISSUES:
+  + Firefox before version 64 (Dec 2018) will show scrollbars in the textarea.
+    On Firefox 'overflow: hidden' suppress scrolling of the <textarea> field
+    when user pastes text into it, we therefore use the Firefox-specific
+    'scrollbar-width: none' for which support was added by Firefox 64.
 ** Features
+*** CSS :invalid selector
+    Used to show/hide search form reset button + changing color of submit
+    button.
+    |----------+--------------|
+    | 2007 Jun | Safari 5+    |
+    | 2009 Sep | Opera 10+    |
+    | 2010 Sep | Safari iOS 4 |
+    | 2011 Mar | Chrome 10+   |
+    | 2011 Mar | Firefox 4+   | <-- Not working on version <51?
+    | 2011 Oct | Android 4+   |
+    | 2012 Sep | IE/Edge 10+  | <-- Not working?
+    |----------+--------------|
+    Caniuse.com tab 'Known Issues' says that ':invalid' might not work on
+    <form> element in Firefox <51 and IE/Edge.
+
+    https://caniuse.com/#search=invalid
 *** flexbox
 *** .selectionStart/.selectionEnd
-    Chrome, Firefox, MSIE 9+, Edge, Safari 4+, Opera, Android etc.
+    Chrome, Firefox, IE/Edge 9+, Safari 4+, Opera, Android etc.
+*** CSS :nth-child() selector
+    Used by virtual keyboard button background color.
+    |----------+-----------------|
+    | 2008 Nov | Safari 3.2+     |
+    | 2009 Jun | Firefox 3.5     |
+    | 2009 Oct | Android 2.1+    |
+    | 2009 Sep | Opera 10+       |
+    | 2010 Jan | Chrome 4+       |
+    | 2010 Apr | Safari iOS 3.2+ |
+    | 2011 Mar | IE/Edge 9+      |
+    |----------+-----------------|
+    https://caniuse.com/#search=CSS3%20selectors
 ** MSIE 8 (and older)
 ** Safari 3 (and older)
 ** Opera 10 (and older)
@@ -41,6 +77,11 @@
 ** DONE Set sensible max-width
    CLOSED: [2018-08-31 Fri 02:31]
 * Lexicon
+** [0/2] Add categories
+*** TODO Overlay transparent map for dialect words(?)
+    Add a small semi-transparent map of Sweden with the relevant region hilited
+    on top of video bottom right? (Name of region in categories + on hover.)
+*** TODO Show list of categories (top left?)
 ** TODO Change name of lexicon
    Lexicon should be distinguishable from the official lexicon by name. Maybe
    use name 'Snabbt teckenspråklexikon'?
@@ -270,7 +311,38 @@
 
     Present search result in a sortable table? Should be able to sort by swedish
     word, and by sign language.
-** [0/27] GUI
+** [1/27] GUI
+*** [5/10] Add submit button & placeholder text.
+    Use the magnifier icon that now is the search text placeholder, and use
+    that in the submit button instead. Add placeholder text. Maybe something
+    like 'Sök transkription eller översättning…'
+**** TODO Move menu button to left side
+**** TODO Use flexboxes to center images in buttons
+**** TODO Remove '.form-wrapper' and use flexbox instead(?)
+     And modify some flex property of parent element <header> instead?
+**** TODO Move SVG to CSS? -- Does that work with currentFill?
+     (To make HTML form more readable.)
+**** TODO Add tabindex for clear/virtual keyboard/submit/menu buttons etc.
+**** TODO Shift-tab from search field should not bring up menu          :BUG:
+     Menu shouldn't pop up when menu button is focused, but only after enter or
+     space is pressed.
+**** DONE Redesign focus markings
+**** DONE Widen search form in fullscreen mode
+**** DONE Use flexboxes for search form layout
+     Can't use 'overflow: hidden' here because that would hide the virtual
+     keyboard (its element is put inside the form, but displayed outside it in
+     the DOM).
+**** DONE Styling of search buttons/textarea should be done using #search
+     The stuff specific to the search form should use CSS selectors containing
+     with '#search' (not 'form').
+**** DONE Fix virtual keyboard CSS
+*** TODO Rethink/redesign the virtual keyboard
+    The virtual keyboard should be replaced with something a bit more
+    intuitive. A proper self-explanatory interface for writing sign language
+    transcription.
+
+    This should new interface should have dropdown icon (small downwards
+    pointing triangle) rather than a keyboard for an icon.
 *** TODO Add 'Om lexikonet' menu item
     An info text briefly describing design idea, nature of cooperation with
     'Svenskt teckenspråkslexikon' and the CC license.
@@ -287,10 +359,6 @@
 
     Make sure both kinds of selections look especially good with the search
     form with text input hilited.
-*** TODO Add submit button & placeholder text.
-    Use the magnifier icon that now is the search text placeholder, and use
-    that in the submit button instead. Add placeholder text. Maybe something
-    like 'Sök transkription eller översättning…'
 *** TODO Think more about self-explanatory aspect of the GUI
     Are there additional modifications that can be done to better give a new
     user a sense of how to use the search? How to make the transcription search

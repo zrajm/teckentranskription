@@ -912,30 +912,40 @@ urlFragment.onVideoToggle(showVideos);
 // Form submission.
 $(function () {
     "use strict";
-    var $form = $("form").on("submit", onSubmit);
-    var $text = $("textarea", $form).on("keydown", onKey);
+    var $form = $("#search").on("submit",  onSubmit);
+    var $q = $("#q")
+        .on("focus blur", onFocus)
+        .on("keydown", onKey)
+        .on("paste", onPaste);
+    onFocus();
 
-    if ($text[0].selectionEnd !== undefined) {  // if supported by browser
-        $text.on("paste", onPaste);             //   remove newlines in pasting
+    // Text input '#q' focused = set 'focused' class on wrapper element.
+    function onFocus() {
+        $form.toggleClass("focus", $q.is(":focus"));
     }
-
+    // Return key in textarea = submit form.
     function onKey(e) {
         if (e.which === 13) {                   // Enter
             e.preventDefault();                 //   don't insert key
-            if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) { return; }
+            if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) {
+                return;
+            }
             $form.submit();
         }
     }
+    // Form submission.
     function onSubmit(e) {
-        var queryStr = $text.val() || "";
+        var queryStr = $q.val() || "";
         e.preventDefault();                     // don't submit to server
         urlFragment.set({ query: queryStr }) && searchLexicon(queryStr);
     }
-
-    // Filter out newlines on paste in textarea (uses jQuery .paste plugin).
+    // Paste in textarea = filter out newlines (use jQuery .paste plugin).
     function onPaste(e) {
+        if ($q[0].selectionEnd === undefined) { // if unsupported: do nothing
+            return;
+        }
         e.preventDefault();
-        $text.paste(
+        $q.paste(
             (
                 window.clipboardData !== undefined
                 ? window.clipboardData          // MSIE, Safari, Chrome
@@ -983,6 +993,7 @@ $("#search-wrapper .selector").on("click keypress", function(e) {
 // Update 'href' attr when mouse enters <a data-href=…> tag (used to retain
 // current video/text result setting). 'data-href' syntax: [query][/overlay]
 $(function () {
+    "use strict";
     // 'mouseenter' used here since it does not trigger when child elements are
     // entered, and the event does not bubble.
     $("#search-result").on("mouseenter", "a[data-href]", function (e) {
@@ -993,7 +1004,5 @@ $(function () {
         }
     });
 });
-
-
 
 //[eof]

@@ -28,13 +28,9 @@ html {
   padding: 0;
   box-sizing: border-box;
 }
-
-:focus,
-.nostyle:focus {
+:focus {
+  box-shadow: 0 0 0 3px rgb(173, 189, 224); /* dark focus outline */
   outline: 0;
-  box-shadow: 0 0 0 3px rgb(173, 189, 224); /* focus outline */
-  z-index: 10;
-  position: relative;
 }
 
 /* Make <body> fill first screen. http://stackoverflow.com/q/17555682/ */
@@ -54,49 +50,118 @@ header {
   display: flex;
   background: #a5e7ef;
   padding: .25em .5em .35em .5em;
-  color: #4d4d4d; /* 70% black */
+  color: #444;                        /* text color */
   padding-right: 48px;
 }
-form {
-  width: 100%;
-  position: relative;
-  padding-right: 69px;       /* width of keyboard icon */
-  background: #fff;
+
+#search {
+  display: flex;
+  border-radius: 4px; /* form border radius */
+  position: relative; /* on top of menu */
   height: 48px;
-  line-height: 46px;         /* height - (top + bottom border) */
-  border: 1px solid #bfbfbf; /* 25% black */
-  border-radius: 4px;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, .09);
+  line-height: 46px;  /* height - (top + bottom border) */
 }
-form > * {
-  display: block;
-  border-radius: inherit;
-  background: transparent;
+#search > * {
+  border: solid #bbb;  /* form border */
+  border-width: 1px 0; /* form border width */
+  background: #fff;    /* form background */
 }
-#kb-icon {
-  padding: 1px .6em 0;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
+
+/* focus & hover */
+#q:focus,
+#q:hover,
+#search .icon:focus,
+#search .icon:hover {
+  box-shadow: none;
 }
-#kb-icon > svg {
-  opacity: .4;
+#search.focus,
+#search .icon:focus > svg {
+  box-shadow: 0 0 0 3px rgba(153, 153, 255, .375); /* focus outline */
+}
+#search.focus > * {
+  border-color: #99f !important; /* focus border color */
+}
+#search .icon:focus > svg {
+  border-radius: 1px;
+  background: rgba(153, 153, 255, .375); /* focus outline color */
+  color: #569;                           /* submit button background */
+}
+#search.focus:hover {
+  box-shadow:
+    0 3px 6px 2px rgba(0, 0, 0, .2),         /* hover shadow */
+    0 0   0   3px rgba(153, 153, 255, .375); /* focus outline */
+}
+#search:hover {
+  box-shadow:
+    0 3px 6px 2px rgba(0, 0, 0, .2);         /* hover shadow */
+}
+#search .icon:hover > svg {
+  color: #444;                               /* text color */
 }
 #q {
-  margin: 0;
-  padding: 0 0 0 .5em;
-  color: inherit;
+  flex-grow: 1;
+  border-left: 1px solid #bbb; /* form border */
+  border-radius: 4px 0 0 4px;  /* form border radius (left side) */
+  padding-left: .5em;
+  line-height: inherit;
+  /* Force <textarea> to be like <input> ('wrap=off' required by MSIE11.) */
+  /* (<textarea> shows diacritics in front of 1st char, <input> does not) */
   overflow: hidden;
   resize: none;
   white-space: pre;
-  line-height: inherit;
-  box-shadow: none !important;
-  width: 100%;
 }
-#q:invalid {
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="17.49" height="17.49" fill="%23fff"><path d="M6.5 11C4.01 11 2 8.99 2 6.5S4.01 2 6.5 2 11 4.01 11 6.5 8.99 11 6.5 11zm6 0h-.79l-.28-.27A6.471 6.471 0 0 0 13 6.5 6.5 6.5 0 1 0 6.5 13c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L17.49 16l-4.99-5z" fill="%23000" fill-opacity=".4"/></svg>') center left .6em/auto 1.1em no-repeat;
+#q::placeholder {
+  color: #888; /* placeholder text color */
 }
+#q::-webkit-input-placeholder {
+  color: #888; /* placeholder text color */
+}
+/*
+* Firefox: 'overflow:hidden' stops scroll-to-caret from working
+* on focusing element, but we need this when user paste text.
+*/
+@-moz-document url-prefix() {
+  #q {
+    overflow: auto;
+    scrollbar-width: none;
+  }
+}
+#search:invalid [type="reset"] { /* not on IE9 */
+  display: none;
+}
+#search button > svg {
+  margin: auto;
+}
+#search .icon {
+  padding: 0 .25em;
+  color: #999; /* placeholder text color + #111 */
+}
+#search .kb {
+  padding-right: .5em;
+}
+#search .submit {
+  width: 50px;
+  border-right: 1px solid #bbb; /* form border */
+  border-radius: 0 4px 4px 0;   /* form border radius (right side) */
+}
+#search .submit,
+#search .submit:focus,
+#search .submit:hover {
+  border-width: 0;
+  background: #569; /* submit button background */
+  color: #cde;      /* submit button forground */
+}
+#search .submit:focus,
+#search .submit:hover {
+  background: #57a; /* submit button background (bright) */
+  color: #def;      /* submit button foreground (bright) */
+}
+#search:invalid .submit:not(:focus):not(:hover) { /* not on IE9 */
+  border-width: 1px; /* form border width */
+  background: #fff;  /* form background */
+  color: inherit;
+}
+
 #search-wrapper {
   margin: 0 .5em .5em;
 }
@@ -137,7 +202,6 @@ footer,
   background: #a5e7ef;
   margin: 0 auto 1.5em;
 }
-/* FIXME: remove this .form-wrapper and modify some flex property of parent element <header> instead? */
 .form-wrapper {
   width: 100%;
 }
@@ -187,9 +251,10 @@ body.noquery header {
 body.noquery .form-wrapper {
   padding-bottom: 3rem;
 }
-body.noquery form {
+body.noquery #search {
   width: 70%;
-  max-width: 590px;
+  XXmax-width: 590px;
+  max-width: 610px;
   margin: 1.5rem auto 1.1rem;
 }
 @media only screen and (max-width: 590px) { body.noquery form { width: 80%; }}
@@ -205,6 +270,7 @@ body.noquery form {
   top: -2px;
   right: -1px;
   cursor: pointer;
+  border-radius: 4px; /* form border radius */
 }
 .selector > .switch {
   vertical-align: top;
@@ -415,12 +481,6 @@ mark {
   background: rgba(255, 193, 0, .6);
   color: inherit;
 }
-.tooltip mark {
-  background: rgba(255, 255, 255, .2);
-  color: inherit;
-  padding: .125em 0;
-}
-
 /**************************
 * Side menu (with content).
 */
@@ -486,39 +546,14 @@ a {
 */
 button,
 textarea {
-  background: transparent;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
-  border: 0;
-  border-radius: 2px;
   color: inherit;
+  background: transparent;
   font-family: inherit;
   font-size: inherit;
-  padding: .2em .125em .125em .125em;
-  margin: 2px 1.5px;
-  color: rgba(0, 0, 0, .75)
 }
-button.nostyle {
-  box-shadow: none;
-  margin: 0;
-  padding: 0;
-}
-
-.selector:hover,
-#kb-icon:focus,
-#q:focus,
-#q:hover,
-button:hover {
-  box-shadow: /*inset 1000px 1000px rgba(255, 255, 255, .25),*//* lighten */
-    0 3px 6px 2px rgba(0, 0, 0, .2);                           /* shadow */
-}
-button:hover {
-    cursor: pointer;
-}
-#q:hover:focus,
-button:hover:focus {
-  box-shadow: /*inset 1000px 1000px rgba(255, 255, 255, .25),*//* lighten */
-    0 3px 6px 2px rgba(0, 0, 0, .2),                           /* shadow */
-    0 0   0   3px rgb(173, 189, 224);                          /* focus outline */
+button {
+  cursor: pointer;
+  border: 0;
 }
   </style>
 </head>
@@ -553,9 +588,11 @@ button:hover:focus {
         <svg viewBox="0 0 648 729"><defs><filter id="a" color-interpolation-filters="sRGB"><feFlood/><feComposite in2="SourceGraphic" operator="out"/><feGaussianBlur stdDeviation="15"/><feOffset dx="5" dy="10"/><feComposite in2="SourceGraphic" operator="atop"/></filter></defs><path fill="#134141" d="M0 0H115L329 355L537 0H648L381 432H601v78H374V729H281V510H47V432H274z" filter="url(#a)"/></svg>
         <big>Svenskt tecken­språks­lexikon</big>
       </div>
-      <form>
-        <textarea id=q rows=1 required autofocus></textarea>
-        <button id=kb-icon class=nostyle title="Transkriptionssymboler (Esc)"><svg width="42" height="24" viewBox="0 0 21 12"><path d="M8 5h2v2H8zm0-3h2v2H8zM5 8h11v2H5zM2 8h2v2H2zm15 0h2v2h-2zm0-3h2v2h-2zm0-3h2v2h-2zm-3 3h2v2h-2zm0-3h2v2h-2zm-3 3h2v2h-2zm0-3h2v2h-2zM5 5h2v2H5zm0-3h2v2H5zM2 5h2v2H2zm0-3h2v2H2zM0 0v12h21V0zm1 1h19v10H1z"/></svg></button>
+      <form id=search>
+        <textarea id=q rows=1 autofocus required placeholder="Sök ord eller 􌤴􌥗􌥃􌥃􌤴􌤶􌤟􌥰􌦋􌦇…" wrap=off></textarea>
+        <button class=icon type=reset><svg height="17" width="19"><path d="M11-2v21H8V-2zM-1 7h21v3H-1z" fill="currentColor" transform="rotate(45 9.5,8.5)"/></svg></button>
+        <button class="icon kb" title="Transkriptionssymboler (Esc)"><svg width="42" height="24" viewBox="0 0 21 12"><path d="M8 5h2v2H8zm0-3h2v2H8zM5 8h11v2H5zM2 8h2v2H2zm15 0h2v2h-2zm0-3h2v2h-2zm0-3h2v2h-2zm-3 3h2v2h-2zm0-3h2v2h-2zm-3 3h2v2h-2zm0-3h2v2h-2zM5 5h2v2H5zm0-3h2v2H5zM2 5h2v2H2zm0-3h2v2H2zM0 0v12h21V0zm1 1h19v10H1z" fill="currentColor"/></svg></button>
+        <button type=submit class=submit><svg width="24" height="24" viewBox="0 0 18 18" fill="#fff"><path d="M18 16.5l-5.14-5.18h-.35a7 7 0 1 0-1.19 1.19v.35L16.5 18l1.5-1.5zM12 7A5 5 0 1 1 2 7a5 5 0 0 1 10 0z" fill="currentColor"></path></svg></button>
       </form>
       <div class="noquery-content info">
         <span class=size><span id=lexicon-size>00000</span> tecken.</span>
@@ -831,7 +868,7 @@ button:hover:focus {
   <script src="lexicon.js"></script>
   <script src="lexicon-data.js"></script>
   <script src="keyboard.js"></script>
-  <script>transcriptKeyboard($("form"), $("#q"), $("#kb-icon"))</script>
+  <script>transcriptKeyboard($("#search"), $("#q"), $("#search .kb"))</script>
   <script>
     /*****************
     * Open/close menu.

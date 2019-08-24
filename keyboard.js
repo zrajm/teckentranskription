@@ -70,7 +70,7 @@ function transcriptKeyboard(jqWrapper, jqInput, jqKeyboardIcon) {
 
     function insertKeyboardInDom(jqWrapper) {
         var keyboardHtml = [[
-            {class: "relation", prefix: "Relation: "},
+            {prefix: "Relation: "},
             "<nobr>",
             ["◌􌤺", "Brevid"],
             ["◌􌥛", "Framför"],
@@ -79,7 +79,7 @@ function transcriptKeyboard(jqWrapper, jqInput, jqKeyboardIcon) {
             ["◌􌥚", "Nedanför"],
             "</nobr>"
         ], [
-            {class: "attityd", prefix: "Attityd: "},
+            {prefix: "Attityd: "},
             "<nobr>",
             ["􌥓", "Vänsterriktad"],
             ["􌥔", "Högerriktad"],
@@ -97,7 +97,7 @@ function transcriptKeyboard(jqWrapper, jqInput, jqKeyboardIcon) {
             ["&nbsp;&nbsp;􌥙", "Nedåtvänd"],
             "</nobr>"
         ], [
-            {class: "lage", prefix: "Läge: "},
+            {prefix: "Läge: "},
             "<nobr>",
             ["􌤆", "Ansikte"],
             ["􌤂", "Övre ansikte"],
@@ -136,7 +136,7 @@ function transcriptKeyboard(jqWrapper, jqInput, jqKeyboardIcon) {
             ["􌤚", "Ben"],
             "</nobr>"
         ], [
-            {class: "handform", prefix: "Handform: "},
+            {prefix: "Handform: "},
             "<nobr>",
             ["􌤤", "A-hand", "a-handen-1"],
             ["􌥄", "Tumvinkelhand", "tumvinkelhanden-1"],
@@ -182,7 +182,7 @@ function transcriptKeyboard(jqWrapper, jqInput, jqKeyboardIcon) {
             ["􌦪", "4-hand", "4-handen-1"],
             "</nobr>"
         ], [
-            {class: "forflyttning"},
+            {},
             "<nobr>",
             ["&nbsp;&nbsp;􌥡", "Medial kontakt (modifierande)"],
             ["􌤟", "Kontakt"],
@@ -221,7 +221,7 @@ function transcriptKeyboard(jqWrapper, jqInput, jqKeyboardIcon) {
             ["􌦇", "Växelvis"],
             "</nobr>"
         ], [
-            {class: "rorelse"},
+            {},
             "<nobr>",
             ["􌥯", "Båge"],
             ["􌥰", "Cirkel"],
@@ -241,7 +241,7 @@ function transcriptKeyboard(jqWrapper, jqInput, jqKeyboardIcon) {
             ["&nbsp;&nbsp;􌦂", "Mot varandra"],
             "</nobr>"
         ], [
-            {class: "annat"},
+            {},
             "<nobr>",
             ["􌥻", "Upprepning"],
             ["􌥼", "Separator mellan artikulationer"],
@@ -249,7 +249,7 @@ function transcriptKeyboard(jqWrapper, jqInput, jqKeyboardIcon) {
             ["􌦩", "Separator mellan händer"],
             "</nobr>"
         ], [
-            {class: "framtida"},
+            {},
             "<nobr><div style=\"display:inline-block;font-size:.5em;line-height:120%\">Följande symboler är nya<br>och används inte i lexikon än:</div> ",
             ["􌦱", "Handform: Lamahanden"],
             ["􌦳", "Läge: Neutrala läget"],
@@ -265,7 +265,7 @@ function transcriptKeyboard(jqWrapper, jqInput, jqKeyboardIcon) {
             "</nobr>"
         ]].map(function (x) {
             var attr = x[0];
-            return "<span class=\"" + attr.class + "\">" + x
+            return "<span>" + x
                 .splice(1).map(function (y) {
                     var title;
                     if (typeof y === "string") {        // raw HTML
@@ -273,41 +273,13 @@ function transcriptKeyboard(jqWrapper, jqInput, jqKeyboardIcon) {
                     }
                     title = (attr.prefix || "") + y[1]; // title
                     if (y[2] !== undefined) {           //   with optional image
-                        title = title + "<img src='pic/x/" + y[2] + ".png' " +
-                            "style='display:block;margin:0 auto;height:150px'>";
+                        title = title + "<img src='pic/x/" + y[2] + ".png'>";
                     }
                     return "<button title=\"" + title + "\">" + y[0] + "</button>";
-                }).join("") + "<span>";
+                }).join("") + "</span>";
         }).join(" ");
-        return $(
-            "<div>" +
-                "<style>" +
-                ".relation     button { background-color: #C77BC7; }" +
-                ".attityd      button { background-color: #FCAA5D; }" +
-                ".lage         button { background-color: #7B7BC7; }" +
-                ".handform     button { background-color: #7BC77B; }" +
-                ".forflyttning button { background-color: #C77B7B; }" +
-                ".rorelse      button { background-color: #C77BC7; }" +
-                ".annat        button { background-color: #FCAA5D; }" +
-                ".framtida     button { background-color: #7B7BC7; }" +
-                "</style>" +
-                keyboardHtml +
-                "</div>"
-        )
+        return $("<div id=keyboard>" + keyboardHtml + "</div>")
             .appendTo(jqWrapper)
-            .css({
-                borderRadius: "4px",
-                maxWidth: "30em",
-                position: "absolute",
-                right: 0,
-                zIndex: 10,
-                background: "#fff",
-                boxShadow: "0 16px 24px 2px rgba(0,0,0,.14)," +
-                        "0 6px 30px 5px rgba(0,0,0,.12)," +
-                        "0 8px 10px -5px rgba(0,0,0,.4)",
-                lineHeight: 0,
-                padding: ".125em"
-            })
             .hide();
     }
 

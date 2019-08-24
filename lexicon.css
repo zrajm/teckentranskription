@@ -42,7 +42,7 @@ noscript {
   font-weight: bold;
   margin: 1em 0 0;
   padding-top: 1em;
-  border-top: 1px solid rgba(0,0,0,.25);
+  border-top: 1px solid rgba(0, 0, 0, .25);
 }
 .menu div.bottom {
   position: absolute;
@@ -93,6 +93,23 @@ noscript {
 /**************
 * Text content.
 */
+.tooltip mark {
+  background: rgba(255, 255, 255, .2);
+  color: inherit;
+  padding: .125em 0;
+}
+.tooltip img {
+  background: #fff;
+  padding: 4px 6px;
+  border-radius: 4px;
+  display: block;
+  margin: 0 auto;
+  height: 150px
+}
+a:focus {
+  background: rgb(173, 189, 224); /* dark focus outline color */
+  border-radius: 1px;
+}
 a:focus,
 a:hover {
   text-decoration: underline;
@@ -162,6 +179,52 @@ table td {
 .columns {
   columns: 25em;
   column-gap: 1em;
+}
+
+/******************
+* Virtual keyboard.
+*/
+#keyboard {
+  border: 0 !important;
+  margin-top: -1px;
+  border-radius: 4px;
+  max-width: 30em;
+  width: 100%;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  z-index: 1;
+  box-shadow:
+    0 16px 24px  2px rgba(0, 0, 0, .14),
+    0 6px  30px  5px rgba(0, 0, 0, .12),
+    0 8px  10px -5px rgba(0, 0, 0, .4);
+  line-height: 0;
+  padding: 4px 2px 4px 4px;
+  text-align: left;
+}
+#keyboard nobr {
+  display: inline-block;
+}
+#keyboard > :nth-child(5n+1) button { background: #c77bc7; }
+#keyboard > :nth-child(5n+2) button { background: #fcaa5d; }
+#keyboard > :nth-child(5n+3) button { background: #7b7bc7; }
+#keyboard > :nth-child(5n+4) button { background: #7bc77b; }
+#keyboard > :nth-child(5n+5) button { background: #c77b7b; }
+#keyboard button {
+  padding: 4px 4px 3px;
+  margin: 2px 1.5px;
+  border-radius: 2px;
+  color: rgba(0, 0, 0, .75);
+}
+.selector:hover,
+#keyboard button:hover {
+  box-shadow: inset 1000px 1000px rgba(255, 255, 255, .2),/* hover brighten inside */
+    0 3px 6px 2px rgba(0, 0, 0, .2);                      /* hover shadow */
+}
+#keyboard button:focus:hover {
+  box-shadow: inset 1000px 1000px rgba(255, 255, 255, .2),/* hover brighten inside */
+    0 3px 6px 2px rgba(0, 0, 0, .2),                      /* hover shadow */
+    0 0   0   3px rgb(173, 189, 224);                     /* dark focus outline */
 }
 
 /*[eof]*/
