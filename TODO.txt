@@ -207,7 +207,7 @@
     sounds like it would always be good, right?)
 *** TODO Overlay by entering in URL
 *** TODO Overlay by clicking on Swedish of sign
-** [0/8] Query syntax
+** [1/9] Query syntax
 *** TODO Don't hilite space in front of word in search results
     The edge-of-word matcher shouldn't hilite the space in front of a word.
 
@@ -906,7 +906,9 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
-** DONE Make fullscreen default search mode
+** DONE Lexicon: Add support for Hedberg circle notation
+   CLOSED: [2019-08-26 Mon 01:39]
+** DONE Lexicon: Make fullscreen default search mode
    CLOSED: [2019-08-25 Sun 22:06]
 ** [7/7] Lexicon: Add submit button & placeholder text.
    Use the magnifier icon that now is the search text placeholder, and use

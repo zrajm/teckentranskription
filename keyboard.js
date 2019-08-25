@@ -256,10 +256,10 @@ function transcriptKeyboard(jqWrapper, jqInput, jqKeyboardIcon) {
             "</nobr>",
             ["􌦷", "Medial kontakt (oberoende)"],
             ["􌦴", "Flätas"],
-            ["􌦮", "Cirkel i frontalplan"],
-            ["􌦯", "Cirkel i horisontalplan"],
+            ["􌦮", "Cirkel i frontalplan<br>(matchar 􌦮 och 􌥰􌥿􌥰􌦀􌥰􌦌)"],
+            ["􌦯", "Cirkel i horisontalplan<br>(matchar 􌦯 och 􌥰􌦈􌥰􌥽􌥰􌦉)"],
             "<nobr>",
-            ["􌦰", "Cirkel i sagittalplan"],
+            ["􌦰", "Cirkel i sagittalplan<br>(matchar 􌦰 och 􌥰􌥾􌥰􌦊􌥰􌦋)"],
             ["􌦶", "Studs"],
             ["&nbsp;&nbsp;􌦵", "Från varandra"],
             "</nobr>"

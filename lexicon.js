@@ -451,7 +451,10 @@ function parseQuery(queryStr) {
         "#":                     // one handshape symbol (+ optional relation)
                 "[􌤤􌥄􌤣􌤧􌥋􌥉􌦫􌤩􌤎􌥇􌦬􌤦􌤲􌤱􌥑􌤢􌥂􌤪􌥎􌥈􌤨􌤿􌥌􌥆􌤫􌦭􌤬􌥅􌤥􌥊􌦱􌤽􌤯􌤭􌤮􌤰􌤳􌥃􌥒􌥟􌦪][􌤺􌥛􌤻􌤹􌥚]?",
         "^": "[􌤺􌥛􌤻􌤹􌥚]",          // one relation symbol
-        ":": "[􌥓􌥔􌤴􌥕􌤵􌥖][􌤶􌥗􌤷􌥘􌤸􌥙]"  // one attitude symbol
+        ":": "[􌥓􌥔􌤴􌥕􌤵􌥖][􌤶􌥗􌤷􌥘􌤸􌥙]", // one attitude symbol
+        "􌦮": "(?:􌦮[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?|􌥰[􌥿􌦀􌦌])", // circle in frontal plane
+        "􌦯": "(?:􌦯[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?|􌥰[􌦈􌥽􌦉])", // circle in horisontal plane
+        "􌦰": "(?:􌦰[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?|􌥰[􌥾􌦊􌦋])", // circle in saggital plane
     };
     // Unquoted place/handshape symbols should also match a following
     // (optional) relation symbol.
@@ -465,7 +468,7 @@ function parseQuery(queryStr) {
     // hitting/twisting/divering/converging) should also match a following
     // (optional) motion direction symbol.
     splitIntoChars(
-        "􌥯􌦶􌥰􌦮􌦯􌦰􌥱􌥲􌥹􌦅"
+        "􌥯􌦶􌥰􌥱􌥲􌥹􌦅"
     ).forEach(function (char) {
         metachars[char] = char + "[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?";
     });
