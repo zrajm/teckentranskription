@@ -51,7 +51,7 @@ header {
   background: #a5e7ef;            /* theme color */
   padding: .25em .5em .35em .5em;
   color: #444;                    /* text color */
-  padding-right: 48px;            /* room for menu button */
+  padding-left: 48px;             /* room for menu button */
 }
 
 #search {
@@ -485,24 +485,25 @@ mark {
 * Side menu (with content).
 */
 .menu {
-  width: 16em;
+  width: 100%;
   font-size: smaller;
   overflow: hidden;
   position: absolute;
-  right: 0;
+  left: 0;
   top: 0;
   height: 100%;
 }
 .menu aside {
   z-index: 1;
-  margin-left: 5px;
+  width: 16em;
+  margin-right: 5px;
   padding: 1.5em;
-  box-shadow: -2px 0 3px rgba(0, 0, 0, .09);
+  box-shadow: 2px 0 3px rgba(0, 0, 0, .09);
   transition: all .2s ease-in-out;
   position: relative;
   background: white;
   height: 100%;
-  left: 100%;
+  right: 100%;
 }
 .menu button {
   z-index: 1;
@@ -511,7 +512,7 @@ mark {
   position: absolute;
   width: .85rem;
   top: 13px;
-  right: 6px;
+  left: 6px;
   padding: 9px;
   color: #000;
   opacity: .5;
@@ -562,8 +563,8 @@ button {
   <aside class=menu>
     <button class="toggle menu-open"><svg height="17" width="19"><path d="M0 0h19v3H0zm0 14h19v3H0zm0-7h19v3H0z" fill="currentColor"/></svg></button>
     <aside>
-      <button class="toggle menu-close"><svg height="17" width="19"><path d="M11-2v21H8V-2zM-1 7h21v3H-1z" transform="rotate(45 9.5,8.5)"/></svg></button>
-      <ul>
+      <button class="toggle menu-close" tabindex=-1><svg height="17" width="19"><path d="M11-2v21H8V-2zM-1 7h21v3H-1z" transform="rotate(45 9.5,8.5)" fill="currentColor"/></svg></button>
+      <ul style="margin-top:1.25em">
         <li><a href="#help">Sökhjälp</a>
         <!--li><a href="#">Om lexikonet</a-->
       </ul>

@@ -311,21 +311,22 @@
 
     Present search result in a sortable table? Should be able to sort by swedish
     word, and by sign language.
-** [1/27] GUI
-*** [5/10] Add submit button & placeholder text.
+** [0/26] GUI
+*** [8/11] Add submit button & placeholder text.
     Use the magnifier icon that now is the search text placeholder, and use
     that in the submit button instead. Add placeholder text. Maybe something
     like 'Sök transkription eller översättning…'
-**** TODO Move menu button to left side
 **** TODO Use flexboxes to center images in buttons
 **** TODO Remove '.form-wrapper' and use flexbox instead(?)
      And modify some flex property of parent element <header> instead?
 **** TODO Move SVG to CSS? -- Does that work with currentFill?
      (To make HTML form more readable.)
-**** TODO Add tabindex for clear/virtual keyboard/submit/menu buttons etc.
-**** TODO Shift-tab from search field should not bring up menu          :BUG:
-     Menu shouldn't pop up when menu button is focused, but only after enter or
-     space is pressed.
+**** DONE Shift-tab from search field should not bring up menu          :BUG:
+     CLOSED: [2019-08-25 Sun 18:41]
+     Menu shouldn't pop up when menu button is focused, but only on click (or
+     enter/space) on menu button.
+**** DONE Move menu to left side
+     CLOSED: [2019-08-24 Sat 10:27]
 **** DONE Redesign focus markings
 **** DONE Widen search form in fullscreen mode
 **** DONE Use flexboxes for search form layout
@@ -336,6 +337,30 @@
      The stuff specific to the search form should use CSS selectors containing
      with '#search' (not 'form').
 **** DONE Fix virtual keyboard CSS
+*** TODO Unify :focus marking styles
+    There should be two types of focus markers: borders and icons. Menu and
+    form icons (clear and keyboard) button should look the same.
+*** [0/8] Unify menu & overlay style
+    Menu & overlays should have the same look-and-feel. Should this also apply
+    to the on-screen keyboard?
+**** TODO Use same style for on-screen keyboard(?)
+     Ie darken everything all but input form when using the on-screen keyboard?
+**** TODO Scrim for both menu and overlay
+     Both menu and overlay should have dark scrim outside it. It should look
+     the same for both.
+**** TODO Hover on scrim: Hilite close button
+**** TODO Click on scrim: Close menu/overlay
+**** TODO Click on close: Close menu/overlay
+**** TODO Escape: Close menu/overlay
+**** TODO Focus behavior: Keyboard focus should work the same
+     The menu/overlay should not be focusable in itself (as the overlay
+     currently is), only items inside it.
+
+     One should not be able to focus elements outside the currently opened
+     menu/overlay. (Maybe by setting the all tabindexes on the page to negative
+     values?)
+**** TODO Border: Should be the same
+     4px rounded corner? + Textbox shadow?
 *** TODO Rethink/redesign the virtual keyboard
     The virtual keyboard should be replaced with something a bit more
     intuitive. A proper self-explanatory interface for writing sign language
@@ -348,8 +373,6 @@
     'Svenskt teckenspråkslexikon' and the CC license.
 
     + Add CC license text + note data source
-*** TODO Close menu when clicking outside it
-*** TODO Darken background when opening menu(?)
 *** TODO On pageload: Faster selection of fullscreen or normal search
     Currently, if loading the page without a query, first the 'small' version
     of the query is displayed briefly.
@@ -575,7 +598,7 @@
 
    Or possibly this one (a list of polyfills):
    https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills
-** TODO Check apperance in MSIE/Edge/Safari
+** TODO Check appearance in MSIE/Edge/Safari
 *** TODO Multiline glyph list entries
     Eg 'Förs kort åt vänster med distinkt avslutning'.
 *** TODO <details> arrows

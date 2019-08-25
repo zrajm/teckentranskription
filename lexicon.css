@@ -21,7 +21,10 @@ noscript {
 * Side menu (with content).
 */
 .menu.shown aside {
-  left: 0%;
+  right: 0%;
+}
+.menu:not(.shown) aside {
+  visibility: hidden;
 }
 .menu aside ul {
   line-height: 2;
@@ -58,6 +61,8 @@ noscript {
   color: rgba(0,0,0,.95);
   opacity: 1;
 }
+.menu button.menu-open:focus + aside > .menu-close,
+.menu button.menu-open:focus,
 .menu button.menu-open:hover {
   background: rgba(0,0,0,.95);
   color: #a5e7ef;
