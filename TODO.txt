@@ -312,31 +312,11 @@
     Present search result in a sortable table? Should be able to sort by swedish
     word, and by sign language.
 ** [0/26] GUI
-*** [8/11] Add submit button & placeholder text.
-    Use the magnifier icon that now is the search text placeholder, and use
-    that in the submit button instead. Add placeholder text. Maybe something
-    like 'Sök transkription eller översättning…'
-**** TODO Use flexboxes to center images in buttons
-**** TODO Remove '.form-wrapper' and use flexbox instead(?)
-     And modify some flex property of parent element <header> instead?
-**** TODO Move SVG to CSS? -- Does that work with currentFill?
-     (To make HTML form more readable.)
-**** DONE Shift-tab from search field should not bring up menu          :BUG:
-     CLOSED: [2019-08-25 Sun 18:41]
-     Menu shouldn't pop up when menu button is focused, but only on click (or
-     enter/space) on menu button.
-**** DONE Move menu to left side
-     CLOSED: [2019-08-24 Sat 10:27]
-**** DONE Redesign focus markings
-**** DONE Widen search form in fullscreen mode
-**** DONE Use flexboxes for search form layout
-     Can't use 'overflow: hidden' here because that would hide the virtual
-     keyboard (its element is put inside the form, but displayed outside it in
-     the DOM).
-**** DONE Styling of search buttons/textarea should be done using #search
-     The stuff specific to the search form should use CSS selectors containing
-     with '#search' (not 'form').
-**** DONE Fix virtual keyboard CSS
+*** TODO Use flexboxes to center images in buttons
+*** TODO Remove '.form-wrapper' and use flexbox instead(?)
+    And modify some flex property of parent element <header> instead?
+*** TODO Move SVG to CSS? -- Does that work with currentFill?
+    (To make HTML form more readable.)
 *** TODO Unify :focus marking styles
     There should be two types of focus markers: borders and icons. Menu and
     form icons (clear and keyboard) button should look the same.
@@ -926,6 +906,28 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Make fullscreen default search mode
+   CLOSED: [2019-08-25 Sun 22:06]
+** [7/7] Lexicon: Add submit button & placeholder text.
+   Use the magnifier icon that now is the search text placeholder, and use
+   that in the submit button instead. Add placeholder text. Maybe something
+   like 'Sök transkription eller översättning…'
+*** DONE Shift-tab from search field should not bring up menu           :BUG:
+    CLOSED: [2019-08-25 Sun 18:41]
+    Menu shouldn't pop up when menu button is focused, but only on click (or
+    enter/space) on menu button.
+*** DONE Move menu to left side
+    CLOSED: [2019-08-24 Sat 10:27]
+*** DONE Redesign focus markings
+*** DONE Widen search form in fullscreen mode
+*** DONE Use flexboxes for search form layout
+    Can't use 'overflow: hidden' here because that would hide the virtual
+    keyboard (its element is put inside the form, but displayed outside it in
+    the DOM).
+*** DONE Styling of search buttons/textarea should be done using #search
+    The stuff specific to the search form should use CSS selectors containing
+    with '#search' (not 'form').
+*** DONE Fix virtual keyboard CSS
 ** DONE Lexicon: Newlines->space when pasting into <textarea>           :BUG:
    CLOSED: [2019-08-16 Fri 11:08]
    This is a bug since the textarea cannot handle newlines well, and user
