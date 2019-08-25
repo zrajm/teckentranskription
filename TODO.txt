@@ -340,14 +340,11 @@
 *** TODO Unify :focus marking styles
     There should be two types of focus markers: borders and icons. Menu and
     form icons (clear and keyboard) button should look the same.
-*** [0/8] Unify menu & overlay style
+*** [1/8] Unify menu & overlay style
     Menu & overlays should have the same look-and-feel. Should this also apply
     to the on-screen keyboard?
 **** TODO Use same style for on-screen keyboard(?)
      Ie darken everything all but input form when using the on-screen keyboard?
-**** TODO Scrim for both menu and overlay
-     Both menu and overlay should have dark scrim outside it. It should look
-     the same for both.
 **** TODO Hover on scrim: Hilite close button
 **** TODO Click on scrim: Close menu/overlay
 **** TODO Click on close: Close menu/overlay
@@ -361,6 +358,10 @@
      values?)
 **** TODO Border: Should be the same
      4px rounded corner? + Textbox shadow?
+**** DONE Scrim for both menu and overlay
+     CLOSED: [2019-08-25 Sun 21:52]
+     Both menu and overlay should have dark scrim outside it. It should look
+     the same for both.
 *** TODO Rethink/redesign the virtual keyboard
     The virtual keyboard should be replaced with something a bit more
     intuitive. A proper self-explanatory interface for writing sign language

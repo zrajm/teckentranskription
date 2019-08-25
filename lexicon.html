@@ -484,21 +484,27 @@ mark {
 /**************************
 * Side menu (with content).
 */
+.menu.shown {
+  visibility: visible;
+  background: rgba(0, 0, 0, .75);
+}
 .menu {
   width: 100%;
+  z-index: 1;
+  visibility: hidden;
   font-size: smaller;
   overflow: hidden;
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   height: 100%;
+  transition: all .2s ease-in-out;
 }
 .menu aside {
   z-index: 1;
+  visibility: visible;
   width: 16em;
-  margin-right: 5px;
   padding: 1.5em;
-  box-shadow: 2px 0 3px rgba(0, 0, 0, .09);
   transition: all .2s ease-in-out;
   position: relative;
   background: white;
@@ -507,6 +513,7 @@ mark {
 }
 .menu button {
   z-index: 1;
+  visibility: visible;
   border-radius: 2px;
   box-sizing: content-box;
   position: absolute;
@@ -875,10 +882,19 @@ button {
     * Open/close menu.
     */
     $(function () {
-        var $menu = $(".menu");
-        $menu.find("button.toggle").on("click", function () {
-            $menu.toggleClass("shown");
-        });
+        var $menu = $(".menu")
+            .on("click", ".toggle", function (e) { // open/close button
+                $menu.toggleClass("shown");
+            }).on("click", function (e) {          // scrim
+                if (e.target === this) {
+                    $menu.removeClass("shown");
+                }
+            }).on("keydown", function (e) {        // Escape key
+                if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) { return; }
+                if (e.which === 27) {
+                    $menu.removeClass("shown");
+                }
+            });
     });
   </script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
