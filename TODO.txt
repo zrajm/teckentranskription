@@ -49,14 +49,6 @@
 ** TODO Find candidates for cleaning
    Useful one-liner for finding old files:
    `for x (**/*(.)) { echo $x; git l $x A 1 } M`
-* Microsoft browser problems
-** Edge (version 41.16299.371.0)
-*** TODO Pressing enter in input field does not result in a search
-*** TODO Onscreen keyboard have too small buttons
-** Internet Explorer 11 (version 11.371.16299.0)
-*** TODO Pressing enter in input field does not result in a search
-*** TODO Placeholder icon is not displayed
-*** TODO Onscreen keyboard have too small buttons
 * General
 ** TODO Date for latest update of typeface
    There should also be a link to a page with instructions for how to
@@ -311,10 +303,7 @@
 
     Present search result in a sortable table? Should be able to sort by swedish
     word, and by sign language.
-** [0/26] GUI
-*** TODO Use flexboxes to center images in buttons
-*** TODO Remove '.form-wrapper' and use flexbox instead(?)
-    And modify some flex property of parent element <header> instead?
+** [1/27] GUI
 *** TODO Move SVG to CSS? -- Does that work with currentFill?
     (To make HTML form more readable.)
 *** TODO Unify :focus marking styles
@@ -906,6 +895,9 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Remove '.form-wrapper' and use flexbox instead(?)
+   CLOSED: [2019-08-26 Mon 02:39]
+   And modify some flex property of parent element <header> instead?
 ** DONE Lexicon: Add support for Hedberg circle notation
    CLOSED: [2019-08-26 Mon 01:39]
 ** DONE Lexicon: Make fullscreen default search mode

@@ -60,6 +60,7 @@ header {
   position: relative; /* on top of menu */
   height: 48px;
   line-height: 46px;  /* height - (top + bottom border) */
+  width: 100%;
 }
 #search > * {
   border: solid #bbb;  /* form border */
@@ -185,9 +186,11 @@ footer {
   margin: auto 0 .5em;
   text-align: center;
 }
+.info,
 footer,
 #search-brief {
   font-size: smaller;
+  color: #000;
   opacity: .55;
 }
 #search-brief { margin: .5em 0; }
@@ -202,9 +205,6 @@ footer,
   background: #a5e7ef; /* theme color */
   margin: 0 auto 1.5em;
 }
-.form-wrapper {
-  width: 100%;
-}
 
 /*************************
 * Full screen search form.
@@ -218,15 +218,10 @@ footer,
 body.noquery .noquery-content { display: block; }
 body.noquery #search-wrapper { display: none; }
 
+.logo { margin-top: -3em; }
 .logo svg {
   height: 5em;
   margin: .5em auto;
-}
-.info {
-  font-size: smaller;
-  color: #000;
-  opacity: .55;
-  margin: 1em 0;
 }
 @media only screen and (max-width: 450px) { .info .size { display: none; } }
 @media only screen and (max-width: 330px) { .info .beg  { display: none; } }
@@ -247,9 +242,6 @@ body.noquery header {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
-body.noquery .form-wrapper {
-  padding-bottom: 3rem;
 }
 body.noquery #search {
   width: 70%;
@@ -591,22 +583,20 @@ button {
     </aside>
   </aside>
   <header>
-    <div class=form-wrapper>
-      <div class="noquery-content logo">
-        <svg viewBox="0 0 648 729"><defs><filter id="a" color-interpolation-filters="sRGB"><feFlood/><feComposite in2="SourceGraphic" operator="out"/><feGaussianBlur stdDeviation="15"/><feOffset dx="5" dy="10"/><feComposite in2="SourceGraphic" operator="atop"/></filter></defs><path fill="#134141" d="M0 0H115L329 355L537 0H648L381 432H601v78H374V729H281V510H47V432H274z" filter="url(#a)"/></svg>
-        <big>Svenskt tecken­språks­lexikon</big>
-      </div>
-      <form id=search>
-        <textarea id=q rows=1 autofocus required placeholder="Sök ord eller 􌤴􌥗􌥃􌥃􌤴􌤶􌤟􌥰􌦋􌦇…" wrap=off></textarea>
-        <button class=icon type=reset><svg height="17" width="19"><path d="M11-2v21H8V-2zM-1 7h21v3H-1z" fill="currentColor" transform="rotate(45 9.5,8.5)"/></svg></button>
-        <button class="icon kb" title="Transkriptionssymboler (Esc)"><svg width="42" height="24" viewBox="0 0 21 12"><path d="M8 5h2v2H8zm0-3h2v2H8zM5 8h11v2H5zM2 8h2v2H2zm15 0h2v2h-2zm0-3h2v2h-2zm0-3h2v2h-2zm-3 3h2v2h-2zm0-3h2v2h-2zm-3 3h2v2h-2zm0-3h2v2h-2zM5 5h2v2H5zm0-3h2v2H5zM2 5h2v2H2zm0-3h2v2H2zM0 0v12h21V0zm1 1h19v10H1z" fill="currentColor"/></svg></button>
-        <button type=submit class=submit><svg width="24" height="24" viewBox="0 0 18 18" fill="#fff"><path d="M18 16.5l-5.14-5.18h-.35a7 7 0 1 0-1.19 1.19v.35L16.5 18l1.5-1.5zM12 7A5 5 0 1 1 2 7a5 5 0 0 1 10 0z" fill="currentColor"></path></svg></button>
-      </form>
-      <div class="noquery-content info">
-        <span class=size><span id=lexicon-size>## ###</span> tecken.</span>
-        <span class=date><span class=beg>Upp­date­rad</span> <span id=lexicon-date>## månad ####</span>.</span>
-        <a href="#help">Sökhjälp</a>.
-      </div>
+    <div class="noquery-content logo">
+      <svg viewBox="0 0 648 729"><defs><filter id="a" color-interpolation-filters="sRGB"><feFlood/><feComposite in2="SourceGraphic" operator="out"/><feGaussianBlur stdDeviation="15"/><feOffset dx="5" dy="10"/><feComposite in2="SourceGraphic" operator="atop"/></filter></defs><path fill="#134141" d="M0 0H115L329 355L537 0H648L381 432H601v78H374V729H281V510H47V432H274z" filter="url(#a)"/></svg>
+      <big>Svenskt tecken­språks­lexikon</big>
+    </div>
+    <form id=search>
+      <textarea id=q rows=1 autofocus required placeholder="Sök ord eller 􌤴􌥗􌥃􌥃􌤴􌤶􌤟􌥰􌦋􌦇…" wrap=off></textarea>
+      <button class=icon type=reset><svg height="17" width="19"><path d="M11-2v21H8V-2zM-1 7h21v3H-1z" fill="currentColor" transform="rotate(45 9.5,8.5)"/></svg></button>
+      <button class="icon kb" title="Transkriptionssymboler (Esc)"><svg width="42" height="24" viewBox="0 0 21 12"><path d="M8 5h2v2H8zm0-3h2v2H8zM5 8h11v2H5zM2 8h2v2H2zm15 0h2v2h-2zm0-3h2v2h-2zm0-3h2v2h-2zm-3 3h2v2h-2zm0-3h2v2h-2zm-3 3h2v2h-2zm0-3h2v2h-2zM5 5h2v2H5zm0-3h2v2H5zM2 5h2v2H2zm0-3h2v2H2zM0 0v12h21V0zm1 1h19v10H1z" fill="currentColor"/></svg></button>
+      <button type=submit class=submit><svg width="24" height="24" viewBox="0 0 18 18" fill="#fff"><path d="M18 16.5l-5.14-5.18h-.35a7 7 0 1 0-1.19 1.19v.35L16.5 18l1.5-1.5zM12 7A5 5 0 1 1 2 7a5 5 0 0 1 10 0z" fill="currentColor"></path></svg></button>
+    </form>
+    <div class="noquery-content info">
+      <span class=size><span id=lexicon-size>## ###</span> tecken.</span>
+      <span class=date><span class=beg>Upp­date­rad</span> <span id=lexicon-date>## månad ####</span>.</span>
+      <a href="#help">Sökhjälp</a>.
     </div>
   </header>
   <main id=search-wrapper class=video-view>
