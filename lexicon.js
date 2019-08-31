@@ -879,7 +879,8 @@ urlFragment.onVideoToggle(showVideos);
 // Form submission.
 $(function () {
     "use strict";
-    var $form = $("#search").on("submit",  onSubmit);
+    var $form = $("#search")
+        .on("submit", onSubmit);
     var $q = $("#q")
         .on("focus blur", onFocus)
         .on("keydown", onKey)
@@ -904,6 +905,10 @@ $(function () {
     function onSubmit(e) {
         var queryStr = $q.val() || "";
         e.preventDefault();                     // don't submit to server
+        // On touchscreen devices (where no input type has hover).
+        if (window.matchMedia('not all and (any-hover:hover)').matches) {
+            $q.blur(); // hide soft keyboard
+        }
         urlFragment.set({ query: queryStr }) && searchLexicon(queryStr);
     }
     // Paste in textarea = filter out newlines (use jQuery .paste plugin).
