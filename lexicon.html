@@ -80,7 +80,7 @@ header {
   box-shadow: 0 0 0 3px rgba(153, 153, 255, .375); /* focus outline */
 }
 #search.focus > * {
-  border-color: #99f !important; /* focus border color */
+  border-color: #99f; /* focus border color */
 }
 #search .icon:focus > svg {
   border-radius: 1px;
@@ -110,7 +110,7 @@ header {
   flex-grow: 1;
   border-left: 1px solid #bbb; /* form border */
   border-radius: 4px 0 0 4px;  /* form border radius (left side) */
-  padding-left: .5em;
+  padding-left: 10px; /* icon button padding * 2 */
   line-height: inherit;
   /* Force <textarea> to be like <input> ('wrap=off' required by MSIE11.) */
   /* (<textarea> shows diacritics in front of 1st char, <input> does not) */
@@ -141,24 +141,22 @@ header {
   margin: auto;
 }
 #search .icon {
-  padding: 0 .25em;
-  color: #999; /* placeholder text color + #111 */
+  padding: 0 5px; /* icon button padding */
+  color: #999;    /* placeholder text color + #111 */
 }
 #search .kb {
-  padding-right: .5em;
+  padding-right: 10px; /* icon button padding * 2 */
 }
 #search .submit {
-  padding: .5em;
-  width: 50px;
-  border-right: 1px solid #bbb; /* form border */
-  border-radius: 0 4px 4px 0;   /* form border radius (right side) */
+  padding: 0 12px;               /* submit button padding */
+  border: 1px solid transparent;
+  border-radius: 0 4px 4px 0;    /* form border radius (right side) */
 }
 #search .submit,
 #search .submit:focus,
 #search .submit:hover {
-  border-width: 0;
   background: #569; /* submit button background */
-  color: #cde;      /* submit button forground */
+  color: #cde;      /* submit button foreground */
 }
 #search .submit:focus,
 #search .submit:hover {
@@ -166,9 +164,12 @@ header {
   color: #def;      /* submit button foreground (bright) */
 }
 #search:invalid .submit:not(:focus):not(:hover) { /* not on IE9 */
-  border-width: 1px; /* form border width */
-  background: #fff;  /* form background */
+  border-color: #bbb; /* form border color */
+  background: #fff;   /* form background */
   color: inherit;
+}
+#search.focus:invalid .submit:not(:focus):not(:hover) { /* not on IE9 */
+  border-color: #99f; /* focus border color */
 }
 
 #search-wrapper {
