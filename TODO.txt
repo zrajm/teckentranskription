@@ -946,6 +946,10 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Remove warning when submitting empty query
+   CLOSED: [2019-08-31 Sat 07:34]
+   The "Please fill out this field." should not appear when pressing the sumbit
+   button without having entered a query.
 ** DONE Lexicon: On touchscreen devices: Remove hover shadow on form
    CLOSED: [2019-08-31 Sat 06:15]
 ** DONE Lexicon: On touchscreen devices: Hide soft keyboard on submit
