@@ -25,22 +25,66 @@
     Caniuse.com tab 'Known Issues' says that ':invalid' might not work on
     <form> element in Firefox <51 and IE/Edge.
 
-    https://caniuse.com/#search=invalid
+    https://caniuse.com/#feat=form-validation
 *** flexbox
+    Used for vertical layout in <body> and for horizontal layout of the search
+    form.
+    |----------+---------------|
+    | 2013 Dec | Android 4.4+  |
+    | 2012 Jun | Chrome 21+    |
+    | 2014 Mar | Firefox 28+   |
+    | 2015 Jul | IE/Edge 12+   |
+    | 2012 Nov | Opera 12+     |
+    | 2014 Oct | Safari 9+     |
+    | 2010 Sep | Safari iOS 9+ |
+    |----------+---------------|
+    Not using vendor prefixes.
+
+    NOTE: There are good chances this will fail quite miserably on Internet
+    Explorer (IE10 requires '-ms-' vendor prefix, and IE11 is very buggy).
+
+    https://caniuse.com/#feat=flexbox
 *** .selectionStart/.selectionEnd
-    Chrome, Firefox, IE/Edge 9+, Safari 4+, Opera, Android etc.
+    Used for filtering away newlines when user pastes into search form.
+    (Filter is disabled if browser support isn't present.)
+    |----------+---------------|
+    | 2009 Oct | Android 2.1+  |
+    | 2010 Jan | Chrome 4+     |
+    | 2006 Oct | Firefox 2+    |
+    | 2011 Mar | IE/Edge 9+    |
+    | 2011 Jun | Opera 11.5+   |
+    | 2009 Jun | Safari 4+     |
+    | 2010 Sep | Safari iOS 4+ |
+    |----------+---------------|
+    https://caniuse.com/#feat=input-selection
 *** CSS :nth-child() selector
     Used by virtual keyboard button background color.
     |----------+-----------------|
     | 2008 Nov | Safari 3.2+     |
-    | 2009 Jun | Firefox 3.5     |
+    | 2009 Jun | Firefox 3.5+    |
     | 2009 Oct | Android 2.1+    |
     | 2009 Sep | Opera 10+       |
     | 2010 Jan | Chrome 4+       |
     | 2010 Apr | Safari iOS 3.2+ |
     | 2011 Mar | IE/Edge 9+      |
     |----------+-----------------|
-    https://caniuse.com/#search=CSS3%20selectors
+    https://caniuse.com/#feat=css-sel3
+*** .matchMedia methods
+    Used to detect touchscreen devices, and hide on-screen keyboard when
+    submitting search form.
+    |----------+---------------|
+    | 2011 Feb | Android 3+    |
+    | 2011 Feb | Chrome 9+     |
+    | 2011 Aug | Firefox 6+    |
+    | 2012 Sep | IE/Edge 10+   |
+    | 2012 Nov | Opera 12.1+   |
+    | 2012 Jul | Safari 12.1+  |
+    | 2012 Mar | Safari iOS 5+ |
+    |----------+---------------|
+    NOTE: Will most likely fail catastrophically on unsupported browsers
+    (probably making search submitting impossible).
+
+    https://caniuse.com/#feat=matchmedia
 ** MSIE 8 (and older)
 ** Safari 3 (and older)
 ** Opera 10 (and older)
@@ -303,7 +347,7 @@
 
     Present search result in a sortable table? Should be able to sort by swedish
     word, and by sign language.
-** [1/27] GUI
+** [0/27] GUI
 *** TODO Move SVG to CSS? -- Does that work with currentFill?
     (To make HTML form more readable.)
 *** TODO Unify :focus marking styles
@@ -331,6 +375,13 @@
      CLOSED: [2019-08-25 Sun 21:52]
      Both menu and overlay should have dark scrim outside it. It should look
      the same for both.
+*** TODO Shrink root font size somewhat
+    Current root font size is 22px, but other search engines use:
+    |------------+------|
+    | Ecosia     | 20px |
+    | Duckduckgo | 18px |
+    | Google     | 18px |
+    |------------+------|
 *** TODO Rethink/redesign the virtual keyboard
     The virtual keyboard should be replaced with something a bit more
     intuitive. A proper self-explanatory interface for writing sign language
