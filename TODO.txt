@@ -895,6 +895,8 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: On touchscreen devices: Remove hover shadow on form
+   CLOSED: [2019-08-31 Sat 06:15]
 ** DONE Lexicon: On touchscreen devices: Hide soft keyboard on submit
    CLOSED: [2019-08-31 Sat 05:51]
 ** DONE Lexicon: Remove '.form-wrapper' and use flexbox instead(?)

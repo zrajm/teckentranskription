@@ -96,6 +96,13 @@ header {
   box-shadow:
     0 3px 6px 2px rgba(0, 0, 0, .2);         /* hover shadow */
 }
+/* On touchscreen devices (where no input type has hover). */
+@media not all and (any-hover:hover) {
+  #search.focus:hover {
+    box-shadow:
+      0 0 0 3px rgba(153, 153, 255, .375); /* focus outline */
+  }
+}
 #search .icon:hover > svg {
   color: #444;                               /* text color */
 }
