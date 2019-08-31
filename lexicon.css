@@ -111,14 +111,6 @@ noscript {
   margin: 0 auto;
   height: 150px
 }
-a:focus {
-  background: rgb(173, 189, 224); /* dark focus outline color */
-  border-radius: 1px;
-}
-a:focus,
-a:hover {
-  text-decoration: underline;
-}
 
 p { margin: 0; }
 p:empty + p { margin-top: 1em; }
