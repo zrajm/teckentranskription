@@ -347,7 +347,7 @@
 
     Present search result in a sortable table? Should be able to sort by swedish
     word, and by sign language.
-** [0/27] GUI
+** [0/28] GUI
 *** TODO Move SVG to CSS? -- Does that work with currentFill?
     (To make HTML form more readable.)
 *** TODO Unify :focus marking styles
@@ -394,6 +394,11 @@
     'Svenskt teckenspråkslexikon' and the CC license.
 
     + Add CC license text + note data source
+*** TODO Place menu footer with flexbox
+    Currently the menu footer will overlap the text above it if window is
+    resized to be very short. It should instead always be placed below, and if
+    there isn't room for all of the menu content the menu should get a scroll
+    bar.
 *** TODO On pageload: Faster selection of fullscreen or normal search
     Currently, if loading the page without a query, first the 'small' version
     of the query is displayed briefly.
@@ -946,6 +951,8 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Menu footer should use <footer> element
+   CLOSED: [2019-08-31 Sat 22:51]
 ** DONE Lexicon: Remove warning when submitting empty query
    CLOSED: [2019-08-31 Sat 07:34]
    The "Please fill out this field." should not appear when pressing the sumbit
