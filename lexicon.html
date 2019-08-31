@@ -75,6 +75,8 @@ header {
 #search .icon:hover {
   box-shadow: none;
 }
+.menu-close:focus > svg,
+.menu button.menu-open:focus + aside > .menu-close > svg,
 #search.focus,
 #search .icon:focus > svg {
   box-shadow: 0 0 0 3px rgba(153, 153, 255, .375); /* focus outline */
@@ -82,6 +84,8 @@ header {
 #search.focus > * {
   border-color: #99f; /* focus border color */
 }
+.menu-close:focus > svg,
+.menu button.menu-open:focus + aside > .menu-close > svg,
 #search .icon:focus > svg {
   border-radius: 1px;
   background: rgba(153, 153, 255, .375); /* focus outline color */
@@ -103,6 +107,11 @@ header {
       0 0 0 3px rgba(153, 153, 255, .375); /* focus outline */
   }
 }
+.menu .menu-open {
+  opacity: .5;
+}
+.menu                            .menu-close:hover > svg,
+.menu button.menu-open + aside > .menu-close:hover > svg,
 #search .icon:hover > svg {
   color: #444;                               /* text color */
 }
@@ -523,7 +532,6 @@ mark {
   left: 6px;
   padding: 9px;
   color: #000;
-  opacity: .5;
   margin: 0;
   box-shadow: unset;
 }
@@ -576,8 +584,8 @@ button {
   <aside class=menu>
     <button class="toggle menu-open"><svg height="17" width="19"><path d="M0 0h19v3H0zm0 14h19v3H0zm0-7h19v3H0z" fill="currentColor"/></svg></button>
     <aside>
-      <button class="toggle menu-close" tabindex=-1><svg height="17" width="19"><path d="M11-2v21H8V-2zM-1 7h21v3H-1z" transform="rotate(45 9.5,8.5)" fill="currentColor"/></svg></button>
-      <ul style="margin-top:1.25em">
+      <button class="toggle menu-close" tabindex=-1><svg height="17" width="19"><path d="M10.625,-1V18H8.375V-1ZM0,7.375h19v2.25H0Z" transform="rotate(45 9.5,8.5)" fill="currentColor"/></svg></button>
+      <ul style="margin-top:.75em">
         <li><a href="#help">Sökhjälp</a>
         <!--li><a href="#">Om lexikonet</a-->
       </ul>

@@ -951,6 +951,9 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Redesigned menu close button
+   CLOSED: [2019-08-31 Sat 22:57]
+   So that it looks like the form icon buttons.
 ** DONE Lexicon: Minor redesign of CSS for links
    CLOSED: [2019-08-31 Sat 22:55]
 ** DONE Lexicon: Menu footer should use <footer> element

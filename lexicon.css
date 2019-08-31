@@ -33,9 +33,6 @@ noscript {
 .menu aside li {
   margin-left: 0;
 }
-.menu aside > * {
-  opacity: .7;
-}
 .menu p {
   text-indent: unset !important;
   margin: 1em 0;
@@ -49,19 +46,14 @@ noscript {
 }
 .menu footer {
   position: absolute;
-  bottom: 0;opacity: .7;
+  bottom: 0;
   line-height: 1.5;
   margin-right: .5em;
 }
 .menu button:hover { box-shadow: unset; }
 .menu button.menu-close {
-  opacity: .5;
+  color: #999;    /* placeholder text color + #111 */
 }
-.menu button.menu-close:hover {
-  color: rgba(0,0,0,.95);
-  opacity: 1;
-}
-.menu button.menu-open:focus + aside > .menu-close,
 .menu button.menu-open:focus,
 .menu button.menu-open:hover {
   background: rgba(0,0,0,.95);
