@@ -941,6 +941,9 @@
 *** TODO Björkstrand 1998
 *** TODO Bergman & Björkstrand 2015
 * Transcript app
+** TODO Add keyboard shortcuts
+   Something like the IPA typewriter (https://ipa.typeit.org/full/) with Alt-A
+   (pressed once for 􌤤, twice for 􌥄, three times for 􌤣, etc).
 ** TODO Handshape preview should be displayed topmost                   :BUG:
    Currently in winds up under the <textarea>. :(
 ** TODO Should use same virtual keyboard code as lexicon
