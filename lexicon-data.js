@@ -1,4 +1,4 @@
-var lexiconDate = new Date("2020-03-16T07:00:30Z");
+var lexiconDate = new Date("2020-03-23T07:00:32Z");
 var lexicon = [
 ["00001","–","taxi"],
 ["00002","􌤀􌤢􌥓􌥘􌥲􌦀􌥼􌤟","dop","döpa"],
@@ -663,7 +663,7 @@ var lexicon = [
 ["00664","􌤴􌥙􌤢􌤢􌤴􌥙􌤟􌥼􌥹􌦉","bord"],
 ["00665","􌤴􌥙􌤢􌤢􌤴􌥙􌤟􌥼􌥹􌦉","scen"],
 ["00666","􌤴􌥙􌤢􌤢􌤴􌥙􌥹􌦉􌥰􌦉","simma"],
-["00667","􌤴􌤶􌤢􌤢􌤴􌥗􌤟􌥼􌥹􌦉","skilja","skilsmässa"],
+["00667","􌤴􌤶􌤢􌤢􌤴􌥗􌤟􌥼􌥹􌦉","skilja"],
 ["00668","􌤴􌥙􌤢􌤢􌤴􌥙􌤟􌥼􌥧􌥹􌦉􌥲􌦂","överkast"],
 ["00669","􌤴􌥙􌤢􌤢􌤴􌥙􌤟􌥼􌥹􌦉􌥲􌦉􌥼􌥧􌥲􌦂","soffa"],
 ["00670","􌤴􌥙􌤢􌤹􌤢􌤴􌥙􌦎􌥼􌥬􌥼􌦎","behandla","behandling"],
@@ -12955,7 +12955,7 @@ var lexicon = [
 ["12997","􌥔􌥘􌤧􌤧􌥓􌥘􌤟􌥼􌥹􌦉􌥱􌦀","plåster"],
 ["12998","􌥔􌥘􌤢􌤢􌥓􌥘􌤟􌥼􌦃􌥱􌥾􌥠􌥋􌥔􌥙􌦃","öppet spår"],
 ["12999","Ö-D-I-K","ÖDIK","Örebro Dövas ishockeyklubb"],
-["13000","􌤽􌤹􌥔􌥘􌤽􌤴􌤶􌤟􌥠R-Ö-R􌥠􌤢􌤴􌥙􌥣􌥸􌥻","provrörsbarn"],
+["13000","􌤽􌤹􌥔􌥘􌤽􌤴􌤶􌥧􌥼􌤟􌥠R-Ö-R􌥠􌤢􌤴􌥙􌥣􌥸􌥻","provrörsbarn"],
 ["13001","􌤌􌤮􌤴􌤶􌤟􌥳","ÖDIBF","Örebro Dövas innebandyförening"],
 ["13002","􌤢􌤴􌤸􌤎􌤵􌤶􌥫","puls"],
 ["13003","Ö-D-I-B-F","ÖDIBF","Örebro Dövas innebandyförening"],
