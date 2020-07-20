@@ -1,4 +1,4 @@
-var lexiconDate = new Date("2020-07-13T06:00:31Z");
+var lexiconDate = new Date("2020-07-20T06:00:34Z");
 var lexicon = [
 ["00001","􌤀􌦫􌥓􌥘􌤟􌥼􌥻","taxi"],
 ["00002","􌤀􌤢􌥓􌥘􌥲􌦀􌥼􌤟","dop","döpa"],
@@ -18870,7 +18870,7 @@ var lexicon = [
 ["19057","􌤇􌤩􌤴􌤶􌥧􌦆􌥉􌦆􌤩","Långben"],
 ["19058","􌤂􌥋􌤵􌤷􌥣","entreprenör"],
 ["19059","􌤛􌤧􌥓􌥘􌤟􌥼􌥣􌥼􌤟􌥠R-U-L-L-E","vårrulle"],
-["19060","􌤴􌥗􌤦􌤦􌤴􌤶􌦅􌥼􌤟","sakrament"],
+["19060","􌤴􌥗􌤦􌤦􌤴􌤶􌦅􌥼􌤟􌥠􌤴􌤸􌤢􌤢􌤴􌤸􌥹􌦉􌥸􌥻","sakrament"],
 ["19061","D-A-C-I-A","Dacia"],
 ["19062","M-I-N-I","Mini"],
 ["19068","M-E-N-T-O-R","mentor"],
