@@ -1,4 +1,4 @@
-var lexiconDate = new Date("2020-08-03T06:00:33Z");
+var lexiconDate = new Date("2020-08-10T06:00:33Z");
 var lexicon = [
 ["00001","􌤀􌦫􌥓􌥘􌤟􌥼􌥻","taxi"],
 ["00002","􌤀􌤢􌥓􌥘􌥲􌦀􌥼􌤟","dop","döpa"],
