@@ -1,4 +1,4 @@
-var lexiconDate = new Date("2020-08-31T06:00:34Z");
+var lexiconDate = new Date("2020-09-07T06:00:34Z");
 var lexicon = [
 ["00001","􌤀􌦫􌥓􌥘􌤟􌥼􌥻","taxi"],
 ["00002","􌤀􌤢􌥓􌥘􌥲􌦀􌥼􌤟","dop","döpa"],
@@ -3938,9 +3938,9 @@ var lexicon = [
 ["03952","􌥌􌥓􌥘􌥧􌥱􌦀","nej"],
 ["03953","K-A-S-T-A-N-J","kastanj"],
 ["03954","􌥌􌤴􌥙􌥤","när"],
-["03955","􌥌􌤵􌤷􌥵􌥼􌥶","faktisk","verkligen"],
+["03955","􌥌􌤵􌤷􌥵􌥼􌥶","egentligen","faktisk"],
 ["03956","􌥌􌤴􌥙􌥦􌥼􌥧􌥣􌥼􌥦","Norge"],
-["03957","􌥌􌤵􌤷􌥵􌥸","egentligen","i själva verket"],
+["03957","􌥌􌤵􌤷􌥵􌥸","egentligen","faktisk"],
 ["03958","􌥌􌤵􌤷􌥵􌥼􌥶","konkret"],
 ["03959","􌥌􌤵􌤷􌥵􌥼􌥶","original"],
 ["03960","􌥌􌤵􌤷􌥵􌥼􌥶","verkligen"],
