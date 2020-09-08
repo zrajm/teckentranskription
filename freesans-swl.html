@@ -11,9 +11,20 @@
         src: url("freesans-swl.ttf");
         font-display: swap;
     }
-    body { font-family: "FreeSans-SWL", "FreeSans", sans-serif; }
+    body {
+        font-family: "FreeSans-SWL", "FreeSans", sans-serif;
+        line-height: 1.5;
+    }
 
     * { margin: 0; padding: 0; }
+
+    .vert {
+        padding: .5em .25em !important;
+    }
+    .vert span {
+        writing-mode: vertical-rl;
+        margin-bottom: -.5em !important;
+    }
 
     blockquote, body, dl, img, ol, pre, ul { margin: 1em; }
     header, footer, table { margin: 1em 0; }
@@ -33,7 +44,10 @@
     }
     dd:before { content: " – "; }
 
-    .x2 { font-size: 2em }
+    .x2 {
+        font-size: 2em;
+        line-height: 1;
+    }
 
     .FIXME { background: rgba(255, 255, 0, .75); font-weight: bold; }
 
@@ -182,8 +196,8 @@
       <br><a href="pic/elan/screenshot-h.png"><img src="pic/elan/screenshot-h.png" height=300></a>
 
       <p>Välj <i>teckenstorlek</i> (<i>Font Size</i>) &gt; <i>16</i> (eller
-      vilken storlek du nu föredrager) för att ändra storlek till något lite
-      mer trevligt för ögat.
+      vilken storlek du nu föredrar) för att ändra storlek till något lite mer
+      trevligt för ögat.
 
       <br><a href="pic/elan/screenshot-i.png"><img src="pic/elan/screenshot-i.png" height=300></a>
 
@@ -289,6 +303,18 @@
       <caption><span style="background:#888">Grå bakgrund</span> indikerar
         anatomiskt omöjliga kombinationer.</caption>
       <tr align=center>
+        <th rowspan=2 colspan=2>
+        <th colspan=6>Vridning
+      <tr>
+        <th class=vert><span>Vänster</span></th>
+        <th class=vert><span>Höger</span></th>
+        <th class=vert><span>Fram</span></th>
+        <th class=vert><span>In</span></th>
+        <th class=vert><span>Upp</span></th>
+        <th class=vert><span>Ner</span></th>
+      <tr align=center>
+        <th rowspan=6 class=vert><span>Riktning<span>
+        <th>Vänster
         <td class=x2 bgcolor=#888>􌥓􌤶
         <td class=x2 bgcolor=#888>􌥓􌥗
         <td class=x2>􌥓􌤷
@@ -296,6 +322,7 @@
         <td class=x2>􌥓􌤸
         <td class=x2>􌥓􌥙
       <tr align=center>
+        <th>Höger
         <td class=x2 bgcolor=#888>􌥔􌤶
         <td class=x2 bgcolor=#888>􌥔􌥗
         <td class=x2>􌥔􌤷
@@ -303,6 +330,7 @@
         <td class=x2>􌥔􌤸
         <td class=x2>􌥔􌥙
       <tr align=center>
+        <th>Fram
         <td class=x2>􌤴􌤶
         <td class=x2>􌤴􌥗
         <td class=x2 bgcolor=#888>􌤴􌤷
@@ -310,6 +338,7 @@
         <td class=x2>􌤴􌤸
         <td class=x2>􌤴􌥙
       <tr align=center>
+        <th>In
         <td class=x2>􌥕􌤶
         <td class=x2>􌥕􌥗
         <td class=x2 bgcolor=#888>􌥕􌤷
@@ -317,6 +346,7 @@
         <td class=x2>􌥕􌤸
         <td class=x2>􌥕􌥙
       <tr align=center>
+        <th>Upp
         <td class=x2>􌤵􌤶
         <td class=x2>􌤵􌥗
         <td class=x2>􌤵􌤷
@@ -324,6 +354,7 @@
         <td class=x2 bgcolor=#888>􌤵􌤸
         <td class=x2 bgcolor=#888>􌤵􌥙
       <tr align=center>
+        <th>Ner
         <td class=x2>􌥖􌤶
         <td class=x2>􌥖􌥗
         <td class=x2>􌥖􌤷
@@ -346,7 +377,7 @@
     <table border=1>
       <tr>
         <th>hålls stilla
-        <td class=x2>I􌦑I
+        <td class=x2 colspan=2>I􌦑I
       <tr>
         <th>förs vänster / höger / i sidled
         <td class=x2>I􌥢I􌥣I􌥤I
