@@ -1,4 +1,4 @@
-var lexiconDate = new Date("2020-11-30T07:00:32Z");
+var lexiconDate = new Date("2020-12-07T07:00:34Z");
 var lexicon = [
 ["00001","􌤀􌦫􌥓􌥘􌤟􌥼􌥻","taxi"],
 ["00002","􌤀􌤢􌥓􌥘􌥲􌦀􌥼􌤟","dop","döpa"],
@@ -11941,7 +11941,7 @@ var lexicon = [
 ["11982","􌤊􌤩􌤵􌤶􌥰􌦋􌥠G-L-Ö-G-G","julglögg"],
 ["11983","􌤤􌤴􌥙􌥸􌥼􌥻","dopp i grytan"],
 ["11984","􌤊􌤩􌤵􌤶􌥰􌦋􌥠􌤵􌥗􌥈􌤻􌥈􌤵􌤶􌦎􌥼􌥹􌦉􌦆􌥃","julstjärna"],
-["11985","􌤊􌤩􌤵􌤶􌥰􌦋􌥠􌤢􌥔􌥘􌤫􌤵􌤷􌤟􌥼􌥣􌥲􌦊􌥼􌥻","julkalender"],
+["11985","􌤊􌤩􌤵􌤶􌥰􌦋􌥠􌤢􌥔􌥘􌤫􌤵􌤷􌤟􌥼􌥪􌥲􌦊􌥼􌥻","julkalender"],
 ["11986","􌤊􌤩􌤵􌤶􌥰􌦋􌥠􌤴􌥙􌥈􌥈􌤴􌥙􌤟􌥼􌥹􌦉􌥼􌥧􌥼􌦅􌥼􌤟","julkalender"],
 ["11987","􌤊􌤩􌤵􌤶􌥰􌦋􌥠􌤴􌤸􌤢􌤢􌤴􌤸􌥧","juldagen"],
 ["11988","N-Y-Å-R􌥠􌤃􌥅􌤵􌤶􌤟􌥠􌤛􌥅􌤵􌤶􌤟","nyårsafton"],
@@ -13047,7 +13047,7 @@ var lexicon = [
 ["13093","􌤢􌥔􌥙􌤢􌤴􌥙􌦃􌥱􌥿􌥠􌤵􌤷􌤥􌤥􌤵􌤷􌥦􌥰􌥾􌦇􌦆􌤦","understege"],
 ["13094","A-S","Aspergers syndrom"],
 ["13095","U-F􌥠􌤓􌥔􌥘􌤢􌤹􌤢􌥓􌥘􌥧􌥡􌦇􌥼􌥻","Ungdomsföreningen Viljan","UF Viljan"],
-["13096","􌤢􌥔􌥘􌥆􌤴􌤸􌥦􌥡􌦆􌥃","uppflytta"],
+["13096","􌤢􌥔􌥘􌥆􌤴􌤸􌥦􌥡􌦆􌥃","uppflytta","uppflyttning"],
 ["13097","􌤆􌥔􌥘􌤧􌤧􌥓􌥘􌦑","uppkast"],
 ["13098","􌤵􌤷􌦪􌦪􌤵􌤷􌤟􌥼􌥹􌦉","uppställning"],
 ["13099","􌤌􌥅􌤵􌤶􌥩􌦆􌤦􌥠􌥋􌥔􌤷􌥵","lösenord"],
@@ -14463,7 +14463,7 @@ var lexicon = [
 ["14517","􌤫􌤺􌤴􌥙􌤫􌤴􌥙􌤟􌥼􌥣􌥯􌥿","mätning"],
 ["14518","􌤢􌤵􌥗􌤥􌤵􌤶􌥧􌤟􌥻","nabbgummi"],
 ["14519","􌤼􌥃􌤵􌥘􌤟􌥼􌥧􌥳􌥠􌤵􌥘􌤢􌤢􌤵􌥘􌦃􌥧􌥱􌥾","blodgivning"],
-["14520","􌤢􌥔􌥘􌥆􌤴􌥙􌤟􌥼􌥷􌥼􌥧􌦆􌥃","nedflyttad"],
+["14520","􌤢􌥔􌥘􌥆􌤴􌥙􌤟􌥼􌥷􌥼􌥧􌦆􌥃","nedflyttning","nedflytta"],
 ["14521","􌤵􌤷􌤢􌤢􌤵􌤷􌦃􌥧􌥱􌥾􌥼􌦃","nedslag"],
 ["14522","􌤢􌤴􌤸􌤢􌤴􌥙􌦃􌥧􌥼􌤟􌥼􌦃􌥦","nedslag för diskus"],
 ["14523","􌤢􌤴􌤸􌤯􌤴􌤶􌦃􌥧􌥼􌤟􌥼􌦃􌥦","nedslag för kula och slägga"],
