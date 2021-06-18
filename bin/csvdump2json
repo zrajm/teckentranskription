@@ -6,11 +6,16 @@
 #
 use strict;
 use warnings;
-#binmode(STDOUT, ":utf8");
+use lib do { # script's real path
+    use Cwd 'realpath';
+    realpath($0) =~ m#^(.*)/#;
+};
 
 # Use UTF8 for EVERYTHING.
 use utf8;
-use open qw(:std :utf8);
+use v5.14;                   # optimal for unicode string feature
+use warnings qw(FATAL utf8); # fatalize encoding glitches
+use open qw(:std :utf8);     # undeclared streams in UTF-8
 @ARGV = do {
     use Encode qw(decode_utf8);
     map { decode_utf8($_, 1) } @ARGV;
@@ -118,20 +123,31 @@ while (my @field = $csv->split(scalar(<>))) {  # main loop
         } @swedish;
     };
 
-    # Replace any occurrences of '#' in transcription with the corresponding
-    # fingerspelling string from the description of the sign.
-    if ($transcript =~ /\#/) {
-        my @spelled = $desc =~ m{
-            (?:^|//\s+|Bokstaveras\s*:\s+)?
-            \b([[:alnum:]](?:-[[:alnum:]])*)
-            (?:\s+//|$)
-        }gx;
-
-        my $i = 0;
-        $transcript =~ s{ \# }{
-            $spelled[$i++] // "BADNESS!";
-        }gex;
-    }
+    # Find occurrences of '#' and '#(...)' in the transcription, and replace
+    # those with '#(...)' where the '...' is either the same as in the '#(...)'
+    # found, or, if there were no parentheses after the '#' take the finger
+    # spelling transcription from the sign's description field, finally if
+    # neither could be found, put '#(ERROR)' as the transcription.
+    my $i = 0;
+    my @spelled = ();
+    $transcript =~ s{ \#(?:\(([^)]*)\))? }{
+        my $spelled = $1;
+        if (not defined($spelled)) {
+            if (not @spelled) {
+                @spelled = map {
+                    s/-//g;
+                    lc $_;
+                } $desc =~ m{
+                    (?:^|//\s+|Bokstaveras\s*:\s+)?
+                    \b([[:alnum:]](?:-[[:alnum:]])*)
+                    (?:\s+//|$)
+                }gx;
+            }
+            $spelled = $spelled[$i] // "ERROR";
+        }
+        $i += 1;
+        "#($spelled)";
+    }gex;
 
     push(@thingy, [
         $id,
