@@ -1,4 +1,4 @@
-var lexiconDate = new Date("2021-07-19T06:00:32Z");
+var lexiconDate = new Date("2021-08-09T06:00:33Z");
 var lexicon = [
 ["00001","􌤀􌦫􌥓􌥘􌤟􌥼􌥻","taxi"],
 ["00002","􌤀􌤢􌥓􌥘􌥲􌦀􌥼􌤟","dop","döpa"],
@@ -13335,7 +13335,6 @@ var lexicon = [
 ["13392","􌤢􌤴􌤸􌤫􌤴􌥙􌤟􌥥","prognos"],
 ["13393","􌤂􌤵􌥗􌤥􌤥􌤵􌤶􌥧􌥲􌦋","klimakteriet"],
 ["13394","#(upp)􌥠􌤌􌤢􌥓􌥘􌥣􌥡􌥼􌥻","uppvärmning"],
-["13395","􌤽􌥓􌥙􌦃􌥯􌥿􌥲􌦊","om två veckor"],
 ["13396","􌥋􌤵􌤷􌥣","versal"],
 ["13397","􌤢􌤴􌥗􌥋􌥓􌥘􌤟􌥼􌥣􌦆􌤫􌥠􌥋􌤵􌥗􌤪􌤵􌤶􌦨􌥼􌥻","magnetkamera"],
 ["13398","#(kateter)","kateter"],
