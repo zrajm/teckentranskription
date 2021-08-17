@@ -14478,7 +14478,7 @@ var lexicon = [
 ["14547","􌤴􌥙􌤢􌤢􌤴􌥙􌦅􌥼􌤟􌥼􌥹􌦉􌥼􌦅􌥼􌤟􌥼􌥹􌦉","oavgjort","/sport/allmänt","/1"],
 ["14548","􌥖􌥘􌥈􌥈􌥖􌥘􌤟􌥼􌦃􌥯􌦉􌥼􌤟􌥠􌤢􌥔􌤸􌤢􌥓􌥙􌥢􌥡􌥼􌥻","lokaltidning","/0"],
 ["14549","􌤴􌥙􌥃􌥃􌤴􌥙􌦃􌥠􌤂􌤵􌥗􌤥􌤥􌤵􌤶􌥧􌦆􌤦","offensiv returtagning","/sport/basket","/1"],
-["14550","􌤧􌤻􌤴􌥗􌤧􌤴􌤶􌤟􌥼􌦃􌥯􌥽","offside","/","/sport/allmänt","/sport/fotboll","/3"],
+["14550","􌤧􌤻􌤴􌥗􌤧􌤴􌤶􌤟􌥼􌦃􌥯􌥽","offside","/sport/allmänt","/sport/fotboll","/2"],
 ["14551","#(foder)","foder","/bokstavering","/1"],
 ["14552","􌤛􌤦􌤵􌤶􌤟􌥼􌥻","oldboys","/sport/allmänt","/1"],
 ["14553","#(girig)","girig","/bokstavering","/1"],

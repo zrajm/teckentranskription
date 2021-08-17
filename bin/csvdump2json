@@ -94,14 +94,14 @@ my $mtime = (stat ($ARGV[0]))[9];
 # processed by the specified callback function.
 sub process_tags {
     my ($str, $callback, $reverse) = @_;
-    $str =~ s/^\h+|\h+$//;
     return map {
-        my @x = split /\s+-\s+/, $_;           #   split on ' - '
+        my @x = split /\s-\s/, $_;             #   split on ' - '
         @x = reverse @x if $reverse;
         join "/", map {
-            $callback->($_);                   #   process each item
+            s#^\s+|\s+$##g;                    #   strip space at start/end
+            $_ ne "" ? $callback->($_) : ();   #   process non-empty item
         } @x;
-    } split /\s*[\cK\c]]\s*/, $str;            #   split on ^] + ^K
+    } split /[\cK\c]]+/, $str;                 #   split on ^] + ^K
 }
 {
     my %upper_words = map { $_ => 1 } (
