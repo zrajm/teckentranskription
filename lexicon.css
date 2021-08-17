@@ -103,6 +103,11 @@ noscript {
   margin: 0 auto;
   height: 150px
 }
+.tooltip .sep {
+  opacity: .25;
+  padding: 0 .15em;
+  font-weight: bold;
+}
 
 p { margin: 0; }
 p:empty + p { margin-top: 1em; }

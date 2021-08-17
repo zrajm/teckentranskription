@@ -348,6 +348,10 @@ body.noquery #search {
 .text-view .video-feedback {
   display: none;
 }
+.text-view .top-right img {
+    vertical-align: middle;
+    margin: 0 .125em;
+}
 .text-view .video-id:hover { opacity: 1; }
 .text-view .video-subs a {
   font-size: 95%;
@@ -421,7 +425,10 @@ body.noquery #search {
      1px -1px 1px #000,
     -1px  1px 1px #000,
     -1px -1px 1px #000,
-     0    0   2px #000;
+     0    1px 1px #000,
+     0   -1px 1px #000,
+     1px  0   1px #000,
+    -1px  0   1px #000;
 }
 .video-view .video-container a { color: inherit; }
 .video-view .video-container > video,
@@ -437,11 +444,16 @@ body.noquery #search {
   transition: opacity 0.2s ease-in-out;
 }
 .video-view .video-container wbr { display: none; }
-.video-view .video-id {
+.video-view .top-right {
   /* top-right corner */
   position: absolute; right: 8px; top: 4px;
   font-size: smaller;
-  opacity: .75;
+}
+.video-view .top-right > * { opacity: .75; }
+.video-view .top-right > *:hover { opacity: 1; }
+.video-view .top-right img {
+  display: block;
+  margin-left: auto;
 }
 .video-view .video-id:hover { opacity: 1; }
 .video-view .video-subs {
@@ -899,6 +911,40 @@ button {
         tänkbara riktningar. Hedbergs förenklade cirkelsymboler
         (<small>􌦮􌦯􌦰</small>) matchar också motsvarande traditionella notation
         (enligt tabellen ovan).
+      </div>
+
+      <hr>
+      <h1>Taggar</h1>
+      <div class=columns>
+
+        <p>Många tecken har i lexikonet har taggar som beskriver ytterligare
+        detaljer hos tecknet. För de tecken som har taggar syns en liten
+        etikettikon (<img src="pic/tag.svg" style="vertical-align:middle">) i
+        sökresultatet. Om du håller muspekaren över etikettikonen så kan du se
+        vilka taggar tecknet ifråga har.
+
+        <p>Alla taggnamn börjar med <tt>/</tt> (snedstreck) och många av
+        taggarna har flera nivåer – tex har tecknen för olika franska städer
+        taggen <tt>/geografi/<wbr>orter/<wbr>Europa/<wbr>Frankrike</tt>, och
+        kan finnas genom att söka på hela taggnamnet, eller valfria delar av
+        det. Så du kan tex använda sökordet <tt>/geografi</tt> för att avgränsa
+        din sökning till tecken har med geografi att göra,
+        eller <tt>/orter</tt>, <tt>/europa</tt> eller <tt>/frankrike</tt> för
+        att hitta tecken i de kategorierna. (Du kan förstås också göra
+        kombinationer, som tex <tt>/europa -/frankrike</tt> för att hitta
+        tecken för europeiska städer, men utesluta de som ligger i Frankrike.
+
+        <p>Vissa taggar beskriver tex om ett tecken är dialektalt, ovanligt,
+        eller kan uppfattas som vulgärt/stötande. Andra taggar används för att
+        beskriva om ett tecken hör hemma inom något särskilt ämnesområde (som
+        geografi, egennamn, sport eller mat och dryck), och tecken som kommer
+        ifrån Oskar Österbergs lexikon (publicerat 1916) har
+        taggen <tt>/Österberg 1916”</tt>.
+
+        <p>En ensam siffra som tagg söker efter de tecken i lexikonet som har
+        det antalet taggar. Så om för att hitta alla tecken utan taggar sök
+        på <tt>/0</tt>, för att hitta alla tecken med en tagg, sök
+        på <tt>/1</tt> osv.
       </div>
     </section>
   </div>

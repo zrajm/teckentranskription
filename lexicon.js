@@ -539,6 +539,16 @@ function hilite(str, regex) {
     });
 }
 
+function htmlifyTags(tags, hiliteRegex) {
+    return tags.length === 1 ? "" : "<img title='{tags}' src='pic/tag.svg'>"
+        .supplant({
+            tags: tags.map(
+                x => hilite(x, hiliteRegex)
+                    .replace(/(^|[^<])\//g, '$1<span class=sep>/</span>')
+            ).join('<br>') + " (antal taggar)",
+        });
+}
+
 // Turn a (hilited) transcription string into HTML.
 function htmlifyTranscription(hilitedTransStr) {
     "use strict";
@@ -600,16 +610,20 @@ function htmlifyMatch(match) {
     var entry = match.entry;
     var id = entry[0];                         // 1st field
     var transcr = entry[1];                    // 2nd field
-    var swe = entry.slice(2);                  // remaining fields
+    var swe = entry.slice(2).filter(x => x[0] !== '/');  // Swedish
+    var tags = entry.slice(2).filter(x => x[0] === '/');  // /tags
     return (
         "<div class=match>" +
             "<div class='video-container is-loading'>" +
                 "<img src='{baseUrl}/photos/{dir}/{file}-{id}-tecken.jpg'" +
                 " data-video='{baseUrl}/movies/{dir}/{file}-{id}-tecken.mp4'>" +
                 "<div class=video-feedback></div>" +
-                "<a class=video-id href='{baseUrl}/ord/{id}'" +
-                " title='Visa i Svenskt tecken­språks­lexikon (ny tabb)'" +
-                " target=_blank>{htmlId}</a> " +
+                "<div class=top-right style='text-align:right'>" +
+                    "<a class=video-id href='{baseUrl}/ord/{id}'" +
+                        " title='Öppna i Svenskt tecken­språks­lexikon (i ny tabb)'" +
+                        " target=_blank>{htmlId}</a>" +
+                    "{htmlTags}" +
+                "</div>" +
                 "<div class=video-subs>" +
                     "<a data-href='{transcr}' title='{htmlTranscr}'>" +
                         "{htmlTranscr}</a>" +
@@ -618,6 +632,7 @@ function htmlifyMatch(match) {
             "<span title='{htmlSwedish}'>{htmlSwedish}</span>" +
         "</div>\n"
     ).supplant({
+        htmlTags: htmlifyTags(tags, hiliteRegex),
         id: id,
         htmlId: hilite(id, hiliteRegex),
         baseUrl: "https://teckensprakslexikon.su.se",

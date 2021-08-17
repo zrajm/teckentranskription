@@ -63,6 +63,20 @@ my $csv = new CSV({
     #quote_number  => 1,      # quote numbers
 });
 
+# Translation table for comment.
+my %comment_abbr = (
+    #'domartecken'
+    #'nationellt',
+    #'nytt',
+    #'ålderdomligt',
+    #'används mest av unga' => 'ungdomsspråk',
+    #'finskt teckenspråk' => 'FinSL',
+    'förslagen' => 'föreslaget tecken',
+    'inlånad' => 'inlånat tecken',
+    'kan uppfattas som kränkande' => 'vulgärt tecken',
+    'tecknet är mindre vanligt' => 'ovanligt tecken',
+);
+
 ################################################################################
 
 if (@ARGV != 1) {
@@ -76,6 +90,50 @@ if (not -e $ARGV[0]) {
 
 my $mtime = (stat ($ARGV[0]))[9];
 
+# Splits string into on ^] or ^K and return items found. The items are further
+# processed by the specified callback function.
+sub process_tags {
+    my ($str, $callback, $reverse) = @_;
+    $str =~ s/^\h+|\h+$//;
+    return map {
+        my @x = split /\s+-\s+/, $_;           #   split on ' - '
+        @x = reverse @x if $reverse;
+        join "/", map {
+            $callback->($_);                   #   process each item
+        } @x;
+    } split /\s*[\cK\c]]\s*/, $str;            #   split on ^] + ^K
+}
+{
+    my %upper_words = map { $_ => 1 } (
+        qw{ Österberg },
+        # In @dialect (CSV field 18).
+        qw{ Gävle Göteborg Härnösand Lund Stockholm Vänersborg Växjö Örebro },
+        # In @subject (CSV field 13).
+        qw{ Afrika Albanien Asien Australien Belgien Bulgarien Centralamerika
+            Danmark England Europa Finland Frankrike Grekland Holland Island
+            Israel Italien Japan Karibien Kruthmedaljör Lettland NHL
+            Nordamerika Norge Oceanien Pingstkyrkan Polen Ryssland Schweiz
+            Serbien Spanien Storbritannien Sydamerika Tyskland USA Österrike
+        }, 'Harry Potter', 'Svenska kyrkan'
+    );
+
+    # Downcase all words except those on exception list.
+    my $re = do {
+        my $x = join('|', map { s#\s#\\s+#g; $_ } grep /\s/, keys(%upper_words));
+        qr/$x|[[:alnum:]]+/;
+    };
+    sub downcase {
+        local $_ = shift;
+        s#$re# exists($upper_words{$&}) ? $& : lc($&) #ge;
+        return $_;
+    }
+}
+
+sub abbreviate_comment {
+    my ($str) = lc shift;
+    return $comment_abbr{$str} // $str;
+}
+
 my @thingy;
 while (my @field = $csv->split(scalar(<>))) {  # main loop
 
@@ -86,12 +144,13 @@ while (my @field = $csv->split(scalar(<>))) {  # main loop
     my $transcript = $field[1];                        # USED
     my @swedish    = @field[2..5];                     # USED
     my @hidden     = @field[3..12];                    # NOT USED YET
-    my @category   = split /\s*\x1d\s*/, $field[13];   # NOT USED YET
+    my @subject    = process_tags($field[13], \&downcase);
+
     my $desc       = join " ", split/\s*\x0b\s*/, $field[14];# NOT USED YET
-    my $genuine    = $field[15];                        # NOT USED YET
+    my $genuine    = lc($field[15]);                    # USED
     my $glosa      = join "", split /\x1d/, $field[16]; # NOT USED YET
-    my $comment    = join "", $field[17];               # NOT USED YET
-    my @dialect    = split /\s*\x1d\s*/, $field[18];    # NOT USED YET
+    my @comment    = process_tags($field[17], \&abbreviate_comment);
+    my @dialect    = process_tags($field[18], \&downcase, 'reverse');
 
     ##########################################################################
     ## @hidden = Swedish translations that aren't shown but are searchable in
@@ -149,10 +208,19 @@ while (my @field = $csv->split(scalar(<>))) {  # main loop
         "#($spelled)";
     }gex;
 
+    my @tags = (
+        @subject,
+        ($desc    =~ m/\bBokstaveras\s*:/ ? 'bokstavering' : ()),
+        ($genuine eq 'ja' ? 'genuint tecken' : ()),
+        @comment,
+        @dialect,
+    );
     push(@thingy, [
         $id,
         $transcript || "–",
         @swedish,
+        (map { "/$_" } sort @tags),  # tags
+        sprintf("/%u", $#tags+1),    # number of tags
     ]);
 }
 

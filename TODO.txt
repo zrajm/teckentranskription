@@ -11,7 +11,7 @@
     'scrollbar-width: none' for which support was added by Firefox 64.
 ** Features
 *** CSS :invalid selector
-    Used to show/hide search form reset button + changing color of submit
+    Used to show/hide search box reset button + changing color of submit
     button.
     |----------+--------------|
     | 2007 Jun | Safari 5+    |
@@ -45,8 +45,8 @@
 
     https://caniuse.com/#feat=flexbox
 *** .selectionStart/.selectionEnd
-    Used for filtering away newlines when user pastes into search form.
-    (Filter is disabled if browser support isn't present.)
+    Used for filtering away newlines when user pastes into search box. (Filter
+    is disabled if browser support isn't present.)
     |----------+---------------|
     | 2009 Oct | Android 2.1+  |
     | 2010 Jan | Chrome 4+     |
@@ -71,7 +71,7 @@
     https://caniuse.com/#feat=css-sel3
 *** .matchMedia methods
     Used to detect touchscreen devices, and hide on-screen keyboard when
-    submitting search form.
+    submitting search box.
     |----------+---------------|
     | 2011 Feb | Android 3+    |
     | 2011 Feb | Chrome 9+     |
@@ -113,12 +113,118 @@
 ** DONE Set sensible max-width
    CLOSED: [2018-08-31 Fri 02:31]
 * Lexicon
-** [0/2] Add categories
-*** TODO Overlay transparent map for dialect words(?)
-    Add a small semi-transparent map of Sweden with the relevant region hilited
-    on top of video bottom right? (Name of region in categories + on hover.)
+  :DESIGN-PRINCIPLES:
+   All aspect of the lexicon GUI and query language shall:
+   + Be simple and obvious. (Low barrier of entry.) The GUI shall look simple
+     and uncluttered, and obvious things (like just typing a few words and
+     press the search button) shall Just Work™ and provide decent results.
+   + Be self-explaining. (Help the impatient achieve what they want quickly.)
+     Tool tips and autocompletion shall provide the user with context relevant
+     information, and allow them to explore the search space efficiently.
+   + Be explorable. (Help the curious user learn more.) If the user goes
+     hunting for more information, that information shall be easily available,
+     and structured in such a way that any user will have to read as little as
+     possible in order to find out what they need. -- The documentation should
+     (possibly?) include interactive elements an 'advanced search', that when
+     submitted add to the query in the search box.
+   + Be forgiving. (Allow for mistakes/sloppiness.) All queries should return a
+     result (as long as there are matches) even if they are malformed. User
+     should also receive simple-to-understand messages pointing out the error
+     (e.g. a tooltip pointing an unterminated parenthesis, with the message
+     'Missing end parenthesis').
+   + Accommodate expert users. The query language shall include grouping,
+     boolean operators, search prefixes (to specify which fields to search) and
+     other advanced features that are useful to researchers and advanced users.
+     These functions shall not intrude on the beginner's user experience.
+  :END:
+** TODO Smaller sized font file
+** [0/4] Move lexicon
+*** TODO Move lexicon into separate repository
+    Leave the history of the lexicon in the zrajm page repository, but create a
+    new repository containing the complete history of everything included in
+    the lexicon.
+*** TODO Update cronjob to update the new repository
+*** TODO Move lexicon to https://zrajm.github.io/teckenlexikon/
+    Hopefully this will eventually move to http(s?)://zrajm.org/teckenlexikon/,
+    but at that point we'll simply create a new redirect.
+*** TODO Old URL should redirect to new one
+    https://zrajm.github.io/teckentranskription/lexicon.html should forever
+    remain valid, and redirect to the new location.
+** [0/2] Search query language
+*** TODO Boolean logic in queries
+    Support AND, OR and parentheses and operator precedence.
+*** TODO Support field prefixes
+    E.g. tag:... to search for a specific tag, sv:... to search for a
+    translation, gloss:... to search for glosses. Also, a matching tag should
+    mark the tag icon in the search result, and the matching tag in the tag
+    hover/drop-down menu.
+*** TODO Handling of synonyms in search queries
+    Should be able to find synonyms. Maybe using a wordnet dictionary?
+** [0/2] Search box autocompletion & filters
+*** TODO Search box autocompletion
+    :DESCRIPTION:
+    The search box should have autocompletion similar to Google.
+    + Autocomplete textarea
+      https://www.algolia.com/doc/guides/building-search-ui/resources/ui-and-ux-patterns/in-depth/autocomplete/tutorials/autocomplete-textarea/
+    + jQuery.textcomplete (Autocomplete for Textarea)
+      http://www.jque.re/plugins/version3/jquery.textcomplete/index.html
+    + Autocomplete for textarea elements http://yuku.github.io/textcomplete/
+      GitHub repo: https://github.com/yuku/textcomplete
+      Example site: https://yuku.takahashi.coffee/textcomplete/
+    :END:
+**** TODO Dropdown with suggestions based on existing words in lexicon
+**** TODO Typing ':' should give user dropdown of possible search prefixes
+*** TODO Filter buttons
+    After having performed a search, extra button should be presented with
+    likely additional narrowings of the search (similar to the rounded, gray
+    buttons on Youtube which can be used to narrow the displayed suggestions,
+    similar buttons are also displayed at the bottom of your Google search
+    results for related searches – though our buttons should add to, rather
+    than replace the search query).
+
+    These buttons should all add something to the end (beginning?) of the
+    current query and perform a new search. Possible buttons:
+
+    + (Bana enhandstecken)
+    + (Bara tecken med aktiv+passiv hand)
+    + (Bara dubbelhänta tecken)
+** [1/5] Lexicon content
+*** TODO Genuine signs should have their common 'names'
+    E.g. HYFF 'to be on the safe side' ('för säkerhets skull'), PAFF 'leave'
+    ('sticka iväg'), PI intensifier, 'actually' (förstärkningsord, 'verkligen')
+    and PY 'too' ('också').
 *** TODO Show list of categories (top left?)
-** TODO Change name of lexicon
+*** [0/2] Indicate unusual signs in search result
+    Search matches should indicate uncommon signs in the bottom right corner.
+**** TODO Mark uncommon/obsolete signs
+     Add an icon for 'mindre vanligt'
+**** TODO Mark dialect signs with map (requires dialect tag)
+     Add a small semi-transparent map of Sweden with the relevant region hilited
+     on top of video bottom right? (Name of region in categories + on hover.)
+*** TODO Corpus links
+    Signs in the lexicon that can be also found in the SSLC corpus should link
+    to teckensprakskorpus.su.se. These lexicon entries should contain the
+    corpus gloss for that sign -- something which is not included in the weekly
+    data import from teckensprakslexikon.su.se, but will have to be maintained
+    separately. -- Maybe use a separate file (`corpus-data.js`) so that this
+    doesn't have to be updated weekly, and can be cached in the user's browser?
+    (Or maybe this is counterproductive since that will require an extra file
+    fetch on load?)
+*** TODO Frequency information from corpus
+    The frequency information could be used to indicate common signs, and to
+    help in sort-by-relevance (in that more common sign, all other things being
+    equal, should appear earlier in search results than less common signs).
+** TODO Shortcut '/' should focus search text input
+   Typing anything else should bring out a notification (in the bottom left
+   corner?) 'Press [/] to jump to the search box' -- The notification should
+   probably slide in and out of view (just like Google does it) in order to
+   catch the user's attention.
+** [0/2] SEO
+*** TODO Add description to be displayed by Google
+*** TODO Search keywords to use
+    turkos, dövlexikon, svenskt teckenspråkslexikon, dövhet, teckenspråk, svenska
+** ================================================================================
+** TODO Change lexicon name
    Lexicon should be distinguishable from the official lexicon by name. Maybe
    use name 'Snabbt teckenspråklexikon'?
 ** [0/6] Code structure/stink/refactor
@@ -203,19 +309,6 @@
 
     If we need to go ES5, then splitting of the query string can be done with
     code found here: https://stackoverflow.com/a/38901550/351162
-** TODO Add autocompletion to search field
-   Entering words in the search field should give autocomplete similar to
-   Google.
-
-   + Autocomplete textarea
-     https://www.algolia.com/doc/guides/building-search-ui/resources/ui-and-ux-patterns/in-depth/autocomplete/tutorials/autocomplete-textarea/
-
-   + jQuery.textcomplete (Autocomplete for Textarea)
-     http://www.jque.re/plugins/version3/jquery.textcomplete/index.html
-
-   + Autocomplete for textarea elements http://yuku.github.io/textcomplete/
-     GitHub repo: https://github.com/yuku/textcomplete
-     Example site: https://yuku.takahashi.coffee/textcomplete/
 ** TODO Make Progressive Web App (PWA)
    This would allow a user to 'install' the lexicon on their phone (regardless
    of OS!).
@@ -302,6 +395,9 @@
 
     + Should content that is matched by '*' in the search query count towards
       relevance? (Count as half?)
+
+    + If a match is done through a synonym, it should get a lower a match score
+      than if it matches the query as specified.
 
     ------------------------------------------------------------
 
@@ -442,7 +538,7 @@
     The theme-color should be a bit darker to contrast with the search bar.
     (<meta name="theme-color" content="#07bccd">)
 *** TODO Narrower page margins on mobile                             :Mobile:
-    Especially the search field part should use the full width of the screen.
+    Especially the search box part should use the full width of the screen.
 *** TODO If video load fail, click again to try again                   :BUG:
     Currently, if video fails to load than one have to reload the whole page in
     order to retry loading the video. Clicking a video that failed to load
@@ -954,6 +1050,27 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Import tags in cronjob
+   CLOSED: [2021-08-17 Tue 04:03]
+   Modify the csvdump2json to add tags based on the CSV 'category', 'genuine'
+   and 'dialect' fields in the imported CSV.
+
+   my @category   = split /\s*\x1d\s*/, $field[13];
+   my $genuine    = $field[15];                        # NOT USED YET
+   my $comment    = join "", $field[17];               # NOT USED YET
+   my @dialect    = split /\s*\x1d\s*/, $field[18];    # NOT USED YET
+
+   The following shell function can be used to extract a single column from a
+   CSV (invoke with `csvcol NUM <FILE.csv`. Use, NUM = 0 for first column).
+
+   csvcol() { perl -Mutf8 -C -0777pe'BEGIN{$q=qr/[^"]|""/}s/\r\n?/\n/g;s#^(?:"$q*",){'"$1"'}"($q*)"(?:,"$q*")*#join"\n",map{s/""/"/g;$_}split/[\cK\c]]/,$1#gme' }
+** DONE Lexicon: Add tags/categories
+   CLOSED: [2021-08-17 Tue 04:02]
+   teckensprakslexikon.su.se has categories (vehicle, religion, clothes,
+   geography etc). These should be imported as well.
+
+   Tags for each sign should be displayed in the search result. Hovering above
+   a tag should provide the user with clues for how to search for them.
 ** DONE Lexicon: Redesigned menu close button
    CLOSED: [2019-08-31 Sat 22:57]
    So that it looks like the form icon buttons.
@@ -980,7 +1097,7 @@
    Use the magnifier icon that now is the search text placeholder, and use
    that in the submit button instead. Add placeholder text. Maybe something
    like 'Sök transkription eller översättning…'
-*** DONE Shift-tab from search field should not bring up menu           :BUG:
+*** DONE Shift-tab from search box should not bring up menu             :BUG:
     CLOSED: [2019-08-25 Sun 18:41]
     Menu shouldn't pop up when menu button is focused, but only on click (or
     enter/space) on menu button.
@@ -1386,8 +1503,7 @@
    Transcriptions are fiddly and finicky, rather than spending time on
    inputting a transcription, search for a sign that you know is similar to the
    one you're looking for, then copy/paste the transcription of that sign into
-   the search field and replace parts you're not sure about with asterisks
-   ('*').
+   the search box and replace parts you're not sure about with asterisks ('*').
 
    If you get too many matches, the following search terms can be useful for
    ignoring some of them:
