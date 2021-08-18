@@ -73,7 +73,7 @@ my %comment_abbr = (
     #'finskt teckenspråk' => 'FinSL',
     'förslagen' => 'föreslaget tecken',
     'inlånad' => 'inlånat tecken',
-    'kan uppfattas som kränkande' => 'vulgärt tecken',
+    #'kan uppfattas som kränkande' => 'vulgärt tecken',
     'tecknet är mindre vanligt' => 'ovanligt tecken',
 );
 
