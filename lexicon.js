@@ -540,13 +540,32 @@ function hilite(str, regex) {
 }
 
 function htmlifyTags(tags, hiliteRegex) {
-    return tags.length === 1 ? "" : "<img title='{tags}' src='pic/tag.svg'>"
-        .supplant({
-            tags: tags.map(
-                x => hilite(x, hiliteRegex)
-                    .replace(/(^|[^<])\//g, '$1<span class=sep>/</span>')
-            ).join('<br>') + " (antal taggar)",
+    var hilite = { tag: false, warn: false }, imgTitle = { tag: [], warn: [] };
+    if (tags.length === 1) {
+        return "";
+    }
+    tags.forEach((tag) => {
+        // Determine tag type (warning = mark as uncommon sign).
+        var tagType = tag.match(/\/ovanligt/) ? 'warn' : 'tag';
+        var html = tag
+            .replace(hiliteRegex, function (x) {
+                hilite[tagType] = true;
+                return '<mark>' + x + '</mark>';
+            })
+            // Slashes are greyed out.
+            .replace(/(^|[^<])\//g, '$1<span class=sep>/</span>');
+        imgTitle[tagType].push(html);
+    });
+    return ['tag', 'warn'].map((tagType) => {
+        if (imgTitle[tagType].length === 0) {
+            return '';
+        }
+        return "<img title='{htmlTagList}' src='pic/{type}{mark}.svg'>".supplant({
+            htmlTagList: imgTitle[tagType].join("<br>"),
+            type: tagType,
+            mark: hilite[tagType] ? "-marked" : "",
         });
+    }).join('');
 }
 
 // Turn a (hilited) transcription string into HTML.

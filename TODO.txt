@@ -194,9 +194,10 @@
     ('sticka iväg'), PI intensifier, 'actually' (förstärkningsord, 'verkligen')
     and PY 'too' ('också').
 *** TODO Show list of categories (top left?)
-*** [0/2] Indicate unusual signs in search result
+*** [1/2] Indicate unusual signs in search result
     Search matches should indicate uncommon signs in the bottom right corner.
-**** TODO Mark uncommon/obsolete signs
+**** DONE Mark uncommon/obsolete signs
+     CLOSED: [2021-08-18 Wed 15:40]
      Add an icon for 'mindre vanligt'
 **** TODO Mark dialect signs with map (requires dialect tag)
      Add a small semi-transparent map of Sweden with the relevant region hilited
