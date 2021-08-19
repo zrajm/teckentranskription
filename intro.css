@@ -1,9 +1,9 @@
-/* Copyright 2016-2018 by zrajm. Released under GPLv3 license. */
+/* Copyright 2016-2021 by zrajm. Released under GPLv3 license. */
 
 /* Default font: FreeSans-SWL */
 @font-face {
     font-family: "FreeSans-SWL";
-    src: url("freesans-swl.ttf");
+    src: url("freesans-swl.woff2");
     font-display: swap;
 }
 html {

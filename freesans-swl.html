@@ -1,14 +1,14 @@
 <!doctype html>
 <html>
 <head>
-  <!-- Copyright 2017–2018 by zrajm. Released under GPLv3 license. -->
+  <!-- Copyright 2017-2021 by zrajm. Released under GPLv3 license. -->
   <meta charset="UTF-8">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <title>FreeSans-SWL: Ett typsnitt för transkription av svenskt teckenspråk</title>
   <style>
     @font-face {
         font-family: "FreeSans-SWL";
-        src: url("freesans-swl.ttf");
+        src: url("freesans-swl.woff2");
         font-display: swap;
     }
     body {
@@ -97,6 +97,7 @@
       <ol>
         <li>Ladda hem
         typsnittet <code><a href=freesans-swl.ttf>freesans-swl.ttf</a></code>
+        (eller <code><a href=freesans-swl.woff2>freesans-swl.woff2</a></code>)
         och installera det på din dator. (Klicka bara på länken, de flesta
         datorer/operativsystem förstår att det är ett typsnitt och frågar dig
         om du vill installera det.)
@@ -113,14 +114,14 @@
     <section>
       <h1 id=css>Stylesheet för webben</h1>
 
-      <p>Om du vill använda FreeSans-SWL på en webbsida, så är det
-      enklaste sättet att ladda ner ovanstående typsnitt och lägga det
+      <p>Om du vill använda FreeSans-SWL på en webbsida, så är det enklaste
+      sättet att ladda ner ovanstående typsnitt i WOFF2-format och lägga det
       tillsammans med dina HTML-filer på servern, och sedan lägga till följande
       i din CSS. (Googla på ”web fonts” om du stöter på patrull.)
 
 <pre>    @font-face {
         font-family: "FreeSans-SWL";
-        src: url("freesans-swl.ttf");
+        src: url("freesans-swl.woff2");
         font-display: swap;
     }
     body { font-family: "FreeSans-SWL", "FreeSans", sans-serif; }</pre>
@@ -2922,6 +2923,10 @@
       <td>Truetype
       <td>För den vanliga användaren.
     <tr>
+      <td><code><a href=freesans-swl.woff2>freesans-swl.woff2</a></code>
+      <td>WOFF2
+      <td>Nyare fontformat, lämpligt för webbsidor.
+    <tr>
       <td><code><a href=freesans-swl.sfd>freesans-swl.sfd</a></code>
       <td>Fontforge
       <td>För den som vill ändra/uppdatera typsnittet.
@@ -2950,6 +2955,26 @@
     Resultatet är ett snett intryck då det diakritiska tecknet används
     tillsammans med en huvudsymbol som är smalare (􌥑􌤹) eller bredare (􌤿􌤹 eller
     􌥲􌦊) än den diakritiska symbolen självt.
+  </section>
+  <section>
+    <h1 id=truetype>Att generera WOFF2</h1>
+
+    <p>Fontforge kan inte spara i WOFF2-format (iallafall inte den version som
+    kommer med Ubuntu 20.04, Fontforge version ‘1:20190801’). Det går dock att
+    konvertera Truetype till WOFF2 med hjälp av programmet <tt>woff2</tt>,
+    installera det med:
+
+    <pre>    sudo apt install woff2</pre>
+
+    <p>Därefter kan du <a href="#truetype">genera Truetype i Fontforge</a> som
+    vanligt, och konvertera det till WOFF2 med:
+
+    <pre>    $ woff2_compress freesans-swl.ttf
+    Processing freesans-swl.ttf => freesans-swl.woff2
+    Compressed 1445282 to 581584.</pre>
+
+    <p>(Med hjälp av <tt>woff2</tt> kan man också göra det motsatta –
+    konvertera WOFF2 till Truetype med kommandot <tt>woff2_decompress</tt>.)
   </section>
 </section>
 
@@ -3562,7 +3587,7 @@
     <a href="LICENSE.txt" rel=license
        title="Released under the GNU General Public License, Version 3 (GPLv3)."
        >License</a>
-    <br>© 2017–2018 zrajm, Uppsala.
+    <br>© 2017–2021 zrajm, Uppsala.
   </footer>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-5434527-3"></script>
