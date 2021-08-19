@@ -540,37 +540,38 @@ function hilite(str, regex) {
 }
 
 function htmlifyTags(tags, hiliteRegex) {
-    var hilite = { tag: false, warn: false }, imgTitle = { tag: [], warn: [] };
+    // Tag count starts at -1 to compensate for the tag counter (e.g. '/1').
+    var count = { tag: -1, warn: 0 }, match = { tag: false, warn: false }, html;
     if (tags.length === 1) {
         return "";
     }
-    tags.forEach((tag) => {
-        // Determine tag type (warning = mark as uncommon sign).
+    // Generate tag list and count matches, and number of tags/warnings.
+    html = tags.map((tag) => {
+        // Determine tag type (warning = add warning icon).
         var tagType = tag.match(/\/ovanligt/) ? 'warn' : 'tag';
-        var html = tag
+        count[tagType] += 1;
+        return tag
             .replace(hiliteRegex, function (x) {
-                hilite[tagType] = true;
+                match[tagType] = true;
                 return '<mark>' + x + '</mark>';
             })
             // Slashes are greyed out.
-            .replace(/(^|[^<])\//g, '$1<span class=sep>/</span>');
-        imgTitle[tagType].push(html);
+            .replace(/(^|[^<])\//g, '$1<span class=sep>/</span>') +
+            (tagType === 'warn' ? " <span class=sep>▲</span>" : "");
     });
-    // If there are no tags, then move tag counter to the warnings (so that the
-    // 'tag' icon won't show up needlessly.)
-    if (imgTitle['tag'].length === 1 && imgTitle['warn'].length === 1) {
-        imgTitle['warn'].push(imgTitle['tag'].shift());
-    }
-    return ['tag', 'warn'].map((tagType) => {
-        if (imgTitle[tagType].length === 0) {
-            return '';
-        }
-        return "<img title='{htmlTagList}' src='pic/{type}{mark}.svg'>".supplant({
-            htmlTagList: imgTitle[tagType].join("<br>"),
-            type: tagType,
-            mark: hilite[tagType] ? "-marked" : "",
-        });
-    }).join('');
+    return '<div title="{tags}{help}">{icons}</div>'.supplant({
+        tags: html.join("<br>"),
+        help: " <span class=sep>(antal taggar)</span>",
+        icons: ['warn', 'tag'].map((tagType) => {
+            return count[tagType] === 0
+                ? ''
+                : "<img style='z-index:1' src='pic/{type}{match}.svg'>"
+                .supplant({
+                    type: tagType,
+                    match: match[tagType] ? '-marked' : '',
+                });
+        }).join(''),
+    });
 }
 
 // Turn a (hilited) transcription string into HTML.

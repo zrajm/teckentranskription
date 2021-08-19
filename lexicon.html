@@ -920,34 +920,43 @@ button {
       <h1>Taggar</h1>
       <div class=columns>
 
-        <p>Många tecken har i lexikonet har taggar som beskriver ytterligare
-        detaljer hos tecknet. För de tecken som har taggar syns en liten
-        etikettikon (<img src="pic/tag.svg" style="vertical-align:middle">) i
-        sökresultatet. Om du håller muspekaren över etikettikonen så kan du se
-        vilka taggar tecknet ifråga har.
+        <p>Många tecken har i lexikonet har taggar som beskriver tecknet
+        ytterligare. I sökresultatet syns dessa taggar som en liten etiketts-
+        <nobr>(<img src="pic/tag.svg" style="vertical-align:middle">)</nobr>
+        eller varningsikon <nobr>(<img src="pic/warn.svg"
+        style="vertical-align:top">)</nobr> i teckenvideons övre högra hörn. Om
+        du håller muspekaren över någon av dessa ikoner ser du vilka taggar
+        videon har (om du använder en mobiltelefon eller padda, kan du klicka
+        på ikonerna istället).
 
-        <p>Alla taggnamn börjar med <tt>/</tt> (snedstreck) och många av
-        taggarna har flera nivåer – tex har tecknen för olika franska städer
-        taggen <tt>/geografi/<wbr>orter/<wbr>Europa/<wbr>Frankrike</tt>, och
-        kan finnas genom att söka på hela taggnamnet, eller valfria delar av
-        det. Så du kan tex använda sökordet <tt>/geografi</tt> för att avgränsa
-        din sökning till tecken har med geografi att göra,
-        eller <tt>/orter</tt>, <tt>/europa</tt> eller <tt>/frankrike</tt> för
-        att hitta tecken i de kategorierna. (Du kan förstås också göra
-        kombinationer, som tex <tt>/europa -/frankrike</tt> för att hitta
-        tecken för europeiska städer, men utesluta de som ligger i Frankrike.
+        <p>Varningsikonen <nobr>(<img src="pic/warn.svg"
+        style="vertical-align:top">)</nobr> visas för tecken som är mindre
+        vanliga (och i tagglistan kan ser du också en triangel intill de taggar
+        som gör att lexikonet visar varningsikonen). Om din sökning matchar ord
+        i ett taggnamn, så markeras motsvarande ikon och de matchande orden i
+        tagglistan.
 
-        <p>Vissa taggar beskriver tex om ett tecken är dialektalt, ovanligt,
-        eller kan uppfattas som vulgärt/stötande. Andra taggar används för att
-        beskriva om ett tecken hör hemma inom något särskilt ämnesområde (som
-        geografi, egennamn, sport eller mat och dryck), och tecken som kommer
-        ifrån Oskar Österbergs lexikon (publicerat 1916) har
-        taggen <tt>/Österberg 1916”</tt>.
+        <p><p>Taggnamn börjar alltid med <tt>/</tt> (snedstreck) och många av
+        taggarna har kategorier och underkategorier – franska städer är till
+        exempel taggade
+        med <tt>/geografi/<wbr>orter/<wbr>Europa/<wbr>Frankrike</tt>, men det
+        räcker med att skriva delar av taggnamnet för att de ska dyka upp i
+        ditt sökresultat. (En sökning på <tt>/frankrike</tt>
+        eller <tt>/europa</tt> kommer att inkludera alla franska städer, men
+        den senare kommer förstås också att inkludera alla andra europeiska
+        städer som finns i lexikonet också. – Du också kombinera, och till
+        exempel söka efter <tt>/europa -/frankrike</tt> för att hitta de
+        europeiska städer som <i>inte</i> ligger i Frankrike.)
 
-        <p>En ensam siffra som tagg söker efter de tecken i lexikonet som har
-        det antalet taggar. Så om för att hitta alla tecken utan taggar sök
-        på <tt>/0</tt>, för att hitta alla tecken med en tagg, sök
-        på <tt>/1</tt> osv.
+        <p><p>Det finns taggar som indikerar om ett tecken är dialektalt,
+        ovanligt, eller kan uppfattas som vulgärt/stötande. Andra beskriver om
+        ett tecken hör hemma inom något särskilt ämnesområde (som geografi,
+        egennamn, sport eller mat och dryck). Tecken från Oskar Österbergs
+        lexikon (publicerat 1916) har taggen <tt>/Österberg 1916</tt>.
+
+        <p><p>Varje tecken har dessutom en taggräknare (<tt>/#</tt>) – så för
+        att hitta alla tecken med tre taggar sök efter <tt>/3</tt> (tecken som
+        inte har några taggar alls kan hittas med <tt>/0</tt>).
       </div>
     </section>
   </div>

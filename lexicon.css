@@ -104,9 +104,8 @@ noscript {
   height: 150px
 }
 .tooltip .sep {
-  opacity: .25;
+  opacity: .375;
   padding: 0 .15em;
-  font-weight: bold;
 }
 
 p { margin: 0; }
