@@ -1,7 +1,7 @@
 <!doctype html><!--*- ispell-dictionary: "svenska" -*-->
 <html lang=sv class=hyphenate style="visibility:visible">
 <head>
-  <!-- Copyright 2017 by zrajm. Released under GPLv3 license. -->
+  <!-- Copyright 2017-2021 by zrajm. Released under GPLv3 license. -->
   <meta charset="UTF-8">
   <link rel="shortcut icon" type="image/x-icon" href=favicon.ico>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -66,6 +66,7 @@
         margin-right: 0;
     }
 
+    summary { cursor: pointer; }
     details.button {
         border: 2px solid #aaa;
         border-radius: 2px;
@@ -192,8 +193,10 @@
     }
     /**************************************************************/
     /* <details> folding arrow */
+    details > summary { list-style: none; }
     details > summary::-webkit-details-marker { display: none; }
     details > summary::-moz-list-bullet { list-style-type: none;  }
+
     details[open] > summary:before { content: "\25bc"; }
     details       > summary:before {
       display: inline-block;
@@ -6773,7 +6776,7 @@
     <a href=LICENSE.txt rel=license
       title="Released under the GNU General Public License, Version 3 (GPLv3)."
       >License</a>
-    <br>© 2017–2018 zrajm, Uppsala.
+    <br>© 2017–2021 zrajm, Uppsala.
   </footer>
   <img id=hover style="display:none;position:fixed;bottom:0;right:0;border:4px solid black;padding: .5em 1em;background:#fff">
   <script src="jquery-3.6.0.slim.min.js"></script>
