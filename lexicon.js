@@ -556,6 +556,11 @@ function htmlifyTags(tags, hiliteRegex) {
             .replace(/(^|[^<])\//g, '$1<span class=sep>/</span>');
         imgTitle[tagType].push(html);
     });
+    // If there are no tags, then move tag counter to the warnings (so that the
+    // 'tag' icon won't show up needlessly.)
+    if (imgTitle['tag'].length === 1 && imgTitle['warn'].length === 1) {
+        imgTitle['warn'].push(imgTitle['tag'].shift());
+    }
     return ['tag', 'warn'].map((tagType) => {
         if (imgTitle[tagType].length === 0) {
             return '';
