@@ -291,16 +291,10 @@ var logTiming = (function (perf, log) {
 // Functions
 //
 
-// Split user-provided query string into a query object, with the following
-// syntax:
+// Parse a user-inputted query string and return a QUERY array.
 //
-// query = [
-//   [                         // subquery (array with 2 elements)
-//      [ /re1/g, /re2/g ],    //   1 element: array of search terms
-//      [ /re3/g, /re4/g ],    //   2 element: array of negated terms
-//   ], ...                    // moar subqueries...
-// ]
-//
+// Search Query Syntax
+// ===================
 // A search QUERY contains one or more TERMs (separated by space) all TERMs
 // must me found in an entry for that entry to match (they are AND:ed). A TERM
 // can also be negated by preceding it with '-'.
@@ -316,6 +310,17 @@ var logTiming = (function (perf, log) {
 // with 'like' and ending in the separate word ' this'). An unlimited number of
 // parts may be quoted. Spaces inside quotes are interpreted literally, while
 // spaces outside considered separators between search TERMs.
+//
+// Return Search Structure
+// =======================
+// Returns a QUERY data structure consisting of an array of subqueries. The
+// root query structure also has a property 'hilite' (containing a regex to
+// mark all matches). If any one subquery match an entry, then that result
+// should be returned in the result. Each subquery in turn consist of a an
+// object containing the following properties:
+//
+// * 'include' -- array of regexes that must ALL be found
+// * 'exclude' -- array of regexes that must all be absent
 //
 function parseQuery(queryStr) {
     "use strict";
@@ -371,20 +376,23 @@ function parseQuery(queryStr) {
             addSubquery: addSubquery,
             addTerm: addTerm,
             getQuery: function getQuery() {
-                // Ignore subqueries without positive search terms, turn all
-                // values to regexes, and add a hilite regex to each subquery.
-                return query.reduce(function (acc, subquery) {
-                    return (subquery.include.length + subquery.exclude.length) === 0
-                        ? acc                   // remove empty subquery
-                        : acc.concat({          // add non-empty subquery
-                            hilite: str2regex(subquery.include.join("|")),
+                // Return array with global 'hilite' propetry.
+                return Object.assign(query.reduce(
+                    (acc, subq) => !(subq.include.length || subq.exclude.length)
+                        ? acc
+                        : acc.concat({         // add non-empty subquery
+                            exclude: subq.exclude.map(str2regex),
                             include: (
                                 // If all terms are negated, add implicit '*'.
-                                subquery.include.length === 0 ? [""] : subquery.include
-                            ).map(str2regex),
-                            exclude: subquery.exclude.map(str2regex)
-                        });
-                }, []);
+                                subq.include.length ? subq.include :  ['']
+                            ).map(str2regex)
+                        }),
+                    [],
+                ), {
+                    hilite: str2regex(query.reduce(
+                        (acc, subq) => acc.concat(subq.include), [],
+                    ).join('|'))
+                });
             },
             negative: function () {
                 negative = true;
@@ -512,8 +520,9 @@ function regexInEntry(regex, entry) {
     });
 }
 
-// Subquery is a two-element array. 1st element is list of regexes that must
-// all be found, 2nd element is list of regexes that must NOT be found.
+// Subquery is an object with the properties:
+// * 'include' -- array of regexes that must ALL be found
+// * 'exclude' -- array of regexes that must all be absent
 function subqueryInEntry(subquery, entry) {
     "use strict";
     return subquery.include.every(function (re) {// all positive terms and
@@ -527,7 +536,7 @@ function subqueryInEntry(subquery, entry) {
 // truthiness, do binary not ['~'] on returned value.)
 function queryInEntry(query, entry) {
     "use strict";
-    return query.findIndex(function (subquery) {
+    return query.some(function (subquery) {
         return subqueryInEntry(subquery, entry);
     });
 }
@@ -629,10 +638,8 @@ function unicodeTo7bit(str) {
     }).replace(/-{2,}/, "-");
 }
 
-function htmlifyMatch(match) {
+function htmlifyMatch(entry, hiliteRegex) {
     "use strict";
-    var hiliteRegex = match.hilite;
-    var entry = match.entry;
     var id = entry[0];                         // 1st field
     var transcr = entry[1];                    // 2nd field
     var swe = entry.slice(2).filter(x => x[0] !== '/');  // Swedish
@@ -760,37 +767,27 @@ function searchLexicon(queryStr) {
     $("#q").val(queryStr);
     setTimeout(function () {
         var query = parseQuery(queryStr);
-        var i;
-        var len;
-        var subquery;
-        var matches = [];
-
         logTiming.reset();
-        if (query.length > 0) {
-            len = lexicon.length;
-            for (i = 0; i < len; i += 1) {
-                subquery = queryInEntry(query, lexicon[i]);
-                if (subquery > -1) {
-                    matches.push({
-                        hilite: query[subquery].hilite,
-                        entry: lexicon[i]
-                    });
-                }
-            }
-        }
+        var matches = (query.length === 0) ? [] : lexicon.reduce(
+            (acc, entry) => queryInEntry(query, entry)
+                ? acc.concat([entry])
+                : acc,
+            [],
+        );
         logTiming.total("Search took %s.");
 
         // Query without matches, add 'nomatch' to <body>.
-        $body[(query.length > 0 && matches.length === 0) ? "addClass" : "removeClass"]("nomatch");
+        $body[(query.length && matches.length === 0) ? "addClass" : "removeClass"]("nomatch");
 
         // No query, add 'noquery' to body element.
-        $body[query.length === 0 ? "addClass" : "removeClass"]("noquery");
+        $body[query.length ? "removeClass" : "addClass"]("noquery");
 
+        // Output search result.
         outputMatching({
             status: $("#search-count"),
             result: $("#search-result").empty(),
             button: $("#more"),
-            html: matches.map(htmlifyMatch)
+            html: matches.map(entry => htmlifyMatch(entry, query.hilite))
         });
     }, 0);
 }
