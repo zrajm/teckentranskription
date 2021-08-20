@@ -341,8 +341,6 @@ function parseQuery(queryStr) {
         var negative;
 
         function str2regex(regex) {
-            // Does lookbehind (?<=..) doesn't work in Edge or Firefox!
-            //return new RegExp("(?:^|(?<=\s))" + x + "(?=$|\s)", "gui");
             return new RegExp(regex, "gui");
         }
         function addSubquery() {
@@ -359,8 +357,8 @@ function parseQuery(queryStr) {
             if (term !== "") {
                 term = type === "field"
                     ? "^" + term + "$"          // entire field
-                    : (plainTerm.match(leadingNonAlpha)  ? "" : "(?:" + nonWord + "|^)") +
-                      term +
+                    : (plainTerm.match(leadingNonAlpha)  ? "()" : "(" + nonWord + "|^)") +
+                      '(' + term + ')' +
                       (plainTerm.match(trailingNonAlpha) ? "" : "(?=" + nonWord + "|$)");
                 query[query.length - 1][
                     negative
@@ -541,10 +539,19 @@ function queryInEntry(query, entry) {
     });
 }
 
-function hilite(str, regex) {
+function hilite(str, regex, func) {
     "use strict";
-    return str.replace(regex, function (substr) {
-        return "<mark>" + substr + "</mark>";
+    return str.replace(regex, function (match, ...parts) {
+        parts = parts.slice(0,-2).filter((p) => p !== undefined);
+        if (func) {
+            func();
+        }
+        // Lookbeind (?<=...) isn't supported in Safari (and was only added to
+        // Edge and Firefox in summer 2020), therefore we use regex subgroups
+        // instead.
+        return "{0}<mark>{1}</mark>".supplant(
+            (parts.length === 2) ? parts : ['', match],
+        );
     });
 }
 
@@ -559,11 +566,7 @@ function htmlifyTags(tags, hiliteRegex) {
         // Determine tag type (warning = add warning icon).
         var tagType = tag.match(/\/ovanligt/) ? 'warn' : 'tag';
         count[tagType] += 1;
-        return tag
-            .replace(hiliteRegex, function (x) {
-                match[tagType] = true;
-                return '<mark>' + x + '</mark>';
-            })
+        return hilite(tag, hiliteRegex, () => { match[tagType] = true })
             // Slashes are greyed out.
             .replace(/(^|[^<])\//g, '$1<span class=sep>/</span>') +
             (tagType === 'warn' ? " <span class=sep>▲</span>" : "");

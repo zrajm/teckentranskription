@@ -444,7 +444,7 @@
 
     Present search result in a sortable table? Should be able to sort by swedish
     word, and by sign language.
-** [0/28] GUI
+** [1/28] GUI
 *** TODO Move SVG to CSS? -- Does that work with currentFill?
     (To make HTML form more readable.)
 *** TODO Unify :focus marking styles
@@ -576,10 +576,6 @@
     * key to search for transcription
     * <Esc>(?) key to focus search input area
 *** TODO Use lazy loading of images?
-*** TODO Multiple <mark> in same entry not working                      :BUG:
-    A search for '–,72,har' should hilite three different things
-    in entry 00072, but only the transcription is hilited. Why?
-    http://localhost/teckentranskription.lexicon/lexicon.html#otranskr%2C%2072%2C%20har
 *** TODO Serve poster images through GitHub page?
         var videoTmpl = "video/{firstDigits}/{file}-{id}-tecken.mp4";
         var imageTmpl = "lexicon/{firstDigits}/{file}-{id}-tecken.jpg";
@@ -1051,6 +1047,13 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Don't mark characters in front of matching word
+   CLOSED: [2021-08-20 Fri 10:33]
+** DONE Lexicon: Multiple <mark> in same entry not working              :BUG:
+    CLOSED: [2021-08-20 Fri 07:26] commit 8217e88
+    A search for '–,72,har' should hilite three different things
+    in entry 00072, but only the transcription is hilited. Why?
+    http://localhost/teckentranskription.lexicon/lexicon.html#otranskr%2C%2072%2C%20har
 ** DONE Lexicon: Import tags in cronjob
    CLOSED: [2021-08-17 Tue 04:03]
    Modify the csvdump2json to add tags based on the CSV 'category', 'genuine'
