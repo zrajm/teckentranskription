@@ -1046,6 +1046,19 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Lessen data size by referring to tags by numbers
+   CLOSED: [2021-08-22 Sun 14:07]
+   Modified `lexicon-data.js` to include a list of tags, including only the
+   numbers of tags (instead of the full label) in the lexicon. (This is done to
+   speed up the loading of the page over the network.)
+
+   On loading `lexicon-data.js` reprocess the `lexicon` list, so that the
+   lexicon contain the full tag labels (meaning that we don't have to reprocess
+   this every time the user does a search in the lexicon).
+
+   Also the `lexiconTags` list is resorted alphabetically (when loaded this
+   list is sorted in reverse number of occurrences, so that the tags used the
+   most in the lexicon get the shortest numbers).
 ** DONE Lexicon: Video search results should be centered on screen
    CLOSED: [2021-08-22 Sun 06:57]
    The #search-result element is resized in Javascript in an onload/onresize

@@ -135,6 +135,7 @@ sub abbreviate_comment {
 }
 
 my @thingy;
+my %tags;
 while (my @field = $csv->split(scalar(<>))) {  # main loop
 
     # Strip leading/trailing space in all fields.
@@ -208,24 +209,52 @@ while (my @field = $csv->split(scalar(<>))) {  # main loop
         "#($spelled)";
     }gex;
 
-    my @tags = (
+    my @tags = map { "/$_" } sort(
         @subject,
         ($desc    =~ m/\bBokstaveras\s*:/ ? 'bokstavering' : ()),
         ($genuine eq 'ja' ? 'genuint tecken' : ()),
         @comment,
         @dialect,
     );
+    $tags{$_} += 1 for @tags;                  # count the tags
     push(@thingy, [
         $id,
         $transcript || "–",
         @swedish,
-        (map { "/$_" } sort @tags),  # tags
-        sprintf("/%u", $#tags+1),    # number of tags
+        @tags,
     ]);
 }
 
-print
-    "var lexiconDate = new Date(\"" . time_str($mtime) . "\");\n" .
-    "var lexicon = " . jsonify(@thingy) . ";\n";
+# Sort by decreasing number of occurrences first, then alphabetically.
+my @tags = sort {
+    $tags{$b} <=> $tags{$a} or $a cmp $b;
+} keys %tags;
+
+%tags = do {
+    my $i;
+    map { ($_, $i++) } @tags;
+};
+
+# Replace each tag with corresponding tag number.
+@thingy = map {
+    [ map {
+        $tags{$_} // $_;
+    } @$_ ];
+} @thingy;
+
+(my $tags = jsonify(@tags)) =~ s#(?<="),(?=")#,\n#g;
+my $date_str = time_str($mtime);
+my $lexicon = jsonify(@thingy);
+
+print <<"END_OF_FILE";
+let lexiconDate=Date("$date_str");
+let lexiconTags=$tags;
+let lexicon=$lexicon
+.map(e=>{
+	let c=0;
+	return[...e.map((v,i)=>i<3||isNaN(v)?v:lexiconTags[c++,v]),'/'+c];
+});
+lexiconTags=lexiconTags.sort((a,b)=>a.localeCompare(b,'sv',{sensitivity:'base'}));
+END_OF_FILE
 
 #[eof]
