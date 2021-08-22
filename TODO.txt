@@ -137,7 +137,6 @@
      other advanced features that are useful to researchers and advanced users.
      These functions shall not intrude on the beginner's user experience.
   :END:
-** TODO Smaller sized font file
 ** [0/4] Move lexicon
 *** TODO Move lexicon into separate repository
     Leave the history of the lexicon in the zrajm page repository, but create a
@@ -1054,6 +1053,9 @@
     A search for '–,72,har' should hilite three different things
     in entry 00072, but only the transcription is hilited. Why?
     http://localhost/teckentranskription.lexicon/lexicon.html#otranskr%2C%2072%2C%20har
+** DONE Lexicon: Smaller sized font file
+   Converted Truetype font to WOFF2.
+   CLOSED: [2021-08-19 Thu 23:15]
 ** DONE Lexicon: Import tags in cronjob
    CLOSED: [2021-08-17 Tue 04:03]
    Modify the csvdump2json to add tags based on the CSV 'category', 'genuine'

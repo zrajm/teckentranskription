@@ -571,13 +571,13 @@ function htmlifyTags(tags, hiliteRegex) {
             .replace(/(^|[^<])\//g, '$1<span class=sep>/</span>') +
             (tagType === 'warn' ? " <span class=sep>▲</span>" : "");
     });
-    return '<div title="{tags}{help}">{icons}</div>'.supplant({
+    return '<span class=tags title="{tags}{help}">{icons}</span>'.supplant({
         tags: html.join("<br>"),
         help: " <span class=sep>(antal taggar)</span>",
         icons: ['warn', 'tag'].map((tagType) => {
             return count[tagType] === 0
                 ? ''
-                : "<img style='z-index:1' src='pic/{type}{match}.svg'>"
+                : "<img src='pic/{type}{match}.svg'>"
                 .supplant({
                     type: tagType,
                     match: match[tagType] ? '-marked' : '',
@@ -648,6 +648,7 @@ function htmlifyMatch(entry, hiliteRegex) {
     var swe = entry.slice(2).filter(x => x[0] !== '/');  // Swedish
     var tags = entry.slice(2).filter(x => x[0] === '/');  // /tags
     return (
+        /* NB: Whitespace below shows up in search result's 'text' mode. */
         "<div class=match>" +
             "<div class='video-container is-loading'>" +
                 "<img src='{baseUrl}/photos/{dir}/{file}-{id}-tecken.jpg'" +
@@ -656,8 +657,8 @@ function htmlifyMatch(entry, hiliteRegex) {
                 "<div class=top-right style='text-align:right'>" +
                     "<a class=video-id href='{baseUrl}/ord/{id}'" +
                         " title='Öppna i Svenskt tecken­språks­lexikon (i ny tabb)'" +
-                        " target=_blank>{htmlId}</a>" +
-                    "{htmlTags}" +
+                        " target=_blank>{htmlId}</a>\n" +
+                    "{htmlTags}\n" +
                 "</div>" +
                 "<div class=video-subs>" +
                     "<a data-href='{transcr}' title='{htmlTranscr}'>" +

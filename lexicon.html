@@ -322,6 +322,15 @@ body.noquery #search {
 }
 
 /*****************************************
+* Align these icons with baseline.
+*/
+img[src="pic/warn-marked.svg"],
+img[src="pic/warn.svg"] { position: relative; top: 2px; }
+img[src="pic/tag-marked.svg"],
+img[src="pic/tag.svg"] { position: relative; top: 3px; }
+img[src$="-marked.svg"] { background: rgba(255, 193, 0, .3); }
+
+/*****************************************
 * Stuff for text result view (text/video).
 */
 .text-view #search-result {
@@ -348,10 +357,6 @@ body.noquery #search {
 .text-view .video-container > video,
 .text-view .video-feedback {
   display: none;
-}
-.text-view .top-right img {
-    vertical-align: middle;
-    margin: 0 .125em;
 }
 .text-view .video-id:hover { opacity: 1; }
 .text-view .video-subs a {
@@ -454,10 +459,10 @@ body.noquery #search {
 .video-view .top-right > *:hover { opacity: 1; }
 .video-view .top-right img {
   display: block;
-  margin-left: auto;
 }
-.video-view .top-right img[src$="-marked.svg"] {
-  background: rgba(255, 193, 0, .3);
+.video-view .top-right .tags {
+  display: table;
+  margin-left: auto;
 }
 .video-view .video-id:hover { opacity: 1; }
 .video-view .video-subs {
@@ -922,20 +927,18 @@ button {
       <div class=columns>
 
         <p>Många tecken har i lexikonet har taggar som beskriver tecknet
-        ytterligare. I sökresultatet syns dessa taggar som en liten etiketts-
-        <nobr>(<img src="pic/tag.svg" style="vertical-align:middle">)</nobr>
-        eller varningsikon <nobr>(<img src="pic/warn.svg"
-        style="vertical-align:top">)</nobr> i teckenvideons övre högra hörn. Om
-        du håller muspekaren över någon av dessa ikoner ser du vilka taggar
-        videon har (om du använder en mobiltelefon eller padda, kan du klicka
-        på ikonerna istället).
+        ytterligare. I sökresultatet syns dessa taggar som en liten
+        etiketts- <nobr>(<img src="pic/tag.svg">)</nobr> eller
+        varningsikon <nobr>(<img src="pic/warn.svg">)</nobr> i teckenvideons
+        övre högra hörn. Om du håller muspekaren över någon av dessa ikoner ser
+        du vilka taggar videon har (om du använder en mobiltelefon eller padda,
+        kan du klicka på ikonerna istället).
 
-        <p>Varningsikonen <nobr>(<img src="pic/warn.svg"
-        style="vertical-align:top">)</nobr> visas för tecken som är mindre
-        vanliga (och i tagglistan kan ser du också en triangel intill de taggar
-        som gör att lexikonet visar varningsikonen). Om din sökning matchar ord
-        i ett taggnamn, så markeras motsvarande ikon och de matchande orden i
-        tagglistan.
+        <p>Varningsikonen <nobr>(<img src="pic/warn.svg">)</nobr> visas för
+        tecken som är mindre vanliga (och i tagglistan kan ser du också en
+        triangel intill de taggar som gör att lexikonet visar varningsikonen).
+        Om din sökning matchar ord i ett taggnamn, så markeras motsvarande ikon
+        och de matchande orden i tagglistan.
 
         <p><p>Taggnamn börjar alltid med <tt>/</tt> (snedstreck) och många av
         taggarna har kategorier och underkategorier – franska städer är till
