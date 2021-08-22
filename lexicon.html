@@ -276,10 +276,6 @@ body.noquery #search {
 */
 .selector {
   float: right;
-  padding: 2px 1px;
-  position: relative;
-  top: -2px;
-  right: -1px;
   cursor: pointer;
   border-radius: 4px; /* form border radius */
 }
@@ -374,7 +370,9 @@ img[src$="-marked.svg"] { background: rgba(255, 193, 0, .3); }
 .video-view #search-result {
   word-spacing: .5em;  /* space between #search-result matches */
 }
-.video-view #search-result > * { word-spacing: normal; }
+.video-view #search-result > * {
+  word-spacing: normal;
+}
 
 .video-view #search-result > .match {
   display: inline-block;
