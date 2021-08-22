@@ -80,7 +80,7 @@ function toggleFullscreen(elem) {
 //
 //   .hide() -- Hides currently open overlay.
 //
-var overlay = (function () {
+(function () {
     var button = $("a[href='#help']");
     var overlay = $(".overlay.help");
 
@@ -122,10 +122,6 @@ var overlay = (function () {
             }
         }
     });
-    return {
-        hide: hideOverlay,
-        show: showOverlay
-    };
 }());
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -493,19 +489,6 @@ function parseQuery(queryStr) {
     return queryBuilder.getQuery();
 }
 
-function dump(msg, object) {
-    "use strict";
-    if (typeof msg === "object") {             // if no msg, then use '%s'
-        object = msg;
-        msg = "%s";
-    }
-    window.console.log(msg.replace(/%s/, JSON.stringify(object, function (ignore, value) {
-        return value.constructor === RegExp
-            ? value.toString()
-            : value;
-    }, 4)));
-}
-
 // Return true if at least one element in entry matches regex. (The
 // `regex.lastIndex` property is modified by this function).
 function regexInEntry(regex, entry) {
@@ -590,42 +573,6 @@ function htmlifyTags(tags, hiliteRegex) {
 function htmlifyTranscription(hilitedTransStr) {
     "use strict";
     return hilitedTransStr
-        // Add <span class=fingerspell>...</span> around substrings of
-        // printable latin-1 chars. If there are <mark>/</mark> tags inside the
-        // transcript string, make sure we add the matching number of tags on
-        // the relevant <span> tag (to make sure HTML remains valid).
-        .replace(/[\x21-\xff]+/gu, function (spelledStr) {
-            var stack = [];
-            var begTag = "<span class=fingerspell>";
-            var endTag = "</span>";
-
-            // If substring is HTML only (i.e. no text): Keep it as-is.
-            if (spelledStr.match(/^(<[^<>]+>)*$/)) {
-                return spelledStr;
-            }
-
-            // Go through HTML tags in substring using a stack to keep track of
-            // completed tags. For each end tag remove correspending start tag,
-            // so that result final stack reflects all unfinished tags.
-            spelledStr.replace(/<(\/?)([a-zA-Z0-9]+)>/g, function (tag, type, name) {
-                if (type === "/" && stack[stack.length - 1] === name) {
-                    stack.pop();
-                } else {
-                    stack.push(type + name);
-                }
-            });
-
-            // Go through remaining stack and add corresponding tags to wrapper
-            // <span>.
-            stack.forEach(function (tag) {
-                if (tag.match(/^\//)) {
-                    begTag = "</mark>" + begTag + "<mark>";
-                } else {
-                    endTag = "</mark>" + endTag + "<mark>";
-                }
-            });
-            return begTag + spelledStr + endTag;
-        })
         // Insert <wbr> tag after all segment separators.
         .replace(/􌥠/gu, '􌥠<wbr>');
 }
@@ -1010,7 +957,7 @@ $(function () {
 }());
 
 function showVideos (bool) {
-    var hasVideo = $("#search-wrapper")
+    $("#search-wrapper")
         .removeClass("video-view text-view")
         .addClass(bool ? "video-view" : "text-view");
 }
