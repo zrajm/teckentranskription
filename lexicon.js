@@ -1,5 +1,5 @@
-/*jslint browser fudge */
-/*global window $ lexicon lexiconDate */
+/* jshint esversion: 6, browser: true, jquery: true, laxbreak: true */
+/* globals lexicon, lexiconDate */
 
 // String method `STR.supplant(OBJ)`. Replace all {...} expressions in STR with
 // OBJ property of same name. Return the new string.
@@ -381,10 +381,10 @@ function parseQuery(queryStr) {
                                 subq.include.length ? subq.include :  ['']
                             ).map(str2regex)
                         }),
-                    [],
+                    []
                 ), {
                     hilite: str2regex(query.reduce(
-                        (acc, subq) => acc.concat(subq.include), [],
+                        (acc, subq) => acc.concat(subq.include), []
                     ).join('|'))
                 });
             },
@@ -533,7 +533,7 @@ function hilite(str, regex, func) {
         // Edge and Firefox in summer 2020), therefore we use regex subgroups
         // instead.
         return "{0}<mark>{1}</mark>".supplant(
-            (parts.length === 2) ? parts : ['', match],
+            (parts.length === 2) ? parts : ['', match]
         );
     });
 }
@@ -549,8 +549,9 @@ function htmlifyTags(tags, hiliteRegex) {
         // Determine tag type (warning = add warning icon).
         var tagType = tag.match(/\/ovanligt/) ? 'warn' : 'tag';
         count[tagType] += 1;
-        return hilite(tag, hiliteRegex, () => { match[tagType] = true })
-            // Slashes are greyed out.
+        return hilite(tag, hiliteRegex, () => {
+            match[tagType] = true;
+        })
             .replace(/(^|[^<])\//g, '$1<span class=sep>/</span>') +
             (tagType === 'warn' ? " <span class=sep>▲</span>" : "");
     });
@@ -651,7 +652,7 @@ var outputMatching = (function () {
         var pageOffset = window.pageYOffset || window.scrollY;
         var pageHeight = document.body.offsetHeight;
         var winHeight = window.innerHeight;
-        return (pageOffset + winHeight >= pageHeight - 2) ? true : false
+        return (pageOffset + winHeight >= pageHeight - 2) ? true : false;
     }
 
     function outputNext(args) {
@@ -723,7 +724,7 @@ function searchLexicon(queryStr) {
             (acc, entry) => queryInEntry(query, entry)
                 ? acc.concat([entry])
                 : acc,
-            [],
+            []
         );
         logTiming.total("Search took %s.");
 
@@ -866,7 +867,7 @@ $("#search-result")
 
     function hideTooltip() {
         if (shown) {
-            shown = false
+            shown = false;
             jqTooltip.hide();
         }
     }

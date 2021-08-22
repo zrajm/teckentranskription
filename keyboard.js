@@ -1,5 +1,5 @@
-/*jslint browser fudge */
-/*global window $ */
+/* jshint esversion: 6, browser: true, jquery: true, laxbreak: true */
+/* exported transcriptKeyboard */
 
 // jqInput is a jQuery DOM element in which to insert text (a <textarea> or
 // <input> element). This element will be wrapped in a container element
