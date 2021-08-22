@@ -843,6 +843,28 @@ $("#search-result")
         toggleFullscreen($(">video", event.currentTarget)[0]);
     });
 
+// On window resize: Rescale #search-result element in steps.
+{
+    const $win = $(window);
+    const $div = $('#search-result');
+    const gapWidth = parseInt($div.css('word-spacing'), 10);
+    const colWidth = 270;                      // same as .video-container in CSS
+    let oldWidth, oldCols;
+    $win.on('load resize', () => {
+        const width = $win.width();
+        if (width === oldWidth) {              // window width unchanged
+            return;
+        }
+        const cols = Math.floor((width + gapWidth) / (colWidth + gapWidth)) || 1;
+        if (cols === oldCols) {                // number of columns unchanged
+            return;
+        }
+        $div.css('width', (gapWidth * (cols - 1)) + (colWidth * cols));
+        oldWidth = width;
+        oldCols = cols;
+    });
+}
+
 // Tooltips: These imitate Chromium tooltip behaviour, but allow us to use any
 // font -- so that sign language transcriptions can be displayed.
 (function () {

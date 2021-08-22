@@ -183,7 +183,10 @@ header {
 }
 
 #search-wrapper {
-  margin: 0 .5em .5em;
+  margin: 0 0 .5em;
+}
+#search-result {
+  margin: 0 auto;
 }
 #nomatch,
 #noquery {
@@ -212,7 +215,7 @@ body > footer,
   color: #000;
   opacity: .55;
 }
-#search-brief { margin: .5em 0; }
+#search-brief { margin: .5em; }
 #search-brief:after {
   content: "";
   display: table;
@@ -330,6 +333,8 @@ img[src$="-marked.svg"] { background: rgba(255, 193, 0, .3); }
 * Stuff for text result view (text/video).
 */
 .text-view #search-result {
+  padding: 0 .5em;
+  width: 100% !important;
   column-gap: 1em;
   columns: 14em;
 }
@@ -368,12 +373,15 @@ img[src$="-marked.svg"] { background: rgba(255, 193, 0, .3); }
 * Stuff for video result view (text/video).
 */
 .video-view #search-result {
-  word-spacing: .5em;  /* space between #search-result matches */
+  word-spacing: 16px;  /* Used by JS, MUST be in px! */
+  font-size: 0;
+  line-height: 12px;
 }
 .video-view #search-result > * {
-  word-spacing: normal;
+    word-spacing: normal;
+    font-size: 1rem;
+    line-height: normal;
 }
-
 .video-view #search-result > .match {
   display: inline-block;
   width: 270px;                            /* same as .video-container */

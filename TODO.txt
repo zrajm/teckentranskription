@@ -1046,6 +1046,13 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Video search results should be centered on screen
+   CLOSED: [2021-08-22 Sun 06:57]
+   The #search-result element is resized in Javascript in an onload/onresize
+   event handler. This cannot be done in pure CSS, since the container cannot
+   shrink-to-fit content that has been line wrapped. :( -- Well, actually, it
+   could be done using media queries, but this would be verbose and even more
+   finicky, so Javascript it is!
 ** DONE Lexicon: Don't mark characters in front of matching word
    CLOSED: [2021-08-20 Fri 10:33]
 ** DONE Lexicon: Multiple <mark> in same entry not working              :BUG:
