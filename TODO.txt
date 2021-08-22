@@ -223,12 +223,10 @@
 *** TODO Add description to be displayed by Google
 *** TODO Search keywords to use
     turkos, dövlexikon, svenskt teckenspråkslexikon, dövhet, teckenspråk, svenska
-** ================================================================================
 ** TODO Change lexicon name
    Lexicon should be distinguishable from the official lexicon by name. Maybe
    use name 'Snabbt teckenspråklexikon'?
-** [0/6] Code structure/stink/refactor
-*** TODO Use '$' prefix instead of 'jq' in variables
+** [0/4] Code structure/stink/refactor
 *** TODO Memory optimization
     Leakyness? -- Does a new search completely (or as completely as possible)
     clear the memory before building up a new search result?
@@ -296,6 +294,7 @@
 
     + ES5 standard released in 2009.
     + ES6 standard released in 2015.
+    + ES8 standard released in 2017 (https://262.ecma-international.org/8.0/).
 
     |-----------------+---------------------|
     | Browser         | /u support          |
@@ -1046,6 +1045,8 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Use '$' prefix instead of 'jq' in variables
+   CLOSED: [2021-08-22 Sun 17:59]
 ** DONE Lexicon: Lessen data size by referring to tags by numbers
    CLOSED: [2021-08-22 Sun 14:07]
    Modified `lexicon-data.js` to include a list of tags, including only the

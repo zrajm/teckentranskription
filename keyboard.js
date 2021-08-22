@@ -1,14 +1,14 @@
 /* jshint esversion: 6, browser: true, jquery: true, laxbreak: true */
 /* exported transcriptKeyboard */
 
-// jqInput is a jQuery DOM element in which to insert text (a <textarea> or
+// $input is a jQuery DOM element in which to insert text (a <textarea> or
 // <input> element). This element will be wrapped in a container element
-// (jqWrapper), and a virtual keyboard (jqKeyboard) will added at the end of
-// the container.
-function transcriptKeyboard(jqWrapper, jqInput, jqKeyboardIcon) {
+// ($wrapper), and a virtual keyboard ($keyboard) will added at the end of the
+// container.
+function transcriptKeyboard($wrapper, $input, $keyboardIcon) {
     "use strict";
-    var domInput = jqInput.get(0);
-    var jqKeyboard;
+    var domInput = $input.get(0);
+    var $keyboard;
 
     // Insert text in a textarea.
     function insertAtCursor(str) {
@@ -68,7 +68,7 @@ function transcriptKeyboard(jqWrapper, jqInput, jqKeyboardIcon) {
         }
     }
 
-    function insertKeyboardInDom(jqWrapper) {
+    function insertKeyboardInDom($wrapper) {
         var keyboardHtml = [[
             {prefix: "Relation: "},
             "<nobr>",
@@ -279,49 +279,49 @@ function transcriptKeyboard(jqWrapper, jqInput, jqKeyboardIcon) {
                 }).join("") + "</span>";
         }).join(" ");
         return $("<div id=keyboard>" + keyboardHtml + "</div>")
-            .appendTo(jqWrapper)
+            .appendTo($wrapper)
             .hide();
     }
 
     $(function () {
-        jqKeyboard = insertKeyboardInDom(jqWrapper);
+        $keyboard = insertKeyboardInDom($wrapper);
 
-        jqKeyboard.on("click", "button", onButton);
+        $keyboard.on("click", "button", onButton);
 
         // Escape anywhere inside form: Toggle virtual keyboard.
-        jqWrapper.on("keydown", function (e) {
+        $wrapper.on("keydown", function (e) {
             var k = e.which;
             if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) {
                 return;
             }
             if (k === 27) {                     // Escape
                 e.preventDefault();
-                jqKeyboard.toggle();
+                $keyboard.toggle();
                 if (!$(e.target).is(":visible")) {
-                    jqInput.focus();
+                    $input.focus();
                 }
             }
         });
 
         // Click on keyboard icon: Toggle virtual keyboard.
-        jqKeyboardIcon.on("click", function (e) {
+        $keyboardIcon.on("click", function (e) {
             if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) {
                 return;
             }
             e.preventDefault();
-            jqKeyboard.toggle();
+            $keyboard.toggle();
         });
 
         // Click/focus outside it virtual keyboard: Hide it.
         $(document.body).on("click focus", function (e) {
-            if ($(e.target).closest(jqWrapper).length === 0) {
-                jqKeyboard.hide();
+            if ($(e.target).closest($wrapper).length === 0) {
+                $keyboard.hide();
             }
         });
 
         // Submit: Hide virtual keyboard.
-        jqWrapper.on("submit", function () {
-            jqKeyboard.hide();
+        $wrapper.on("submit", function () {
+            $keyboard.hide();
         });
     });
 }

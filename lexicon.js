@@ -750,30 +750,30 @@ function onPlayPauseToggle(event) {
     if ($(event.target).is("a")) {             // a link was clicked: abort
         return;
     }
-    var jqContainer = $(event.currentTarget);
-    var jqVideo = $(">video,>img[data-video]", jqContainer);
+    var $container = $(event.currentTarget);
+    var $video = $(">video,>img[data-video]", $container);
 
-    if (jqVideo.is("img")) {                    // replace <img> with <video>
-        jqVideo = $(
+    if ($video.is("img")) {                    // replace <img> with <video>
+        $video = $(
             "<video loop muted playsinline src='{0}' poster='{1}'></video>"
-                .supplant([jqVideo.data("video"), jqVideo.attr("src")])
-        ).replaceAll(jqVideo).on("canplay error", function (e) {
-            jqVideo.off("canplay error");
-            jqContainer.removeClass("is-loading-video is-broken");
+                .supplant([$video.data("video"), $video.attr("src")])
+        ).replaceAll($video).on("canplay error", function (e) {
+            $video.off("canplay error");
+            $container.removeClass("is-loading-video is-broken");
             if (e.type === "error") {
-                jqContainer.addClass("is-broken");
+                $container.addClass("is-broken");
             }
         });
-        jqContainer.addClass("is-loading-video");
+        $container.addClass("is-loading-video");
     }
 
     // Get state of video and toggle play/pause state.
     // (Everything that remains after this is visual feedback.)
-    var action = jqVideo.prop("paused") ? "play" : "pause";
-    jqVideo.trigger(action);
+    var action = $video.prop("paused") ? "play" : "pause";
+    $video.trigger(action);
 
     // Add icon to feedback overlay & animate it.
-    feedbackElem = $(">.video-feedback", jqContainer)
+    feedbackElem = $(">.video-feedback", $container)
         .removeClass("anim pause play")
         .addClass(action);                     // display play/pause icon
     setTimeout(function () {                   // animate icon
@@ -818,7 +818,7 @@ $("#search-result")
 (function () {
     var timeout;
     var shown = false;
-    var jqTooltip = $("<div class=tooltip></div>").appendTo(document.body).css({
+    var $tooltip = $("<div class=tooltip></div>").appendTo(document.body).css({
         display: "none", color: "#fff", background: "#555", borderRadius: 2,
         boxShadow: "0 2px 6px rgba(0, 0, 0, .25)", fontSize: 16,
         lineHeight: "1.6", padding: ".5em", position: "fixed",
@@ -827,17 +827,17 @@ $("#search-result")
 
     // Trigger event if pointer is non-moving for half a second.
     $(document.body).on("mouseover", "[title],[data-title]", function (event) {
-        var jq = $(event.currentTarget);
-        var value = jq.attr("title");
+        var $e = $(event.currentTarget);
+        var value = $e.attr("title");
 
         // Change attribute 'title' => 'data-title' to suppress browser tooltip.
         if (value !== undefined) {
-            jq.attr("data-title", value).removeAttr("title");
+            $e.attr("data-title", value).removeAttr("title");
         }
 
         clearTimeout(timeout);
         timeout = setTimeout(function () {
-            if (jq.is(":visible") && jq.is(":hover")) {
+            if ($e.is(":visible") && $e.is(":hover")) {
                 onMouseStill(event);
             }
         }, 500);
@@ -849,7 +849,7 @@ $("#search-result")
 
         // Display topleft to get height + width.
         shown = true;
-        jqTooltip
+        $tooltip
             .css({ left: 0, top: 0 })
             .html($(event.currentTarget).data("title"))
             .show();
@@ -857,9 +857,9 @@ $("#search-result")
         // Now use height and width of displayed tooltip, to move it to the
         // right place (making sure it doesn't stick out of right/bottom corner
         // of window).
-        var xMax = $(window).width()  - jqTooltip.outerWidth();
-        var yMax = $(window).height() - jqTooltip.outerHeight();
-        jqTooltip.css({
+        var xMax = $(window).width()  - $tooltip.outerWidth();
+        var yMax = $(window).height() - $tooltip.outerHeight();
+        $tooltip.css({
             left: x < xMax ? x : (xMax < 0 ? 0 : xMax),
             top:  y < yMax ? y : (yMax < 0 ? 0 : yMax),
         });
@@ -868,7 +868,7 @@ $("#search-result")
     function hideTooltip() {
         if (shown) {
             shown = false;
-            jqTooltip.hide();
+            $tooltip.hide();
         }
     }
     $(window).on("hashchange resize", hideTooltip);
@@ -980,10 +980,10 @@ $(function () {
     // 'mouseenter' used here since it does not trigger when child elements are
     // entered, and the event does not bubble.
     $("#search-result").on("mouseenter", "a[data-href]", function (e) {
-        var jq = $(e.currentTarget);
-        var hashref = jq.data("href") || "";
+        var $e = $(e.currentTarget);
+        var hashref = $e.data("href") || "";
         if (hashref) {
-            jq.attr("href", urlFragment.getHash(hashref));
+            $e.attr("href", urlFragment.getHash(hashref));
         }
     });
 });
