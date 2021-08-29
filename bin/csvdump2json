@@ -247,7 +247,7 @@ my $date_str = time_str($mtime);
 my $lexicon = jsonify(@thingy);
 
 print <<"END_OF_FILE";
-let lexiconDate=Date("$date_str");
+let lexiconDate=new Date("$date_str");
 let lexiconTags=$tags;
 let lexicon=$lexicon
 .map(e=>{

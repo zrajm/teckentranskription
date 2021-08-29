@@ -1,4 +1,4 @@
-let lexiconDate=Date("2021-08-16T13:25:46Z");
+let lexiconDate=new Date("2021-08-16T13:25:46Z");
 let lexiconTags=["/bokstavering",
 "/språkvetenskap",
 "/ovanligt tecken",
@@ -19983,4 +19983,4 @@ let lexicon=[
 	let c=0;
 	return[...e.map((v,i)=>i<3||isNaN(v)?v:lexiconTags[c++,v]),'/'+c];
 });
-lexiconTags = lexiconTags.sort((a, b) => a.localeCompare(b, 'sv', {sensitivity: 'base'}));
+lexiconTags=lexiconTags.sort((a,b)=>a.localeCompare(b,'sv',{sensitivity:'base'}));
