@@ -1,4 +1,4 @@
-let lexiconDate=new Date("2021-08-16T13:25:46Z");
+let lexiconDate=new Date("2021-08-30T06:00:38Z");
 let lexiconTags=["/bokstavering",
 "/språkvetenskap",
 "/ovanligt tecken",
@@ -1354,7 +1354,7 @@ let lexicon=[
 ["01071","􌥖􌥘􌥃􌥃􌥖􌥘􌥦􌥳","eld"],
 ["01072","􌥖􌥘􌥃􌥃􌥖􌥘􌥱􌦉","nervös",36],
 ["01073","􌤴􌥙􌤣􌥛􌤣􌤴􌥙􌥵􌦆􌤢􌥼􌥻","demonstrera","demonstration"],
-["01074","􌤴􌥙􌤣􌥛􌤣􌤴􌥙􌥵􌦆􌤢􌥼􌥻","invandrare"],
+["01074","􌤴􌥙􌤣􌥛􌤣􌤴􌥙􌥵􌦆􌤢􌥼􌥻","invandrare","immigrant"],
 ["01075","􌤴􌥙􌤣􌥛􌤣􌤴􌥙􌥵􌦆􌤢􌥼􌥻","marschera"],
 ["01076","􌤀􌤣􌤵􌤶􌦄􌥱􌦊","hjälm",7],
 ["01077","􌤂􌤣􌤵􌤶􌦃","innertak"],
