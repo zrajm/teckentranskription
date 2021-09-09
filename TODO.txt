@@ -137,6 +137,26 @@
      other advanced features that are useful to researchers and advanced users.
      These functions shall not intrude on the beginner's user experience.
   :END:
+** [0/1] Session/query logging
+    :DESCRIPTION:
+    Would like to have some simple (preferably, though not necessarily
+    real-time) statistics of page activity. Ideally to be able to follow a
+    session from search to search. Primary motive of this:
+
+    1. Track site popularity (is anyone at all using the site?) and changes
+       therein.
+    2. Investigate user patterns (to be able to add better suggestions and
+       improve design).
+
+    If a user opt out of this tracking (by means of an adblocker or whatever)
+    then there should be no punishment for this whatsoever. (Also, since the
+    lexicon operates on a zero-budget, the tracking service need to be free of
+    charge for the site maintainer/me.)
+    :END:
+*** TODO Find a good (free) tracking service to use
+    Tried setting using Google Analytics, but its confusing and hard to
+    configure. Currently testing 'clicky.com'.
+**** TODO Try out 'clicky.com'
 ** [0/4] Move lexicon
 *** TODO Move lexicon into separate repository
     Leave the history of the lexicon in the zrajm page repository, but create a
@@ -1045,6 +1065,27 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Trying out clicky.com instead of Google Analytics
+   CLOSED: [2021-09-09 Thu 15:15]
+** DONE Lexicon: Font <link rel="preload"> need 'crossorigin' attribute
+   CLOSED: [2021-09-09 Thu 14:20]
+
+   Got some the following error message in the Chrome console, indicating that
+   the 'preload' tag for the transcription font wasn't doing its job (the
+   'Network' tab even reporting that the same font file was loaded twice on
+   pageload). :(
+
+   > A preload for
+   > 'https://zrajm.github.io/teckentranskription/freesans-swl.woff2' is found,
+   > but is not used because the request credentials mode does not match.
+   > Consider taking a look at crossorigin attribute.
+
+   This fix just adds the 'crossorigin' attribute (as suggested by the MDN
+   documentation).
+
+   * https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/preload#cors-enabled_fetches
+
+   This seems to work! :)
 ** DONE Lexicon: Use '$' prefix instead of 'jq' in variables
    CLOSED: [2021-08-22 Sun 17:59]
 ** DONE Lexicon: Lessen data size by referring to tags by numbers
