@@ -561,10 +561,11 @@ function htmlifyTags(tags, hiliteRegex) {
         icons: ['warn', 'tag'].map((tagType) => {
             return count[tagType] === 0
                 ? ''
-                : "<img src='pic/{type}{match}.svg'>"
+                : "<img src='pic/{type}{match}.svg' alt='{alt}'>"
                 .supplant({
                     type: tagType,
                     match: match[tagType] ? '-marked' : '',
+                    alt:   match[tagType] ? 'Ovanligt' : 'Taggar',
                 });
         }).join(''),
     });
@@ -600,12 +601,12 @@ function htmlifyMatch(entry, hiliteRegex) {
         "<div class=match>" +
             "<div class='video-container is-loading'>" +
                 "<img src='{baseUrl}/photos/{dir}/{file}-{id}-tecken.jpg'" +
-                " data-video='{baseUrl}/movies/{dir}/{file}-{id}-tecken.mp4'>" +
+                " data-video='{baseUrl}/movies/{dir}/{file}-{id}-tecken.mp4' alt=''>" +
                 "<div class=video-feedback></div>" +
                 "<div class=top-right style='text-align:right'>" +
                     "<a class=video-id href='{baseUrl}/ord/{id}'" +
                         " title='Öppna i Svenskt tecken­språks­lexikon (i ny tabb)'" +
-                        " target=_blank>{htmlId}</a>\n" +
+                        " target=_blank rel='noopener'>{htmlId}</a>\n" +
                     "{htmlTags}\n" +
                 "</div>" +
                 "<div class=video-subs>" +
