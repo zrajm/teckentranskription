@@ -607,9 +607,9 @@ a {
 <body class=noquery>
   <noscript>Den här sidan behöver Javascript för att fungera.</noscript>
   <aside class=menu>
-    <button class="toggle menu-open"><svg height="17" width="19"><path d="M0 0h19v3H0zm0 14h19v3H0zm0-7h19v3H0z" fill="currentColor"/></svg></button>
+    <button class="toggle menu-open" aria-label="Meny"><svg height="17" width="19"><path d="M0 0h19v3H0zm0 14h19v3H0zm0-7h19v3H0z" fill="currentColor"/></svg></button>
     <aside>
-      <button class="toggle menu-close" tabindex=-1><svg height="17" width="19"><path d="M10.625,-1V18H8.375V-1ZM0,7.375h19v2.25H0Z" transform="rotate(45 9.5,8.5)" fill="currentColor"/></svg></button>
+      <button class="toggle menu-close" tabindex=-1 aria-label="Stäng meny"><svg height="17" width="19"><path d="M10.625,-1V18H8.375V-1ZM0,7.375h19v2.25H0Z" transform="rotate(45 9.5,8.5)" fill="currentColor"/></svg></button>
       <ul style="margin-top:.75em">
         <li><a href="#help">Sökhjälp</a>
         <!--li><a href="#">Om lexikonet</a-->
@@ -636,9 +636,9 @@ a {
     </div>
     <form id=search novalidate>
       <textarea id=q rows=1 autofocus required placeholder="Sök ord eller 􌤴􌥗􌥃􌥃􌤴􌤶􌤟􌥰􌦋􌦇…" wrap=off></textarea>
-      <button class=icon type=reset><svg height="15" width="15"><path d="M8.625,-2V17H6.375V-2ZM-2,6.375h19v2.25H-2Z" fill="currentColor" transform="rotate(45 7.5,7.5)"/></svg></button>
+      <button class=icon type=reset aria-label="Rensa sökning"><svg height="15" width="15"><path d="M8.625,-2V17H6.375V-2ZM-2,6.375h19v2.25H-2Z" fill="currentColor" transform="rotate(45 7.5,7.5)"/></svg></button>
       <button class="icon kb" title="Transkriptionssymboler (Esc)"><svg width="38" height="20"><path d="M2,0C.892,0,0,.892,0,2v16c0,1.108.892,2,2,2h34c1.108,0,2-.892,2-2V2c0-1.108-.892-2-2-2zm0,2h4v4H2zm6,0h4v4H8zm6,0h4v4h-4zm6,0h4v4h-4zm6,0h4v4h-4zm6,0h4v4h-4zM2,8h4v4H2zm6,0h4v4H8zm6,0h4v4h-4zm6,0h4v4h-4zm6,0h4v4h-4zm6,0h4v4h-4zM2,14h4v4H2zm6,0h22v4H8zm24,0h4v4h-4z" fill="currentColor"/></svg></button>
-      <button type=submit class=submit><svg width="24" height="24" viewBox="0 0 18 18" fill="#fff"><path d="M18 16.5l-5.14-5.18h-.35a7 7 0 1 0-1.19 1.19v.35L16.5 18l1.5-1.5zM12 7A5 5 0 1 1 2 7a5 5 0 0 1 10 0z" fill="currentColor"></path></svg></button>
+      <button type=submit class=submit aria-label="Sök"><svg width="24" height="24" viewBox="0 0 18 18" fill="#fff"><path d="M18 16.5l-5.14-5.18h-.35a7 7 0 1 0-1.19 1.19v.35L16.5 18l1.5-1.5zM12 7A5 5 0 1 1 2 7a5 5 0 0 1 10 0z" fill="currentColor"></path></svg></button>
     </form>
     <div class="noquery-content info">
       <span class=size><span id=lexicon-size>## ###</span> tecken.</span>
