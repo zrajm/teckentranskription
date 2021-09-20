@@ -327,10 +327,6 @@ function parseQuery(queryStr) {
         // MSIE meta + delim: *+? ^$. [ ]{}()| / \
         return str.replace(/^[*+?\^$.\[\]{}()|\/\\]$/u, "\\$&");
     }
-    // Split string into list of Unicode characters.
-    function splitIntoChars(str) {
-        return str.split(/(?!$)/u);
-    }
 
     var queryBuilder = (function () {
         var query = [];
@@ -424,26 +420,21 @@ function parseQuery(queryStr) {
     };
     // Unquoted place/handshape symbols should also match a following
     // (optional) relation symbol.
-    splitIntoChars(
-        "􌦳􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛􌤜􌤞􌥀􌤡􌤑􌦲􌤒􌤕􌤔􌤖􌤙􌤘􌤚􌤤􌥄􌤣􌤧􌥋􌥉􌦫􌤩􌤎􌥇􌦬􌤦􌤲􌤱􌥑􌤢􌥂􌤪􌥎􌥈􌤨􌤿􌥌􌥆􌤫􌦭􌤬􌥅􌤥􌥊􌦱􌤽􌤯􌤭􌤮􌤰􌤳􌥃􌥒􌥟􌦪"
-    ).forEach(function (c) {
-        metachars[c] = c + "[􌤺􌥛􌤻􌤹􌥚]?";
-    });
-
+    for (let c of '􌦳􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛􌤜􌤞􌥀􌤡􌤑􌦲􌤒􌤕􌤔􌤖􌤙􌤘􌤚􌤤􌥄􌤣􌤧􌥋􌥉􌦫􌤩􌤎􌥇􌦬􌤦􌤲􌤱􌥑􌤢􌥂􌤪􌥎􌥈􌤨􌤿􌥌􌥆􌤫􌦭􌤬􌥅􌤥􌥊􌦱􌤽􌤯􌤭􌤮􌤰􌤳􌥃􌥒􌥟􌦪') {
+        metachars[c] = `${c}[􌤺􌥛􌤻􌤹􌥚]?`;
+    }
     // All unquoted hand-external motion symbols (circling/bouncing/curving/
     // hitting/twisting/divering/converging) should also match a following
     // (optional) motion direction symbol.
-    splitIntoChars(
-        "􌥯􌦶􌥰􌥱􌥲􌥹􌦅"
-    ).forEach(function (c) {
-        metachars[c] = c + "[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?";
-    });
+    for (let c of '􌥯􌦶􌥰􌥱􌥲􌥹􌦅') {
+        metachars[c] = `${c}[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?`;
+    }
 
     var term = "";
     var plainTerm = "";
     var quote = "";
     var type = "word";
-    splitIntoChars(queryStr).forEach(function (c) {
+    for (let c of queryStr.normalize()) {
         if (quote !== "") {                    // quoted chars
             if (c === quote) {
                 quote = "";
@@ -484,7 +475,7 @@ function parseQuery(queryStr) {
                 plainTerm += c;
             }
         }
-    });
+    }
     queryBuilder.addTerm(term, plainTerm, type);
     return queryBuilder.getQuery();
 }
