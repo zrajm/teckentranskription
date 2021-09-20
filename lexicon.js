@@ -426,8 +426,8 @@ function parseQuery(queryStr) {
     // (optional) relation symbol.
     splitIntoChars(
         "􌦳􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛􌤜􌤞􌥀􌤡􌤑􌦲􌤒􌤕􌤔􌤖􌤙􌤘􌤚􌤤􌥄􌤣􌤧􌥋􌥉􌦫􌤩􌤎􌥇􌦬􌤦􌤲􌤱􌥑􌤢􌥂􌤪􌥎􌥈􌤨􌤿􌥌􌥆􌤫􌦭􌤬􌥅􌤥􌥊􌦱􌤽􌤯􌤭􌤮􌤰􌤳􌥃􌥒􌥟􌦪"
-    ).forEach(function (char) {
-        metachars[char] = char + "[􌤺􌥛􌤻􌤹􌥚]?";
+    ).forEach(function (c) {
+        metachars[c] = c + "[􌤺􌥛􌤻􌤹􌥚]?";
     });
 
     // All unquoted hand-external motion symbols (circling/bouncing/curving/
@@ -435,24 +435,24 @@ function parseQuery(queryStr) {
     // (optional) motion direction symbol.
     splitIntoChars(
         "􌥯􌦶􌥰􌥱􌥲􌥹􌦅"
-    ).forEach(function (char) {
-        metachars[char] = char + "[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?";
+    ).forEach(function (c) {
+        metachars[c] = c + "[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?";
     });
 
     var term = "";
     var plainTerm = "";
     var quote = "";
     var type = "word";
-    splitIntoChars(queryStr).forEach(function (char) {
+    splitIntoChars(queryStr).forEach(function (c) {
         if (quote !== "") {                    // quoted chars
-            if (char === quote) {
+            if (c === quote) {
                 quote = "";
             } else {
-                term += quotemeta(char);
-                plainTerm += char;
+                term += quotemeta(c);
+                plainTerm += c;
             }
         } else {                               // unquoted chars
-            switch (char) {
+            switch (c) {
             case ",":                          //   subquery
                 queryBuilder.addTerm(term, plainTerm, type);
                 queryBuilder.addSubquery();
@@ -468,20 +468,20 @@ function parseQuery(queryStr) {
                 break;
             case "\"":                         //   quote
             case "'":
-                quote = char;
+                quote = c;
                 break;
             default:
                 if (term === "") {             //   leading
-                    if (char === "-") {        //     '-' (negation)
+                    if (c === "-") {           //     '-' (negation)
                         queryBuilder.negative();
                         break;
-                    } else if (char === "=") { //     '=' (exact match)
+                    } else if (c === "=") {    //     '=' (exact match)
                         type = "field";
                         break;
                     }
                 }
-                term += metachars[char] || quotemeta(char);
-                plainTerm += char;
+                term += metachars[c] || quotemeta(c);
+                plainTerm += c;
             }
         }
     });
