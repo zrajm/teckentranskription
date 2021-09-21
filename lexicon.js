@@ -1,13 +1,13 @@
 /* jshint esversion: 6, browser: true, jquery: true, laxbreak: true */
 /* globals lexicon, lexiconDate */
 
-// String method `STR.supplant(OBJ)`. Replace all {...} expressions in STR with
-// OBJ property of same name. Return the new string.
+// String method `STR.fmt(OBJ)`. Replace all {...} expressions in STR with OBJ
+// property of same name. Return the new string.
 //
-//   'Hello {str}!'.supplant({str: 'world'})       => 'Hello world!'
-//   'Hello {0} & {1}!'.supplant(['Alice', 'Bob']) => 'Hello Alice & Bob!'
+//   'Hello {str}!'.fmt({str: 'world'})       => 'Hello world!'
+//   'Hello {0} & {1}!'.fmt(['Alice', 'Bob']) => 'Hello Alice & Bob!'
 //
-String.prototype.supplant = function (o) {
+String.prototype.fmt = function (o) {
     'use strict';
     return this.replace(/\{([^{}]*)\}/g, function (a, b) {
         var r = o[b];
@@ -516,7 +516,7 @@ function hilite(str, regex, func) {
         // Lookbehind (?<=...) isn't supported in Safari (and was only added to
         // Edge and Firefox in summer 2020), therefore we use regex subgroups
         // instead.
-        return '{0}<mark>{1}</mark>'.supplant(
+        return '{0}<mark>{1}</mark>'.fmt(
             (parts.length === 2) ? parts : ['', match]
         );
     });
@@ -538,14 +538,14 @@ function htmlifyTags(tags, hiliteRegex) {
         }).replace(/(^|[^<])\//g, '$1<span class=sep>/</span>') +
             (tagType === 'warn' ? ' <span class=sep>▲</span>' : '');
     });
-    return '<span class=tags title="{tags}{help}">{icons}</span>'.supplant({
+    return '<span class=tags title="{tags}{help}">{icons}</span>'.fmt({
         tags: html.join('<br>'),
         help: ' <span class=sep>(antal taggar)</span>',
         icons: ['warn', 'tag'].map((tagType) => {
             return count[tagType] === 0
                 ? ''
                 : '<img src="pic/{type}{match}.svg" alt="{alt}">'
-                .supplant({
+                .fmt({
                     type: tagType,
                     match: match[tagType] ? '-marked' : '',
                     alt:   match[tagType] ? 'Ovanligt' : 'Taggar',
@@ -599,7 +599,7 @@ function htmlifyMatch(entry, hiliteRegex) {
             '</div> ' +
             '<span title="{htmlSwedish}">{htmlSwedish}</span>' +
         '</div>\n'
-    ).supplant({
+    ).fmt({
         htmlTags: htmlifyTags(tags, hiliteRegex),
         id: id,
         htmlId: hilite(id, hiliteRegex),
@@ -739,7 +739,7 @@ function onPlayPauseToggle(event) {
     if ($video.is('img')) {                    // replace <img> with <video>
         $video = $(
             '<video loop muted playsinline src="{0}" poster="{1}"></video>'
-                .supplant([$video.data('video'), $video.attr('src')])
+                .fmt([$video.data('video'), $video.attr('src')])
         ).replaceAll($video).on('canplay error', function (e) {
             $video.off('canplay error');
             $container.removeClass('is-loading-video is-broken');
