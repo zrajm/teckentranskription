@@ -4,14 +4,14 @@
 // String method `STR.supplant(OBJ)`. Replace all {...} expressions in STR with
 // OBJ property of same name. Return the new string.
 //
-//   "Hello {str}!".supplant({str: "world"})       => "Hello world!"
-//   "Hello {0} & {1}!".supplant(["Alice", "Bob"]) => "Hello Alice & Bob!"
+//   'Hello {str}!'.supplant({str: 'world'})       => 'Hello world!'
+//   'Hello {0} & {1}!'.supplant(['Alice', 'Bob']) => 'Hello Alice & Bob!'
 //
 String.prototype.supplant = function (o) {
-    "use strict";
+    'use strict';
     return this.replace(/\{([^{}]*)\}/g, function (a, b) {
         var r = o[b];
-        return typeof r === "string" || typeof r === "number" ? r : a;
+        return typeof r === 'string' || typeof r === 'number' ? r : a;
     });
 };
 
@@ -22,9 +22,9 @@ String.prototype.supplant = function (o) {
 // Uses .selectionStart/.selectionEnd, i.e. works on:
 // Chrome, Firefox, MSIE 9+, Edge, Safari 4+, Opera, Android etc.
 jQuery.fn.paste = function(str) {
-    "use strict";
+    'use strict';
     var prefocused = document.activeElement;
-    str += "";                            // make sure it's a string
+    str += '';                            // make sure it's a string
     this.each(function (_, el) {
         var beg = el.selectionStart;
         var val = el.value;
@@ -44,7 +44,7 @@ jQuery.fn.paste = function(str) {
 // Toggle fullscreen for one element or (with no arg) the whole window.
 // [thewebflash.com/toggling-fullscreen-mode-using-the-html5-fullscreen-api]
 function toggleFullscreen(elem) {
-    "use strict";
+    'use strict';
     elem = elem || document.documentElement;
     if (
         document.fullscreenElement ||
@@ -81,17 +81,17 @@ function toggleFullscreen(elem) {
 //   .hide() -- Hides currently open overlay.
 //
 (function () {
-    var button = $("a[href='#help']");
-    var overlay = $(".overlay.help");
+    var button = $('a[href="#help"]');
+    var overlay = $('.overlay.help');
 
     // Convert <tt> into links (except if they contain '…') by replacing
     // '<tt>…</tt>' with '<a class=tt href="#…">…</a>'.
     overlay.find('tt').replaceWith(function () {
         var jq = $(this);
-        var link = "#" + jq.text().replace(/\s+/g, " ");
+        var link = '#' + jq.text().replace(/\s+/g, ' ');
         return link.match(/…/)
             ? this
-            : $("<a>", { class: "tt", href: link })
+            : $('<a>', { class: 'tt', href: link })
                 .click(hideOverlay)
                 .append(jq.contents());
     });
@@ -106,18 +106,18 @@ function toggleFullscreen(elem) {
     button.click(showOverlay);
     overlay.keyup(function (e) {
         if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) { return; }
-        if (e.key === "Escape") {
+        if (e.key === 'Escape') {
             hideOverlay();
         }
-    }).on("mouseover mouseout click", function (e) {
+    }).on('mouseover mouseout click', function (e) {
         var elem = e.target, type = e.type;
         if (elem === this) {
             elem = $(elem);
-            if (type === "mouseover") {
-                elem.addClass("hover");
-            } else if (type === "mouseout") {
-                elem.removeClass("hover");
-            } else if (type === "click") {
+            if (type === 'mouseover') {
+                elem.addClass('hover');
+            } else if (type === 'mouseout') {
+                elem.removeClass('hover');
+            } else if (type === 'click') {
                 elem.hide();
             }
         }
@@ -157,53 +157,53 @@ function toggleFullscreen(elem) {
 // strings have been decoded. The 'video' value is javascript boolean.
 //
 //   {
-//       base   : "http://zrajm.github.io/teckentranskription/lexicon.html",
-//       overlay: "",
-//       query  : "buss,taxi",
+//       base   : 'http://zrajm.github.io/teckentranskription/lexicon.html',
+//       overlay: '',
+//       query  : 'buss,taxi',
 //       video  : true,
 //   };
 //
 var urlFragment = (function () {
-    "use strict";
-    var state = { overlay: "", query: undefined, video: true };
+    'use strict';
+    var state = { overlay: '', query: undefined, video: true };
     function getStateFromUrl() {
         var x = window.location.href
             .match(/^([^#]*)(?:(#*)([^#\/]*)(?:\/([^#\/]*))?)/u).slice(1);
         return {
             base   : x[0],
-            overlay: decodeURIComponent(x[3] || ""),
+            overlay: decodeURIComponent(x[3] || ''),
             query  : decodeURIComponent(x[2]),
-            video  : (!x[1] || x[1] === "#" ? true : false)
+            video  : (!x[1] || x[1] === '#' ? true : false)
         };
     }
     function setUrlFromState(state) {
         var str = encodeURIComponent(state.query) +
-            (state.overlay ? ("/" + encodeURIComponent(state.overlay)) : "");
+            (state.overlay ? ('/' + encodeURIComponent(state.overlay)) : '');
         if (str || state.video !== undefined) {
-            str = (state.video ? "#" : "##") + str;
+            str = (state.video ? '#' : '##') + str;
         }
         return state.base + str;
     }
     function getHashFromStr(hashStr) {
-        var x = hashStr.split("/");
+        var x = hashStr.split('/');
         var queryStr = x[0] || state.query;
         var overlayStr = x[1];
-        return (state.video ? "#" : "##") +
+        return (state.video ? '#' : '##') +
             encodeURIComponent(queryStr) +
-            (overlayStr ? ("/" + encodeURIComponent(overlayStr)) : "");
+            (overlayStr ? ('/' + encodeURIComponent(overlayStr)) : '');
     }
     // .set({ query: STR, video: BOOL, overlay: STR })
     // Update internal state + URL, without triggering hashchange event.
     function setState(partial) {
         var modified = false;
-        ["overlay", "query", "video"].forEach(function (n) {
+        ['overlay', 'query', 'video'].forEach(function (n) {
             if (partial[n] !== state[n] && partial[n] !== undefined) {
                 state[n] = partial[n];
                 modified = true;
             }
         });
         if (modified) {                         // update URL
-            window.history.pushState({}, "", setUrlFromState(state));
+            window.history.pushState({}, '', setUrlFromState(state));
             return true;
         }
         return false;
@@ -213,10 +213,10 @@ var urlFragment = (function () {
     function onOverlayChange(callback) { hooks.overlay = callback; }
     function onQueryChange(callback)   { hooks.query = callback; }
     function onVideoToggle(callback)   { hooks.video = callback; }
-    $(window).on("hashchange", function () {
+    $(window).on('hashchange', function () {
         var newState = getStateFromUrl();
         var run = [];
-        ["base", "overlay", "query", "video"].forEach(function (n) {
+        ['base', 'overlay', 'query', 'video'].forEach(function (n) {
             if (newState[n] !== state[n]) {    // save all state first
                 if (hooks[n] instanceof Function) {
                     run.push(n);               //   register callback to run
@@ -230,7 +230,7 @@ var urlFragment = (function () {
     });
 
     // Trigger hashchange on initial page load.
-    $(function () { $(window).trigger("hashchange"); });
+    $(function () { $(window).trigger('hashchange'); });
 
     return {
         set: setState,
@@ -251,7 +251,7 @@ var urlFragment = (function () {
 //   .total(MSG) -- display MSG, replace %s with time since last reset
 //
 var logTiming = (function (perf, log) {
-    "use strict";
+    'use strict';
     var timeFirst;
     var timeLast;
     function reset() {
@@ -260,9 +260,9 @@ var logTiming = (function (perf, log) {
     }
     function prefix(ms) {
         var str = ms > 1000
-            ? (ms / 1000 + 0.5) + "s"  // seconds
-            : (ms + 0.5) + "ms";       // milliseconds
-        return str.replace(/^([.0-9]{0,3}[0-9]?)[.0-9]*([a-z]+)/, "$1$2");
+            ? (ms / 1000 + 0.5) + 's'  // seconds
+            : (ms + 0.5) + 'ms';       // milliseconds
+        return str.replace(/^([.0-9]{0,3}[0-9]?)[.0-9]*([a-z]+)/, '$1$2');
     }
     function timeSince(time) {
         return prefix(perf.now() - time);
@@ -319,13 +319,13 @@ var logTiming = (function (perf, log) {
 // * 'exclude' -- array of regexes that must all be absent
 //
 function parseQuery(queryStr) {
-    "use strict";
+    'use strict';
 
     // Escape all regular expression metacharacters & the regex delimiter '/'.
     function quotemeta(str) {
         // PCRE/ERE:          *+? ^$. [  { ()|   \
         // MSIE meta + delim: *+? ^$. [ ]{}()| / \
-        return str.replace(/^[*+?\^$.\[\]{}()|\/\\]$/u, "\\$&");
+        return str.replace(/^[*+?\^$.\[\]{}()|\/\\]$/u, '\\$&');
     }
 
     var queryBuilder = (function () {
@@ -333,7 +333,7 @@ function parseQuery(queryStr) {
         var negative;
 
         function str2regex(regex) {
-            return new RegExp(regex, "gui");
+            return new RegExp(regex, 'gui');
         }
         function addSubquery() {
             query.push({
@@ -342,20 +342,20 @@ function parseQuery(queryStr) {
             });
             negative = false;
         }
-        var nonWord = "[ 􌥠,:!?/.’()[\\]&+–]"; // (FIXME: Removed: '-')
-        var leadingNonAlpha  = new RegExp("^" + nonWord, "ui");
-        var trailingNonAlpha = new RegExp(nonWord + "$", "ui");
+        var nonWord = '[ 􌥠,:!?/.’()[\\]&+–]'; // (FIXME: Removed: '-')
+        var leadingNonAlpha  = new RegExp('^' + nonWord, 'ui');
+        var trailingNonAlpha = new RegExp(nonWord + '$', 'ui');
         function addTerm (term, plainTerm, type) {
-            if (term !== "") {
-                term = type === "field"
-                    ? "^" + term + "$"          // entire field
-                    : (plainTerm.match(leadingNonAlpha)  ? "()" : "(" + nonWord + "|^)") +
+            if (term !== '') {
+                term = type === 'field'
+                    ? '^' + term + '$'          // entire field
+                    : (plainTerm.match(leadingNonAlpha)  ? '()' : '(' + nonWord + '|^)') +
                       '(' + term + ')' +
-                      (plainTerm.match(trailingNonAlpha) ? "" : "(?=" + nonWord + "|$)");
+                      (plainTerm.match(trailingNonAlpha) ? '' : '(?=' + nonWord + '|$)');
                 query[query.length - 1][
                     negative
-                        ? "exclude"
-                        : "include"
+                        ? 'exclude'
+                        : 'include'
                 ].push(term);
                 negative = false;
             }
@@ -390,33 +390,33 @@ function parseQuery(queryStr) {
         };
     }());
     var metachars = {
-        "a": "[aàáâã]",
-        "c": "[cç]",
-        "e": "[eèéêë]",
-        "i": "[iìíîï]",
-        "n": "[nñ]",
-        "o": "[oòóôõ]",
-        "u": "[uùúûü]",
-        "y": "[yýü]",
-        "ä": "[äæ]",
-        "ö": "[öø]",
-        "􌤆": "[􌤆􌤂􌥞􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛][􌤺􌥛􌤻􌤹􌥚]?", // face
-        "􌤂": "[􌤂􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼][􌤺􌥛􌤻􌤹􌥚]?",     // upper face
-        "􌥞": "[􌥞􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛][􌤺􌥛􌤻􌤹􌥚]?",       // lower face
-        "􌥜": "[􌥜􌤑􌦲􌤒][􌤺􌥛􌤻􌤹􌥚]?",             // arm
-        "􌤠": "[􌤠􌥀􌤡][􌤺􌥛􌤻􌤹􌥚]?",              // shoulders
-        "􌤓": "[􌤓􌤕􌤔][􌤺􌥛􌤻􌤹􌥚]?",              // chest
-        "􌤗": "[􌤗􌤙􌤘][􌤺􌥛􌤻􌤹􌥚]?",              // hips
-        "*": "[^ 􌥠/.,:;?!()]*",  // all non-space, non-'/' delimiter
-        "@":                     // one place symbol (+ optional relation)
-                "(?:@|[􌦳􌤆􌤂􌥞􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛􌤜􌤞􌤠􌥀􌤡􌥜􌤑􌦲􌤒􌤓􌤕􌤔􌤖􌤗􌤙􌤘􌤚][􌤺􌥛􌤻􌤹􌥚]?)",
-        "#":                     // one handshape symbol (+ optional relation)
-                "(?:#|[􌤤􌥄􌤣􌤧􌥋􌥉􌦫􌤩􌤎􌥇􌦬􌤦􌤲􌤱􌥑􌤢􌥂􌤪􌥎􌥈􌤨􌤿􌥌􌥆􌤫􌦭􌤬􌥅􌤥􌥊􌦱􌤽􌤯􌤭􌤮􌤰􌤳􌥃􌥒􌥟􌦪][􌤺􌥛􌤻􌤹􌥚]?)",
-        "^": "[􌤺􌥛􌤻􌤹􌥚]",          // one relation symbol
-        ":": "[􌥓􌥔􌤴􌥕􌤵􌥖][􌤶􌥗􌤷􌥘􌤸􌥙]", // one attitude symbol
-        "􌦮": "(?:􌦮[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?|􌥰[􌥿􌦀􌦌])", // circle in frontal plane
-        "􌦯": "(?:􌦯[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?|􌥰[􌦈􌥽􌦉])", // circle in horisontal plane
-        "􌦰": "(?:􌦰[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?|􌥰[􌥾􌦊􌦋])", // circle in saggital plane
+        'a': '[aàáâã]',
+        'c': '[cç]',
+        'e': '[eèéêë]',
+        'i': '[iìíîï]',
+        'n': '[nñ]',
+        'o': '[oòóôõ]',
+        'u': '[uùúûü]',
+        'y': '[yýü]',
+        'ä': '[äæ]',
+        'ö': '[öø]',
+        '􌤆': '[􌤆􌤂􌥞􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛][􌤺􌥛􌤻􌤹􌥚]?', // face
+        '􌤂': '[􌤂􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼][􌤺􌥛􌤻􌤹􌥚]?',     // upper face
+        '􌥞': '[􌥞􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛][􌤺􌥛􌤻􌤹􌥚]?',       // lower face
+        '􌥜': '[􌥜􌤑􌦲􌤒][􌤺􌥛􌤻􌤹􌥚]?',             // arm
+        '􌤠': '[􌤠􌥀􌤡][􌤺􌥛􌤻􌤹􌥚]?',              // shoulders
+        '􌤓': '[􌤓􌤕􌤔][􌤺􌥛􌤻􌤹􌥚]?',              // chest
+        '􌤗': '[􌤗􌤙􌤘][􌤺􌥛􌤻􌤹􌥚]?',              // hips
+        '*': '[^ 􌥠/.,:;?!()]*',  // all non-space, non-'/' delimiter
+        '@':                     // one place symbol (+ optional relation)
+                '(?:@|[􌦳􌤆􌤂􌥞􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛􌤜􌤞􌤠􌥀􌤡􌥜􌤑􌦲􌤒􌤓􌤕􌤔􌤖􌤗􌤙􌤘􌤚][􌤺􌥛􌤻􌤹􌥚]?)',
+        '#':                     // one handshape symbol (+ optional relation)
+                '(?:#|[􌤤􌥄􌤣􌤧􌥋􌥉􌦫􌤩􌤎􌥇􌦬􌤦􌤲􌤱􌥑􌤢􌥂􌤪􌥎􌥈􌤨􌤿􌥌􌥆􌤫􌦭􌤬􌥅􌤥􌥊􌦱􌤽􌤯􌤭􌤮􌤰􌤳􌥃􌥒􌥟􌦪][􌤺􌥛􌤻􌤹􌥚]?)',
+        '^': '[􌤺􌥛􌤻􌤹􌥚]',          // one relation symbol
+        ':': '[􌥓􌥔􌤴􌥕􌤵􌥖][􌤶􌥗􌤷􌥘􌤸􌥙]', // one attitude symbol
+        '􌦮': '(?:􌦮[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?|􌥰[􌥿􌦀􌦌])', // circle in frontal plane
+        '􌦯': '(?:􌦯[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?|􌥰[􌦈􌥽􌦉])', // circle in horisontal plane
+        '􌦰': '(?:􌦰[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?|􌥰[􌥾􌦊􌦋])', // circle in saggital plane
     };
     // Unquoted place/handshape symbols should also match a following
     // (optional) relation symbol.
@@ -478,7 +478,7 @@ function parseQuery(queryStr) {
 // Return true if at least one element in entry matches regex. (The
 // `regex.lastIndex` property is modified by this function).
 function regexInEntry(regex, entry) {
-    "use strict";
+    'use strict';
     // `lastIndex` is set to make sure that search start at beginning of
     // string, even when regex flag /g is used.
     regex.lastIndex = 0;
@@ -491,7 +491,7 @@ function regexInEntry(regex, entry) {
 // * 'include' -- array of regexes that must ALL be found
 // * 'exclude' -- array of regexes that must all be absent
 function subqueryInEntry(subquery, entry) {
-    "use strict";
+    'use strict';
     return subquery.include.every(function (re) {// all positive terms and
         return regexInEntry(re, entry);
     }) && !subquery.exclude.some(function (re) { //   no negative terms matches
@@ -502,14 +502,14 @@ function subqueryInEntry(subquery, entry) {
 // Return matching subquery number or -1 if no subquery match. (To get
 // truthiness, do binary not ['~'] on returned value.)
 function queryInEntry(query, entry) {
-    "use strict";
+    'use strict';
     return query.some(function (subquery) {
         return subqueryInEntry(subquery, entry);
     });
 }
 
 function hilite(str, regex, func) {
-    "use strict";
+    'use strict';
     return str.replace(regex, function (match, ...parts) {
         parts = parts.slice(0,-2).filter((p) => p !== undefined);
         if (func) {
@@ -518,7 +518,7 @@ function hilite(str, regex, func) {
         // Lookbeind (?<=...) isn't supported in Safari (and was only added to
         // Edge and Firefox in summer 2020), therefore we use regex subgroups
         // instead.
-        return "{0}<mark>{1}</mark>".supplant(
+        return '{0}<mark>{1}</mark>'.supplant(
             (parts.length === 2) ? parts : ['', match]
         );
     });
@@ -528,7 +528,7 @@ function htmlifyTags(tags, hiliteRegex) {
     // Tag count starts at -1 to compensate for the tag counter (e.g. '/1').
     var count = { tag: -1, warn: 0 }, match = { tag: false, warn: false }, html;
     if (tags.length === 1) {
-        return "";
+        return '';
     }
     // Generate tag list and count matches, and number of tags/warnings.
     html = tags.map((tag) => {
@@ -539,15 +539,15 @@ function htmlifyTags(tags, hiliteRegex) {
             match[tagType] = true;
         })
             .replace(/(^|[^<])\//g, '$1<span class=sep>/</span>') +
-            (tagType === 'warn' ? " <span class=sep>▲</span>" : "");
+            (tagType === 'warn' ? ' <span class=sep>▲</span>' : '');
     });
     return '<span class=tags title="{tags}{help}">{icons}</span>'.supplant({
-        tags: html.join("<br>"),
-        help: " <span class=sep>(antal taggar)</span>",
+        tags: html.join('<br>'),
+        help: ' <span class=sep>(antal taggar)</span>',
         icons: ['warn', 'tag'].map((tagType) => {
             return count[tagType] === 0
                 ? ''
-                : "<img src='pic/{type}{match}.svg' alt='{alt}'>"
+                : '<img src="pic/{type}{match}.svg" alt="{alt}">'
                 .supplant({
                     type: tagType,
                     match: match[tagType] ? '-marked' : '',
@@ -559,7 +559,7 @@ function htmlifyTags(tags, hiliteRegex) {
 
 // Turn a (hilited) transcription string into HTML.
 function htmlifyTranscription(hilitedTransStr) {
-    "use strict";
+    'use strict';
     return hilitedTransStr
         // Insert <wbr> tag after all segment separators.
         .replace(/􌥠/gu, '􌥠<wbr>');
@@ -571,49 +571,49 @@ function htmlifyTranscription(hilitedTransStr) {
 function unicodeTo7bit(str) {
     return str.toLowerCase().replace(/[^a-z0-9-]/gu, function (m) {
         return {
-            " ": "-", "é": "e", "ü": "u", "å": "a", "ä": "a", "ö": "o", "–": "-",
-        }[m] || "";
-    }).replace(/-{2,}/, "-");
+            ' ': '-', 'é': 'e', 'ü': 'u', 'å': 'a', 'ä': 'a', 'ö': 'o', '–': '-',
+        }[m] || '';
+    }).replace(/-{2,}/, '-');
 }
 
 function htmlifyMatch(entry, hiliteRegex) {
-    "use strict";
+    'use strict';
     var id = entry[0];                         // 1st field
     var transcr = entry[1];                    // 2nd field
     var swe = entry.slice(2).filter(x => x[0] !== '/');  // Swedish
     var tags = entry.slice(2).filter(x => x[0] === '/');  // /tags
     return (
         /* NB: Whitespace below shows up in search result's 'text' mode. */
-        "<div class=match>" +
-            "<div class='video-container is-loading'>" +
-                "<img src='{baseUrl}/photos/{dir}/{file}-{id}-tecken.jpg'" +
-                " data-video='{baseUrl}/movies/{dir}/{file}-{id}-tecken.mp4' alt=''>" +
-                "<div class=video-feedback></div>" +
-                "<div class=top-right style='text-align:right'>" +
-                    "<a class=video-id href='{baseUrl}/ord/{id}'" +
-                        " title='Öppna i Svenskt tecken­språks­lexikon (i ny tabb)'" +
-                        " target=_blank rel='noopener'>{htmlId}</a>\n" +
-                    "{htmlTags}\n" +
-                "</div>" +
-                "<div class=video-subs>" +
-                    "<a data-href='{transcr}' title='{htmlTranscr}'>" +
-                        "{htmlTranscr}</a>" +
-                "</div>" +
-            "</div> " +
-            "<span title='{htmlSwedish}'>{htmlSwedish}</span>" +
-        "</div>\n"
+        '<div class=match>' +
+            '<div class="video-container is-loading">' +
+                '<img src="{baseUrl}/photos/{dir}/{file}-{id}-tecken.jpg"' +
+                ' data-video="{baseUrl}/movies/{dir}/{file}-{id}-tecken.mp4" alt="">' +
+                '<div class=video-feedback></div>' +
+                '<div class=top-right style="text-align:right">' +
+                    '<a class=video-id href="{baseUrl}/ord/{id}"' +
+                        ' title="Öppna i Svenskt tecken­språks­lexikon (i ny tabb)"' +
+                        ' target=_blank rel="noopener">{htmlId}</a>\n' +
+                    '{htmlTags}\n' +
+                '</div>' +
+                '<div class=video-subs>' +
+                    '<a data-href="{transcr}" title="{htmlTranscr}">' +
+                        '{htmlTranscr}</a>' +
+                '</div>' +
+            '</div> ' +
+            '<span title="{htmlSwedish}">{htmlSwedish}</span>' +
+        '</div>\n'
     ).supplant({
         htmlTags: htmlifyTags(tags, hiliteRegex),
         id: id,
         htmlId: hilite(id, hiliteRegex),
-        baseUrl: "https://teckensprakslexikon.su.se",
+        baseUrl: 'https://teckensprakslexikon.su.se',
         dir: id.substring(0, 2),
         file: unicodeTo7bit(swe[0]),
         transcr: transcr,
         htmlTranscr: htmlifyTranscription(hilite(transcr, hiliteRegex)),
         htmlSwedish: swe.map(function (txt) {
             return hilite(txt, hiliteRegex);
-        }).join(", ")
+        }).join(', ')
     });
 }
 
@@ -625,7 +625,7 @@ function htmlifyMatch(entry, hiliteRegex) {
 // If the function is invoked again with a new search result, then any still
 // ongoing processing is aborted and only the new result is displayed.
 var outputMatching = (function () {
-    "use strict";
+    'use strict';
     var chunksize = 100;                       // setting (never changes)
     var hasListener = false;
     var statusElem;
@@ -657,21 +657,21 @@ var outputMatching = (function () {
         chunk = htmlQueue.splice(0, chunksize);
         count += chunk.length;
         if (count === startSize) {
-            statusElem.html("{0} träffar (visar alla)".supplant([count]));
+            statusElem.html('{0} träffar (visar alla)'.supplant([count]));
         } else {
             statusElem.html(
-                "{1} träffar (visar {0}) – <a>Visa {2} till</a>"
+                '{1} träffar (visar {0}) – <a>Visa {2} till</a>'
                     .supplant([count, startSize, chunksize])
             );
-            $(">a",statusElem).click(function () { outputNext(); });
+            $('>a',statusElem).click(function () { outputNext(); });
         }
 
-        resultElem.append(chunk.join(""));
+        resultElem.append(chunk.join(''));
         resultElem.imagesLoaded().progress(onImageLoad);
 
         if (htmlQueue.length === 0) {          // nothing more to display
             buttonElem.hide();
-            $(window).off("scroll");
+            $(window).off('scroll');
         } else {                               // moar to display
             if (!hasListener) {
                 buttonElem.click(function () { outputNext(); });
@@ -679,7 +679,7 @@ var outputMatching = (function () {
             }
             if (args) {
                 buttonElem.show();
-                $(window).on("scroll", function () {
+                $(window).on('scroll', function () {
                     if (scrolledToBottom()) {
                         outputNext();
                     }
@@ -693,17 +693,17 @@ var outputMatching = (function () {
 function onImageLoad(imgLoad, image) {
     // change class if image is loaded or broken
     var parentElem = $(image.img).parent();
-    parentElem.removeClass("is-loading");
+    parentElem.removeClass('is-loading');
     if (!image.isLoaded) {
-        parentElem.addClass("is-broken");
+        parentElem.addClass('is-broken');
     }
 }
 
 function searchLexicon(queryStr) {
-    "use strict";
+    'use strict';
     var $body = $(document.body);
 
-    $("#q").val(queryStr);
+    $('#q').val(queryStr);
     setTimeout(function () {
         var query = parseQuery(queryStr);
         logTiming.reset();
@@ -713,69 +713,69 @@ function searchLexicon(queryStr) {
                 : acc,
             []
         );
-        logTiming.total("Search took %s.");
+        logTiming.total('Search took %s.');
 
         // Query without matches, add 'nomatch' to <body>.
-        $body[(query.length && matches.length === 0) ? "addClass" : "removeClass"]("nomatch");
+        $body[(query.length && matches.length === 0) ? 'addClass' : 'removeClass']('nomatch');
 
         // No query, add 'noquery' to body element.
-        $body[query.length ? "removeClass" : "addClass"]("noquery");
+        $body[query.length ? 'removeClass' : 'addClass']('noquery');
 
         // Output search result.
         outputMatching({
-            status: $("#search-count"),
-            result: $("#search-result").empty(),
-            button: $("#more"),
+            status: $('#search-count'),
+            result: $('#search-result').empty(),
+            button: $('#more'),
             html: matches.map(entry => htmlifyMatch(entry, query.hilite))
         });
     }, 0);
 }
 
 function onPlayPauseToggle(event) {
-    "use strict";
+    'use strict';
     var feedbackElem;
-    if ($(event.target).is("a")) {             // a link was clicked: abort
+    if ($(event.target).is('a')) {             // a link was clicked: abort
         return;
     }
     var $container = $(event.currentTarget);
-    var $video = $(">video,>img[data-video]", $container);
+    var $video = $('>video,>img[data-video]', $container);
 
-    if ($video.is("img")) {                    // replace <img> with <video>
+    if ($video.is('img')) {                    // replace <img> with <video>
         $video = $(
-            "<video loop muted playsinline src='{0}' poster='{1}'></video>"
-                .supplant([$video.data("video"), $video.attr("src")])
-        ).replaceAll($video).on("canplay error", function (e) {
-            $video.off("canplay error");
-            $container.removeClass("is-loading-video is-broken");
-            if (e.type === "error") {
-                $container.addClass("is-broken");
+            '<video loop muted playsinline src="{0}" poster="{1}"></video>'
+                .supplant([$video.data('video'), $video.attr('src')])
+        ).replaceAll($video).on('canplay error', function (e) {
+            $video.off('canplay error');
+            $container.removeClass('is-loading-video is-broken');
+            if (e.type === 'error') {
+                $container.addClass('is-broken');
             }
         });
-        $container.addClass("is-loading-video");
+        $container.addClass('is-loading-video');
     }
 
     // Get state of video and toggle play/pause state.
     // (Everything that remains after this is visual feedback.)
-    var action = $video.prop("paused") ? "play" : "pause";
+    var action = $video.prop('paused') ? 'play' : 'pause';
     $video.trigger(action);
 
     // Add icon to feedback overlay & animate it.
-    feedbackElem = $(">.video-feedback", $container)
-        .removeClass("anim pause play")
+    feedbackElem = $('>.video-feedback', $container)
+        .removeClass('anim pause play')
         .addClass(action);                     // display play/pause icon
     setTimeout(function () {                   // animate icon
         feedbackElem
-            .addClass("anim")
-            .one("transitionend", function() {
-                feedbackElem.removeClass("anim pause play");
+            .addClass('anim')
+            .one('transitionend', function() {
+                feedbackElem.removeClass('anim pause play');
             });
     }, 10);
 }
 
-$("#search-result")
-    .on("click", ".video-container", onPlayPauseToggle)
-    .on("dblclick", ".video-container", function (event) {
-        toggleFullscreen($(">video", event.currentTarget)[0]);
+$('#search-result')
+    .on('click', '.video-container', onPlayPauseToggle)
+    .on('dblclick', '.video-container', function (event) {
+        toggleFullscreen($('>video', event.currentTarget)[0]);
     });
 
 // On window resize: Rescale #search-result element in steps.
@@ -805,26 +805,26 @@ $("#search-result")
 (function () {
     var timeout;
     var shown = false;
-    var $tooltip = $("<div class=tooltip></div>").appendTo(document.body).css({
-        display: "none", color: "#fff", background: "#555", borderRadius: 2,
-        boxShadow: "0 2px 6px rgba(0, 0, 0, .25)", fontSize: 16,
-        lineHeight: "1.6", padding: ".5em", position: "fixed",
+    var $tooltip = $('<div class=tooltip></div>').appendTo(document.body).css({
+        display: 'none', color: '#fff', background: '#555', borderRadius: 2,
+        boxShadow: '0 2px 6px rgba(0, 0, 0, .25)', fontSize: 16,
+        lineHeight: '1.6', padding: '.5em', position: 'fixed',
         zIndex: 2147483647 /* max allowed */
     });
 
     // Trigger event if pointer is non-moving for half a second.
-    $(document.body).on("mouseover", "[title],[data-title]", function (event) {
+    $(document.body).on('mouseover', '[title],[data-title]', function (event) {
         var $e = $(event.currentTarget);
-        var value = $e.attr("title");
+        var value = $e.attr('title');
 
         // Change attribute 'title' => 'data-title' to suppress browser tooltip.
         if (value !== undefined) {
-            $e.attr("data-title", value).removeAttr("title");
+            $e.attr('data-title', value).removeAttr('title');
         }
 
         clearTimeout(timeout);
         timeout = setTimeout(function () {
-            if ($e.is(":visible") && $e.is(":hover")) {
+            if ($e.is(':visible') && $e.is(':hover')) {
                 onMouseStill(event);
             }
         }, 500);
@@ -838,7 +838,7 @@ $("#search-result")
         shown = true;
         $tooltip
             .css({ left: 0, top: 0 })
-            .html($(event.currentTarget).data("title"))
+            .html($(event.currentTarget).data('title'))
             .show();
 
         // Now use height and width of displayed tooltip, to move it to the
@@ -858,8 +858,8 @@ $("#search-result")
             $tooltip.hide();
         }
     }
-    $(window).on("hashchange resize", hideTooltip);
-    $(document).on("scroll mousemove mousedown keydown", hideTooltip);
+    $(window).on('hashchange resize', hideTooltip);
+    $(document).on('scroll mousemove mousedown keydown', hideTooltip);
 }());
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -876,18 +876,18 @@ urlFragment.onVideoToggle(showVideos);
 
 // Form submission.
 $(function () {
-    "use strict";
-    var $form = $("#search")
-        .on("submit", onSubmit);
-    var $q = $("#q")
-        .on("focus blur", onFocus)
-        .on("keydown", onKey)
-        .on("paste", onPaste);
+    'use strict';
+    var $form = $('#search')
+        .on('submit', onSubmit);
+    var $q = $('#q')
+        .on('focus blur', onFocus)
+        .on('keydown', onKey)
+        .on('paste', onPaste);
     onFocus();
 
     // Text input '#q' focused = set 'focused' class on wrapper element.
     function onFocus() {
-        $form.toggleClass("focus", $q.is(":focus"));
+        $form.toggleClass('focus', $q.is(':focus'));
     }
     // Return key in textarea = submit form.
     function onKey(e) {
@@ -901,7 +901,7 @@ $(function () {
     }
     // Form submission.
     function onSubmit(e) {
-        var queryStr = $q.val() || "";
+        var queryStr = $q.val() || '';
         e.preventDefault();                     // don't submit to server
         // On touchscreen devices (where no input type has hover).
         if (window.matchMedia('not all and (any-hover:hover)').matches) {
@@ -920,24 +920,24 @@ $(function () {
                 window.clipboardData !== undefined
                 ? window.clipboardData          // MSIE, Safari, Chrome
                 : e.originalEvent.clipboardData // WebKit
-            ).getData("text").replace(/[\n\r\u0020]+/g, " ")
-        ).trigger("input");
+            ).getData('text').replace(/[\n\r\u0020]+/g, ' ')
+        ).trigger('input');
     }
 });
 
 // Update lexicon date in page footer.
 (function () {
-    "use strict";
+    'use strict';
     function updateLexiconDate() {
         if (lexiconDate === undefined) {
             setTimeout(updateLexiconDate, 250);
         } else {
-            $("#lexicon-date").html(lexiconDate.toLocaleString(
-                "sv", { year: "numeric", month: "long", day: "numeric" }
+            $('#lexicon-date').html(lexiconDate.toLocaleString(
+                'sv', { year: 'numeric', month: 'long', day: 'numeric' }
             ));
-            $("#lexicon-size").html(
-                (Object.keys(lexicon).length + "")
-                    .replace(/(?=([0-9]{3})+$)/g, " ")
+            $('#lexicon-size').html(
+                (Object.keys(lexicon).length + '')
+                    .replace(/(?=([0-9]{3})+$)/g, ' ')
             );
         }
     }
@@ -945,32 +945,32 @@ $(function () {
 }());
 
 function showVideos (bool) {
-    $("#search-wrapper")
-        .removeClass("video-view text-view")
-        .addClass(bool ? "video-view" : "text-view");
+    $('#search-wrapper')
+        .removeClass('video-view text-view')
+        .addClass(bool ? 'video-view' : 'text-view');
 }
-$("#search-wrapper .selector").on("click keypress", function(e) {
-    if (e.type === "keypress") {
+$('#search-wrapper .selector').on('click keypress', function(e) {
+    if (e.type === 'keypress') {
         if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) { return; }
         if (e.which !== 13 && e.which !== 32) { return; }
     }
-    var hasVideo = $("#search-wrapper")
-        .toggleClass("video-view text-view")
-        .hasClass("video-view");
+    var hasVideo = $('#search-wrapper')
+        .toggleClass('video-view text-view')
+        .hasClass('video-view');
     urlFragment.set({ video: hasVideo });
 });
 
 // Update 'href' attr when mouse enters <a data-href=…> tag (used to retain
 // current video/text result setting). 'data-href' syntax: [query][/overlay]
 $(function () {
-    "use strict";
+    'use strict';
     // 'mouseenter' used here since it does not trigger when child elements are
     // entered, and the event does not bubble.
-    $("#search-result").on("mouseenter", "a[data-href]", function (e) {
+    $('#search-result').on('mouseenter', 'a[data-href]', function (e) {
         var $e = $(e.currentTarget);
-        var hashref = $e.data("href") || "";
+        var hashref = $e.data('href') || '';
         if (hashref) {
-            $e.attr("href", urlFragment.getHash(hashref));
+            $e.attr('href', urlFragment.getHash(hashref));
         }
     });
 });
