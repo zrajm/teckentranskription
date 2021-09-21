@@ -323,8 +323,6 @@ function parseQuery(queryStr) {
 
     // Escape all regular expression metacharacters & the regex delimiter '/'.
     function quotemeta(str) {
-        // PCRE/ERE:          *+? ^$. [  { ()|   \
-        // MSIE meta + delim: *+? ^$. [ ]{}()| / \
         return str.replace(/^[*+?\^$.\[\]{}()|\/\\]$/u, '\\$&');
     }
 
@@ -342,7 +340,7 @@ function parseQuery(queryStr) {
             });
             negative = false;
         }
-        var nonWord = '[ 􌥠,:!?/.’()[\\]&+–]'; // (FIXME: Removed: '-')
+        var nonWord = '[ 􌥠,:!?/.’()[\\]&+–]';
         var leadingNonAlpha = new RegExp(`^${nonWord}`, 'ui');
         var trailingNonAlpha = new RegExp(`${nonWord}$`, 'ui');
         function addTerm (term, plainTerm, type) {
@@ -390,33 +388,33 @@ function parseQuery(queryStr) {
         };
     }());
     var metachars = {
-        'a': '[aàáâã]',
-        'c': '[cç]',
-        'e': '[eèéêë]',
-        'i': '[iìíîï]',
-        'n': '[nñ]',
-        'o': '[oòóôõ]',
-        'u': '[uùúûü]',
-        'y': '[yýü]',
-        'ä': '[äæ]',
-        'ö': '[öø]',
-        '􌤆': '[􌤆􌤂􌥞􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛][􌤺􌥛􌤻􌤹􌥚]?', // face
-        '􌤂': '[􌤂􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼][􌤺􌥛􌤻􌤹􌥚]?',     // upper face
-        '􌥞': '[􌥞􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛][􌤺􌥛􌤻􌤹􌥚]?',       // lower face
-        '􌥜': '[􌥜􌤑􌦲􌤒][􌤺􌥛􌤻􌤹􌥚]?',             // arm
-        '􌤠': '[􌤠􌥀􌤡][􌤺􌥛􌤻􌤹􌥚]?',              // shoulders
-        '􌤓': '[􌤓􌤕􌤔][􌤺􌥛􌤻􌤹􌥚]?',              // chest
-        '􌤗': '[􌤗􌤙􌤘][􌤺􌥛􌤻􌤹􌥚]?',              // hips
-        '*': '[^ 􌥠/.,:;?!()]*',  // all non-space, non-'/' delimiter
-        '@':                     // one place symbol (+ optional relation)
-                '(?:@|[􌦳􌤆􌤂􌥞􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛􌤜􌤞􌤠􌥀􌤡􌥜􌤑􌦲􌤒􌤓􌤕􌤔􌤖􌤗􌤙􌤘􌤚][􌤺􌥛􌤻􌤹􌥚]?)',
-        '#':                     // one handshape symbol (+ optional relation)
-                '(?:#|[􌤤􌥄􌤣􌤧􌥋􌥉􌦫􌤩􌤎􌥇􌦬􌤦􌤲􌤱􌥑􌤢􌥂􌤪􌥎􌥈􌤨􌤿􌥌􌥆􌤫􌦭􌤬􌥅􌤥􌥊􌦱􌤽􌤯􌤭􌤮􌤰􌤳􌥃􌥒􌥟􌦪][􌤺􌥛􌤻􌤹􌥚]?)',
-        '^': '[􌤺􌥛􌤻􌤹􌥚]',          // one relation symbol
-        ':': '[􌥓􌥔􌤴􌥕􌤵􌥖][􌤶􌥗􌤷􌥘􌤸􌥙]', // one attitude symbol
-        '􌦮': '(?:􌦮[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?|􌥰[􌥿􌦀􌦌])', // circle in frontal plane
-        '􌦯': '(?:􌦯[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?|􌥰[􌦈􌥽􌦉])', // circle in horisontal plane
-        '􌦰': '(?:􌦰[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?|􌥰[􌥾􌦊􌦋])', // circle in saggital plane
+        'a':'[aàáâã]',
+        'c':'[cç]',
+        'e':'[eèéêë]',
+        'i':'[iìíîï]',
+        'n':'[nñ]',
+        'o':'[oòóôõ]',
+        'u':'[uùúûü]',
+        'y':'[yýü]',
+        'ä':'[äæ]',
+        'ö':'[öø]',
+        '􌤆':'[􌤆􌤂􌥞􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛][􌤺􌥛􌤻􌤹􌥚]?', // face
+        '􌤂':'[􌤂􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼][􌤺􌥛􌤻􌤹􌥚]?',     // upper face
+        '􌥞':'[􌥞􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛][􌤺􌥛􌤻􌤹􌥚]?',       // lower face
+        '􌥜':'[􌥜􌤑􌦲􌤒][􌤺􌥛􌤻􌤹􌥚]?',             // arm
+        '􌤠':'[􌤠􌥀􌤡][􌤺􌥛􌤻􌤹􌥚]?',              // shoulders
+        '􌤓':'[􌤓􌤕􌤔][􌤺􌥛􌤻􌤹􌥚]?',              // chest
+        '􌤗':'[􌤗􌤙􌤘][􌤺􌥛􌤻􌤹􌥚]?',              // hips
+        '*':'[^ 􌥠/.,:;?!()]*',  // all non-space, non-'/' delimiter
+        // one place symbol (+ optional relation)
+        '@':'(?:@|[􌦳􌤆􌤂􌥞􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛􌤜􌤞􌤠􌥀􌤡􌥜􌤑􌦲􌤒􌤓􌤕􌤔􌤖􌤗􌤙􌤘􌤚][􌤺􌥛􌤻􌤹􌥚]?)',
+        // one handshape symbol (+ optional relation)
+        '#':'(?:#|[􌤤􌥄􌤣􌤧􌥋􌥉􌦫􌤩􌤎􌥇􌦬􌤦􌤲􌤱􌥑􌤢􌥂􌤪􌥎􌥈􌤨􌤿􌥌􌥆􌤫􌦭􌤬􌥅􌤥􌥊􌦱􌤽􌤯􌤭􌤮􌤰􌤳􌥃􌥒􌥟􌦪][􌤺􌥛􌤻􌤹􌥚]?)',
+        '^':'[􌤺􌥛􌤻􌤹􌥚]',          // one relation symbol
+        ':':'[􌥓􌥔􌤴􌥕􌤵􌥖][􌤶􌥗􌤷􌥘􌤸􌥙]', // one attitude symbol
+        '􌦮':'(?:􌦮[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?|􌥰[􌥿􌦀􌦌])', // circle in frontal plane
+        '􌦯':'(?:􌦯[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?|􌥰[􌦈􌥽􌦉])', // circle in horisontal plane
+        '􌦰':'(?:􌦰[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?|􌥰[􌥾􌦊􌦋])', // circle in saggital plane
     };
     // Unquoted place/handshape symbols should also match a following
     // (optional) relation symbol.
@@ -515,7 +513,7 @@ function hilite(str, regex, func) {
         if (func) {
             func();
         }
-        // Lookbeind (?<=...) isn't supported in Safari (and was only added to
+        // Lookbehind (?<=...) isn't supported in Safari (and was only added to
         // Edge and Firefox in summer 2020), therefore we use regex subgroups
         // instead.
         return '{0}<mark>{1}</mark>'.supplant(
