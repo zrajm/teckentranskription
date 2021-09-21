@@ -273,12 +273,12 @@ function transcriptKeyboard($wrapper, $input, $keyboardIcon) {
                     }
                     title = (attr.prefix || '') + y[1]; // title
                     if (y[2] !== undefined) {           //   with optional image
-                        title = title + '<img src=&quot;pic/x/' + y[2] + '.png&quot;>';
+                        title += `<img src=&quot;pic/x/${y[2]}.png&quot;>`;
                     }
-                    return '<button title="' + title + '">' + y[0] + '</button>';
+                    return `<button title="${title}">${y[0]}</button>`;
                 }).join('') + '</span>';
         }).join(' ');
-        return $('<div id=keyboard>' + keyboardHtml + '</div>')
+        return $(`<div id=keyboard>${keyboardHtml}</div>`)
             .appendTo($wrapper)
             .hide();
     }

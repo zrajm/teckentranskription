@@ -343,15 +343,15 @@ function parseQuery(queryStr) {
             negative = false;
         }
         var nonWord = '[ 􌥠,:!?/.’()[\\]&+–]'; // (FIXME: Removed: '-')
-        var leadingNonAlpha  = new RegExp('^' + nonWord, 'ui');
-        var trailingNonAlpha = new RegExp(nonWord + '$', 'ui');
+        var leadingNonAlpha = new RegExp(`^${nonWord}`, 'ui');
+        var trailingNonAlpha = new RegExp(`${nonWord}$`, 'ui');
         function addTerm (term, plainTerm, type) {
             if (term !== '') {
                 term = type === 'field'
-                    ? '^' + term + '$'          // entire field
-                    : (plainTerm.match(leadingNonAlpha)  ? '()' : '(' + nonWord + '|^)') +
-                      '(' + term + ')' +
-                      (plainTerm.match(trailingNonAlpha) ? '' : '(?=' + nonWord + '|$)');
+                    ? `^${term}$`              // entire field
+                    : (plainTerm.match(leadingNonAlpha) ? '()' : `(${nonWord}|^)`) +
+                      `(${term})` +
+                      (plainTerm.match(trailingNonAlpha) ? '' : `(?=${nonWord}|$)`);
                 query[query.length - 1][
                     negative
                         ? 'exclude'
@@ -537,8 +537,7 @@ function htmlifyTags(tags, hiliteRegex) {
         count[tagType] += 1;
         return hilite(tag, hiliteRegex, () => {
             match[tagType] = true;
-        })
-            .replace(/(^|[^<])\//g, '$1<span class=sep>/</span>') +
+        }).replace(/(^|[^<])\//g, '$1<span class=sep>/</span>') +
             (tagType === 'warn' ? ' <span class=sep>▲</span>' : '');
     });
     return '<span class=tags title="{tags}{help}">{icons}</span>'.supplant({
@@ -657,12 +656,11 @@ var outputMatching = (function () {
         chunk = htmlQueue.splice(0, chunksize);
         count += chunk.length;
         if (count === startSize) {
-            statusElem.html('{0} träffar (visar alla)'.supplant([count]));
+            statusElem.html(`${count} träffar (visar alla)`);
         } else {
             statusElem.html(
-                '{1} träffar (visar {0}) – <a>Visa {2} till</a>'
-                    .supplant([count, startSize, chunksize])
-            );
+                `${startSize} träffar (visar ${count}) ` +
+                `– <a>Visa ${chunksize} till</a>`);
             $('>a',statusElem).click(function () { outputNext(); });
         }
 
@@ -936,8 +934,7 @@ $(function () {
                 'sv', { year: 'numeric', month: 'long', day: 'numeric' }
             ));
             $('#lexicon-size').html(
-                (Object.keys(lexicon).length + '')
-                    .replace(/(?=([0-9]{3})+$)/g, ' ')
+                `${Object.keys(lexicon).length}`.replace(/(?=(\d{3})+$)/g, ' ')
             );
         }
     }
