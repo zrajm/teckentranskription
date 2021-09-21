@@ -429,52 +429,47 @@ function parseQuery(queryStr) {
     for (let c of '􌥯􌦶􌥰􌥱􌥲􌥹􌦅') {
         metachars[c] = `${c}[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?`;
     }
-
-    var term = "";
-    var plainTerm = "";
-    var quote = "";
-    var type = "word";
-    for (let c of queryStr.normalize()) {
-        if (quote !== "") {                    // quoted chars
+    // Process query char-by-char in FSA.
+    let term = '', plainTerm = '', quote = '', type = 'word', fsa = {
+        ',': c => {
+            queryBuilder.addTerm(term, plainTerm, type);
+            queryBuilder.addSubquery();
+            type = 'word';
+            term = '';
+            plainTerm = '';
+        },
+        ' ': c => {
+            queryBuilder.addTerm(term, plainTerm, type);
+            type = 'word';
+            term = '';
+            plainTerm = '';
+        },
+        '"': c => { quote = c },
+        "'": c => { quote = c },
+        'UNQUOTED': c => {
+            if (term === '') {             //   leading
+                if (c === '-') {           //     '-' (negation)
+                    queryBuilder.negative();
+                    return;
+                } else if (c === '=') {    //     '=' (exact match)
+                    type = 'field';
+                    return;
+                }
+            }
+            term += metachars[c] || quotemeta(c);
+            plainTerm += c;
+        },
+        'QUOTED': c => {
             if (c === quote) {
-                quote = "";
+                quote = '';
             } else {
                 term += quotemeta(c);
                 plainTerm += c;
             }
-        } else {                               // unquoted chars
-            switch (c) {
-            case ",":                          //   subquery
-                queryBuilder.addTerm(term, plainTerm, type);
-                queryBuilder.addSubquery();
-                type = "word";
-                term = "";
-                plainTerm = "";
-                break;
-            case " ":                          //   term
-                queryBuilder.addTerm(term, plainTerm, type);
-                type = "word";
-                term = "";
-                plainTerm = "";
-                break;
-            case "\"":                         //   quote
-            case "'":
-                quote = c;
-                break;
-            default:
-                if (term === "") {             //   leading
-                    if (c === "-") {           //     '-' (negation)
-                        queryBuilder.negative();
-                        break;
-                    } else if (c === "=") {    //     '=' (exact match)
-                        type = "field";
-                        break;
-                    }
-                }
-                term += metachars[c] || quotemeta(c);
-                plainTerm += c;
-            }
-        }
+        },
+    };
+    for (let c of queryStr.normalize()) {
+        fsa[quote ? 'QUOTED' : fsa[c] ? c : 'UNQUOTED'](c);
     }
     queryBuilder.addTerm(term, plainTerm, type);
     return queryBuilder.getQuery();
