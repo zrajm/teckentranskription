@@ -81,30 +81,30 @@ function toggleFullscreen(elem) {
 //   .hide() -- Hides currently open overlay.
 //
 (function () {
-    var button = $('a[href="#help"]');
-    var overlay = $('.overlay.help');
+    var $button = $('a[href="#help"]');
+    var $overlay = $('.overlay.help');
 
     // Convert <tt> into links (except if they contain '…') by replacing
     // '<tt>…</tt>' with '<a class=tt href="#…">…</a>'.
-    overlay.find('tt').replaceWith(function () {
-        var jq = $(this);
-        var link = '#' + jq.text().replace(/\s+/g, ' ');
+    $overlay.find('tt').replaceWith(function () {
+        var $el = $(this);
+        var link = '#' + $el.text().replace(/\s+/g, ' ');
         return link.match(/…/)
             ? this
             : $('<a>', { class: 'tt', href: link })
                 .click(hideOverlay)
-                .append(jq.contents());
+                .append($el.contents());
     });
     function hideOverlay () {
-        overlay.hide();
-        button.focus();
+        $overlay.hide();
+        $button.focus();
     }
     function showOverlay (e) {
         e.preventDefault();
-        overlay.show().find('>*').focus();
+        $overlay.show().find('>*').focus();
     }
-    button.click(showOverlay);
-    overlay.keyup(function (e) {
+    $button.click(showOverlay);
+    $overlay.keyup(function (e) {
         if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) { return; }
         if (e.key === 'Escape') {
             hideOverlay();
@@ -112,13 +112,12 @@ function toggleFullscreen(elem) {
     }).on('mouseover mouseout click', function (e) {
         var elem = e.target, type = e.type;
         if (elem === this) {
-            elem = $(elem);
             if (type === 'mouseover') {
-                elem.addClass('hover');
+                $overlay.addClass('hover');
             } else if (type === 'mouseout') {
-                elem.removeClass('hover');
+                $overlay.removeClass('hover');
             } else if (type === 'click') {
-                elem.hide();
+                $overlay.hide();
             }
         }
     });
@@ -688,10 +687,10 @@ var outputMatching = (function () {
 
 function onImageLoad(imgLoad, image) {
     // change class if image is loaded or broken
-    var parentElem = $(image.img).parent();
-    parentElem.removeClass('is-loading');
+    var $parent = $(image.img).parent();
+    $parent.removeClass('is-loading');
     if (!image.isLoaded) {
-        parentElem.addClass('is-broken');
+        $parent.addClass('is-broken');
     }
 }
 
@@ -729,7 +728,7 @@ function searchLexicon(queryStr) {
 
 function onPlayPauseToggle(event) {
     'use strict';
-    var feedbackElem;
+    var $feedback;
     if ($(event.target).closest('a').length) { // link clicked: don't play
         return;
     }
@@ -756,14 +755,14 @@ function onPlayPauseToggle(event) {
     $video.trigger(action);
 
     // Add icon to feedback overlay & animate it.
-    feedbackElem = $('>.video-feedback', $container)
+    $feedback = $('>.video-feedback', $container)
         .removeClass('anim pause play')
         .addClass(action);                     // display play/pause icon
     setTimeout(function () {                   // animate icon
-        feedbackElem
+        $feedback
             .addClass('anim')
             .one('transitionend', function() {
-                feedbackElem.removeClass('anim pause play');
+                $feedback.removeClass('anim pause play');
             });
     }, 10);
 }

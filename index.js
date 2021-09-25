@@ -14,8 +14,8 @@ jQuery.fn.selectText = function () {
 };
 
 // For inserting text in a textarea.
-function insertAtCursor(jqElement, str) {
-    var domElement = jqElement.get(0);
+function insertAtCursor($element, str) {
+    var domElement = $element[0];
     if (document.selection) {
         // IE support
         domElement.focus();
@@ -44,7 +44,7 @@ function insertAtCursor(jqElement, str) {
 // will prevent the button from being focused when clicked -- so that the
 // previously focused element keeps its focus; this will not worked for
 // .click() as the element is already focused when that event is triggered).
-var jqTextarea  = $('main textarea');
+var $textarea = $('main textarea');
 function button_clicked(event) {
     var key = event.which;
 
@@ -54,7 +54,7 @@ function button_clicked(event) {
 
         // string inside button (stripping off any &nbsp; + ◌).
         var str = $(this).html().replace(/(&nbsp;|◌)/g, '');
-        insertAtCursor(jqTextarea, str);
+        insertAtCursor($textarea, str);
     }
     return true;
 }
@@ -67,7 +67,7 @@ $(window).on('hashchange', function () {
     var hash    = window.location.hash,
         decoded = decodeURIComponent(hash.replace(/^#/, '')), url;
     share_close();
-    jqTextarea.val(decoded);
+    $textarea.val(decoded);
 
     // Remove hash fragment from URL.
     url = location.href.replace(location.hash, '');
@@ -97,7 +97,7 @@ function copy_to_clipboard(elem, goodMsg, failMsg) {
     $('.share .msg').html(msg);
 }
 var create_png_preview = (function () {
-    var jqPreview = $('<div><div>').prependTo('body').css({
+    var $preview = $('<div><div>').prependTo('body').css({
         position: 'fixed',
         left: 99999,
         top: 0,
@@ -107,14 +107,14 @@ var create_png_preview = (function () {
         padding: '.125em 0 .025em',
     });
     return function (text) {
-        jqPreview.text(text);
-        return domtoimage.toPng(jqPreview[0]);
+        $preview.text(text);
+        return domtoimage.toPng($preview[0]);
     }
 }());
 function share_toggle() {
     if (share_opened) { return share_close(); }
     share_opened = true;
-    var text = jqTextarea.val();
+    var text = $textarea.val();
     var hash = encodeURIComponent(text);
     var url  = location.href.replace(location.hash, '') + '#' + hash;
     var failMsg  = 'Press Ctrl-C (or &#8984;-C) to copy link to clipboard!';
@@ -157,14 +157,14 @@ $('.share button').mousedown(share_clicked).keydown(share_clicked);
 /* Hover images */
 
 function update_hover() {
-    var elem = $(this),
-        html = (elem.data('src')||'').split(' ').map(function(img) {
+    var $el = $(this),
+        html = ($el.data('src')||'').split(' ').map(function(img) {
             return img ?
                 '<img src="pic/x/' + img + '.png" style="max-height:150px;margin:0;padding:0">' :
                 '';
         }).join(' ') +
-        '<div align=center class=x2>' + elem.html()        + '</div>' +
-        '<div align=center>'          + elem.attr('title') + '</div>';
+        '<div align=center class=x2>' + $el.html()        + '</div>' +
+        '<div align=center>'          + $el.attr('title') + '</div>';
     $('#hover').html(html).show();
 }
 

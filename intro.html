@@ -6802,37 +6802,37 @@
     // elements in the <span>.
     function update_counter(selector) {
         selector = typeof selector === "string" ? selector : null;
-        var jqCounter = $(this);
-        var jqContainer = jqCounter.closest("figure").find(".list");
-        var jqItems = $(selector || ">*", jqContainer);
-        var fmt = jqCounter.data("fmt") || "{count}";
+        var $counter = $(this);
+        var $container = $counter.closest("figure").find(".list");
+        var $items = $(selector || ">*", $container);
+        var fmt = $counter.data("fmt") || "{count}";
         var msg = supplant(fmt, {
             msg: (selector ? "" : "alla"),
-            count: jqItems.length,
+            count: $items.length,
         });
-        jqCounter.text(msg);
+        $counter.text(msg);
     }
     function filter() {
         var selector;
-        var jqContainer = $(this).closest("figure");
-        var tags = $(".tags", jqContainer).val();   // select: list from
-        var bool = $(".bool", jqContainer).val();   // checkbox: 'and'/'or'
-        var mode = $(".mode", jqContainer).val();   // checkbox: 'mark'/'hide'
-        var elem = $(".list", jqContainer);         // element containing data
-        var jqItems = $(">*", elem).show().removeClass("hilite");
-        var jqFound;
+        var $container = $(this).closest("figure");
+        var tags = $(".tags", $container).val();   // select: list from
+        var bool = $(".bool", $container).val();   // checkbox: 'and'/'or'
+        var mode = $(".mode", $container).val();   // checkbox: 'mark'/'hide'
+        var elem = $(".list", $container);         // element containing data
+        var $items = $(">*", elem).show().removeClass("hilite");
+        var $found;
 
         if (tags.length > 0) {
             selector = ">." + tags.join(bool === "or" ? ",>." : ".");
             if (mode === "mark") {
-                jqFound = $(selector, elem);
-                jqFound.addClass("hilite");
+                $found = $(selector, elem);
+                $found.addClass("hilite");
             } else {
-                jqFound = $(selector + ",.head", elem);
-                jqItems.not(jqFound).hide();
+                $found = $(selector + ",.head", elem);
+                $items.not($found).hide();
             }
         }
-        $(".count", jqContainer).each(function () {
+        $(".count", $container).each(function () {
             update_counter.call(this, selector);
         });
     }
