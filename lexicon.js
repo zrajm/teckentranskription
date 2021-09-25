@@ -730,7 +730,7 @@ function searchLexicon(queryStr) {
 function onPlayPauseToggle(event) {
     'use strict';
     var feedbackElem;
-    if ($(event.target).is('a')) {             // a link was clicked: abort
+    if ($(event.target).closest('a').length) { // link clicked: don't play
         return;
     }
     var $container = $(event.currentTarget);
