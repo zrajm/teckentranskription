@@ -1,5 +1,12 @@
+/* -*- js-indent-level: 4 -*- */
+/* global $:false, domtoimage:false, jQuery:false */
+
 jQuery.fn.selectText = function () {
-    var doc = document, element = this[0], range, selection;
+    'use strict';
+    var doc = document;
+    var element = this[0];
+    var range;
+    var selection;
     if (doc.body.createTextRange) {
         range = document.body.createTextRange();
         range.moveToElementText(element);
@@ -15,20 +22,19 @@ jQuery.fn.selectText = function () {
 
 // For inserting text in a textarea.
 function insertAtCursor($element, str) {
+    'use strict';
     var domElement = $element[0];
     if (document.selection) {
         // IE support
         domElement.focus();
-        sel = document.selection.createRange();
+        var sel = document.selection.createRange();
         sel.text = str;
-    } else if (domElement.selectionStart || domElement.selectionStart == '0') {
+    } else if (domElement.selectionStart || domElement.selectionStart === 0) {
         // MOZILLA and others
         var begPos = domElement.selectionStart;
         var endPos = domElement.selectionEnd;
-        var value  = domElement.value;
-        domElement.value = value.substring(0, begPos)
-            + str
-            + value.substring(endPos);
+        var value = domElement.value;
+        domElement.value = `${value.slice(0, begPos)}${str}${value.slice(endPos)}`;
         domElement.selectionStart =
             domElement.selectionEnd =
             begPos + str.length;
@@ -45,7 +51,8 @@ function insertAtCursor($element, str) {
 // previously focused element keeps its focus; this will not worked for
 // .click() as the element is already focused when that event is triggered).
 var $textarea = $('main textarea');
-function button_clicked(event) {
+function buttonClicked(event) {
+    'use strict';
     var key = event.which;
 
     // Pressed: Left mouse button, enter or space.
@@ -60,13 +67,18 @@ function button_clicked(event) {
 }
 
 // Trigger hashchange on pageload.
-$(function () { $(window).trigger('hashchange') });
+$(() => {
+    'use strict';
+    $(window).trigger('hashchange');
+});
 
 // Update transcript based on URL hash.
-$(window).on('hashchange', function () {
-    var hash    = window.location.hash,
-        decoded = decodeURIComponent(hash.replace(/^#/, '')), url;
-    share_close();
+$(window).on('hashchange', () => {
+    'use strict';
+    var hash = window.location.hash;
+    var decoded = decodeURIComponent(hash.replace(/^#/, ''));
+    var url;
+    shareClose();
     $textarea.val(decoded);
 
     // Remove hash fragment from URL.
@@ -75,18 +87,26 @@ $(window).on('hashchange', function () {
 });
 
 // Don't close share bubble on click in share bubble.
-$('.bubble').mousedown(function (event) { event.stopPropagation(); });
+$('.bubble').mousedown(event => {
+    'use strict';
+    event.stopPropagation();
+});
 
 // Close share bubble on click anywhere outside share bubble.
-$(document.body).mousedown(function (event) { share_close(); });
+$(document.body).mousedown(() => {
+    'use strict';
+    shareClose();
+});
 
-var share_opened = false;
-function share_close() {
+var shareOpened = false;
+function shareClose() {
+    'use strict';
     $('.share .bubble').hide();
-    share_opened = false;
+    shareOpened = false;
 }
 
-function copy_to_clipboard(elem, goodMsg, failMsg) {
+function copyToClipboard(elem, goodMsg, failMsg) {
+    'use strict';
     var msg = failMsg;
     // Copy to clipboard if possible.
     try {
@@ -96,7 +116,8 @@ function copy_to_clipboard(elem, goodMsg, failMsg) {
     } catch (err) {}
     $('.share .msg').html(msg);
 }
-var create_png_preview = (function () {
+var createPreviewPNG = (() => {
+    'use strict';
     var $preview = $('<div><div>').prependTo('body').css({
         position: 'fixed',
         left: 99999,
@@ -106,70 +127,75 @@ var create_png_preview = (function () {
         display: 'table-cell',
         padding: '.125em 0 .025em',
     });
-    return function (text) {
+    return text => {
         $preview.text(text);
         return domtoimage.toPng($preview[0]);
-    }
-}());
-function share_toggle() {
-    if (share_opened) { return share_close(); }
-    share_opened = true;
+    };
+})();
+function shareToggle() {
+    'use strict';
+    if (shareOpened) { return shareClose(); }
+    shareOpened = true;
     var text = $textarea.val();
     var hash = encodeURIComponent(text);
-    var url  = location.href.replace(location.hash, '') + '#' + hash;
-    var failMsg  = 'Press Ctrl-C (or &#8984;-C) to copy link to clipboard!';
+    var url = `${location.href.replace(location.hash, '')}#${hash}`;
+    var failMsg = 'Press Ctrl-C (or &#8984;-C) to copy link to clipboard!';
     $('.share .bubble').show();
-    create_png_preview(text)
-        .then(function (dataUrl) {
+    createPreviewPNG(text)
+        .then(dataUrl => {
             // Insert URL + image into share bubble & select it.
             $('.share .url').html(
-                "<img style='margin:0;display:block' src='" + dataUrl + "'>" +
-                url
+                `<img style="margin:0;display:block" src="${dataUrl}">${url}`
             ).selectText();
-            copy_to_clipboard($('.share .msg'), "Link + image copied to clipboard!", failMsg);
+            copyToClipboard($('.share .msg'), 'Link + image copied to clipboard!', failMsg);
         })
-        .catch(function (error) {
+        .catch(() => {
             // Insert URL into share bubble & select it.
             $('.share .url').html(url).selectText();
-            copy_to_clipboard($('.share .msg'), "Link copied to clipboard!", failMsg);
+            copyToClipboard($('.share .msg'), 'Link copied to clipboard!', failMsg);
         });
 }
 
-function share_clicked(event) {
+function shareClicked(event) {
+    'use strict';
     var key = event.which;
 
     // Pressed: Left mouse button, enter or space.
     if (key === 1 || key === 13 || key === 32) {
         event.preventDefault();
         event.stopPropagation();
-        share_toggle();
+        shareToggle();
     }
     return true;
 }
 
 /******************************************************************************/
 
-$('main button').mousedown(button_clicked).keydown(button_clicked);
-$('.share button').mousedown(share_clicked).keydown(share_clicked);
+$('main button').mousedown(buttonClicked).keydown(buttonClicked);
+$('.share button').mousedown(shareClicked).keydown(shareClicked);
 
 /******************************************************************************/
 
 /* Hover images */
 
-function update_hover() {
-    var $el = $(event.currentTarget),
-        html = ($el.data('src')||'').split(' ').map(function(img) {
-            return img ?
-                '<img src="pic/x/' + img + '.png" style="max-height:150px;margin:0;padding:0">' :
-                '';
-        }).join(' ') +
-        '<div align=center class=x2>' + $el.html()        + '</div>' +
-        '<div align=center>'          + $el.attr('title') + '</div>';
+function updateHover(event) {
+    'use strict';
+    var $el = $(event.currentTarget);
+    var html = ($el.data('src') || '').split(' ').map(img => {
+        return img
+            ? `<img src="pic/x/${img}.png" style="max-height:150px;margin:0;padding:0">`
+            : '';
+    }).join(' ') +
+        `<div align=center class=x2>${$el.html()}</div>` +
+        `<div align=center>${$el.attr('title')}</div>`;
     $('#hover').html(html).show();
 }
 
-function hide_hover() { $('#hover').hide(); }
+function hideHover() {
+    'use strict';
+    $('#hover').hide();
+}
 
-$('main button').hover(update_hover, hide_hover).focus(update_hover);
+$('main button').hover(updateHover, hideHover).focus(updateHover);
 
 /*[eof]*/

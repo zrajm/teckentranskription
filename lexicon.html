@@ -1,4 +1,4 @@
-<!doctype html><!--*- ispell-dictionary: "svenska" -*-->
+<!doctype html><!--*- ispell-dictionary: "svenska"; js-indent-level: 4 -*-->
 <html lang=sv>
 <head>
   <!-- Copyright 2017-2021 by zrajm. Released under GPLv3 license. -->
@@ -975,23 +975,25 @@ a {
   <script src="lexicon.js"></script>
   <script src="lexicon-data.js"></script>
   <script src="keyboard.js"></script>
-  <script>transcriptKeyboard($("#search"), $("#q"), $("#search .kb"))</script>
   <script>
-    /*****************
-    * Open/close menu.
-    */
-    $(function () {
-        var $menu = $(".menu")
-            .on("click", ".toggle", function (e) { // open/close button
-                $menu.toggleClass("shown");
-            }).on("click", function (e) {          // scrim
+    /* global transcriptKeyboard:readonly */
+    transcriptKeyboard($('#search'), $('#q'), $('#search .kb'));
+  </script>
+  <script>
+    /* global $:readonly */
+    $(() => {
+        'use strict';
+        var $menu = $('.menu')
+            .on('click', '.toggle', () => { // open/close button
+                $menu.toggleClass('shown');
+            }).on('click', (e) => {         // scrim
                 if (e.target === this) {
-                    $menu.removeClass("shown");
+                    $menu.removeClass('shown');
                 }
-            }).on("keydown", function (e) {        // Escape key
+            }).on('keydown', (e) => {       // Escape key
                 if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) { return; }
                 if (e.which === 27) {
-                    $menu.removeClass("shown");
+                    $menu.removeClass('shown');
                 }
             });
     });

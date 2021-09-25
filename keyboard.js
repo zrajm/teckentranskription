@@ -1,4 +1,5 @@
-/* jshint esversion: 6, browser: true, jquery: true, laxbreak: true */
+/* -*- js-indent-level: 4 -*- */
+/* global $:readonly */
 /* exported transcriptKeyboard */
 
 // $input is a jQuery DOM element in which to insert text (a <textarea> or
@@ -70,16 +71,16 @@ function transcriptKeyboard($wrapper, $input, $keyboardIcon) {
 
     function insertKeyboardInDom($wrapper) {
         var keyboardHtml = [[
-            {prefix: 'Relation: '},
+            { prefix: 'Relation: ' },
             '<nobr>',
             ['◌􌤺', 'Brevid'],
             ['◌􌥛', 'Framför'],
             ['◌􌤻', 'Innanför'],
             ['◌􌤹', 'Ovanför'],
             ['◌􌥚', 'Nedanför'],
-            '</nobr>'
+            '</nobr>',
         ], [
-            {prefix: 'Attityd: '},
+            { prefix: 'Attityd: ' },
             '<nobr>',
             ['􌥓', 'Vänsterriktad'],
             ['􌥔', 'Högerriktad'],
@@ -95,9 +96,9 @@ function transcriptKeyboard($wrapper, $input, $keyboardIcon) {
             ['&nbsp;&nbsp;􌥘', 'Inåtvänd'],
             ['&nbsp;&nbsp;􌤸', 'Uppåtvänd'],
             ['&nbsp;&nbsp;􌥙', 'Nedåtvänd'],
-            '</nobr>'
+            '</nobr>',
         ], [
-            {prefix: 'Läge: '},
+            { prefix: 'Läge: ' },
             '<nobr>',
             ['􌤆', 'Ansikte'],
             ['􌤂', 'Övre ansikte'],
@@ -134,9 +135,9 @@ function transcriptKeyboard($wrapper, $input, $keyboardIcon) {
             ['􌤙', 'Vänster höft'],
             ['􌤘', 'Höger höft'],
             ['􌤚', 'Ben'],
-            '</nobr>'
+            '</nobr>',
         ], [
-            {prefix: 'Handform: '},
+            { prefix: 'Handform: ' },
             '<nobr>',
             ['􌤤', 'A-hand', 'a-handen-1'],
             ['􌥄', 'Tumvinkelhand', 'tumvinkelhanden-1'],
@@ -180,7 +181,7 @@ function transcriptKeyboard($wrapper, $input, $keyboardIcon) {
             ['􌥒', 'Stort långfinger', 'stora-langfingret-1'],
             ['􌥟', 'Runt långfinger', 'runda-langfingret-1'],
             ['􌦪', '4-hand', '4-handen-1'],
-            '</nobr>'
+            '</nobr>',
         ], [
             {},
             '<nobr>',
@@ -219,7 +220,7 @@ function transcriptKeyboard($wrapper, $input, $keyboardIcon) {
             ['􌥺', 'Vinkar'],
             ['􌦆', 'Förändras'],
             ['􌦇', 'Växelvis'],
-            '</nobr>'
+            '</nobr>',
         ], [
             {},
             '<nobr>',
@@ -239,7 +240,7 @@ function transcriptKeyboard($wrapper, $input, $keyboardIcon) {
             ['&nbsp;&nbsp;􌦀', 'Nedåt'],
             ['&nbsp;&nbsp;􌦌', 'I höjdled'],
             ['&nbsp;&nbsp;􌦂', 'Mot varandra'],
-            '</nobr>'
+            '</nobr>',
         ], [
             {},
             '<nobr>',
@@ -247,7 +248,7 @@ function transcriptKeyboard($wrapper, $input, $keyboardIcon) {
             ['􌥼', 'Separator mellan artikulationer'],
             ['􌥠', 'Separator mellan segment'],
             ['􌦩', 'Separator mellan händer'],
-            '</nobr>'
+            '</nobr>',
         ], [
             {},
             '<nobr><div style="display:inline-block;font-size:.5em;line-height:120%">Följande symboler är nya<br>och används inte i lexikon än:</div> ',
@@ -262,11 +263,12 @@ function transcriptKeyboard($wrapper, $input, $keyboardIcon) {
             ['􌦰', 'Cirkel i sagittalplan<br>(matchar 􌦰 och 􌥰􌥾􌥰􌦊􌥰􌦋)'],
             ['􌦶', 'Studs'],
             ['&nbsp;&nbsp;􌦵', 'Från varandra'],
-            '</nobr>'
-        ]].map(function (x) {
+            '</nobr>',
+        ]].map(x => {
             var attr = x[0];
             return '<span>' + x
-                .splice(1).map(function (y) {
+                .splice(1)
+                .map(y => {
                     var title;
                     if (typeof y === 'string') {        // raw HTML
                         return y;
@@ -283,13 +285,13 @@ function transcriptKeyboard($wrapper, $input, $keyboardIcon) {
             .hide();
     }
 
-    $(function () {
+    $(() => {
         $keyboard = insertKeyboardInDom($wrapper);
 
         $keyboard.on('click', 'button', onButton);
 
         // Escape anywhere inside form: Toggle virtual keyboard.
-        $wrapper.on('keydown', function (e) {
+        $wrapper.on('keydown', e => {
             var k = e.which;
             if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) {
                 return;
@@ -304,7 +306,7 @@ function transcriptKeyboard($wrapper, $input, $keyboardIcon) {
         });
 
         // Click on keyboard icon: Toggle virtual keyboard.
-        $keyboardIcon.on('click', function (e) {
+        $keyboardIcon.on('click', e => {
             if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) {
                 return;
             }
@@ -312,15 +314,15 @@ function transcriptKeyboard($wrapper, $input, $keyboardIcon) {
             $keyboard.toggle();
         });
 
-        // Click/focus outside it virtual keyboard: Hide it.
-        $(document.body).on('click focus', function (e) {
+        // Click/focus outside virtual keyboard: Hide it.
+        $(document.body).on('click focus', e => {
             if ($(e.target).closest($wrapper).length === 0) {
                 $keyboard.hide();
             }
         });
 
         // Submit: Hide virtual keyboard.
-        $wrapper.on('submit', function () {
+        $wrapper.on('submit', () => {
             $keyboard.hide();
         });
     });

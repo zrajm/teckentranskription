@@ -1,0 +1,332 @@
+//-*- js-indent-level: 2 -*-
+// Inspired by JavaScript Whatever Style (https://github.com/junosuarez/jsw)
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": 2015
+  },
+  // Rules taken from: https://standardjs.com/rules.html (except OWN rules).
+  "rules": {
+    // OWN: Require fat arrow with implicit return to be on one line.
+    "implicit-arrow-linebreak": "error",
+    // OWN: Prefer spread func([...x]) over func.apply(x). (on/off)
+    "prefer-spread": "error",
+    // OWN: Require strict mode.
+    "strict": "error",
+    // OWN: Use Unix line breaks.
+    "linebreak-style": ["error", "unix"],
+    // Use 2 spaces for indentation.
+    "indent": ["error", 4, { // FIXME: Change indent to '2'
+      "SwitchCase": 0,
+      "VariableDeclarator": 1,
+      "outerIIFEBody": 1,
+      "MemberExpression": 1,
+      "FunctionDeclaration": { "parameters": 1, "body": 1 },
+      "FunctionExpression": { "parameters": 1, "body": 1 },
+      "CallExpression": { "arguments": 1 },
+      "ArrayExpression": 1,
+      "ObjectExpression": 1,
+      "ImportDeclaration": 1,
+      "flatTernaryExpressions": false,
+      "ignoreComments": false,
+      "ignoredNodes": ["TemplateLiteral > *"]
+    }],
+    // Use single quotes for strings except to avoid escaping.
+    "quotes": ["error", "single", {
+      "avoidEscape": true
+    }],
+    // No unused variables.
+    "no-unused-vars": "error",
+    // Add a space after keywords.
+    "keyword-spacing": ["error"],
+    // Add a space before a function declaration's parentheses.
+    "space-before-function-paren": ["error", {
+      "anonymous": "always",
+      "asyncArrow": "always",
+      "named": "never"
+    }],
+    // Always use `===` instead of `==`.<br>
+    "eqeqeq": ["error", "always"],
+    // Infix operators must be spaced.
+    "space-infix-ops": "error",
+    // Commas should have a space after them.
+    "comma-spacing": "error",
+    // Keep else statements on the same line as their curly braces.
+    "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
+    // For multi-line if statements, use curly braces.
+    "curly": "error",
+    // Always handle the `err` function parameter.
+    "handle-callback-err": "error",
+    // Declare browser globals with a `/* global */` comment.
+    // FIXME ??
+    // Multiple blank lines not allowed.
+    "no-multiple-empty-lines": ["error", {
+      "max": 1,
+      "maxBOF": 0,
+      "maxEOF": 0
+    }],
+    // For the ternary operator in a multi-line setting, place `?` and `:` on their own lines.
+    "operator-linebreak": ["error", "after", {
+      "overrides": {
+        "?": "before",
+        ":": "before",
+        "|>": "before"
+      }
+    }],
+    // For var declarations, write each declaration in its own statement.
+    "one-var": ["error", "never"],
+    // Wrap conditional assignments with additional parentheses.
+    "no-cond-assign": "error",
+    // Add spaces inside single line blocks.
+    "block-spacing": "error",
+    // Use camelcase when naming variables and functions.
+    "camelcase" : "error",
+    // Trailing commas not allowed. (OWN: jsw disallow this, I require them.)
+    "comma-dangle": ["error", "always-multiline", {
+        "functions": "never"
+    }],
+    // Commas must be placed at the end of the current line.
+    "comma-style": "error",
+    // Dot should be on the same line as property.
+    "dot-location": ["error", "property"],
+    // Files must end with a newline.
+    "eol-last": ["error", "always"],
+    // No space between function identifiers and their invocations.
+    "func-call-spacing": "error",
+    // In key/value pairs, require zero space before colon, and one or more after.
+    "key-spacing": ["error", {
+      "beforeColon": false,
+      "afterColon": true,
+      "mode": "minimum"
+    }],
+    // Constructor names must begin with a capital letter.
+    "new-cap": "error",
+    // Constructor with no arguments must be invoked with parentheses.
+    "new-parens": "error",
+    // Objects must contain a getter when a setter is defined.
+    "accessor-pairs": "error",
+    // Constructors of derived classes must call `super`.
+    "constructor-super": "error",
+    // Use array literals instead of array constructors.
+    "no-array-constructor": "error",
+    // Avoid using `arguments.callee` and `arguments.caller`.
+    "no-caller": "error",
+    // Avoid modifying variables of class declarations.
+    "no-class-assign": "error",
+    // Avoid modifying variables declared using `const`.
+    "no-const-assign": "error",
+    // Avoid using constant expressions in conditions (except loops).
+    "no-constant-condition": "error",
+    // No control characters in regular expressions.
+    "no-control-regex": "error",
+    // No `debugger` statements.
+    "no-debugger": "error",
+    // No `delete` operator on variables.
+    "no-delete-var": "error",
+    // No duplicate arguments in function definitions.
+    "no-dupe-args": "error",
+    // No duplicate name in class members.
+    "no-dupe-class-members": "error",
+    // No duplicate keys in object literals.
+    "no-dupe-keys": "error",
+    // No duplicate `case` labels in `switch` statements.
+    "no-duplicate-case": "error",
+    // Use a single import statement per module.
+    "no-duplicate-imports": "error",
+    // No empty character classes in regular expressions.
+    "no-empty-character-class": "error",
+    // No empty destructuring patterns.
+    "no-empty-pattern": "error",
+    // No using `eval()`.
+    "no-eval": "error",
+    // No reassigning exceptions in `catch` clauses.
+    "no-ex-assign": "error",
+    // No extending native objects.
+    "no-extend-native": "error",
+    // Avoid unnecessary function binding.
+    "no-extra-bind": "error",
+    // Avoid unnecessary boolean casts.
+    "no-extra-boolean-cast": "error",
+    // No unnecessary parentheses around function expressions.
+    "no-extra-parens": ["error", "functions"],
+    // Use `break` to prevent fallthrough in `switch` cases.
+    "no-fallthrough": "error",
+    // No floating decimals.
+    "no-floating-decimal": "error",
+    // Avoid reassigning function declarations.
+    "no-func-assign": "error",
+    // No reassigning read-only global variables.
+    "no-global-assign": "error",
+    // No implied `eval()`.
+    "no-implied-eval": "error",
+    // No function declarations in nested blocks.
+    "no-inner-declarations": "error",
+    // No invalid regular expression strings in  `RegExp` constructors.
+    "no-invalid-regexp": "error",
+    // No irregular whitespace.
+    "no-irregular-whitespace": "error",
+    // No using `__iterator__`.
+    "no-iterator": "error",
+    // No labels that share a name with an in scope variable.
+    "no-label-var": "error",
+    // No label statements.
+    "no-labels": "error",
+    // No unnecessary nested blocks.
+    "no-lone-blocks": "error",
+    // Avoid mixing spaces and tabs for indentation.
+    "no-mixed-spaces-and-tabs": "error",
+    // Do not use multiple spaces except for indentation.
+    "no-multi-spaces": ["error", {
+      "ignoreEOLComments": true
+    }],
+    // No multiline strings.
+    "no-multi-str": "error",
+    // No `new` without assigning object to a variable.
+    "no-new": "error",
+    // No using the `Function` constructor.
+    "no-new-func": "error",
+    // No using the `Object` constructor.
+    "no-new-object": "error",
+    // No using `new require`.
+    "no-new-require": "error",
+    // No using the `Symbol` constructor.
+    "no-new-symbol": "error",
+    // No using primitive wrapper instances.
+    "no-new-wrappers": "error",
+    // No calling global object properties as functions.
+    "no-obj-calls": "error",
+    // No octal literals. (on/off)
+    "no-octal": "error",
+    // No octal escape sequences in string literals. (on/off)
+    "no-octal-escape": "error",
+    // Avoid string concatenation when using `__dirname` and `__filename`. (on/off)
+    "no-path-concat": "error",
+    // Avoid using `__proto__`. Use `getPrototypeOf` instead. (on/off)
+    "no-proto": "error",
+    // No redeclaring variables. (has opts)
+    "no-redeclare": "error",
+    // Avoid multiple spaces in regular expression literals. (on/off)
+    "no-regex-spaces": "error",
+    // Assignments in return statements must be surrounded by parentheses. (has opts)
+    "no-return-assign": "error",
+    // Avoid assigning a variable to itself
+    "no-self-assign": ["error", {
+      "props": true
+    }],
+    // Avoid comparing a variable to itself.
+    "no-self-compare": "error",
+    // Avoid using the comma operator. (has opts)
+    "no-sequences": "error",
+    // Restricted names should not be shadowed. (on/off)
+    "no-shadow-restricted-names": "error",
+    // Sparse arrays are not allowed. (on/off)
+    "no-sparse-arrays": "error",
+    // Tabs should not be used. (has opts)
+    "no-tabs": "error",
+    // Regular strings must not contain template literal placeholders. (on/off)
+    "no-template-curly-in-string": "error",
+    // `super()` must be called before using `this`. (on/off)
+    "no-this-before-super": "error",
+    // Only `throw` an `Error` object. (on/off)
+    "no-throw-literal": "error",
+    // Whitespace not allowed at end of line.
+    "no-trailing-spaces": "error",
+    // Initializing to `undefined` is not allowed.
+    "no-undef-init": "error",
+    // No unmodified conditions of loops. (on/off)
+    "no-unmodified-loop-condition": "error",
+    // No ternary operators when simpler alternatives exist. (has opts)
+    "no-unneeded-ternary": "error",
+    // No unreachable code after `return`, `throw`, `continue`, and `break` statements. (on/off)
+    "no-unreachable": "error",
+    // No flow control statements in `finally` blocks. (on/off)
+    "no-unsafe-finally": "error",
+    // The left operand of relational operators must not be negated. (has opts)
+    "no-unsafe-negation": "error",
+    // Avoid unnecessary use of `.call()` and `.apply()`. (on/off)
+    "no-useless-call": "error",
+    // Avoid using unnecessary computed property keys on objects. (has opts)
+    "no-useless-computed-key": "error",
+    // No unnecessary constructor. (on/off)
+    "no-useless-constructor": "error",
+    // No unnecessary use of escape. (on/off)
+    "no-useless-escape": "error",
+    // Renaming import, export, and destructured assignments to the same name is not allowed. (has opts)
+    "no-useless-rename": "error",
+    // No whitespace before properties. (on/off)
+    "no-whitespace-before-property": "error",
+    // No using `with` statements. (on/off)
+    "no-with": "error",
+    // Maintain consistency of newlines between object properties. (has opts)
+    "object-property-newline": ["error", {
+      "allowAllPropertiesOnSameLine": true
+    }],
+    // No padding within blocks. (has opts)
+    "padded-blocks": ["error", "never"],
+    // No whitespace between spread operators and their expressions.
+    "rest-spread-spacing": "error",
+    // Semicolons must have a space after and no space before. (has opts)
+    "semi-spacing": "error",
+    // Must have a space before blocks. (has opts)
+    "space-before-blocks": "error",
+    // No spaces inside parentheses. (has opts)
+    "space-in-parens": "error",
+    // OWN: No spaces inside brackets (in array listing).
+    "array-bracket-spacing": "error",
+    // OWN: No spaces inside brackets (in computed propetry).
+    "computed-property-spacing": ["error", "never"],
+    // Unary operators must have a space after. (has opts)
+    "space-unary-ops": "error",
+    // Use spaces inside comments. (has opts)
+    "spaced-comment": ["error", "always", {
+      "block": {
+        "exceptions": ["*", "[eof]"],
+        "balanced": true
+      },
+      "line": {
+        "exceptions": ["/", "[eof]"]
+      }
+    }],
+    // No spacing in template strings. (on/off)
+    "template-curly-spacing": "error",
+    // Use `isNaN()` when checking for `NaN`. (has opts)
+    "use-isnan": "error",
+    // `typeof` must be compared to a valid string. (has opts)
+    "valid-typeof": "error",
+    // Immediately Invoked Function Expressions (IIFEs) must be wrapped. (has opts)
+    "wrap-iife": "error",
+    // The `*` in `yield*`expressions must have a space before and after. (has opts)
+    "yield-star-spacing": "error",
+    // Avoid Yoda conditions. (has opts)
+    "yoda": "error",
+    // No semicolons. (has opts)
+    "semi": "error",
+    //"semi": ["error", "never"], // FIXME: use this instead!
+    // Never start a line with `(`, `[`, '`', or a handful of other unlikely possibilities. (on/off)
+    "no-unexpected-multiline": "error",
+
+    /*======================================================================*/
+    // FIXME: OWN stuff
+    "dot-notation": ["error", { "allowKeywords": true }],
+    "lines-between-class-members": ["error", "never", {
+        "exceptAfterSingleLine": true
+    }],
+    "no-case-declarations": "error",
+    "no-empty": ["error", {
+        "allowEmptyCatch": true
+    }],
+    // "no-shadow": "error", // FIXME: use this
+    "no-void": "error",
+    //"no-var": "error", // FIXME: Use this
+    "object-curly-newline": ["error", {
+      "multiline": true,
+      "consistent": true
+    }],
+    "object-curly-spacing": ["error", "always"]
+  }
+}
+//[eof]
