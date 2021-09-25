@@ -6790,11 +6790,11 @@
   <script>
     /* global $:readonly */
     function supplant(s, o) {
-        'use strict';
-        return s.replace(/{([^{}]*)}/g, function (a, b) {
-            var r = o[b];
-            return typeof r === 'string' || typeof r === 'number' ? r : a;
-        });
+      'use strict';
+      return s.replace(/{([^{}]*)}/g, function (a, b) {
+        var r = o[b];
+        return typeof r === 'string' || typeof r === 'number' ? r : a;
+      });
     }
 
     // Assumes a <figure> containing a <span> (with acounter) and
@@ -6803,42 +6803,42 @@
     // against the <div class=list> content, and output the number of matching
     // elements in the <span>.
     function updateCounter(selector) {
-        'use strict';
-        selector = typeof selector === 'string' ? selector : null;
-        var $counter = $(this);
-        var $container = $counter.closest('figure').find('.list');
-        var $items = $(selector || '>*', $container);
-        var fmt = $counter.data('fmt') || '{count}';
-        var msg = supplant(fmt, {
-            msg: (selector ? '' : 'alla'),
-            count: $items.length,
-        });
-        $counter.text(msg);
+      'use strict';
+      selector = typeof selector === 'string' ? selector : null;
+      var $counter = $(this);
+      var $container = $counter.closest('figure').find('.list');
+      var $items = $(selector || '>*', $container);
+      var fmt = $counter.data('fmt') || '{count}';
+      var msg = supplant(fmt, {
+        msg: (selector ? '' : 'alla'),
+        count: $items.length,
+      });
+      $counter.text(msg);
     }
     function filter() {
-        'use strict';
-        var selector;
-        var $container = $(this).closest('figure');
-        var tags = $('.tags', $container).val();   // select: list from
-        var bool = $('.bool', $container).val();   // checkbox: 'and'/'or'
-        var mode = $('.mode', $container).val();   // checkbox: 'mark'/'hide'
-        var elem = $('.list', $container);         // element containing data
-        var $items = $('>*', elem).show().removeClass('hilite');
-        var $found;
+      'use strict';
+      var selector;
+      var $container = $(this).closest('figure');
+      var tags = $('.tags', $container).val();   // select: list from
+      var bool = $('.bool', $container).val();   // checkbox: 'and'/'or'
+      var mode = $('.mode', $container).val();   // checkbox: 'mark'/'hide'
+      var elem = $('.list', $container);         // element containing data
+      var $items = $('>*', elem).show().removeClass('hilite');
+      var $found;
 
-        if (tags.length > 0) {
-            selector = '>.' + tags.join(bool === 'or' ? ',>.' : '.');
-            if (mode === 'mark') {
-                $found = $(selector, elem);
-                $found.addClass('hilite');
-            } else {
-                $found = $(selector + ',.head', elem);
-                $items.not($found).hide();
-            }
+      if (tags.length > 0) {
+        selector = '>.' + tags.join(bool === 'or' ? ',>.' : '.');
+        if (mode === 'mark') {
+          $found = $(selector, elem);
+          $found.addClass('hilite');
+        } else {
+          $found = $(selector + ',.head', elem);
+          $items.not($found).hide();
         }
-        $('.count', $container).each(function () {
-            updateCounter.call(this, selector);
-        });
+      }
+      $('.count', $container).each(function () {
+        updateCounter.call(this, selector);
+      });
     }
     $('.tags').chosen({ width: '500px' });
     $('.count').each(updateCounter);
@@ -6848,67 +6848,67 @@
     $('body').prepend('<img id=toggle>');
     var state = 0;
     var attrs = [
-        {
-            src: 'pic/gui/expand.svg',
-            title: 'Visa en del detaljerad information',
-        },
-        {
-            src: 'pic/gui/expand-all.svg',
-            title: 'Visa all detaljerad information',
-        },
-        {
-            src: 'pic/gui/collapse-all.svg',
-            title: 'Göm all detaljerad information',
-        },
+      {
+        src: 'pic/gui/expand.svg',
+        title: 'Visa en del detaljerad information',
+      },
+      {
+        src: 'pic/gui/expand-all.svg',
+        title: 'Visa all detaljerad information',
+      },
+      {
+        src: 'pic/gui/collapse-all.svg',
+        title: 'Göm all detaljerad information',
+      },
     ];
 
     function toggle() {
-        'use strict';
-        if (state === 0) {
-            $('details:not([closed])').attr('open', true);
-        } else if (state === 1) {
-            $('details').attr('open', true);
-        } else if (state === 2) {
-            $('details').attr('open', false);
-        }
-        state = (state + 1) % attrs.length;
-        $('#toggle').attr(attrs[state]);
+      'use strict';
+      if (state === 0) {
+        $('details:not([closed])').attr('open', true);
+      } else if (state === 1) {
+        $('details').attr('open', true);
+      } else if (state === 2) {
+        $('details').attr('open', false);
+      }
+      state = (state + 1) % attrs.length;
+      $('#toggle').attr(attrs[state]);
     }
 
     $('#toggle').attr(attrs[state]).click(toggle).css({
-        opacity: 0.25,
-        position: 'fixed',
-        right: 0,
-        margin: '.125em .25em',
+      opacity: 0.25,
+      position: 'fixed',
+      right: 0,
+      margin: '.125em .25em',
     });
     ////////////////////////////////////////////////////////////////////////////
     $('img[src^="pic/x/"]').hover(
-        function () {
-            'use strict';
-            var elem = $(this);
-            var image = elem.attr('src');
-            elem.css('background', 'rgba(0, 0, 0, .125)');
-            $('#hover').attr('src', image).show();
-        },
-        function () {
-            'use strict';
-            $(this).css('background', 'inherit');
-            $('#hover').hide();
-        }
+      function () {
+        'use strict';
+        var elem = $(this);
+        var image = elem.attr('src');
+        elem.css('background', 'rgba(0, 0, 0, .125)');
+        $('#hover').attr('src', image).show();
+      },
+      function () {
+        'use strict';
+        $(this).css('background', 'inherit');
+        $('#hover').hide();
+      }
     );
     ////////////////////////////////////////////////////////////////////////////
     $('[href]').each(function () {
-        'use strict';
-        var elem = $(this);
-        var href = elem.attr('href');
-        // Add 'target=_blank' to all non-internal links.
-        if (!href.match(/^#/)) {
-            elem.attr('target', '_blank');
-        }
-        // Rewrite 5-digit IDs to links to Svenskt teckenspråkslexikon.
-        if (href.match(/^\d{5}($|#)/)) {
-            elem.attr('href', 'http://teckensprakslexikon.su.se/ord/' + href);
-        }
+      'use strict';
+      var elem = $(this);
+      var href = elem.attr('href');
+      // Add 'target=_blank' to all non-internal links.
+      if (!href.match(/^#/)) {
+        elem.attr('target', '_blank');
+      }
+      // Rewrite 5-digit IDs to links to Svenskt teckenspråkslexikon.
+      if (href.match(/^\d{5}($|#)/)) {
+        elem.attr('href', 'http://teckensprakslexikon.su.se/ord/' + href);
+      }
     });
   </script>
   <script async src="https://static.getclicky.com/101332481.js"></script>

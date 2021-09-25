@@ -1,4 +1,4 @@
-<!doctype html><!--*- ispell-dictionary: "svenska"; js-indent-level: 4 -*-->
+<!doctype html><!--*- ispell-dictionary: "svenska"; js-indent-level: 2 -*-->
 <html lang=sv>
 <head>
   <!-- Copyright 2017-2021 by zrajm. Released under GPLv3 license. -->
@@ -982,20 +982,20 @@ a {
   <script>
     /* global $:readonly */
     $(() => {
-        'use strict';
-        var $menu = $('.menu')
-            .on('click', '.toggle', () => { // open/close button
-                $menu.toggleClass('shown');
-            }).on('click', (e) => {         // scrim
-                if (e.target === this) {
-                    $menu.removeClass('shown');
-                }
-            }).on('keydown', (e) => {       // Escape key
-                if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) { return; }
-                if (e.which === 27) {
-                    $menu.removeClass('shown');
-                }
-            });
+      'use strict';
+      var $menu = $('.menu')
+        .on('click', '.toggle', () => { // open/close button
+          $menu.toggleClass('shown');
+        }).on('click', (e) => {         // scrim
+          if (e.target === this) {
+            $menu.removeClass('shown');
+          }
+        }).on('keydown', (e) => {       // Escape key
+          if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) { return; }
+          if (e.which === 27) {
+            $menu.removeClass('shown');
+          }
+        });
     });
   </script>
   <script async src="https://static.getclicky.com/101332481.js"></script>
