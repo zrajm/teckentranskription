@@ -110,13 +110,16 @@ function toggleFullscreen(elem) {
             hideOverlay();
         }
     }).on('mouseover mouseout click', function (e) {
-        var elem = e.target, type = e.type;
-        if (elem === this) {
-            if (type === 'mouseover') {
+        // Only handle events from overlay border (not bubbled from within).
+        if (e.target === $overlay[0]) {
+            switch (e.type) {
+            case 'mouseover':
                 $overlay.addClass('hover');
-            } else if (type === 'mouseout') {
+                break;
+            case 'mouseout':
                 $overlay.removeClass('hover');
-            } else if (type === 'click') {
+                break;
+            case 'click':
                 $overlay.hide();
             }
         }

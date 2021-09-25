@@ -53,7 +53,7 @@ function button_clicked(event) {
         event.preventDefault();
 
         // string inside button (stripping off any &nbsp; + ◌).
-        var str = $(this).html().replace(/(&nbsp;|◌)/g, '');
+        var str = $(event.currentTarget).html().replace(/(&nbsp;|◌)/g, '');
         insertAtCursor($textarea, str);
     }
     return true;
@@ -157,7 +157,7 @@ $('.share button').mousedown(share_clicked).keydown(share_clicked);
 /* Hover images */
 
 function update_hover() {
-    var $el = $(this),
+    var $el = $(event.currentTarget),
         html = ($el.data('src')||'').split(' ').map(function(img) {
             return img ?
                 '<img src="pic/x/' + img + '.png" style="max-height:150px;margin:0;padding:0">' :
