@@ -28,22 +28,14 @@ function insertAtCursor(jqElement, str) {
         var value  = domElement.value;
         domElement.value = value.substring(0, begPos)
             + str
-            + value.substring(endPos, value.length);
-        setTimeout(function () {
-            domElement.selectionStart = begPos + str.length;
-            domElement.selectionEnd   = begPos + str.length;
-        }, 0);
+            + value.substring(endPos);
+        domElement.selectionStart =
+            domElement.selectionEnd =
+            begPos + str.length;
     } else {
         // other
         domElement.value += str;
     }
-}
-
-function qualifier(event) {
-    if (event.shiftKey || event.ctrlKey || event.altKey || event.metaKey) {
-        return true;
-    }
-    return false;
 }
 
 // Invoke this on .mousedown() and/or .keydown() (to catch mouse clicks and
@@ -54,11 +46,9 @@ function qualifier(event) {
 // .click() as the element is already focused when that event is triggered).
 var jqTextarea  = $('main textarea');
 function button_clicked(event) {
-    var key;
-    if (qualifier(event)) { return true; }     // abort if qualifier pressed
+    var key = event.which;
 
     // Pressed: Left mouse button, enter or space.
-    key = event.which;
     if (key === 1 || key === 13 || key === 32) {
         event.preventDefault();
 
@@ -146,11 +136,9 @@ function share_toggle() {
 }
 
 function share_clicked(event) {
-    var key;
-    if (qualifier(event)) { return true; }     // abort if qualifier pressed
+    var key = event.which;
 
     // Pressed: Left mouse button, enter or space.
-    key = event.which;
     if (key === 1 || key === 13 || key === 32) {
         event.preventDefault();
         event.stopPropagation();
