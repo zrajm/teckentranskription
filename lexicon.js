@@ -25,7 +25,7 @@ String.prototype.fmt = function (o) { // eslint-disable-line no-extend-native
 jQuery.fn.paste = function (str) {
   'use strict';
   var prefocused = document.activeElement;
-  str += '';                            // make sure it's a string
+  str += '';  // coerce into string
   this.each((_, el) => {
     var beg = el.selectionStart;
     var val = el.value;
@@ -206,7 +206,7 @@ var urlFragment = (() => {
         modified = true;
       }
     });
-    if (modified) {                         // update URL
+    if (modified) {  // update URL
       window.history.pushState({}, '', setUrlFromState(state));
       return true;
     }
@@ -221,14 +221,14 @@ var urlFragment = (() => {
     var newState = getStateFromUrl();
     var run = [];
     ['base', 'overlay', 'query', 'video'].forEach(n => {
-      if (newState[n] !== state[n]) {    // save all state first
+      if (newState[n] !== state[n]) {       // save all state first
         if (hooks[n] instanceof Function) {
-          run.push(n);               //   register callback to run
+          run.push(n);                      //   register callback to run
         }
-        state[n] = newState[n];        //   save state
+        state[n] = newState[n];             //   save state
       }
     });
-    run.forEach(n => hooks[n](state[n]));  // run callbacks
+    run.forEach(n => hooks[n](state[n]));   // run callbacks
   });
 
   // Trigger hashchange on initial page load.
@@ -348,7 +348,7 @@ function parseQuery(queryStr) {
     function addTerm(term, plainTerm, type) {
       if (term !== '') {
         term = type === 'field'
-          ? `^${term}$`              // entire field
+          ? `^${term}$`         // entire field
           : (plainTerm.match(leadingNonAlpha) ? '()' : `(${nonWord}|^)`) +
             `(${term})` +
             (plainTerm.match(trailingNonAlpha) ? '' : `(?=${nonWord}|$)`);
@@ -370,7 +370,7 @@ function parseQuery(queryStr) {
         return Object.assign(query.reduce(
           (acc, subq) => !(subq.include.length || subq.exclude.length)
             ? acc
-            : acc.concat({         // add non-empty subquery
+            : acc.concat({  // add non-empty subquery
               exclude: subq.exclude.map(str2regex),
               include: (
                 // If all terms are negated, add implicit '*'.
@@ -451,7 +451,7 @@ function parseQuery(queryStr) {
     '"': c => { quote = c; },
     "'": c => { quote = c; },
     'UNQUOTED': c => {
-      if (term === '') {             //   leading
+      if (term === '') {           //   leading
         if (c === '-') {           //     '-' (negation)
           queryBuilder.negative();
           return;
@@ -494,9 +494,9 @@ function regexInEntry(regex, entry) {
 // * 'exclude' -- array of regexes that must all be absent
 function subqueryInEntry(subquery, entry) {
   'use strict';
-  return subquery.include.every(    // all positive terms and
+  return subquery.include.every(  // all positive terms and
     re => regexInEntry(re, entry)
-  ) && !subquery.exclude.some(      //   no negative terms matches
+  ) && !subquery.exclude.some(    //   no negative terms matches
     re => regexInEntry(re, entry)
   );
 }
@@ -578,9 +578,9 @@ function unicodeTo7bit(str) {
 
 function htmlifyMatch(entry, hiliteRegex) {
   'use strict';
-  var id = entry[0];                         // 1st field
-  var transcr = entry[1];                    // 2nd field
-  var swe = entry.slice(2).filter(x => x[0] !== '/');  // Swedish
+  var id = entry[0];                                    // 1st field
+  var transcr = entry[1];                               // 2nd field
+  var swe = entry.slice(2).filter(x => x[0] !== '/');   // Swedish
   var tags = entry.slice(2).filter(x => x[0] === '/');  // /tags
   return (
     /* NB: Whitespace below shows up in search result's 'text' mode. */
@@ -624,7 +624,7 @@ function htmlifyMatch(entry, hiliteRegex) {
 // ongoing processing is aborted and only the new result is displayed.
 var outputMatching = (() => {
   'use strict';
-  var chunksize = 100;                       // setting (never changes)
+  var chunksize = 100;  // setting (never changes)
   var hasListener = false;
   var statusElem;
   var resultElem;
@@ -664,10 +664,10 @@ var outputMatching = (() => {
     resultElem.append(chunk.join(''));
     resultElem.imagesLoaded().progress(onImageLoad);
 
-    if (htmlQueue.length === 0) {          // nothing more to display
+    if (htmlQueue.length === 0) {  // nothing more to display
       buttonElem.hide();
       $(window).off('scroll');
-    } else {                               // moar to display
+    } else {                       // moar to display
       if (!hasListener) {
         buttonElem.click(() => { outputNext(); });
         hasListener = true;
@@ -730,13 +730,13 @@ function searchLexicon(queryStr) {
 function onPlayPauseToggle(event) {
   'use strict';
   var $feedback;
-  if ($(event.target).closest('a').length) { // link clicked: don't play
+  if ($(event.target).closest('a').length) {  // link clicked: don't play
     return;
   }
   var $container = $(event.currentTarget);
   var $video = $('>video,>img[data-video]', $container);
 
-  if ($video.is('img')) {                    // replace <img> with <video>
+  if ($video.is('img')) {                     // replace <img> with <video>
     $video = $(
       '<video loop muted playsinline src="{0}" poster="{1}"></video>'
         .fmt([$video.data('video'), $video.attr('src')])
@@ -758,8 +758,8 @@ function onPlayPauseToggle(event) {
   // Add icon to feedback overlay & animate it.
   $feedback = $('>.video-feedback', $container)
     .removeClass('anim pause play')
-    .addClass(action);                     // display play/pause icon
-  setTimeout(() => {                         // animate icon
+    .addClass(action);  // display play/pause icon
+  setTimeout(() => {    // animate icon
     $feedback
       .addClass('anim')
       .one('transitionend', () => {
@@ -780,17 +780,17 @@ $('#search-result')
   const $win = $(window);
   const $div = $('#search-result');
   const gapWidth = parseInt($div.css('word-spacing'), 10);
-  const colWidth = 270;                      // same as .video-container in CSS
+  const colWidth = 270;  // same as .video-container in CSS
   let oldWidth;
   let oldCols;
   $win.on('load resize', () => {
     'use strict';
     const width = $win.width();
-    if (width === oldWidth) {              // window width unchanged
+    if (width === oldWidth) {  // window width unchanged
       return;
     }
     const cols = Math.floor((width + gapWidth) / (colWidth + gapWidth)) || 1;
-    if (cols === oldCols) {                // number of columns unchanged
+    if (cols === oldCols) {    // number of columns unchanged
       return;
     }
     $div.css('width', (gapWidth * (cols - 1)) + (colWidth * cols));
@@ -899,7 +899,7 @@ $(() => {
   }
   // Return key in textarea = submit form.
   function onKey(e) {
-    if (e.which === 13) {                   // Enter
+    if (e.which === 13) {                 // Enter
       e.preventDefault();                 //   don't insert key
       if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) {
         return;
@@ -910,7 +910,7 @@ $(() => {
   // Form submission.
   function onSubmit(e) {
     var queryStr = $q.val() || '';
-    e.preventDefault();                     // don't submit to server
+    e.preventDefault();                   // don't submit to server
     // On touchscreen devices (where no input type has hover).
     if (window.matchMedia('not all and (any-hover:hover)').matches) {
       $q.blur(); // hide soft keyboard

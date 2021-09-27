@@ -984,13 +984,13 @@ a {
     $(() => {
       'use strict';
       var $menu = $('.menu')
-        .on('click', '.toggle', () => { // open/close button
+        .on('click', '.toggle', () => {  // open/close button
           $menu.toggleClass('shown');
-        }).on('click', (e) => {         // scrim
+        }).on('click', (e) => {          // scrim
           if (e.target === this) {
             $menu.removeClass('shown');
           }
-        }).on('keydown', (e) => {       // Escape key
+        }).on('keydown', (e) => {        // Escape key
           if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) { return; }
           if (e.which === 27) {
             $menu.removeClass('shown');

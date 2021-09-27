@@ -270,11 +270,11 @@ function transcriptKeyboard($wrapper, $input, $keyboardIcon) {
         .splice(1)
         .map(y => {
           var title;
-          if (typeof y === 'string') {        // raw HTML
+          if (typeof y === 'string') {         // raw HTML
             return y;
           }
-          title = (attr.prefix || '') + y[1]; // title
-          if (y[2] !== undefined) {           //   with optional image
+          title = (attr.prefix || '') + y[1];  // title
+          if (y[2] !== undefined) {            //   with optional image
             title += `<img src=&quot;pic/x/${y[2]}.png&quot;>`;
           }
           return `<button title="${title}">${y[0]}</button>`;
@@ -296,7 +296,7 @@ function transcriptKeyboard($wrapper, $input, $keyboardIcon) {
       if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) {
         return;
       }
-      if (k === 27) {                     // Escape
+      if (k === 27) {  // Escape
         e.preventDefault();
         $keyboard.toggle();
         if (!$(e.target).is(':visible')) {

@@ -6819,10 +6819,10 @@
       'use strict';
       var selector;
       var $container = $(this).closest('figure');
-      var tags = $('.tags', $container).val();   // select: list from
-      var bool = $('.bool', $container).val();   // checkbox: 'and'/'or'
-      var mode = $('.mode', $container).val();   // checkbox: 'mark'/'hide'
-      var elem = $('.list', $container);         // element containing data
+      var tags = $('.tags', $container).val();  // select: list from
+      var bool = $('.bool', $container).val();  // checkbox: 'and'/'or'
+      var mode = $('.mode', $container).val();  // checkbox: 'mark'/'hide'
+      var elem = $('.list', $container);        // element containing data
       var $items = $('>*', elem).show().removeClass('hilite');
       var $found;
 
@@ -6843,7 +6843,6 @@
     $('.tags').chosen({ width: '500px' });
     $('.count').each(updateCounter);
     $('.tags,.bool,.mode').change(filter);
-
     /**************************************************************************/
     $('body').prepend('<img id=toggle>');
     var state = 0;
@@ -6881,7 +6880,7 @@
       right: 0,
       margin: '.125em .25em',
     });
-    ////////////////////////////////////////////////////////////////////////////
+    /**************************************************************************/
     $('img[src^="pic/x/"]').hover(
       function () {
         'use strict';
@@ -6896,7 +6895,7 @@
         $('#hover').hide();
       }
     );
-    ////////////////////////////////////////////////////////////////////////////
+    /**************************************************************************/
     $('[href]').each(function () {
       'use strict';
       var elem = $(this);
