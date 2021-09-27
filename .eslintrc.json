@@ -20,29 +20,8 @@
     // OWN: Use Unix line breaks.
     "linebreak-style": ["error", "unix"],
     // Use 2 spaces for indentation. (has opts)
-    "indent": ["error", 2, {
-      "SwitchCase": 0,
-      "VariableDeclarator": 1,
-      "outerIIFEBody": 1,
-      "MemberExpression": 1,
-      "FunctionDeclaration": {
-        "parameters": 1,
-        "body": 1
-      },
-      "FunctionExpression": {
-        "parameters": 1,
-        "body": 1
-      },
-      "CallExpression": {
-        "arguments": 1
-      },
-      "ArrayExpression": 1,
-      "ObjectExpression": 1,
-      "ImportDeclaration": 1,
-      "flatTernaryExpressions": false,
-      "ignoreComments": false,
-      "ignoredNodes": ["TemplateLiteral > *"]
-    }],
+    // NOTE: Eslint fails to check indent after newline in expr like 'a\n+ b'.
+    "indent": ["error", 2],
     // Use single quotes for strings except to avoid escaping.
     "quotes": ["error", "single", {
       "avoidEscape": true
@@ -77,14 +56,9 @@
       "maxBOF": 0,
       "maxEOF": 0
     }],
-    // For the ternary operator in a multi-line setting, place `?` and `:` on their own lines.
-    "operator-linebreak": ["error", "after", {
-      "overrides": {
-        "?": "before",
-        ":": "before",
-        "|>": "before"
-      }
-    }],
+    // OWN: +, ?:, etc should come at beginning of next line if linebreaked.
+    // (Cuts down on reliance of 'no-unexpected-multiline' for '('.)
+    "operator-linebreak": ["error", "before"],
     // For var declarations, write each declaration in its own statement.
     "one-var": ["error", "never"],
     // Wrap conditional assignments with additional parentheses.
@@ -312,8 +286,7 @@
     // Avoid Yoda conditions. (has opts)
     "yoda": "error",
     // No semicolons. (has opts)
-    "semi": "error",
-    //"semi": ["error", "never"], // FIXME: use this instead!
+    "semi": ["error", "never"],
     // Never start a line with `(`, `[`, '`', or a handful of other unlikely possibilities. (on/off)
     "no-unexpected-multiline": "error",
 

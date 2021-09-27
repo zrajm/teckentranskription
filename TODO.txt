@@ -1065,6 +1065,8 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Removed final ';' in all javascript code
+   CLOSED: [2021-09-27 Mon 16:28]
 ** DONE Lexicon: Trying out clicky.com instead of Google Analytics
    CLOSED: [2021-09-09 Thu 15:15]
 ** DONE Lexicon: Font <link rel="preload"> need 'crossorigin' attribute

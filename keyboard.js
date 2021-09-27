@@ -7,64 +7,64 @@
 // ($wrapper), and a virtual keyboard ($keyboard) will added at the end of the
 // container.
 function transcriptKeyboard($wrapper, $input, $keyboardIcon) {
-  'use strict';
-  var domInput = $input.get(0);
-  var $keyboard;
+  'use strict'
+  var domInput = $input.get(0)
+  var $keyboard
 
   // Insert text in a textarea.
   function insertAtCursor(str) {
-    var sel;
-    var begPos;
-    var endPos;
-    var newPos;
-    var value;
-    var domFocused = document.activeElement;
-    var refocused = false;
+    var sel
+    var begPos
+    var endPos
+    var newPos
+    var value
+    var domFocused = document.activeElement
+    var refocused = false
 
     // Focus text input element (if not already focused).
     if (domFocused !== domInput) {
-      domInput.focus();
-      refocused = true;
+      domInput.focus()
+      refocused = true
     }
 
     // Edit input field.
     if (document.selection) {
       // IE support
-      sel = document.selection.createRange();
-      sel.text = str;
+      sel = document.selection.createRange()
+      sel.text = str
     } else if (domInput.selectionStart || domInput.selectionStart === 0) {
       // MOZILLA and others
-      begPos = domInput.selectionStart;
-      endPos = domInput.selectionEnd;
-      newPos = begPos + str.length;
-      value = domInput.value;
+      begPos = domInput.selectionStart
+      endPos = domInput.selectionEnd
+      newPos = begPos + str.length
+      value = domInput.value
 
       // Replace string & move cursor.
-      domInput.value = value.slice(0, begPos) + str + value.slice(endPos);
-      domInput.setSelectionRange(newPos, newPos);
+      domInput.value = value.slice(0, begPos) + str + value.slice(endPos)
+      domInput.setSelectionRange(newPos, newPos)
     } else {
       // other
-      domInput.value += str;
+      domInput.value += str
     }
 
     // Refocus original element.
     if (refocused) {
-      domFocused.focus();
+      domFocused.focus()
     }
   }
 
   function onButton(e) {
-    var k = e.which;
-    var str;
+    var k = e.which
+    var str
     if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) {
-      return;
+      return
     }
     if (k === 1 || k === 13 || k === 32) {  // Click, enter or space
-      e.preventDefault();
+      e.preventDefault()
       if ($(e.target).is('button')) {
         // String inside button (stripping off any &nbsp; + ◌).
-        str = $(e.target).html().replace(/(&nbsp;|◌)/g, '');
-        insertAtCursor(str);
+        str = $(e.target).html().replace(/(&nbsp;|◌)/g, '')
+        insertAtCursor(str)
       }
     }
   }
@@ -265,67 +265,67 @@ function transcriptKeyboard($wrapper, $input, $keyboardIcon) {
       ['&nbsp;&nbsp;􌦵', 'Från varandra'],
       '</nobr>',
     ]].map(x => {
-      var attr = x[0];
+      var attr = x[0]
       return '<span>' + x
         .splice(1)
         .map(y => {
-          var title;
-          if (typeof y === 'string') {         // raw HTML
-            return y;
+          var title
+          if (typeof y === 'string') {        // raw HTML
+            return y
           }
-          title = (attr.prefix || '') + y[1];  // title
-          if (y[2] !== undefined) {            //   with optional image
-            title += `<img src=&quot;pic/x/${y[2]}.png&quot;>`;
+          title = (attr.prefix || '') + y[1]  // title
+          if (y[2] !== undefined) {           //   with optional image
+            title += `<img src=&quot;pic/x/${y[2]}.png&quot;>`
           }
-          return `<button title="${title}">${y[0]}</button>`;
-        }).join('') + '</span>';
-    }).join(' ');
+          return `<button title="${title}">${y[0]}</button>`
+        }).join('') + '</span>'
+    }).join(' ')
     return $(`<div id=keyboard>${keyboardHtml}</div>`)
       .appendTo($wrapper)
-      .hide();
+      .hide()
   }
 
   $(() => {
-    $keyboard = insertKeyboardInDom($wrapper);
+    $keyboard = insertKeyboardInDom($wrapper)
 
-    $keyboard.on('click', 'button', onButton);
+    $keyboard.on('click', 'button', onButton)
 
     // Escape anywhere inside form: Toggle virtual keyboard.
     $wrapper.on('keydown', e => {
-      var k = e.which;
+      var k = e.which
       if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) {
-        return;
+        return
       }
       if (k === 27) {  // Escape
-        e.preventDefault();
-        $keyboard.toggle();
+        e.preventDefault()
+        $keyboard.toggle()
         if (!$(e.target).is(':visible')) {
-          $input.focus();
+          $input.focus()
         }
       }
-    });
+    })
 
     // Click on keyboard icon: Toggle virtual keyboard.
     $keyboardIcon.on('click', e => {
       if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) {
-        return;
+        return
       }
-      e.preventDefault();
-      $keyboard.toggle();
-    });
+      e.preventDefault()
+      $keyboard.toggle()
+    })
 
     // Click/focus outside virtual keyboard: Hide it.
     $(document.body).on('click focus', e => {
       if ($(e.target).closest($wrapper).length === 0) {
-        $keyboard.hide();
+        $keyboard.hide()
       }
-    });
+    })
 
     // Submit: Hide virtual keyboard.
     $wrapper.on('submit', () => {
-      $keyboard.hide();
-    });
-  });
+      $keyboard.hide()
+    })
+  })
 }
 
 /*[eof]*/
