@@ -11,7 +11,7 @@
 String.prototype.fmt = function (o) { // eslint-disable-line no-extend-native
   'use strict'
   return this.replace(/\{([^{}]*)\}/g, (a, b) => {
-    var r = o[b]
+    let r = o[b]
     return typeof r === 'string' || typeof r === 'number' ? r : a
   })
 }
@@ -24,11 +24,11 @@ String.prototype.fmt = function (o) { // eslint-disable-line no-extend-native
 // Chrome, Firefox, MSIE 9+, Edge, Safari 4+, Opera, Android etc.
 jQuery.fn.paste = function (str) {
   'use strict'
-  var prefocused = document.activeElement
+  let prefocused = document.activeElement
   str += ''  // coerce into string
   this.each((_, el) => {
-    var beg = el.selectionStart
-    var val = el.value
+    let beg = el.selectionStart
+    let val = el.value
 
     // Insert string & move caret.
     el.value = `${val.slice(0, beg)}${str}${val.slice(el.selectionEnd)}`
@@ -83,14 +83,14 @@ function toggleFullscreen(elem) {
 //
 (() => {
   'use strict'
-  var $button = $('a[href="#help"]')
-  var $overlay = $('.overlay.help')
+  let $button = $('a[href="#help"]')
+  let $overlay = $('.overlay.help')
 
   // Convert <tt> into links (except if they contain '…') by replacing
   // '<tt>…</tt>' with '<a class=tt href="#…">…</a>'.
   $overlay.find('tt').replaceWith(function () {
-    var $el = $(this)
-    var link = '#' + $el.text().replace(/\s+/g, ' ')
+    let $el = $(this)
+    let link = `#${$el.text().replace(/\s+/g, ' ')}`
     return link.match(/…/)
       ? this
       : $('<a>', { class: 'tt', href: link })
@@ -167,11 +167,11 @@ function toggleFullscreen(elem) {
 //       video  : true,
 //   }
 //
-var urlFragment = (() => {
+let urlFragment = (() => {
   'use strict'
-  var state = { overlay: '', query: undefined, video: true }
+  let state = { overlay: '', query: undefined, video: true }
   function getStateFromUrl() {
-    var x = window.location.href
+    let x = window.location.href
       .match(/^([^#]*)(?:(#*)([^#/]*)(?:\/([^#/]*))?)/u).slice(1)
     return {
       base:    x[0],
@@ -181,7 +181,7 @@ var urlFragment = (() => {
     }
   }
   function setUrlFromState(state) {
-    var str = encodeURIComponent(state.query)
+    let str = encodeURIComponent(state.query)
       + (state.overlay ? ('/' + encodeURIComponent(state.overlay)) : '')
     if (str || state.video !== undefined) {
       str = (state.video ? '#' : '##') + str
@@ -189,9 +189,9 @@ var urlFragment = (() => {
     return state.base + str
   }
   function getHashFromStr(hashStr) {
-    var x = hashStr.split('/')
-    var queryStr = x[0] || state.query
-    var overlayStr = x[1]
+    let x = hashStr.split('/')
+    let queryStr = x[0] || state.query
+    let overlayStr = x[1]
     return (state.video ? '#' : '##')
       + encodeURIComponent(queryStr)
       + (overlayStr ? ('/' + encodeURIComponent(overlayStr)) : '')
@@ -199,7 +199,7 @@ var urlFragment = (() => {
   // .set({ query: STR, video: BOOL, overlay: STR })
   // Update internal state + URL, without triggering hashchange event.
   function setState(partial) {
-    var modified = false
+    let modified = false
     ;['overlay', 'query', 'video'].forEach(n => {
       if (partial[n] !== state[n] && partial[n] !== undefined) {
         state[n] = partial[n]
@@ -213,13 +213,13 @@ var urlFragment = (() => {
     return false
   }
 
-  var hooks = {}
+  let hooks = {}
   function onOverlayChange(callback) { hooks.overlay = callback }
   function onQueryChange(callback) { hooks.query = callback }
   function onVideoToggle(callback) { hooks.video = callback }
   $(window).on('hashchange', () => {
-    var newState = getStateFromUrl()
-    var run = []
+    let newState = getStateFromUrl()
+    let run = []
     ;['base', 'overlay', 'query', 'video'].forEach(n => {
       if (newState[n] !== state[n]) {       // save all state first
         if (hooks[n] instanceof Function) {
@@ -252,16 +252,16 @@ var urlFragment = (() => {
 //   .step(MSG) -- display MSG, replace %s with time since last msg
 //   .total(MSG) -- display MSG, replace %s with time since last reset
 //
-var logTiming = ((perf, log) => {
+let logTiming = ((perf, log) => {
   'use strict'
-  var timeFirst
-  var timeLast
+  let timeFirst
+  let timeLast
   function reset() {
     timeFirst = perf.now()
     timeLast = timeFirst
   }
   function prefix(ms) {
-    var str = ms > 1000
+    let str = ms > 1000
       ? (ms / 1000 + 0.5) + 's'  // seconds
       : (ms + 0.5) + 'ms'        // milliseconds
     return str.replace(/^([.0-9]{0,3}[0-9]?)[.0-9]*([a-z]+)/, '$1$2')
@@ -328,9 +328,9 @@ function parseQuery(queryStr) {
     return str.replace(/^[*+?^$.[\]{}()|/\\]$/u, '\\$&')
   }
 
-  var queryBuilder = (() => {
-    var query = []
-    var negative
+  let queryBuilder = (() => {
+    let query = []
+    let negative
 
     function str2regex(regex) {
       return new RegExp(regex, 'gui')
@@ -342,16 +342,16 @@ function parseQuery(queryStr) {
       })
       negative = false
     }
-    var nonWord = '[ 􌥠,:!?/.’()[\\]&+–]'
-    var leadingNonAlpha = new RegExp(`^${nonWord}`, 'ui')
-    var trailingNonAlpha = new RegExp(`${nonWord}$`, 'ui')
     function addTerm(term, plainTerm, type) {
+      let noWord = '[ 􌥠,:!?/.’()[\\]&+–]'
+      let noWordBeg = new RegExp(`^${noWord}`, 'ui')
+      let noWordEnd = new RegExp(`${noWord}$`, 'ui')
       if (term !== '') {
         term = type === 'field'
           ? `^${term}$`         // entire field
-          : (plainTerm.match(leadingNonAlpha) ? '()' : `(${nonWord}|^)`)
+          : (plainTerm.match(noWordBeg) ? '()' : `(${noWord}|^)`)
             + `(${term})`
-            + (plainTerm.match(trailingNonAlpha) ? '' : `(?=${nonWord}|$)`)
+            + (plainTerm.match(noWordEnd) ? '' : `(?=${noWord}|$)`)
         query[query.length - 1][
           negative
             ? 'exclude'
@@ -389,7 +389,7 @@ function parseQuery(queryStr) {
       },
     }
   })()
-  var metachars = {
+  let meta = {
     'a': '[aàáâã]',
     'c': '[cç]',
     'e': '[eèéêë]',
@@ -421,13 +421,13 @@ function parseQuery(queryStr) {
   // Unquoted place/handshape symbols should also match a following
   // (optional) relation symbol.
   for (let c of '􌦳􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛􌤜􌤞􌥀􌤡􌤑􌦲􌤒􌤕􌤔􌤖􌤙􌤘􌤚􌤤􌥄􌤣􌤧􌥋􌥉􌦫􌤩􌤎􌥇􌦬􌤦􌤲􌤱􌥑􌤢􌥂􌤪􌥎􌥈􌤨􌤿􌥌􌥆􌤫􌦭􌤬􌥅􌤥􌥊􌦱􌤽􌤯􌤭􌤮􌤰􌤳􌥃􌥒􌥟􌦪') {
-    metachars[c] = `${c}[􌤺􌥛􌤻􌤹􌥚]?`
+    meta[c] = `${c}[􌤺􌥛􌤻􌤹􌥚]?`
   }
   // All unquoted hand-external motion symbols (circling/bouncing/curving/
   // hitting/twisting/divering/converging) should also match a following
   // (optional) motion direction symbol.
   for (let c of '􌥯􌦶􌥰􌥱􌥲􌥹􌦅') {
-    metachars[c] = `${c}[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?`
+    meta[c] = `${c}[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?`
   }
   // Process query char-by-char in FSA.
   let term = ''
@@ -460,7 +460,7 @@ function parseQuery(queryStr) {
           return
         }
       }
-      term += metachars[c] || quotemeta(c)
+      term += meta[c] || quotemeta(c)
       plainTerm += c
     },
     'QUOTED': c => {
@@ -527,16 +527,15 @@ function hilite(str, regex, func) {
 function htmlifyTags(tags, hiliteRegex) {
   'use strict'
   // Tag count starts at -1 to compensate for the tag counter (e.g. '/1').
-  var count = { tag: -1, warn: 0 }
-  var match = { tag: false, warn: false }
-  var html
+  let count = { tag: -1, warn: 0 }
+  let match = { tag: false, warn: false }
   if (tags.length === 1) {
     return ''
   }
   // Generate tag list and count matches, and number of tags/warnings.
-  html = tags.map(tag => {
+  let html = tags.map(tag => {
     // Determine tag type (warning = add warning icon).
-    var tagType = tag.match(/\/ovanligt/) ? 'warn' : 'tag'
+    let tagType = tag.match(/\/ovanligt/) ? 'warn' : 'tag'
     count[tagType] += 1
     return hilite(tag, hiliteRegex, () => {
       match[tagType] = true
@@ -578,10 +577,9 @@ function unicodeTo7bit(str) {
 
 function htmlifyMatch(entry, hiliteRegex) {
   'use strict'
-  var id = entry[0]                                    // 1st field
-  var transcr = entry[1]                               // 2nd field
-  var swe = entry.slice(2).filter(x => x[0] !== '/')   // Swedish
-  var tags = entry.slice(2).filter(x => x[0] === '/')  // /tags
+  let [id, transcr, ...rest] = entry
+  let swe = rest.filter(x => x[0] !== '/')   // Swedish
+  let tags = rest.filter(x => x[0] === '/')  // /tags
   return (
     /* NB: Whitespace below shows up in search result's 'text' mode. */
     '<div class=match>'
@@ -622,57 +620,56 @@ function htmlifyMatch(entry, hiliteRegex) {
 //
 // If the function is invoked again with a new search result, then any still
 // ongoing processing is aborted and only the new result is displayed.
-var outputMatching = (() => {
+let outputMatching = (() => {
   'use strict'
-  var chunksize = 100  // setting (never changes)
-  var hasListener = false
-  var statusElem
-  var resultElem
-  var buttonElem
-  var htmlQueue
-  var startSize
-  var count
+  let chunksize = 100  // setting (never changes)
+  let hasListener = false
+  let $status
+  let $result
+  let $button
+  let htmlQueue
+  let startSize
+  let count
 
   function scrolledToBottom() {
-    var pageOffset = window.pageYOffset || window.scrollY
-    var pageHeight = document.body.offsetHeight
-    var winHeight = window.innerHeight
+    let pageOffset = window.pageYOffset || window.scrollY
+    let pageHeight = document.body.offsetHeight
+    let winHeight = window.innerHeight
     return (pageOffset + winHeight) >= (pageHeight - 2)
   }
   function outputNext(args) {
-    var chunk
     if (args) {
-      statusElem = args.status
-      resultElem = args.result
-      buttonElem = args.button
+      $status = args.status
+      $result = args.result
+      $button = args.button
       htmlQueue = args.html
       startSize = htmlQueue.length
       count = 0
     }
     // Output one chunk of search result.
-    chunk = htmlQueue.splice(0, chunksize)
+    let chunk = htmlQueue.splice(0, chunksize)
     count += chunk.length
     if (count === startSize) {
-      statusElem.html(`${count} träffar (visar alla)`)
+      $status.html(`${count} träffar (visar alla)`)
     } else {
-      statusElem.html(
+      $status.html(
         `${startSize} träffar (visar ${count}) – <a>Visa ${chunksize} till</a>`)
-      $('>a', statusElem).click(() => { outputNext() })
+      $('>a', $status).click(() => { outputNext() })
     }
 
-    resultElem.append(chunk.join(''))
-    resultElem.imagesLoaded().progress(onImageLoad)
+    $result.append(chunk.join(''))
+    $result.imagesLoaded().progress(onImageLoad)
 
     if (htmlQueue.length === 0) {  // nothing more to display
-      buttonElem.hide()
+      $button.hide()
       $(window).off('scroll')
     } else {                       // moar to display
       if (!hasListener) {
-        buttonElem.click(() => { outputNext() })
+        $button.click(() => { outputNext() })
         hasListener = true
       }
       if (args) {
-        buttonElem.show()
+        $button.show()
         $(window).on('scroll', () => {
           if (scrolledToBottom()) {
             outputNext()
@@ -687,7 +684,7 @@ var outputMatching = (() => {
 function onImageLoad(imgLoad, image) {
   'use strict'
   // change class if image is loaded or broken
-  var $parent = $(image.img).parent()
+  let $parent = $(image.img).parent()
   $parent.removeClass('is-loading')
   if (!image.isLoaded) {
     $parent.addClass('is-broken')
@@ -696,13 +693,13 @@ function onImageLoad(imgLoad, image) {
 
 function searchLexicon(queryStr) {
   'use strict'
-  var $body = $(document.body)
+  let $body = $(document.body)
 
   $('#q').val(queryStr)
   setTimeout(() => {
-    var query = parseQuery(queryStr)
+    let query = parseQuery(queryStr)
     logTiming.reset()
-    var matches = (query.length === 0) ? [] : lexicon.reduce(
+    let matches = (query.length === 0) ? [] : lexicon.reduce(
       (acc, entry) => queryInEntry(query, entry)
         ? acc.concat([entry])
         : acc,
@@ -728,12 +725,11 @@ function searchLexicon(queryStr) {
 
 function onPlayPauseToggle(event) {
   'use strict'
-  var $feedback
   if ($(event.target).closest('a').length) {  // link clicked: don't play
     return
   }
-  var $container = $(event.currentTarget)
-  var $video = $('>video,>img[data-video]', $container)
+  let $container = $(event.currentTarget)
+  let $video = $('>video,>img[data-video]', $container)
 
   if ($video.is('img')) {                     // replace <img> with <video>
     $video = $(
@@ -751,11 +747,11 @@ function onPlayPauseToggle(event) {
 
   // Get state of video and toggle play/pause state.
   // (Everything that remains after this is visual feedback.)
-  var action = $video.prop('paused') ? 'play' : 'pause'
+  let action = $video.prop('paused') ? 'play' : 'pause'
   $video.trigger(action)
 
   // Add icon to feedback overlay & animate it.
-  $feedback = $('>.video-feedback', $container)
+  let $feedback = $('>.video-feedback', $container)
     .removeClass('anim pause play')
     .addClass(action)  // display play/pause icon
   setTimeout(() => {   // animate icon
@@ -802,9 +798,7 @@ $('#search-result')
 // font -- so that sign language transcriptions can be displayed.
 (() => {
   'use strict'
-  var timeout
-  var shown = false
-  var $tooltip = $('<div class=tooltip></div>')
+  let $tooltip = $('<div class=tooltip></div>')
     .css({
       display: 'none',
       color: '#fff',
@@ -820,9 +814,10 @@ $('#search-result')
     .appendTo(document.body)
 
   // Trigger event if pointer is non-moving for half a second.
+  let timeout
   $(document.body).on('mouseover', '[title],[data-title]', event => {
-    var $e = $(event.currentTarget)
-    var value = $e.attr('title')
+    let $e = $(event.currentTarget)
+    let value = $e.attr('title')
 
     // Change attribute 'title' => 'data-title' to suppress browser tooltip.
     if (value !== undefined) {
@@ -837,10 +832,8 @@ $('#search-result')
     }, 500)
   })
 
+  let shown = false
   function onMouseStill(event) {
-    var x = event.clientX + 10
-    var y = event.clientY + 10
-
     // Display topleft to get height + width.
     shown = true
     $tooltip
@@ -851,8 +844,10 @@ $('#search-result')
     // Now use height and width of displayed tooltip, to move it to the
     // right place (making sure it doesn't stick out of right/bottom corner
     // of window).
-    var xMax = $(window).width() - $tooltip.outerWidth()
-    var yMax = $(window).height() - $tooltip.outerHeight()
+    let xMax = $(window).width() - $tooltip.outerWidth()
+    let yMax = $(window).height() - $tooltip.outerHeight()
+    let x = event.clientX + 10  // mouse coord
+    let y = event.clientY + 10
     $tooltip.css({
       left: x < xMax ? x : (xMax < 0 ? 0 : xMax),
       top:  y < yMax ? y : (yMax < 0 ? 0 : yMax),
@@ -884,9 +879,9 @@ urlFragment.onVideoToggle(showVideos)
 // Form submission.
 $(() => {
   'use strict'
-  var $form = $('#search')
+  let $form = $('#search')
     .on('submit', onSubmit)
-  var $q = $('#q')
+  let $q = $('#q')
     .on('focus blur', onFocus)
     .on('keydown', onKey)
     .on('paste', onPaste)
@@ -908,7 +903,7 @@ $(() => {
   }
   // Form submission.
   function onSubmit(e) {
-    var queryStr = $q.val() || ''
+    let queryStr = $q.val() || ''
     e.preventDefault()                    // don't submit to server
     // On touchscreen devices (where no input type has hover).
     if (window.matchMedia('not all and (any-hover:hover)').matches) {
@@ -962,7 +957,7 @@ $('#search-wrapper .selector').on('click keypress', e => {
     if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) { return }
     if (e.which !== 13 && e.which !== 32) { return }
   }
-  var hasVideo = $('#search-wrapper')
+  let hasVideo = $('#search-wrapper')
     .toggleClass('video-view text-view')
     .hasClass('video-view')
   urlFragment.set({ video: hasVideo })
@@ -975,8 +970,8 @@ $(() => {
   // 'mouseenter' used here since it does not trigger when child elements are
   // entered, and the event does not bubble.
   $('#search-result').on('mouseenter', 'a[data-href]', e => {
-    var $e = $(e.currentTarget)
-    var hashref = $e.data('href') || ''
+    let $e = $(e.currentTarget)
+    let hashref = $e.data('href') || ''
     if (hashref) {
       $e.attr('href', urlFragment.getHash(hashref))
     }

@@ -303,7 +303,7 @@
     // "no-shadow": "error", // FIXME: use this
     "no-void": "error",
     // OWN: Disallow 'var' declarations. (on/off)
-    //"no-var": "error", // FIXME: Use this
+    "no-var": "error",
     "object-curly-newline": ["error", {
       "multiline": true,
       "consistent": true
