@@ -1,6 +1,5 @@
 -*- org -*-
 
-
 * Browser support
   + Function:  IE9+ (?)  Safari(?)  -- search functionality must work
   + Cosmetics: IE10+     Safari(?)  -- minor difference in appearance is ok
@@ -174,9 +173,6 @@
     search term?)
 *** TODO Pressing enter should resubmit form, even if no changes to query has been made
 
-** [0/2] Split query parsing into separate chunks
-*** TODO One module for expanding chars/words into regexes
-*** TODO One module for handling query parsing (parens etc)
 ** [0/1] Session/query logging
     :DESCRIPTION:
     Would like to have some simple (preferably, though not necessarily
@@ -209,14 +205,6 @@
 *** TODO Old URL should redirect to new one
     https://zrajm.github.io/teckentranskription/lexicon.html should forever
     remain valid, and redirect to the new location.
-** [0/2] Search query language
-*** TODO Support field prefixes
-    E.g. tag:... to search for a specific tag, sv:... to search for a
-    translation, gloss:... to search for glosses. Also, a matching tag should
-    mark the tag icon in the search result, and the matching tag in the tag
-    hover/drop-down menu.
-*** TODO Handling of synonyms in search queries
-    Should be able to find synonyms. Maybe using a wordnet dictionary?
 ** [0/2] Search box autocompletion & filters
 *** TODO Search box autocompletion
     :DESCRIPTION:
@@ -285,6 +273,9 @@
    Lexicon should be distinguishable from the official lexicon by name. Maybe
    use name 'Snabbt teckenspråklexikon'?
 ** [0/4] Code structure/stink/refactor
+*** [0/2] Split query parsing into separate chunks
+**** TODO One module for expanding chars/words into regexes
+**** TODO One module for handling query parsing (parens etc)
 *** TODO Memory optimization
     Leakyness? -- Does a new search completely (or as completely as possible)
     clear the memory before building up a new search result?
@@ -393,13 +384,23 @@
     sounds like it would always be good, right?)
 *** TODO Overlay by entering in URL
 *** TODO Overlay by clicking on Swedish of sign
-** [1/9] Query syntax
-*** TODO Don't hilite space in front of word in search results
-    The edge-of-word matcher shouldn't hilite the space in front of a word.
-
-    Since we cannot use lookahead assertions (its not supported by a majority
-    of browsers), we'll prolly need some subgroups to split the match into
-    parts-to-be-hilited, and parts-not-to-be-hilited.
+** [0/12] Search query language
+*** TODO Don't match tags by default
+    For example: Searching for `geografi` should not match the tag `/geografi`
+    if one does not include the leading `/`.
+*** TODO Match sub-words it transcriptions (without need for `*`)
+    For word searches `hej` should not match `hejsan` (unless user searches for
+    `hej*`), but this is confusing when searching in transcriptions.
+    Transcription characters should match even in the middle of a 'word', e.g.
+    searching for transcription `A` should match all signs that use the
+    handshape `A` (even if the user did not specify `*A*`).
+*** TODO Support field prefixes
+    E.g. tag:... to search for a specific tag, sv:... to search for a
+    translation, gloss:... to search for glosses. Also, a matching tag should
+    mark the tag icon in the search result, and the matching tag in the tag
+    hover/drop-down menu.
+*** TODO Handling of synonyms in search queries
+    Should be able to find synonyms. Maybe using a wordnet dictionary?
 *** TODO Alternate hand symbols
     Allow usage of annotation handshape in place of the transcription symbols.
     These are the:
@@ -437,6 +438,11 @@
     Curving, (all types of) circling, hitting and turning.
 *** TODO Character classes [...] to search query
     Useful when one is searching for one of multiple hand shapes.
+*** TODO Allow query parentheses inside words
+    Currently a query like `a(b)` will search for all entries with both the
+    words `a` and `b`, but maybe this should instead search for the word `ab`?
+    This would allow one to search for stuff like `ovan(för,lig)`. (Is this
+    actually useful?)
 ** [0/3] Search result order
 *** TODO Display search result in subquery order
     Returned result should have one list per subquery (and in the same order as
@@ -1164,8 +1170,13 @@
    shrink-to-fit content that has been line wrapped. :( -- Well, actually, it
    could be done using media queries, but this would be verbose and even more
    finicky, so Javascript it is!
-** DONE Lexicon: Don't mark characters in front of matching word
-   CLOSED: [2021-08-20 Fri 10:33]
+** DONE Don't hilite space in front of word in search results
+   CLOSED: [2021-08-20 Fri 10:42]
+   The edge-of-word matcher shouldn't hilite the space in front of a word.
+
+   Since we cannot use lookahead assertions (its not supported by a majority
+   of browsers), we'll prolly need some subgroups to split the match into
+   parts-to-be-hilited, and parts-not-to-be-hilited.
 ** DONE Lexicon: Multiple <mark> in same entry not working              :BUG:
     CLOSED: [2021-08-20 Fri 07:26] commit 8217e88
     A search for '–,72,har' should hilite three different things
