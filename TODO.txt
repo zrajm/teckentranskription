@@ -1103,6 +1103,8 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Added QUnit test suite for boolean logic in query parsing
+   CLOSED: [2021-10-18 Mon 13:12]
 ** [6/6] Full boolean logic support in query language
     CLOSED: [2021-10-18 Mon 12:34]
 *** DONE XOR multiple '-'
