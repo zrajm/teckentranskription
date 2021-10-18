@@ -1,5 +1,6 @@
 -*- org -*-
 
+
 * Browser support
   + Function:  IE9+ (?)  Safari(?)  -- search functionality must work
   + Cosmetics: IE10+     Safari(?)  -- minor difference in appearance is ok
@@ -137,6 +138,45 @@
      other advanced features that are useful to researchers and advanced users.
      These functions shall not intrude on the beginner's user experience.
   :END:
+** [0/4] Early loading
+*** TODO On load: Resize width faster
+*** TODO On load: Be faster to not display full-screen search if there is a query
+    Fullscreen search should ONLY be show if there is NOTHING entered into the
+    search form, if ANYTHING is entered, display the search results screen, even
+    if the query is invalid (eg just space, or empty parenthesis).
+
+    Split this into: 1. loading screen, 2. fullscreen search, 3. result screen
+
+    The loading screen should be turquoise in color, and show the copyright and
+    top-left menu button.
+
+    If query string is empty (after trimming space), display fullscreen,
+    otherwise display result screen.
+
+    This should prolly be handled from inside <script> tag in lexicon.html?
+    Though should avoid doing URL fragment decoding it two different places in
+    code (DRY and all that).
+
+     ----------------------------------------
+     /************************************************************************/
+     let hash = decodeURIComponent(location.hash).replace(/^#?#?/u, '').trim()
+     if (hash) {
+       $('body')[queryStr.length ? 'removeClass' : 'addClass']('noquery')
+     }
+     ----------------------------------------
+*** TODO Does a lonely negated expression make sense?
+    `då -hej -och` will find all occurrences of `då` except those also
+    containing `-hej` or `-och` (this makes sense).
+
+    `då, -hej` will find all occurrences of either `då` or EVERYTHING (=all of
+    lexicon) except `hej` (does that make sense, or should a all negated
+    expressions simply be disregarded unless they are AND:ed to a positive
+    search term?)
+*** TODO Pressing enter should resubmit form, even if no changes to query has been made
+
+** [0/2] Split query parsing into separate chunks
+*** TODO One module for expanding chars/words into regexes
+*** TODO One module for handling query parsing (parens etc)
 ** [0/1] Session/query logging
     :DESCRIPTION:
     Would like to have some simple (preferably, though not necessarily
@@ -170,8 +210,6 @@
     https://zrajm.github.io/teckentranskription/lexicon.html should forever
     remain valid, and redirect to the new location.
 ** [0/2] Search query language
-*** TODO Boolean logic in queries
-    Support AND, OR and parentheses and operator precedence.
 *** TODO Support field prefixes
     E.g. tag:... to search for a specific tag, sv:... to search for a
     translation, gloss:... to search for glosses. Also, a matching tag should
@@ -1065,6 +1103,20 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** [6/6] Full boolean logic support in query language
+    CLOSED: [2021-10-18 Mon 12:34]
+*** DONE XOR multiple '-'
+    With parentheses '-(-a)' is the same as 'a'. For consistency '--a' (or any
+    even number of minuses) should also mean 'a'.
+*** DONE Switch to new internal query format (nested list)
+*** DONE '(' to add subquery
+*** DONE ')' to end subquery
+*** DONE Handle implicit operator priority
+*** DONE Cleanup on ending parenthesis
+**** DONE Remove empty parens
+**** DONE Unwrap parens around single value
+**** DONE Unwrap all child parentheses where operator is same
+     Query '(a b) c' and 'a (b c)' should turn into 'a b c'.
 ** DONE Removed final ';' in all javascript code
    CLOSED: [2021-09-27 Mon 16:28]
 ** DONE Lexicon: Trying out clicky.com instead of Google Analytics

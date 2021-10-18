@@ -285,227 +285,236 @@ let logTiming = ((perf, log) => {
 })(window.performance, window.console.log)
 
 ////////////////////////////////////////////////////////////////////////////////
-//
-// Functions
-//
 
-// Parse a user-inputted query string and return a QUERY array.
+// Escape regex delimiter '/' or meta char.
+function escape(x) {
+  'use strict'
+  return x.replace(/^[*+?^$.[\]{}()|/\\]$/u, '\\$&')
+}
+
+// Unquoted special characters: Expand unquoted char into character class.
+let charClass = {
+  'a': '[aàáâã]',
+  'c': '[cç]',
+  'e': '[eèéêë]',
+  'i': '[iìíîï]',
+  'n': '[nñ]',
+  'o': '[oòóôõ]',
+  'u': '[uùúûü]',
+  'y': '[yýü]',
+  'ä': '[äæ]',
+  'ö': '[öø]',
+  '􌤆': '[􌤆􌤂􌥞􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛][􌤺􌥛􌤻􌤹􌥚]?', // face
+  '􌤂': '[􌤂􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼][􌤺􌥛􌤻􌤹􌥚]?',     // upper face
+  '􌥞': '[􌥞􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛][􌤺􌥛􌤻􌤹􌥚]?',       // lower face
+  '􌥜': '[􌥜􌤑􌦲􌤒][􌤺􌥛􌤻􌤹􌥚]?',             // arm
+  '􌤠': '[􌤠􌥀􌤡][􌤺􌥛􌤻􌤹􌥚]?',              // shoulders
+  '􌤓': '[􌤓􌤕􌤔][􌤺􌥛􌤻􌤹􌥚]?',              // chest
+  '􌤗': '[􌤗􌤙􌤘][􌤺􌥛􌤻􌤹􌥚]?',              // hips
+  '*': '[^ 􌥠/.,:;?!()]*',  // all non-space, non-'/' delimiter
+  // one place symbol (+ optional relation)
+  '@': '(?:@|[􌦳􌤆􌤂􌥞􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛􌤜􌤞􌤠􌥀􌤡􌥜􌤑􌦲􌤒􌤓􌤕􌤔􌤖􌤗􌤙􌤘􌤚][􌤺􌥛􌤻􌤹􌥚]?)',
+  // one handshape symbol (+ optional relation)
+  '#': '(?:#|[􌤤􌥄􌤣􌤧􌥋􌥉􌦫􌤩􌤎􌥇􌦬􌤦􌤲􌤱􌥑􌤢􌥂􌤪􌥎􌥈􌤨􌤿􌥌􌥆􌤫􌦭􌤬􌥅􌤥􌥊􌦱􌤽􌤯􌤭􌤮􌤰􌤳􌥃􌥒􌥟􌦪][􌤺􌥛􌤻􌤹􌥚]?)',
+  '^': '[􌤺􌥛􌤻􌤹􌥚]',          // one relation symbol
+  ':': '[􌥓􌥔􌤴􌥕􌤵􌥖][􌤶􌥗􌤷􌥘􌤸􌥙]', // one attitude symbol
+  '􌦮': '(?:􌦮[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?|􌥰[􌥿􌦀􌦌])', // circle in frontal plane
+  '􌦯': '(?:􌦯[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?|􌥰[􌦈􌥽􌦉])', // circle in horisontal plane
+  '􌦰': '(?:􌦰[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?|􌥰[􌥾􌦊􌦋])', // circle in saggital plane
+}
+// Unquoted place/handshape symbols should also match a following
+// (optional) relation symbol.
+for (let c of '􌦳􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛􌤜􌤞􌥀􌤡􌤑􌦲􌤒􌤕􌤔􌤖􌤙􌤘􌤚􌤤􌥄􌤣􌤧􌥋􌥉􌦫􌤩􌤎􌥇􌦬􌤦􌤲􌤱􌥑􌤢􌥂􌤪􌥎􌥈􌤨􌤿􌥌􌥆􌤫􌦭􌤬􌥅􌤥􌥊􌦱􌤽􌤯􌤭􌤮􌤰􌤳􌥃􌥒􌥟􌦪') {
+  charClass[c] = `${c}[􌤺􌥛􌤻􌤹􌥚]?`
+}
+// All unquoted hand-external motion symbols (circling/bouncing/curving/
+// hitting/twisting/divering/converging) should also match a following
+// (optional) motion direction symbol.
+for (let c of '􌥯􌦶􌥰􌥱􌥲􌥹􌦅') { charClass[c] = `${c}[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?` }
+
+function finalizeTerm(state) {
+  'use strict'
+  let { plain = '', regex = '', not, field } = state
+  const noWord = '[ 􌥠,:!?/.’()[\\]&+–]'
+  const noWordBeg = RegExp(`^${noWord}`, 'ui')
+  const noWordEnd = RegExp(`${noWord}$`, 'ui')
+  return [
+    regex
+      ? RegExp(
+        field
+          ? `^${regex}$`                                        // whole field
+          : ((plain.match(noWordBeg) ? '()' : `(^|${noWord})`)  // single word
+            + `(${regex})`
+            + (plain.match(noWordEnd) ? '' : `(?=${noWord}|$)`)),
+        'ui')
+      : null,
+    plain, not,
+  ]
+}
+
+// Parse user's query string, return QUERY object with following root methods:
 //
-// Search Query Syntax
-// ===================
-// A search QUERY contains one or more TERMs (separated by space) all TERMs
-// must me found in an entry for that entry to match (they are AND:ed). A TERM
-// can also be negated by preceding it with '-'.
+// * hilite():        Return regex for highlighting matches in output.
+// * search(ENTRIES): Return list entries matching query. ENTRIES is list where
+//                    each entry is a list of fields; each field is a string.
+//                    (ie a list-of-lists, but depth does not vary.)
 //
-// If a search contains more than one SUBQUERY (separated by comma) only one
-// SUBQUERY need to match for an entry to match (they are OR:ed).
+// QUERY also contains a nested list of search terms (regexes with 'g' and 'y'
+// flags UNSET, and the added property 'not'). Multiple terms are wrapped in
+// (possibly nested) lists (with added properties 'not', 'or' and 'own'). Added
+// properties indicate: 'not' = mark that item must NOT be be found to match;
+// 'or' = subitems in list are OR:ed, rather than AND:ed; 'own' = list
+// correspond to a parethesis entered in query by user (user-entered/explicit
+// paretheses are removed if redundant, and implicit lists are added to
+// disambiguate order of AND/OR precedence).
 //
-// A TERM can be partially or fully quoted (with ' or "). Text in quotes is
-// always interpreted literally, outherwise some characters (space, comma,
-// minus etc.) have special meaning.
-//
-// Part of a TERM can be quoted >like*" this"< (to match something starting
-// with 'like' and ending in the separate word ' this'). An unlimited number of
-// parts may be quoted. Spaces inside quotes are interpreted literally, while
-// spaces outside considered separators between search TERMs.
-//
-// Return Search Structure
-// =======================
-// Returns a QUERY data structure consisting of an array of subqueries. The
-// root query structure also has a property 'hilite' (containing a regex to
-// mark all matches). If any one subquery match an entry, then that result
-// should be returned in the result. Each subquery in turn consist of a an
-// object containing the following properties:
-//
-// * 'include' -- array of regexes that must ALL be found
-// * 'exclude' -- array of regexes that must all be absent
-//
+// Query parsing is sloppy = all input is valid (eg incomplete parentheses and
+// quotes). Operator precedence is: NOT -> AND -> OR (`a, -b c` = `a, (-b c)`).
 function parseQuery(queryStr) {
   'use strict'
-
-  // Escape all regular expression metacharacters & the regex delimiter '/'.
-  function quotemeta(str) {
-    return str.replace(/^[*+?^$.[\]{}()|/\\]$/u, '\\$&')
-  }
-
-  let queryBuilder = (() => {
-    let query = []
-    let negative
-
-    function str2regex(regex) {
-      return new RegExp(regex, 'gui')
+  let query = (() => {
+    function p(x) {
+      return x.split(' ').reduce((a, p) => { a[p] = true; return a }, [])
     }
-    function addSubquery() {
-      query.push({
-        include: [],
-        exclude: [],
+    function and_() { return p('') }
+    function or_() { return p('or') }
+    function or() { return p('or own') }
+    function nor() { return p('or own not') }
+
+    let q = [[]]  // query stack
+    add(or_())
+    add(and_())
+
+    function add(x) {  // add new parenthesis
+      q[q.length - 1].push(x)
+      if (Array.isArray(x)) { q.push(x) }
+    }
+    function end() {   // end parenthesis
+      let z = q.pop()          // pop last paren on stack
+      let p = q[q.length - 1]  // parent paren
+      // Cleanup: Remove empty parens, and parens around single terms.
+      switch (z.length) {
+      case 0:
+        p.pop()
+        break
+      case 1:
+        let [c] = z             // eslint-disable-line no-case-declarations
+        c.own = c.own || z.own  // OR
+        c.not = c.not ^ z.not   // XOR
+        p[p.length - 1] = c
+      }
+      // Cleanup: Remove parens around children with same AND/OR as parent.
+      z.forEach((c, i) => {
+        // c.length is always >1 here (cleaned up above)
+        //
+        // Process children (c) of current parenthesis (z) here, since AND/OR
+        // status of child's parent must be known. (The current parenthesis
+        // will not have AND/OR set for first item, since comma/space which
+        // specifies this comes AFTER first item in the query language.)
+        if (Array.isArray(c) && (z.or === c.or && !c.not)) {
+          z.splice(i, 1, ...c)
+        }
       })
-      negative = false
     }
-    function addTerm(term, plainTerm, type) {
-      let noWord = '[ 􌥠,:!?/.’()[\\]&+–]'
-      let noWordBeg = new RegExp(`^${noWord}`, 'ui')
-      let noWordEnd = new RegExp(`${noWord}$`, 'ui')
-      if (term !== '') {
-        term = type === 'field'
-          ? `^${term}$`         // entire field
-          : (plainTerm.match(noWordBeg) ? '()' : `(${noWord}|^)`)
-            + `(${term})`
-            + (plainTerm.match(noWordEnd) ? '' : `(?=${noWord}|$)`)
-        query[query.length - 1][
-          negative
-            ? 'exclude'
-            : 'include'
-        ].push(term)
-        negative = false
+    function wrap() {  // wrap query in extra paren
+      if (Array.isArray(q[0])) {
+        q[0].own = true
+        q.unshift([q[0]])
+        q.unshift([q[0]])
+        q[0].or = true
+        q.unshift([q[0]])
+      }
+    }
+    function done() {
+      while (q.length > 1) { end() }  // trim all remaining parens
+
+      // FIXME: Why is this necessary? Can this be handled by end()?
+      if (q[0].length === 1 && Array.isArray(q[0][0])) {
+        let [z] = q
+        let [c] = z
+        c.own = c.own || z.own  // OR
+        c.not = c.not ^ z.not   // XOR
+        q[0] = c
       }
     }
 
-    addSubquery()
-    return {
-      addSubquery: addSubquery,
-      addTerm: addTerm,
-      getQuery: function getQuery() {
-        // Return array with global 'hilite' propetry.
-        return Object.assign(query.reduce(
-          (acc, subq) => !(subq.include.length || subq.exclude.length)
-            ? acc
-            : acc.concat({  // add non-empty subquery
-              exclude: subq.exclude.map(str2regex),
-              include: (
-                // If all terms are negated, add implicit '*'.
-                subq.include.length ? subq.include : ['']
-              ).map(str2regex),
-            }),
-          []
-        ), {
-          hilite: str2regex(query.reduce(
-            (acc, subq) => acc.concat(subq.include), []
-          ).join('|')),
-        })
-      },
-      negative: () => {
-        negative = true
-      },
+    function addParen(not) {
+      add(not ? nor() : or())
+      add(and_())
     }
+    function endParen() {
+      while (q.length > 1 && !q[q.length - 1].own) { end() }  // trim all parens
+      if (q.length === 1) { wrap() }
+      end()
+    }
+    function orParen() {
+      end()
+      add(and_())
+    }
+    function addTerm(cb) {
+      let [re, plain, not] = cb()
+      if (re) { add(Object.assign(re, { not, plain })) }
+      return this
+    }
+    // Test if single entry 'e' (list of strings) match query (<q>). Return
+    // true on match, false otherwise.
+    function searchEntry(q, e) {
+      let x = Array.isArray(q)
+        ? q[q.or ? 'some' : 'every'](q => searchEntry(q, e))  // subquery
+        : e.some(f => q.test(f))                              // base case
+      return q.not ? !x : x
+    }
+    function flat(q) {
+      return q.reduce(
+        (a, q) => a.concat(Array.isArray(q) ? flat(q) : q.source), [])
+    }
+    function get() {
+      done()
+      let x = q[q.length - 1]
+      return Object.assign(x, {
+        // NOTE: Keep negated terms in hilite() (since '-(-a,-b)' match 'a b').
+        hilite: () => RegExp(flat(x).join('|'), 'gui'),
+        search: e => x.length ? e.filter(e => searchEntry(x, e)) : [],
+      })
+    }
+    return { addTerm, addParen, endParen, orParen, get }
   })()
-  let meta = {
-    'a': '[aàáâã]',
-    'c': '[cç]',
-    'e': '[eèéêë]',
-    'i': '[iìíîï]',
-    'n': '[nñ]',
-    'o': '[oòóôõ]',
-    'u': '[uùúûü]',
-    'y': '[yýü]',
-    'ä': '[äæ]',
-    'ö': '[öø]',
-    '􌤆': '[􌤆􌤂􌥞􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛][􌤺􌥛􌤻􌤹􌥚]?', // face
-    '􌤂': '[􌤂􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼][􌤺􌥛􌤻􌤹􌥚]?',     // upper face
-    '􌥞': '[􌥞􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛][􌤺􌥛􌤻􌤹􌥚]?',       // lower face
-    '􌥜': '[􌥜􌤑􌦲􌤒][􌤺􌥛􌤻􌤹􌥚]?',             // arm
-    '􌤠': '[􌤠􌥀􌤡][􌤺􌥛􌤻􌤹􌥚]?',              // shoulders
-    '􌤓': '[􌤓􌤕􌤔][􌤺􌥛􌤻􌤹􌥚]?',              // chest
-    '􌤗': '[􌤗􌤙􌤘][􌤺􌥛􌤻􌤹􌥚]?',              // hips
-    '*': '[^ 􌥠/.,:;?!()]*',  // all non-space, non-'/' delimiter
-    // one place symbol (+ optional relation)
-    '@': '(?:@|[􌦳􌤆􌤂􌥞􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛􌤜􌤞􌤠􌥀􌤡􌥜􌤑􌦲􌤒􌤓􌤕􌤔􌤖􌤗􌤙􌤘􌤚][􌤺􌥛􌤻􌤹􌥚]?)',
-    // one handshape symbol (+ optional relation)
-    '#': '(?:#|[􌤤􌥄􌤣􌤧􌥋􌥉􌦫􌤩􌤎􌥇􌦬􌤦􌤲􌤱􌥑􌤢􌥂􌤪􌥎􌥈􌤨􌤿􌥌􌥆􌤫􌦭􌤬􌥅􌤥􌥊􌦱􌤽􌤯􌤭􌤮􌤰􌤳􌥃􌥒􌥟􌦪][􌤺􌥛􌤻􌤹􌥚]?)',
-    '^': '[􌤺􌥛􌤻􌤹􌥚]',          // one relation symbol
-    ':': '[􌥓􌥔􌤴􌥕􌤵􌥖][􌤶􌥗􌤷􌥘􌤸􌥙]', // one attitude symbol
-    '􌦮': '(?:􌦮[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?|􌥰[􌥿􌦀􌦌])', // circle in frontal plane
-    '􌦯': '(?:􌦯[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?|􌥰[􌦈􌥽􌦉])', // circle in horisontal plane
-    '􌦰': '(?:􌦰[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?|􌥰[􌥾􌦊􌦋])', // circle in saggital plane
-  }
-  // Unquoted place/handshape symbols should also match a following
-  // (optional) relation symbol.
-  for (let c of '􌦳􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛􌤜􌤞􌥀􌤡􌤑􌦲􌤒􌤕􌤔􌤖􌤙􌤘􌤚􌤤􌥄􌤣􌤧􌥋􌥉􌦫􌤩􌤎􌥇􌦬􌤦􌤲􌤱􌥑􌤢􌥂􌤪􌥎􌥈􌤨􌤿􌥌􌥆􌤫􌦭􌤬􌥅􌤥􌥊􌦱􌤽􌤯􌤭􌤮􌤰􌤳􌥃􌥒􌥟􌦪') {
-    meta[c] = `${c}[􌤺􌥛􌤻􌤹􌥚]?`
-  }
-  // All unquoted hand-external motion symbols (circling/bouncing/curving/
-  // hitting/twisting/divering/converging) should also match a following
-  // (optional) motion direction symbol.
-  for (let c of '􌥯􌦶􌥰􌥱􌥲􌥹􌦅') {
-    meta[c] = `${c}[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?`
-  }
-  // Process query char-by-char in FSA.
-  let term = ''
-  let plainTerm = ''
-  let quote = ''
-  let type = 'word'
   let fsa = {
-    ',': () => {
-      queryBuilder.addTerm(term, plainTerm, type)
-      queryBuilder.addSubquery()
-      type = 'word'
-      term = ''
-      plainTerm = ''
+    '(': s => { query.addTerm(() => finalizeTerm(s)).addParen(s.not) },
+    ')': s => { query.addTerm(() => finalizeTerm(s)).endParen() },
+    ',': s => { query.addTerm(() => finalizeTerm(s)).orParen() },
+    ' ': s => { query.addTerm(() => finalizeTerm(s)) },
+    '"': (s, c) => { s.quote = c; return s },
+    "'": (s, c) => { s.quote = c; return s },
+    'QUOTED': (s, c) => {
+      if (c === s.quote) {
+        delete s.quote
+      } else {
+        s.regex = (s.regex || '') + escape(c)
+        s.plain = (s.plain || '') + c
+      }
+      return s
     },
-    ' ': () => {
-      queryBuilder.addTerm(term, plainTerm, type)
-      type = 'word'
-      term = ''
-      plainTerm = ''
-    },
-    '"': c => { quote = c },
-    "'": c => { quote = c },
-    'UNQUOTED': c => {
-      if (term === '') {           //   leading
-        if (c === '-') {           //     '-' (negation)
-          queryBuilder.negative()
-          return
-        } else if (c === '=') {    //     '=' (exact match)
-          type = 'field'
-          return
+    'UNQUOTED': (s, c) => {
+      if (!s.regex) {            // before word
+        if (c === '-') {         //  '-' negated
+          s.not = s.not ^ true
+          return s
+        } else if (c === '=') {  //  '=' match whole field
+          s.field = true
+          return s
         }
       }
-      term += meta[c] || quotemeta(c)
-      plainTerm += c
-    },
-    'QUOTED': c => {
-      if (c === quote) {
-        quote = ''
-      } else {
-        term += quotemeta(c)
-        plainTerm += c
-      }
+      s.regex = (s.regex || '') + (charClass[c] || escape(c))
+      s.plain = (s.plain || '') + c
+      return s
     },
   }
-  for (let c of queryStr.normalize()) {
-    fsa[quote ? 'QUOTED' : fsa[c] ? c : 'UNQUOTED'](c)
+  let state = {} // contains: 'plain', 'regex', 'field', 'not' and 'quote'
+  for (let c of queryStr.normalize()) {  // process char-by-char in FSA
+    state = fsa[state.quote ? 'QUOTED' : fsa[c] ? c : 'UNQUOTED'](state, c) || {}
   }
-  queryBuilder.addTerm(term, plainTerm, type)
-  return queryBuilder.getQuery()
-}
-
-// Return true if at least one element in entry matches regex. (The
-// `regex.lastIndex` property is modified by this function).
-function regexInEntry(regex, entry) {
-  'use strict'
-  // `lastIndex` is set to make sure that search start at beginning of
-  // string, even when regex flag /g is used.
-  regex.lastIndex = 0
-  return entry.some(field => regex.test(field))
-}
-
-// Subquery is an object with the properties:
-// * 'include' -- array of regexes that must ALL be found
-// * 'exclude' -- array of regexes that must all be absent
-function subqueryInEntry(subquery, entry) {
-  'use strict'
-  return subquery.include.every(  // all positive terms and
-    re => regexInEntry(re, entry)
-  ) && !subquery.exclude.some(    //   no negative terms matches
-    re => regexInEntry(re, entry)
-  )
-}
-
-// Return matching subquery number or -1 if no subquery match. (To get
-// truthiness, do binary not ['~'] on returned value.)
-function queryInEntry(query, entry) {
-  'use strict'
-  return query.some(subquery => subqueryInEntry(subquery, entry))
+  return query.addTerm(() => finalizeTerm(state)).get()
 }
 
 function hilite(str, regex, func) {
@@ -696,29 +705,24 @@ function searchLexicon(queryStr) {
   let $body = $(document.body)
 
   $('#q').val(queryStr)
+  // No query, add 'noquery' to body element.
+  $body[queryStr ? 'removeClass' : 'addClass']('noquery')
   setTimeout(() => {
     let query = parseQuery(queryStr)
+
     logTiming.reset()
-    let matches = (query.length === 0) ? [] : lexicon.reduce(
-      (acc, entry) => queryInEntry(query, entry)
-        ? acc.concat([entry])
-        : acc,
-      []
-    )
+    let matches = query.search(lexicon)
     logTiming.total('Search took %s.')
 
     // Query without matches, add 'nomatch' to <body>.
-    $body[(query.length && matches.length === 0) ? 'addClass' : 'removeClass']('nomatch')
-
-    // No query, add 'noquery' to body element.
-    $body[query.length ? 'removeClass' : 'addClass']('noquery')
+    $body[(query.length && !matches.length) ? 'addClass' : 'removeClass']('nomatch')
 
     // Output search result.
     outputMatching({
       status: $('#search-count'),
       result: $('#search-result').empty(),
       button: $('#more'),
-      html: matches.map(entry => htmlifyMatch(entry, query.hilite)),
+      html: matches.map(entry => htmlifyMatch(entry, query.hilite())),
     })
   }, 0)
 }
