@@ -244,47 +244,6 @@ let urlFragment = (() => {
 })()
 
 ////////////////////////////////////////////////////////////////////////////////
-//
-// Timer logging module -- Output msg on console, replacing '%s' in msg with
-// time in seconds or milliseconds (rounded to 3-4 digits).
-//
-//   .reset() -- reset time
-//   .step(MSG) -- display MSG, replace %s with time since last msg
-//   .total(MSG) -- display MSG, replace %s with time since last reset
-//
-let logTiming = ((perf, log) => {
-  'use strict'
-  let timeFirst
-  let timeLast
-  function reset() {
-    timeFirst = perf.now()
-    timeLast = timeFirst
-  }
-  function prefix(ms) {
-    let str = ms > 1000
-      ? (ms / 1000 + 0.5) + 's'  // seconds
-      : (ms + 0.5) + 'ms'        // milliseconds
-    return str.replace(/^([.0-9]{0,3}[0-9]?)[.0-9]*([a-z]+)/, '$1$2')
-  }
-  function timeSince(time) {
-    return prefix(perf.now() - time)
-  }
-  function total(msg) {
-    log(msg.replace(/%s/, timeSince(timeFirst)))
-  }
-  function step(msg) {
-    log(msg.replace(/%s/, timeSince(timeLast)))
-    timeLast = perf.now()
-  }
-  reset()
-  return {
-    reset: reset,  // reset timer
-    step: step,    // output time since last msg
-    total: total,  // output time since reset
-  }
-})(window.performance, window.console.log)
-
-////////////////////////////////////////////////////////////////////////////////
 
 // Escape regex delimiter '/' or meta char.
 function escape(x) {
@@ -709,10 +668,7 @@ function searchLexicon(queryStr) {
   $body[queryStr ? 'removeClass' : 'addClass']('noquery')
   setTimeout(() => {
     let query = parseQuery(queryStr)
-
-    logTiming.reset()
     let matches = query.search(lexicon)
-    logTiming.total('Search took %s.')
 
     // Query without matches, add 'nomatch' to <body>.
     $body[(query.length && !matches.length) ? 'addClass' : 'removeClass']('nomatch')
