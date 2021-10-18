@@ -137,6 +137,8 @@
     "no-extra-parens": ["error", "functions"],
     // Use `break` to prevent fallthrough in `switch` cases.
     "no-fallthrough": "error",
+    // OWN: Require space after colon in `switch` statement.
+    "switch-colon-spacing": "error",
     // No floating decimals.
     "no-floating-decimal": "error",
     // Avoid reassigning function declarations.
