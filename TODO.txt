@@ -283,14 +283,13 @@
     Is the search result list of an okay size? (Was it smaller with the old
     array, instead of object, approach?)
 *** TODO Optimize! (use Google Chrome Audits)
-**** TODO Change font format?
-     WOFF is probably smaller than Truetype.
+**** TODO Move help info to separate page
+     This isn't needed on startup, but only when user requests it (maybe load
+     it in the background though?) Especially when building a progressive web
+     app it might be kinda sad if it wouldn't be accessible when offline.
 **** TODO Minify
 **** TODO Hyphenate (server side?)
 **** TODO Optimize jQuery
-     + Maybe use jQuery slim(?)
-       (The slim build excludes the ajax and effects modules.)
-       Need to verify that this works. https://jquery.com/download/
      + Maybe use (drop-in replacement) alternative to jQuery?
        (What do we lose if we do this? Compatibility? What compatibility do we
        have now? How would that change? Which jQuery features are we actually
@@ -506,7 +505,9 @@
 
     Present search result in a sortable table? Should be able to sort by swedish
     word, and by sign language.
-** [1/28] GUI
+** [0/29] GUI
+*** TODO Hide menu when item is clicked
+*** TODO Hide menu when clicking outside it
 *** TODO Move SVG to CSS? -- Does that work with currentFill?
     (To make HTML form more readable.)
 *** TODO Unify :focus marking styles
@@ -1109,11 +1110,15 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
-** DONE Remove needless timing info logged to console
+** DONE Lexicon: Now always reload search result on submission
+   CLOSED: [2021-10-18 Mon 14:25]
+   Previously the search result wasn't reloaded unless the query was modified,
+   but always redoing the search is more predictable to the user.
+** DONE Lexicon: Remove needless timing info logged to console
    CLOSED: [2021-10-18 Mon 14:09]
-** DONE Added QUnit test suite for boolean logic in query parsing
+** DONE Lexicon: Added QUnit test suite for boolean logic in query parsing
    CLOSED: [2021-10-18 Mon 13:12]
-** [6/6] Full boolean logic support in query language
+** [6/6] Lexicon: Full boolean logic support in query language
     CLOSED: [2021-10-18 Mon 12:34]
 *** DONE XOR multiple '-'
     With parentheses '-(-a)' is the same as 'a'. For consistency '--a' (or any
@@ -1184,6 +1189,11 @@
     A search for '–,72,har' should hilite three different things
     in entry 00072, but only the transcription is hilited. Why?
     http://localhost/teckentranskription.lexicon/lexicon.html#otranskr%2C%2072%2C%20har
+** DONE Switched to slim build of jQuery and upgraded to v3.6.0
+   CLOSED: [2021-10-20 Fri 00:04]
+   + Maybe use jQuery slim(?)
+     (The slim build excludes the ajax and effects modules.) Need to verify
+     that this works. https://jquery.com/download/
 ** DONE Lexicon: Smaller sized font file
    Converted Truetype font to WOFF2.
    CLOSED: [2021-08-19 Thu 23:15]

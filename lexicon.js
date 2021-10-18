@@ -869,7 +869,8 @@ $(() => {
     if (window.matchMedia('not all and (any-hover:hover)').matches) {
       $q.blur()  // hide soft keyboard
     }
-    urlFragment.set({ query: queryStr }) && searchLexicon(queryStr)
+    urlFragment.set({ query: queryStr })
+    searchLexicon(queryStr)
   }
   // Paste in textarea = filter out newlines (use jQuery .paste plugin).
   function onPaste(e) {
