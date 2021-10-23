@@ -271,7 +271,7 @@
     turkos, dövlexikon, svenskt teckenspråkslexikon, dövhet, teckenspråk, svenska
 ** TODO Change lexicon name
    Lexicon should be distinguishable from the official lexicon by name. Maybe
-   use name 'Snabbt teckenspråklexikon'?
+   use name 'Snabbt teckenspråklexikon' or 'Snabba tecken'?
 ** [0/4] Code structure/stink/refactor
 *** [0/2] Split query parsing into separate chunks
 **** TODO One module for expanding chars/words into regexes
@@ -383,7 +383,7 @@
     sounds like it would always be good, right?)
 *** TODO Overlay by entering in URL
 *** TODO Overlay by clicking on Swedish of sign
-** [0/12] Search query language
+** [0/13] Search query language
 *** TODO Don't match tags by default
     For example: Searching for `geografi` should not match the tag `/geografi`
     if one does not include the leading `/`.
@@ -437,11 +437,19 @@
     Curving, (all types of) circling, hitting and turning.
 *** TODO Character classes [...] to search query
     Useful when one is searching for one of multiple hand shapes.
+*** TODO Allow '=' to modify a parenthesis
+    Example: `=(en,två,tre)` should be same as `(=en,=två,=tre)`.
 *** TODO Allow query parentheses inside words
     Currently a query like `a(b)` will search for all entries with both the
     words `a` and `b`, but maybe this should instead search for the word `ab`?
     This would allow one to search for stuff like `ovan(för,lig)`. (Is this
     actually useful?)
+
+    `"om "(en,två)` should be same as `("om en","om två")`.
+
+    What happens with spaces in queries? If `a (b,c)` match differently than
+    `a(b,c)`, what should `a( b,c)` match? I think only spaces on same level
+    should be used (meaning that `a( b,c)` would be same as `a(b,c)`).
 ** [0/3] Search result order
 *** TODO Display search result in subquery order
     Returned result should have one list per subquery (and in the same order as
@@ -505,7 +513,19 @@
 
     Present search result in a sortable table? Should be able to sort by swedish
     word, and by sign language.
-** [0/29] GUI
+** [0/30] GUI
+*** TODO Allow highlighting of overlapping search result
+    If one searches for `hej` and `hej då` at the same time, the highlight
+    should be doubled on `hej` in the search result.
+
+    Maybe the .hilite method of the query object should return a list of
+    regexes, and these regexes should allow for any HTML expression to occur
+    between any letter in the regex. Also if there's HTML in between the <mark>
+    tags might need to be broken into multiple <mark> tags. E.g.
+
+        ----------------------------------------
+        <mark><mark>hej</mark> då</mark>
+        ----------------------------------------
 *** TODO Hide menu when item is clicked
 *** TODO Hide menu when clicking outside it
 *** TODO Move SVG to CSS? -- Does that work with currentFill?
@@ -1110,6 +1130,8 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Documented new boolean operators in query language
+   CLOSED: [2021-10-23 Sat 16:09]
 ** DONE Lexicon: Now always reload search result on submission
    CLOSED: [2021-10-18 Mon 14:25]
    Previously the search result wasn't reloaded unless the query was modified,

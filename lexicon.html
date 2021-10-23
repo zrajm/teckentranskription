@@ -660,12 +660,15 @@ a {
     Din sökning matchade ingenting i lexikonet.
     <p><p>Tips:
       <ul>
-        <li>Kolla att du stavat rätt.
-        <li>Prova att söka efter en synonym.
-        <li>Använd ’*’ för att matcha delar av ord (tex <a class=tt
+        <li>Kontrollera att du stavade rätt.
+        <li>Försök söka efter en synonym.
+        <li>Använd ’*’ för att söka på del av ord (tex <a class=tt
           href="#katt*">katt*</a> eller <a class=tt href="#*katt">*katt</a>).
-        <li>Hitta ett ord som tecknas på liknande sätt, klicka på dess
-          tran­skrip­tion och testa dig fram.
+        <li>Sök upp ett annat ord som tecknas på liknande sätt, klicka på det
+          tecknets tran­skrip­tion och prova sedan att i sök­fältet byta ut
+          delar av tran­skrip­tion­en mot <a class=tt>*</a>.
+        <li>Om du är nyfiken på mer avancerade sök­ningar, ta en titt
+          på <a href="#help">sök­hjälpen</a>.
       </ul>
   </aside>
   <footer>
@@ -673,63 +676,88 @@ a {
   </footer>
   <div class="overlay help">
     <section tabindex=0>
-      <h1>Kort intro</h1>
+      <h1>Sökhjälp</h1>
       <div class=columns>
-        <p>En sökning matchar ord-för-ord – sökningen <tt>katt</tt> hittar bara
-        tecknet för ’katt’ (inte ’kattunge’ eller ’lussekatt’). Om vill du
-        hitta ord som har ’katt’ i sig så använder du stjärna (’*’) för att
-        markera de delar av ordet som kan variera (<tt>katt*</tt>
-        eller <tt>*katt*</tt> – en stjärna matchar noll eller fler bok­stavs-
-        eller tran­skrip­tions­sym­boler).
 
-        <p>En sökning kan också innehålla flera ord (<tt>ett år</tt>) – i dessa
-        fall krävs att bägge orden finns i beskrivningen av ett tecken för att
-        tecknet ska matcha (ordningen på orden spelar däremot ingen roll).
+        <p>Söktermer matchar ord-för-ord, om du söker på ordet <tt>katt</tt> så
+        hittas bara ’katt’ (inte ’kattunge’ eller ’lussekatt’). För att söka på
+        en del av ett ord, använd stjärna – <tt>katt*</tt> matchar alla ord som
+        börjar med ’katt’, och <tt>*katt</tt> alla ord som slutar med ’katt’.
+        Du kan placera stjärnan var som helst i ordet (och använda hur många
+        stjärnor du vill). Om du vill söka på en faktisk stjärna, behöver du
+        skriva citat­symboler runt den: <tt>"*"</tt>.
 
-        <p>Du kan också utesluta ord ur sökningen (<tt>år -ett</tt> hittar alla
-        tecken som innehåller ’år’ men inte ’ett’).
+        <p>En sökning som innehåller flera ord (<tt>ett år</tt>) matchar alla
+        tecken i vilka samtliga av orden förekommer som svensk översättning,
+        oavsett i vilken ordning de kommer. För att begränsa en sökning till en
+        viss ordföljd används citat­symboler (<tt>"ett år"</tt>).
+
+        <p>Text mellan citat­symboler matchar exakt (mellanslag, parentes,
+        komma, minus etc förlorar sin special­betydelse). Om du, till exempel,
+        vill hitta alla förekomster av ’(boj)’ (inklusive parenteserna) så
+        duger inte <tt>(boj)</tt> (eftersom paren­tes­er är special­tecken, se
+        ’Söklogik’ nedan) utan termen måste skrivas inom
+        citat­symboler, <tt>"(boj)"</tt>.
+
+        <p>Det går också att citera delar av en sökterm, så om du vill söka
+        efter en fras med en stjärna i (för att, till exempel, hitta alla
+        förekomster av uttrycket ’om … år’) så skrivs stjärnan utanför
+        citat­symbolerna (<tt>"om "*" år"</tt>).
+
+        <p>Om ditt sökresultat ger för många träffar kan du eliminera en del av
+        dem genom att använda minus: <tt>*katt -*skatt</tt> hittar tecken vars
+        översättning slutar med ‘katt’ (’lokatt’, ’lussekatt’), utom de som
+        slutar med ’skatt’ (‘kvarskatt’). Sökningen <tt>/färger -/kortspel</tt>
+        matchar alla tecken med taggen ’/färger’, utom de som också är taggade
+        med ’/kortspel’.
       </div>
 
       <hr>
-      <h1>Tips</h1>
+      <h2>Tips</h2>
       <div class=columns>
-        <p><tt>04194,<wbr>02408,<wbr>04888</tt> ID-nummer med komman mellan
-        dem är ett enkelt sätt att skapa en gloslista för att skicka till någon
-        annan.
+        <p><tt>04194,<wbr>02408,<wbr>04888</tt> – Att söka upp en lista med
+        komma­separerade ID-nummer är ett enkelt sätt att skapa en gloslista
+        att dela med sig till någon annan.
 
-        <p><p><tt>*</tt> används för att matcha en del av ett ord (eller
+        <p><p><tt>*</tt> – Används för att matcha en del av ett ord (eller
         transkription). Sök på <tt>avl*</tt> för att hitta alla ord som börjar
         med ’avl’ eller <tt>*􌥳*</tt> för att hitta alla tecken som innehåller
         artikulationen <i>spelar</i>.
 
-        <p><p><tt>*@*</tt> kan användas för att hitta alla tecken som
+        <p><p><tt>*@*</tt> – Kan användas för att hitta alla tecken som
         har <i>kroppsläge</i> i transkriptionen. (Och <tt>-*@*</tt> för att
         utesluta alla tecken med kroppsläge.)
 
-        <p><p><tt>-*􌥠*</tt> utesluter sammansatta tecken (tecken med mer än ett
-        segment). Om du istället vill <i>hitta</i> samman­satta tecken kan du
-        <i>lägga till</i> <tt>*􌥠*</tt> till din sökning (eller kanske
-        rentav <tt>*􌥠*􌥠*</tt> eller <tt>*􌥠*􌥠*􌥠*</tt> för att hitta tecken med
-        fler segment).
+        <p><p><tt>-􌥠</tt> – Utesluter alla sammansatta tecken (dvs de tecken
+        som har mer än ett segment – det söktermen egentligen gör är att
+        utesluta alla tecken som har segment­separatorn i sin transkription). –
+        Om du istället vill <i>hitta</i> samman­satta tecken kan du lägga
+        <tt>􌥠</tt> till din sökning. Du kan använda samma princip för att söka
+        efter tecken som innehåller minst tre (<tt>􌥠*􌥠</tt>) eller fyra
+        (<tt>􌥠*􌥠*􌥠</tt>) segment, och om du vet att tecknet du letar efter har
+        exakt två segment kan du kombinera ovanstående idéer och lägga
+        <tt>􌥠 -􌥠*􌥠</tt> till din sökning.
 
-        <p><p><tt>*:##:*</tt> hittar två­hands­tecken där båda händerna är
-        aktiva.
+        <p><p><tt>*:##:*</tt> – Söker efter två­hands­tecken där båda händerna
+        är aktiva.
 
-        <p><tt>*#:#:*</tt> hittar två­hands­tecken med en aktiv och en passiv
-        hand.
+        <p><p><tt>*#:#:*</tt> – Söker efter två­hands­tecken med en aktiv och
+        en passiv hand.
 
-        <p><tt>-*:##:* -*#:#:*</tt> utesluter alla två­hands­tecken (dvs hittar
-        bara en­hands­tecken).
+        <p><p><tt>-*:##:* -*#:#:*</tt> – Söker efter en­hands­tecken (genom att
+        utesluta alla två­hands­tecken, oavsett om de har en eller två aktiva
+        händer).
 
         <p><p>Transkriptioner är känsliga för felstavning och det är oftast
         inte självklart hur något ska transkriberas om man bara sett ett tecken
         utföras. Om du kan ett annat tecken med en liknande rörelse kan det
         vara värt att söka upp det och sedan klicka på dess tran­skript­ion och
-        därefter modifiera sökningen tills du hittar rätt.
+        därefter modifiera sökningen – tex genom att byta ut delar av
+        tran­skript­ion­en mot <tt>*</tt> – tills du hittar det du söker.
       </div>
 
       <hr>
-      <h1>Kontrollsymboler</h1>
+      <h2>Kontrollsymboler</h2>
       <div class=columns>
         <table style="margin-top:.25em">
           <tr>
@@ -740,79 +768,141 @@ a {
             <td>Matcha helt fält
           <tr>
             <th><tt>-…</tt>
-            <td>Exkludera term
+            <td>Logiskt <i>inte</i> (negerar term)
           <tr>
             <th><tt>… …</tt>
             <td>Logiskt <i>och</i> (mellanslag)
           <tr>
             <th><tt>…, …</tt>
             <td>Logiskt <i>eller</i>
+          <tr>
+            <th><tt>(…)</tt>
+            <td>Gruppera delar
         </table>
 
-        <p id=fras><tt>"…"</tt> Frassökning – mellanslag och andra symboler som
-        står inom citat­symbolerna måste matcha exakt.
+        <p id=fras><tt>"…"</tt> Frassökning – Mellanslag och andra symboler som
+        står inom citat­symbolerna måste matcha exakt som de står.
 
-        <p>Används när du vill söka efter en fras (tex <tt>"har gjort"</tt>)
-        eller när du vill använda någon av special­symbolerna i sin
-        ursprungliga betydelse. (<tt>*"􌤆"*</tt> hittar alla tecken som
+        <p>Detta kan användas när du vill söka efter en fras (tex <tt>"har
+        gjort"</tt>) eller när du vill söka på någon av special­symbolerna i
+        sin ursprungliga betydelse: <tt>*"􌤆"*</tt> hittar alla tecken som
         har <i>ansiktet</i> som uttalställe, medan <tt>*􌤆*</tt> (utan
         citat­symboler) också hittar de som har <i>pannan, ögat, näsan,
-        munnen,</i> etc).
+        munnen,</i> etc (se även ’Mönstermatchning’ nedan).
 
-        <p>Du kan också citera delar av en sökterm. Du kan tex
-        använda <tt>*"􌤆"*:##:*</tt> för att hitta alla tecken med två aktiva
-        händer och uttalsställe <i>ansiktet</i>.
+        <p>Det går också att citera <i>delar av</i> av en sökterm. För att
+        hitta alla förekomster av ’om … år’, kan du söka på <tt>"om "*"
+        år"</tt> (mellanslaget behöver stå inom citat­symboler, men om stjärnan
+        gör det så matchar den bara en bokstavlig stjärna i lexikonet).
 
-        <p><p><tt>=…</tt> Matcha helt fält – gör så att ett sökuttryck måste
-        matcha ett helt fält (istället för bara ett ord). Varje tecken i
-        lexikonet har ett fält för ID-numret, ett för transkriptionen och sedan
-        ett fält per översättning.
+        <p><p><tt>=…</tt> Matcha helt fält – Om en sökterm inleds med ’=’ så
+        matchar termen ett helt fält i lexikonet (istället för ett ord).
+        Lexikonet har fält ett för ID-nummer, transkription, ett fält för varje
+        översättning, och slutligen ett fält per tagg (för de tecken som har
+        taggar; taggfälten börjar alltid med ’/’).
 
-        <p>Sökningen <tt>=så</tt> hittar alla tecken som översatts med ’så’ men
-        inte tecken vars översättning innehåller fler ord (uttryck som ’och så
-        vidare’ och ’så klart’ matchar inte).
+        <p>Sökningen <tt>=så</tt> hittar alla tecken som har ’så’ som en
+        översättning, men inte de tecken som har flera ord i översättningen
+        (så uttryck som ’och så vidare’ och ’så klart’ matchar inte).
 
-        <p>Används på samma sätt med transkriptioner.
-        Sökningen <tt>=􌤢􌤴􌥗􌥆􌤴􌤶􌤟􌥼􌥣􌦆􌥃</tt> matchar bara hela transkriptioner, så
-        den matchar <small>􌤢􌤴􌥗􌥆􌤴􌤶􌤟􌥼􌥣􌦆􌥃</small> (<i>orsak, eftersom</i>) men
-        inte <small>􌤢􌤴􌥗􌤣􌤴􌤶􌤟􌥼􌥻􌥠<wbr>􌤢􌤴􌥗􌥆􌤴􌤶􌤟􌥼􌥣􌦆􌥃</small> (<i>skade­verkning</i>).
+        <p>När du söker på en transkription så matchar en sökterm i vanliga
+        fall en ett segment i transkriptionen, men med ’=’ så matchas söktermen
+        mot hela transkriptionen. En sökning på <tt>=􌤢􌤴􌥗􌥆􌤴􌤶􌤟􌥼􌥣􌦆􌥃</tt>
+        matchar <small>􌤢􌤴􌥗􌥆􌤴􌤶􌤟􌥼􌥣􌦆􌥃</small> (’anledning’, ’därför’ etc) men
+        inte <small>􌤢􌤴􌥗􌤣􌤴􌤶􌤟􌥼􌥻􌥠<wbr>􌤢􌤴􌥗􌥆􌤴􌤶􌤟􌥼􌥣􌦆􌥃</small> (’skade­verkning’,
+        ’skade­effekt’).
 
-        <p>Att matcha hela fältet är användbart när man söker efter småord som
-        är vanliga i längre fraser (tex <tt>=i</tt> eller <tt>=och</tt>). Kan
-        också kombineras med andra symboler (tex <tt>="ja tack"</tt>
-        eller <tt>säga -=säga</tt>).
+        <p>Att matcha ett helt fält är användbart när man söker efter småord
+        som är vanliga i längre fraser (tex <tt>=i</tt> eller <tt>=och</tt>).
+        Det går förstås också att kombinera ’=’ med de andra
+        kontroll­symbolerna (tex <tt>="ja tack"</tt> eller, för att hitta
+        uttryck som innehåller ordet ’säga’: <tt>säga -=säga</tt>).
 
-        <p><p><tt>-…</tt> Exkludera term – används tillsammans med ett annat
-        sökuttryck när du vill ta bort en del av träffarna. Om du tex letar
-        efter ett tecken som använder <i>R-handen</i> och du vet att tecknet
-        bara har ett segment så kan du söka på <tt>*􌤬* -*􌥠*</tt>.
+        <h3>Söklogik</h3>
 
-        <p>Inuti (eller i slutet) på ord har minus ingen särskild effekt, en
-        sökning på <tt>platt-tv</tt> hittar alla förekomster av ’platt-tv’,
-        medan <tt>platt -tv</tt> hittar alla tecken vars översättning
-        innehåller ’platt’ men <i>inte</i> ’tv’.
+        <p>Mer komplicerade sökuttryck av typen ’(a <i>eller</i> b) <i>och</i>
+        c’ är också möjliga med hjälp av <i>inte</i> (<tt>-…</tt>), <i>och</i>
+        (<tt>… …</tt>), <i>eller</i> (<tt>…, …</tt>) och parenteser för att
+        gruppera uttryck. (Den här typen av uttryck brukar kallas boolska
+        uttryck – men det får det att låta mer komplicerat än det egentligen
+        är.) :)
 
-        <p><p><tt>… …</tt> Logiskt <i>och</i> – betyder att <i>både</i> det som
-        står före och det som står efter mellanslaget måste finnas med för att
-        sökningen ska matcha. Om du söker på <tt>har gjort</tt> hittar du alla
-        tecken vars översättning innehåller både ordet ’har’ och ordet ’gjort’
-        (oavsett vilken ordning de kommer), medan om du söker på <tt>"har
-        gjort"</tt> så måste orden finnas med som en fras för att matcha.
+        <p>De logiska operatorerna (<i>inte</i>, <i>och</i> och <i>eller</i>)
+        binder olika hårt. Precis som att man i matematiska uttryck räknar
+        gånger först och plus efter det (1+2·3 = 1+6 = 7) så
+        ’räknas’ <i>inte</i> först, därefter <i>och</i>, och sist <i>eller</i>.
+        Detta betyder att om du söker på <tt>a, b c</tt> så är det samma sak
+        som <tt>a, (b c)</tt>) och sökningen matchar alla tecken som antingen
+        har <b>a</b> eller både <b>b</b> och <b>c</b>. (Detta skiljer sig
+        från <tt>(a, b) c</tt> vilket matchar alla tecken som
+        innehåller <b>c</b> och dessutom antingen <b>a</b> eller <b>b</b>.)
 
-        <p><p><tt>…, …</tt> Logiskt <i>eller</i> – betyder att <i>antingen</i>
-        det som kommer före kommat eller det som kommer efter behöver finnas
-        med för att sökningen ska matcha. <tt>har, gjort</tt> hittar således
-        alla tecken som har antingen ’har’ eller ’gjort’ (eller båda) i sin
-        översättning.
+        <p>Hårdast av allt binder <i>inte</i>, det betyder att ett minus bara
+        påverkar det sökuttryck (en parentes eller enskild term) som kommer
+        direkt efter minuset. (<tt>a -b</tt> hittar alla tecken som
+        innehåller <b>a</b> utom de som också innehåller <b>b</b>, och <tt>a
+        -(b, c)</tt> hittar alla tecken som innehåller <b>a</b> utom de som
+        också innehåller <b>b</b> eller <b>c</b>.)
+
+        <p>Om du är tveksam om hur din sökning kommer att tolkas kan du alltid
+        skriva ut parenteserna. (Så länge du inte använder både <i>och</i>
+        och <i>eller</i> i en och samma sökning är det dock ingen risk för
+        missförstånd och inga parenteser behövs.)
+
+        <p><p><tt>-…</tt> (minus) – Negera sökuttryck – används tillsammans med
+        ett annat sökuttryck när du vill ta bort en del av träffarna. Om du tex
+        letar efter ett tecken som använder <i>R-handen</i> och du vet att
+        tecknet bara har ett segment så kan du söka på <tt>*􌤬* -*􌥠*</tt>.
+
+        <p>En minus­symbol har bara den negerade effekten om den kommer före
+        ett sökuttryck. Inuti eller i slutet på ett ord har minus ingen
+        särskilt effekt. (En sökning på <tt>platt-tv</tt> hittar alla
+        förekomster av ’platt-tv’, medan <tt>platt -tv</tt> hittar de tecken
+        som har en översättning som innehåller ’platt’ men <i>inte</i> ’tv’.)
+
+        <p>Minus kan användas före sökord och parenteser. När den används före
+        en parentes så inverteras betydelsen av parentesens innehåll. Om flera
+        minus används så tar de ut varandra parvis. (<tt>--hej</tt> betyder
+        samma sak som <tt>hej</tt>, och <tt>-(-hej, då)</tt> betyder samma sak
+        som <tt>hej -då</tt>.)
+
+        <p><p><tt>… …</tt> (mellanslag) – Logiskt <i>och</i> – betyder
+        att <i>både</i> det som står före och det som står efter mellanslaget
+        måste finnas med för att sökningen ska matcha. Om du söker på <tt>har
+        gjort</tt> hittar du alla tecken vars översättning innehåller både
+        ordet ’har’ och ordet ’gjort’ (oavsett vilken ordning de kommer), medan
+        om du söker på <tt>"har gjort"</tt> så måste orden finnas med som en
+        fras för att matcha.
+
+        <p><p><tt>…, …</tt> (komma) – Logiskt <i>eller</i> – betyder
+        att <i>antingen</i> det som kommer före kommat eller det som kommer
+        efter behöver finnas med för att sökningen ska matcha. <tt>har,
+        gjort</tt> hittar således alla tecken som har antingen ’har’ eller
+        ’gjort’ (eller båda) i sin översättning.
 
         <p>Komma hanteras alltid först så om du har ett komplicerat uttryck med
         som du vill söka på i några små variationer, så måste du dessvärre
         upprepa hela det komplicerade uttrycket på vardera sidan om kommat
         (tex <tt>@:􌤢#:*􌤟*, @:􌥃#:*􌤟*</tt>).
+
+        <p><p><tt>(…)</tt> (parenteser) – Används för att gruppera delar av en
+        sökning, precis som i matematik. Om du till exempel vill hitta alla
+        tecken vars översättning innehåller orden ’hepatit’ och
+        ’a’ <i>eller</i> ’b’, sök efter <tt>hepatit (a, b)</tt>.
+
+        <p>Parenteserna är avgörande här! – Om du istället skulle söka
+        på <tt>hepatit a, b</tt> så motsvarar det <tt>(hepatit a), b</tt> –
+        vilket hittar alla tecken innehåller antingen orden ’hepatit’ och ’a’
+        eller ordet ’b’.
+
+        <p>Detta beror på att <i>och</i> (mellan ’hepatit’ och efterföljande
+        parentes) binder hårdare än <i>eller</i>, så om du söker på hittas alla
+        tecken som innehåller antingen orden ’hepatit’ och ’a’ eller bara ordet
+        ’b’.
       </div>
 
       <hr>
-      <h1>Mönstermatchning</h1>
+      <h2>Mönstermatchning</h2>
       <div class=columns>
 
         <p>Följande symboler har särskild funktion (utom när de står inom
@@ -929,7 +1019,7 @@ a {
       </div>
 
       <hr>
-      <h1>Taggar</h1>
+      <h2>Taggar</h2>
       <div class=columns>
 
         <p>Många tecken har i lexikonet har taggar som beskriver tecknet
@@ -959,10 +1049,10 @@ a {
         europeiska städer som <i>inte</i> ligger i Frankrike.)
 
         <p><p>Det finns taggar som indikerar om ett tecken är dialektalt,
-        ovanligt, eller kan uppfattas som vulgärt/stötande. Andra beskriver om
-        ett tecken hör hemma inom något särskilt ämnesområde (som geografi,
-        egennamn, sport eller mat och dryck). Tecken från Oskar Österbergs
-        lexikon (publicerat 1916) har taggen <tt>/Österberg 1916</tt>.
+        ovanligt, eller kan uppfattas som stötande. Andra beskriver ifall ett
+        tecken hör hemma inom ett särskilt ämnesområde (som geografi, egennamn,
+        sport eller mat och dryck). Tecken från Oskar Österbergs lexikon
+        (publicerat 1916) har taggen <tt>/Österberg 1916</tt>.
 
         <p><p>Varje tecken har dessutom en taggräknare (<tt>/#</tt>) – så för
         att hitta alla tecken med tre taggar sök efter <tt>/3</tt> (tecken som
