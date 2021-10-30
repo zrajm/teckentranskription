@@ -1130,6 +1130,16 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Remove help overlay, link to separate documentation page
+   CLOSED: [2021-10-30 Sat 13:05]
+** DONE Lexicon: URL fragment should support '/' = Remove overlay support.
+   CLOSED: [2021-10-30 Sat 13:05]
+   Right now only %2F is accepted for the URL fragment, but '/' should be accepted too.
+   http://zrajm.github.devel/teckentranskription/lexicon.html#/%C3%96sterberg
+
+   The '/' was previously implemented in code to separate query from overlay in
+   fragment part of the URL, but since none of that code was actually USED, I
+   removed it altogether.
 ** DONE Lexicon: Documented new boolean operators in query language
    CLOSED: [2021-10-23 Sat 16:09]
 ** DONE Lexicon: Now always reload search result on submission

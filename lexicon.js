@@ -77,79 +77,19 @@ function toggleFullscreen(elem) {
 
 ////////////////////////////////////////////////////////////////////////////////
 //
-// Overlay module (for help text).
-//
-//   .hide() -- Hides currently open overlay.
-//
-(() => {
-  'use strict'
-  let $button = $('a[href="#help"]')
-  let $overlay = $('.overlay.help')
-
-  // Convert <tt> into links (except if they contain '…') by replacing
-  // '<tt>…</tt>' with '<a class=tt href="#…">…</a>'.
-  $overlay.find('tt').replaceWith(function () {
-    let $el = $(this)
-    let link = `#${$el.text().replace(/\s+/g, ' ')}`
-    return link.match(/…/)
-      ? this
-      : $('<a>', { class: 'tt', href: link })
-        .click(hideOverlay)
-        .append($el.contents())
-  })
-  function hideOverlay() {
-    $overlay.hide()
-    $button.focus()
-  }
-  function showOverlay(e) {
-    e.preventDefault()
-    $overlay.show().find('>*').focus()
-  }
-  $button.click(showOverlay)
-  $overlay.keyup(e => {
-    if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) { return }
-    if (e.key === 'Escape') {
-      hideOverlay()
-    }
-  }).on('mouseover mouseout click', e => {
-    // Only handle events from overlay border (not bubbled from within).
-    if (e.target === $overlay[0]) {
-      switch (e.type) {
-      case 'mouseover':
-        $overlay.addClass('hover')
-        break
-      case 'mouseout':
-        $overlay.removeClass('hover')
-        break
-      case 'click':
-        $overlay.hide()
-      }
-    }
-  })
-})()
-
-////////////////////////////////////////////////////////////////////////////////
-//
 // URL fragment state module
 // =========================
 // Update URL fragment & trigger on URL fragment change.
 //
-// URL fragment syntax: {#|##}<query>[/<overlay>]
+// URL fragment syntax: {#|##}<query>
 // ----------------------------------------------
 //   * A single '#' (default) indicates that matches should be displayed with
 //     videos, while '##' indicate a text only listing is desired.
-//   * <query> is a search query (described elsewhere). Search query may
-//     contain URL encdoded slashes.
-//   * <overlay> (if specified) is the name of an overlay (to be displayed on
-//     top of the page). Overlays are built into the HTML structure of the
-//     page, but eventually there will be dynamic overlays for all the words of
-//     the dictionary (in which case the <overlay> will be the 5-digit ID of
-//     the word in question).
+//   * <query> is a search query (described elsewhere).
 //
 // Functions
 // ---------
 // .set(STATE) -- Change URL to reflect state (without triggering hooks).
-// .onOverlayChange(FUNC) -- Register FUNC as callback for corresponding event.
 // .onQueryChange(FUNC)
 // .onVideoToggle(FUNC)
 //
@@ -162,45 +102,38 @@ function toggleFullscreen(elem) {
 //
 //   {
 //       base   : 'http://zrajm.github.io/teckentranskription/lexicon.html',
-//       overlay: '',
 //       query  : 'buss,taxi',
 //       video  : true,
 //   }
 //
 let urlFragment = (() => {
   'use strict'
-  let state = { overlay: '', query: undefined, video: true }
+  let state = { query: undefined, video: true }
   function getStateFromUrl() {
-    let x = window.location.href
-      .match(/^([^#]*)(?:(#*)([^#/]*)(?:\/([^#/]*))?)/u).slice(1)
+    let [_, base, video, query]
+      = window.location.href.match(/^([^#]*)(#{0,2})(.*)/u)
     return {
-      base:    x[0],
-      overlay: decodeURIComponent(x[3] || ''),
-      query:   decodeURIComponent(x[2]),
-      video:   x[1].length === 0 || x[1] === '#',
+      base,
+      video: video !== '##',
+      query: decodeURIComponent(query),
     }
   }
   function setUrlFromState(state) {
     let str = encodeURIComponent(state.query)
-      + (state.overlay ? ('/' + encodeURIComponent(state.overlay)) : '')
     if (str || state.video !== undefined) {
       str = (state.video ? '#' : '##') + str
     }
     return state.base + str
   }
   function getHashFromStr(hashStr) {
-    let x = hashStr.split('/')
-    let queryStr = x[0] || state.query
-    let overlayStr = x[1]
     return (state.video ? '#' : '##')
-      + encodeURIComponent(queryStr)
-      + (overlayStr ? ('/' + encodeURIComponent(overlayStr)) : '')
+      + encodeURIComponent(hashStr || state.query)
   }
-  // .set({ query: STR, video: BOOL, overlay: STR })
+  // .set({ query: STR, video: BOOL })
   // Update internal state + URL, without triggering hashchange event.
   function setState(partial) {
     let modified = false
-    ;['overlay', 'query', 'video'].forEach(n => {
+    ;['query', 'video'].forEach(n => {
       if (partial[n] !== state[n] && partial[n] !== undefined) {
         state[n] = partial[n]
         modified = true
@@ -214,13 +147,12 @@ let urlFragment = (() => {
   }
 
   let hooks = {}
-  function onOverlayChange(callback) { hooks.overlay = callback }
   function onQueryChange(callback) { hooks.query = callback }
   function onVideoToggle(callback) { hooks.video = callback }
   $(window).on('hashchange', () => {
     let newState = getStateFromUrl()
     let run = []
-    ;['base', 'overlay', 'query', 'video'].forEach(n => {
+    ;['base', 'query', 'video'].forEach(n => {
       if (newState[n] !== state[n]) {       // save all state first
         if (hooks[n] instanceof Function) {
           run.push(n)                       //   register callback to run
@@ -237,7 +169,6 @@ let urlFragment = (() => {
   return {
     set: setState,
     getHash: getHashFromStr,
-    onOverlayChange: onOverlayChange,
     onQueryChange: onQueryChange,
     onVideoToggle: onVideoToggle,
   }
@@ -925,7 +856,7 @@ $('#search-wrapper .selector').on('click keypress', e => {
 })
 
 // Update 'href' attr when mouse enters <a data-href=…> tag (used to retain
-// current video/text result setting). 'data-href' syntax: [query][/overlay]
+// current video/text result setting).
 $(() => {
   'use strict'
   // 'mouseenter' used here since it does not trigger when child elements are

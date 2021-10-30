@@ -26,10 +26,12 @@
     "quotes": ["error", "single", {
       "avoidEscape": true
     }],
-    // No unused variables.
-    "no-unused-vars": "error",
+    // No unused variables (except '_').
+    "no-unused-vars": ["error", {
+      "varsIgnorePattern": "^_$"
+    }],
     // Add a space after keywords.
-    "keyword-spacing": ["error"],
+    "keyword-spacing": "error",
     // Add a space before a function declaration's parentheses.
     "space-before-function-paren": ["error", {
       "anonymous": "always",

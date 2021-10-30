@@ -60,33 +60,6 @@ noscript {
   color: #a5e7ef;
 }
 
-/*************************
-* Overlays (with content).
-*/
-.overlay.hover:hover:before { opacity: 1; }
-.overlay:before {
-  cursor: pointer;
-  opacity: .4;
-  position: absolute;
-  display: block;
-  line-height: 0;
-  top: .5em;
-  right: .5em;
-  content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="15" width="15"><path d="M8.625,-2V17H6.375V-2ZM-2,6.375h19v2.25H-2Z" fill="%23fff" transform="rotate(45 7.5,7.5)"/></svg>');
-  transition: all .1s ease-in-out;
-}
-.overlay section {
-  margin: 1em 1.5em;
-  background: #fff;
-  overflow-y: scroll;
-  padding: 0 1em 1em 1em;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
 /**************
 * Text content.
 */
