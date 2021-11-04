@@ -1130,6 +1130,10 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Use regular FreeFont for bold/italics in docs
+   CLOSED: [2021-11-04 Thu 15:49]
+   This will make bold and italics look better (even though this means that
+   transcription symbols can't be used in bold or italic).
 ** DONE Lexicon: Remove help overlay, link to separate documentation page
    CLOSED: [2021-10-30 Sat 13:05]
 ** DONE Lexicon: URL fragment should support '/' = Remove overlay support.
