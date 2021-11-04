@@ -133,14 +133,14 @@ th { font-weight: normal; }
     <h2>Tips</h2>
     <div class=columns>
 
-      <p><tt>04194,<wbr>02408,<wbr>04888</tt> – Att söka upp en lista med
-      komma­separerade ID-nummer är ett enkelt sätt att skapa en gloslista att
-      dela med sig till någon annan.
+      <p><tt>04194,<wbr>02408,<wbr>04888</tt> – En komma­separerad lista med
+      ID-nummer är ett enkelt sätt att skapa en gloslista, för att till exempel
+      dela med sig till klasskamrater, studiegrupp eller liknande.
 
-      <p><p><tt>*</tt> – Används för att matcha en del av ett ord (eller
-      transkription). Sök på <tt>avl*</tt> för att hitta alla ord som börjar
-      med ’avl’ eller <tt>*􌥳*</tt> för att hitta alla tecken som innehåller
-      artikulationen <i>spelar</i>.
+      <p><p><tt>*</tt> – Matchar en del av ett ord (eller transkription). Sök
+      på <tt>avl*</tt> för att hitta alla ord som börjar med ’avl’
+      eller <tt>*􌥳*</tt> för att hitta alla tecken som innehåller
+      artikulationen <i>spelar</i>. (Se även ’Möstermatchning’.)
 
       <p><p><tt>*@*</tt> – Kan användas för att hitta alla tecken som
       har <i>kroppsläge</i> i transkriptionen. (Och <tt>-*@*</tt> för att
@@ -190,32 +190,31 @@ th { font-weight: normal; }
           <td>Logiskt <i>inte</i> (negerar term)
         <tr>
           <th><tt>… …</tt>
-          <td>Logiskt <i>och</i> (mellanslag)
+          <td>Logiskt <i>och</i>
         <tr>
           <th><tt>…, …</tt>
           <td>Logiskt <i>eller</i>
         <tr>
           <th><tt>(…)</tt>
-          <td>Gruppera delar
+          <td>Gruppering
       </table>
 
-      <p id=fras><tt>"…"</tt> Frassökning – Mellanslag och andra symboler som
-      står inom citat­symbolerna måste matcha exakt som de står.
-
-      <p>Detta kan användas när du vill söka efter en fras (tex <tt>"har
-      gjort"</tt>) eller när du vill söka på någon av special­symbolerna i sin
-      ursprungliga betydelse: <tt>*"􌤆"*</tt> hittar alla tecken som
-      har <i>ansiktet</i> som uttalställe, medan <tt>*􌤆*</tt> (utan
-      citat­symboler) också hittar de som har <i>pannan, ögat, näsan,
-      munnen,</i> etc (se även ’Mönstermatchning’ nedan).
+      <p id=fras><tt>"…"</tt> (frassökning) – Mellanslag och andra symboler som
+      står inom citat­symbolerna måste matcha exakt som de står. Detta användas
+      när du vill söka efter en fras (tex <tt>"har gjort"</tt>) eller när du
+      vill söka på någon av special­symbolerna i sin ursprungliga
+      betydelse: <tt>*"􌤆"*</tt> hittar alla tecken som har <i>ansiktet</i> som
+      uttalställe, medan <tt>*􌤆*</tt> (utan citat­symboler) också hittar de som
+      har <i>pannan, ögat, näsan, munnen,</i> etc (se även ’Mönstermatchning’
+      nedan).
 
       <p>Det går också att citera <i>delar av</i> av en sökterm. För att hitta
       alla förekomster av ’om … år’, kan du söka på <tt>"om "*" år"</tt>
       (mellanslaget behöver stå inom citat­symboler, men om stjärnan gör det så
       matchar den bara en bokstavlig stjärna i lexikonet).
 
-      <p><p><tt>=…</tt> Matcha helt fält – Om en sökterm inleds med ’=’ så
-      matchar termen ett helt fält i lexikonet (istället för ett ord).
+      <p><p><tt>=…</tt> (matcha enbart helt fält) – Om en sökterm inleds med
+      ’=’ så matchar termen ett helt fält i lexikonet (istället för ett ord).
       Lexikonet har fält ett för ID-nummer, transkription, ett fält för varje
       översättning, och slutligen ett fält per tagg (för de tecken som har
       taggar; taggfälten börjar alltid med ’/’).
@@ -243,7 +242,7 @@ th { font-weight: normal; }
       är också möjliga med hjälp av <i>inte</i> (<tt>-…</tt>), <i>och</i>
       (<tt>… …</tt>), <i>eller</i> (<tt>…, …</tt>) och parenteser för att
       gruppera uttryck. (Den här typen av uttryck brukar kallas boolska uttryck
-      – men det får det att låta mer komplicerat än det egentligen är.) :)
+      – vilket får det att låta mer komplicerat än det faktiskt är.)
 
       <p>De logiska operatorerna (<i>inte</i>, <i>och</i> och <i>eller</i>)
       binder olika hårt. Precis som att man i matematiska uttryck räknar gånger
@@ -267,41 +266,49 @@ th { font-weight: normal; }
       och <i>eller</i> i en och samma sökning är det dock ingen risk för
       missförstånd och inga parenteser behövs.)
 
-      <p><p><tt>-…</tt> (minus) – Negera sökuttryck – används tillsammans med
-      ett annat sökuttryck när du vill ta bort en del av träffarna. Om du tex
-      letar efter ett tecken som använder <i>R-handen</i> och du vet att
-      tecknet bara har ett segment så kan du söka på <tt>*􌤬* -*􌥠*</tt>.
+      <p><p><tt>-…</tt> (minus, negera sökuttryck) – Används tillsammans med
+      ett annat sökuttryck när du vill ta bort en del av träffarna. Om du till
+      exempel letar efter ett tecken som använder <i>R-handen,</i> och du vet
+      att tecknet bara har ett segment så kan du söka på <tt>*􌤬* -􌥠</tt>
+      (sökuttrycket <tt>-􌥠</tt> tar bort alla tecken som innehåller
+      segment­separatorn ’􌥠’ ifrån träfflistan).
 
       <p>En minus­symbol har bara den negerade effekten om den kommer före ett
-      sökuttryck. Inuti eller i slutet på ett ord har minus ingen särskilt
-      effekt. (En sökning på <tt>platt-tv</tt> hittar alla förekomster av
-      ’platt-tv’, medan <tt>platt -tv</tt> hittar de tecken som har en
-      översättning som innehåller ’platt’ men <i>inte</i> ’tv’.)
+      sökuttryck. Inuti eller i slutet på ett ord har minussymbolen ingen
+      särskilt betydelse utan matchar bara ett faktiskt minus. (En sökning
+      på <tt>platt-tv</tt> hittar således alla förekomster av ’platt-tv’,
+      medan <tt>platt -tv</tt> hittar de tecken som har en översättning som
+      innehåller ’platt’ men <i>inte</i> ’tv’.)
 
-      <p>Minus kan användas före sökord och parenteser. När den används före en
-      parentes så inverteras betydelsen av parentesens innehåll. Om flera minus
-      används så tar de ut varandra parvis. (<tt>--hej</tt> betyder samma sak
-      som <tt>hej</tt>, och <tt>-(-hej, då)</tt> betyder samma sak som <tt>hej
-      -då</tt>.)
+      <p>Minus kan användas före sökord och parenteser. När ett minus används
+      före en parentes så negeras hela parentesens innehåll. Om du använder
+      flera minus framför varandra så tar de ut varandra parvis.
+      (<tt>--hej</tt> betyder samma sak som <tt>hej</tt>, och <tt>-(-hej,
+      då)</tt> betyder samma sak som <tt>hej -då</tt>.)
 
-      <p><p><tt>… …</tt> (mellanslag) – Logiskt <i>och</i> – betyder
-      att <i>både</i> det som står före och det som står efter mellanslaget
-      måste finnas med för att sökningen ska matcha. Om du söker på <tt>har
-      gjort</tt> hittar du alla tecken vars översättning innehåller både ordet
-      ’har’ och ordet ’gjort’ (oavsett vilken ordning de kommer), medan om du
-      söker på <tt>"har gjort"</tt> så måste orden finnas med som en fras för
-      att matcha.
+      <p><p><tt>… …</tt> (bara mellanslag, logiskt <i>och</i>) – En sökning
+      på <tt>a b c</tt> matchar alla tecken där samtliga av
+      söktermerna <tt>a</tt>, <tt>b</tt> och <tt>c</tt> påträffas. (Om du
+      använder ett eller flera mellanslag spelar ingen roll.) Det spelar ingen
+      roll i vilken ordning söktermerna kommer – om du vill begränsa i vilken
+      ordning de får komma använd frassökning.
 
-      <p><p><tt>…, …</tt> (komma) – Logiskt <i>eller</i> – betyder
-      att <i>antingen</i> det som kommer före kommat eller det som kommer efter
-      behöver finnas med för att sökningen ska matcha. <tt>har, gjort</tt>
-      hittar således alla tecken som har antingen ’har’ eller ’gjort’ (eller
-      båda) i sin översättning.
+      <p>Bara mellanslag (<i>och</i>) binder hårdare än komma (<i>eller</i>),
+      så om du skulle söka på <tt>a, b c</tt> så klumpas <tt>b</tt>
+      och <tt>c</tt> ihop, och uttrycket matchar på samma sätt som om du skulle
+      ha skrivit <tt>a, (b c)</tt>. Om du är tveksam om hur din sökning kommer
+      att tolkas kan du alltid skriva ut parenteserna själv.
 
-      <p>Komma hanteras alltid först så om du har ett komplicerat uttryck med
-      som du vill söka på i några små variationer, så måste du dessvärre
-      upprepa hela det komplicerade uttrycket på vardera sidan om kommat
-      (tex <tt>@:􌤢#:*􌤟*, @:􌥃#:*􌤟*</tt>).
+      <p><p><tt>…, …</tt> (komma, logiskt <i>eller</i>) – En sökning på <tt>a,
+      b, c</tt> matchar alla tecken i vilka minst en <i>en</i> av
+      söktermerna <tt>a</tt>, <tt>b</tt> eller <tt>c</tt> påträffas. (Det
+      spelar ingen roll om du har mellanslag runtomkring dina komman eller
+      inte.)
+
+      <p>Komma binder lösare än bara mellanslag (logiskt <i>och</i>), så en
+      sökning på <tt>a, b c</tt> kommer att tolkas som <tt>a, (b c)</tt>. Om du
+      är tveksam om hur din sökning tolkas kan du alltid skriva ut parenteserna
+      själv.
 
       <p><p><tt>(…)</tt> (parenteser) – Används för att gruppera delar av en
       sökning, precis som i matematik. Om du till exempel vill hitta alla
@@ -344,7 +351,7 @@ th { font-weight: normal; }
         <tr>
           <th><tt>:</tt>
           <td><i>Attityd</i>
-          <td><i>riktning</i> plus <i>vändning</i>
+          <td>En <i>riktnings-</i> plus en <i>vändningssymbol</i>
         <tr>
           <th><tt>^</tt>
           <td><i>Relationsymbol</i>
@@ -403,7 +410,7 @@ th { font-weight: normal; }
 
       <p><p><tt>*</tt> matchar noll eller fler alfabetiska symboler i ord
       eller <wbr>tran­skrip­tion. (Med ’alfabetisk’ menas bokstäver, siffror
-      och alla tran­skrip­tions­sym­boler utom seg­ment­se­par­at­orn
+      och alla tran­skrip­tions­sym­boler utom segment­separatorn
       (<small>􌥠</small>), men inte skilje­sym­boler som parentes, punkt, komma
       etc).
 
@@ -413,11 +420,11 @@ th { font-weight: normal; }
       där bägge förekommer i samma segment (som tex i
       ’Ironman’ <small><mark>􌤓</mark>􌥆􌤵􌤷􌤟<mark>􌦆</mark>􌥃</small>).
 
-      <p>Om du istället skriver sökningen som två termer
-      <tt>*􌤓* *􌦆*</tt> så matchar den tecken där <i>bröstet</i>
-      och <i>förändras</i> förekommer oavsett om de är i samma segment eller
-      inte (den sökningen matchar alltså – utöver ’Ironman’ – också tex
-      ’tycka om’ <small><mark>􌤓</mark>􌤢􌥓􌥘􌤟􌥠􌥆􌤴􌥙􌥵<mark>􌦆</mark>􌤢</small>).
+      <p>Om du istället skriver sökningen som två termer <tt>*􌤓* *􌦆*</tt> så
+      matchar den tecken där <i>bröstet</i> och <i>förändras</i> förekommer
+      oavsett om de är i samma segment eller inte (den sökningen matchar alltså
+      – utöver ’Ironman’ – också tex ’tycka
+      om’ <small><mark>􌤓</mark>􌤢􌥓􌥘􌤟􌥠􌥆􌤴􌥙􌥵<mark>􌦆</mark>􌤢</small>).
 
       <p><p>Utöver symbolerna i tabellen så försöker sökmotorn hjälpa dig så
       långt som möjligt. Om du inte har skrivit ut en <i>relationssymbol</i> i
@@ -469,8 +476,8 @@ th { font-weight: normal; }
       <p><p>Det finns taggar som indikerar om ett tecken är dialektalt,
       ovanligt, eller kan uppfattas som stötande. Andra beskriver ifall ett
       tecken hör hemma inom ett särskilt ämnesområde (som geografi, egennamn,
-      sport eller mat och dryck). Tecken från Oskar Österbergs lexikon
-      (publicerat 1916) har taggen <tt>/Österberg 1916</tt>.
+      sport eller mat och dryck). Tecken från Oskar Österbergs lexikon (från
+      1916) kan hittas genom att söka på <tt>/österberg</tt>.
 
       <p><p>Varje tecken har dessutom en taggräknare (<tt>/#</tt>) – så för att
       hitta alla tecken med tre taggar sök efter <tt>/3</tt> (tecken som inte
