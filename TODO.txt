@@ -1130,6 +1130,8 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Add better ids for hash-linking
+   CLOSED: [2021-11-04 Thu 22:31]
 ** DONE Lexicon: Use regular FreeFont for bold/italics in docs
    CLOSED: [2021-11-04 Thu 15:49]
    This will make bold and italics look better (even though this means that
