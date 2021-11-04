@@ -125,33 +125,36 @@ section { margin-top: 1em; }
       hittas bara ’katt’ (inte ’kattunge’ eller ’lussekatt’). För att söka på
       en del av ett ord, använd stjärna – <tt>katt*</tt> matchar alla ord som
       börjar med ’katt’, och <tt>*katt</tt> alla ord som slutar med ’katt’. Du
-      kan placera stjärnan var som helst i ordet (och använda hur många
-      stjärnor du vill). Om du vill söka på en faktisk stjärna, behöver du
-      skriva citat­symboler runt den: <tt>"*"</tt>.
+      kan placera stjärnan var som helst i ordet och använda hur många stjärnor
+      du vill i ett sökord (se ’<a href="#stjärna">stjärna</a>’). Om du vill
+      söka på en faktisk stjärna, måste du omge den
+      med citat­symboler: <tt>"*"</tt>.
 
       <p>En sökning som innehåller flera ord (<tt>ett år</tt>) matchar alla
-      tecken i vilka samtliga av orden förekommer som svensk översättning,
-      oavsett i vilken ordning de kommer. För att begränsa en sökning till en
-      viss ordföljd används citat­symboler (<tt>"ett år"</tt>).
+      tecken i vilka samtliga av söktermerna förekommer, oavsett i vilken
+      ordning de kommer i lexikonet (se ’<a href="#och">och</a>’). För att
+      begränsa en sökning till en specifik ordföljd, <a href="#fras">använd
+      fras­sökning</a> (<tt>"ett år"</tt>).
 
-      <p>Text mellan citat­symboler matchar exakt (mellanslag, parentes, komma,
-      minus etc förlorar sin special­betydelse). Om du, till exempel, vill
-      hitta alla förekomster av ’(boj)’ (inklusive parenteserna) så duger
-      inte <tt>(boj)</tt> (eftersom paren­tes­er är special­tecken, se
-      ’<a href="#logik">Söklogik</a>’ nedan) utan termen måste skrivas inom
-      citat­symboler, <tt>"(boj)"</tt>.
+      <p>Text mellan citat­symboler matchar alltid <i>exakt</i> (mellanslag,
+      parentes, komma, minus etc förlorar sin special­betydelse). Om du till
+      exempel vill hitta alla förekomster av ’(boj)’ (inklusive parenteserna)
+      så duger inte <tt>(boj)</tt> (eftersom paren­teser är special­symboler,
+      se ’<a href="#logik">Söklogik</a>’ nedan) utan termen måste
+      citeras, <tt>"(boj)"</tt>.
 
       <p>Det går också att citera delar av en sökterm, så om du vill söka efter
       en fras med en stjärna i (för att, till exempel, hitta alla förekomster
-      av uttrycket ’om … år’) så skrivs stjärnan utanför citat­symbolerna
-      (<tt>"om "*" år"</tt>).
+      av uttrycket ’om … år’) så skrivs stjärnan utanför citat­symbolerna,
+      <tt>"om "*" år"</tt> (se ’<a href="#fras">frassökning</a>’).
 
       <p>Om ditt sökresultat ger för många träffar kan du eliminera en del av
       dem genom att använda minus: <tt>*katt -*skatt</tt> hittar tecken vars
       översättning slutar med ‘katt’ (’lokatt’, ’lussekatt’), utom de som
       slutar med ’skatt’ (‘kvarskatt’). Sökningen <tt>/färger -/kortspel</tt>
       matchar alla tecken med taggen ’/färger’, utom de som också är taggade
-      med ’/kortspel’.
+      med ’/kortspel’ (se ’<a href="#inte">inte</a>’ och
+      ’<a href="#taggar">Taggar</a>’).
     </div>
     <hr>
     <section id=tips>
@@ -233,7 +236,7 @@ section { margin-top: 1em; }
           ’=’ så matchar termen ett helt fält i lexikonet (istället för ett
           ord). Lexikonet har fält ett för ID-nummer, transkription, ett fält
           för varje översättning, och slutligen ett fält per tagg (för de
-          tecken som har taggar; taggfälten börjar alltid med ’/’).
+          tecken som har taggar börjar tagg­fälten alltid med ’/’).
 
           <p>Sökningen <tt>=så</tt> hittar alla tecken som har ’så’ som en
           översättning, men inte de tecken som har flera ord i översättningen
@@ -339,8 +342,9 @@ section { margin-top: 1em; }
           <section id=grupp>
             <p><tt>(…)</tt> (parenteser) – Används för att gruppera delar av en
             sökning, precis som i matematik. Om du till exempel vill hitta alla
-            tecken vars översättning innehåller orden ’hepatit’ och
-            ’a’ <i>eller</i> ’b’, sök efter <tt>hepatit (a, b)</tt>.
+            tecken vars översättning innehåller ordet ’hepatit’, men vilka
+            också innehåller antingen ’a’ <i>eller</i> ’b’, sök
+            efter <tt>hepatit (a, b)</tt>.
 
             <p>Parenteserna är avgörande här! – Om du istället skulle söka
             på <tt>hepatit a, b</tt> så motsvarar det <tt>(hepatit a), b</tt> –
@@ -362,12 +366,12 @@ section { margin-top: 1em; }
         <p>Följande symboler har särskild funktion, utom när de står inom
         citat­symboler (se ’<a href="#fras">frassökning</a>’ ovan).
         <table>
-          <caption><div style="display:inline-block">
-            <sup>1</sup> Matchar också en eventuell efterföljande
-            relationssymbol.
+          <caption style="margin:0"><div style="display:inline-block;margin:.5em .5em 0">
+            <sup>1</sup> Matchar också en eventuell
+            efterföljande <i>relation</i>ssymbol.
 
-            <p><sup>2</sup> Matchar också en eventuell efterföljande
-            riktningssymbol.
+            <p><sup>2</sup> Matchar också en eventuell
+            efterföljande <i>riktning</i>ssymbol.
           </div></caption>
           <tr>
             <th>
@@ -387,7 +391,7 @@ section { margin-top: 1em; }
             <td><small><span style=color:#999>x</span>􌤺 <span style=color:#999>x</span>􌥛 <span style=color:#999>x</span>􌤻 <span style=color:#999>x</span>􌤹</small> eller <small><span style=color:#999>x</span>􌥚</small>
           <tr>
             <th><tt>#</tt>
-            <td><i>Handform</i><sup>1</sup> / #
+            <td><i>Handform</i><sup>1</sup> / ’#’
             <td>En handformssymbol eller faktisk ’#’
           <tr>
             <th><tt>@</tt>
@@ -459,22 +463,24 @@ section { margin-top: 1em; }
         </section>
         <section id=relation>
           <p>Utöver symbolerna i tabellen så försöker sökmotorn hjälpa dig så
-          långt som möjligt. Om du inte har skrivit ut
-          en <i>relationssymbol</i> i din sökning, eller har utelämnat en
-          riktnings­specifikation under
+          långt som möjligt. Om du inte anger någon <i>relationssymbol</i> i
+          din sökning, eller om du utelämnar riktnings­specifikationen under
           båge/<wbr>cirkel/<wbr>slås/<wbr>studs/<wbr>vrids och
           konvergerar/<wbr>divergerar så kommer din sökning matcha oavsett
           vilken relation/<wbr>riktnings­specifikation som står i lexikonet. Om
-          du <i>har</i> angivit dessa, så matchar förstås din sökning bara om
+          du <i>har</i> angivit dessa, så matchar din sökning förstås bara om
           den överrens­stämmer med det som står i lexikonet.
         </section>
         <section id=cirkel>
           <p>Under <i>handexterna rörelsearter</i> (<small>􌥯􌦶􌥰􌦮􌦯􌦰􌥱􌥲􌥹􌦅</small>)
           skrivs oftast en <a href="intro.html#riktning"
-          target=_blank>riktning</a> ut. Om du inte anger denna i din sökning
-          så matchar sökningen alla tänkbara riktningar. Hedbergs förenklade
-          cirkelsymboler (<small>􌦮􌦯􌦰</small>) matchar också motsvarande
-          traditionella notation (<a href="#hedberg">enligt tabellen</a>).
+          target=_blank>riktning</a> ut (till exempel skrivs
+          tecknet <small>􌥋􌥔􌥙􌦃􌥯􌥿</small> ’bro’ med
+          båg­rörelsen <small>􌥯􌥿</small> <i>båge uppåt</i>). Om inte skriver ut
+          riktning i din sökning matchas samtliga riktningar. Hedbergs
+          förenklade cirkel­symboler (<small>􌦮􌦯􌦰</small>) matchar också
+          motsvarande traditionella notation (<a href="#hedberg">enligt
+          tabellen</a>).
         </section>
       </div>
     </section>
@@ -482,11 +488,11 @@ section { margin-top: 1em; }
     <section id=taggar>
       <h2>Taggar</h2>
       <div class=columns>
-        <p>Många tecken har i lexikonet har taggar som beskriver tecknet
-        ytterligare. I sökresultatet syns dessa taggar som en liten
-        etiketts- <nobr>(<img src="pic/tag.svg">)</nobr> eller
-        varningsikon <nobr>(<img src="pic/warn.svg">)</nobr> i teckenvideons
-        övre högra hörn. Om du håller muspekaren över någon av dessa ikoner ser
+        <p>Många tecken i lexikonet har taggar som indikerar vilka kategorier
+        ett tecken hör till. I sökresultatet syns taggarna som en liten
+        etikett- <nobr>(<img src="pic/tag.svg">)</nobr> eller
+        varnings­ikon <nobr>(<img src="pic/warn.svg">)</nobr> i tecken­videons
+        övre högra hörn. Om du håller muspekaren över någon av ikonerna så ser
         du vilka taggar videon har (om du använder en mobiltelefon eller padda,
         kan du klicka på ikonerna istället).
 
