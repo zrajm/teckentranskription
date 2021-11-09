@@ -58,7 +58,7 @@
     |----------+---------------|
     https://caniuse.com/#feat=input-selection
 *** CSS :nth-child() selector
-    Used by virtual keyboard button background color.
+    Used by onscreen keyboard button background color.
     |----------+-----------------|
     | 2008 Nov | Safari 3.2+     |
     | 2009 Jun | Firefox 3.5+    |
@@ -70,7 +70,7 @@
     |----------+-----------------|
     https://caniuse.com/#feat=css-sel3
 *** .matchMedia methods
-    Used to detect touchscreen devices, and hide on-screen keyboard when
+    Used to detect touchscreen devices, and hide onscreen keyboard when
     submitting search box.
     |----------+---------------|
     | 2011 Feb | Android 3+    |
@@ -103,7 +103,7 @@
 ** TODO Homogenize CSS for all pages
    All pages should use one base CSS + an extra CSS with the styles needed for
    these pages, and preferably there should be no extra per-file CSS.
-* Virtual keyboard
+* Onscreen keyboard
 ** TODO Avatar to display attitude + handshape
    A wiki for "Virtual Humans"
    http://vh.cmp.uea.ac.uk/index.php/JASigning_Demos
@@ -137,9 +137,11 @@
      other advanced features that are useful to researchers and advanced users.
      These functions shall not intrude on the beginner's user experience.
   :END:
-** [0/4] Early loading
+** [0/4] Early pageload
 *** TODO On load: Resize width faster
-*** TODO On load: Be faster to not display full-screen search if there is a query
+*** TODO Faster selection of fullscreen or normal search
+    Currently, if loading the page without a query, first the 'small' version
+    of the query is displayed briefly.
     Fullscreen search should ONLY be show if there is NOTHING entered into the
     search form, if ANYTHING is entered, display the search results screen, even
     if the query is invalid (eg just space, or empty parenthesis).
@@ -260,7 +262,7 @@
     The frequency information could be used to indicate common signs, and to
     help in sort-by-relevance (in that more common sign, all other things being
     equal, should appear earlier in search results than less common signs).
-** TODO Shortcut '/' should focus search text input
+** TODO [#A] Shortcut '/' should focus search text input
    Typing anything else should bring out a notification (in the bottom left
    corner?) 'Press [/] to jump to the search box' -- The notification should
    probably slide in and out of view (just like Google does it) in order to
@@ -269,7 +271,7 @@
 *** TODO Add description to be displayed by Google
 *** TODO Search keywords to use
     turkos, dövlexikon, svenskt teckenspråkslexikon, dövhet, teckenspråk, svenska
-** TODO Change lexicon name
+** TODO Lexicon name
    Lexicon should be distinguishable from the official lexicon by name. Maybe
    use name 'Snabbt teckenspråklexikon' or 'Snabba tecken'?
 ** [0/4] Code structure/stink/refactor
@@ -314,7 +316,7 @@
       CLOSED: [2019-08-08 Thu 06:10]
 ***** DONE Minify menu (hamburger) icon
       CLOSED: [2019-08-08 Thu 06:09]
-***** DONE Minify virtual keyboard icon
+***** DONE Minify onscreen keyboard icon
       CLOSED: [2019-08-08 Thu 02:54]
       Redrew SVG and optimized it (with a combination of manual methods and
       SVGOMG). Removed 'fill' attribute (it defaults to black) and 'xmlns'
@@ -362,10 +364,6 @@
    + This hides the URL, so probably need a separate share button
 ** [4/7] New URL syntax
    A syntax to allow for video/text search results + upcoming overlays.
-*** TODO Fix help text hash link                                        :BUG:
-    There's a URL fragment link '<a href=#fras>se ovan</a>' in the help text.
-    Following this link will quietly do a search for 'fras' in the background --
-    messing up any previously existing search result.
 *** TODO Remove extraneous components in URL
     Eg '/xx' in the URL http://localhost/tsplex/lexicon.html#he/help/xx
     or the multiple '####' in http://localhost/tsplex/lexicon.html####he/help/xx
@@ -383,8 +381,14 @@
     sounds like it would always be good, right?)
 *** TODO Overlay by entering in URL
 *** TODO Overlay by clicking on Swedish of sign
-** [0/13] Search query language
-*** TODO Don't match tags by default
+** [0/13] Query language
+*** TODO Query `'('` results in non-zero length query object            :BUG:
+    Meaning that no search tips are displayed, even though there is no search
+    result.
+*** TODO Query `"-XX"` results in empty query(?)                        :BUG:
+    Should property 'plain' include leading '-'?
+
+*** TODO Don't match tags by default                                    :BUG:
     For example: Searching for `geografi` should not match the tag `/geografi`
     if one does not include the leading `/`.
 *** TODO Match sub-words it transcriptions (without need for `*`)
@@ -424,11 +428,24 @@
 
     In practice this means that in fields with this prefix, an asterisk ('*')
     should match '[^/]*' (where '/' is the segment separator) instead of '.*'.
-*** TODO Character class for 'motion right'
+*** [0/4] [#A] Motion left/right etc. character classes?
+    Motion left/right/forward/backward/up/down character classes should allow
+    short motion as well.
+
+       + '􌥢': '[􌥢􌥩]􌥡?', // motion left
+       + '􌥣': '[􌥣􌥪]􌥡?', // right
+       + '􌦃': '[􌦃􌥵]􌥡?', // forward
+       + '􌦄': '[􌦄􌥶]􌥡?', // backward
+       + '􌥦': '[􌥦􌥷]􌥡?', // up
+       + '􌥧': '[􌥧􌥸]􌥡?', // down
+
     'move right', 'short motion right' and, 'curving motion right' and 'hit
     right', should all be matched by 'move right'.
-
-    The same goes for 'left', 'forward', 'backward', 'up' and 'down'.
+**** TODO Implement motion character class
+     Mapping motion left to motion left & short motion left.
+**** TODO Optional medial contact in motion & short motion
+**** TODO Other optional elements?
+**** TODO Document
 *** TODO Character class for 'förs'
     All arrows, not including 'contact'.
 *** TODO Character class for 'circle'
@@ -450,7 +467,7 @@
     What happens with spaces in queries? If `a (b,c)` match differently than
     `a(b,c)`, what should `a( b,c)` match? I think only spaces on same level
     should be used (meaning that `a( b,c)` would be same as `a(b,c)`).
-** [0/3] Search result order
+** [0/3] Sort
 *** TODO Display search result in subquery order
     Returned result should have one list per subquery (and in the same order as
     the subqueries), and the result should be displayed in that order.
@@ -514,7 +531,9 @@
     Present search result in a sortable table? Should be able to sort by swedish
     word, and by sign language.
 ** [0/30] GUI
-*** [0/3] Menu
+*** [0/4] Menu
+**** TODO Opening menu with mouse shouldn't focus text
+     But opening menu using keyboard should.
 **** TODO Focus marking on close icon should look same as on links
      Simplify CSS so that focus marking look the same for the X icon as for the
      links. (This will be clearer to the user.)
@@ -545,24 +564,11 @@
     form icons (clear and keyboard) button should look the same.
 *** [1/9] Unify menu & overlay style
     Menu & overlays should have the same look-and-feel. Should this also apply
-    to the on-screen keyboard?
-**** TODO Focus trapping for onscreen keyboard(?)
-     Should focusing be trapped to onscreen keyboard + search field when
-     keyboard is open? (Similar to the left hand side menu.)
-**** TODO Use same/similar style for on-screen keyboard(?)
-     I.e. darken everything all but input form when using the on-screen
-     keyboard?
+    to the onscreen keyboard?
 **** TODO Hover on scrim: Hilite close button
 **** TODO Click on scrim: Close menu/overlay
 **** TODO Click on close: Close menu/overlay
 **** TODO Escape: Close menu/overlay
-**** TODO Focus behavior: Keyboard focus should work the same
-     The menu/overlay should not be focusable in itself (as the overlay
-     currently is), only items inside it.
-
-     One should not be able to focus elements outside the currently opened
-     menu/overlay. (Maybe by setting the all tabindexes on the page to negative
-     values?)
 **** TODO Border: Should be the same
      4px rounded corner? + Textbox shadow?
 **** DONE Scrim for both menu and overlay
@@ -576,22 +582,41 @@
     | Duckduckgo | 18px |
     | Google     | 18px |
     |------------+------|
-*** TODO Rethink/redesign the virtual keyboard
-    The virtual keyboard should be replaced with something a bit more
-    intuitive. A proper self-explanatory interface for writing sign language
-    transcription.
+*** [0/4] Onscreen Keyboard
+**** TODO Style for menu for onscreen keyboard(?)
+     I.e. darken everything all but input form when using the onscreen
+     keyboard?
+**** TODO Focus trapping for onscreen keyboard(?)
+     Focusing on the onscreen keyboard should work the same as with the menu.
 
-    This should new interface should have dropdown icon (small downwards
-    pointing triangle) rather than a keyboard for an icon.
-*** TODO On pageload: Faster selection of fullscreen or normal search
-    Currently, if loading the page without a query, first the 'small' version
-    of the query is displayed briefly.
-*** TODO Show difference between keyboard focus & mouse focus
-    When an HTML element is selected via the keyboard use a border to hilite
-    it. When hovered over using the mouse pointer use box shadow.
+     Should focusing be trapped to onscreen keyboard + search field when
+     keyboard is open? (Similar to the left hand side menu.)
 
-    Make sure both kinds of selections look especially good with the search
-    form with text input hilited.
+     NOTE: Using Tab and Shift-Tab from the URL field should never activate any
+     other part of the page when focus is locked to the onscreen keyboard.
+**** TODO Make onscreen keyboard come sliding out from under the search form
+     The onscreen keyboard should be displayed on top of search results, so
+     that dropping the keyboard does not scroll the search results.
+**** TODO Rethink/redesign the onscreen keyboard
+     The onscreen keyboard should be replaced with something a bit more
+     intuitive. A proper self-explanatory interface for writing sign language
+     transcription.
+
+     This should new interface should have dropdown icon (small downwards
+     pointing triangle) rather than a keyboard for an icon.
+**** TODO Add close button to onscreen keyboard
+     Add x-button top/right inside the keyboard? Or replace onscreen keyboard
+     icon with a slashed through keyboard to indicate that it can be used to
+     close the onscreen keyboard?
+**** TODO Display text input caret (cursor) with onscreen keyboard
+     When the onscreen keyboard is shown the caret should always be displayed
+     in the search query. This can be done by making sure the text input
+     element is always in focus – meaning that clicking on a onscreen keyboard
+     key, or using tab to navigate around in the keyboard needs be handled
+     "manually" by the script.
+
+     Ie, while the onscreen keyboard is up, use a class to show the currently
+     selected button, and modify that based in tab.
 *** TODO Think more about self-explanatory aspect of the GUI
     Are there additional modifications that can be done to better give a new
     user a sense of how to use the search? How to make the transcription search
@@ -601,22 +626,6 @@
     Article on how to make "the perfect search box":
     https://uxplanet.org/design-a-perfect-search-box-b6baaf9599c
 *** TODO Use Stackexchange magnifier glass instead of current one?
-*** TODO Add virtual keyboard close button
-    Add x-button top/right inside the keyboard? Or replace virtual keyboard
-    icon with a slashed through keyboard to indicate that it can be used to
-    close the virtual keyboard?
-*** TODO Display text input caret (cursor) with virtual keyboard
-    When the virtual keyboard is shown the caret should always be displayed in
-    the search query. This can be done by making sure the text input element is
-    always in focus – meaning that clicking on a virtual keyboard key, or using
-    tab to navigate around in the keyboard needs be handled "manually" by the
-    script.
-
-    Ie, while the virtual keyboard is up, use a class to show the currently
-    selected button, and modify that based in tab.
-*** TODO Make virtual keyboard come sliding out from under the search form
-    The on-screen keyboard should be displayed on top of search results, so
-    that dropping the keyboard does not scroll the search results.
 *** TODO Make search form drop down on top of search result
     When scrolling down the search form should scroll up with the page, when
     scrolling up it should be immediately revealed -- just like URL bar in the
@@ -1126,7 +1135,7 @@
    (pressed once for 􌤤, twice for 􌥄, three times for 􌤣, etc).
 ** TODO Handshape preview should be displayed topmost                   :BUG:
    Currently in winds up under the <textarea>. :(
-** TODO Should use same virtual keyboard code as lexicon
+** TODO Should use same onscreen keyboard code as lexicon
 ** TODO Run code + HTML + CSS through validator.
 ** TODO Add tests for Javascript code
 ** TODO Ease-of-use: Hovering on symbol buttons should display help info
@@ -1318,13 +1327,13 @@
 *** DONE Redesign focus markings
 *** DONE Widen search form in fullscreen mode
 *** DONE Use flexboxes for search form layout
-    Can't use 'overflow: hidden' here because that would hide the virtual
+    Can't use 'overflow: hidden' here because that would hide the onscreen
     keyboard (its element is put inside the form, but displayed outside it in
     the DOM).
 *** DONE Styling of search buttons/textarea should be done using #search
     The stuff specific to the search form should use CSS selectors containing
     with '#search' (not 'form').
-*** DONE Fix virtual keyboard CSS
+*** DONE Fix onscreen keyboard CSS
 ** DONE Lexicon: Newlines->space when pasting into <textarea>           :BUG:
    CLOSED: [2019-08-16 Fri 11:08]
    This is a bug since the textarea cannot handle newlines well, and user
@@ -1385,22 +1394,22 @@
    (since both keyboard and magnifier icon in <textarea> can be brightened
    now).
 *** DONE `keyboard.js` shouldn't insert button element into textarea
-    The virtual keyboard icon button should be present in the basic HTML, so
+    The onscreen keyboard icon button should be present in the basic HTML, so
     that the behavior of that button can be defined in the base CSS of the
-    page. Only the DOM element with the virtual keyboard itself should be
+    page. Only the DOM element with the onscreen keyboard itself should be
     inserted by `keyboard.js`.
 
     This avoids having the DOM being updated late in the load cycle (causing
     repaints after rest of page has loaded).
-*** DONE Virtual keyboard buttons should not submit query
-    Pressing a button on the virtual keyboard (with space, enter or mouse
+*** DONE Onscreen keyboard buttons should not submit query
+    Pressing a button on the onscreen keyboard (with space, enter or mouse
     click) should result in that symbol being inserted in the textarea (without
     submitting the form).
-*** DONE Escape should toggle virtual keyboard
-    This should work in textarea, on textarea button in the virtual keyboard.
+*** DONE Escape should toggle onscreen keyboard
+    This should work in textarea, on textarea button in the onscreen keyboard.
 *** DONE Textarea: Enter should submit
 *** DONE Keyboard icon: Space/enter/escape/click should toggle keyboard
-*** DONE Virtual button: Enter/space/click should insert symbol in textarea
+*** DONE Onscreen button: Enter/space/click should insert symbol in textarea
 ** DONE Lexicon: Don't show tooltips if pointer is outside element
    CLOSED: [2019-07-17 Wed 19:42]
    Currently a tooltip is displayed even if the mouse pointer only passed
@@ -1489,7 +1498,7 @@
 ** DONE Lexicon: If all search terms are negative: Add implicit '*'
    CLOSED: [2019-07-06 Sat 20:12]
    The implicit '*' should not hilight anything.
-** DONE Virtual keyboard: Add handshape images to tooltips
+** DONE Onscreen keyboard: Add handshape images to tooltips
    CLOSED: [2019-06-29 Sat 17:54]
 ** DONE Lexicon: Hide broken image icon (if any) on video load          :BUG:
    CLOSED: [2019-01-28 Mon 10:01]
@@ -1762,7 +1771,7 @@
    CLOSED: [2018-08-23 Thu 16:04]
 ** DONE Lexicon: Tooltips which can handle transcription font
    CLOSED: [2018-08-23 Thu 15:42]
-   Transparency (when hovering above with virtual keyboard button). Make sure
+   Transparency (when hovering above with onscreen keyboard button). Make sure
    hovering image fits on screen.
 ** DONE Lexicon: Optimize search speed
    CLOSED: [2018-08-22 Wed 19:56]
@@ -1950,10 +1959,10 @@
    focus indicator border.
 ** DONE Make GUI turquoise
    CLOSED: [2018-01-18 Thu 17:45]
-** DONE Virtual keyboard should not rely on HTML
+** DONE Onscreen keyboard should not rely on HTML
    CLOSED: [2018-01-08 Mon 06:40]
    All the HTML, CSS etc. should be in self-contained Javascript module.
-** DONE Virtual keyboard shouldn't respond to Alt-Esc etc.
+** DONE Onscreen keyboard shouldn't respond to Alt-Esc etc.
    CLOSED: [2018-01-07 Sun 12:45]
    Only plain Esc, without qualifier keys, should result in the onscreen
    keyboard being displayed.
