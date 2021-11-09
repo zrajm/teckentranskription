@@ -514,6 +514,24 @@
     Present search result in a sortable table? Should be able to sort by swedish
     word, and by sign language.
 ** [0/30] GUI
+*** [0/3] Menu
+**** TODO Focus marking on close icon should look same as on links
+     Simplify CSS so that focus marking look the same for the X icon as for the
+     links. (This will be clearer to the user.)
+**** TODO Improve focus trapping
+     When selecting the URL bar in the browser, Tabbing and Shift-Tabbing the
+     focus should only go to the menu, no other parts of the page.
+**** TODO Menu footer must not overlap menu items
+     The menu footer/copyright text should not overlap the last menu items if
+     screen isn't tall enough. (Instead there the menu should get a scrollbar.)
+
+     Currently the menu footer is placed using `position: absolute` but flexbox
+     should be used instead.
+**** TODO Add 'Om lexikonet' menu item
+     An info text briefly describing design idea, nature of cooperation with
+     'Svenskt teckenspråkslexikon' and the CC license.
+
+     + Add CC license text + note data source
 *** TODO Allow highlighting of overlapping search result
     If one searches for `hej` and `hej då` at the same time, the highlight
     should be doubled on `hej` in the search result.
@@ -526,18 +544,20 @@
         ----------------------------------------
         <mark><mark>hej</mark> då</mark>
         ----------------------------------------
-*** TODO Hide menu when item is clicked
-*** TODO Hide menu when clicking outside it
 *** TODO Move SVG to CSS? -- Does that work with currentFill?
     (To make HTML form more readable.)
 *** TODO Unify :focus marking styles
     There should be two types of focus markers: borders and icons. Menu and
     form icons (clear and keyboard) button should look the same.
-*** [1/8] Unify menu & overlay style
+*** [1/9] Unify menu & overlay style
     Menu & overlays should have the same look-and-feel. Should this also apply
     to the on-screen keyboard?
-**** TODO Use same style for on-screen keyboard(?)
-     Ie darken everything all but input form when using the on-screen keyboard?
+**** TODO Focus trapping for onscreen keyboard(?)
+     Should focusing be trapped to onscreen keyboard + search field when
+     keyboard is open? (Similar to the left hand side menu.)
+**** TODO Use same/similar style for on-screen keyboard(?)
+     I.e. darken everything all but input form when using the on-screen
+     keyboard?
 **** TODO Hover on scrim: Hilite close button
 **** TODO Click on scrim: Close menu/overlay
 **** TODO Click on close: Close menu/overlay
@@ -569,16 +589,6 @@
 
     This should new interface should have dropdown icon (small downwards
     pointing triangle) rather than a keyboard for an icon.
-*** TODO Add 'Om lexikonet' menu item
-    An info text briefly describing design idea, nature of cooperation with
-    'Svenskt teckenspråkslexikon' and the CC license.
-
-    + Add CC license text + note data source
-*** TODO Place menu footer with flexbox
-    Currently the menu footer will overlap the text above it if window is
-    resized to be very short. It should instead always be placed below, and if
-    there isn't room for all of the menu content the menu should get a scroll
-    bar.
 *** TODO On pageload: Faster selection of fullscreen or normal search
     Currently, if loading the page without a query, first the 'small' version
     of the query is displayed briefly.
@@ -1130,6 +1140,22 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** [4/4] Lexicon: Menu improvements
+*** DONE Close menu when item is clicked
+    CLOSED: [2021-11-09 Tue 16:19]
+*** DONE Close menu when clicking outside it
+    CLOSED: [2021-11-09 Tue 16:19]
+*** DONE Menu focus trapping
+    CLOSED: [2021-11-09 Tue 16:19]
+    I.e. if you tab around when the menu is open the focus should only move
+    between the links in the menu and the menu close icon.
+*** DONE Menu keyboard shortcuts
+    CLOSED: [2021-11-09 Tue 16:19]
+    | Key            |                          |
+    |----------------+--------------------------|
+    | Escape         | Exit menu                |
+    | Tab / Down     | Focus next menu item     |
+    | Shift-Tab / Up | Focus previous menu item |
 ** DONE Lexicon: Add better ids for hash-linking
    CLOSED: [2021-11-04 Thu 22:31]
 ** DONE Lexicon: Use regular FreeFont for bold/italics in docs

@@ -78,7 +78,6 @@ header {
   box-shadow: none;
 }
 .menu-close:focus > svg,
-.menu button.menu-open:focus + aside > .menu-close > svg,
 #search.focus,
 #search .icon:focus > svg {
   box-shadow: 0 0 0 3px rgba(153, 153, 255, .375); /* focus outline */
@@ -87,7 +86,6 @@ header {
   border-color: #99f; /* focus border color */
 }
 .menu-close:focus > svg,
-.menu button.menu-open:focus + aside > .menu-close > svg,
 #search .icon:focus > svg {
   border-radius: 1px;
   background: rgba(153, 153, 255, .375); /* focus outline color */
@@ -112,8 +110,7 @@ header {
 .menu .menu-open {
   opacity: .5;
 }
-.menu                            .menu-close:hover > svg,
-.menu button.menu-open + aside > .menu-close:hover > svg,
+.menu .menu-close:hover > svg,
 #search .icon:hover > svg {
   color: #444;                               /* text color */
 }
@@ -668,27 +665,49 @@ a {
   <script>
     $(() => {
       'use strict'
-      /************************************************************************/
       /* global transcriptKeyboard:readonly */
       transcriptKeyboard($('#search'), $('#q'), $('#search .kb'))
-      /************************************************************************/
+
       /* global $:readonly */
-      let $menu = $('.menu')
-        .on('click', '.toggle', () => {  // open/close button
+      ;((i, $menu) => {
+        let $open = $menu.find('.menu-open')
+        let $tabbable = $menu.find('* a, * button')
+        function modulo(n, m) { return ((n % m) + m) % m }
+        function tabTo(j) {
+          i = modulo(j, $tabbable.length)
+          $tabbable[i].focus()
+        }
+        function key(e) {
+          if ($menu.hasClass('shown')) {
+            let key = e.which
+            switch (key) {
+            case 27:  // Escape
+              $menu.removeClass('shown')
+              $open.focus()
+              break
+            case 9:   // Tab
+            case 38:  // Up
+            case 40:  // Down
+              tabTo(i + (key === 38 || (key === 9 && e.shiftKey) ? -1 : 1), e)
+              e.preventDefault()
+            }
+          }
+        }
+        function toggle() {
           $menu.toggleClass('shown')
-        })
-        .on('click', (e) => {          // scrim
-          if (e.target === this) {
-            $menu.removeClass('shown')
+          if ($menu.hasClass('shown')) {  // open: focus 1st item
+            tabTo(0)
+          } else {
+            $open.focus()  // close: focus menu icon
           }
-        })
-        .on('keydown', (e) => {        // Escape key
-          if (e.shiftKey || e.ctrlKey || e.altKey || e.metaKey) { return }
-          if (e.which === 27) {
-            $menu.removeClass('shown')
-          }
-        })
-      /************************************************************************/
+        }
+        $menu
+          .on('keydown', key)
+          .on('click', 'a,button', toggle)
+          .on('click', e => {               // background overlay
+            if (e.target === $menu[0]) { toggle() }
+          })
+      })(0, $('.menu'))
     })
   </script>
   <script async src="https://static.getclicky.com/101332481.js"></script>
