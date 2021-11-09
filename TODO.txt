@@ -521,12 +521,6 @@
 **** TODO Improve focus trapping
      When selecting the URL bar in the browser, Tabbing and Shift-Tabbing the
      focus should only go to the menu, no other parts of the page.
-**** TODO Menu footer must not overlap menu items
-     The menu footer/copyright text should not overlap the last menu items if
-     screen isn't tall enough. (Instead there the menu should get a scrollbar.)
-
-     Currently the menu footer is placed using `position: absolute` but flexbox
-     should be used instead.
 **** TODO Add 'Om lexikonet' menu item
      An info text briefly describing design idea, nature of cooperation with
      'Svenskt teckenspråkslexikon' and the CC license.
@@ -1140,7 +1134,14 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
-** [4/4] Lexicon: Menu improvements
+** [5/5] Lexicon: Menu improvements
+*** DONE Menu footer must not overlap menu items
+    CLOSED: [2021-11-09 Tue 17:13]
+    The menu footer/copyright text should not overlap the last menu items if
+    screen isn't tall enough. (Instead there the menu should get a scrollbar.)
+
+    Currently the menu footer is placed using `position: absolute` but flexbox
+    should be used instead.
 *** DONE Close menu when item is clicked
     CLOSED: [2021-11-09 Tue 16:19]
 *** DONE Close menu when clicking outside it
