@@ -1,22 +1,5 @@
-/* Copyright 2016-2021 by zrajm. Released under GPLv3 license. */
+/* Copyright 2016-2022 by zrajm. Released under GPLv3 license. */
 /* styles needed beyond first screenfull of content */
-
-noscript {
-  z-index: 1;
-  position: fixed;
-  background: #ff4;
-  text-align: center;
-  font-weight: bold;
-  font-size: 50px;
-  line-height: 1.5;
-  padding: .25em .5em;
-  box-shadow: .25em .25em .25em rgba(0, 0, 0, .5),
-    0 0 0 3000px rgba(0, 0, 0, .5);
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -30%);
-}
-
 /***************************
 * Side menu (with content).
 */

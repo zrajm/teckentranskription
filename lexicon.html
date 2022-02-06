@@ -1,7 +1,7 @@
 <!doctype html><!--*- ispell-dictionary: "svenska"; js-indent-level: 2 -*-->
 <html lang=sv>
 <head>
-  <!-- Copyright 2017-2021 by zrajm. Released under GPLv3 license. -->
+  <!-- Copyright 2017-2022 by zrajm. Released under GPLv3 license. -->
   <meta charset="UTF-8">
   <link rel="preload" href="freesans-swl.woff2" as="font" type="font/woff2" crossorigin>
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -586,7 +586,11 @@ a {
   </style>
 </head>
 <body class=noquery>
-  <noscript>Den här sidan behöver Javascript för att fungera.</noscript>
+  <center id=noscript style="position:fixed;height:100%;width:100%;z-index:1;display:flex;justify-content:center;flex-direction:column;color:#ed2;background:#000;">
+    <h1>Vänligen aktivera Javascript.</h1>
+    Lexikonet fungerar dessvärre inte utan det. :'(
+    <script>document.querySelector('#noscript').remove()</script>
+  </center>
   <aside class=menu>
     <button class="toggle menu-open" aria-label="Meny"><svg height="17" width="19"><path d="M0 0h19v3H0zm0 14h19v3H0zm0-7h19v3H0z" fill="currentColor"/></svg></button>
     <aside>
@@ -654,7 +658,7 @@ a {
           på <a href="lexicon-help.html" target=_blank>sökhjälpen</a>.
       </ul>
   </aside>
-  <footer>© 2017–2021 <a href="mailto:lexikon@zrajm.org">zrajm</a>,
+  <footer>© 2017–2022 <a href="mailto:lexikon@zrajm.org">zrajm</a>,
     Uppsala. <a href="lexicon-help.html" target=_blank>Sökhjälp.</a>
   </footer>
   <script src="jquery-3.6.0.slim.min.js"></script>
