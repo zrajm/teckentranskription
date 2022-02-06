@@ -84,6 +84,45 @@ h1, h2, h3 {
 }
 h2 { font-size: 33px; }
 h3 { font-size: 28px; }
+hr {
+  margin: 1em;
+  border: 0;
+  height: 2px;
+  background: #000;
+}
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+  top: -0.5em;
+}
+small { font-size: 90%; }
+table {
+  border-collapse: collapse;
+  border: 1px solid black;
+  margin: .75em auto;
+  caption-side: bottom;
+}
+table caption {
+  margin: .5em;
+  text-align: left;
+}
+table tr {
+  column-break-inside: avoid;
+  -moz-column-break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+}
+table th,
+table td {
+  border: 1px solid #000;
+  vertical-align: top;
+  padding: .125em .25em;
+}
+.columns {
+  columns: 25em;
+  column-gap: 1em;
+}
 
 /*****************************************
 * Align these icons with baseline.
