@@ -76,14 +76,6 @@ p { margin: 0; }
 p:empty + p { margin-top: 1em; }
 p:not(:empty) + p { text-indent: 1.5em; }
 
-h1, h2, h3 {
-  margin: .75em 0 .5em 0;
-  font-size: 44px;
-  font-weight: normal;
-}
-h2 { font-size: 33px; }
-h3 { font-size: 28px; }
-
 hr {
   margin: 1em;
   border: 0;
