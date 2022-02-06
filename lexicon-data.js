@@ -1,4 +1,4 @@
-let lexiconDate=new Date("2022-01-31T07:00:29Z");
+let lexiconDate=new Date("2022-01-31T07:00:29Z")
 let lexiconTags=["/bokstavering",
 "/språkvetenskap",
 "/ovanligt tecken",
@@ -290,7 +290,7 @@ let lexiconTags=["/bokstavering",
 "/geografi/orter/Europa/Belgien",
 "/geografi/orter/Europa/Bulgarien",
 "/geografi/orter/Europa/Danmark",
-"/geografi/orter/Europa/Serbien"];
+"/geografi/orter/Europa/Serbien"]
 let lexicon=[
 ["00001","􌤀􌦫􌥓􌤷􌤟􌥼􌥻","taxi",103],
 ["00002","􌤀􌤢􌥓􌥘􌥲􌦀􌥼􌤟","dop","döpa",6],
@@ -20130,7 +20130,7 @@ let lexicon=[
 ["20365","#(protein)","protein",0,84],
 ["20367","􌤵􌥗􌤎􌤎􌤵􌤶􌤟􌥼􌥻","Nextcloud",12]]
 .map(e=>{
-	let c=0;
-	return[...e.map((v,i)=>i<3||isNaN(v)?v:lexiconTags[c++,v]),...(c?['/'+c]:[])];
-});
-lexiconTags=lexiconTags.sort((a,b)=>a.localeCompare(b,'sv',{sensitivity:'base'}));
+	let c=0
+	return[...e.map((v,i)=>i<3||isNaN(v)?v:lexiconTags[c++,v]),...(c?['/'+c]:[])]
+})
+lexiconTags=lexiconTags.sort((a,b)=>a.localeCompare(b,'sv',{sensitivity:'base'}))

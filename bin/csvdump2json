@@ -247,14 +247,14 @@ my $date_str = time_str($mtime);
 my $lexicon = jsonify(@thingy);
 
 print <<"END_OF_FILE";
-let lexiconDate=new Date("$date_str");
-let lexiconTags=$tags;
+let lexiconDate=new Date("$date_str")
+let lexiconTags=$tags
 let lexicon=$lexicon
 .map(e=>{
-	let c=0;
-	return[...e.map((v,i)=>i<3||isNaN(v)?v:lexiconTags[c++,v]),...(c?['/'+c]:[])];
-});
-lexiconTags=lexiconTags.sort((a,b)=>a.localeCompare(b,'sv',{sensitivity:'base'}));
+	let c=0
+	return[...e.map((v,i)=>i<3||isNaN(v)?v:lexiconTags[c++,v]),...(c?['/'+c]:[])]
+})
+lexiconTags=lexiconTags.sort((a,b)=>a.localeCompare(b,'sv',{sensitivity:'base'}))
 END_OF_FILE
 
 #[eof]

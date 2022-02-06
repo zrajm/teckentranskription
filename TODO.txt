@@ -1143,6 +1143,8 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Removed final ';' in lexicon data code
+   CLOSED: [2022-02-07 Mon 00:51]
 ** DONE Query `=/*` and `/` matches all signs                           :BUG:
    CLOSED: [2022-02-05 Sun 22:10]
    This is the result of a thinko on my part. Because all signs have a tag
