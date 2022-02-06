@@ -381,7 +381,7 @@
     sounds like it would always be good, right?)
 *** TODO Overlay by entering in URL
 *** TODO Overlay by clicking on Swedish of sign
-** [0/13] Query language
+** [1/15] Query language
 *** TODO Query `'('` results in non-zero length query object            :BUG:
     Meaning that no search tips are displayed, even though there is no search
     result.
@@ -1143,6 +1143,21 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Query `=/*` and `/` matches all signs                           :BUG:
+   CLOSED: [2022-02-05 Sun 22:10]
+   This is the result of a thinko on my part. Because all signs have a tag
+   counter `/#` (where # is a number 0–5), and even signs that do not have a
+   tag have tag counter of `/0` – this means that ALL signs effectively have a
+   tag (even if that is just zeroed tag counter).
+
+   I implemented this counter to make it possible to search for signs with a
+   specific number of tags, and I mistakenly thought that a tag counter of zero
+   would be useful and/or simply consistent. BUT signs without tags can be
+   found with `-=/*`, meaning that the zeroed tag counter is useless, and
+   results in false positives for queries `=/*`, `/` and the like.
+
+   Solution is to keep the tag counter, EXCEPT for signs that doesn't have
+   tags.
 ** [5/5] Lexicon: Menu improvements
 *** DONE Menu footer must not overlap menu items
     CLOSED: [2021-11-09 Tue 17:13]

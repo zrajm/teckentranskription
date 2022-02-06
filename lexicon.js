@@ -425,8 +425,7 @@ function hilite(str, regex, func) {
 
 function htmlifyTags(tags, hiliteRegex) {
   'use strict'
-  // Tag count starts at -1 to compensate for the tag counter (e.g. '/1').
-  let count = { tag: -1, warn: 0 }
+  let count = { tag: 0, warn: 0 }
   let match = { tag: false, warn: false }
   if (tags.length === 1) {
     return ''

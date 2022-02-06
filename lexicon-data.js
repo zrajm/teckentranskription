@@ -20131,6 +20131,6 @@ let lexicon=[
 ["20367","􌤵􌥗􌤎􌤎􌤵􌤶􌤟􌥼􌥻","Nextcloud",12]]
 .map(e=>{
 	let c=0;
-	return[...e.map((v,i)=>i<3||isNaN(v)?v:lexiconTags[c++,v]),'/'+c];
+	return[...e.map((v,i)=>i<3||isNaN(v)?v:lexiconTags[c++,v]),...(c?['/'+c]:[])];
 });
 lexiconTags=lexiconTags.sort((a,b)=>a.localeCompare(b,'sv',{sensitivity:'base'}));
