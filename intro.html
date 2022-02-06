@@ -1,7 +1,7 @@
 <!doctype html><!--*- ispell-dictionary: "svenska"; js-indent-level: 4 -*-->
 <html lang=sv class=hyphenate style="visibility:visible">
 <head>
-  <!-- Copyright 2017-2021 by zrajm. Released under GPLv3 license. -->
+  <!-- Copyright 2017-2022 by zrajm. Released under GPLv3 license. -->
   <meta charset="UTF-8">
   <link rel="shortcut icon" type="image/x-icon" href=favicon.ico>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,289 +9,248 @@
   <link rel=stylesheet href=intro.css>
   <link rel=license href=LICENSE.txt>
   <style>
-    main { padding: .25em 1em; }
-
-    .x2 { font-size: 1.8em; line-height: 50px !important; }
-    .x1 { font-size: 1rem; line-height: normal; }
-
-    a[href^="http://teckensprakslexikon.su.se/ord/"],
-    i.sign {
-        font-style: normal;
-        font-weight: bold;
-        font-variant: small-caps;
-        text-transform: lowercase;
-    }
-    span.hflip {
-        display: inline-block;
-        transform: scale(-1,1);
-        text-indent: 0;
-    }
-    span.vflip {
-        display: inline-block;
-        transform: scale(1,-1);
-    }
-    span.abs {
-        position: absolute;
-    }
-
-    .hilite { background: #ddd !important; }
-
-    p + hr { display: none; }
-
-    .FIXME { background: rgba(255, 255, 0, .75); font-weight: bold; }
-    :not(td,tr).FIXME:before { content: "FIXME: "; }
-    .FIXME:empty:before { content: "FIXME"; }
-
-    .float-left, .float-right {
-        float: left;
-        border: 1px solid #888;
-        padding: 2px !important;
-        margin-right: 10px !important;
-        margin-top: 5px !important;
-    }
-    .float-right { float: right; }
-    .small-left {
-        padding-right: 4px !important;
-        height: 3em !important;
-    }
-    .center-content { text-align: center; }
-
-    p:not(:empty) + p:not(:empty) {
-        margin-top: -1em;
-        text-indent: 1em;
-    }
-
-    div.space {
-        margin: 1em;
-        margin-right: 0;
-    }
-
-    summary { cursor: pointer; }
-    details.button {
-        border: 2px solid #aaa;
-        border-radius: 2px;
-        padding: 0;
-    }
-    details.button summary {
-        background: #aaa;
-        margin: 0;
-        padding: 6px 13px;
-    }
-    details summary h1 {
-        display: inline;
-    }
-
-    p.hanging, .hanging p {
-        /* override text-indent specificity of 'p:not(:empty) + p:not(:empty)' rule */
-        text-indent: -1em !important;
-        padding-left: 1em;
-    }
-
-    p > img[src$=".svg"] {
-        position: relative;
-        top: .01em;
-        max-height: .8em;
-        padding: 0 .05em;
-    }
-
-    table {
-      caption-side: bottom;
-      column-break-inside: avoid;
-      -moz-column-break-inside: avoid;
-      -webkit-column-break-inside: avoid;
-    }
-    table caption {
-        margin: .5em;
-        text-align: left;
-    }
-    table.border-example {
-        border: 1px solid black;
-        border-collapse: collapse;
-    }
-    table.border-example th,
-    table.border-example td {
-        border: 1px solid black;
-        padding: .25em .5em;
-    }
-
-    table[border="1"] td {
-        border: 1px solid black;
-    }
-
-    table[border="0"],
-    table[border="0"] td {
-        margin-left: 1em;
-        border: none !important;
-        height: initial !important;
-        line-height: initial !important;
-    }
-
-
-    /****************************************************************************/
-    /* From: https://gist.github.com/unruthless/413930 */
-    sub, sup, .fn {
-      font-size: 75%;
-      line-height: 0;
-      position: relative;
-      vertical-align: baseline;
-      display: inline-block;
-    }
-    sup, .fn { top: -0.5em; }
-    sub { bottom: -0.25em; }
-    /****************************************************************************/
-
-    th > details { font-weight: normal; }
-    th > details > summary { font-weight: bold; }
-
-    table.attityd {
-        border-collapse: collapse;
-    }
-    table.attityd th,
-    table.attityd td {
-        height: 45px;
-        padding: 4px;
-        border: 1px solid black;
-    }
-    table.attityd th,
-    table.attityd td { text-align: center; }
-    table.attityd td.symbol { width: 45px; }
-
-    /* inline figures (used for handshape + handshape name) */
-    figure.inline {
-        display: inline-block;
-        margin: 0;
-        border: 1px solid black;
-        vertical-align: top;
-    }
-    figure.inline figcaption img { max-height: 1em; }
-
-    .columns {
-        column-count: auto;
-        column-gap: 12px;
-        column-width: 370px;
-        -moz-column-count: auto;
-        -moz-column-gap: 12px;
-        -moz-column-width: 370px;
-        -webkit-column-count: auto;
-        -webkit-column-gap: 12px;
-        -webkit-column-width: 370px;
-    }
-    .columns > details {
-      border: 1px solid black;
-      padding: 0 .75em;      /* padding for content */
-      margin: 2px 0;         /* for focus shadow not to be broken across columns */
-      display: inline-block; /* suppress break over columns */
-      width: 100%;
-    }
-    /*** (middle) <details> summary ***/
-    .columns > details > summary {
-      position: relative;
-      margin: 0 -.75em;      /* override parent element's horisontal padding */
-      height: 55px;
-      display: flex;
-      align-items: center;
-    }
-    /**************************************************************/
-    /* <details> folding arrow */
-    details > summary { list-style: none; }
-    details > summary::-webkit-details-marker { display: none; }
-    details > summary::-moz-list-bullet { list-style-type: none;  }
-
-    details[open] > summary:before { content: "\25bc"; }
-    details       > summary:before {
-      display: inline-block;
-      width: 1em;
-      content: "\25b6";
-    }
-    /* Hanging text indent */
-    details.quote         { padding: 0 0 0  1em; }
-    details.quote summary {  margin: 0 0 0 -1em; }
-    /* Reduce top/bottom margin for inside text */
-    details.quote[open] > summary + *  { margin-top:    .5em; }
-    details.quote[open] > *:last-child { margin-bottom: .5em; }
-    /**************************************************************/
-
-    .columns > details:not(.head) > summary:before {
-      /* remove extra padding in glyph lists */
-      padding-right: 0;
-      margin-right: -.15em;
-    }
-
-    .columns > details.head { background: #ccc; }
-    .columns > details.head > summary { font-weight: bold; }
-    /*** (on left) transcription symbol (one char or SVG) ***/
-    .columns > details > summary > span > img { height: .9em; }
-    .columns > details > summary > div > span,
-    .columns > details > summary > span {
-      display: inline-block;
-      line-height: 55px;    /* = parent summary height */
-      font-weight: normal;
-      font-size: 1.8em;     /* same as .x2 */
-      vertical-align: top;  /* to align with <img> in same container */
-      min-width: 1.25em;
-      text-align: center;
-    }
-    /*** (on right) handshape picture(s) ***/
-    .columns > details > summary > div {
-      height: 100%;
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-    .columns > details > summary > div > img {
-      height: 100%;
-      padding: 2px 2px 0 2px;
-    }
-    /*** expanded <details> ***/
-    /*
-    ** Make sure we have consistent margins top/bottom vertical margin
-    ** in <details> content, by adding a margin below the <summary>, and a
-    ** padding at end of <details> (and strip corresponding margin in contained
-    ** elements).
-    */
-    .columns > details[open] > summary { margin-bottom: .5em; }
-    .columns > details[open] { padding-bottom: .5em; }
-    .columns > details[open] > *:last-child { margin-bottom: 0; }
-    .columns > details[open] > summary + * { margin-top: 0; }
-    .columns > details[open] > summary {
-      font-weight: bold;
-      background: rgba(0, 0, 255, .1);
-      margin-bottom: .5em; /* same as .column > details vpadding */
-    }
-    .columns > details[open] > summary > span { font-weight: normal; }
-
-    /*** transcription examples with field names ***/
-    .field-example {
-      Xoutline: 1em solid rgba(255, 0, 255, .5);
-    }
-    .field-example table,
-    table.field-example {
-      border-collapse: collapse;
-      margin: 0 -.25em;     /* negate td/th horiz padding */
-    }
-    .field-example th {
-      font-size: smaller;
-      color: rgba(0, 0, 0, .25);
-      font-weight: inherit;
-    }
-    .field-example th + th,
-    .field-example td + td {
-      border-left: 1px solid rgba(0, 0, 0, .25);
-    }
-    .field-example th,
-    .field-example td {
-      padding: 0 .125em;
-      text-align: center;
-    }
-    .field-example td {
-      font-size: 1.8em; /* same as .x2 */
-      padding-top: .25em;
-    }
-    div.inline-figures { margin: -.5em 0 1em;  }
-    div.inline-figures > figure {
-      display: inline-block;
-      margin: .5em 1em;
-    }
+main { padding: .25em 1em; }
+.x2 { font-size: 1.8em; line-height: 50px !important; }
+.x1 { font-size: 1rem; line-height: normal; }
+a[href^="http://teckensprakslexikon.su.se/ord/"], i.sign {
+  font-style: normal;
+  font-weight: bold;
+  font-variant: small-caps;
+  text-transform: lowercase;
+}
+span.hflip {
+  display: inline-block;
+  transform: scale(-1,1);
+  text-indent: 0;
+}
+span.vflip {
+  display: inline-block;
+  transform: scale(1,-1);
+}
+span.abs {
+  position: absolute;
+}
+.hilite { background: #ddd !important; }
+p + hr { display: none; }
+.FIXME { background: #ff0c; font-weight: bold; }
+:not(td,tr).FIXME:before { content: "FIXME: "; }
+.FIXME:empty:before { content: "FIXME"; }
+.float-left, .float-right {
+  float: left;
+  border: 1px solid #888;
+  padding: 2px !important;
+  margin-right: 10px !important;
+  margin-top: 5px !important;
+}
+.float-right { float: right; }
+.small-left {
+  padding-right: 4px !important;
+  height: 3em !important;
+}
+.center-content { text-align: center; }
+p:not(:empty) + p:not(:empty) {
+  margin-top: -1em;
+  text-indent: 1em;
+}
+div.space {
+  margin: 1em;
+  margin-right: 0;
+}
+summary { cursor: pointer; }
+details.button {
+  border: 2px solid #aaa;
+  border-radius: 2px;
+  padding: 0;
+}
+details.button summary {
+  background: #aaa;
+  margin: 0;
+  padding: 6px 13px;
+}
+details summary h1 {
+  display: inline;
+}
+p.hanging, .hanging p {
+  /* override text-indent specificity of 'p:not(:empty) + p:not(:empty)' rule */
+  text-indent: -1em !important;
+  padding-left: 1em;
+}
+p > img[src$=".svg"] {
+  position: relative;
+  top: .01em;
+  max-height: .8em;
+  padding: 0 .05em;
+}
+table {
+  caption-side: bottom;
+  column-break-inside: avoid;
+  -moz-column-break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+}
+table caption {
+  margin: .5em;
+  text-align: left;
+}
+table.border-example {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+table.border-example th, table.border-example td {
+  border: 1px solid black;
+  padding: .25em .5em;
+}
+table[border="1"] td {
+  border: 1px solid black;
+}
+table[border="0"], table[border="0"] td {
+  margin-left: 1em;
+  border: none !important;
+  height: initial !important;
+  line-height: initial !important;
+}
+/* From: https://gist.github.com/unruthless/413930 */
+sub, sup, .fn {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+  display: inline-block;
+}
+sup, .fn { top: -0.5em; }
+sub { bottom: -0.25em; }
+/**/
+th > details { font-weight: normal; }
+th > details > summary { font-weight: bold; }
+table.attityd {
+  border-collapse: collapse;
+}
+table.attityd th, table.attityd td {
+  height: 45px;
+  padding: 4px;
+  border: 1px solid black;
+}
+table.attityd th, table.attityd td { text-align: center; }
+table.attityd td.symbol { width: 45px; }
+/* inline figures (used for handshape + handshape name) */
+figure.inline {
+  display: inline-block;
+  margin: 0;
+  border: 1px solid black;
+  vertical-align: top;
+}
+figure.inline figcaption img { max-height: 1em; }
+.columns {
+  column-count: auto;
+  column-gap: 12px;
+  column-width: 370px;
+  -moz-column-count: auto;
+  -moz-column-gap: 12px;
+  -moz-column-width: 370px;
+  -webkit-column-count: auto;
+  -webkit-column-gap: 12px;
+  -webkit-column-width: 370px;
+}
+.columns > details {
+  border: 1px solid black;
+  padding: 0 .75em;      /* padding for content */
+  margin: 2px 0;         /* for focus shadow not to be broken across columns */
+  display: inline-block; /* suppress break over columns */
+  width: 100%;
+}
+/* (middle) <details> summary */
+.columns > details > summary {
+  position: relative;
+  margin: 0 -.75em;      /* override parent element's horisontal padding */
+  height: 55px;
+  display: flex;
+  align-items: center;
+}
+/* <details> folding arrow */
+details > summary { list-style: none; }
+details > summary::-webkit-details-marker { display: none; }
+details > summary::-moz-list-bullet { list-style-type: none;  }
+details[open] > summary:before { content: "\25bc"; }
+details       > summary:before {
+  display: inline-block;
+  width: 1em;
+  content: "\25b6";
+}
+/* Hanging text indent */
+details.quote         { padding: 0 0 0  1em; }
+details.quote summary {  margin: 0 0 0 -1em; }
+/* Reduce top/bottom margin for inside text */
+details.quote[open] > summary + *  { margin-top:    .5em; }
+details.quote[open] > *:last-child { margin-bottom: .5em; }
+/**/
+.columns > details:not(.head) > summary:before {
+  /* remove extra padding in glyph lists */
+  padding-right: 0;
+  margin-right: -.15em;
+}
+.columns > details.head { background: #ccc; }
+.columns > details.head > summary { font-weight: bold; }
+/* (on left) transcription symbol (one char or SVG) */
+.columns > details > summary > span > img { height: .9em; }
+.columns > details > summary > div > span, .columns > details > summary > span {
+  display: inline-block;
+  line-height: 55px;    /* = parent summary height */
+  font-weight: normal;
+  font-size: 1.8em;     /* same as .x2 */
+  vertical-align: top;  /* to align with <img> in same container */
+  min-width: 1.25em;
+  text-align: center;
+}
+/* (on right) handshape picture(s) */
+.columns > details > summary > div {
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.columns > details > summary > div > img {
+  height: 100%;
+  padding: 2px 2px 0 2px;
+}
+/* expanded <details> */
+/* Make sure we have consistent margins top/bottom vertical margin in <details>
+content, by adding a margin below the <summary>, and a padding at end
+of <details> (and strip corresponding margin in contained elements). */
+.columns > details[open] > summary { margin-bottom: .5em; }
+.columns > details[open] { padding-bottom: .5em; }
+.columns > details[open] > *:last-child { margin-bottom: 0; }
+.columns > details[open] > summary + * { margin-top: 0; }
+.columns > details[open] > summary {
+  font-weight: bold;
+  background: #00f2;
+  margin-bottom: .5em; /* same as .column > details vpadding */
+}
+.columns > details[open] > summary > span { font-weight: normal; }
+/* transcription examples with field names */
+.field-example table, table.field-example {
+  border-collapse: collapse;
+  margin: 0 -.25em;     /* negate td/th horiz padding */
+}
+.field-example th {
+  font-size: smaller;
+  color: #0004;
+  font-weight: inherit;
+}
+.field-example th + th, .field-example td + td {
+  border-left: 1px solid #0004;
+}
+.field-example th, .field-example td {
+  padding: 0 .125em;
+  text-align: center;
+}
+.field-example td {
+  font-size: 1.8em; /* same as .x2 */
+  padding-top: .25em;
+}
+div.inline-figures { margin: -.5em 0 1em;  }
+div.inline-figures > figure {
+  display: inline-block;
+  margin: .5em 1em;
+}
   </style>
 </head>
 <body lang=sv>
@@ -6776,7 +6735,7 @@
     <a href=LICENSE.txt rel=license
       title="Released under the GNU General Public License, Version 3 (GPLv3)."
       >License</a>
-    <br>© 2017–2021 zrajm, Uppsala.
+    <br>© 2017–2022 zrajm, Uppsala.
   </footer>
   <img id=hover style="display:none;position:fixed;bottom:0;right:0;border:4px solid black;padding: .5em 1em;background:#fff">
   <script src="jquery-3.6.0.slim.min.js"></script>
@@ -6791,7 +6750,7 @@
     (() => {
       /* global $:readonly */
       'use strict'
-      /**************************************************************************/
+
       function supplant(s, o) {
         return s.replace(/{([^{}]*)}/g, (a, b) => {
           let r = o[b]
@@ -6842,7 +6801,7 @@
       $('.tags').chosen({ width: '500px' })
       $('.count').each(updateCounter)
       $('.tags,.bool,.mode').change(filter)
-      /**************************************************************************/
+
       {
         let state = 0
         let attrs = [{
@@ -6873,7 +6832,7 @@
             $toggle.attr(attrs[state])
           })
       }
-      /**************************************************************************/
+
       $('img[src^="pic/x/"]').hover(
         e => {
           let image = $(e.currentTarget).css('background', '#0002').attr('src')
@@ -6884,7 +6843,7 @@
           $('#hover').hide()
         }
       )
-      /**************************************************************************/
+
       $('[href]').each((_, el) => {
         let $el = $(el)
         let href = $el.attr('href')
@@ -6897,7 +6856,7 @@
           $el.attr('href', 'http://teckensprakslexikon.su.se/ord/' + href)
         }
       })
-      /**************************************************************************/
+
     })()
   </script>
   <script async src="https://static.getclicky.com/101332481.js"></script>

@@ -1,72 +1,58 @@
 <!doctype html>
 <html>
 <head>
-  <!-- Copyright 2017-2021 by zrajm. Released under GPLv3 license. -->
+  <!-- Copyright 2017-2022 by zrajm. Released under GPLv3 license. -->
   <meta charset="UTF-8">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <title>FreeSans-SWL: Ett typsnitt för transkription av svenskt teckenspråk</title>
   <style>
-    @font-face {
-        font-family: "FreeSans-SWL";
-        src: url("freesans-swl.woff2");
-        font-display: swap;
-    }
-    body {
-        font-family: "FreeSans-SWL", "FreeSans", sans-serif;
-        line-height: 1.5;
-    }
-
-    * { margin: 0; padding: 0; }
-
-    .vert {
-        padding: .5em .25em !important;
-    }
-    .vert span {
-        writing-mode: vertical-rl;
-        margin-bottom: -.5em !important;
-    }
-
-    blockquote, body, dl, img, ol, pre, ul { margin: 1em; }
-    header, footer, table { margin: 1em 0; }
-
-    h1, h2, h3, h4, h5, h6, h7 { margin: 1em 0 .5em 0; }
-    p + p { text-indent: 1em; }
-    p + hr { display: none; }
-    hr + p { margin-top: 1em; }
-
-    /* Definition lists */
-    dt:before { display: block; content: ""; }
-    dt, dd {
-        display: inline;
-    }
-    dt {
-        font-weight: bold;
-    }
-    dd:before { content: " – "; }
-
-    .x2 {
-        font-size: 2em;
-        line-height: 1;
-    }
-
-    .FIXME { background: rgba(255, 255, 0, .75); font-weight: bold; }
-
-    /* tables */
-    table { border-collapse: collapse; }
-    table[border="1"] th,
-    table[border="1"] td {
-        padding: .125em .25em;
-        border: 1px solid #000;
-    }
-    table { caption-side: bottom; }
-    table caption {
-        margin: .5em;
-        text-align: left;
-    }
-
-    /* don't underline links, unless hovering */
-    [href] { text-decoration: none; }
-    [href]:hover { text-decoration: underline; }
+@font-face {
+  font-family: "FreeSans-SWL";
+  src: url("freesans-swl.woff2");
+  font-display: swap;
+}
+body {
+  font-family: "FreeSans-SWL", "FreeSans", sans-serif;
+  line-height: 1.5;
+}
+* { margin: 0; padding: 0; }
+.vert {
+  padding: .5em .25em !important;
+}
+.vert span {
+  writing-mode: vertical-rl;
+  margin-bottom: -.5em !important;
+}
+blockquote, body, dl, img, ol, pre, ul { margin: 1em; }
+header, footer, table { margin: 1em 0; }
+h1, h2, h3, h4, h5, h6, h7 { margin: 1em 0 .5em 0; }
+p + p { text-indent: 1em; }
+p + hr { display: none; }
+hr + p { margin-top: 1em; }
+/* Definition lists */
+dt:before { display: block; content: ""; }
+dt, dd { display: inline; }
+dt { font-weight: bold; }
+dd:before { content: " – "; }
+.x2 {
+  font-size: 2em;
+  line-height: 1;
+}
+.FIXME { background: #ff0b; font-weight: bold; }
+/* tables */
+table { border-collapse: collapse; }
+table[border="1"] th, table[border="1"] td {
+  padding: .125em .25em;
+  border: 1px solid #000;
+}
+table { caption-side: bottom; }
+table caption {
+  margin: .5em;
+  text-align: left;
+}
+/* don't underline links, unless hovering */
+[href] { text-decoration: none; }
+[href]:hover { text-decoration: underline; }
   </style>
 </head>
 
@@ -3587,7 +3573,7 @@
     <a href="LICENSE.txt" rel=license
        title="Released under the GNU General Public License, Version 3 (GPLv3)."
        >License</a>
-    <br>© 2017–2021 zrajm, Uppsala.
+    <br>© 2017–2022 zrajm, Uppsala.
   </footer>
   <script async src="https://static.getclicky.com/101332481.js"></script>
   <noscript><img alt="Clicky" width="1" height="1" src="https://in.getclicky.com/101332481ns.gif"></noscrit>

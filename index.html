@@ -1,121 +1,111 @@
 <!doctype html>
 <html>
 <head>
-  <!-- Copyright 2017-2021 by zrajm. Released under GPLv3 license. -->
+  <!-- Copyright 2017-2022 by zrajm. Released under GPLv3 license. -->
   <meta charset="UTF-8">
   <title>Teckentranskription</title>
   <link rel=stylesheet href="intro.css">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <style>
-    html {
-      line-height: 1.5em;
-      max-width: 44em;
-      margin: 0 auto;
-      background: #888;
-    }
-    body {
-      background: #fff;
-      padding: .25em 1em;
-    }
-
-    blockquote, dl, img, ol, pre, ul { margin: 1em; }
-    header, table { margin: 1em 0; }
-
-    h1, h2, h3, h4, h5, h6, h7 { margin: 1em 0 .5em 0; }
-    p + p { text-indent: 1em; }
-    p + hr { display: none; }
-    hr + p { margin-top: 1em; }
-
-    /* tables */
-    table { border-collapse: collapse; }
-    table[border="1"] th,
-    table[border="1"] td {
-        padding: .2em .4em;
-        border: 1px solid #000;
-    }
-
-    /* don't underline links, unless hovering */
-    [href] { text-decoration: none; }
-    [href]:hover { text-decoration: underline; }
-
-    /* other */
-    .x15 { font-size: 1.5em; }
-    .x2 { font-size: 2em; }
-    .x4 { font-size: 4em; }
-
-    /* special for this page */
-    .share {
-      position: relative;
-      text-align: right;
-    }
-    .share button {
-      margin-bottom: 4px;
-      padding: .125em .25em;
-      margin-left: auto;
-      margin-right: 0;
-    }
-    .share div.bubble {
-      box-sizing: border-box;
-      text-align: center;
-      width: 30em;
-      max-width: 100%;
-      display: none;
-      margin: 6px 10px;
-      border-radius: 4px;
-      border: 1px solid rgba(27, 31, 35, 0.15);
-      background: #fff;
-      padding: 5px;
-      z-index: 100;
-      position: absolute;
-      right: 0;
-    }
-   .share div.bubble:before,
-   .share div.bubble:after {
-      border: 8px solid transparent;
-      border-bottom-color: rgba(27, 31, 35, 0.15);
-      content: "";
-      display: block;
-      position: absolute;
-      right: 9px;
-      top: -16px;
-    }
-    .share div.bubble:after {
-      border: 7px solid transparent;
-      border-bottom-color: #fff;
-      right: 10px;
-      top: -14px;
-    }
-    .url {
-      padding: .125em .25em;
-      font-family: monospace;
-      word-wrap: break-word;
-      text-align: left;
-      border: 1px solid rgb(209, 213, 218);
-      border-radius: 3px;
-      box-shadow: rgba(27, 31, 35, 0.075) 0px 1px 2px 0px inset;
-      line-height: 1.5em;
-      padding: 3px 8px;
-      max-height: 7.5em;
-      overflow-y: scroll;
-    }
-
-    button { font-size: 1.25em; }
-    textarea {
-      padding: 0 .5em;
-      box-sizing: border-box;
-      width: 100%;
-      height: 10em;
-      line-height: 1.5em;
-    }
-
-    .relation     button { background-color: #C77BC7; }
-    .attityd      button { background-color: #FCAA5D; }
-    .lage         button { background-color: #7B7BC7; }
-    .handform     button { background-color: #7BC77B; }
-    .forflyttning button { background-color: #C77B7B; }
-    .rorelse      button { background-color: #C77BC7; }
-    .annat        button { background-color: #FCAA5D; }
-    .framtida     button { background-color: #7B7BC7; }
+html {
+  line-height: 1.5em;
+  max-width: 44em;
+  margin: 0 auto;
+  background: #888;
+}
+body {
+  background: #fff;
+  padding: .25em 1em;
+}
+blockquote, dl, img, ol, pre, ul { margin: 1em; }
+header, table { margin: 1em 0; }
+h1, h2, h3, h4, h5, h6, h7 { margin: 1em 0 .5em 0; }
+p + p { text-indent: 1em; }
+p + hr { display: none; }
+hr + p { margin-top: 1em; }
+/* tables */
+table { border-collapse: collapse; }
+table[border="1"] th, table[border="1"] td {
+  padding: .2em .4em;
+  border: 1px solid #000;
+}
+/* don't underline links, unless hovering */
+[href] { text-decoration: none; }
+[href]:hover { text-decoration: underline; }
+/* other */
+.x15 { font-size: 1.5em; }
+.x2 { font-size: 2em; }
+.x4 { font-size: 4em; }
+/* special for this page */
+.share {
+  position: relative;
+  text-align: right;
+}
+.share button {
+  margin-bottom: 4px;
+  padding: .125em .25em;
+  margin-left: auto;
+  margin-right: 0;
+}
+.share div.bubble {
+  box-sizing: border-box;
+  text-align: center;
+  width: 30em;
+  max-width: 100%;
+  display: none;
+  margin: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #1b1f2326;
+  background: #fff;
+  padding: 5px;
+  z-index: 100;
+  position: absolute;
+  right: 0;
+}
+.share div.bubble:before, .share div.bubble:after {
+  border: 8px solid transparent;
+  border-bottom-color: #1b1f2326;
+  content: "";
+  display: block;
+  position: absolute;
+  right: 9px;
+  top: -16px;
+}
+.share div.bubble:after {
+  border: 7px solid transparent;
+  border-bottom-color: #fff;
+  right: 10px;
+  top: -14px;
+}
+.url {
+  padding: .125em .25em;
+  font-family: monospace;
+  word-wrap: break-word;
+  text-align: left;
+  border: 1px solid #d1d5da;
+  border-radius: 3px;
+  box-shadow: #1b1f2313 0px 1px 2px 0px inset;
+  line-height: 1.5em;
+  padding: 3px 8px;
+  max-height: 7.5em;
+  overflow-y: scroll;
+}
+button { font-size: 1.25em; }
+textarea {
+  padding: 0 .5em;
+  box-sizing: border-box;
+  width: 100%;
+  height: 10em;
+  line-height: 1.5em;
+}
+.relation     button { background-color: #c77bc7; }
+.attityd      button { background-color: #fcaa5d; }
+.lage         button { background-color: #7b7bc7; }
+.handform     button { background-color: #7bc77b; }
+.forflyttning button { background-color: #c77b7b; }
+.rorelse      button { background-color: #c77bc7; }
+.annat        button { background-color: #fcaa5d; }
+.framtida     button { background-color: #7b7bc7; }
   </style>
 </head>
 <body>
@@ -332,7 +322,7 @@
     <a href="LICENSE.txt" rel=license
        title="Released under the GNU General Public License, Version 3 (GPLv3)."
        >License</a>
-    <br>© 2017–2021 zrajm, Uppsala.
+    <br>© 2017–2022 zrajm, Uppsala.
   </footer>
   <div id=hover style="display:none;position:fixed;top:0;right:0;border:4px solid black;padding:.5em 1em;background:#fff;opacity:.8;z-index:2147483647"></div>
   <script src="jquery-3.6.0.slim.min.js"></script>

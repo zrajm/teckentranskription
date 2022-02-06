@@ -695,7 +695,7 @@ $('#search-result')
       color: '#fff',
       background: '#555',
       borderRadius: 2,
-      boxShadow: '0 2px 6px rgba(0, 0, 0, .25)',
+      boxShadow: '0 2px 6px #0004',
       fontSize: 16,
       lineHeight: '1.6',
       padding: '.5em',

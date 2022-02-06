@@ -24,26 +24,22 @@ html {
   font-family: "FreeSans-SWL", "FreeSans", sans-serif;
   font-size: 22px;
 }
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 :focus {
-  box-shadow: 0 0 0 3px rgb(173, 189, 224); /* dark focus outline */
+  box-shadow: 0 0 0 3px #abd; /* dark focus outline */
   outline: 0;
 }
-
 /* Make <body> fill first screen. http://stackoverflow.com/q/17555682/ */
 html { height: 100%; overflow-y: scroll; }
 body { min-height: 100%; }
-
 /* line-height must be >1.25 for FreeSans-SWL relation diacritics
 * not to leave remains on previous line when column breaking
 */
 body { line-height: 1.25; }
-
 body {
   display: flex;
   flex-direction: column;
@@ -55,7 +51,6 @@ header {
   color: #444;                    /* text color */
   padding-left: 48px;             /* room for menu button */
 }
-
 #search {
   display: flex;
   border-radius: 4px; /* form border radius */
@@ -69,49 +64,39 @@ header {
   border-width: 1px 0; /* form border width */
   background: #fff;    /* form background */
 }
-
 /* focus & hover */
-#q:focus,
-#q:hover,
-#search .icon:focus,
-#search .icon:hover {
+#q:focus, #q:hover, #search .icon:focus, #search .icon:hover {
   box-shadow: none;
 }
-.menu-close:focus > svg,
-#search.focus,
-#search .icon:focus > svg {
-  box-shadow: 0 0 0 3px rgba(153, 153, 255, .375); /* focus outline */
+.menu-close:focus > svg, #search.focus, #search .icon:focus > svg {
+  box-shadow: 0 0 0 3px #99f6; /* focus outline */
 }
 #search.focus > * {
   border-color: #99f; /* focus border color */
 }
-.menu-close:focus > svg,
-#search .icon:focus > svg {
+.menu-close:focus > svg, #search .icon:focus > svg {
   border-radius: 1px;
-  background: rgba(153, 153, 255, .375); /* focus outline color */
-  color: #569;                           /* submit button background */
+  background: #99f6; /* focus outline color */
+  color: #569; /* submit button background */
 }
 #search.focus:hover {
   box-shadow:
-    0 3px 6px 2px rgba(0, 0, 0, .2),         /* hover shadow */
-    0 0   0   3px rgba(153, 153, 255, .375); /* focus outline */
+    0 3px 6px 2px #0003, /* hover shadow */
+    0 0   0   3px #99f6; /* focus outline */
 }
 #search:hover {
-  box-shadow:
-    0 3px 6px 2px rgba(0, 0, 0, .2);         /* hover shadow */
+  box-shadow: 0 3px 6px 2px #0003; /* hover shadow */
 }
 /* On touchscreen devices (where no input type has hover). */
 @media not all and (any-hover:hover) {
   #search.focus:hover {
-    box-shadow:
-      0 0 0 3px rgba(153, 153, 255, .375); /* focus outline */
+    box-shadow: 0 0 0 3px #99f6; /* focus outline */
   }
 }
 .menu .menu-open {
   opacity: .5;
 }
-.menu .menu-close:hover > svg,
-#search .icon:hover > svg {
+.menu .menu-close:hover > svg, #search .icon:hover > svg {
   color: #444;                               /* text color */
 }
 #q {
@@ -157,14 +142,11 @@ header {
   border: 1px solid transparent;
   border-radius: 0 4px 4px 0;    /* form border radius (right side) */
 }
-#search .submit,
-#search .submit:focus,
-#search .submit:hover {
+#search .submit, #search .submit:focus, #search .submit:hover {
   background: #569; /* submit button background */
   color: #cde;      /* submit button foreground */
 }
-#search .submit:focus,
-#search .submit:hover {
+#search .submit:focus, #search .submit:hover {
   background: #57a; /* submit button background (bright) */
   color: #def;      /* submit button foreground (bright) */
 }
@@ -176,15 +158,13 @@ header {
 #search.focus:invalid .submit:not(:focus):not(:hover) { /* not on IE9 */
   border-color: #99f; /* focus border color */
 }
-
 #search-wrapper {
   margin: 0 0 .5em;
 }
 #search-result {
   margin: 0 auto;
 }
-#nomatch,
-#noquery {
+#nomatch, #noquery {
   min-width: 12em;
   max-width: 22em;
   width: 75%;
@@ -192,8 +172,7 @@ header {
   padding-bottom: 1em;
   display: none;
 }
-body.nomatch #nomatch,
-body.noquery #noquery {
+body.nomatch #nomatch, body.noquery #noquery {
   display: block;
 }
 #nomatch li {
@@ -203,9 +182,7 @@ body > footer {
   margin: auto 0 .5em;
   text-align: center;
 }
-.info,
-body > footer,
-#search-brief {
+.info, body > footer, #search-brief {
   font-size: smaller;
   color: #000;
   opacity: .6;
@@ -222,19 +199,14 @@ body > footer,
   background: #a5e7ef; /* theme color */
   margin: 0 auto 1.5em;
 }
-
-/*************************
-* Full screen search form.
-*/
+/* Full screen search form */
 /* normally hide 'noquery-content' */
 .noquery-content {
   display: none;
 }
-
 /* in 'noquery' mode: show noquery-content + hide normal search result */
 body.noquery .noquery-content { display: block; }
 body.noquery #search-wrapper { display: none; }
-
 .logo { margin-top: -3em; }
 .logo svg {
   height: 5em;
@@ -243,7 +215,6 @@ body.noquery #search-wrapper { display: none; }
 @media only screen and (max-width: 450px) { .info .size { display: none; } }
 @media only screen and (max-width: 330px) { .info .beg  { display: none; } }
 @media only screen and (max-width: 220px) { .info .date { display: none; } }
-
 /* form fields changed in 'noquery' mode */
 body.noquery header {
   position: absolute;
@@ -254,7 +225,6 @@ body.noquery header {
   display: block;
   text-align: center;
   padding: 0;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -262,16 +232,12 @@ body.noquery header {
 }
 body.noquery #search {
   width: 70%;
-  XXmax-width: 590px;
   max-width: 610px;
   margin: 1.5rem auto 1.1rem;
 }
 @media only screen and (max-width: 590px) { body.noquery form { width: 80%; }}
 @media only screen and (max-width: 370px) { body.noquery form { width: 90%; }}
-
-/******************************************
-* Result mode selector switch (video/text).
-*/
+/* Result mode selector switch (video/text) */
 .selector {
   float: right;
   cursor: pointer;
@@ -305,28 +271,19 @@ body.noquery #search {
 .video-view .selector > .switch:before { left:  0; }
 .video-view .selector > .video { font-weight: bold; }
 .text-view  .selector > .text  { font-weight: bold; }
-
-/************************************************
-* Stuff common to both result views (video/text).
-*/
+/* Stuff common to both result views (video/text) */
 #search-result > .match {
   column-break-inside: avoid;
   -moz-column-break-inside: avoid;
   -webkit-column-break-inside: avoid;
 }
-
-/*****************************************
-* Align these icons with baseline.
-*/
+/* Align these icons with baseline */
 img[src="pic/warn-marked.svg"],
 img[src="pic/warn.svg"] { position: relative; top: 2px; }
 img[src="pic/tag-marked.svg"],
 img[src="pic/tag.svg"] { position: relative; top: 3px; }
-img[src$="-marked.svg"] { background: rgba(255, 193, 0, .3); }
-
-/*****************************************
-* Stuff for text result view (text/video).
-*/
+img[src$="-marked.svg"] { background: #fb05; }
+/* Stuff for text result view (text/video) */
 .text-view #search-result {
   padding: 0 .5em;
   width: 100% !important;
@@ -341,14 +298,12 @@ img[src$="-marked.svg"] { background: rgba(255, 193, 0, .3); }
 .text-view .video-container {
   display: inline;
 }
-.text-view .video-container,
-.text-view .video-container > * {
+.text-view .video-container, .text-view .video-container > * {
   display: inline;
 }
 .text-view .video-container,
 .text-view .video-container .video-id { margin-left: 0; }
 .text-view .video-container .video-id { font-size: 95%; }
-
 .text-view .video-container > img,
 .text-view .video-container > video,
 .text-view .video-feedback {
@@ -362,34 +317,29 @@ img[src$="-marked.svg"] { background: rgba(255, 193, 0, .3); }
 .text-view .match > a {
   color: inherit;
 }
-
-/******************************************
-* Stuff for video result view (text/video).
-*/
+/* Stuff for video result view (text/video). */
 .video-view #search-result {
   word-spacing: 16px;  /* Used by JS, MUST be in px! */
   font-size: 0;
   line-height: 12px;
 }
 .video-view #search-result > * {
-    word-spacing: normal;
-    font-size: 1rem;
-    line-height: normal;
+  word-spacing: normal;
+  font-size: 1rem;
+  line-height: normal;
 }
 .video-view #search-result > .match {
   display: inline-block;
   width: 270px;                            /* same as .video-container */
   margin: 0;
   text-align: center;
-
   /* text: center or truncate if too long */
   white-space: nowrap;
   text-align: center;
   text-overflow: ellipsis;
   overflow: hidden;
 }
-.video-view .match > a:hover,
-.video-view .match > a:focus {
+.video-view .match > a:hover, .video-view .match > a:focus {
   text-decoration: underline;
 }
 .video-view .video-container.is-loading {
@@ -407,7 +357,6 @@ img[src$="-marked.svg"] { background: rgba(255, 193, 0, .3); }
 .video-view .video-container.is-loading-video:before {
   background: no-repeat center url(pic/gui/video-loading.svg);
 }
-
 .video-view .video-container.is-loading > img,
 .video-view .video-container.is-broken > img {
   opacity: 0;                              /* hide but allow clicks etc. */
@@ -416,14 +365,12 @@ img[src$="-marked.svg"] { background: rgba(255, 193, 0, .3); }
   background: no-repeat center url(pic/gui/image-loading.jpg) #a5e7ef; /* theme color */
   position: relative;  /* for subtitle+id positioning */
   border-radius: 4px;
-
   /* center video + truncate sides for 16:19 videos */
   overflow: hidden;
   display: flex;
   justify-content: center;
   width: 270px;                            /* same as #search-result > .match */
   height: 202px;
-
   /* text color + outline */
   color: #fff;
   text-shadow:
@@ -437,10 +384,9 @@ img[src$="-marked.svg"] { background: rgba(255, 193, 0, .3); }
     -1px  0   1px #000;
 }
 .video-view .video-container a { color: inherit; }
-.video-view .video-container > video,
-.video-view .video-container > img {
-  /* z-index fixes Firefox where subs disappear when clicking
-  *  video content a second time (to stop video playback) */
+.video-view .video-container > video, .video-view .video-container > img {
+  /* z-index fixes Firefox where subs disappear when clicking video content a
+     second time (to stop video playback) */
   z-index: auto;
   max-height: none;
   flex: none;
@@ -469,7 +415,6 @@ img[src$="-marked.svg"] { background: rgba(255, 193, 0, .3); }
   position: absolute; bottom: 4px;         /* subtitle placement */
   left: 0; right: 0;
   padding: 3px 2px 1px 2px;                /* don't truncate shadow */
-
   /* text: center or truncate if too long */
   white-space: nowrap;
   text-align: center;
@@ -478,12 +423,12 @@ img[src$="-marked.svg"] { background: rgba(255, 193, 0, .3); }
   max-width: 100%;
 }
 .video-view .video-container a mark {
-  background: rgba(255, 193, 0, .3);
-  color: rgb(255, 193, 47);
+  background: #fb05;
+  color: #fb3;
 }
 .video-view .video-container a:focus mark,
 .video-view .video-container a:hover mark {
-  text-decoration: underline rgb(255, 193, 47);
+  text-decoration: underline #fb3;
 }
 .video-view .video-feedback {
   width: 100%;
@@ -498,22 +443,17 @@ img[src$="-marked.svg"] { background: rgba(255, 193, 0, .3); }
 }
 .video-view .video-feedback.play { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="45" height="45"><circle r="22.5" cy="22.5" cx="22.5" style="isolation:auto;mix-blend-mode:normal" color="%23000" overflow="visible" opacity=".75" fill-rule="evenodd"/><path color="%23000" fill="%23fff" style="isolation:auto;mix-blend-mode:normal" overflow="visible" d="M33.25 22.5l-16.5 9.53V12.97z"/></svg>'); }
 .video-view .video-feedback.pause { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="45" height="45"><circle r="22.5" cy="22.5" cx="22.5" style="isolation:auto;mix-blend-mode:normal" color="%23000" overflow="visible" opacity=".75" fill-rule="evenodd"/><path color="%23000" fill="%23fff" style="isolation:auto;mix-blend-mode:normal" overflow="visible" d="M15 15h5v15h-5zM25 15h5v15h-5z" fill-rule="evenodd"/></svg>'); }
-
-/**************
-* Text content.
-*/
+/* Text content */
 svg { display: block; }
 img { max-height: 175px; }
 mark {
-  background: rgba(255, 193, 0, .6);
+  background: #fb09;
   color: inherit;
 }
-/**************************
-* Side menu (with content).
-*/
+/* Side menu (with content) */
 .menu.shown {
   visibility: visible;
-  background: rgba(0, 0, 0, .75);
+  color: #000b;
 }
 .menu {
   width: 100%;
@@ -552,25 +492,17 @@ mark {
   margin: 0;
   box-shadow: unset;
 }
-
-/**************
-* Text content.
-*/
+/* Text content */
 a {
   border-radius: 1px;
   text-decoration: none;
   color: #00a;
 }
-a:focus,
-a:hover {
+a:focus, a:hover {
   text-decoration: underline;
 }
-
-/*********
-* Buttons.
-*/
-button,
-textarea {
+/* Buttons */
+button, textarea {
   color: inherit;
   background: transparent;
   font-family: inherit;
@@ -581,7 +513,7 @@ button {
   border: 0;
 }
 a {
-    cursor: pointer;
+  cursor: pointer;
 }
   </style>
 </head>
@@ -671,7 +603,6 @@ a {
       'use strict'
       /* global transcriptKeyboard:readonly */
       transcriptKeyboard($('#search'), $('#q'), $('#search .kb'))
-
       /* global $:readonly */
       ;((i, $menu) => {
         let $open = $menu.find('.menu-open')

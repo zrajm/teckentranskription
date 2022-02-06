@@ -1,8 +1,7 @@
 /* Copyright 2016-2022 by zrajm. Released under GPLv3 license. */
 /* styles needed beyond first screenfull of content */
-/***************************
-* Side menu (with content).
-*/
+
+/* Side menu (with content) */
 .menu.shown aside {
   right: 0%;
 }
@@ -35,7 +34,7 @@
   font-weight: bold;
   margin: 1.5em 0 0;
   padding-top: 1em;
-  border-top: 1px solid rgba(0, 0, 0, .25);
+  border-top: 1px solid #0004;
 }
 .menu footer {
   padding-top: 2.5em;
@@ -43,19 +42,16 @@
 }
 .menu button:hover { box-shadow: unset; }
 .menu button.menu-close {
-  color: #999;    /* placeholder text color + #111 */
+  color: #999; /* placeholder text color + #111 */
 }
 .menu button.menu-open:focus,
 .menu button.menu-open:hover {
-  background: rgba(0,0,0,.95);
+  background: #000e;
   color: #a5e7ef;
 }
-
-/**************
-* Text content.
-*/
+/* Text content */
 .tooltip mark {
-  background: rgba(255, 224, 127, .2);
+  background: #fd73;
   color: inherit;
   padding: .125em 0;
 }
@@ -71,15 +67,12 @@
   opacity: .375;
   padding: 0 .15em;
 }
-
 p { margin: 0; }
 p:empty + p { margin-top: 1em; }
 p:not(:empty) + p { text-indent: 1.5em; }
-
 li {
   margin-left: 1.5em;
 }
-
 a.tt,
 tt {
   color: inherit;
@@ -91,10 +84,7 @@ tt {
   border-radius: 4px;
   padding: 0 .1875em;
 }
-
-/******************
-* Virtual keyboard.
-*/
+/* Virtual keyboard */
 #keyboard {
   border: 0 !important;
   margin-top: -1px;
@@ -106,9 +96,9 @@ tt {
   top: 100%;
   z-index: 1;
   box-shadow:
-    0 16px 24px  2px rgba(0, 0, 0, .14),
-    0 6px  30px  5px rgba(0, 0, 0, .12),
-    0 8px  10px -5px rgba(0, 0, 0, .4);
+    0 16px 24px  2px #0002,
+    0 6px  30px  5px #0001,
+    0 8px  10px -5px #0006;
   line-height: 0;
   padding: 4px 2px 4px 4px;
   text-align: left;
@@ -125,17 +115,16 @@ tt {
   padding: 4px 4px 3px;
   margin: 2px 1.5px;
   border-radius: 2px;
-  color: rgba(0, 0, 0, .75);
+  color: #000b;
 }
 .selector:hover,
 #keyboard button:hover {
-  box-shadow: inset 1000px 1000px rgba(255, 255, 255, .2),/* hover brighten inside */
-    0 3px 6px 2px rgba(0, 0, 0, .2);                      /* hover shadow */
+  box-shadow: inset 1000px 1000px #fff3, /* hover brighten inside */
+    0 3px 6px 2px #0003; /* hover shadow */
 }
 #keyboard button:focus:hover {
-  box-shadow: inset 1000px 1000px rgba(255, 255, 255, .2),/* hover brighten inside */
-    0 3px 6px 2px rgba(0, 0, 0, .2),                      /* hover shadow */
-    0 0   0   3px rgb(173, 189, 224);                     /* dark focus outline */
+  box-shadow: inset 1000px 1000px #fff3, /* hover brighten inside */
+    0 3px 6px 2px #0003, /* hover shadow */
+    0 0   0   3px #abd;  /* dark focus outline */
 }
-
 /*[eof]*/
