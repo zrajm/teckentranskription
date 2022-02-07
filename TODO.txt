@@ -381,16 +381,25 @@
     sounds like it would always be good, right?)
 *** TODO Overlay by entering in URL
 *** TODO Overlay by clicking on Swedish of sign
-** [1/15] Query language
+** [0/15] Query language
 *** TODO Query `'('` results in non-zero length query object            :BUG:
     Meaning that no search tips are displayed, even though there is no search
     result.
-*** TODO Query `"-XX"` results in empty query(?)                        :BUG:
-    Should property 'plain' include leading '-'?
-
 *** TODO Don't match tags by default                                    :BUG:
     For example: Searching for `geografi` should not match the tag `/geografi`
     if one does not include the leading `/`.
+*** TODO Unquoted `/` prefix should match word inside tag
+    E.g. `/'kränkande'` (unquoted '/') should match "/kan uppfattas som
+    kränkande", while `'/kränkande'` (quoted '/') should not.
+*** TODO Query `-` should be handled how?
+    Right now this is handled as an empty search term that is negated (but,
+    since it's empty it's not included in the search). Is this sane? Or should
+    a single, unquoted '-' match literally (ie be treated in the same way as
+    '-' is treated inside or at the end of a word).
+
+    Either treatment is kinda surprising to be honest, not sure which one is
+    best. (Best would prolly be to treat is as a literal '-' and inform the
+    user of a potential mistake.)
 *** TODO Match sub-words it transcriptions (without need for `*`)
     For word searches `hej` should not match `hejsan` (unless user searches for
     `hej*`), but this is confusing when searching in transcriptions.
@@ -1143,9 +1152,21 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
-** DONE Removed final ';' in lexicon data code
+** DONE Lexicon: Query language should treat '-' as word border char
+   CLOSED: [2022-02-07 Mon 02:22]
+   Minus is now considered a word border character, meaning that searches which
+   contains leading or trailing '-' match sanely (eg `kabel-` or `'-tv'` will
+   match 'kabel-tv', etc rather than return no matches.)
+
+   Minus was originally turned into a non-word character in July 2019[1],
+   because it caused problem with the H-Y-P-H-E-N-A-T-E-D fingerspelling
+   transcription used back then[2].
+
+   1. [[*Make '-' alphabetic(?)]]
+   2. [[*Lexicon: Changed fingerspelling transcription format]]
+** DONE Lexicon: Removed final ';' in lexicon data code
    CLOSED: [2022-02-07 Mon 00:51]
-** DONE Query `=/*` and `/` matches all signs                           :BUG:
+** DONE Lexicon: Query `=/*` and `/` matches all signs                  :BUG:
    CLOSED: [2022-02-05 Sun 22:10]
    This is the result of a thinko on my part. Because all signs have a tag
    counter `/#` (where # is a number 0–5), and even signs that do not have a
@@ -1309,6 +1330,17 @@
 
    Tags for each sign should be displayed in the search result. Hovering above
    a tag should provide the user with clues for how to search for them.
+** DONE Lexicon: Changed fingerspelling transcription format
+   CLOSED: [2021-06-18 Mon 22:06]
+   Previously the data we got from the lexicon did not contain fingerspellings
+   in the transcription, but instead simply a '#' which the import script
+   replaced with a capitalized hyphenated spelling ('E-X-A-M-P-L-E') from the
+   sign description. Some time back the lexicon changed this, and now the
+   lexicon transcriptions do contain finger spellings ('#(example)').
+
+   This fixes the import script, which has been broken since the imported
+   lexicon data changed their transcription (causing this lexicon to have
+   transcriptions that looked like this 'E-X-A-M-P-L-E(example)').
 ** DONE Lexicon: Redesigned menu close button
    CLOSED: [2019-08-31 Sat 22:57]
    So that it looks like the form icon buttons.

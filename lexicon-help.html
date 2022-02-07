@@ -324,12 +324,13 @@ section { margin-top: 1em; }
             som innehåller segment­separatorn ’􌥠’ ifrån träfflistan).
 
             <p>En minus­symbol har bara den negerade effekten om den kommer
-            före ett sökuttryck. Inuti eller i slutet på ett ord har
-            minussymbolen ingen särskilt betydelse utan matchar bara ett
-            faktiskt minus. (En sökning på <tt>platt-tv</tt> hittar således
-            alla förekomster av ’platt-tv’, medan <tt>platt -tv</tt> hittar de
-            tecken som har en översättning som innehåller ’platt’
-            men <i>inte</i> ’tv’.)
+            först i ett sökuttryck (och inte är inom citat­tecken). I slutet
+            eller inuti ett ord har minus ingen speciell betydelse utan matchar
+            som vanligt. En sökning på <tt>kabel-tv</tt> hittar alltså
+            ’kabel-tv’, och <tt>kabel "-tv"</tt> hittar tecken vars beskrivning
+            innehåller både ’-tv’ (med bindestreck före) och ’kabel’ (utan att
+            bry sig om ordens ordning), medan <tt>kabel -tv</tt> hittar tecken
+            som har ’kabel’ men <i>inte</i> ’tv’.
 
             <p>Minus kan användas före sökord och parenteser. När ett minus
             används före en parentes så negeras hela parentesens innehåll. Om

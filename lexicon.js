@@ -225,7 +225,7 @@ for (let c of '􌥯􌦶􌥰􌥱􌥲􌥹􌦅') { charClass[c] = `${c}[􌦈􌥽�
 function finalizeTerm(state) {
   'use strict'
   let { plain = '', regex = '', not, field } = state
-  const noWord = '[ 􌥠,:!?/.’()[\\]&+–]'
+  const noWord = '[ 􌥠,:!?/.’()[\\]&+–-]'
   const noWordBeg = RegExp(`^${noWord}`, 'ui')
   const noWordEnd = RegExp(`${noWord}$`, 'ui')
   return [
