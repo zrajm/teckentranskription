@@ -381,10 +381,7 @@
     sounds like it would always be good, right?)
 *** TODO Overlay by entering in URL
 *** TODO Overlay by clicking on Swedish of sign
-** [0/15] Query language
-*** TODO Query `'('` results in non-zero length query object            :BUG:
-    Meaning that no search tips are displayed, even though there is no search
-    result.
+** [0/14] Query language
 *** TODO Don't match tags by default                                    :BUG:
     For example: Searching for `geografi` should not match the tag `/geografi`
     if one does not include the leading `/`.
@@ -1152,6 +1149,14 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Query `'('` results in non-zero length query object    :BUG:
+   CLOSED: [2022-02-07 Mon 03:16]
+   This means that there are no search tips being displayed, even though there
+   are no matches. – Lexicon SHOULD react as if a search was made that
+   resulted in zero matches (ie display search tips).
+
+   Ie the class 'nomatch' should be set to the <body> tag, even when the cause
+   for the zero matches is a query language parse error.
 ** DONE Lexicon: Query language should treat '-' as word border char
    CLOSED: [2022-02-07 Mon 02:22]
    Minus is now considered a word border character, meaning that searches which

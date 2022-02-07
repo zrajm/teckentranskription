@@ -601,7 +601,7 @@ function searchLexicon(queryStr) {
     let matches = query.search(lexicon)
 
     // Query without matches, add 'nomatch' to <body>.
-    $body[(query.length && !matches.length) ? 'addClass' : 'removeClass']('nomatch')
+    $body[(queryStr && !matches.length) ? 'addClass' : 'removeClass']('nomatch')
 
     // Output search result.
     outputMatching({
@@ -793,7 +793,7 @@ $(() => {
   }
   // Form submission.
   function onSubmit(e) {
-    let queryStr = $q.val() || ''
+    let queryStr = ($q.val() || '').trim()
     e.preventDefault()                    // don't submit to server
     // On touchscreen devices (where no input type has hover).
     if (window.matchMedia('not all and (any-hover:hover)').matches) {
