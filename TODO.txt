@@ -194,7 +194,8 @@
 *** TODO Find a good (free) tracking service to use
     Tried setting using Google Analytics, but its confusing and hard to
     configure. Currently testing 'clicky.com'.
-**** TODO Try out 'clicky.com'
+**** DONE Try out 'clicky.com'
+     CLOSED: [2022-02-07 Mon 03:22]
 ** [0/4] Move lexicon
 *** TODO Move lexicon into separate repository
     Leave the history of the lexicon in the zrajm page repository, but create a
@@ -1149,6 +1150,11 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Stop using clicky.com
+   CLOSED: [2022-02-07 Mon 03:24]
+   Clicky accont needs to be re-activated manually every 60 days, which is a
+   hassle. Also it doesn't actually seem to log the relevant data (the search
+   queries).
 ** DONE Lexicon: Query `'('` results in non-zero length query object    :BUG:
    CLOSED: [2022-02-07 Mon 03:16]
    This means that there are no search tips being displayed, even though there
