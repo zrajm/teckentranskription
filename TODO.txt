@@ -137,7 +137,7 @@
      other advanced features that are useful to researchers and advanced users.
      These functions shall not intrude on the beginner's user experience.
   :END:
-** [0/4] Early pageload
+** [0/3] Early pageload
 *** TODO On load: Resize width faster
 *** TODO Faster selection of fullscreen or normal search
     Currently, if loading the page without a query, first the 'small' version
@@ -173,8 +173,6 @@
     lexicon) except `hej` (does that make sense, or should a all negated
     expressions simply be disregarded unless they are AND:ed to a positive
     search term?)
-*** TODO Pressing enter should resubmit form, even if no changes to query has been made
-
 ** [0/1] Session/query logging
     :DESCRIPTION:
     Would like to have some simple (preferably, though not necessarily
@@ -191,11 +189,22 @@
     lexicon operates on a zero-budget, the tracking service need to be free of
     charge for the site maintainer/me.)
     :END:
-*** TODO Find a good (free) tracking service to use
-    Tried setting using Google Analytics, but its confusing and hard to
-    configure. Currently testing 'clicky.com'.
-**** DONE Try out 'clicky.com'
-     CLOSED: [2022-02-07 Mon 03:22]
+*** TODO Find a good query logging service to use
+    :DESCRIPTION:
+    The intent is to log how users refine their search to find what they want.
+    Users should be given a (temporary) id (randomly created a user arrive at
+    the page), and then the search string they entered should be logged.
+    Logging should occur in unobtrusively background, and if logging fails this
+    should not impact the user's search in any way.
+    :END:
+**** TODO Try out a query logging system on lal
+**** DONE Try out clicky.com: Answer NO
+     CLOSED: [2022-02-07 Mon 03:24]
+     Clicky account needs to be re-activated manually every 60 days, which is a
+     hassle. Also it doesn't actually seem to log the relevant data (the search
+     queries). See: [[*Lexicon: Stop using clicky.com]]
+**** DONE Try out Google Analytics: Answer NO
+     CLOSED: [2021-09-09 Wed 15:15]
 ** [0/4] Move lexicon
 *** TODO Move lexicon into separate repository
     Leave the history of the lexicon in the zrajm page repository, but create a
@@ -243,7 +252,6 @@
     and PY 'too' ('också').
 *** TODO Show list of categories (top left?)
 *** [1/2] Indicate unusual signs in search result
-    Search matches should indicate uncommon signs in the bottom right corner.
 **** DONE Mark uncommon/obsolete signs
      CLOSED: [2021-08-18 Wed 15:40]
      Add an icon for 'mindre vanligt'
@@ -274,7 +282,7 @@
     turkos, dövlexikon, svenskt teckenspråkslexikon, dövhet, teckenspråk, svenska
 ** TODO Lexicon name
    Lexicon should be distinguishable from the official lexicon by name. Maybe
-   use name 'Snabbt teckenspråklexikon' or 'Snabba tecken'?
+   use name 'Snabbt teckenspråklexikon' or 'Snabba tecken'? 'Turbotecken'?
 ** [0/4] Code structure/stink/refactor
 *** [0/2] Split query parsing into separate chunks
 **** TODO One module for expanding chars/words into regexes
@@ -1152,7 +1160,7 @@
 * Finished
 ** DONE Lexicon: Stop using clicky.com
    CLOSED: [2022-02-07 Mon 03:24]
-   Clicky accont needs to be re-activated manually every 60 days, which is a
+   Clicky account needs to be re-activated manually every 60 days, which is a
    hassle. Also it doesn't actually seem to log the relevant data (the search
    queries).
 ** DONE Lexicon: Query `'('` results in non-zero length query object    :BUG:
@@ -1233,8 +1241,8 @@
    removed it altogether.
 ** DONE Lexicon: Documented new boolean operators in query language
    CLOSED: [2021-10-23 Sat 16:09]
-** DONE Lexicon: Now always reload search result on submission
-   CLOSED: [2021-10-18 Mon 14:25]
+** DONE Lexicon: Resubmit on enter, even if query is unchanged
+   CLOSED: [2021-10-18 Mon 14:26]
    Previously the search result wasn't reloaded unless the query was modified,
    but always redoing the search is more predictable to the user.
 ** DONE Lexicon: Remove needless timing info logged to console
