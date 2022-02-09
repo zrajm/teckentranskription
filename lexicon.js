@@ -595,7 +595,7 @@ function searchLexicon(queryStr) {
 
   $('#q').val(queryStr)
   // No query, add 'noquery' to body element.
-  $body[queryStr ? 'removeClass' : 'addClass']('noquery')
+  $body[queryStr.trim() ? 'removeClass' : 'addClass']('noquery')
   setTimeout(() => {
     let query = parseQuery(queryStr)
     let matches = query.search(lexicon)
@@ -793,7 +793,7 @@ $(() => {
   }
   // Form submission.
   function onSubmit(e) {
-    let queryStr = ($q.val() || '').trim()
+    let queryStr = ($q.val() || '')
     e.preventDefault()                    // don't submit to server
     // On touchscreen devices (where no input type has hover).
     if (window.matchMedia('not all and (any-hover:hover)').matches) {

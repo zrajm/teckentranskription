@@ -137,34 +137,8 @@
      other advanced features that are useful to researchers and advanced users.
      These functions shall not intrude on the beginner's user experience.
   :END:
-** [0/3] Early pageload
+** [1/3] Early pageload
 *** TODO On load: Resize width faster
-*** TODO Faster selection of fullscreen or normal search
-    Currently, if loading the page without a query, first the 'small' version
-    of the query is displayed briefly.
-    Fullscreen search should ONLY be show if there is NOTHING entered into the
-    search form, if ANYTHING is entered, display the search results screen, even
-    if the query is invalid (eg just space, or empty parenthesis).
-
-    Split this into: 1. loading screen, 2. fullscreen search, 3. result screen
-
-    The loading screen should be turquoise in color, and show the copyright and
-    top-left menu button.
-
-    If query string is empty (after trimming space), display fullscreen,
-    otherwise display result screen.
-
-    This should prolly be handled from inside <script> tag in lexicon.html?
-    Though should avoid doing URL fragment decoding it two different places in
-    code (DRY and all that).
-
-     ----------------------------------------
-     /************************************************************************/
-     let hash = decodeURIComponent(location.hash).replace(/^#?#?/u, '').trim()
-     if (hash) {
-       $('body')[queryStr.length ? 'removeClass' : 'addClass']('noquery')
-     }
-     ----------------------------------------
 *** TODO Does a lonely negated expression make sense?
     `då -hej -och` will find all occurrences of `då` except those also
     containing `-hej` or `-och` (this makes sense).
@@ -1158,6 +1132,36 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Faster selection of fullscreen or normal search
+   CLOSED: [2022-02-09 Wed 21:45]
+   Rather than solving this using the below suggestion I opted for a simpler
+   solution, using an inlined <script> (without jQuery) just after the <body>
+   tag. This one-liner which adds the 'noquery' class to the <body> tag, if the
+   URL fragment does not contain a query (ie if it consists only of spaces).
+   --------------------------------------------------------------------------------
+   Currently, if loading the page without a query, first the 'small' version of
+   the query is displayed briefly.
+
+   Fullscreen search should ONLY be show if there is NOTHING entered into the
+   search form, if ANYTHING is entered, display the search results screen, even
+   if the query is invalid (eg just space, or empty parenthesis).
+
+   Split this into: 1. loading screen, 2. fullscreen search, 3. result screen
+
+   The loading screen should be turquoise in color, and show the copyright and
+   top-left menu button.
+
+   If query string is empty (after trimming space), display fullscreen,
+   otherwise display result screen.
+
+   This should prolly be handled from inside <script> tag in lexicon.html?
+   Though should avoid doing URL fragment decoding it two different places in
+   code (DRY and all that).
+
+       let hash = decodeURIComponent(location.hash).replace(/^#?#?/u, '').trim()
+       if (hash) {
+         $('body')[queryStr.length ? 'removeClass' : 'addClass']('noquery')
+       }
 ** DONE Lexicon: Stop using clicky.com
    CLOSED: [2022-02-07 Mon 03:24]
    Clicky account needs to be re-activated manually every 60 days, which is a

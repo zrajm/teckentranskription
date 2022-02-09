@@ -517,7 +517,8 @@ a {
 }
   </style>
 </head>
-<body class=noquery>
+<body>
+  <script>if(/^#?#?\s*$/.test(decodeURIComponent(location.hash)))document.body.classList.add('noquery')</script>
   <center id=noscript style="position:fixed;height:100%;width:100%;z-index:1;display:flex;justify-content:center;flex-direction:column;color:#ed2;background:#000;">
     <h1>Vänligen aktivera Javascript.</h1>
     <p><p>Lexikonet fungerar dessvärre inte utan det. :'(
