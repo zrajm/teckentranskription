@@ -224,22 +224,26 @@ for (let c of '􌥯􌦶􌥰􌥱􌥲􌥹􌦅') { charClass[c] = `${c}[􌦈􌥽�
 
 function finalizeTerm(state) {
   'use strict'
-  let { plain = '', regex = '', not, field } = state
-  const noWord = '[ 􌥠,:!?/.’()[\\]&+–-]'
-  const noWordBeg = RegExp(`^${noWord}`, 'ui')
-  const noWordEnd = RegExp(`${noWord}$`, 'ui')
-  return [
-    regex
-      ? RegExp(
-        field
-          ? `^${regex}$`                                        // whole field
-          : ((plain.match(noWordBeg) ? '()' : `(^|${noWord})`)  // single word
-            + `(${regex})`
-            + (plain.match(noWordEnd) ? '' : `(?=${noWord}|$)`)),
-        'ui')
+  const {
+    plain = '',
+    regex = '',
+    field = false,
+    not = false,
+  } = state
+  function wordRegex(regex) {
+    const noWord = '[ 􌥠,:!?/.’()[\\]&+–-]'
+    const noWordBeg = RegExp(`^${noWord}`, 'ui')
+    const noWordEnd = RegExp(`${noWord}$`, 'ui')
+    return (plain.match(noWordBeg) ? '()' : `(^|${noWord})`)
+      + `(${regex})`
+      + (plain.match(noWordEnd) ? '' : `(?=${noWord}|$)`)
+  }
+  return {
+    regex: regex
+      ? RegExp(field ? `^${regex}$` : wordRegex(regex), 'ui')
       : null,
     plain, not,
-  ]
+  }
 }
 
 // Parse user's query string, return QUERY object with following root methods:
@@ -288,9 +292,9 @@ function parseQuery(queryStr) {
         p.pop()
         break
       case 1:
-        let [c] = z             // eslint-disable-line no-case-declarations
-        c.own = c.own || z.own  // OR
-        c.not = c.not ^ z.not   // XOR
+        let [c] = z                 // eslint-disable-line no-case-declarations
+        c.own = !!(c.own || z.own)  // OR
+        c.not = !!(c.not ^ z.not)   // XOR
         p[p.length - 1] = c
       }
       // Cleanup: Remove parens around children with same AND/OR as parent.
@@ -322,8 +326,8 @@ function parseQuery(queryStr) {
       if (q[0].length === 1 && Array.isArray(q[0][0])) {
         let [z] = q
         let [c] = z
-        c.own = c.own || z.own  // OR
-        c.not = c.not ^ z.not   // XOR
+        c.own = !!(c.own || z.own)  // OR
+        c.not = !!(c.not ^ z.not)   // XOR
         q[0] = c
       }
     }
@@ -342,8 +346,8 @@ function parseQuery(queryStr) {
       add(and_())
     }
     function addTerm(cb) {
-      let [re, plain, not] = cb()
-      if (re) { add(Object.assign(re, { not, plain })) }
+      const { regex, plain, not } = cb()
+      if (regex) { add(Object.assign(regex, { not, plain })) }
       return this
     }
     // Test if single entry 'e' (list of strings) match query (<q>). Return
@@ -388,7 +392,7 @@ function parseQuery(queryStr) {
     'UNQUOTED': (s, c) => {
       if (!s.regex) {            // before word
         if (c === '-') {         //  '-' negated
-          s.not = s.not ^ true
+          s.not = !s.not
           return s
         } else if (c === '=') {  //  '=' match whole field
           s.field = true
