@@ -364,13 +364,11 @@
     sounds like it would always be good, right?)
 *** TODO Overlay by entering in URL
 *** TODO Overlay by clicking on Swedish of sign
-** [0/14] Query language
-*** TODO Don't match tags by default                                    :BUG:
-    For example: Searching for `geografi` should not match the tag `/geografi`
-    if one does not include the leading `/`.
-*** TODO Unquoted `/` prefix should match word inside tag
-    E.g. `/'kränkande'` (unquoted '/') should match "/kan uppfattas som
-    kränkande", while `'/kränkande'` (quoted '/') should not.
+** [0/13] Query language
+*** TODO Don't hilite translations when searching for tags              :BUG:
+    If one searches for `/språkvetenskap`, then this will hilite the
+    translation 'språkvetenskap' (which matches both in translation and tags),
+    but only the matching tag should be hilited.
 *** TODO Query `-` should be handled how?
     Right now this is handled as an empty search term that is negated (but,
     since it's empty it's not included in the search). Is this sane? Or should
@@ -1132,6 +1130,14 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Unquoted `/` prefix should match word inside tag
+   CLOSED: [2022-02-10 Thu 07:27]
+   E.g. `/'kränkande'` (unquoted '/') should match "/kan uppfattas som
+   kränkande", while `'/kränkande'` (quoted '/') should not.
+** DONE Lexicon: Don't match tags by default                            :BUG:
+   CLOSED: [2022-02-10 Thu 07:27]
+   For example: Searching for `geografi` should not match the tag `/geografi`
+   if one does not include the leading `/`.
 ** DONE Lexicon: Minor tweaking of `lexicon-data.js`
    CLOSED: [2022-02-10 Thu 02:21]
    Parsing execution of the `lexicon-data.js` file seem to be taking a lot of

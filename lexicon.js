@@ -229,6 +229,7 @@ function finalizeTerm(state) {
     regex = '',
     field = false,
     not = false,
+    tag = false,
   } = state
   function wordRegex(regex) {
     const noWord = '[ 􌥠,:!?/.’()[\\]&+–-]'
@@ -242,7 +243,7 @@ function finalizeTerm(state) {
     regex: regex
       ? RegExp(field ? `^${regex}$` : wordRegex(regex), 'ui')
       : null,
-    plain, not,
+    plain, not, tag,
   }
 }
 
@@ -346,16 +347,16 @@ function parseQuery(queryStr) {
       add(and_())
     }
     function addTerm(cb) {
-      const { regex, plain, not } = cb()
-      if (regex) { add(Object.assign(regex, { not, plain })) }
+      const { regex, plain, not, tag } = cb()
+      if (regex) { add(Object.assign(regex, { not, plain, tag })) }
       return this
     }
     // Test if single entry 'e' (list of strings) match query (<q>). Return
     // true on match, false otherwise.
     function searchEntry(q, e) {
       let x = Array.isArray(q)
-        ? q[q.or ? 'some' : 'every'](q => searchEntry(q, e))  // subquery
-        : e.some(f => q.test(f))                              // base case
+        ? q[q.or ? 'some' : 'every'](q => searchEntry(q, e))    // subquery
+        : e.some(f => ((f[0] === '/') === q.tag) && q.test(f))  // base case
       return q.not ? !x : x
     }
     function flat(q) {
@@ -397,6 +398,10 @@ function parseQuery(queryStr) {
         } else if (c === '=') {  //  '=' match whole field
           s.field = true
           return s
+        } else if (c === '/') {  //  '/' match tag field
+          s.tag = true           //    (also register as char)
+          s.regex = (s.regex || '') + '/?'
+          return s
         }
       }
       s.regex = (s.regex || '') + (charClass[c] || escape(c))
@@ -404,7 +409,7 @@ function parseQuery(queryStr) {
       return s
     },
   }
-  let state = {} // contains: 'plain', 'regex', 'field', 'not' and 'quote'
+  let state = {} // contains: 'plain', 'regex', 'field', 'not', 'tag', 'quote'
   for (let c of queryStr.normalize()) {  // process char-by-char in FSA
     state = fsa[state.quote ? 'QUOTED' : fsa[c] ? c : 'UNQUOTED'](state, c) || {}
   }

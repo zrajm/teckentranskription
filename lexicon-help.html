@@ -234,6 +234,7 @@ section { margin-top: 1em; }
       <div class=columns>
         <table style="margin-top:.25em">
           <tr href="#fras"><th><tt>"…"</tt><td>Frassökning
+          <tr href="#taggar"><th><tt>/…</tt><td>Matcha taggar
           <tr href="#fält"><th><tt>=…</tt><td>Matcha helt fält
           <tr href="#inte"><th><tt>-…</tt><td>Logiskt <i>inte</i> (negerar term)
           <tr href="#och"><th><tt>… …</tt><td>Logiskt <i>och</i>
@@ -519,22 +520,32 @@ section { margin-top: 1em; }
         ett tecken hör till. I sökresultatet syns taggarna som en liten
         etikett- <nobr>(<img src="pic/tag.svg">)</nobr> eller
         varnings­ikon <nobr>(<img src="pic/warn.svg">)</nobr> i tecken­videons
-        övre högra hörn. Om du håller muspekaren över någon av ikonerna så ser
-        du vilka taggar videon har (om du använder en mobiltelefon eller padda,
-        kan du klicka på ikonerna istället).
+        övre högra hörn. Om du håller muspekaren över ikonerna så ser du vilka
+        taggar ett tecken har (på mobiltelefon/<wbr>padda kan du istället
+        trycka på ikonerna).
 
-        <p>Varningsikonen <nobr>(<img src="pic/warn.svg">)</nobr> visas för
-        tecken som är mindre vanliga (och i tagglistan kan ser du också en
-        triangel intill de taggar som gör att lexikonet visar varningsikonen).
-        Om din sökning matchar ord i ett taggnamn, så markeras motsvarande ikon
-        och de matchande orden i tagglistan.
+        <p>Varningsikonen <nobr>(<img src="pic/warn.svg">)</nobr> indikerar att
+        ett tecken är mindre vanligt (i tagglistan kan ser du också en triangel
+        efter de taggar som hör till varningsikonen). Om en sökterm matchar en
+        tagg till ett tecken, så markeras dess ikon och de matchande orden i
+        tagglistan.
 
-        <p><p>Taggnamn börjar alltid med <tt>/</tt> (snedstreck) och många av
-        taggarna har kategorier och underkategorier – franska städer är till
-        exempel taggade
-        med <tt>/geografi/<wbr>orter/<wbr>Europa/<wbr>Frankrike</tt>, men det
-        räcker med att skriva delar av taggnamnet för att de ska dyka upp i
-        ditt sökresultat. (En sökning på <tt>/frankrike</tt>
+        <p><p>För att matcha taggar i en sökning, inled sökordet med snedstreck
+        (till exempel <tt>/teknik</tt>). Somliga taggar har namn med flera ord
+        (till exempel ’genuint tecken’ och ’/kan uppfattas som kränkande’) i de
+        fallen kan du antingen skriva bara ett av orden (<tt>/genuint</tt>
+        eller <tt>/kränkande</tt>) eller omge taggnamnet med citattecken
+        (<tt>/"genuint tecken"</tt>). Se till att snedstrecket kommer först! Om
+        ett snedstreck är citerat (<tt>"/"</tt>) så letar lexikonet efter ett
+        snedstreck i de svenska översättningarna, men om snedstrecket är
+        ociterat och kommer först så tolkas det som en instruktion att söka
+        bland taggarna.
+
+        <p><p>Många av taggarna har kategorier och underkategorier – franska
+        städer har till exempel
+        taggen <tt>/geografi/<wbr>orter/<wbr>europa/<wbr>frankrike</tt>, men
+        det räcker med att skriva en del av taggnamnet för att de ska dyka upp
+        i ditt sökresultat. (En sökning på <tt>/frankrike</tt>
         eller <tt>/europa</tt> kommer att inkludera alla franska städer, men
         den senare kommer förstås också att inkludera alla andra europeiska
         städer som finns i lexikonet också. – Du också kombinera, och till
@@ -542,19 +553,16 @@ section { margin-top: 1em; }
         för de europeiska städer som <i>inte</i> ligger i Frankrike.)
 
         <p><p>Det finns taggar som indikerar <tt>/dialekt</tt>, att ett tecken
-        är <tt>/ovanligt</tt> eller <tt>"/kan uppfattas som kränkande"</tt>.
-        Andra beskriver ifall ett tecken hör hemma inom ett särskilt
-        ämnesområde
+        är <tt>/ovanligt</tt> eller <tt>/kränkande</tt>, i andra fall beskriver
+        de att ett tecken hör hemma inom ett särskilt ämnesområde
         (som <tt>/geografi</tt>, <tt>/egennamn</tt>, <tt>/sport</tt>
-        eller <tt>"/mat och dryck"</tt>) och tecken från Oskar Österbergs
-        historiska lexikon (från 1916) kan hittas genom att söka
-        på <tt>/österberg</tt>.
+        eller <tt>/mat</tt>) och tecken från Oskar Österbergs historiska
+        lexikon (från 1916) kan hittas genom att söka på <tt>/österberg</tt>.
 
         <p><p>Tecken med taggar har dessutom en taggräknare, så för att hitta
-        tecken med en tag sök på <tt>/1</tt>, två taggar <tt>/2</tt> och så
-        vidare. Tecken som saknar taggar har ingen taggräknare, men kan hittas
-        med <tt>-=/*</tt> (vilket utesluter alla tecken som har fält som börjar
-        med snedstreck).
+        tecken med en tagg sök på <tt>/1</tt>, med två taggar <tt>/2</tt> och
+        så vidare. Tecken som saknar taggar har ingen taggräknare, men kan
+        hittas med <tt>-/</tt> (vilket utesluter alla tecken som har taggar).
       </div>
     </section>
   </article>
