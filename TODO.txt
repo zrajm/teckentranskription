@@ -1132,6 +1132,36 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Minor tweaking of `lexicon-data.js`
+   CLOSED: [2022-02-10 Thu 02:21]
+   Parsing execution of the `lexicon-data.js` file seem to be taking a lot of
+   time (according to the Chrome profiler) so I tried a few experiments to see
+   if I could optimize it a bit. – No such luck though, it seems that the
+   biggest culprit simply is the data size, which seem to require some CPU to
+   be parsed as a whole. Tweaking the .map() function that unpacks the data
+   doesn't do much, so in the end I left it as it was.
+
+   Here are the different version I tried, which all (discounting variability)
+   all seem to have about the same execution time.
+
+       .map(e=>{
+         return[
+           ...e.slice(0,3),
+           ...e.slice(3).map(v => isNaN(v) ? v : lexiconTags[c++,v]),
+           ...(c?['/'+c]:[])
+         ]
+       })
+
+       .map(e=>{
+         for(let i=3;i<e.length;i++){
+           if(typeof e[i]==='number'){
+             c++
+             e[i]=lexiconTags[e[i]]
+           }
+         }
+         if(c)e.push('/'+c)
+         return e
+       })
 ** DONE Lexicon: Faster selection of fullscreen or normal search
    CLOSED: [2022-02-09 Wed 21:45]
    Rather than solving this using the below suggestion I opted for a simpler

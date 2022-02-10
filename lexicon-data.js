@@ -20152,9 +20152,8 @@ let lexicon=[
 ["20386","􌤵􌥗􌥆􌥆􌤵􌤶􌦅􌥼􌤟","Nextcloud",12],
 ["20387","􌥈􌤵􌥘􌥣􌥵􌥻","varsin"],
 ["20390","􌤊􌤩􌤵􌤶􌥰􌦋􌥠􌤌􌤤􌤵􌥘􌤟􌥼􌥻","julmat",51,130],
-["20391","􌥈􌤴􌤶􌦃􌥲􌦌􌥠􌤢􌤴􌤸􌤭􌥖􌥘􌦃􌥡􌥼􌥻","långpromenad",64]]
-.map(e=>{
+["20391","􌥈􌤴􌤶􌦃􌥲􌦌􌥠􌤢􌤴􌤸􌤭􌥖􌥘􌦃􌥡􌥼􌥻","långpromenad",64]].map(e=>{
 	let c=0
 	return[...e.map((v,i)=>i<3||isNaN(v)?v:lexiconTags[c++,v]),...(c?['/'+c]:[])]
 })
-lexiconTags=lexiconTags.sort((a,b)=>a.localeCompare(b,'sv',{sensitivity:'base'}))
+lexiconTags.sort((a,b)=>a.localeCompare(b,'sv',{sensitivity:'base'}))
