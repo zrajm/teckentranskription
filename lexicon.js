@@ -501,7 +501,7 @@ function htmlifyMatch(entry, hiliteRegex) {
           + '{htmlTags}\n'
         + '</div>'
         + '<div class=video-subs>'
-          + '<a data-href="{transcr}" title="{htmlTranscr}">'
+          + '<a data-href="={transcr}" title="{htmlTranscr}">'
             + '{htmlTranscr}</a>'
         + '</div>'
       + '</div> '
