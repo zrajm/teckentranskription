@@ -137,7 +137,11 @@
      other advanced features that are useful to researchers and advanced users.
      These functions shall not intrude on the beginner's user experience.
   :END:
-** [1/3] Early pageload
+** [0/3] Early pageload
+*** TODO Respect what user as typed during pageload
+    If there's a string in the text input field that has been entered by the
+    user during pageload, then this should replace any search query given in
+    the URL. (Least astonishment factor.)
 *** TODO On load: Resize width faster
 *** TODO Does a lonely negated expression make sense?
     `då -hej -och` will find all occurrences of `då` except those also
@@ -518,7 +522,7 @@
     Present search result in a sortable table? Should be able to sort by swedish
     word, and by sign language.
 ** [0/30] GUI
-*** [0/4] Menu
+*** [0/5] Menu
 **** TODO Opening menu with mouse shouldn't focus text
      But opening menu using keyboard should.
 **** TODO Focus marking on close icon should look same as on links
@@ -532,6 +536,14 @@
      'Svenskt teckenspråkslexikon' and the CC license.
 
      + Add CC license text + note data source
+**** TODO Add academic source reference for lexicon
+     Something like ELAN's [https://archive.mpi.nl/tla/elan/cite]; "When citing
+     ELAN as a computer program in a publication, the following APA style
+     reference can serve as an example (adjust the version and release date):
+
+     'ELAN (Version 6.3) [Computer software]. (2022). Nijmegen: Max Planck
+     Institute for Psycholinguistics, The Language Archive. Retrieved from
+     https://archive.mpi.nl/tla/elan'"
 *** TODO Allow highlighting of overlapping search result
     If one searches for `hej` and `hej då` at the same time, the highlight
     should be doubled on `hej` in the search result.
