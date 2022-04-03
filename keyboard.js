@@ -132,49 +132,55 @@ function transcriptKeyboard($wrapper, $input, $keyboardIcon) {
     ], [
       { prefix: 'Handform: ' },
       '<nobr>',
-      ['􌤤', 'A-hand', 'a-handen-1'],
-      ['􌥄', 'Tumvinkelhand', 'tumvinkelhanden-1'],
-      ['􌤣', 'Vinkelhand', 'vinkelhanden-1'],
+      ['􌤤', ['a-hand', 'A-hand']],
+      ['􌥄', ['tumvinkelhand', 'Tumvinkelhand']],
+      ['􌤣', ['vinkelhand', 'Vinkelhand']],
       '</nobr>',
-      ['􌤧', 'Tumhand', 'tumhanden-1'],
-      ['􌥋', 'Måtthand', 'matthanden-1'],
-      ['􌥉', 'Rak måtthand', 'raka-matthanden-1'],
-      ['􌦫', 'D-hand', 'd-handen-1'],
-      ['􌤩', 'Nyphand', 'nyphanden-1'],
-      ['􌤎', 'Liten o-hand', 'lilla-o-handen-1'],
-      ['􌥇', 'E-hand', 'e-handen-1'],
-      ['􌦬', 'Stor hållhand', 'stora-nyphanden-5'],
-      ['􌤦', 'Knuten hand', 'knutna-handen-1'],
-      ['􌤲', 'Stor nyphand', 'stora-nyphanden-1'],
-      ['􌤱', 'Lillfinger', 'lillfingret-1'],
-      ['􌥑', 'Flyghand', 'flyghanden-1'],
-      ['􌤢', 'Flat hand', 'flata-handen-1'],
-      ['􌥂', 'Flat tumhand', 'flata-tumhanden-1'],
-      ['􌤪', 'Krokfinger', 'krokfingret-1'],
-      ['􌥎', 'K-hand', 'k-handen-1'],
-      ['􌥈', 'Pekfinger', 'pekfingret-1'],
-      ['􌤨', 'L-hand', 'l-handen-1'],
-      ['􌤿', 'M-hand', 'm-handen-1'],
-      ['􌥌', 'N-hand', 'n-handen-1'],
-      ['􌥆', 'O-hand', 'o-handen-1'],
-      ['􌤫', 'Hållhand', 'hallhanden-1'],
-      ['􌦭', 'Q-hand', 'q-handen-1'],
-      ['􌤬', 'Långfinger', 'langfingret-1'],
-      ['􌥅', 'S-hand', 's-handen-1'],
-      ['􌤥', 'Klohand', 'klohanden-1'],
-      ['􌥊', 'T-hand', 't-handen-1'],
-      ['􌦱', 'U-hand'],
-      ['􌤽', 'Dubbelkrok', 'dubbelkroken-1'],
-      ['􌤯', 'Böjd tupphand', 'bojda-tupphanden-1'],
-      ['􌤭', 'V-hand', 'v-handen-1'],
-      ['􌤮', 'Tupphand', 'tupphanden-1'],
-      ['􌤰', 'W-hand', 'w-handen-1'],
-      ['􌤳', 'X-hand', 'x-handen-1'],
-      ['􌥃', 'Sprethand', 'sprethanden-1'],
+      ['􌤧', ['tumhand', 'Tumhand']],
+      ['􌥋', ['matthand', 'Måtthand'], ['kopa-hand', 'Köpa-handen']],
+      ['􌥉', ['rak-matthand', 'Rak måtthand']],
+      ['􌦫', ['d-hand', 'D-hand']],
+      ['􌤩', ['nyphand-a', 'Nyphand A'], ['nyphand-b', 'Nyphand B']],
+      ['􌤎', ['liten-o-hand-a', 'Liten O-hand A'],
+            ['liten-o-hand-b', 'Liten O-hand B']],
+      ['􌥇', ['e-hand', 'E-hand']],
+      ['􌦬', ['stor-hallhand', 'Stor hållhand']],
+      ['􌤦', ['knuten-hand', 'Knuten hand']],
+      ['􌤲', ['stor-nyphand', 'Stor nyphand']],
+      ['􌤱', ['lillfinger', 'Lillfinger']],
+      ['􌥑', ['flyghand', 'Flyghand']],
+      ['􌤢', ['flat-hand', 'Flat hand']],
+      ['􌥂', ['flat-tumhand', 'Flat tumhand']],
+      ['􌤪', ['krokfinger', 'Krokfinger']],
+      ['􌥎', ['k-hand', 'K-hand']],
+      ['􌥈', ['pekfinger', 'Pekfinger'],
+            ['vinklat-pekfinger', 'Vinklat pekfinger']],
+      ['􌤨', ['l-hand', 'L-hand']],
+      ['􌤿', ['m-hand', 'M-hand']],
+      ['􌥌', ['n-hand', 'N-hand'], ['n-tumhand', 'N-tumhand'],
+            ['vinklad-n-hand', 'Vinklad N-hand'],
+            ['vinklad-n-tumhand', 'Vinklad N-tumhand']],
+      ['􌥆', ['o-hand', 'O-hand']],
+      ['􌤫', ['hallhand', 'Hållhand']],
+      ['􌦭', ['q-hand', 'Q-hand']],
+      ['􌤬', ['langfinger', 'Långfinger'],
+            ['vinklat-langfinger', 'Vinklat långfinger']],
+      ['􌥅', ['s-hand', 'S-hand'], ['s-tumhand', 'S-tumhand']],
+      ['􌤥', ['klohand', 'Klohand'], ['matte-hand', 'Matte-hand']],
+      ['􌥊', ['t-hand', 'T-hand']],
+      ['􌦱', ['u-hand', 'U-hand']],
+      ['􌤽', ['dubbelkroken', 'Dubbelkrok']],
+      ['􌤯', ['bojd-tupphand', 'Böjd tupphand']],
+      ['􌤭', ['v-hand', 'V-hand']],
+      ['􌤮', ['tupphand', 'Tupphand']],
+      ['􌤰', ['w-hand', 'W-hand']],
+      ['􌤳', ['x-hand', 'X-hand']],
+      ['􌥃', ['sprethand', 'Sprethand'],
+            ['vinkad-sprethand', 'Vinklad sprethand']],
       '<nobr>',
-      ['􌥒', 'Stort långfinger', 'stora-langfingret-1'],
-      ['􌥟', 'Runt långfinger', 'runda-langfingret-1'],
-      ['􌦪', '4-hand', '4-handen-1'],
+      ['􌥒', ['stort-langfinger', 'Stort långfinger']],
+      ['􌥟', ['runt-langfinger', 'Runt långfinger']],
+      ['􌦪', ['4-hand', '4-hand']],
       '</nobr>',
     ], [
       {},
@@ -263,10 +269,16 @@ function transcriptKeyboard($wrapper, $input, $keyboardIcon) {
           if (typeof unit === 'string') {  // raw HTML
             return unit
           }
-          let [label, title, img] = unit
+          let [label, ...txts] = unit
           let prefix = meta.prefix || ''
-          let imgTag = img ? `<img src=&quot;pic/x/${img}.png&quot;>` : ''
-          return `<button title="${prefix}${title}${imgTag}">${label}</button>`
+          function imgText(txts) {
+            if (typeof txts[0] === 'string') { return txts[0] }
+            return '<br><div class=imgs>' + txts.map(([img, txt], i) => (
+              `<span><img src=&quot;pic/keyboard/${img}.png&quot;>${txt}</span>`
+                + ((i % 2) ? '<br>' : '')
+            )).join('') + '</div>'
+          }
+          return `<button title="${prefix}${imgText(txts)}">${label}</button>`
         }).join('') + '</span>'
     }).join(' ')
     return $(`<div id=keyboard>${keyboardHtml}</div>`)

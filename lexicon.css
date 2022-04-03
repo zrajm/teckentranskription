@@ -55,13 +55,30 @@
   color: inherit;
   padding: .125em 0;
 }
-.tooltip img {
-  background: #fff;
-  padding: 4px 6px;
-  border-radius: 4px;
+.tooltip div.imgs {
+  text-align: center;
+  margin: -.1875em;
+}
+.tooltip div.imgs span {
+  display: inline-block;
+  margin: .1875em;
+  text-shadow:
+     1px  1px 1px #000,
+     1px -1px 1px #000,
+    -1px  1px 1px #000,
+    -1px -1px 1px #000,
+     0    1px 1px #000,
+     0   -1px 1px #000,
+     1px  0   1px #000,
+    -1px  0   1px #000;
+}
+.tooltip div.imgs img {
   display: block;
-  margin: 0 auto;
-  height: 150px
+  height: 200px;
+  width: 150px;
+  max-height: unset;
+  margin-bottom: -1.125rem;
+  box-shadow: 0 0 5px #0004;
 }
 .tooltip .sep {
   opacity: .375;
