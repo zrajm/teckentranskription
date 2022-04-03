@@ -133,6 +133,7 @@ tt {
   margin: 2px 1.5px;
   border-radius: 2px;
   color: #000b;
+  min-width: 1em;
 }
 .selector:hover,
 #keyboard button:hover {
