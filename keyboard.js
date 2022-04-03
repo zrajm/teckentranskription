@@ -283,7 +283,6 @@ function transcriptKeyboard($wrapper, $input, $keyboardIcon) {
     }).join(' ')
     return $(`<div id=keyboard>${keyboardHtml}</div>`)
       .appendTo($wrapper)
-      .hide()
   }
 
   $(() => {
@@ -299,7 +298,7 @@ function transcriptKeyboard($wrapper, $input, $keyboardIcon) {
       let k = e.which
       if (k === 27) {  // Escape
         e.preventDefault()
-        $keyboard.toggle()
+        $wrapper.toggleClass('show-keyboard')
         if (!$(e.target).is(':visible')) {
           $input.focus()
         }
@@ -312,19 +311,19 @@ function transcriptKeyboard($wrapper, $input, $keyboardIcon) {
         return
       }
       e.preventDefault()
-      $keyboard.toggle()
+      $wrapper.toggleClass('show-keyboard')
     })
 
     // Click/focus outside virtual keyboard: Hide it.
     $(document.body).on('click focus', e => {
       if ($(e.target).closest($wrapper).length === 0) {
-        $keyboard.hide()
+        $wrapper.removeClass('show-keyboard')
       }
     })
 
     // Submit: Hide virtual keyboard.
     $wrapper.on('submit', () => {
-      $keyboard.hide()
+      $wrapper.removeClass('show-keyboard')
     })
   })
 }

@@ -5,7 +5,7 @@
 .menu.shown aside {
   right: 0%;
   box-shadow:
-    0 0 1000px 9999px #0006,
+    0 0 1000px 9999px #0004,
     0 0 30px 15px #0003;
 }
 .menu:not(.shown) aside {
@@ -104,24 +104,49 @@ tt {
   border-radius: 4px;
   padding: 0 .1875em;
 }
+/* Add pseudo element with large box shadow behind #search to shade screen. */
+/* (New textshadow on #search would override previous ones.) */
+#search.show-keyboard:before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    box-shadow: 0 0 0 9999px #0004;
+    z-index: -1;
+}
+#search.show-keyboard { z-index: 1; }
 /* Virtual keyboard */
+#search.show-keyboard #keyboard { display: block; }
 #keyboard {
+  box-shadow: 0 3px 6px 2px #0003;
   border: 0 !important;
-  margin-top: -1px;
+  margin: 8px auto 0;
   border-radius: 4px;
   max-width: 30em;
   width: 100%;
   position: absolute;
-  right: 0;
+  right: 0; left: 0;
   top: 100%;
   z-index: 1;
-  box-shadow:
-    0 16px 24px  2px #0002,
-    0 6px  30px  5px #0001,
-    0 8px  10px -5px #0006;
   line-height: 0;
   padding: 4px 2px 4px 4px;
   text-align: left;
+}
+#keyboard:before, #keyboard:after {
+    content: '';
+    position: absolute; top: -15px; left: 50%;
+    border: solid !important;
+    border-color: #fff #0000 !important;
+    /* left + right width = triangle base, bottom width = height, top = 0 */
+    border-width: 0 20px 15px !important;
+    transform: translateX(-50%);
+    height: 0;
+    width: 0;
+    z-index: -10;
+}
+#keyboard:before {
+  top: -16px;
+  border-bottom-color: #0006 !important;
 }
 #keyboard nobr {
   display: inline-block;
