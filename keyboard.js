@@ -163,6 +163,7 @@ function transcriptKeyboard($wrapper, $input, $keyboardIcon) {
       ['􌥅', 'S-hand', 's-handen-1'],
       ['􌤥', 'Klohand', 'klohanden-1'],
       ['􌥊', 'T-hand', 't-handen-1'],
+      ['􌦱', 'U-hand'],
       ['􌤽', 'Dubbelkrok', 'dubbelkroken-1'],
       ['􌤯', 'Böjd tupphand', 'bojda-tupphanden-1'],
       ['􌤭', 'V-hand', 'v-handen-1'],
@@ -245,7 +246,6 @@ function transcriptKeyboard($wrapper, $input, $keyboardIcon) {
     ], [
       {},
       '<nobr><div style="display:inline-block;font-size:.5em;line-height:120%">Följande symboler är nya<br>och används inte i lexikon än:</div> ',
-      ['􌦱', 'Handform: Lamahanden'],
       ['􌦳', 'Läge: Neutrala läget'],
       '</nobr>',
       ['􌦷', 'Medial kontakt (oberoende)'],
