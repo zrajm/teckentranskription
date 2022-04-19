@@ -521,7 +521,7 @@
 
     Present search result in a sortable table? Should be able to sort by swedish
     word, and by sign language.
-** [0/30] GUI
+** [0/19] GUI
 *** [0/5] Menu
 **** TODO Opening menu with mouse shouldn't focus text
      But opening menu using keyboard should.
@@ -633,8 +633,6 @@
 *** TODO Darker URL bar                                              :Mobile:
     The theme-color should be a bit darker to contrast with the search bar.
     (<meta name="theme-color" content="#07bccd">)
-*** TODO Narrower page margins on mobile                             :Mobile:
-    Especially the search box part should use the full width of the screen.
 *** TODO If video load fail, click again to try again                   :BUG:
     Currently, if video fails to load than one have to reload the whole page in
     order to retry loading the video. Clicking a video that failed to load
@@ -1142,6 +1140,9 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Narrower page margins on mobile                     :Mobile:
+   CLOSED: [2022-04-19 Tue 10:58]
+   Especially the search box part should use the full width of the screen.
 ** DONE Lexicon: Unquoted `/` prefix should match word inside tag
    CLOSED: [2022-02-10 Thu 07:27]
    E.g. `/'kränkande'` (unquoted '/') should match "/kan uppfattas som

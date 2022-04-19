@@ -230,12 +230,10 @@ body.noquery header {
   flex-direction: column;
 }
 body.noquery #search {
-  width: 70%;
+  width: calc(100% - 6px);
   max-width: 610px;
-  margin: 1.5rem auto 1.1rem;
+  margin: 1.5rem 1em 1.1rem;
 }
-@media only screen and (max-width: 590px) { body.noquery form { width: 80%; }}
-@media only screen and (max-width: 370px) { body.noquery form { width: 90%; }}
 /* Result mode selector switch (video/text) */
 .selector {
   cursor: pointer;
