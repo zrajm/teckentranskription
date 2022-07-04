@@ -1,4 +1,4 @@
-let lexiconDate=new Date("2022-06-27T06:00:35Z")
+let lexiconDate=new Date("2022-07-04T06:00:28Z")
 let lexiconTags=["/bokstavering",
 "/språkvetenskap",
 "/geografi/orter/sverige",
@@ -2459,7 +2459,7 @@ let lexicon=[
 ["02182","􌤦􌤴􌤸􌤦􌤴􌥙􌤟􌥼􌥻","toast",20],
 ["02183","􌥔􌥘􌤦􌤹􌤦􌥓􌥘􌤟􌥸􌥼􌥻","sotare",6],
 ["02184","􌤴􌥗􌤥􌤥􌤴􌤶􌥧􌦆􌤦􌦇􌥼􌥻","mjölk",44],
-["02185","􌤴􌥗􌤦􌤹􌤦􌤴􌤶􌤟􌥰􌦉","isolering","isolera",3],
+["02185","􌤴􌥗􌤦􌤹􌤦􌤴􌤶􌤟􌥰􌦉","isolering",3],
 ["02186","􌤴􌥗􌤦􌤹􌤦􌤴􌤶􌤟􌥰􌦉","bryggeri"],
 ["02187","􌤵􌥗􌤦􌤦􌤵􌤶􌦎􌥲􌦋","fånge"],
 ["02188","􌤵􌥗􌤦􌤦􌤵􌤶􌦎􌥲􌦋","fängelse",182,123],
