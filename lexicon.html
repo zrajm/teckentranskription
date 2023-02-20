@@ -1,7 +1,7 @@
-<!doctype html><!--*- ispell-dictionary: "svenska"; js-indent-level: 2 -*-->
+<!doctype html><!--*- ispell-dictionary:"sv"; js-indent-level:2; css-indent-offset:2 -*-->
 <html lang=sv>
 <head>
-  <!-- Copyright 2017-2022 by zrajm. Released under GPLv3 license. -->
+  <!-- Copyright 2017-2023 by zrajm. Released under GPLv3 license. -->
   <meta charset="UTF-8">
   <link rel="preload" href="freesans-swl.woff2" as="font" type="font/woff2" crossorigin>
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -54,31 +54,33 @@ header {
 #keyboard { display: none; }
 #search {
   display: flex;
-  border-radius: 4px; /* form border radius */
+  border-radius: 24px;
+  border: 1px solid #aaa;
+  padding: 0 10px;
+  background: #fff;
   position: relative; /* on top of menu */
   height: 48px;
   line-height: 46px;  /* height - (top + bottom border) */
   width: 100%;
 }
 #search > * {
-  border: solid #bbb;  /* form border */
-  border-width: 1px 0; /* form border width */
-  background: #fff;    /* form background */
+  border: 0;
+  padding: 0 6px;
 }
 /* focus & hover */
 #q:focus, #q:hover, #search .icon:focus, #search .icon:hover {
   box-shadow: none;
 }
-.menu-close:focus > svg, #search.focus, #search .icon:focus > svg {
+button.icon > svg {
+  color: #888; /* placeholder text color + #111 */
+}
+button.icon:focus > svg, #search.focus {
   box-shadow: 0 0 0 3px #99f6; /* focus outline */
 }
-#search.focus > * {
-  border-color: #99f; /* focus border color */
-}
-.menu-close:focus > svg, #search .icon:focus > svg {
+button.icon:focus > svg {
   border-radius: 1px;
   background: #99f6; /* focus outline color */
-  color: #569; /* submit button background */
+  color: #569;
 }
 #search.focus:hover {
   box-shadow:
@@ -97,14 +99,12 @@ header {
 .menu .menu-open {
   opacity: .5;
 }
-.menu .menu-close:hover > svg, #search .icon:hover > svg {
+button.icon:hover > svg {
   color: #444;                               /* text color */
 }
 #q {
   flex-grow: 1;
-  border-left: 1px solid #bbb; /* form border */
-  border-radius: 4px 0 0 4px;  /* form border radius (left side) */
-  padding-left: 10px; /* icon button padding * 2 */
+
   line-height: inherit;
   /* Force <textarea> to be like <input> ('wrap=off' required by MSIE11.) */
   /* (<textarea> shows diacritics in front of 1st char, <input> does not) */
@@ -126,38 +126,7 @@ header {
   }
 }
 #search:invalid [type="reset"] { /* not on IE9 */
-  display: none;
-}
-#search button > svg {
-  margin: auto;
-}
-#search .icon {
-  padding: 0 5px; /* icon button padding */
-  color: #888;    /* placeholder text color + #111 */
-}
-#search .kb {
-  padding-right: 10px; /* icon button padding * 2 */
-}
-#search .submit {
-  padding: 0 12px;               /* submit button padding */
-  border: 1px solid transparent;
-  border-radius: 0 4px 4px 0;    /* form border radius (right side) */
-}
-#search .submit, #search .submit:focus, #search .submit:hover {
-  background: #569; /* submit button background */
-  color: #cde;      /* submit button foreground */
-}
-#search .submit:focus, #search .submit:hover {
-  background: #57a; /* submit button background (bright) */
-  color: #def;      /* submit button foreground (bright) */
-}
-#search:invalid .submit:not(:focus):not(:hover) { /* not on IE9 */
-  border-color: #bbb; /* form border color */
-  background: #fff;   /* form background */
-  color: inherit;
-}
-#search.focus:invalid .submit:not(:focus):not(:hover) { /* not on IE9 */
-  border-color: #99f; /* focus border color */
+    display: none;
 }
 #search-wrapper {
   margin: 0 0 .5em;
@@ -500,7 +469,7 @@ a:focus, a:hover {
 /* Buttons */
 button, textarea {
   color: inherit;
-  background: transparent;
+  background: #fff0;
   font-family: inherit;
   font-size: inherit;
 }
@@ -523,7 +492,7 @@ a {
   <aside class=menu>
     <button class="toggle menu-open" aria-label="Meny"><svg height="17" width="19"><path d="M0 0h19v3H0zm0 14h19v3H0zm0-7h19v3H0z" fill="currentColor"/></svg></button>
     <aside>
-      <button class="toggle menu-close" tabindex=-1 aria-label="Stäng meny"><svg height="17" width="19"><path d="M10.625,-1V18H8.375V-1ZM0,7.375h19v2.25H0Z" transform="rotate(45 9.5,8.5)" fill="currentColor"/></svg></button>
+      <button class="icon toggle menu-close" tabindex=-1 aria-label="Stäng meny"><svg height="17" width="19"><path d="M10.625,-1V18H8.375V-1ZM0,7.375h19v2.25H0Z" transform="rotate(45 9.5,8.5)" fill="currentColor"/></svg></button>
       <ul style="margin-top:.75em">
         <li><a href="lexicon-help.html" target=_blank>Sökhjälp</a>
         <!--li><a href="#">Om lexikonet</a-->
@@ -549,10 +518,10 @@ a {
       <big>Svenskt tecken­språks­lexikon</big>
     </div>
     <form id=search novalidate>
+      <button class="icon submit" type=submit aria-label="Sök"><svg width="24" height="24"><path d="m22 24-8-8 2-2 8 8zM16.1 9.4a6.7 6.7 0 1 0-13.4 0 6.7 6.7 0 0 0 13.4 0zm2.7 0A9.4 9.4 0 1 1 0 9.4a9.4 9.4 0 0 1 18.8 0z" fill="currentColor"/></svg></button>
       <textarea id=q rows=1 autofocus required placeholder="Sök ord eller 􌤴􌥗􌥃􌥃􌤴􌤶􌤟􌥰􌦋􌦇…" wrap=off></textarea>
       <button class=icon type=reset aria-label="Rensa sökning"><svg height="15" width="15"><path d="M8.625,-2V17H6.375V-2ZM-2,6.375h19v2.25H-2Z" fill="currentColor" transform="rotate(45 7.5,7.5)"/></svg></button>
       <button class="icon kb" title="Transkriptionssymboler (Esc)"><svg width="38" height="20"><path d="M2,0C.892,0,0,.892,0,2v16c0,1.108.892,2,2,2h34c1.108,0,2-.892,2-2V2c0-1.108-.892-2-2-2zm0,2h4v4H2zm6,0h4v4H8zm6,0h4v4h-4zm6,0h4v4h-4zm6,0h4v4h-4zm6,0h4v4h-4zM2,8h4v4H2zm6,0h4v4H8zm6,0h4v4h-4zm6,0h4v4h-4zm6,0h4v4h-4zm6,0h4v4h-4zM2,14h4v4H2zm6,0h22v4H8zm24,0h4v4h-4z" fill="currentColor"/></svg></button>
-      <button type=submit class=submit aria-label="Sök"><svg width="24" height="24" viewBox="0 0 18 18" fill="#fff"><path d="M18 16.5l-5.14-5.18h-.35a7 7 0 1 0-1.19 1.19v.35L16.5 18l1.5-1.5zM12 7A5 5 0 1 1 2 7a5 5 0 0 1 10 0z" fill="currentColor"></path></svg></button>
     </form>
     <div class="noquery-content info">
       <span class=size><span id=lexicon-size>## ###</span> tecken.</span>
@@ -587,7 +556,7 @@ a {
           på <a href="lexicon-help.html" target=_blank>sökhjälpen</a>.
       </ul>
   </aside>
-  <footer>© 2017–2022 <a href="mailto:lexikon@zrajm.org">zrajm</a>,
+  <footer>© 2017–2023 <a href="mailto:lexikon@zrajm.org">zrajm</a>,
     Uppsala. <a href="lexicon-help.html" target=_blank>Sökhjälp.</a>
   </footer>
   <script src="jquery-3.6.0.slim.min.js"></script>

@@ -1,4 +1,4 @@
-/* Copyright 2016-2022 by zrajm. Released under GPLv3 license. */
+/* Copyright 2016-2023 by zrajm. Released under GPLv3 license. */
 /* styles needed beyond first screenfull of content */
 
 /* Side menu (with content) */
@@ -104,13 +104,14 @@ tt {
   border-radius: 4px;
   padding: 0 .1875em;
 }
-/* Add pseudo element with large box shadow behind #search to shade screen. */
-/* (New textshadow on #search would override previous ones.) */
+/* Add pseudo element with large boxshadow behind #search to shade screen. */
+/* (Uses pseudo element because any existing boxshadow must also be kept.) */
 #search.show-keyboard:before {
     content: '';
     position: absolute;
-    width: 0;
-    height: 0;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: transparent;
+    border-radius: inherit;
     box-shadow: 0 0 0 9999px #0004;
     z-index: -1;
 }
@@ -129,8 +130,9 @@ tt {
   top: 100%;
   z-index: 1;
   line-height: 0;
-  padding: 4px 2px 4px 4px;
+  padding: 4px 2px 4px 4px !important;
   text-align: left;
+  background: #fff;
 }
 #keyboard:before, #keyboard:after {
     content: '';

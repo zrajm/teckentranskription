@@ -1,5 +1,6 @@
 -*- org -*-
 
+* TODO "-" (w/o quotes) should search for [-–]
 * Browser support
   + Function:  IE9+ (?)  Safari(?)  -- search functionality must work
   + Cosmetics: IE10+     Safari(?)  -- minor difference in appearance is ok
@@ -137,6 +138,15 @@
      other advanced features that are useful to researchers and advanced users.
      These functions shall not intrude on the beginner's user experience.
   :END:
+** TODO 'Advanced search'
+   A good example of an 'advanced search' dropdown can be found in Google
+   Calendar, by looking at the calendar search, though this one does not update
+   the main query as you type stuff.
+
+   GitHub advanced search, however, presents an advanced query feature where
+   you may enter stuff in a multitude of fields, and updating the content of
+   any of these fields will cause a realtime update of the main search query at
+   the top of the screen. https://github.com/search/advanced?q=smulx
 ** [0/3] Early pageload
 *** TODO Respect what user as typed during pageload
     If there's a string in the text input field that has been entered by the
@@ -1140,6 +1150,12 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Lexicon: Rounded corners in main search field
+   CLOSED: [2023-02-20 Mon 00:10]
+   This seems to be used nowadays to indicate a search field, so let's do this
+   here too. This also moves the search magnifying glass from the right to the
+   left side of the search form, (hopefully) making the right side look less
+   cluttered (as the 'advanced search' dropdown will be added there).
 ** DONE Lexicon: Narrower page margins on mobile                     :Mobile:
    CLOSED: [2022-04-19 Tue 10:58]
    Especially the search box part should use the full width of the screen.
