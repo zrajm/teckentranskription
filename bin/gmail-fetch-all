@@ -1,0 +1,195 @@
+#!/usr/bin/python3
+
+import argparse, configparser, time, datetime, email, imaplib, os, sys
+from email.header import decode_header
+
+def read_args():
+    parser = argparse.ArgumentParser(
+        description="Fetch all Teckenspråkslexikon data dumps from Gmail.",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog='''
+This script does the same as `gmail-fetch` but fetches all emails in the inbox
+rather than just the latest one. (make sure you've archived any mails you do
+not want!). This is intended to as a house cleaning script, if the main cronjob
+has failed for some period. The downloaded attachments are saved into files
+whose name are based on the 'Date:' field of the email, filename used is
+'YYYY-MM-DD-HH.MM.SS' (without any file extension).
+
+This programs login to Gmail with the specified username and password, finds
+the newest email from <teckenlexikon@ling.su.se> that has arrived within the
+last 14 days, and extracts the attachment from that into a file called
+'lexicon-data.csv'. For this script to work IMAP access must be enabled for
+this mail address in Gmail.
+
+Config file should look like this. (Do not put quotes around the values!)
+
+    user = <Gmail username>
+    pass = <Gmail password>
+
+BUGS: This script makes some naïve assumptions, everything is hardcoded except
+for the Gmail username and password (since I do not want to commit these to
+Github). If an email contains multiple attachments they will overwrite each
+other.
+'''
+    )
+    parser.add_argument("config", help="name of config file (use '-' for stdin)")
+    return parser.parse_args()
+
+def read_config(filename):
+    config = configparser.RawConfigParser()
+    with open(filename) if filename != "-" else sys.stdin as f:
+        file_content = '[DEFAULT]\n' + f.read()
+    config.read_string(file_content)
+    return config;
+
+def write_file(filename, data, **keywords):
+    if os.path.isfile(filename):           # remove any existing file
+        os.remove(filename)
+    fp = open(filename, 'wb')
+    fp.write(part.get_payload(decode=True))
+    fp.close()
+    if keywords['time']:                       # set file timestamp
+        ctime = keywords['time']
+        os.utime(filename, (ctime, ctime))
+
+def header_decode(str):
+    return "".join(map(decode_tuple, decode_header(str)))
+
+def decode_tuple(txt_enc_tuple):
+    txt, enc = txt_enc_tuple;
+    try:
+        return txt.decode(enc or 'ascii')
+    except AttributeError:
+        return txt
+
+def fetch_email(connection, email_id, fetch_expression):
+    # `fetch_expression` is a string determining what parts of the email to
+    # fetch (described here. http://www.rfc-base.org/txt/rfc-2060.txt).
+    result, msg_data = connection.fetch(   # fetch email
+        email_id,
+        fetch_expression
+    )
+    if result != "OK":
+        print("FAILED")
+        exit()
+    return email.message_from_string(      # convert email into object
+        msg_data[0][1].decode('utf-8')
+    )
+
+def search_email(connection, xx, search_expression):
+    result, items = connection.search(
+        xx,
+        search_expression
+    )
+    if result != "OK":
+        print("FAILED")
+        exit()
+    return items[0].decode('ascii').split()
+
+# 'Mon, 30 Jul 2018 08:00:22 +0100' -> epoch time
+def mail_date_to_epoch(datestr):
+    return int(time.mktime(datetime.datetime.strptime(
+        datestr,
+        "%a, %d %b %Y %H:%M:%S %z"
+    ).timetuple()))
+
+# Given a imaplib connection, and a list of email_ids return the id of the
+# newest email.
+def newest_id(connection, email_ids):
+    newest_id = None
+    newest_epoch = 0
+    for email_id in email_ids:
+        mail = fetch_email(
+            connection, email_id,
+            "BODY.PEEK[HEADER.FIELDS (DATE)]"
+        )
+        epoch = mail_date_to_epoch(mail["date"]);
+        if epoch > newest_epoch:
+            newest_id = email_id
+            newest_epoch = epoch
+    return newest_id;
+
+# Given a imaplib connection, and a list of email_ids return the id of the
+# oldest email.
+def oldest_id(connection, email_ids):
+    oldest_id = None
+    oldest_epoch = 9999999999999  # far into the future (20 May, year 318857)
+    for email_id in email_ids:
+        mail = fetch_email(
+            connection, email_id,
+            "BODY.PEEK[HEADER.FIELDS (DATE)]"
+        )
+        epoch = mail_date_to_epoch(mail["date"]);
+        if epoch < oldest_epoch:
+            oldest_id = email_id
+            oldest_epoch = epoch
+    return oldest_id;
+
+################################################################################
+##                                                                            ##
+##  Main                                                                      ##
+##                                                                            ##
+################################################################################
+
+args   = read_args()
+config = read_config(args.config)
+ATTACHMENT_DIR = '.' # directory where to save attachments (default: current)
+ATTACHMENT_FILE = "lexicon-data.csv"
+
+print("Connecting to Gmail IMAP server...")
+connection = imaplib.IMAP4_SSL("imap.gmail.com")
+connection.login(
+    config['DEFAULT']['user'],
+    config['DEFAULT']['pass']
+)
+#connection.select("INBOX")
+connection.select('INBOX', readonly=True)
+# (Use 'print connection.list()' to list all mailboxes.)
+
+print("Searching for emails from <teckenlexikon@ling.su.se>...")
+email_ids = search_email(
+    connection,
+    None,
+    "X-GM-RAW from:teckenlexikon@ling.su.se " +
+    "X-GM-RAW has:attachment"
+)
+
+# Mails are read in random order (seem to be oldest first are served from
+# Google, tho) and saved to file with name based on date.
+for email_id in email_ids:
+    print("Fetching email...")
+    mail = fetch_email(connection, email_id, '(RFC822)')
+
+    # Check if mail has attachments.
+    if mail.get_content_maintype() != 'multipart':
+        print("THE FOUND EMAIL DOES NOT HAVE AN ATTACHMENT!!")
+        continue
+
+    # Name file based on 'Date:' header.
+    epoch = mail_date_to_epoch(mail['date']);
+    filename = datetime.datetime.utcfromtimestamp(epoch).strftime("%Y-%m-%d-%H.%M.%S")
+
+    # We use walk to create a generator so we can iterate on the parts and
+    # forget about the recursive headache.
+    for part in mail.walk():
+        # Multipart are just containers, so we skip them.
+        if part.get_content_maintype() == 'multipart':
+            continue
+
+        # Is this part an attachment?
+        if part.get('Content-Disposition') is None:
+            continue
+
+        print("Writing attachment to file '" + filename + "'...")
+        write_file(
+            filename,
+            part.get_payload(decode=True),
+            time=mail_date_to_epoch(mail["date"])
+        );
+
+
+print("Disconnecting from IMAP server...")
+connection.close()
+connection.logout()
+
+#[eof]
