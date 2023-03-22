@@ -67,6 +67,7 @@ header {
   border: 0;
   padding: 0 6px;
 }
+#search > .icon + .icon { padding-left: 2px; }
 /* focus & hover */
 #q:focus, #q:hover, #search .icon:focus, #search .icon:hover {
   box-shadow: none;
@@ -492,7 +493,7 @@ a {
   <aside class=menu>
     <button class="toggle menu-open" aria-label="Meny"><svg height="17" width="19"><path d="M0 0h19v3H0zm0 14h19v3H0zm0-7h19v3H0z" fill="currentColor"/></svg></button>
     <aside>
-      <button class="icon toggle menu-close" tabindex=-1 aria-label="Stäng meny"><svg height="17" width="19"><path d="M10.625,-1V18H8.375V-1ZM0,7.375h19v2.25H0Z" transform="rotate(45 9.5,8.5)" fill="currentColor"/></svg></button>
+      <button class="icon toggle menu-close" tabindex=-1 aria-label="Stäng meny"><svg width="18" height="20"><path d="M3 2 1 4l14 14 2-2ZM1 16l2 2L17 4l-2-2Z" fill="currentColor"/></svg></button>
       <ul style="margin-top:.75em">
         <li><a href="lexicon-help.html" target=_blank>Sökhjälp</a>
         <!--li><a href="#">Om lexikonet</a-->
@@ -520,7 +521,7 @@ a {
     <form id=search novalidate>
       <button class="icon submit" type=submit aria-label="Sök"><svg width="24" height="24"><path d="m22 24-8-8 2-2 8 8zM16.1 9.4a6.7 6.7 0 1 0-13.4 0 6.7 6.7 0 0 0 13.4 0zm2.7 0A9.4 9.4 0 1 1 0 9.4a9.4 9.4 0 0 1 18.8 0z" fill="currentColor"/></svg></button>
       <textarea id=q rows=1 autofocus required placeholder="Sök ord eller 􌤴􌥗􌥃􌥃􌤴􌤶􌤟􌥰􌦋􌦇…" wrap=off></textarea>
-      <button class=icon type=reset aria-label="Rensa sökning"><svg height="15" width="15"><path d="M8.625,-2V17H6.375V-2ZM-2,6.375h19v2.25H-2Z" fill="currentColor" transform="rotate(45 7.5,7.5)"/></svg></button>
+      <button class=icon type=reset aria-label="Rensa sökning"><svg width="18" height="20"><path d="M3 2 1 4l14 14 2-2ZM1 16l2 2L17 4l-2-2Z" fill="currentColor"/></svg></button>
       <button class="icon kb" title="Transkriptionssymboler (Esc)"><svg width="38" height="20"><path d="M2,0C.892,0,0,.892,0,2v16c0,1.108.892,2,2,2h34c1.108,0,2-.892,2-2V2c0-1.108-.892-2-2-2zm0,2h4v4H2zm6,0h4v4H8zm6,0h4v4h-4zm6,0h4v4h-4zm6,0h4v4h-4zm6,0h4v4h-4zM2,8h4v4H2zm6,0h4v4H8zm6,0h4v4h-4zm6,0h4v4h-4zm6,0h4v4h-4zm6,0h4v4h-4zM2,14h4v4H2zm6,0h22v4H8zm24,0h4v4h-4z" fill="currentColor"/></svg></button>
     </form>
     <div class="noquery-content info">
