@@ -98,7 +98,7 @@ table {
   caption-side: bottom;
 }
 table caption {
-  margin: .5em;
+  margin: .5em .5em 0;
   text-align: left;
 }
 table tr {
@@ -394,13 +394,20 @@ section { margin-top: 1em; }
         <p>Följande symboler har särskild funktion, utom när de står inom
         citat­symboler (se ’<a href="#fras">frassökning</a>’ ovan).
         <table>
-          <caption style="margin:0"><div style="display:inline-block;margin:.5em .5em 0">
-            <sup>1</sup> Matchar också en eventuell
-            efterföljande <i>relation</i>ssymbol.
+          <caption>
+            <p class=footnote><sup>1</sup> Matchar också en eventuell
+            efterföljande <i>relationssymbol.</i>
 
-            <p><sup>2</sup> Matchar också en eventuell
-            efterföljande <i>riktning</i>ssymbol.
-          </div></caption>
+            <p class=footnote><sup>2</sup> Matchar också en eventuell
+            efterföljande <i>riktningssymbol.</i>
+
+            <p class=footnote><sup>3</sup> Matchar också en eventuell
+            efterföljande <i>medial kontakt</i>.
+
+            <p class=footnote><sup>4</sup> Rörelsen räknas som upprepad
+            om <tt>􌥻</tt> kommer direkt efter <i>förs (kort)</i> symbolen,
+            eller om hela artikulationen upprepas med <tt>􌥼􌥻</tt> i slutet.
+          </caption>
           <tr>
             <th>
             <th>Beskrivning
@@ -408,7 +415,8 @@ section { margin-top: 1em; }
           <tr href="#stjärna">
             <th><tt>*</tt>
             <td>Del av ord/<wbr>tran­skrip­tion
-            <td>Noll eller fler av A–Ö, 0–9 och tran­skrip­tions­sym­boler (utom <small>􌥠</small>)
+            <td>Noll eller fler av A–Ö, 0–9 eller tran­skrip­tions­sym­boler
+              (utom <small>􌥠</small>)
           <tr>
             <th><tt>:</tt>
             <td><i>Attityd</i>
@@ -416,7 +424,8 @@ section { margin-top: 1em; }
           <tr>
             <th><tt>^</tt>
             <td><i>Relationsymbol</i>
-            <td><small><span style=color:#999>x</span>􌤺 <span style=color:#999>x</span>􌥛 <span style=color:#999>x</span>􌤻 <span style=color:#999>x</span>􌤹</small> eller <small><span style=color:#999>x</span>􌥚</small>
+            <td><small><span style=color:#999>x</span>􌤺 <span style=color:#999>x</span>􌥛 <span style=color:#999>x</span>􌤻 <span style=color:#999>x</span>􌤹</small>
+            eller <small><span style=color:#999>x</span>􌥚</small>
           <tr>
             <th><tt>#</tt>
             <td><i>Handform</i><sup>1</sup> / ’#’
@@ -455,20 +464,21 @@ section { margin-top: 1em; }
             <th><tt>􌤗</tt>
             <td><i>Höfterna</i><sup>1</sup>
             <td>En av <small>􌤗</small> eller <small>􌤙 􌤘</small>
-          <tbody id=hedberg>
-            <tr>
-              <th><tt>􌦮</tt>
-              <td>Cirkel i frontal­plan<sup>2</sup>
-              <td>Antingen <small>􌦮</small> eller <small>􌥰􌥿􌥰􌦀􌥰􌦌</small>
-            <tr>
-              <th><tt>􌦯</tt>
-              <td>Cirkel i horisontal­plan<sup>2</sup>
-              <td>Antingen <small>􌦯</small> eller <small>􌥰􌦈􌥰􌥽􌥰􌦉</small>
-            <tr>
-              <th><tt>􌦰</tt>
-              <td>Cirkel i sagittal­plan<sup>2</sup>
-              <td>Antingen <small>􌦰</small> eller <small>􌥰􌥾􌥰􌦊􌥰􌦋</small>
-          </tbody>
+          <tr id=hedberg>
+            <th><tt>􌦮</tt> <tt>􌦯</tt> <tt>􌦰</tt>
+            <td><i>Cirkelrörelse</i> i <i>frontal-, horisontal-,</i> eller
+              <i>sagittal­plan</i><sup>2</sup>
+            <td>Matchar både klassisk och Hedbergs notation för
+              cirkel­rörelse (<small>􌦮</small> = <small>􌥰􌥿􌥰􌦀􌥰􌦌</small>,
+              <small>􌦯</small> = <small>􌥰􌦈􌥰􌥽􌥰􌦉</small>
+              och <small>􌦰</small> = <small>􌥰􌥾􌥰􌦊􌥰􌦋</small>)
+          <tr>
+            <th><tt>􌥤</tt> <tt>􌥥</tt> <tt>􌥨</tt>
+            <td>Upprepad <i>förs</i> eller <i>förs kort</i> i sid-, djup-,
+              eller höjdled<sup>3</sup>
+            <td>Matchar både en dubbelriktad <i>förs</i> och en
+              enkelriktad <i>förs / förs kort</i> med <i>upprepad
+              artikulation</i> (i samma riktning)<sup>4</sup>
         </table>
         <section id=stjärna>
           <p><tt>*</tt> matchar noll eller fler alfabetiska symboler i ord
@@ -496,23 +506,33 @@ section { margin-top: 1em; }
           båge/<wbr>cirkel/<wbr>slås/<wbr>studs/<wbr>vrids och
           konvergerar/<wbr>divergerar så kommer din sökning matcha oavsett
           vilken relation/<wbr>riktnings­specifikation som står i lexikonet. Om
-          du anger en attitydriktning utan vridning matchar alla vridningar,
+          du anger en attitydriktning utan vridning så matchas alla vridningar,
           och anges bara vridning så tillåts alla riktningar. Om du <i>har</i>
           angivit dessa, så matchar din sökning förstås bara om den
           överrens­stämmer med det som står i lexikonet.
         </section>
         <section id=cirkel>
-          <p>Under <i>handexterna rörelsearter</i> skrivs oftast
-          en <a href="intro.html#riktning" target=_blank>riktning</a> ut (till
-          exempel skrivs tecknet <small>􌥋􌥔􌥙􌦃􌥯􌥿</small> ’bro’ med
-          båg­rörelsen <small>􌥯􌥿</small> <i>båge uppåt</i>). Om inte skriver ut
-          riktning i din sökning matchas samtliga riktningar. Hedbergs
+          <p>Under <i>handexterna rörelsearter</i> (<small>􌥯􌥰􌦮􌦯􌦰􌥱􌥲􌥹􌦅􌦶</small>)
+          skrivs oftast en <a href="intro.html#riktning"
+          target=_blank>riktning</a> ut (till exempel skrivs
+          tecknet <small>􌥋􌥔􌥙􌦃􌥯􌥿</small> ’bro’ med
+          båg­rörelsen <small>􌥯􌥿</small> <i>båge uppåt</i>). Om du inte skriver
+          ut riktning i din sökning så matchas samtliga riktningar. Hedbergs
           förenklade cirkel­symboler (<small>􌦮􌦯􌦰</small>) matchar också
-          motsvarande traditionella notation (<a href="#hedberg">enligt
-          tabellen</a>). tabellen</a>). Och <i>förs
-          vänster/höger/framåt/bakåt/uppåt/neråt</i> (<small>􌥢􌥣􌦃􌦄􌥦􌥧</small>)
-          matchar också motsvarande <i>förs kort-</i>symboler
-          (<small>􌥩􌥪􌥵􌥶􌥷􌥸</small>).
+          motsvarande klassisk notation (<a href="#hedberg">enligt
+          tabellen</a>). Vidare matchar rörelsesymbolerna <i>förs
+          vänster/<wbr>höger/<wbr>framåt/<wbr>bakåt/<wbr>uppåt/<wbr>neråt</i>
+          (<small>􌥢􌥣􌦃􌦄􌥦􌥧</small>) också motsvarande symboler för <i>kort</i>
+          rörelse (<small>􌥩􌥪􌥵􌥶􌥷􌥸</small>) och eventuell efterföljande symbol
+          för <i>medial kontakt.</i> Därtill kan
+          dubbelriktade <i>förs-</i>symboler (<small>􌥤􌥥􌥨</small>) användas för
+          att matcha all dubbelriktad rörelse, även rörelse som i lexikonet
+          skrivits med symbolen för enkelriktad <i>förs</i> (eller <i>förs
+          kort</i>) plus <i>upprepad artikulation</i> (<small>􌥻</small>).
+          Sökningen <tt>*􌥤*</tt> matchar alltså bland annat:
+          􌤆􌤢􌤵􌤶􌥤 <i>balans,</i> men också 􌤢􌥓􌥙􌥧􌥣􌥻 <i>hylla</i> och
+          􌤢􌥔􌤸􌤢􌤴􌤸􌥢􌥡􌥼􌥻 <i>grön</i> (eftersom de alla tre har upprepad rörelse i
+          sidled).
         </section>
       </div>
     </section>

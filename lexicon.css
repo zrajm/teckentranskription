@@ -90,6 +90,11 @@
 p { margin: 0; }
 p:empty + p { margin-top: 1em; }
 p:not(:empty) + p { text-indent: 1.5em; }
+p.footnote:not(:empty) {
+    margin-left: 0;
+    padding-left: 1em;
+    text-indent: -1em;
+}
 li {
   margin-left: 1.5em;
 }

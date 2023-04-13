@@ -196,13 +196,6 @@ let charClass = {
   'ö': '[öø]',
   '-': '[­-–—]',
   "'": "['‘’]",
-  // motion arrow also match short motion
-  '􌥢': '[􌥢􌥩]',
-  '􌥣': '[􌥣􌥪]',
-  '􌦃': '[􌦃􌥵]',
-  '􌦄': '[􌦄􌥶]',
-  '􌥦': '[􌥦􌥷]',
-  '􌥧': '[􌥧􌥸]',
   '􌤆': '[􌤆􌤂􌥞􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛][􌤺􌥛􌤻􌤹􌥚]?', // face
   '􌤂': '[􌤂􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼][􌤺􌥛􌤻􌤹􌥚]?',     // upper face
   '􌥞': '[􌥞􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛][􌤺􌥛􌤻􌤹􌥚]?',       // lower face
@@ -230,7 +223,16 @@ for (let c of '􌦳􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛􌤜􌤞�
 // hitting/twisting/divering/converging) should also match a following
 // (optional) motion direction symbol.
 for (let c of '􌥯􌦶􌥰􌥱􌥲􌥹􌦅') { charClass[c] = `${c}[􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?` }
-
+{
+  // After motion symbol, match optional medial contact.
+  let x = { '􌥢':'􌥩', '􌥣':'􌥪', '􌦃':'􌥵', '􌦄':'􌥶', '􌥦':'􌥷', '􌥧':'􌥸' }
+  for (let c of '􌥢􌥩􌥣􌥪􌦃􌥵􌦄􌥶􌥦􌥷􌥧􌥸') { charClass[c] = `[${c}${x[c] ?? ''}]􌥡?` }
+  // Repeated motion = double arrow, or normal arrow + repeat symbol.
+  let y = { '􌥤': '􌥢􌥩􌥣􌥪', '􌥥': '􌦃􌥵􌦄􌥶', '􌥨': '􌥦􌥷􌥧􌥸' }
+  for (let c of '􌥤􌥥􌥨') {
+    charClass[c] = `(${c}􌥡?|[${y[c]}]􌥡?(?=􌥻|[^􌥠]*􌥼􌥻(?:$|􌥠)))`
+  }
+}
 // Attitude symbols: Pointing symbol match (optional) following turn symbol,
 // and turn symbol match (optional) preceding point symbol.
 for (let c of '􌥓􌥔􌤴􌥕􌤵􌥖') { charClass[c] = `${c}[􌤶􌥗􌤷􌥘􌤸􌥙]?` }
