@@ -21,7 +21,9 @@ body {
 }
 .vert span {
   writing-mode: vertical-rl;
-  margin-bottom: -.5em !important;
+  width: 1.5em;
+  display: block;
+  margin: 0 auto;
 }
 blockquote, body, dl, img, ol, pre, ul { margin: 1em; }
 header, footer, table { margin: 1em 0; }
@@ -49,6 +51,10 @@ table { caption-side: bottom; }
 table caption {
   margin: .5em;
   text-align: left;
+}
+th {
+    min-height: 1.75rem;
+    min-width: 1.75rem;
 }
 /* don't underline links, unless hovering */
 [href] { text-decoration: none; }
@@ -300,7 +306,7 @@ table caption {
         <th class=vert><span>Upp</span></th>
         <th class=vert><span>Ner</span></th>
       <tr align=center>
-        <th rowspan=6 class=vert><span>Riktning<span>
+        <th rowspan=6 class=vert><span>Riktning</span>
         <th>Vänster
         <td class=x2 bgcolor=#888>􌥓􌤶
         <td class=x2 bgcolor=#888>􌥓􌥗
