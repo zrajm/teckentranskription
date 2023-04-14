@@ -1,7 +1,7 @@
-<!doctype html>
+<!DOCTYPE html><!--*- ispell-dictionary: "sv"; js-indent-level: 2; css-indent-offset: 2 -*-->
 <html>
 <head>
-  <!-- Copyright 2017-2022 by zrajm. Released under GPLv3 license. -->
+  <!-- Copyright 2017-2023 by zrajm. Released under GPLv3 license. -->
   <meta charset="UTF-8">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <title>FreeSans-SWL: Ett typsnitt för transkription av svenskt teckenspråk</title>
@@ -31,6 +31,11 @@ h1, h2, h3, h4, h5, h6, h7 { margin: 1em 0 .5em 0; }
 p + p { text-indent: 1em; }
 p + hr { display: none; }
 hr + p { margin-top: 1em; }
+mark { background: #0003; }
+mark[data-width]:before {
+  content: attr(data-width);
+  color: transparent;
+}
 /* Definition lists */
 dt:before { display: block; content: ""; }
 dt, dd { display: inline; }
@@ -201,99 +206,100 @@ th {
   <h1 id=placering>Symbolplacering</h1>
 
   <p>Följande är avsett att visa placeringen av diakritiska symboler i
-  förhållande till deras bassymboler.
+  förhållande till deras bassymboler. För att tydliggöra symbolernas bredd och
+  vertikala placering visas de alla med en mörkare bakgrundsfärg.
 
   <section>
     <h1 id=handform>Handformer</h1>
 
     <p class=x2>
-      <span title="a-handen">􌤤􌤹</span>
-      <span title="tumvinkelhanden">􌥄􌤹</span>
-      <span title="vinkelhanden">􌤣􌤹</span>
-      <span title="tumhanden">􌤧􌤹</span>
-      <span title="måtthanden">􌥋􌤹</span>
-      <span title="raka måtthanden">􌥉􌤹</span>
-      <span title="d-handen">􌦫􌤹</span>
-      <span title="nyphanden">􌤩􌤹</span>
-      <span title="lilla o-handen">􌤎􌤹</span>
-      <span title="e-handen">􌥇􌤹</span>
-      <span title="f-handen">􌦬􌤹</span>
-      <span title="knutna handen">􌤦􌤹</span>
-      <span title="stora nyphanden">􌤲􌤹</span>
-      <span title="lillfingret">􌤱􌤹</span>
-      <span title="flyghanden">􌥑􌤹</span>
-      <span title="flata handen">􌤢􌤹</span>
-      <span title="flata tumhanden">􌥂􌤹</span>
-      <span title="krokfingret">􌤪􌤹</span>
-      <span title="k-handen">􌥎􌤹</span>
-      <span title="pekfingret">􌥈􌤹</span>
-      <span title="l-handen">􌤨􌤹</span>
-      <span title="m-handen">􌤿􌤹</span>
-      <span title="n-handen">􌥌􌤹</span>
-      <span title="o-handen">􌥆􌤹</span>
-      <span title="hållhanden">􌤫􌤹</span>
-      <span title="q-handen">􌦭􌤹</span>
-      <span title="långfingret">􌤬􌤹</span>
-      <span title="s-handen">􌥅􌤹</span>
-      <span title="klohanden">􌤥􌤹</span>
-      <span title="t-handen">􌥊􌤹</span>
-      <span title="lamahanden">􌦱􌤹</span>
-      <span title="dubbelkroken">􌤽􌤹</span>
-      <span title="böjda tupphanden">􌤯􌤹</span>
-      <span title="v-handen">􌤭􌤹</span>
-      <span title="tupphanden">􌤮􌤹</span>
-      <span title="w-handen">􌤰􌤹</span>
-      <span title="x-handen">􌤳􌤹</span>
-      <span title="sprethanden">􌥃􌤹</span>
-      <span title="stora långfingret">􌥒􌤹</span>
-      <span title="böjda långfingret">􌥟􌤹</span>
-      <span title="4-handen">􌦪􌤹</span>
+      <mark title="a-handen">􌤤􌤹</mark>
+      <mark title="tumvinkelhanden">􌥄􌤹</mark>
+      <mark title="vinkelhanden">􌤣􌤹</mark>
+      <mark title="tumhanden">􌤧􌤹</mark>
+      <mark title="måtthanden">􌥋􌤹</mark>
+      <mark title="raka måtthanden">􌥉􌤹</mark>
+      <mark title="d-handen">􌦫􌤹</mark>
+      <mark title="nyphanden">􌤩􌤹</mark>
+      <mark title="lilla o-handen">􌤎􌤹</mark>
+      <mark title="e-handen">􌥇􌤹</mark>
+      <mark title="f-handen">􌦬􌤹</mark>
+      <mark title="knutna handen">􌤦􌤹</mark>
+      <mark title="stora nyphanden">􌤲􌤹</mark>
+      <mark title="lillfingret">􌤱􌤹</mark>
+      <mark title="flyghanden">􌥑􌤹</mark>
+      <mark title="flata handen">􌤢􌤹</mark>
+      <mark title="flata tumhanden">􌥂􌤹</mark>
+      <mark title="krokfingret">􌤪􌤹</mark>
+      <mark title="k-handen">􌥎􌤹</mark>
+      <mark title="pekfingret">􌥈􌤹</mark>
+      <mark title="l-handen">􌤨􌤹</mark>
+      <mark title="m-handen">􌤿􌤹</mark>
+      <mark title="n-handen">􌥌􌤹</mark>
+      <mark title="o-handen">􌥆􌤹</mark>
+      <mark title="hållhanden">􌤫􌤹</mark>
+      <mark title="q-handen">􌦭􌤹</mark>
+      <mark title="långfingret">􌤬􌤹</mark>
+      <mark title="s-handen">􌥅􌤹</mark>
+      <mark title="klohanden">􌤥􌤹</mark>
+      <mark title="t-handen">􌥊􌤹</mark>
+      <mark title="lamahanden">􌦱􌤹</mark>
+      <mark title="dubbelkroken">􌤽􌤹</mark>
+      <mark title="böjda tupphanden">􌤯􌤹</mark>
+      <mark title="v-handen">􌤭􌤹</mark>
+      <mark title="tupphanden">􌤮􌤹</mark>
+      <mark title="w-handen">􌤰􌤹</mark>
+      <mark title="x-handen">􌤳􌤹</mark>
+      <mark title="sprethanden">􌥃􌤹</mark>
+      <mark title="stora långfingret">􌥒􌤹</mark>
+      <mark title="böjda långfingret">􌥟􌤹</mark>
+      <mark title="4-handen">􌦪􌤹</mark>
   </section>
   <section>
     <h1 id=plats>Artikulationsställen</h1>
 
     <p class=x2>
-      <span title="neutrala läget">􌦳􌤹</span>
-      <span title="ansiktet">􌤆􌤹</span>
-      <span title="övre delen av ansiktet">􌤂􌤹</span>
-      <span title="undre delen av ansiktet">􌥞􌤹</span>
-      <span title="hjässan">􌤀􌤹</span>
-      <span title="pannan">􌤃􌤹</span>
-      <span title="ögonen">􌤄􌤹</span>
-      <span title="ögat">􌤅􌤹</span>
-      <span title="öronen">􌤾􌤹</span>
-      <span title="vänstra örat">􌤈􌤹</span>
-      <span title="högra örat">􌤇􌤹</span>
-      <span title="kinderna">􌤉􌤹</span>
-      <span title="vänstra kinden">􌤋􌤹</span>
-      <span title="högra kinden">􌤊􌤹</span>
-      <span title="näsan">􌤼􌤹</span>
-      <span title="munnen">􌤌􌤹</span>
-      <span title="hakan">􌤛􌤹</span>
-      <span title="nacken">􌤜􌤹</span>
-      <span title="halsen">􌤞􌤹</span>
-      <span title="axlarna">􌤠􌤹</span>
-      <span title="vänstra axeln">􌥀􌤹</span>
-      <span title="högra axeln">􌤡􌤹</span>
-      <span title="armen">􌥜􌤹</span>
-      <span title="överarmen">􌤑􌤹</span>
-      <span title="armvecket">􌦲􌤹</span>
-      <span title="underarmen">􌤒􌤹</span>
-      <span title="bröstet">􌤓􌤹</span>
-      <span title="vänster sida av bröstet">􌤕􌤹</span>
-      <span title="höger sida av bröstet">􌤔􌤹</span>
-      <span title="magen">􌤖􌤹</span>
-      <span title="höfterna">􌤗􌤹</span>
-      <span title="vänstra höften">􌤙􌤹</span>
-      <span title="högra höften">􌤘􌤹</span>
-      <span title="benet">􌤚􌤹</span>
+      <mark title="neutrala läget">􌦳􌤹</mark>
+      <mark title="ansiktet">􌤆􌤹</mark>
+      <mark title="övre delen av ansiktet">􌤂􌤹</mark>
+      <mark title="undre delen av ansiktet">􌥞􌤹</mark>
+      <mark title="hjässan">􌤀􌤹</mark>
+      <mark title="pannan">􌤃􌤹</mark>
+      <mark title="ögonen">􌤄􌤹</mark>
+      <mark title="ögat">􌤅􌤹</mark>
+      <mark title="öronen">􌤾􌤹</mark>
+      <mark title="vänstra örat">􌤈􌤹</mark>
+      <mark title="högra örat">􌤇􌤹</mark>
+      <mark title="kinderna">􌤉􌤹</mark>
+      <mark title="vänstra kinden">􌤋􌤹</mark>
+      <mark title="högra kinden">􌤊􌤹</mark>
+      <mark title="näsan">􌤼􌤹</mark>
+      <mark title="munnen">􌤌􌤹</mark>
+      <mark title="hakan">􌤛􌤹</mark>
+      <mark title="nacken">􌤜􌤹</mark>
+      <mark title="halsen">􌤞􌤹</mark>
+      <mark title="axlarna">􌤠􌤹</mark>
+      <mark title="vänstra axeln">􌥀􌤹</mark>
+      <mark title="högra axeln">􌤡􌤹</mark>
+      <mark title="armen">􌥜􌤹</mark>
+      <mark title="överarmen">􌤑􌤹</mark>
+      <mark title="armvecket">􌦲􌤹</mark>
+      <mark title="underarmen">􌤒􌤹</mark>
+      <mark title="bröstet">􌤓􌤹</mark>
+      <mark title="vänster sida av bröstet">􌤕􌤹</mark>
+      <mark title="höger sida av bröstet">􌤔􌤹</mark>
+      <mark title="magen">􌤖􌤹</mark>
+      <mark title="höfterna">􌤗􌤹</mark>
+      <mark title="vänstra höften">􌤙􌤹</mark>
+      <mark title="högra höften">􌤘􌤹</mark>
+      <mark title="benet">􌤚􌤹</mark>
   </section>
 
   <section>
     <h1 id=attityd>Attitydsymboler</h1>
 
     <table border=1>
-      <caption><span style="background:#888">Grå bakgrund</span> indikerar
+      <caption><span style="background:#00f4">Blå bakgrund</span> indikerar
         anatomiskt omöjliga kombinationer.</caption>
       <tr align=center>
         <th rowspan=2 colspan=2>
@@ -308,52 +314,52 @@ th {
       <tr align=center>
         <th rowspan=6 class=vert><span>Riktning</span>
         <th>Vänster
-        <td class=x2 bgcolor=#888>􌥓􌤶
-        <td class=x2 bgcolor=#888>􌥓􌥗
-        <td class=x2>􌥓􌤷
-        <td class=x2>􌥓􌥘
-        <td class=x2>􌥓􌤸
-        <td class=x2>􌥓􌥙
+        <td class=x2 style=background:#00f4><mark>􌥓􌤶</mark>
+        <td class=x2 style=background:#00f4><mark>􌥓􌥗</mark>
+        <td class=x2><mark>􌥓􌤷</mark>
+        <td class=x2><mark>􌥓􌥘</mark>
+        <td class=x2><mark>􌥓􌤸</mark>
+        <td class=x2><mark>􌥓􌥙</mark>
       <tr align=center>
         <th>Höger
-        <td class=x2 bgcolor=#888>􌥔􌤶
-        <td class=x2 bgcolor=#888>􌥔􌥗
-        <td class=x2>􌥔􌤷
-        <td class=x2>􌥔􌥘
-        <td class=x2>􌥔􌤸
-        <td class=x2>􌥔􌥙
+        <td class=x2 style=background:#00f4><mark>􌥔􌤶</mark>
+        <td class=x2 style=background:#00f4><mark>􌥔􌥗</mark>
+        <td class=x2><mark>􌥔􌤷</mark>
+        <td class=x2><mark>􌥔􌥘</mark>
+        <td class=x2><mark>􌥔􌤸</mark>
+        <td class=x2><mark>􌥔􌥙</mark>
       <tr align=center>
         <th>Fram
-        <td class=x2>􌤴􌤶
-        <td class=x2>􌤴􌥗
-        <td class=x2 bgcolor=#888>􌤴􌤷
-        <td class=x2 bgcolor=#888>􌤴􌥘
-        <td class=x2>􌤴􌤸
-        <td class=x2>􌤴􌥙
+        <td class=x2><mark>􌤴􌤶</mark>
+        <td class=x2><mark>􌤴􌥗</mark>
+        <td class=x2 style=background:#00f4><mark>􌤴􌤷</mark>
+        <td class=x2 style=background:#00f4><mark>􌤴􌥘</mark>
+        <td class=x2><mark>􌤴􌤸</mark>
+        <td class=x2><mark>􌤴􌥙</mark>
       <tr align=center>
         <th>In
-        <td class=x2>􌥕􌤶
-        <td class=x2>􌥕􌥗
-        <td class=x2 bgcolor=#888>􌥕􌤷
-        <td class=x2 bgcolor=#888>􌥕􌥘
-        <td class=x2>􌥕􌤸
-        <td class=x2>􌥕􌥙
+        <td class=x2><mark>􌥕􌤶</mark>
+        <td class=x2><mark>􌥕􌥗</mark>
+        <td class=x2 style=background:#00f4><mark>􌥕􌤷</mark>
+        <td class=x2 style=background:#00f4><mark>􌥕􌥘</mark>
+        <td class=x2><mark>􌥕􌤸</mark>
+        <td class=x2><mark>􌥕􌥙</mark>
       <tr align=center>
         <th>Upp
-        <td class=x2>􌤵􌤶
-        <td class=x2>􌤵􌥗
-        <td class=x2>􌤵􌤷
-        <td class=x2>􌤵􌥘
-        <td class=x2 bgcolor=#888>􌤵􌤸
-        <td class=x2 bgcolor=#888>􌤵􌥙
+        <td class=x2><mark>􌤵􌤶</mark>
+        <td class=x2><mark>􌤵􌥗</mark>
+        <td class=x2><mark>􌤵􌤷</mark>
+        <td class=x2><mark>􌤵􌥘</mark>
+        <td class=x2 style=background:#00f4><mark>􌤵􌤸</mark>
+        <td class=x2 style=background:#00f4><mark>􌤵􌥙</mark>
       <tr align=center>
         <th>Ner
-        <td class=x2>􌥖􌤶
-        <td class=x2>􌥖􌥗
-        <td class=x2>􌥖􌤷
-        <td class=x2>􌥖􌥘
-        <td class=x2 bgcolor=#888>􌥖􌤸
-        <td class=x2 bgcolor=#888>􌥖􌥙
+        <td class=x2><mark>􌥖􌤶</mark>
+        <td class=x2><mark>􌥖􌥗</mark>
+        <td class=x2><mark>􌥖􌤷</mark>
+        <td class=x2><mark>􌥖􌥘</mark>
+        <td class=x2 style=background:#00f4><mark>􌥖􌤸</mark>
+        <td class=x2 style=background:#00f4><mark>􌥖􌥙</mark>
     </table>
   </section>
 </section>
@@ -361,49 +367,77 @@ th {
 <section>
   <h1 id=artikulation>Artikulationssymboler</h1>
 
-  <p>För att tydliggöra den vertikala placeringen av symbolerna visas de alla
-  intill bokstaven ”I”.
-
   <section>
     <h1 id=riktning>Rörelseriktning</h1>
 
     <table border=1>
       <tr>
+        <th>
+        <th colspan=3>utan<br>kontakt
+        <th colspan=3>medial<br>kontakt
+      <tr>
         <th>hålls stilla
-        <td class=x2 colspan=2>I􌦑I
-      <tr>
+        <td class=x2 colspan=6><mark>􌦑</mark>
+      <tr align=center>
         <th>förs vänster / höger / i sidled
-        <td class=x2>I􌥢I􌥣I􌥤I
-        <td class=x2>I􌥢􌥡I􌥣􌥡I􌥤􌥡I
-      <tr>
+        <td class=x2><mark>􌥢</mark>
+        <td class=x2><mark>􌥣</mark>
+        <td class=x2><mark>􌥤</mark>
+        <td class=x2><mark>􌥢􌥡</mark>
+        <td class=x2><mark>􌥣􌥡</mark>
+        <td class=x2><mark>􌥤􌥡</mark>
+      <tr align=center>
         <th>förs framåt / bakåt / i djupled
-        <td class=x2>I􌦃I􌦄I􌥥I
-        <td class=x2>I􌦃􌥡I􌦄􌥡I􌥥􌥡I
-      <tr>
+        <td class=x2><mark>􌦃</mark>
+        <td class=x2><mark>􌦄</mark>
+        <td class=x2><mark>􌥥</mark>
+        <td class=x2><mark>􌦃􌥡</mark>
+        <td class=x2><mark>􌦄􌥡</mark>
+        <td class=x2><mark>􌥥􌥡</mark>
+      <tr align=center>
         <th>förs uppåt / nedåt / i höjdled
-        <td class=x2>I􌥦I􌥧I􌥨I
-        <td class=x2>I􌥦􌥡I􌥧􌥡I􌥨􌥡I
-      <tr>
+        <td class=x2><mark>􌥦</mark>
+        <td class=x2><mark>􌥧</mark>
+        <td class=x2><mark>􌥨</mark>
+        <td class=x2><mark>􌥦􌥡</mark>
+        <td class=x2><mark>􌥧􌥡</mark>
+        <td class=x2><mark>􌥨􌥡</mark>
+      <tr align=center>
         <th>förs kort vänster / höger
-        <td class=x2>I􌥩I􌥪I
-        <td class=x2>I􌥩􌥡I􌥪􌥡I
-      <tr>
+        <td class=x2><mark>􌥩</mark>
+        <td class=x2><mark>􌥪</mark>
+        <td class=x2>
+        <td class=x2><mark>􌥩􌥡</mark>
+        <td class=x2><mark>􌥪􌥡</mark>
+        <td class=x2>
+      <tr align=center>
         <th>förs kort framåt / bakåt
-        <td class=x2>I􌥵I􌥶I
-        <td class=x2>I􌥵􌥡I􌥶􌥡I
-      <tr>
+        <td class=x2><mark>􌥵</mark>
+        <td class=x2><mark>􌥶</mark>
+        <td class=x2>
+        <td class=x2><mark>􌥵􌥡</mark>
+        <td class=x2><mark>􌥶􌥡</mark>
+        <td class=x2>
+      <tr align=center>
         <th>förs kort uppåt / nedåt
-        <td class=x2>I􌥷I􌥸I
-        <td class=x2>I􌥷􌥡I􌥸􌥡I
+        <td class=x2><mark>􌥷</mark>
+        <td class=x2><mark>􌥸</mark>
+        <td class=x2>
+        <td class=x2><mark>􌥷􌥡</mark>
+        <td class=x2><mark>􌥸􌥡</mark>
+        <td class=x2>
     </table>
   </section>
 
   <section>
     <h1 id=handextern>Handextern rörelseart</h1>
 
+    <p>Handexterna rörelsearter påverkar handens attityd eller position i
+    rummet.
+
     <table border=1>
       <caption>
-        <span style="background:#888">Grå bakgrund</span> indikerar otillåtna
+        <span style="background:#00f4">Blå bakgrund</span> indikerar otillåtna
         kombinationer. <span style="background:#fcaa5d">Orange bakgrund</span>
         förekommer inte i lexikala tecken, men kan användas för att beskriva
         avbildande tecken. <span style="background:#ff8">Gul bakgrund</span>
@@ -427,166 +461,169 @@ th {
       </caption>
       <tr align=center>
         <th>båge
-        <td class=x2 title="båge">I􌥯I
-        <td class=x2 title="båge uppåt">I􌥯􌥿I
-        <td class=x2 title="båge nedåt">I􌥯􌦀I
-        <td class=x2 title="båge höjdled">I􌥯􌦌I
-        <td class=x2 title="båge vänster">I􌥯􌦈I
-        <td class=x2 title="båge höger">I􌥯􌥽I
-        <td class=x2 title="båge sidled">I􌥯􌦉I
-        <td class=x2 title="båge framåt">I􌥯􌥾I
-        <td class=x2 title="båge bakåt">I􌥯􌦊I
-        <td class=x2 title="båge djupled">I􌥯􌦋I
-        <td class=x2 title="båge mot varandra">I􌥯􌦂I
-        <td class=x2 bgcolor=#ff8 title="båge från varandra">I􌥯􌦵I
+        <td class=x2 title="båge"><mark>􌥯</mark>
+        <td class=x2 title="båge uppåt"><mark>􌥯􌥿</mark>
+        <td class=x2 title="båge nedåt"><mark>􌥯􌦀</mark>
+        <td class=x2 title="båge höjdled"><mark>􌥯􌦌</mark>
+        <td class=x2 title="båge vänster"><mark>􌥯􌦈</mark>
+        <td class=x2 title="båge höger"><mark>􌥯􌥽</mark>
+        <td class=x2 title="båge sidled"><mark>􌥯􌦉</mark>
+        <td class=x2 title="båge framåt"><mark>􌥯􌥾</mark>
+        <td class=x2 title="båge bakåt"><mark>􌥯􌦊</mark>
+        <td class=x2 title="båge djupled"><mark>􌥯􌦋</mark>
+        <td class=x2 title="båge mot varandra"><mark>􌥯􌦂</mark>
+        <td class=x2 bgcolor=#ff8 title="båge från varandra"><mark>􌥯􌦵</mark>
       <tr align=center>
         <th>cirkel i frontalplan
-        <td class=x2 title="frontal cirkel">I􌦮I
-        <td class=x2 bgcolor=#888 title="frontal cirkel uppåt">I􌦮􌥿I
-        <td class=x2 bgcolor=#888 title="frontal cirkel nedåt">I􌦮􌦀I
-        <td class=x2 bgcolor=#888 title="frontal cirkel höjdled">I􌦮􌦌I
-        <td class=x2 bgcolor=#fcaa5d title="frontal cirkel vänster">I􌦮􌦈I
-        <td class=x2 bgcolor=#fcaa5d title="frontal cirkel höger">I􌦮􌥽I
-        <td class=x2 bgcolor=#888 title="frontal cirkel sidled">I􌦮􌦉I
-        <td class=x2 bgcolor=#888 title="frontal cirkel framåt">I􌦮􌥾I
-        <td class=x2 bgcolor=#888 title="frontal cirkel bakåt">I􌦮􌦊I
-        <td class=x2 bgcolor=#888 title="frontal cirkel djupled">I􌦮􌦋I
-        <td class=x2 bgcolor=#ff8 title="frontal cirkel mot varandra">I􌦮􌦂I
-        <td class=x2 bgcolor=#ff8 title="frontal cirkel från varandra">I􌦮􌦵I
+        <td class=x2 title="frontal cirkel"><mark>􌦮</mark>
+        <td class=x2 style=background:#00f4 title="frontal cirkel uppåt"><mark>􌦮􌥿</mark>
+        <td class=x2 style=background:#00f4 title="frontal cirkel nedåt"><mark>􌦮􌦀</mark>
+        <td class=x2 style=background:#00f4 title="frontal cirkel höjdled"><mark>􌦮􌦌</mark>
+        <td class=x2 bgcolor=#fcaa5d title="frontal cirkel vänster"><mark>􌦮􌦈</mark>
+        <td class=x2 bgcolor=#fcaa5d title="frontal cirkel höger"><mark>􌦮􌥽</mark>
+        <td class=x2 style=background:#00f4 title="frontal cirkel sidled"><mark>􌦮􌦉</mark>
+        <td class=x2 style=background:#00f4 title="frontal cirkel framåt"><mark>􌦮􌥾</mark>
+        <td class=x2 style=background:#00f4 title="frontal cirkel bakåt"><mark>􌦮􌦊</mark>
+        <td class=x2 style=background:#00f4 title="frontal cirkel djupled"><mark>􌦮􌦋</mark>
+        <td class=x2 bgcolor=#ff8 title="frontal cirkel mot varandra"><mark>􌦮􌦂</mark>
+        <td class=x2 bgcolor=#ff8 title="frontal cirkel från varandra"><mark>􌦮􌦵</mark>
       <tr align=center>
         <th>cirkel i horisontalplan
-        <td class=x2 title="horisontell cirkel">I􌦯I
-        <td class=x2 bgcolor=#888 title="horisontell cirkel uppåt">I􌦯􌥿I
-        <td class=x2 bgcolor=#888 title="horisontell cirkel nedåt">I􌦯􌦀I
-        <td class=x2 bgcolor=#888 title="horisontell cirkel höjdled">I􌦯􌦌I
-        <td class=x2 bgcolor=#fcaa5d title="horisontell cirkel vänster">I􌦯􌦈I
-        <td class=x2 bgcolor=#fcaa5d title="horisontell cirkel höger">I􌦯􌥽I
-        <td class=x2 bgcolor=#888 title="horisontell cirkel sidled">I􌦯􌦉I
-        <td class=x2 bgcolor=#888 title="horisontell cirkel framåt">I􌦯􌥾I
-        <td class=x2 bgcolor=#888 title="horisontell cirkel bakåt">I􌦯􌦊I
-        <td class=x2 bgcolor=#888 title="horisontell cirkel djupled">I􌦯􌦋I
-        <td class=x2 bgcolor=#ff8 title="horisontell cirkel mot varandra">I􌦯􌦂I
-        <td class=x2 bgcolor=#ff8 title="horisontell cirkel från varandra">I􌦯􌦵I
+        <td class=x2 title="horisontell cirkel"><mark>􌦯</mark>
+        <td class=x2 style=background:#00f4 title="horisontell cirkel uppåt"><mark>􌦯􌥿</mark>
+        <td class=x2 style=background:#00f4 title="horisontell cirkel nedåt"><mark>􌦯􌦀</mark>
+        <td class=x2 style=background:#00f4 title="horisontell cirkel höjdled"><mark>􌦯􌦌</mark>
+        <td class=x2 bgcolor=#fcaa5d title="horisontell cirkel vänster"><mark>􌦯􌦈</mark>
+        <td class=x2 bgcolor=#fcaa5d title="horisontell cirkel höger"><mark>􌦯􌥽</mark>
+        <td class=x2 style=background:#00f4 title="horisontell cirkel sidled"><mark>􌦯􌦉</mark>
+        <td class=x2 style=background:#00f4 title="horisontell cirkel framåt"><mark>􌦯􌥾</mark>
+        <td class=x2 style=background:#00f4 title="horisontell cirkel bakåt"><mark>􌦯􌦊</mark>
+        <td class=x2 style=background:#00f4 title="horisontell cirkel djupled"><mark>􌦯􌦋</mark>
+        <td class=x2 bgcolor=#ff8 title="horisontell cirkel mot varandra"><mark>􌦯􌦂</mark>
+        <td class=x2 bgcolor=#ff8 title="horisontell cirkel från varandra"><mark>􌦯􌦵</mark>
       <tr align=center>
         <th>cirkel i sagittalplan
-        <td class=x2 bgcolor=#888 title="sagittal cirkel">I􌦰I
-        <td class=x2 bgcolor=#888 title="sagittal cirkel uppåt">I􌦰􌥿I
-        <td class=x2 bgcolor=#888 title="sagittal cirkel nedåt">I􌦰􌦀I
-        <td class=x2 bgcolor=#888 title="sagittal cirkel höjdled">I􌦰􌦌I
-        <td class=x2 bgcolor=#888 title="sagittal cirkel vänster">I􌦰􌦈I
-        <td class=x2 bgcolor=#888 title="sagittal cirkel höger">I􌦰􌥽I
-        <td class=x2 bgcolor=#888 title="sagittal cirkel sidled">I􌦰􌦉I
-        <td class=x2 title="sagittal cirkel framåt">I􌦰􌥾I
-        <td class=x2 title="sagittal cirkel bakåt">I􌦰􌦊I
-        <td class=x2 bgcolor=#888 title="sagittal cirkel djupled">I􌦰􌦋I
-        <td class=x2 bgcolor=#888 title="sagittal cirkel mot varandra">I􌦰􌦂I
-        <td class=x2 bgcolor=#ff8 title="sagittal cirkel från varandra">I􌦰􌦵I
+        <td class=x2 style=background:#00f4 title="sagittal cirkel"><mark>􌦰</mark>
+        <td class=x2 style=background:#00f4 title="sagittal cirkel uppåt"><mark>􌦰􌥿</mark>
+        <td class=x2 style=background:#00f4 title="sagittal cirkel nedåt"><mark>􌦰􌦀</mark>
+        <td class=x2 style=background:#00f4 title="sagittal cirkel höjdled"><mark>􌦰􌦌</mark>
+        <td class=x2 style=background:#00f4 title="sagittal cirkel vänster"><mark>􌦰􌦈</mark>
+        <td class=x2 style=background:#00f4 title="sagittal cirkel höger"><mark>􌦰􌥽</mark>
+        <td class=x2 style=background:#00f4 title="sagittal cirkel sidled"><mark>􌦰􌦉</mark>
+        <td class=x2 title="sagittal cirkel framåt"><mark>􌦰􌥾</mark>
+        <td class=x2 title="sagittal cirkel bakåt"><mark>􌦰􌦊</mark>
+        <td class=x2 style=background:#00f4 title="sagittal cirkel djupled"><mark>􌦰􌦋</mark>
+        <td class=x2 style=background:#00f4 title="sagittal cirkel mot varandra"><mark>􌦰􌦂</mark>
+        <td class=x2 bgcolor=#ff8 title="sagittal cirkel från varandra"><mark>􌦰􌦵</mark>
       <tr align=center>
         <th>cirkel
-        <td class=x2 bgcolor=#888 title="cirkel">I􌥰I
-        <td class=x2 title="cirkel uppåt">I􌥰􌥿I
-        <td class=x2 bgcolor=#888 title="cirkel nedåt">I􌥰􌦀I
-        <td class=x2 title="cirkel höjdled">I􌥰􌦌I
-        <td class=x2 title="cirkel vänster">I􌥰􌦈I
-        <td class=x2 bgcolor=#888 title="cirkel höger">I􌥰􌥽I
-        <td class=x2 title="cirkel sidled">I􌥰􌦉I
-        <td class=x2 title="cirkel framåt">I􌥰􌥾I
-        <td class=x2 title="cirkel bakåt">I􌥰􌦊I
-        <td class=x2 title="cirkel djupled">I􌥰􌦋I
-        <td class=x2 title="cirkel mot varandra">I􌥰􌦂I
-        <td class=x2 bgcolor=#ff8 title="cirkel från varandra">I􌥰􌦵I
+        <td class=x2 style=background:#00f4 title="cirkel"><mark>􌥰</mark>
+        <td class=x2 title="cirkel uppåt"><mark>􌥰􌥿</mark>
+        <td class=x2 style=background:#00f4 title="cirkel nedåt"><mark>􌥰􌦀</mark>
+        <td class=x2 title="cirkel höjdled"><mark>􌥰􌦌</mark>
+        <td class=x2 title="cirkel vänster"><mark>􌥰􌦈</mark>
+        <td class=x2 style=background:#00f4 title="cirkel höger"><mark>􌥰􌥽</mark>
+        <td class=x2 title="cirkel sidled"><mark>􌥰􌦉</mark>
+        <td class=x2 title="cirkel framåt"><mark>􌥰􌥾</mark>
+        <td class=x2 title="cirkel bakåt"><mark>􌥰􌦊</mark>
+        <td class=x2 title="cirkel djupled"><mark>􌥰􌦋</mark>
+        <td class=x2 title="cirkel mot varandra"><mark>􌥰􌦂</mark>
+        <td class=x2 bgcolor=#ff8 title="cirkel från varandra"><mark>􌥰􌦵</mark>
       <tr align=center>
         <th>slås
-        <td class=x2 bgcolor=#888 title="slås">I􌥱I
-        <td class=x2 title="slås uppåt">I􌥱􌥿I
-        <td class=x2 title="slås nedåt">I􌥱􌦀I
-        <td class=x2 title="slås höjdled">I􌥱􌦌I
-        <td class=x2 title="slås vänster">I􌥱􌦈I
-        <td class=x2 title="slås höger">I􌥱􌥽I
-        <td class=x2 title="slås sidled">I􌥱􌦉I
-        <td class=x2 title="slås framåt">I􌥱􌥾I
-        <td class=x2 title="slås bakåt">I􌥱􌦊I
-        <td class=x2 title="slås djupled">I􌥱􌦋I
-        <td class=x2 title="slås mot varandra">I􌥱􌦂I
-        <td class=x2 bgcolor=#ff8 title="slås från varandra">I􌥱􌦵I
+        <td class=x2 style=background:#00f4 title="slås"><mark>􌥱</mark>
+        <td class=x2 title="slås uppåt"><mark>􌥱􌥿</mark>
+        <td class=x2 title="slås nedåt"><mark>􌥱􌦀</mark>
+        <td class=x2 title="slås höjdled"><mark>􌥱􌦌</mark>
+        <td class=x2 title="slås vänster"><mark>􌥱􌦈</mark>
+        <td class=x2 title="slås höger"><mark>􌥱􌥽</mark>
+        <td class=x2 title="slås sidled"><mark>􌥱􌦉</mark>
+        <td class=x2 title="slås framåt"><mark>􌥱􌥾</mark>
+        <td class=x2 title="slås bakåt"><mark>􌥱􌦊</mark>
+        <td class=x2 title="slås djupled"><mark>􌥱􌦋</mark>
+        <td class=x2 title="slås mot varandra"><mark>􌥱􌦂</mark>
+        <td class=x2 bgcolor=#ff8 title="slås från varandra"><mark>􌥱􌦵</mark>
       <tr align=center>
         <th>vrids
-        <td class=x2 bgcolor=#888 title="vrids">I􌥲I
-        <td class=x2 title="vrids uppåt">I􌥲􌥿I
-        <td class=x2 title="vrids nedåt">I􌥲􌦀I
-        <td class=x2 title="vrids höjdled">I􌥲􌦌I
-        <td class=x2 title="vrids vänster">I􌥲􌦈I
-        <td class=x2 title="vrids höger">I􌥲􌥽I
-        <td class=x2 title="vrids sidled">I􌥲􌦉I
-        <td class=x2 title="vrids framåt">I􌥲􌥾I
-        <td class=x2 title="vrids bakåt">I􌥲􌦊I
-        <td class=x2 title="vrids djupled">I􌥲􌦋I
-        <td class=x2 title="vrids mot varandra">I􌥲􌦂I
-        <td class=x2 bgcolor=#ff8 title="vrids från varandra">I􌥲􌦵I
+        <td class=x2 style=background:#00f4 title="vrids"><mark>􌥲</mark>
+        <td class=x2 title="vrids uppåt"><mark>􌥲􌥿</mark>
+        <td class=x2 title="vrids nedåt"><mark>􌥲􌦀</mark>
+        <td class=x2 title="vrids höjdled"><mark>􌥲􌦌</mark>
+        <td class=x2 title="vrids vänster"><mark>􌥲􌦈</mark>
+        <td class=x2 title="vrids höger"><mark>􌥲􌥽</mark>
+        <td class=x2 title="vrids sidled"><mark>􌥲􌦉</mark>
+        <td class=x2 title="vrids framåt"><mark>􌥲􌥾</mark>
+        <td class=x2 title="vrids bakåt"><mark>􌥲􌦊</mark>
+        <td class=x2 title="vrids djupled"><mark>􌥲􌦋</mark>
+        <td class=x2 title="vrids mot varandra"><mark>􌥲􌦂</mark>
+        <td class=x2 bgcolor=#ff8 title="vrids från varandra"><mark>􌥲􌦵</mark>
       <tr align=center>
         <th>divergerar
-        <td class=x2 title="divergerar">I􌥹I
-        <td class=x2 bgcolor=#888 title="divergerar uppåt">I􌥹􌥿I
-        <td class=x2 bgcolor=#888 title="divergerar nedåt">I􌥹􌦀I
-        <td class=x2 title="divergerar höjdled">I􌥹􌦌I
-        <td class=x2 bgcolor=#888 title="divergerar vänster">I􌥹􌦈I
-        <td class=x2 bgcolor=#888 title="divergerar höger">I􌥹􌥽I
-        <td class=x2 title="divergerar sidled">I􌥹􌦉I
-        <td class=x2 bgcolor=#888 title="divergerar framåt">I􌥹􌥾I
-        <td class=x2 bgcolor=#888 title="divergerar bakåt">I􌥹􌦊I
-        <td class=x2 title="divergerar djupled">I􌥹􌦋I
-        <td class=x2 bgcolor=#888 title="divergerar mot varandra">I􌥹􌦂I
-        <td class=x2 bgcolor=#888 title="divergerar från varandra">I􌥹􌦵I
+        <td class=x2 title="divergerar"><mark>􌥹</mark>
+        <td class=x2 style=background:#00f4 title="divergerar uppåt"><mark>􌥹􌥿</mark>
+        <td class=x2 style=background:#00f4 title="divergerar nedåt"><mark>􌥹􌦀</mark>
+        <td class=x2 title="divergerar höjdled"><mark>􌥹􌦌</mark>
+        <td class=x2 style=background:#00f4 title="divergerar vänster"><mark>􌥹􌦈</mark>
+        <td class=x2 style=background:#00f4 title="divergerar höger"><mark>􌥹􌥽</mark>
+        <td class=x2 title="divergerar sidled"><mark>􌥹􌦉</mark>
+        <td class=x2 style=background:#00f4 title="divergerar framåt"><mark>􌥹􌥾</mark>
+        <td class=x2 style=background:#00f4 title="divergerar bakåt"><mark>􌥹􌦊</mark>
+        <td class=x2 title="divergerar djupled"><mark>􌥹􌦋</mark>
+        <td class=x2 style=background:#00f4 title="divergerar mot varandra"><mark>􌥹􌦂</mark>
+        <td class=x2 style=background:#00f4 title="divergerar från varandra"><mark>􌥹􌦵</mark>
       <tr align=center>
         <th>konvergerar
-        <td class=x2 title="konvergerar">I􌦅I
-        <td class=x2 bgcolor=#888 title="konvergerar uppåt">I􌦅􌥿I
-        <td class=x2 bgcolor=#888 title="konvergerar nedåt">I􌦅􌦀I
-        <td class=x2 title="konvergerar höjdled">I􌦅􌦌I
-        <td class=x2 bgcolor=#888 title="konvergerar vänster">I􌦅􌦈I
-        <td class=x2 bgcolor=#888 title="konvergerar höger">I􌦅􌥽I
-        <td class=x2 title="konvergerar sidled">I􌦅􌦉I
-        <td class=x2 bgcolor=#888 title="konvergerar framåt">I􌦅􌥾I
-        <td class=x2 bgcolor=#888 title="konvergerar bakåt">I􌦅􌦊I
-        <td class=x2 title="konvergerar djupled">I􌦅􌦋I
-        <td class=x2 bgcolor=#888 title="konvergerar mot varandra">I􌦅􌦂I
-        <td class=x2 bgcolor=#888 title="konvergerar från varandra">I􌦅􌦵I
+        <td class=x2 title="konvergerar"><mark>􌦅</mark>
+        <td class=x2 style=background:#00f4 title="konvergerar uppåt"><mark>􌦅􌥿</mark>
+        <td class=x2 style=background:#00f4 title="konvergerar nedåt"><mark>􌦅􌦀</mark>
+        <td class=x2 title="konvergerar höjdled"><mark>􌦅􌦌</mark>
+        <td class=x2 style=background:#00f4 title="konvergerar vänster"><mark>􌦅􌦈</mark>
+        <td class=x2 style=background:#00f4 title="konvergerar höger"><mark>􌦅􌥽</mark>
+        <td class=x2 title="konvergerar sidled"><mark>􌦅􌦉</mark>
+        <td class=x2 style=background:#00f4 title="konvergerar framåt"><mark>􌦅􌥾</mark>
+        <td class=x2 style=background:#00f4 title="konvergerar bakåt"><mark>􌦅􌦊</mark>
+        <td class=x2 title="konvergerar djupled"><mark>􌦅􌦋</mark>
+        <td class=x2 style=background:#00f4 title="konvergerar mot varandra"><mark>􌦅􌦂</mark>
+        <td class=x2 style=background:#00f4 title="konvergerar från varandra"><mark>􌦅􌦵</mark>
       <tr align=center>
         <th>studs
-        <td class=x2 bgcolor=#ff8 title="studs">I􌦶I
-        <td class=x2 bgcolor=#ff8 title="studs uppåt">I􌦶􌥿I
-        <td class=x2 bgcolor=#ff8 title="studs nedåt">I􌦶􌦀I
-        <td class=x2 bgcolor=#ff8 title="studs höjdled">I􌦶􌦌I
-        <td class=x2 bgcolor=#ff8 title="studs vänster">I􌦶􌦈I
-        <td class=x2 bgcolor=#ff8 title="studs höger">I􌦶􌥽I
-        <td class=x2 bgcolor=#ff8 title="studs sidled">I􌦶􌦉I
-        <td class=x2 bgcolor=#ff8 title="studs framåt">I􌦶􌥾I
-        <td class=x2 bgcolor=#ff8 title="studs bakåt">I􌦶􌦊I
-        <td class=x2 bgcolor=#ff8 title="studs djupled">I􌦶􌦋I
-        <td class=x2 bgcolor=#ff8 title="studs mot varandra">I􌦶􌦂I
-        <td class=x2 bgcolor=#ff8 title="studs från varandra">I􌦶􌦵I
+        <td class=x2 bgcolor=#ff8 title="studs"><mark>􌦶</mark>
+        <td class=x2 bgcolor=#ff8 title="studs uppåt"><mark>􌦶􌥿</mark>
+        <td class=x2 bgcolor=#ff8 title="studs nedåt"><mark>􌦶􌦀</mark>
+        <td class=x2 bgcolor=#ff8 title="studs höjdled"><mark>􌦶􌦌</mark>
+        <td class=x2 bgcolor=#ff8 title="studs vänster"><mark>􌦶􌦈</mark>
+        <td class=x2 bgcolor=#ff8 title="studs höger"><mark>􌦶􌥽</mark>
+        <td class=x2 bgcolor=#ff8 title="studs sidled"><mark>􌦶􌦉</mark>
+        <td class=x2 bgcolor=#ff8 title="studs framåt"><mark>􌦶􌥾</mark>
+        <td class=x2 bgcolor=#ff8 title="studs bakåt"><mark>􌦶􌦊</mark>
+        <td class=x2 bgcolor=#ff8 title="studs djupled"><mark>􌦶􌦋</mark>
+        <td class=x2 bgcolor=#ff8 title="studs mot varandra"><mark>􌦶􌦂</mark>
+        <td class=x2 bgcolor=#ff8 title="studs från varandra"><mark>􌦶􌦵</mark>
     </table>
   </section>
 
   <section>
     <h1 id=handintern>Handintern rörelseart</h1>
 
+    <p>Handinterna rörelsearter påverkar inte handens attityd eller position i
+    rummet utan involverar bara fingerrörelser.
+
     <table border=1>
-      <tr>
+      <tr align=center>
         <th>spelar
-        <td class=x2>I􌥳I
-      <tr>
+        <td class=x2><mark>􌥳</mark>
+      <tr align=center>
         <th>strör
-        <td class=x2>I􌥴I
-      <tr>
+        <td class=x2><mark>􌥴</mark>
+      <tr align=center>
         <th>vinkar
-        <td class=x2>I􌥺I
-      <tr>
+        <td class=x2><mark>􌥺</mark>
+      <tr align=center>
         <th>böjs
-        <td class=x2>I􌦨I
-      <tr>
+        <td class=x2><mark>􌦨</mark>
+      <tr align=center>
         <th>förändras
-        <td class=x2>I􌦆I
+        <td class=x2><mark>􌦆</mark>
     </table>
   </section>
 
@@ -597,41 +634,41 @@ th {
       <caption><sup>1</sup> Det finns två symboler för <i>medial kontakt</i>
         denna typ är inte diakritisk, och uppträder alltså som egen symbol, den
         andra sorten förekommer bara under en annan symbol (tex 􌥣􌥡).</caption>
-      <tr>
+      <tr align=center>
         <th>växelvis
-        <td class=x2>I􌦇I
-      <tr>
+        <td class=x2><mark>􌦇</mark>
+      <tr align=center>
         <th>divergerar
-        <td class=x2>I􌥹I
-        <td class=x2>I􌥹􌥡I
-      <tr>
+        <td class=x2><mark>􌥹</mark>
+        <td class=x2><mark>􌥹􌥡</mark>
+      <tr align=center>
         <th>konvergerar
-        <td class=x2>I􌦅I
-        <td class=x2>I􌦅􌥡I
-      <tr>
+        <td class=x2><mark>􌦅</mark>
+        <td class=x2><mark>􌦅􌥡</mark>
+      <tr align=center>
         <th>byte
-        <td class=x2>I􌥬I
-      <tr>
+        <td class=x2><mark>􌥬</mark>
+      <tr align=center>
         <th>kors
-        <td class=x2>I􌦎I
-      <tr>
+        <td class=x2><mark>􌦎</mark>
+      <tr align=center>
         <th>vinkel
-        <td class=x2>I􌥮I
-      <tr>
+        <td class=x2><mark>􌥮</mark>
+      <tr align=center>
         <th>hakning
-        <td class=x2>I􌥫I
-      <tr>
+        <td class=x2><mark>􌥫</mark>
+      <tr align=center>
         <th>entré
-        <td class=x2>I􌥭I
-      <tr>
+        <td class=x2><mark>􌥭</mark>
+      <tr align=center>
         <th>flätning
-        <td class=x2>I􌦴I
-      <tr>
+        <td class=x2><mark>􌦴</mark>
+      <tr align=center>
         <th>kontakt
-        <td class=x2>I􌤟I
-      <tr>
+        <td class=x2><mark>􌤟</mark>
+      <tr align=center>
         <th>medial kontakt<sup>1</sup>
-        <td class=x2>I􌦷I
+        <td class=x2><mark>􌦷</mark>
     </table>
   </section>
 </section>
@@ -640,18 +677,18 @@ th {
   <h1 id=annat>Övriga symboler</h1>
 
   <table border=1>
-    <tr>
+    <tr align=center>
       <th>upprepad artikulation
-      <td class=x2>I􌥻I
-    <tr>
+      <td class=x2><mark>􌥻</mark>
+    <tr align=center>
       <th>separator mellan artikulationssekvenser
-      <td class=x2>I􌥼I
-    <tr>
+      <td class=x2><mark>􌥼</mark>
+    <tr align=center>
       <th>separator mellan sammansatta tecken
-      <td class=x2>I􌥠I
-    <tr>
+      <td class=x2><mark>􌥠</mark>
+    <tr align=center>
       <th>separator mellan händer
-      <td class=x2>I􌦩I
+      <td class=x2><mark>􌦩</mark>
   </table>
 </section>
 
@@ -687,7 +724,7 @@ th {
     .kodpunkter .unused { background: #faa; }
     .kodpunkter .future { background: #ff8; }
     .kodpunkter .used   { background: #afa; }
-    .kodpunkter .boring { background: #888; }
+    .kodpunkter .boring { background: #0004; }
   </style>
 
   <table border=1 class=kodpunkter>
@@ -703,7 +740,7 @@ th {
     <tr id=u10c900 class=used>
       <td>⌥q
       <td>U+10c900
-      <td lang=swl class=x2>􌤀
+      <td lang=swl class=x2><mark>􌤀</mark>
       <td>!
       <td>
       <td align=left>läge: hjässan
@@ -712,14 +749,14 @@ th {
     <tr id=u10c901 class=unused>
       <td>
       <td>U+10c901
-      <td lang=swl class=x2>􌤁
+      <td lang=swl class=x2><mark>􌤁</mark>
       <td>
       <td>
       <td align=left colspan=3><i>används inte</i>
     <tr id=u10c902 class=used>
       <td>⌥å
       <td>U+10c902
-      <td lang=swl class=x2>􌤂
+      <td lang=swl class=x2><mark>􌤂</mark>
       <td>#
       <td>
       <td align=left>läge: ansiktet, övre delen
@@ -728,7 +765,7 @@ th {
     <tr id=u10c903 class=used>
       <td>⌥w
       <td>U+10c903
-      <td lang=swl class=x2>􌤃
+      <td lang=swl class=x2><mark>􌤃</mark>
       <td>$
       <td>
       <td align=left>läge: pannan
@@ -737,7 +774,7 @@ th {
     <tr id=u10c904 class=used>
       <td>⌥ä
       <td>U+10c904
-      <td lang=swl class=x2>􌤄
+      <td lang=swl class=x2><mark>􌤄</mark>
       <td>%
       <td>
       <td align=left>läge: ögonen
@@ -746,7 +783,7 @@ th {
     <tr id=u10c905 class=used>
       <td>⌥ö
       <td>U+10c905
-      <td lang=swl class=x2>􌤅
+      <td lang=swl class=x2><mark>􌤅</mark>
       <td>&amp;
       <td>
       <td align=left>läge: ögat
@@ -755,7 +792,7 @@ th {
     <tr id=u10c906 class=used>
       <td>⌥o
       <td>U+10c906
-      <td lang=swl class=x2>􌤆
+      <td lang=swl class=x2><mark>􌤆</mark>
       <td>)
       <td>
       <td align=left>läge: ansiktet / huvudhöjd
@@ -764,7 +801,7 @@ th {
     <tr id=u10c907 class=used>
       <td>⌥m
       <td>U+10c907
-      <td lang=swl class=x2>􌤇
+      <td lang=swl class=x2><mark>􌤇</mark>
       <td>*
       <td>
       <td align=left>läge: örat, höger / sidan av huvudet
@@ -773,7 +810,7 @@ th {
     <tr id=u10c908 class=used>
       <td>⌥b
       <td>U+10c908
-      <td lang=swl class=x2>􌤈
+      <td lang=swl class=x2><mark>􌤈</mark>
       <td>+
       <td>
       <td align=left>läge: örat, vänster / sidan av huvudet
@@ -782,7 +819,7 @@ th {
     <tr id=u10c909 class=used>
       <td>⇧!
       <td>U+10c909
-      <td lang=swl class=x2>􌤉
+      <td lang=swl class=x2><mark>􌤉</mark>
       <td>,
       <td>
       <td align=left>läge: kinderna
@@ -791,7 +828,7 @@ th {
     <tr id=u10c90a class=used>
       <td>⇧)
       <td>U+10c90a
-      <td lang=swl class=x2>􌤊
+      <td lang=swl class=x2><mark>􌤊</mark>
       <td>-
       <td>
       <td align=left>läge: kinden, höger
@@ -800,7 +837,7 @@ th {
     <tr id=u10c90b class=used>
       <td>⇧(
       <td>U+10c90b
-      <td lang=swl class=x2>􌤋
+      <td lang=swl class=x2><mark>􌤋</mark>
       <td>.
       <td>
       <td align=left>läge: kinden, vänster
@@ -809,7 +846,7 @@ th {
     <tr id=u10c90c class=used>
       <td>⌥e
       <td>U+10c90c
-      <td lang=swl class=x2>􌤌
+      <td lang=swl class=x2><mark>􌤌</mark>
       <td>/
       <td>
       <td align=left>läge: munnen
@@ -818,14 +855,14 @@ th {
     <tr id=u10c90d class=unused>
       <td>
       <td>U+10c90d
-      <td lang=swl class=x2>􌤍
+      <td lang=swl class=x2><mark>􌤍</mark>
       <td>
       <td>
       <td align=left colspan=3><i>används inte</i>
     <tr id=u10c90e class=used>
       <td>o
       <td>U+10c90e
-      <td lang=swl class=x2>􌤎
+      <td lang=swl class=x2><mark>􌤎</mark>
       <td>l
       <td>s
       <td align=left>läge: lilla O-handen
@@ -834,21 +871,21 @@ th {
     <tr id=u10c90f class=unused>
       <td>
       <td>U+10c90f
-      <td lang=swl class=x2>􌤏
+      <td lang=swl class=x2><mark>􌤏</mark>
       <td>
       <td>
       <td align=left colspan=3><i>används inte</i>
     <tr id=u10c910 class=unused>
       <td>
       <td>U+10c910
-      <td lang=swl class=x2>􌤐
+      <td lang=swl class=x2><mark>􌤐</mark>
       <td>
       <td>
       <td align=left colspan=3><i>används inte</i>
     <tr id=u10c911 class=used>
       <td>⌥t
       <td>U+10c911
-      <td lang=swl class=x2>􌤑
+      <td lang=swl class=x2><mark>􌤑</mark>
       <td>0
       <td>
       <td align=left>läge: överarmen
@@ -857,7 +894,7 @@ th {
     <tr id=u10c912 class=used>
       <td>⌥y
       <td>U+10c912
-      <td lang=swl class=x2>􌤒
+      <td lang=swl class=x2><mark>􌤒</mark>
       <td>1
       <td>
       <td align=left>läge: underarmen
@@ -866,7 +903,7 @@ th {
     <tr id=u10c913 class=used>
       <td>⌥j
       <td>U+10c913
-      <td lang=swl class=x2>􌤓
+      <td lang=swl class=x2><mark>􌤓</mark>
       <td>2
       <td>
       <td align=left>läge: bröstet
@@ -875,7 +912,7 @@ th {
     <tr id=u10c914 class=used>
       <td>⌥k
       <td>U+10c914
-      <td lang=swl class=x2>􌤔
+      <td lang=swl class=x2><mark>􌤔</mark>
       <td>3
       <td>
       <td align=left>läge: bröstet, höger sida
@@ -884,7 +921,7 @@ th {
     <tr id=u10c915 class=used>
       <td>⌥h
       <td>U+10c915
-      <td lang=swl class=x2>􌤕
+      <td lang=swl class=x2><mark>􌤕</mark>
       <td>4
       <td>
       <td align=left>läge: bröstet, vänster sida
@@ -893,7 +930,7 @@ th {
     <tr id=u10c916 class=used>
       <td>⌥d
       <td>U+10c916
-      <td lang=swl class=x2>􌤖
+      <td lang=swl class=x2><mark>􌤖</mark>
       <td>5
       <td>
       <td align=left>läge: magen / mellangärdet
@@ -902,7 +939,7 @@ th {
     <tr id=u10c917 class=used>
       <td>⌥f
       <td>U+10c917
-      <td lang=swl class=x2>􌤗
+      <td lang=swl class=x2><mark>􌤗</mark>
       <td>6
       <td>
       <td align=left>läge: höfterna
@@ -911,7 +948,7 @@ th {
     <tr id=u10c918 class=used>
       <td>⌥g
       <td>U+10c918
-      <td lang=swl class=x2>􌤘
+      <td lang=swl class=x2><mark>􌤘</mark>
       <td>7
       <td>
       <td align=left>läge: höften, höger sida
@@ -920,7 +957,7 @@ th {
     <tr id=u10c919 class=used>
       <td>⌥l
       <td>U+10c919
-      <td lang=swl class=x2>􌤙
+      <td lang=swl class=x2><mark>􌤙</mark>
       <td>8
       <td>
       <td align=left>läge: höften, vänster sida
@@ -929,7 +966,7 @@ th {
     <tr id=u10c91a class=used>
       <td>⌥s
       <td>U+10c91a
-      <td lang=swl class=x2>􌤚
+      <td lang=swl class=x2><mark>􌤚</mark>
       <td>9
       <td>
       <td align=left>läge: benet
@@ -938,7 +975,7 @@ th {
     <tr id=u10c91b class=used>
       <td>⌥r
       <td>U+10c91b
-      <td lang=swl class=x2>􌤛
+      <td lang=swl class=x2><mark>􌤛</mark>
       <td>:
       <td>
       <td align=left>läge: hakan
@@ -947,7 +984,7 @@ th {
     <tr id=u10c91c class=used>
       <td>⌥p
       <td>U+10c91c
-      <td lang=swl class=x2>􌤜
+      <td lang=swl class=x2><mark>􌤜</mark>
       <td>;
       <td>
       <td align=left>läge: nacken
@@ -956,14 +993,14 @@ th {
     <tr id=u10c91d class=unused>
       <td>
       <td>U+10c91d
-      <td lang=swl class=x2>􌤝
+      <td lang=swl class=x2><mark>􌤝</mark>
       <td>
       <td>
       <td align=left colspan=3><i>används inte</i>
     <tr id=u10c91e class=used>
       <td>⌥i
       <td>U+10c91e
-      <td lang=swl class=x2>􌤞
+      <td lang=swl class=x2><mark>􌤞</mark>
       <td>&lt;
       <td>
       <td align=left>läge: halsen
@@ -972,7 +1009,7 @@ th {
     <tr id=u10c91f class=used>
       <td>p
       <td>U+10c91f
-      <td lang=swl class=x2>􌤟
+      <td lang=swl class=x2><mark>􌤟</mark>
       <td>=
       <td>)
       <td align=left>interaktionsart: kontakt
@@ -981,7 +1018,7 @@ th {
     <tr id=u10c920 class=used>
       <td>⌥x
       <td>U+10c920
-      <td lang=swl class=x2>􌤠
+      <td lang=swl class=x2><mark>􌤠</mark>
       <td>&gt;
       <td>
       <td align=left>läge: axlarna
@@ -990,7 +1027,7 @@ th {
     <tr id=u10c921 class=used>
       <td>⌥c
       <td>U+10c921
-      <td lang=swl class=x2>􌤡
+      <td lang=swl class=x2><mark>􌤡</mark>
       <td>?
       <td>
       <td align=left>läge: axeln, höger
@@ -999,7 +1036,7 @@ th {
     <tr id=u10c922 class=used>
       <td>⇧J
       <td>U+10c922
-      <td lang=swl class=x2>􌤢
+      <td lang=swl class=x2><mark>􌤢</mark>
       <td>A
       <td>h
       <td align=left>handform: flata handen
@@ -1008,7 +1045,7 @@ th {
     <tr id=u10c923 class=used>
       <td>v
       <td>U+10c923
-      <td lang=swl class=x2>􌤣
+      <td lang=swl class=x2><mark>􌤣</mark>
       <td>B
       <td>J
       <td align=left>handform: vinkelhanden
@@ -1017,7 +1054,7 @@ th {
     <tr id=u10c924 class=used>
       <td>⇧A
       <td>U+10c924
-      <td lang=swl class=x2>􌤤
+      <td lang=swl class=x2><mark>􌤤</mark>
       <td>C
       <td>K
       <td align=left>handform: A-handen
@@ -1026,7 +1063,7 @@ th {
     <tr id=u10c925 class=used>
       <td>z
       <td>U+10c925
-      <td lang=swl class=x2>􌤥
+      <td lang=swl class=x2><mark>􌤥</mark>
       <td>D
       <td>l
       <td align=left>handform: klohanden
@@ -1035,7 +1072,7 @@ th {
     <tr id=u10c926 class=used>
       <td>⇧G
       <td>U+10c926
-      <td lang=swl class=x2>􌤦
+      <td lang=swl class=x2><mark>􌤦</mark>
       <td>E
       <td>m
       <td align=left>handform: knutna handen
@@ -1044,7 +1081,7 @@ th {
     <tr id=u10c927 class=used>
       <td>⇧B
       <td>U+10c927
-      <td lang=swl class=x2>􌤧
+      <td lang=swl class=x2><mark>􌤧</mark>
       <td>F
       <td>N
       <td align=left>handform: tumhanden
@@ -1053,7 +1090,7 @@ th {
     <tr id=u10c928 class=used>
       <td>l
       <td>U+10c928
-      <td lang=swl class=x2>􌤨
+      <td lang=swl class=x2><mark>􌤨</mark>
       <td>G
       <td>o
       <td align=left>handform: L-handen
@@ -1062,7 +1099,7 @@ th {
     <tr id=u10c929 class=used>
       <td>⇧D
       <td>U+10c929
-      <td lang=swl class=x2>􌤩
+      <td lang=swl class=x2><mark>􌤩</mark>
       <td>H
       <td>p
       <td align=left>handform: nyphanden
@@ -1071,7 +1108,7 @@ th {
     <tr id=u10c92a class=used>
       <td>⇧Q
       <td>U+10c92a
-      <td lang=swl class=x2>􌤪
+      <td lang=swl class=x2><mark>􌤪</mark>
       <td>I
       <td>q
       <td align=left>handform: krokfingret
@@ -1080,7 +1117,7 @@ th {
     <tr id=u10c92b class=used>
       <td>⇧Ö
       <td>U+10c92b
-      <td lang=swl class=x2>􌤫
+      <td lang=swl class=x2><mark>􌤫</mark>
       <td>J
       <td>R
       <td align=left>handform: hållhanden
@@ -1089,7 +1126,7 @@ th {
     <tr id=u10c92c class=used>
       <td>⇧R
       <td>U+10c92c
-      <td lang=swl class=x2>􌤬
+      <td lang=swl class=x2><mark>􌤬</mark>
       <td>K
       <td>r
       <td align=left>handform: långfingret
@@ -1098,7 +1135,7 @@ th {
     <tr id=u10c92d class=used>
       <td>⇧V
       <td>U+10c92d
-      <td lang=swl class=x2>􌤭
+      <td lang=swl class=x2><mark>􌤭</mark>
       <td>L
       <td>t
       <td align=left>handform: V-handen
@@ -1107,7 +1144,7 @@ th {
     <tr id=u10c92e class=used>
       <td>ä
       <td>U+10c92e
-      <td lang=swl class=x2>􌤮
+      <td lang=swl class=x2><mark>􌤮</mark>
       <td>M
       <td>T
       <td align=left>handform: tupphanden
@@ -1116,7 +1153,7 @@ th {
     <tr id=u10c92f class=used>
       <td>⇧Å
       <td>U+10c92f
-      <td lang=swl class=x2>􌤯
+      <td lang=swl class=x2><mark>􌤯</mark>
       <td>N
       <td>V
       <td align=left>handform: böjda tupphanden
@@ -1125,7 +1162,7 @@ th {
     <tr id=u10c930 class=used>
       <td>⇧W
       <td>U+10c930
-      <td lang=swl class=x2>􌤰
+      <td lang=swl class=x2><mark>􌤰</mark>
       <td>O
       <td>w
       <td align=left>handform: W-handen
@@ -1134,7 +1171,7 @@ th {
     <tr id=u10c931 class=used>
       <td>⇧I
       <td>U+10c931
-      <td lang=swl class=x2>􌤱
+      <td lang=swl class=x2><mark>􌤱</mark>
       <td>P
       <td>W
       <td align=left>handform: lillfingret
@@ -1143,7 +1180,7 @@ th {
     <tr id=u10c932 class=used>
       <td>⇧H
       <td>U+10c932
-      <td lang=swl class=x2>􌤲
+      <td lang=swl class=x2><mark>􌤲</mark>
       <td>Q
       <td>y
       <td align=left>handform: stora nyphanden
@@ -1152,7 +1189,7 @@ th {
     <tr id=u10c933 class=used>
       <td>⇧X
       <td>U+10c933
-      <td lang=swl class=x2>􌤳
+      <td lang=swl class=x2><mark>􌤳</mark>
       <td>R
       <td>Z
       <td align=left>handform: X-handen
@@ -1161,7 +1198,7 @@ th {
     <tr id=u10c934 class=used>
       <td>3
       <td>U+10c934
-      <td lang=swl class=x2>􌤴
+      <td lang=swl class=x2><mark>􌤴</mark>
       <td>S
       <td>
       <td align=left>attitydriktning: framåtriktad
@@ -1170,7 +1207,7 @@ th {
     <tr id=u10c935 class=used>
       <td>5
       <td>U+10c935
-      <td lang=swl class=x2>􌤵
+      <td lang=swl class=x2><mark>􌤵</mark>
       <td>T
       <td>
       <td align=left>attitydriktning: uppåtriktad
@@ -1179,7 +1216,7 @@ th {
     <tr id=u10c936 class=used>
       <td>⇧!
       <td>U+10c936
-      <td lang=swl class=x2>􌤶
+      <td lang=swl class=x2><mark data-width="􌤵">􌤶</mark>
       <td>U
       <td>
       <td align=left>attitydvändning: vänstervänd
@@ -1188,7 +1225,7 @@ th {
     <tr id=u10c937 class=used>
       <td>⇧#
       <td>U+10c937
-      <td lang=swl class=x2>􌤷
+      <td lang=swl class=x2><mark data-width="􌤵">􌤷</mark>
       <td>V
       <td>
       <td align=left>attitydvändning: framåtvänd
@@ -1197,7 +1234,7 @@ th {
     <tr id=u10c938 class=used>
       <td>⇧%
       <td>U+10c938
-      <td lang=swl class=x2>􌤸
+      <td lang=swl class=x2><mark data-width="􌤵">􌤸</mark>
       <td>W
       <td>
       <td align=left>attitydvändning: uppåtvänd
@@ -1206,7 +1243,7 @@ th {
     <tr id=u10c939 class=used>
       <td>t
       <td>U+10c939
-      <td lang=swl class=x2>◌􌤹
+      <td lang=swl class=x2><mark>◌􌤹</mark>
       <td>X
       <td>
       <td align=left>relation: ovanför
@@ -1215,7 +1252,7 @@ th {
     <tr id=u10c93a class=used>
       <td>n
       <td>U+10c93a
-      <td lang=swl class=x2>◌􌤺
+      <td lang=swl class=x2><mark>◌􌤺</mark>
       <td>Y
       <td>
       <td align=left>relation: brevid
@@ -1224,7 +1261,7 @@ th {
     <tr id=u10c93b class=used>
       <td>b
       <td>U+10c93b
-      <td lang=swl class=x2>◌􌤻
+      <td lang=swl class=x2><mark>◌􌤻</mark>
       <td>Z
       <td>
       <td align=left>relation: innanför/bakom
@@ -1233,7 +1270,7 @@ th {
     <tr id=u10c93c class=used>
       <td>⌥a
       <td>U+10c93c
-      <td lang=swl class=x2>􌤼
+      <td lang=swl class=x2><mark>􌤼</mark>
       <td>[
       <td>
       <td align=left>läge: näsan
@@ -1242,7 +1279,7 @@ th {
     <tr id=u10c93d class=used>
       <td>å
       <td>U+10c93d
-      <td lang=swl class=x2>􌤽
+      <td lang=swl class=x2><mark>􌤽</mark>
       <td>n
       <td>U
       <td align=left>handform: dubbelkroken
@@ -1251,7 +1288,7 @@ th {
     <tr id=u10c93e class=used>
       <td>⌥n
       <td>U+10c93e
-      <td lang=swl class=x2>􌤾
+      <td lang=swl class=x2><mark>􌤾</mark>
       <td>]
       <td>
       <td align=left>läge: öronen / sidorna av huvudet
@@ -1260,7 +1297,7 @@ th {
     <tr id=u10c93f class=used>
       <td>⇧M
       <td>U+10c93f
-      <td lang=swl class=x2>􌤿
+      <td lang=swl class=x2><mark>􌤿</mark>
       <td>o
       <td>v
       <td align=left>handform: M-handen
@@ -1269,7 +1306,7 @@ th {
     <tr id=u10c940 class=used>
       <td>⌥z
       <td>U+10c940
-      <td lang=swl class=x2>􌥀
+      <td lang=swl class=x2><mark>􌥀</mark>
       <td>_
       <td>
       <td align=left>läge: axeln, vänster
@@ -1278,14 +1315,14 @@ th {
     <tr id=u10c941 class=unused>
       <td>
       <td>U+10c941
-      <td lang=swl class=x2>􌥁
+      <td lang=swl class=x2><mark>􌥁</mark>
       <td>
       <td>
       <td align=left colspan=3><i>används inte</i>
     <tr id=u10c942 class=used>
       <td>j
       <td>U+10c942
-      <td lang=swl class=x2>􌥂
+      <td lang=swl class=x2><mark>􌥂</mark>
       <td>a
       <td>I
       <td align=left>handform: flata tumhanden
@@ -1294,7 +1331,7 @@ th {
     <tr id=u10c943 class=used>
       <td>⇧Y
       <td>U+10c943
-      <td lang=swl class=x2>􌥃
+      <td lang=swl class=x2><mark>􌥃</mark>
       <td>b
       <td>i
       <td align=left>handform: sprethanden
@@ -1303,7 +1340,7 @@ th {
     <tr id=u10c944 class=used>
       <td>⇧Ä
       <td>U+10c944
-      <td lang=swl class=x2>􌥄
+      <td lang=swl class=x2><mark>􌥄</mark>
       <td>c
       <td>j
       <td align=left>handform: tumvinkelhanden
@@ -1312,7 +1349,7 @@ th {
     <tr id=u10c945 class=used>
       <td>⇧S
       <td>U+10c945
-      <td lang=swl class=x2>􌥅
+      <td lang=swl class=x2><mark>􌥅</mark>
       <td>d
       <td>k
       <td align=left>handform: S-handen
@@ -1321,7 +1358,7 @@ th {
     <tr id=u10c946 class=used>
       <td>⇧O
       <td>U+10c946
-      <td lang=swl class=x2>􌥆
+      <td lang=swl class=x2><mark>􌥆</mark>
       <td>e
       <td>L
       <td align=left>handform: O-handen
@@ -1330,7 +1367,7 @@ th {
     <tr id=u10c947 class=used>
       <td>⇧E
       <td>U+10c947
-      <td lang=swl class=x2>􌥇
+      <td lang=swl class=x2><mark>􌥇</mark>
       <td>f
       <td>M
       <td align=left>handform: E-handen
@@ -1339,7 +1376,7 @@ th {
     <tr id=u10c948 class=used>
       <td>⇧L
       <td>U+10c948
-      <td lang=swl class=x2>􌥈
+      <td lang=swl class=x2><mark>􌥈</mark>
       <td>g
       <td>n
       <td align=left>handform: pekfingret
@@ -1348,7 +1385,7 @@ th {
     <tr id=u10c949 class=used>
       <td>c
       <td>U+10c949
-      <td lang=swl class=x2>􌥉
+      <td lang=swl class=x2><mark>􌥉</mark>
       <td>h
       <td>O
       <td align=left>handform: raka måtthanden
@@ -1357,7 +1394,7 @@ th {
     <tr id=u10c94a class=used>
       <td>⇧T
       <td>U+10c94a
-      <td lang=swl class=x2>􌥊
+      <td lang=swl class=x2><mark>􌥊</mark>
       <td>i
       <td>P
       <td align=left>handform: T-handen
@@ -1366,7 +1403,7 @@ th {
     <tr id=u10c94b class=used>
       <td>⇧C
       <td>U+10c94b
-      <td lang=swl class=x2>􌥋
+      <td lang=swl class=x2><mark>􌥋</mark>
       <td>j
       <td>Q
       <td align=left>handform: måtthanden
@@ -1375,7 +1412,7 @@ th {
     <tr id=u10c94c class=used>
       <td>⇧N
       <td>U+10c94c
-      <td lang=swl class=x2>􌥌
+      <td lang=swl class=x2><mark>􌥌</mark>
       <td>k
       <td>S
       <td align=left>handform: N-handen
@@ -1384,14 +1421,14 @@ th {
     <tr id=u10c94d class=unused>
       <td>
       <td>U+10c94d
-      <td lang=swl class=x2>􌥍
+      <td lang=swl class=x2><mark>􌥍</mark>
       <td>
       <td>
       <td align=left colspan=3><i>används inte</i>
     <tr id=u10c94e class=used>
       <td>⇧K
       <td>U+10c94e
-      <td lang=swl class=x2>􌥎
+      <td lang=swl class=x2><mark>􌥎</mark>
       <td>m
       <td>u
       <td align=left>handform: K-handen
@@ -1400,21 +1437,21 @@ th {
     <tr id=u10c94f class=unused>
       <td>
       <td>U+10c94f
-      <td lang=swl class=x2>􌥏
+      <td lang=swl class=x2><mark>􌥏</mark>
       <td>
       <td>
       <td align=left colspan=3><i>används inte</i>
     <tr id=u10c950 class=unused>
       <td>
       <td>U+10c950
-      <td lang=swl class=x2>􌥐
+      <td lang=swl class=x2><mark>􌥐</mark>
       <td>
       <td>
       <td align=left colspan=3><i>används inte</i>
     <tr id=u10c951 class=used>
       <td>i
       <td>U+10c951
-      <td lang=swl class=x2>􌥑
+      <td lang=swl class=x2><mark>􌥑</mark>
       <td>p
       <td>x
       <td align=left>handform: flyghanden
@@ -1423,7 +1460,7 @@ th {
     <tr id=u10c952 class=used>
       <td>y
       <td>U+10c952
-      <td lang=swl class=x2>􌥒
+      <td lang=swl class=x2><mark>􌥒</mark>
       <td>q
       <td>X
       <td align=left>handform: stora långfingret
@@ -1432,7 +1469,7 @@ th {
     <tr id=u10c953 class=used>
       <td>1
       <td>U+10c953
-      <td lang=swl class=x2>􌥓
+      <td lang=swl class=x2><mark>􌥓</mark>
       <td>r
       <td>
       <td align=left>attitydriktning: vänsterriktad
@@ -1441,7 +1478,7 @@ th {
     <tr id=u10c954 class=used>
       <td>2
       <td>U+10c954
-      <td lang=swl class=x2>􌥔
+      <td lang=swl class=x2><mark>􌥔</mark>
       <td>s
       <td>
       <td align=left>attitydriktning: högerriktad
@@ -1450,7 +1487,7 @@ th {
     <tr id=u10c955 class=used>
       <td>4
       <td>U+10c955
-      <td lang=swl class=x2>􌥕
+      <td lang=swl class=x2><mark>􌥕</mark>
       <td>t
       <td>
       <td align=left>attitydriktning: inåtriktad/bakåtriktad
@@ -1459,7 +1496,7 @@ th {
     <tr id=u10c956 class=used>
       <td>6
       <td>U+10c956
-      <td lang=swl class=x2>􌥖
+      <td lang=swl class=x2><mark>􌥖</mark>
       <td>u
       <td>
       <td align=left>attitydriktning: nedåtriktad
@@ -1468,7 +1505,7 @@ th {
     <tr id=u10c957 class=used>
       <td>⇧&quot;
       <td>U+10c957
-      <td lang=swl class=x2>􌥗
+      <td lang=swl class=x2><mark data-width="􌤵">􌥗</mark>
       <td>v
       <td>
       <td align=left>attitydvändning: högervänd
@@ -1477,7 +1514,7 @@ th {
     <tr id=u10c958 class=used>
       <td>⇧¤
       <td>U+10c958
-      <td lang=swl class=x2>􌥘
+      <td lang=swl class=x2><mark data-width="􌤵">􌥘</mark>
       <td>w
       <td>
       <td align=left>attitydvändning: inåtvänd/bakåtvänd
@@ -1486,7 +1523,7 @@ th {
     <tr id=u10c959 class=used>
       <td>⇧&amp;
       <td>U+10c959
-      <td lang=swl class=x2>􌥙
+      <td lang=swl class=x2><mark data-width="􌤵">􌥙</mark>
       <td>x
       <td>
       <td align=left>attitydvändning: nedåtvänd
@@ -1495,7 +1532,7 @@ th {
     <tr id=u10c95a class=used>
       <td>g
       <td>U+10c95a
-      <td lang=swl class=x2>◌􌥚
+      <td lang=swl class=x2><mark>◌􌥚</mark>
       <td>y
       <td>
       <td align=left>relation: nedanför
@@ -1504,7 +1541,7 @@ th {
     <tr id=u10c95b class=used>
       <td>m
       <td>U+10c95b
-      <td lang=swl class=x2>◌􌥛
+      <td lang=swl class=x2><mark>◌􌥛</mark>
       <td>z
       <td>
       <td align=left>relation: framför
@@ -1513,7 +1550,7 @@ th {
     <tr id=u10c95c class=used>
       <td>⌥v
       <td>U+10c95c
-      <td lang=swl class=x2>􌥜
+      <td lang=swl class=x2><mark>􌥜</mark>
       <td>~
       <td>
       <td align=left>läge: armen
@@ -1522,14 +1559,14 @@ th {
     <tr id=u10c95d class=unused>
       <td>
       <td>U+10c95d
-      <td lang=swl class=x2>􌥝
+      <td lang=swl class=x2><mark>􌥝</mark>
       <td>
       <td>
       <td align=left colspan=3><i>används inte</i>
     <tr id=u10c95e class=used>
       <td>⌥u
       <td>U+10c95e
-      <td lang=swl class=x2>􌥞
+      <td lang=swl class=x2><mark>􌥞</mark>
       <td>£
       <td>
       <td align=left>läge: ansiktet, nedre delen
@@ -1538,7 +1575,7 @@ th {
     <tr id=u10c95f class=used>
       <td>⇧Z
       <td>U+10c95f
-      <td lang=swl class=x2>􌥟
+      <td lang=swl class=x2><mark>􌥟</mark>
       <td>å
       <td>Y
       <td align=left>handform: runda långfingret
@@ -1547,7 +1584,7 @@ th {
     <tr id=u10c960 class=used>
       <td>7
       <td>U+10c960
-      <td lang=swl class=x2>􌥠
+      <td lang=swl class=x2><mark>􌥠</mark>
       <td>
       <td>!
       <td align=left>övrigt: separator mellan segment
@@ -1556,7 +1593,7 @@ th {
     <tr id=u10c961 class=used>
       <td>⇧P
       <td>U+10c961
-      <td lang=swl class=x2>􌥡
+      <td lang=swl class=x2><mark data-width="􌤵">􌥡</mark>
       <td>
       <td>#
       <td align=left>interaktionsart: medial kontakt
@@ -1565,7 +1602,7 @@ th {
     <tr id=u10c962 class=used>
       <td>⌥⇧!
       <td>U+10c962
-      <td lang=swl class=x2>􌥢
+      <td lang=swl class=x2><mark>􌥢</mark>
       <td>
       <td>$
       <td align=left>rörelseriktning: förs vänster
@@ -1574,7 +1611,7 @@ th {
     <tr id=u10c963 class=used>
       <td>⌥⇧&quot;
       <td>U+10c963
-      <td lang=swl class=x2>􌥣
+      <td lang=swl class=x2><mark>􌥣</mark>
       <td>
       <td>%
       <td align=left>rörelseriktning: förs höger
@@ -1583,7 +1620,7 @@ th {
     <tr id=u10c964 class=used>
       <td>⌥⇧(
       <td>U+10c964
-      <td lang=swl class=x2>􌥤
+      <td lang=swl class=x2><mark>􌥤</mark>
       <td>
       <td>&amp;
       <td align=left>rörelseriktning: förs i sidled / vänster–höger
@@ -1592,7 +1629,7 @@ th {
     <tr id=u10c965 class=used>
       <td>⌥⇧)
       <td>U+10c965
-      <td lang=swl class=x2>􌥥
+      <td lang=swl class=x2><mark>􌥥</mark>
       <td>
       <td>*
       <td align=left>rörelseriktning: förs i djupled / framåt–inåt
@@ -1601,7 +1638,7 @@ th {
     <tr id=u10c966 class=used>
       <td>⌥⇧%
       <td>U+10c966
-      <td lang=swl class=x2>􌥦
+      <td lang=swl class=x2><mark>􌥦</mark>
       <td>
       <td>+
       <td align=left>rörelseriktning: förs uppåt
@@ -1610,7 +1647,7 @@ th {
     <tr id=u10c967 class=used>
       <td>⌥⇧&amp;
       <td>U+10c967
-      <td lang=swl class=x2>􌥧
+      <td lang=swl class=x2><mark>􌥧</mark>
       <td>
       <td>,
       <td align=left>rörelseriktning: förs nedåt
@@ -1619,7 +1656,7 @@ th {
     <tr id=u10c968 class=used>
       <td>⌥⇧!
       <td>U+10c968
-      <td lang=swl class=x2>􌥨
+      <td lang=swl class=x2><mark>􌥨</mark>
       <td>
       <td>-
       <td align=left>rörelseriktning: förs i höjdled / uppåt–nedåt
@@ -1628,7 +1665,7 @@ th {
     <tr id=u10c969 class=used>
       <td>⇧/
       <td>U+10c969
-      <td lang=swl class=x2>􌥩
+      <td lang=swl class=x2><mark>􌥩</mark>
       <td>
       <td>.
       <td align=left>rörelseriktning: förs kort vänster
@@ -1637,7 +1674,7 @@ th {
     <tr id=u10c96a class=used>
       <td>⌥⇧/
       <td>U+10c96a
-      <td lang=swl class=x2>􌥪
+      <td lang=swl class=x2><mark>􌥪</mark>
       <td>
       <td>/
       <td align=left>rörelseriktning: förs kort höger
@@ -1646,7 +1683,7 @@ th {
     <tr id=u10c96b class=used>
       <td>x
       <td>U+10c96b
-      <td lang=swl class=x2>􌥫
+      <td lang=swl class=x2><mark>􌥫</mark>
       <td>
       <td>0
       <td align=left>interaktionsart: hakning
@@ -1655,7 +1692,7 @@ th {
     <tr id=u10c96c class=used>
       <td>q
       <td>U+10c96c
-      <td lang=swl class=x2>􌥬
+      <td lang=swl class=x2><mark>􌥬</mark>
       <td>
       <td>1
       <td align=left>interaktionsart: byte
@@ -1664,7 +1701,7 @@ th {
     <tr id=u10c96d class=used>
       <td>⌥⇧E
       <td>U+10c96d
-      <td lang=swl class=x2>􌥭
+      <td lang=swl class=x2><mark>􌥭</mark>
       <td>
       <td>2
       <td align=left>interaktionsart: entré / mottagning
@@ -1673,7 +1710,7 @@ th {
     <tr id=u10c96e class=used>
       <td>⌥⇧V
       <td>U+10c96e
-      <td lang=swl class=x2>􌥮
+      <td lang=swl class=x2><mark>􌥮</mark>
       <td>
       <td>3
       <td align=left>interaktionsart: vinkel
@@ -1682,7 +1719,7 @@ th {
     <tr id=u10c96f class=used>
       <td>h
       <td>U+10c96f
-      <td lang=swl class=x2>􌥯
+      <td lang=swl class=x2><mark>􌥯</mark>
       <td>
       <td>4
       <td align=left>handextern rörelseart: båge
@@ -1691,7 +1728,7 @@ th {
     <tr id=u10c970 class=used>
       <td>ö
       <td>U+10c970
-      <td lang=swl class=x2>􌥰
+      <td lang=swl class=x2><mark>􌥰</mark>
       <td>
       <td>5
       <td align=left>handextern rörelseart: cirkel
@@ -1700,7 +1737,7 @@ th {
     <tr id=u10c971 class=used>
       <td>w
       <td>U+10c971
-      <td lang=swl class=x2>􌥱
+      <td lang=swl class=x2><mark>􌥱</mark>
       <td>
       <td>6
       <td align=left>handextern rörelseart: slås
@@ -1709,7 +1746,7 @@ th {
     <tr id=u10c972 class=used>
       <td>s
       <td>U+10c972
-      <td lang=swl class=x2>􌥲
+      <td lang=swl class=x2><mark>􌥲</mark>
       <td>
       <td>7
       <td align=left>handextern rörelseart: vrids
@@ -1718,7 +1755,7 @@ th {
     <tr id=u10c973 class=used>
       <td>a
       <td>U+10c973
-      <td lang=swl class=x2>􌥳
+      <td lang=swl class=x2><mark>􌥳</mark>
       <td>
       <td>8
       <td align=left>handintern rörelseart: spelar
@@ -1727,7 +1764,7 @@ th {
     <tr id=u10c974 class=used>
       <td>0
       <td>U+10c974
-      <td lang=swl class=x2>􌥴
+      <td lang=swl class=x2><mark>􌥴</mark>
       <td>
       <td>9
       <td align=left>handintern rörelseart: strör
@@ -1736,7 +1773,7 @@ th {
     <tr id=u10c975 class=used>
       <td>⇧F
       <td>U+10c975
-      <td lang=swl class=x2>􌥵
+      <td lang=swl class=x2><mark>􌥵</mark>
       <td>
       <td>:
       <td align=left>rörelseriktning: förs kort framåt
@@ -1745,7 +1782,7 @@ th {
     <tr id=u10c976 class=used>
       <td>f
       <td>U+10c976
-      <td lang=swl class=x2>􌥶
+      <td lang=swl class=x2><mark>􌥶</mark>
       <td>
       <td>;
       <td align=left>rörelseriktning: förs kort inåt/bakåt
@@ -1754,7 +1791,7 @@ th {
     <tr id=u10c977 class=used>
       <td>⇧U
       <td>U+10c977
-      <td lang=swl class=x2>􌥷
+      <td lang=swl class=x2><mark>􌥷</mark>
       <td>
       <td>&lt;
       <td align=left>rörelseriktning: förs kort uppåt
@@ -1763,7 +1800,7 @@ th {
     <tr id=u10c978 class=used>
       <td>u
       <td>U+10c978
-      <td lang=swl class=x2>􌥸
+      <td lang=swl class=x2><mark>􌥸</mark>
       <td>
       <td>&gt;
       <td align=left>rörelseriktning: förs kort nedåt
@@ -1772,7 +1809,7 @@ th {
     <tr id=u10c979 class=used>
       <td>d
       <td>U+10c979
-      <td lang=swl class=x2>􌥹
+      <td lang=swl class=x2><mark>􌥹</mark>
       <td>
       <td>?
       <td align=left>handextern rörelseart: divergerar (tidigare interaktionsart)
@@ -1781,7 +1818,7 @@ th {
     <tr id=u10c97a class=used>
       <td>⌥⇧K
       <td>U+10c97a
-      <td lang=swl class=x2>􌥺
+      <td lang=swl class=x2><mark>􌥺</mark>
       <td>
       <td>A
       <td align=left>handintern rörelseart: vinkar
@@ -1790,7 +1827,7 @@ th {
     <tr id=u10c97b class=used>
       <td>9
       <td>U+10c97b
-      <td lang=swl class=x2>􌥻
+      <td lang=swl class=x2><mark>􌥻</mark>
       <td>
       <td>B
       <td align=left>övrigt: upprepad artikulation
@@ -1799,7 +1836,7 @@ th {
     <tr id=u10c97c class=used>
       <td>8
       <td>U+10c97c
-      <td lang=swl class=x2>􌥼
+      <td lang=swl class=x2><mark>􌥼</mark>
       <td>
       <td>C
       <td align=left>övrigt: separator mellan artikulationsgrupper
@@ -1808,7 +1845,7 @@ th {
     <tr id=u10c97d class=used>
       <td>⌥2
       <td>U+10c97d
-      <td lang=swl class=x2>􌥽
+      <td lang=swl class=x2><mark data-width="􌤵">􌥽</mark>
       <td>
       <td>D
       <td align=left>handextern rörelseart, modifikator: åt höger
@@ -1817,7 +1854,7 @@ th {
     <tr id=u10c97e class=used>
       <td>⌥3
       <td>U+10c97e
-      <td lang=swl class=x2>􌥾
+      <td lang=swl class=x2><mark data-width="􌤵">􌥾</mark>
       <td>
       <td>E
       <td align=left>handextern rörelseart, modifikator: framåt
@@ -1826,7 +1863,7 @@ th {
     <tr id=u10c97f class=used>
       <td>⌥5
       <td>U+10c97f
-      <td lang=swl class=x2>􌥿
+      <td lang=swl class=x2><mark data-width="􌤵">􌥿</mark>
       <td>
       <td>F
       <td align=left>handextern rörelseart, modifikator: uppåt
@@ -1835,7 +1872,7 @@ th {
     <tr id=u10c980 class=used>
       <td>⌥6
       <td>U+10c980
-      <td lang=swl class=x2>􌦀
+      <td lang=swl class=x2><mark data-width="􌤵">􌦀</mark>
       <td>
       <td>G
       <td align=left>handextern rörelseart, modifikator: nedåt
@@ -1844,14 +1881,14 @@ th {
     <tr id=u10c981 class=unused>
       <td>
       <td>U+10c981
-      <td lang=swl class=x2>􌦁
+      <td lang=swl class=x2><mark>􌦁</mark>
       <td>
       <td>
       <td align=left colspan=3><i>används inte</i>
     <tr id=u10c982 class=used>
       <td>⌥7
       <td>U+10c982
-      <td lang=swl class=x2>􌦂
+      <td lang=swl class=x2><mark data-width="􌤵">􌦂</mark>
       <td>
       <td>H
       <td align=left>handextern rörelseart, modifikator: mot varandra
@@ -1860,7 +1897,7 @@ th {
     <tr id=u10c983 class=used>
       <td>⌥⇧#
       <td>U+10c983
-      <td lang=swl class=x2>􌦃
+      <td lang=swl class=x2><mark>􌦃</mark>
       <td>
       <td>[
       <td align=left>rörelseriktning: förs framåt
@@ -1869,7 +1906,7 @@ th {
     <tr id=u10c984 class=used>
       <td>⌥⇧¤
       <td>U+10c984
-      <td lang=swl class=x2>􌦄
+      <td lang=swl class=x2><mark>􌦄</mark>
       <td>
       <td>]
       <td align=left>rörelseriktning: förs inåt/bakåt
@@ -1878,7 +1915,7 @@ th {
     <tr id=u10c985 class=used>
       <td>k
       <td>U+10c985
-      <td lang=swl class=x2>􌦅
+      <td lang=swl class=x2><mark>􌦅</mark>
       <td>
       <td>_
       <td align=left>handextern rörelseart: konvergerar (tidigare interaktionsart)
@@ -1887,7 +1924,7 @@ th {
     <tr id=u10c986 class=used>
       <td>r
       <td>U+10c986
-      <td lang=swl class=x2>􌦆
+      <td lang=swl class=x2><mark>􌦆</mark>
       <td>
       <td>a
       <td align=left>handintern rörelseart: förändras
@@ -1896,7 +1933,7 @@ th {
     <tr id=u10c987 class=used>
       <td>e
       <td>U+10c987
-      <td lang=swl class=x2>􌦇
+      <td lang=swl class=x2><mark>􌦇</mark>
       <td>
       <td>b
       <td align=left>interaktionsart: växelvis
@@ -1905,7 +1942,7 @@ th {
     <tr id=u10c988 class=used>
       <td>⌥1
       <td>U+10c988
-      <td lang=swl class=x2>􌦈
+      <td lang=swl class=x2><mark data-width="􌤵">􌦈</mark>
       <td>
       <td>c
       <td align=left>handextern rörelseart, modifikator: åt vänster
@@ -1914,7 +1951,7 @@ th {
     <tr id=u10c989 class=used>
       <td>⌥8
       <td>U+10c989
-      <td lang=swl class=x2>􌦉
+      <td lang=swl class=x2><mark data-width="􌤵">􌦉</mark>
       <td>
       <td>d
       <td align=left>handextern rörelseart, modifikator: i sidled
@@ -1923,7 +1960,7 @@ th {
     <tr id=u10c98a class=used>
       <td>⌥4
       <td>U+10c98a
-      <td lang=swl class=x2>􌦊
+      <td lang=swl class=x2><mark data-width="􌤵">􌦊</mark>
       <td>
       <td>e
       <td align=left>handextern rörelseart, modifikator: inåt/bakåt
@@ -1932,7 +1969,7 @@ th {
     <tr id=u10c98b class=used>
       <td>⌥9
       <td>U+10c98b
-      <td lang=swl class=x2>􌦋
+      <td lang=swl class=x2><mark data-width="􌤵">􌦋</mark>
       <td>
       <td>f
       <td align=left>handextern rörelseart, modifikator: i djupled
@@ -1941,7 +1978,7 @@ th {
     <tr id=u10c98c class=used>
       <td>⌥0
       <td>U+10c98c
-      <td lang=swl class=x2>􌦌
+      <td lang=swl class=x2><mark data-width="􌤵">􌦌</mark>
       <td>
       <td>g
       <td align=left>handextern rörelseart, modifikator: i höjdled
@@ -1950,14 +1987,14 @@ th {
     <tr id=u10c98d class=unused>
       <td>
       <td>U+10c98d
-      <td lang=swl class=x2>􌦍
+      <td lang=swl class=x2><mark>􌦍</mark>
       <td>
       <td>
       <td align=left colspan=3><i>används inte</i>
     <tr id=u10c98e class=used>
       <td>⌥⇧X
       <td>U+10c98e
-      <td lang=swl class=x2>􌦎
+      <td lang=swl class=x2><mark>􌦎</mark>
       <td>
       <td>~
       <td align=left>interaktionsart: kors
@@ -1966,21 +2003,21 @@ th {
     <tr id=u10c98f class=unused>
       <td>
       <td>U+10c98f
-      <td lang=swl class=x2>􌦏
+      <td lang=swl class=x2><mark>􌦏</mark>
       <td>
       <td>
       <td align=left colspan=3><i>används inte</i>
     <tr id=u10c990 class=unused>
       <td>
       <td>U+10c990
-      <td lang=swl class=x2>􌦐
+      <td lang=swl class=x2><mark>􌦐</mark>
       <td>
       <td>
       <td align=left colspan=3><i>används inte</i>
     <tr id=u10c991 class=used>
       <td>⌥⇧Ö
       <td>U+10c991
-      <td lang=swl class=x2>􌦑
+      <td lang=swl class=x2><mark>􌦑</mark>
       <td>
       <td>£
       <td align=left>hålls stilla
@@ -1989,7 +2026,7 @@ th {
     <tr id=u10c992 class=boring>
       <td>⌥⇧M
       <td>U+10c992
-      <td lang=swl class=x2>􌦒
+      <td lang=swl class=x2><mark>􌦒</mark>
       <td>
       <td>
       <td align=left>upprepad kontakt
@@ -1998,7 +2035,7 @@ th {
     <tr id=u10c993 class=boring>
       <td>⌥⇧R
       <td>U+10c993
-      <td lang=swl class=x2>􌦓
+      <td lang=swl class=x2><mark>􌦓</mark>
       <td>
       <td>
       <td align=left>rörelse i pilens riktning
@@ -2007,7 +2044,7 @@ th {
     <tr id=u10c994 class=boring>
       <td>⌥⇧F
       <td>U+10c994
-      <td lang=swl class=x2>􌦔
+      <td lang=swl class=x2><mark>􌦔</mark>
       <td>
       <td>
       <td align=left>rörelse med distinkt rörelseslut
@@ -2016,7 +2053,7 @@ th {
     <tr id=u10c995 class=boring>
       <td>⌥⇧T
       <td>U+10c995
-      <td lang=swl class=x2>􌦕
+      <td lang=swl class=x2><mark>􌦕</mark>
       <td>
       <td>
       <td align=left>upprepad rörelse i pilens riktning
@@ -2025,7 +2062,7 @@ th {
     <tr id=u10c996 class=boring>
       <td>⌥⇧G
       <td>U+10c996
-      <td lang=swl class=x2>􌦖
+      <td lang=swl class=x2><mark>􌦖</mark>
       <td>
       <td>
       <td align=left>rörelse fram och tillbaka, i sidled eller upp och ner
@@ -2034,7 +2071,7 @@ th {
     <tr id=u10c997 class=boring>
       <td>⌥⇧I
       <td>U+10c997
-      <td lang=swl class=x2>􌦗
+      <td lang=swl class=x2><mark>􌦗</mark>
       <td>
       <td>
       <td align=left>växelvisa rörelser
@@ -2043,7 +2080,7 @@ th {
     <tr id=u10c998 class=boring>
       <td>⌥⇧H
       <td>U+10c998
-      <td lang=swl class=x2>􌦘
+      <td lang=swl class=x2><mark>􌦘</mark>
       <td>
       <td>
       <td align=left>bågrörelse i pilens riktning
@@ -2052,7 +2089,7 @@ th {
     <tr id=u10c999 class=boring>
       <td>⌥⇧D
       <td>U+10c999
-      <td lang=swl class=x2>􌦙
+      <td lang=swl class=x2><mark>􌦙</mark>
       <td>
       <td>
       <td align=left>etappvis förflyttning
@@ -2061,7 +2098,7 @@ th {
     <tr id=u10c99a class=boring>
       <td>⌥⇧Z
       <td>U+10c99a
-      <td lang=swl class=x2>􌦚
+      <td lang=swl class=x2><mark>􌦚</mark>
       <td>
       <td>
       <td align=left>förflyttning med små vågrörelser eller sidledsrörelser
@@ -2070,7 +2107,7 @@ th {
     <tr id=u10c99b class=boring>
       <td>⌥⇧Y
       <td>U+10c99b
-      <td lang=swl class=x2>􌦛
+      <td lang=swl class=x2><mark>􌦛</mark>
       <td>
       <td>
       <td align=left>förflyttning med vridrörelser
@@ -2079,7 +2116,7 @@ th {
     <tr id=u10c99c class=boring>
       <td>⌥⇧S
       <td>U+10c99c
-      <td lang=swl class=x2>􌦜
+      <td lang=swl class=x2><mark>􌦜</mark>
       <td>
       <td>
       <td align=left>förflyttning i sick-sack
@@ -2088,14 +2125,14 @@ th {
     <tr id=u10c99d class=unused>
       <td>
       <td>U+10c99d
-      <td lang=swl class=x2>􌦝
+      <td lang=swl class=x2><mark>􌦝</mark>
       <td>
       <td>
       <td align=left colspan=3><i>används inte</i>
     <tr id=u10c99e class=boring>
       <td>⌥⇧W
       <td>U+10c99e
-      <td lang=swl class=x2>􌦞
+      <td lang=swl class=x2><mark>􌦞</mark>
       <td>
       <td>
       <td align=left>förflyttning med upprepad handformsändring
@@ -2104,7 +2141,7 @@ th {
     <tr id=u10c99f class=boring>
       <td>⌥⇧C
       <td>U+10c99f
-      <td lang=swl class=x2>􌦟
+      <td lang=swl class=x2><mark>􌦟</mark>
       <td>
       <td>
       <td align=left>förflyttning med cirkelrörelser
@@ -2113,7 +2150,7 @@ th {
     <tr id=u10c9a0 class=boring>
       <td>⌥⇧O
       <td>U+10c9a0
-      <td lang=swl class=x2>􌦠
+      <td lang=swl class=x2><mark>􌦠</mark>
       <td>
       <td>
       <td align=left>cirkelrörelse
@@ -2122,7 +2159,7 @@ th {
     <tr id=u10c9a1 class=boring>
       <td>⌥⇧Q
       <td>U+10c9a1
-      <td lang=swl class=x2>􌦡
+      <td lang=swl class=x2><mark>􌦡</mark>
       <td>
       <td>
       <td align=left>växelvisa cirkelrörelser
@@ -2131,7 +2168,7 @@ th {
     <tr id=u10c9a2 class=boring>
       <td>⌥⇧J
       <td>U+10c9a2
-      <td lang=swl class=x2>􌦢
+      <td lang=swl class=x2><mark>􌦢</mark>
       <td>
       <td>
       <td align=left>handen vrids eller slås
@@ -2140,7 +2177,7 @@ th {
     <tr id=u10c9a3 class=boring>
       <td>⌥⇧U
       <td>U+10c9a3
-      <td lang=swl class=x2>􌦣
+      <td lang=swl class=x2><mark>􌦣</mark>
       <td>
       <td>
       <td align=left>handen vrids eller slås, upprepad rörelse
@@ -2149,7 +2186,7 @@ th {
     <tr id=u10c9a4 class=boring>
       <td>⌥⇧A
       <td>U+10c9a4
-      <td lang=swl class=x2>􌦤
+      <td lang=swl class=x2><mark>􌦤</mark>
       <td>
       <td>
       <td align=left>spelande växelvisa rörelser
@@ -2158,7 +2195,7 @@ th {
     <tr id=u10c9a5 class=boring>
       <td>⌥⇧L
       <td>U+10c9a5
-      <td lang=swl class=x2>􌦥
+      <td lang=swl class=x2><mark>􌦥</mark>
       <td>
       <td>
       <td align=left>vinkande (samtidiga) fingerrörelse
@@ -2167,7 +2204,7 @@ th {
     <tr id=u10c9a6 class=boring>
       <td>⌥⇧B
       <td>U+10c9a6
-      <td lang=swl class=x2>􌦦
+      <td lang=swl class=x2><mark>􌦦</mark>
       <td>
       <td>
       <td align=left>tummen förs utmed fingrarna
@@ -2176,7 +2213,7 @@ th {
     <tr id=u10c9a7 class=used>
       <td>⌥⇧N
       <td>U+10c9a7
-      <td lang=swl class=x2>􌦧
+      <td lang=swl class=x2><mark>􌦧</mark>
       <td>
       <td>
       <td align=left>övrigt: distinkt början/avslutning (historisk)
@@ -2185,7 +2222,7 @@ th {
     <tr id=u10c9a8 class=used>
       <td>
       <td>U+10c9a8
-      <td lang=swl class=x2>􌦨
+      <td lang=swl class=x2><mark>􌦨</mark>
       <td>
       <td>
       <td align=left>handintern rörelseart: böjs
@@ -2194,7 +2231,7 @@ th {
     <tr id=u10c9a9 class=used>
       <td>
       <td>U+10c9a9
-      <td lang=swl class=x2>􌦩
+      <td lang=swl class=x2><mark>􌦩</mark>
       <td>
       <td>
       <td align=left>övrigt: separator mellan händer
@@ -2203,7 +2240,7 @@ th {
     <tr id=u10c9aa class=used>
       <td>
       <td>U+10c9aa
-      <td lang=swl class=x2>􌦪
+      <td lang=swl class=x2><mark>􌦪</mark>
       <td>
       <td>
       <td align=left>handform: 4-handen
@@ -2212,7 +2249,7 @@ th {
     <tr id=u10c9ab class=used>
       <td>
       <td>U+10c9ab
-      <td lang=swl class=x2>􌦫
+      <td lang=swl class=x2><mark>􌦫</mark>
       <td>
       <td>
       <td align=left>handform: D-handen
@@ -2221,7 +2258,7 @@ th {
     <tr id=u10c9ac class=used>
       <td>
       <td>U+10c9ac
-      <td lang=swl class=x2>􌦬
+      <td lang=swl class=x2><mark>􌦬</mark>
       <td>
       <td>
       <td align=left>handform: F-handen
@@ -2230,7 +2267,7 @@ th {
     <tr id=u10c9ad class=used>
       <td>
       <td>U+10c9ad
-      <td lang=swl class=x2>􌦭
+      <td lang=swl class=x2><mark>􌦭</mark>
       <td>
       <td>
       <td align=left>handform: Q-handen
@@ -2239,7 +2276,7 @@ th {
     <tr id=u10c9ae class=used>
       <td>
       <td>U+10c9ae
-      <td lang=swl class=x2>􌦮
+      <td lang=swl class=x2><mark>􌦮</mark>
       <td>
       <td>
       <td align=left>handextern rörelseart: cirkel i frontalplan
@@ -2248,7 +2285,7 @@ th {
     <tr id=u10c9af class=used>
       <td>
       <td>U+10c9af
-      <td lang=swl class=x2>􌦯
+      <td lang=swl class=x2><mark>􌦯</mark>
       <td>
       <td>
       <td align=left>handextern rörelseart: cirkel i horisontalplan
@@ -2257,7 +2294,7 @@ th {
     <tr id=u10c9b0 class=used>
       <td>
       <td>U+10c9b0
-      <td lang=swl class=x2>􌦰
+      <td lang=swl class=x2><mark>􌦰</mark>
       <td>
       <td>
       <td align=left>handextern rörelseart: cirkel i sagittalplan
@@ -2266,7 +2303,7 @@ th {
     <tr id=u10c9b1 class=used>
       <td>
       <td>U+10c9b1
-      <td lang=swl class=x2>􌦱
+      <td lang=swl class=x2><mark>􌦱</mark>
       <td>
       <td>
       <td align=left>handform: lamahanden
@@ -2275,7 +2312,7 @@ th {
     <tr id=u10c9b2 class=used>
       <td>
       <td>U+10c9b2
-      <td lang=swl class=x2>􌦲
+      <td lang=swl class=x2><mark>􌦲</mark>
       <td>
       <td>
       <td align=left>läge: armvecket
@@ -2284,7 +2321,7 @@ th {
     <tr id=u10c9b3 class=used>
       <td>
       <td>U+10c9b3
-      <td lang=swl class=x2>􌦳
+      <td lang=swl class=x2><mark>􌦳</mark>
       <td>
       <td>
       <td align=left>läge: neutrala läget
@@ -2293,7 +2330,7 @@ th {
     <tr id=u10c9b4 class=used>
       <td>
       <td>U+10c9b4
-      <td lang=swl class=x2>􌦴
+      <td lang=swl class=x2><mark>􌦴</mark>
       <td>
       <td>
       <td align=left>interaktionsart: flätas
@@ -2302,7 +2339,7 @@ th {
     <tr id=u10c9b5 class=used>
       <td>
       <td>U+10c9b5
-      <td lang=swl class=x2>􌦵
+      <td lang=swl class=x2><mark data-width="􌤵">􌦵</mark>
       <td>
       <td>
       <td align=left>handextern rörelseart, modifikator: från varandra
@@ -2311,7 +2348,7 @@ th {
     <tr id=u10c9b6 class=used>
       <td>
       <td>U+10c9b6
-      <td lang=swl class=x2>􌦶
+      <td lang=swl class=x2><mark>􌦶</mark>
       <td>
       <td>
       <td align=left>handextern rörelseart: studs
@@ -2320,7 +2357,7 @@ th {
     <tr id=u10c9b7 class=used>
       <td>
       <td>U+10c9b7
-      <td lang=swl class=x2>􌦷
+      <td lang=swl class=x2><mark>􌦷</mark>
       <td>
       <td>
       <td align=left>interaktionsart: medial kontakt (oberoende)
@@ -2329,371 +2366,371 @@ th {
     <tr id=u10c9b8 class=future>
       <td>
       <td>U+10c9b8
-      <td lang=swl class=x2>􌦸
+      <td lang=swl class=x2><mark>􌦸</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9b9 class=future>
       <td>
       <td>U+10c9b9
-      <td lang=swl class=x2>􌦹
+      <td lang=swl class=x2><mark>􌦹</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9ba class=future>
       <td>
       <td>U+10c9ba
-      <td lang=swl class=x2>􌦺
+      <td lang=swl class=x2><mark>􌦺</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9bb class=future>
       <td>
       <td>U+10c9bb
-      <td lang=swl class=x2>􌦻
+      <td lang=swl class=x2><mark>􌦻</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9bc class=future>
       <td>
       <td>U+10c9bc
-      <td lang=swl class=x2>􌦼
+      <td lang=swl class=x2><mark>􌦼</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9bd class=future>
       <td>
       <td>U+10c9bd
-      <td lang=swl class=x2>􌦽
+      <td lang=swl class=x2><mark>􌦽</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9be class=future>
       <td>
       <td>U+10c9be
-      <td lang=swl class=x2>􌦾
+      <td lang=swl class=x2><mark>􌦾</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9bf class=future>
       <td>
       <td>U+10c9bf
-      <td lang=swl class=x2>􌦿
+      <td lang=swl class=x2><mark>􌦿</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9c0 class=future>
       <td>
       <td>U+10c9c0
-      <td lang=swl class=x2>􌧀
+      <td lang=swl class=x2><mark>􌧀</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9c1 class=unused>
       <td>
       <td>U+10c9c1
-      <td lang=swl class=x2>􌧁
+      <td lang=swl class=x2><mark>􌧁</mark>
       <td>
       <td>
       <td align=left colspan=3><i>används inte</i>
     <tr id=u10c9c2 class=future>
       <td>
       <td>U+10c9c2
-      <td lang=swl class=x2>􌧂
+      <td lang=swl class=x2><mark>􌧂</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9c3 class=future>
       <td>
       <td>U+10c9c3
-      <td lang=swl class=x2>􌧃
+      <td lang=swl class=x2><mark>􌧃</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9c4 class=future>
       <td>
       <td>U+10c9c4
-      <td lang=swl class=x2>􌧄
+      <td lang=swl class=x2><mark>􌧄</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9c5 class=future>
       <td>
       <td>U+10c9c5
-      <td lang=swl class=x2>􌧅
+      <td lang=swl class=x2><mark>􌧅</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9c6 class=future>
       <td>
       <td>U+10c9c6
-      <td lang=swl class=x2>􌧆
+      <td lang=swl class=x2><mark>􌧆</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9c7 class=future>
       <td>
       <td>U+10c9c7
-      <td lang=swl class=x2>􌧇
+      <td lang=swl class=x2><mark>􌧇</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9c8 class=future>
       <td>
       <td>U+10c9c8
-      <td lang=swl class=x2>􌧈
+      <td lang=swl class=x2><mark>􌧈</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9c9 class=future>
       <td>
       <td>U+10c9c9
-      <td lang=swl class=x2>􌧉
+      <td lang=swl class=x2><mark>􌧉</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9ca class=future>
       <td>
       <td>U+10c9ca
-      <td lang=swl class=x2>􌧊
+      <td lang=swl class=x2><mark>􌧊</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9cb class=future>
       <td>
       <td>U+10c9cb
-      <td lang=swl class=x2>􌧋
+      <td lang=swl class=x2><mark>􌧋</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9cc class=future>
       <td>
       <td>U+10c9cc
-      <td lang=swl class=x2>􌧌
+      <td lang=swl class=x2><mark>􌧌</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9cd class=unused>
       <td>
       <td>U+10c9cd
-      <td lang=swl class=x2>􌧍
+      <td lang=swl class=x2><mark>􌧍</mark>
       <td>
       <td>
       <td align=left colspan=3><i>används inte</i>
     <tr id=u10c9ce class=future>
       <td>
       <td>U+10c9ce
-      <td lang=swl class=x2>􌧎
+      <td lang=swl class=x2><mark>􌧎</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9cf class=unused>
       <td>
       <td>U+10c9cf
-      <td lang=swl class=x2>􌧏
+      <td lang=swl class=x2><mark>􌧏</mark>
       <td>
       <td>
       <td align=left colspan=3><i>används inte</i>
     <tr id=u10c9d0 class=unused>
       <td>
       <td>U+10c9d0
-      <td lang=swl class=x2>􌧐
+      <td lang=swl class=x2><mark>􌧐</mark>
       <td>
       <td>
       <td align=left colspan=3><i>används inte</i>
     <tr id=u10c9d1 class=future>
       <td>
       <td>U+10c9d1
-      <td lang=swl class=x2>􌧑
+      <td lang=swl class=x2><mark>􌧑</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9d2 class=future>
       <td>
       <td>U+10c9d2
-      <td lang=swl class=x2>􌧒
+      <td lang=swl class=x2><mark>􌧒</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9d3 class=future>
       <td>
       <td>U+10c9d3
-      <td lang=swl class=x2>􌧓
+      <td lang=swl class=x2><mark>􌧓</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9d4 class=future>
       <td>
       <td>U+10c9d4
-      <td lang=swl class=x2>􌧔
+      <td lang=swl class=x2><mark>􌧔</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9d5 class=future>
       <td>
       <td>U+10c9d5
-      <td lang=swl class=x2>􌧕
+      <td lang=swl class=x2><mark>􌧕</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9d6 class=future>
       <td>
       <td>U+10c9d6
-      <td lang=swl class=x2>􌧖
+      <td lang=swl class=x2><mark>􌧖</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9d7 class=future>
       <td>
       <td>U+10c9d7
-      <td lang=swl class=x2>􌧗
+      <td lang=swl class=x2><mark>􌧗</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9d8 class=future>
       <td>
       <td>U+10c9d8
-      <td lang=swl class=x2>􌧘
+      <td lang=swl class=x2><mark>􌧘</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9d9 class=future>
       <td>
       <td>U+10c9d9
-      <td lang=swl class=x2>􌧙
+      <td lang=swl class=x2><mark>􌧙</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9da class=future>
       <td>
       <td>U+10c9da
-      <td lang=swl class=x2>􌧚
+      <td lang=swl class=x2><mark>􌧚</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9db class=future>
       <td>
       <td>U+10c9db
-      <td lang=swl class=x2>􌧛
+      <td lang=swl class=x2><mark>􌧛</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9dc class=future>
       <td>
       <td>U+10c9dc
-      <td lang=swl class=x2>􌧜
+      <td lang=swl class=x2><mark>􌧜</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9dd class=unused>
       <td>
       <td>U+10c9dd
-      <td lang=swl class=x2>􌧝
+      <td lang=swl class=x2><mark>􌧝</mark>
       <td>
       <td>
       <td align=left colspan=3><i>används inte</i>
     <tr id=u10c9de class=future>
       <td>
       <td>U+10c9de
-      <td lang=swl class=x2>􌧞
+      <td lang=swl class=x2><mark>􌧞</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9df class=future>
       <td>
       <td>U+10c9df
-      <td lang=swl class=x2>􌧟
+      <td lang=swl class=x2><mark>􌧟</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9e0 class=future>
       <td>
       <td>U+10c9e0
-      <td lang=swl class=x2>􌧠
+      <td lang=swl class=x2><mark>􌧠</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9e1 class=future>
       <td>
       <td>U+10c9e1
-      <td lang=swl class=x2>􌧡
+      <td lang=swl class=x2><mark>􌧡</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9e2 class=future>
       <td>
       <td>U+10c9e2
-      <td lang=swl class=x2>􌧢
+      <td lang=swl class=x2><mark>􌧢</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9e3 class=future>
       <td>
       <td>U+10c9e3
-      <td lang=swl class=x2>􌧣
+      <td lang=swl class=x2><mark>􌧣</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9e4 class=future>
       <td>
       <td>U+10c9e4
-      <td lang=swl class=x2>􌧤
+      <td lang=swl class=x2><mark>􌧤</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9e5 class=future>
       <td>
       <td>U+10c9e5
-      <td lang=swl class=x2>􌧥
+      <td lang=swl class=x2><mark>􌧥</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9e6 class=future>
       <td>
       <td>U+10c9e6
-      <td lang=swl class=x2>􌧦
+      <td lang=swl class=x2><mark>􌧦</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9e7 class=future>
       <td>
       <td>U+10c9e7
-      <td lang=swl class=x2>􌧧
+      <td lang=swl class=x2><mark>􌧧</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9e8 class=future>
       <td>
       <td>U+10c9e8
-      <td lang=swl class=x2>􌧨
+      <td lang=swl class=x2><mark>􌧨</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9e9 class=future>
       <td>
       <td>U+10c9e9
-      <td lang=swl class=x2>􌧩
+      <td lang=swl class=x2><mark>􌧩</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9ea class=future>
       <td>
       <td>U+10c9ea
-      <td lang=swl class=x2>􌧪
+      <td lang=swl class=x2><mark>􌧪</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9eb class=future>
       <td>
       <td>U+10c9eb
-      <td lang=swl class=x2>􌧫
+      <td lang=swl class=x2><mark>􌧫</mark>
       <td>
       <td>
       <td align=left colspan=3><i>framtida användning</i>
     <tr id=u10c9ec class=used>
       <td>
       <td>U+10c9ec
-      <td lang=swl class=x2>􌧬
+      <td lang=swl class=x2><mark>􌧬</mark>
       <td>
       <td>
       <td align=left>fingerspecifikation: rakt finger
@@ -2702,7 +2739,7 @@ th {
     <tr id=u10c9ed class=used>
       <td>
       <td>U+10c9ed
-      <td lang=swl class=x2>􌧭
+      <td lang=swl class=x2><mark>􌧭</mark>
       <td>
       <td>
       <td align=left>fingerspecifikation: vinklat finger
@@ -2711,7 +2748,7 @@ th {
     <tr id=u10c9ee class=used>
       <td>
       <td>U+10c9ee
-      <td lang=swl class=x2>􌧮
+      <td lang=swl class=x2><mark>􌧮</mark>
       <td>
       <td>
       <td align=left>fingerspecifikation: lätt böjt finger
@@ -2720,7 +2757,7 @@ th {
     <tr id=u10c9ef class=used>
       <td>
       <td>U+10c9ef
-      <td lang=swl class=x2>􌧯
+      <td lang=swl class=x2><mark>􌧯</mark>
       <td>
       <td>
       <td align=left>fingerspecifikation: böjt finger
@@ -2729,7 +2766,7 @@ th {
     <tr id=u10c9f0 class=used>
       <td>
       <td>U+10c9f0
-      <td lang=swl class=x2>􌧰
+      <td lang=swl class=x2><mark>􌧰</mark>
       <td>
       <td>
       <td align=left>fingerspecifikation: F-handsfinger
@@ -2738,7 +2775,7 @@ th {
     <tr id=u10c9f1 class=used>
       <td>
       <td>U+10c9f1
-      <td lang=swl class=x2>􌧱
+      <td lang=swl class=x2><mark>􌧱</mark>
       <td>
       <td>
       <td align=left>fingerspecifikation: hållhandsfinger
@@ -2747,7 +2784,7 @@ th {
     <tr id=u10c9f2 class=used>
       <td>
       <td>U+10c9f2
-      <td lang=swl class=x2>􌧲
+      <td lang=swl class=x2><mark>􌧲</mark>
       <td>
       <td>
       <td align=left>fingerspecifikation: knutet finger
@@ -2756,7 +2793,7 @@ th {
     <tr id=u10c9f3 class=used>
       <td>
       <td>U+10c9f3
-      <td lang=swl class=x2>􌧳
+      <td lang=swl class=x2><mark>􌧳</mark>
       <td>
       <td>
       <td align=left>fingerspecifikation: två korsade fingrar
@@ -2765,7 +2802,7 @@ th {
     <tr id=u10c9f4 class=used>
       <td>
       <td>U+10c9f4
-      <td lang=swl class=x2>􌧴
+      <td lang=swl class=x2><mark>􌧴</mark>
       <td>
       <td>
       <td align=left>fingerspecifikation: rak tumme
@@ -2774,7 +2811,7 @@ th {
     <tr id=u10c9f5 class=used>
       <td>
       <td>U+10c9f5
-      <td lang=swl class=x2>􌧵
+      <td lang=swl class=x2><mark>􌧵</mark>
       <td>
       <td>
       <td align=left>fingerspecifikation: böjd tumme
@@ -2783,7 +2820,7 @@ th {
     <tr id=u10c9f6 class=used>
       <td>
       <td>U+10c9f6
-      <td lang=swl class=x2>􌧶
+      <td lang=swl class=x2><mark>􌧶</mark>
       <td>
       <td>
       <td align=left>fingerspecifikation: parallell tumme
@@ -2792,7 +2829,7 @@ th {
     <tr id=u10c9f7 class=used>
       <td>
       <td>U+10c9f7
-      <td lang=swl class=x2>􌧷
+      <td lang=swl class=x2><mark>􌧷</mark>
       <td>
       <td>
       <td align=left>fingerspecifikation: knuten tumme
@@ -2801,7 +2838,7 @@ th {
     <tr id=u10c9f8 class=used>
       <td>
       <td>U+10c9f8
-      <td lang=swl class=x2>􌧸
+      <td lang=swl class=x2><mark>􌧸</mark>
       <td>
       <td>
       <td align=left>fingerspecifikation: tumme i böjd opposition
@@ -2810,7 +2847,7 @@ th {
     <tr id=u10c9f9 class=used>
       <td>
       <td>U+10c9f9
-      <td lang=swl class=x2>􌧹
+      <td lang=swl class=x2><mark>􌧹</mark>
       <td>
       <td>
       <td align=left>fingerspecifikation: tumme i rak opposition
@@ -2819,7 +2856,7 @@ th {
     <tr id=u10c9fa class=used>
       <td>
       <td>U+10c9fa
-      <td lang=swl class=x2>􌧺
+      <td lang=swl class=x2><mark data-width="􌧬">􌧺</mark>
       <td>
       <td>
       <td align=left>fingerspecifikation: kontakt vid fingerspets
@@ -2828,7 +2865,7 @@ th {
     <tr id=u10c9fb class=used>
       <td>
       <td>U+10c9fb
-      <td lang=swl class=x2>􌧻
+      <td lang=swl class=x2><mark data-width="􌧬">􌧻</mark>
       <td>
       <td>
       <td align=left>fingerspecifikation: kontakt vid fingers mitt
@@ -2837,7 +2874,7 @@ th {
     <tr id=u10c9fc class=used>
       <td>
       <td>U+10c9fc
-      <td lang=swl class=x2>􌧼
+      <td lang=swl class=x2><mark data-width="􌧬">􌧼</mark>
       <td>
       <td>
       <td align=left>fingerspecifikation: kontakt mellan två fingrar
@@ -2846,7 +2883,7 @@ th {
     <tr id=u10c9fd class=used>
       <td>
       <td>U+10c9fd
-      <td lang=swl class=x2>􌧽
+      <td lang=swl class=x2><mark data-width="􌧬">􌧽</mark>
       <td>
       <td>
       <td align=left>fingerspecifikation: kontakt i handflata
@@ -2855,7 +2892,7 @@ th {
     <tr id=u10c9fe class=used>
       <td>
       <td>U+10c9fe
-      <td lang=swl class=x2>􌧾
+      <td lang=swl class=x2><mark data-width="􌧬">􌧾</mark>
       <td>
       <td>
       <td align=left>fingerspecifikation: hel hand spretad
@@ -2864,7 +2901,7 @@ th {
     <tr id=u10c9ff class=used>
       <td>
       <td>U+10c9ff
-      <td lang=swl class=x2>􌧿
+      <td lang=swl class=x2><mark data-width="􌧬">􌧿</mark>
       <td>
       <td>
       <td align=left>fingerspecifikation: fingerpar spretat
@@ -3579,7 +3616,7 @@ th {
     <a href="LICENSE.txt" rel=license
        title="Released under the GNU General Public License, Version 3 (GPLv3)."
        >License</a>
-    <br>© 2017–2022 zrajm, Uppsala.
+    <br>© 2017–2023 zrajm, Uppsala.
   </footer>
 </body>
 </html>
