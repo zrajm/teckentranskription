@@ -207,6 +207,9 @@ let charClass = {
   '*': '[^ 􌥠/.,:;?!()]*',  // all non-space, non-'/' delimiter
   // one place symbol (+ optional relation)
   '@': '(?:@|[􌦳􌤆􌤂􌥞􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛􌤜􌤞􌤠􌥀􌤡􌥜􌤑􌦲􌤒􌤓􌤕􌤔􌤖􌤗􌤙􌤘􌤚][􌤺􌥛􌤻􌤹􌥚]?)',
+  // like '*' but single char + optional for relation (5), attitude turn (6), medial
+  // contact (1), or motion modifier (11)
+  '?': '[^ 􌥠/.,:;?!()][􌤺􌥛􌤻􌤹􌥚􌤶􌥗􌤷􌥘􌤸􌥙􌥡􌦈􌥽􌦉􌥾􌦊􌦋􌥿􌦀􌦌􌦂􌦵]?',
   // one handshape symbol (+ optional relation)
   '#': '(?:#|[􌤤􌥄􌤣􌤧􌥋􌥉􌦫􌤩􌤎􌥇􌦬􌤦􌤲􌤱􌥑􌤢􌥂􌤪􌥎􌥈􌤨􌤿􌥌􌥆􌤫􌦭􌤬􌥅􌤥􌥊􌦱􌤽􌤯􌤭􌤮􌤰􌤳􌥃􌥒􌥟􌦪][􌤺􌥛􌤻􌤹􌥚]?)',
   '^': '[􌤺􌥛􌤻􌤹􌥚]',          // one relation symbol

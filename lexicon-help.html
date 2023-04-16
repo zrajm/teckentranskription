@@ -114,6 +114,11 @@ table th, table td {
 .columns {
   columns: 25em;
   column-gap: 1em;
+  orphans: 3;
+  widows: 3;
+}
+.columns p {
+    break-inside: avoid-column;
 }
 /* Align these icons with baseline */
 img[src="pic/warn-marked.svg"],
@@ -414,13 +419,18 @@ section { margin-top: 1em; }
             <th>Matchar
           <tr href="#stjärna">
             <th><tt>*</tt>
-            <td>Del av ord/<wbr>tran­skrip­tion
-            <td>Noll eller fler av A–Ö, 0–9 eller tran­skrip­tions­sym­boler
-              (utom <small>􌥠</small>)
+            <td>Del av ord/<wbr>tecken­transkription
+            <td>Noll eller fler transkriptions­symboler
+              (utom <small>􌥠</small>), bokstäver A–Ö och siffror 0–9
+          <tr href="#frågetecken">
+            <th><tt>?</tt>
+            <td>Bokstav/<wbr>siffra/<wbr>tecken­symbol
+            <td>En transkriptions­symbol (utom <small>􌥠</small>), bokstav
+              A–Ö, eller siffra 0–9
           <tr>
             <th><tt>:</tt>
             <td><i>Attityd</i>
-            <td>En <i>riktnings-</i> plus en <i>vändningssymbol</i>
+            <td>En <i>riktnings-</i> plus en <i>vändnings­symbol</i>
           <tr>
             <th><tt>^</tt>
             <td><i>Relationsymbol</i>
@@ -481,23 +491,37 @@ section { margin-top: 1em; }
               artikulation</i> (i samma riktning)<sup>4</sup>
         </table>
         <section id=stjärna>
-          <p><tt>*</tt> matchar noll eller fler alfabetiska symboler i ord
-          eller <wbr>tran­skrip­tion. (Med ’alfabetisk’ menas bokstäver,
-          siffror och alla tran­skrip­tions­sym­boler utom segment­separatorn
-          (<small>􌥠</small>), men inte skilje­sym­boler som parentes, punkt,
-          komma etc).
+          <p><tt>*</tt> matchar noll eller fler tecken­symboler och
+          alfanumeriska symboler. Tecken­symboler är de symboler som används
+          för att skriva hur ett tecken utförs – dvs alla
+          transkriptions­symboler utom segment­separatorn (<small>􌥠</small>).
+          Alfanumeriska symboler är bokstäver och siffror (men inte mellan­slag
+          eller inter­punktion som punkt, komma etc). – Symboler som används
+          för att skriva ord eller tecken, men inte symboler som används för
+          att separera dessa.
 
-          <p>Om du letar efter ett tecken med läge <i>bröstet</i>
-          (<small>􌤓</small>) i vilket handformen <i>förändras</i>
-          (<small>􌦆</small>) så kan du använda <tt>*􌤓*􌦆*</tt> för att matcha
-          tecken där bägge förekommer i samma segment (som tex i
-          ’Ironman’ <small><mark>􌤓</mark>􌥆􌤵􌤷􌤟<mark>􌦆</mark>􌥃</small>).
-
-          <p>Om du istället skriver sökningen som två termer <tt>*􌤓* *􌦆*</tt>
-          så matchar den tecken där <i>bröstet</i> och <i>förändras</i>
-          förekommer oavsett om de är i samma segment eller inte (den sökningen
-          matchar alltså – utöver ’Ironman’ – också tex ’tycka
+          <p><b>Exempel:</b> För att hitta ett tecken med läge <i>bröstet</i>
+          (<small>􌤓</small>) där handformen <i>förändras</i> (<small>􌦆</small>)
+          kan sök­termen <tt>*􌤓*􌦆*</tt> användas (detta hittar alla tecken där
+          de bägge symbolerna förekommer i ett och samma segment, tex
+          ’Ironman’ <small><mark>􌤓</mark>􌥆􌤵􌤷􌤟<mark>􌦆</mark>􌥃</small>). Om du
+          istället använder två sök­termer <tt>*􌤓* *􌦆*</tt> så hittas alla
+          tecken där <i>bröstet</i> och <i>förändras</i> finns
+          med <i>oavsett</i> om de är i samma eller olika segment (denna
+          sökning kommer alltså att hitta allting som den tidigare sökningen
+          hittade, <i>plus</i> tecken som tex ’tycka
           om’ <small><mark>􌤓</mark>􌤢􌥓􌥘􌤟􌥠􌥆􌤴􌥙􌥵<mark>􌦆</mark>􌤢</small>).
+
+          <p><p id=frågetecken><tt>?</tt> matchar en symbol ifrån samma
+          uppsättning som <tt>*</tt>, plus en eventuell efter­följande
+          modifierande symbol (för relation, attityd­vridning, medial kontakt
+          eller riktnings­modifikation). Används i sammanhang där du vill söka
+          efter ett specifikt antal symboler.
+
+          <p><b>Exempel:</b> För att hitta tecken som har exakt en
+          artikulations­symbol kan <tt>*:?</tt> användas. För att hitta tecken
+          vars transkription slutar med <i>förändras</i> kan <tt>*􌦆?</tt>
+          användas.
         </section>
         <section id=relation>
           <p>Utöver symbolerna i tabellen så försöker sökmotorn hjälpa dig så
