@@ -182,6 +182,9 @@ function escape(x) {
   return x.replace(/^[*+?^$.[\]{}()|/\\]$/u, '\\$&')
 }
 
+// Test if char is 0-9, a-ö, or non-separator transcription char.
+const wordCharRe = /^[\d\p{Letter}\u{10c900}-\u{10c95f}\u{10c961}-\u{10c9ff}]$/u
+
 // Unquoted special characters: Expand unquoted char into character class.
 let charClass = {
   'a': '[aàáâã]',
@@ -194,8 +197,6 @@ let charClass = {
   'y': '[yýü]',
   'ä': '[äæ]',
   'ö': '[öø]',
-  '-': '[­-–—]',
-  "'": "['‘’]",
   '􌤆': '[􌤆􌤂􌥞􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛][􌤺􌥛􌤻􌤹􌥚]?', // face
   '􌤂': '[􌤂􌤀􌤃􌤄􌤅􌤾􌤈􌤇􌤉􌤋􌤊􌤼][􌤺􌥛􌤻􌤹􌥚]?',     // upper face
   '􌥞': '[􌥞􌤾􌤈􌤇􌤉􌤋􌤊􌤼􌤌􌤛][􌤺􌥛􌤻􌤹􌥚]?',       // lower face
@@ -246,14 +247,13 @@ function finalizeTerm(state) {
     field = false,
     not = false,
     tag = false,
+    wordBeg, wordEnd,
   } = state
   function wordRegex(regex) {
     const noWord = '[ 􌥠,:!?/.’()[\\]&+–-]'
-    const noWordBeg = RegExp(`^${noWord}`, 'ui')
-    const noWordEnd = RegExp(`${noWord}$`, 'ui')
-    return (plain.match(noWordBeg) ? '()' : `(^|${noWord})`)
+    return (wordBeg ? `(^|${noWord})` : '()')
       + `(${regex})`
-      + (plain.match(noWordEnd) ? '' : `(?=${noWord}|$)`)
+      + (wordEnd ? `(?=${noWord}|$)` : '')
   }
   return {
     regex: regex
@@ -403,6 +403,8 @@ function parseQuery(queryStr) {
       } else {
         s.regex = (s.regex || '') + escape(c)
         s.plain = (s.plain || '') + c
+        s.wordEnd   = wordCharRe.test(c)
+        s.wordBeg ??= s.wordEnd
       }
       return s
     },
@@ -422,6 +424,8 @@ function parseQuery(queryStr) {
       }
       s.regex = (s.regex || '') + (charClass[c] || escape(c))
       s.plain = (s.plain || '') + c
+      s.wordEnd   = !!charClass[c] || wordCharRe.test(c)
+      s.wordBeg ??= s.wordEnd
       return s
     },
   }
