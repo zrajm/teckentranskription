@@ -257,6 +257,13 @@ div.inline-figures > figure {
   display: inline-block;
   margin: .5em 1em;
 }
+.vert { padding: .5em .25em !important; }
+.vert span {
+  writing-mode: vertical-rl;
+  width: 1.5em;
+  display: block;
+  margin: 0 auto;
+}
   </style>
 </head>
 <body lang=sv>
@@ -3663,7 +3670,7 @@ div.inline-figures > figure {
               <th colspan=2>Riktning
               <th colspan=2>Vridning
             <tr>
-              <th rowspan=2>Sidled
+              <th rowspan=2 class=vert><span>Sidled</span>
               <td class="x2 symbol">􌥓
               <th colspan=2>Vänster
               <td class="x2 symbol">  􌤶
@@ -3672,7 +3679,7 @@ div.inline-figures > figure {
               <th colspan=2>Höger
               <td class="x2 symbol">  􌥗
             <tr>
-              <th rowspan=2>Djupled
+              <th rowspan=2 class=vert><span>Djupled</span>
               <td class="x2 symbol">􌤴
               <th colspan=2>Fram
               <td class="x2 symbol">  􌤷
@@ -3681,7 +3688,7 @@ div.inline-figures > figure {
               <th colspan=2>Bakåt
               <td class="x2 symbol">  􌥘
             <tr>
-              <th rowspan=2>Höjdled
+              <th rowspan=2 class=vert><span>Höjdled</span>
               <td class="x2 symbol">􌤵
               <th colspan=2>Upp
               <td class="x2 symbol">  􌤸
