@@ -276,10 +276,10 @@ function transcriptKeyboard($wrapper, $input, $keyboardIcon) {
       '</nobr>',
       ['􌦷', 'Medial kontakt (oberoende)'],
       ['􌦴', 'Flätas'],
-      ['􌦮', 'Cirkel i frontalplan<br>(matchar 􌦮 och 􌥰􌥿􌥰􌦀􌥰􌦌)'],
-      ['􌦯', 'Cirkel i horisontalplan<br>(matchar 􌦯 och 􌥰􌦈􌥰􌥽􌥰􌦉)'],
+      ['􌦮', ['plane-frontal', 'Cirkel i frontalplan<br>(matchar 􌦮 och 􌥰􌥿􌥰􌦀􌥰􌦌)']],
+      ['􌦯', ['plane-horizontal', 'Cirkel i horisontalplan<br>(matchar 􌦯 och 􌥰􌦈􌥰􌥽􌥰􌦉)']],
       '<nobr>',
-      ['􌦰', 'Cirkel i sagittalplan<br>(matchar 􌦰 och 􌥰􌥾􌥰􌦊􌥰􌦋)'],
+      ['􌦰', ['plane-median', 'Cirkel i sagittalplan<br>(matchar 􌦰 och 􌥰􌥾􌥰􌦊􌥰􌦋)']],
       ['􌦶', 'Studs'],
       ['&nbsp;&nbsp;􌦵', 'Från varandra'],
       '</nobr>',
@@ -293,7 +293,7 @@ function transcriptKeyboard($wrapper, $input, $keyboardIcon) {
           let prefix = meta.prefix || ''
           function imgText(txts) {
             if (typeof txts[0] === 'string') { return txts[0] }
-            return '<br><div class=imgs>' + txts.map(([img, txt], i) => (
+            return `<div class=imgs>` + txts.map(([img, txt], i) => (
               `<span><img src=&quot;pic/keyboard/${img}.png&quot;>${txt}</span>`
                 + ((i % 2) ? '<br>' : '')
             )).join('') + '</div>'
