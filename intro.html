@@ -32,15 +32,21 @@ span.abs {
 }
 .hilite { background: #ddd !important; }
 p + hr { display: none; }
-.FIXME { background: #ff0c; font-weight: bold; }
-:not(td,tr).FIXME:before { content: "FIXME: "; }
-.FIXME:empty:before { content: "FIXME"; }
+.FIXME { background: #ff0c; }
+section.FIXME h1:first-of-type:before,
+div.FIXME p:first-of-type:before,
+:not(details,div,section,span.img,summary,td,tr).FIXME:before {
+  font-weight: bold;
+  content: "FIXME: ";
+}
+.FIXME:empty:before { content: "FIXME" !important; }
 .float-left, .float-right {
   float: left;
   border: 1px solid #888;
   padding: 2px !important;
   margin-right: 10px !important;
   margin-top: 5px !important;
+  text-indent: 0;
 }
 .float-right { float: right; }
 .small-left {
@@ -268,9 +274,9 @@ div.inline-figures > figure {
       öppnar eller sluter handen. Jmf och hitta belägg/refuteringar!
     -->
 
-    <p><b>Notera:</b> Nedanstående text är i beta. <span class=FIXME>Partier är
-    under aktiv omarbetning är markerade med gult.</span> Kommentarer och
-    förslag mottages gärna
+    <p><b>Notera:</b> Nedanstående text är i beta. <span class=FIXME>Partier
+    som fortfarande behöver bearbetning/uppdatering är markerade med
+    gult.</span> Kommentarer och förslag mottages gärna
     av <i><a href="mailto:zrajm@zrajm.org">zrajm@zrajm.org</a></i>.
 
     <h1>Att transkribera teckenspråk</h1>
@@ -2242,9 +2248,9 @@ div.inline-figures > figure {
           <figcaption>Symbolerna är ordnade uppifrån och ner, med de lägen som
             vanligtvis inte involverar kontakt först i tabellen.
 
-            <p class="indent FIXME">FIXME Eventuellt dubblerade
-            kroppslägen i <a href=#1994>Wallin (1994)</a> nämns inte i
-            bokens appendix och är inte (än) markerade ovan.
+            <p class="indent FIXME">Eventuellt dubblerade kroppslägen
+            i <a href=#1994>Wallin (1994)</a> nämns inte i bokens appendix och
+            är inte (än) markerade ovan.
           </figcaption>
         </figure>
 
@@ -2562,8 +2568,9 @@ div.inline-figures > figure {
               <details closed class="quote FIXME">
                 <summary><a href=#1994>Wallin (1994)</a></summary>
 
-                <p>FIXME: Finns det bild eller beskrivning av handformen
-                i <a href=#1994>Wallin (1994)</a>? Isf infoga den/dem här.
+                <p class=FIXME>Finns det en bild eller beskrivning av
+                handformen i <a href=#1994>Wallin (1994)</a>? Isf infoga
+                den/dem här.
               </details>
             </details>
             <!-- Tumvinkelhanden -->
@@ -3039,8 +3046,9 @@ div.inline-figures > figure {
               <details closed class="quote FIXME">
                 <summary><a href=#1994>Wallin (1994)</a></summary>
 
-                <p>FIXME: Finns det bild eller beskrivning av handformen
-                i <a href=#1994>Wallin (1994)</a>? Isf infoga den/dem här.
+                <p class=FIXME>Finns det en bild eller beskrivning av
+                handformen i <a href=#1994>Wallin (1994)</a>? Isf infoga
+                den/dem här.
               </details>
             </details>
             <!-- L-handen -->
@@ -3170,9 +3178,9 @@ div.inline-figures > figure {
               <details closed class="quote FIXME">
                 <summary><a href=#1994>Wallin (1994)</a></summary>
 
-                <p>FIXME: Finns det bild eller beskrivning av
-                handformen i <a href=#1994>Wallin (1994)</a>? Isf
-                infoga den/dem här.
+                <p class=FIXME>Finns det en bild eller beskrivning av
+                handformen i <a href=#1994>Wallin (1994)</a>? Isf infoga
+                den/dem här.
               </details>
             </details>
             <!-- O-handen -->
@@ -3336,15 +3344,15 @@ div.inline-figures > figure {
               <summary><span class="fx fs h1977 h1997 h2015 hweb">􌤽</span>Dubbelkroken
                 <div class="fx fs h1977 h1997 h2015 hweb">
                   <img  class="fx h1977 h1997 h2015" src=pic/x/dubbelkroken-1.png>
-                  <span class="fs h1977             FIXME">?</span>
+                  <span class="fs h1977 img FIXME">?</span>
                 </div>
               </summary>
               <details closed class=quote>
                 <summary><a href=#1977>Bergman (1977)</a></summary>
 
                 <p><img src=pic/x/dubbelkroken-1.png class="float-left
-                small-left"> <div class="float-left small-left
-                FIXME"></div> ”<b>Dubbelkroken</b> formas av pek- och
+                small-left"> <span class="float-left small-left
+                FIXME"></span> ”<b>Dubbelkroken</b> formas av pek- och
                 långfingret som böjts i den yttre knogen. Det är denna
                 böjning som skiljer den från N- och V-händerna. Fingrarna
                 kan vara spretade eller samlade.” (s46)
@@ -3420,9 +3428,9 @@ div.inline-figures > figure {
             </details>
             <!-- Böjda W-handen -->
             <details closed class="fb fx f3 fing tre hweb">
-              <summary><span class="hweb FIXME">?</span>Böjda W-handen
+              <summary><span class="hweb img FIXME">?</span>Böjda W-handen
                 <div class="hweb">
-                  <span class="FIXME">?</span>
+                  <span class="img FIXME">?</span>
                 </div>
               </summary>
               <p>Denna handform har ingen egen symbol
@@ -3490,7 +3498,7 @@ div.inline-figures > figure {
             <details closed class="FIXME fv fx f4 hel fem h1994">
               <summary><span><img src=pic/h-vinklade-sprethanden.svg></span>Vinklade sprethanden
                 <div>
-                  <span class="FIXME">?</span>
+                  <span class="img FIXME">?</span>
                 </div>
               </summary>
               <details closed class=quote>
@@ -3579,7 +3587,7 @@ div.inline-figures > figure {
             </details>
             <!-- Böjda 4-handen -->
             <details closed class="fb fx f4 fyra fing hweb">
-              <summary><span class="hweb FIXME">?</span>Böjda 4-handen
+              <summary><span class="hweb img FIXME">?</span>Böjda 4-handen
                 <div class="hweb">
                   <img class="hweb" src=pic/x/bojda-4-handen-1.png>
                 </div>
@@ -3936,11 +3944,11 @@ div.inline-figures > figure {
               symboler ovanför varandra (istället för separerade med ett
               vertikalt streck [􌥼] som är nutida praxis).
 
-              <p>Här verkar <i>båge</i> (􌥯) och <i>vrids</i> (􌥲) båda
-              använda samma notationskonvention (utan specificerad
-              riktning), medan <i>slås</i> (􌥱) fungerar
-              annorlunda. <span class=FIXME>FIXME: Beskriv hur <i>båge</i>
-              faktiskt fungerar.</span>
+              <p>Här verkar <i>båge</i> (􌥯) och <i>vrids</i> (􌥲) båda använda
+              samma notationskonvention (utan specificerad riktning),
+              medan <i>slås</i> (􌥱) fungerar
+              annorlunda. <span class=FIXME>Beskriv hur <i>båge</i> faktiskt
+              fungerar.</span>
 
               <table class=border-example>
                 <tr>
@@ -4494,11 +4502,11 @@ div.inline-figures > figure {
               symboler ovanför varandra (istället för separerade med ett
               vertikalt streck [􌥼] som är nutida praxis).
 
-              <p>Här verkar <i>båge</i> (􌥯) och <i>vrids</i> (􌥲) båda
-              använda samma notationskonvention (utan specificerad
-              riktning), medan <i>slås</i> (􌥱) fungerar
-              annorlunda. <span class=FIXME>FIXME: Beskriv hur <i>vrids</i>
-              faktiskt fungerar.</span>
+              <p>Här verkar <i>båge</i> (􌥯) och <i>vrids</i> (􌥲) båda använda
+              samma notationskonvention (utan specificerad riktning),
+              medan <i>slås</i> (􌥱) fungerar
+              annorlunda. <span class=FIXME>Beskriv hur <i>vrids</i> faktiskt
+              fungerar.</span>
 
               <table class=border-example>
                 <caption><sup><b>*</b></sup> Attityden
