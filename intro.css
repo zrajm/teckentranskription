@@ -134,4 +134,14 @@ button, select {
   color: #000b;
 }
 select option { background-color: #fff; }
+blockquote {
+  border-left: .5rem solid #00f2;
+  padding-left: .5rem;
+  margin: 1em 0 1em;
+}
+blockquote:after {
+  content: "";
+  display: block;
+  clear: both;
+}
 /*[eof]*/
