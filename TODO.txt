@@ -138,6 +138,21 @@
      other advanced features that are useful to researchers and advanced users.
      These functions shall not intrude on the beginner's user experience.
   :END:
+** TODO Use 'form' instead of '#search' in CSS(?)
+** TODO BUG: The expression '=""' in the query is removed in parsing
+   This actually means 'match only empty fields' and should definitely be
+   retained.
+** TODO Page title should contain query (for history menu in browser)
+** TODO Transcription 'B' and normal 'B' should work the same?
+   There should be a clear-cut way of distinguish a search for a transcription
+   and a translation. Normal alphabetical 'B' should match both transcription
+   and translation, but one should be able to specify which one one wants to
+   search.
+** TODO Convert old toggle switch to new type
+   Used in branch 'devel-query-editor' for the query editor.
+** TODO Better margins for mobile (maybe hide advanced search too?)
+   Advanced search doesn't fit very well on mobile. Need to either adjust
+   margins (and possibly also icons in the input form).
 ** TODO 'Advanced search'
    A good example of an 'advanced search' dropdown can be found in Google
    Calendar, by looking at the calendar search, though this one does not update
@@ -378,7 +393,20 @@
     sounds like it would always be good, right?)
 *** TODO Overlay by entering in URL
 *** TODO Overlay by clicking on Swedish of sign
-** [0/13] Query language
+** [0/14] Query language
+*** TODO Fuzzy search
+    The blog post “Index 1,600,000,000 Keys with Automata and Rust”
+    (https://blog.burntsushi.net/transducers/) talks about building a search
+    index in the form of a finite state machine.
+
+    It also states that it's very fast do compute unions and intersections.
+    Meaning, that since both query and index are automatons, calculating the
+    search results is just a matter of intersecting the two automatons.
+
+    There is also a way to convert the query automaton into a fuzzy ditto (with
+    the fuzzy automaton matching everything up to a certain Levenshtein
+    distance from the original query). -- If this is used, and also output a
+    match distance for each match, we could then sort the result by relevance.
 *** TODO Don't hilite translations when searching for tags              :BUG:
     If one searches for `/språkvetenskap`, then this will hilite the
     translation 'språkvetenskap' (which matches both in translation and tags),
