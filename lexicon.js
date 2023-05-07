@@ -514,7 +514,7 @@ function htmlifyMatch(entry, hiliteRegex) {
     /* NB: Whitespace below shows up in search result's 'text' mode. */
     '<div class=match>'
       + '<div class="video-container is-loading">'
-        + '<img src="{baseUrl}/photos/{dir}/{file}-{id}-tecken.jpg"'
+        + '<img src="{baseUrl}/photos/{dir}/{file}-{id}-photo-1-medium.jpg"'
         + ' data-video="{baseUrl}/movies/{dir}/{file}-{id}-tecken.mp4" alt="">'
         + '<div class=video-feedback></div>'
         + '<div class=top-right style="text-align:right">'
