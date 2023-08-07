@@ -1,4 +1,4 @@
-let lexiconDate=new Date("2023-07-31T06:00:32Z")
+let lexiconDate=new Date("2023-08-07T06:00:32Z")
 let lexiconTags=["/bokstavering",
 "/språkvetenskap",
 "/geografi/orter/sverige",
