@@ -27,6 +27,7 @@
     table.handshapes th:not(:empty) { background: #ddd; }
     table.handshapes td        { vertical-align: top; }
     table.handshapes td.middle { vertical-align: middle; }
+    span.handshape,
     table.handshapes td:not(:empty) {
         border-radius: 5px;
         background: #ddf;
@@ -34,7 +35,10 @@
     table.handshapes caption { margin: .5em; }
     table.handshapes caption img { height: 3em; }
     table.handshapes td img { vertical-align: top; }
-
+    span.handshape {
+      display: inline-block;
+      padding: 2px 4px;
+    }
     img { height: 4em; }
 
 
@@ -51,7 +55,7 @@
     <p>Detta är ett försök till en kort inventering av handformer i svenskt
     teckenspråk. Alla handformer är tagna
     ur <a href="intro.html#referenser">samma källor som introartikeln använder
-    sig av</a>, utom i de fall då något annorlunda sägs i texten.
+    sig av</a>, utom i de fall då något annat sägs i texten.
 
     <section>
       <h1>Slutna handformer</h1>
@@ -163,18 +167,23 @@
     <section>
       <h1>Öppna och knutna handformer</h1>
 
-      <p>Tummen har inte kontakt med andra fingertoppar (kontakt med knutna
-      fingrar, eller fingrar som hålls in mot handflatan av tummen räknas
-      inte).
+      <p>I dessa handformer har tummen inte kontakt med andra fingertoppar
+      (kontakt med knutna fingrar, eller fingrar som hålls in mot handflatan av
+      tummen räknas inte).
 
       <table class=handshapes>
         <caption>
           <b>Varianter</b> –
-          1: <img src="pic/x/tumhanden-2.png">
-          2: <img src="pic/x/bojda-sprethanden-1.png">
-          <img src="pic/x/klohanden-3.png">
-          3: <img src="pic/x/t-handen-1.png">
-          4: <img src="pic/x/matthanden-2.png">
+          <span class=handshape>
+            1: <img src="pic/x/tumhanden-2.png">
+          </span>
+          <span class=handshape>
+            2: <img src="pic/x/bojda-sprethanden-1.png">
+            <img src="pic/x/klohanden-3.png">
+          </span>
+          <span class=handshape>
+            3: <img src="pic/x/matthanden-2.png">
+          </span>
         </caption>
         <tr>
           <th colspan=2></th>
@@ -233,7 +242,7 @@
           <th>samlad</th>
           <td><img src="pic/x/n-handen-1.png"></td>
           <td><img src="pic/x/vinklade-n-handen-1.png"></td>
-          <td></td>
+          <td><img src="pic/x/dubbelkroken-2.png"></td>
           <!--td-->
           <td rowspan=8><img src="pic/x/knutna-handen-1.png"></td>
           <td class=middle><a href="#pistolhanden">pistol-<br>hand</a></td>
@@ -292,17 +301,16 @@
           <td><img src="pic/x/krokfingret-1.png"></td>
           <!--td-->
           <td><img src="pic/x/l-handen-1.png"></td>
-          <td><img src="pic/x/t-handen-2.png"><span style="position:absolute;margin-left:-.75em">3</span>
-            <!--img src="pic/x/t-handen-1.png"--></td>
+          <td><img src="pic/x/t-handen-2.png"></td>
           <td><img src="pic/x/matthanden-3.png"></td>
           <!--td-->
           <td></td>
           <td><img src="pic/x/raka-matthanden-1.png"></td>
-          <td><img src="pic/x/matthanden-1.png"><span style="margin-left:.15em">4</span>
+          <td><img src="pic/x/matthanden-1.png"><span style="margin-left:.15em">3</span>
             <!--img src="pic/x/matthanden-2.png"--></td>
           <!--td-->
           <td></td>
-          <td></td>
+          <td><img src="pic/x/t-handen-1.png"></td>
           <td></td>
           <!--td-->
         <tr>
@@ -414,7 +422,7 @@
         tecknet <a href="https://teckensprakslexikon.su.se/ord/04333"
         style="font-variant:small-caps">annan, annat</a>.
 
-        <p id="bojda-w-handen"><b>böjda w-handen</b> – Förekommer bland annat i
+        <p id="bojda-w-handen"><b>böjda W-handen</b> – Förekommer bland annat i
         tecknet <a href="http://teckensprakslexikon.su.se/ord/01376">för tre
         veckor sedan</a>.
 
