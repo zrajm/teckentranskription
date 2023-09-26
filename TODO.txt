@@ -763,8 +763,22 @@
 *** TODO Add info from Riemer (2015)
 *** TODO Add info from Svenskt teckenspråkslexikon (2008)
 ** [0/10] Add missing quotes for handshape table
-*** TODO Add info from Bergman (1977)
-*** TODO Add info from Bergman (1982)
+*** [1/1] Add info from Bergman (1977)
+**** DONE Comment on E-hand not being in Bergman (1977)
+     CLOSED: [2023-09-25 Mon 23:59]
+*** [4/5] Add info from Bergman (1982)
+**** TODO Prettify all the images
+**** DONE Make sure all Bergman (1982) images are used
+     CLOSED: [2023-09-26 Tue 00:56]
+**** DONE Make sure h1982 is included for all 1982 hand shapes
+     CLOSED: [2023-09-26 Tue 03:42]
+**** DONE Add page references for Bergman (1982)
+     CLOSED: [2023-09-26 Tue 02:27]
+**** DONE Attribute Bergman (1982) images the same way as Hedberg (1989)
+     CLOSED: [2023-09-26 Tue 02:27]
+     Hedberg (1989) is referred to like this:
+
+     + "Fig 32 LO-handen (Hedberg, 1989: 63)"
 *** TODO Add info from Hedberg (1989)
 *** TODO Add info from Bergman & Björkstrand (1993)
 *** TODO Add info from Wallin (1994)
