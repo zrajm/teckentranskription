@@ -1017,6 +1017,27 @@
      + ALL <details> opened
 
    Mouseover text should clearly state what will happen upon the next click.
+* List of handshapes (handform.html)
+** TODO Simplify image names & dir structure
+** TODO Add rudimentary frequency statistics
+   Use statistics on hand shape occurrence for the primary hand from the
+   lexicon. This is not as nuanced as using a corpus, but should suffice.
+** TODO Comparison with other author's sort order
+** TODO Add image for "amerikansk T-hand"
+** TODO Add image for "pistolhand"
+** TODO Add image for "vinklad sprethand"
+** TODO Add image for "pekfingertumhand"
+** TODO Add image for "liten hållhand"
+** TODO Add image for "jasåhand"
+** TODO Add image for "annanhand"
+** TODO Add image for "kroklillfinger"
+** TODO Add image for "vinklad U-hand"
+** TODO Add image for "böjd U-hand"
+** TODO Add image for "stor liten O-hand"
+** TODO ILY-handen/flyghanden
+   This handshape occurs twice is the in the table. Can the the two rows "pek-
+   och lillfinger" and "stort lång- och ringfinger" be merged somehow so this
+   problem can be avoided?
 * SSLWrite article
 ** Mouth segment article
 *** Clean up references section

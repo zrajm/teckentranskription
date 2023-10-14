@@ -1,481 +1,997 @@
 <!DOCTYPE html><!--*-ispell-dictionary:"sv";js-indent-level:2;css-indent-offset:2-*-->
 <html lang=sv>
-<head>
-  <!-- Copyright 2018-2023 by zrajm. Released under GPLv3 license. -->
-  <meta charset="UTF-8">
-  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Inventering av handformer</title>
-  <link rel=stylesheet href="intro.css">
-  <link rel=license href="LICENSE.txt">
-  <style>
-    main { padding: .25em 1em; }
-    h1 { margin: .5em 0; }
+<!-- Copyright 2018-2023 by zrajm. Released under GPLv3 license. -->
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inventering av handformer</title>
+<link rel=stylesheet href="intro.css">
+<link rel=license href="LICENSE.txt">
+<style>
+  [FIXME] { background: #ff0; }
+  body {
+    line-height: 1.5;
+    padding: .25em 1em;
+  }
+  h1 { margin: .5em 0; }
+  table {
+    border-collapse: collapse;
+    caption-side: bottom;
+  }
+  table caption { margin: .5em 0; }
+  table.sorting th,
+  table.sorting td {
+    border: 1px solid #000;
+    padding: 0 .25em;
+  }
+  /***************************************************************************/
+  table.handshapes {
+    margin: 1.5rem;
+    border-right: 2px solid #000;
+  }
+  table.handshapes caption { margin-right: -.75rem; }
+  table.handshapes caption > * {
+    margin-right: .75rem;
+    line-height: 1.75;
+  }
+  table.handshapes th {
+    font-size: 75%;
+    white-space: nowrap;
+  }
+  table.handshapes td, table.handshapes th {
+    border-left: 1px solid #000;
+    line-height: 1;
+    padding: 2px 1px;
+    text-align: center;
+    font-weight: normal;
+    min-width: 2rem;
+  }
+  table.handshapes td {
+    vertical-align: bottom;
+    text-align: right;
+  }
+  /* Images in table but not caption. */
+  table.handshapes tr a:not([href^="#fn"]),
+  table.handshapes tr img[src$=".png"] {
+    height: 2.3rem;
+    /* Override adjustments for images in other contexts. */
+    display: block; position: static; margin: auto;
+    margin-bottom: -1rem;
+  }
+  table.handshapes tr a:not([href^="#fn"]) {
+    width: fit-content;
+    text-align: center;
+    font-size: 60%;
+    display: flex; align-items: center;
+  }
+  table.handshapes th { padding: .125rem; }
+  table.handshapes [colspan="99"],
+  table.handshapes [rowspan="32"] {
+    min-width: 0;
+    padding: 0;
+    padding-top: 2px;
+    background: #000;
+  }
+  table.handshapes td {
+    position: relative;
+    text-shadow:
+      0 0 1px #fff, 0 0 1px #fff,
+      0 0 2px #fff, 0 0 2px #fff,
+      0 0 3px #fff, 0 0 3px #fff,
+      0 0 4px #fff, 0 0 4px #fff, 0 0 4px #fff,
+      0 0 5px #fff;
+  }
+  table.handshapes a[href^="#fn"] {  /* table footnotes */
+    position: absolute;
+    top: .125rem;
+    right: .125rem;
+    font-size: calc(1rem * .75);
+  }
+  table.handshapes img[src$=".svg"] {
+    filter:
+      drop-shadow(0 0 1px #fff) drop-shadow(0 0 1px #fff)
+      drop-shadow(0 0 2px #fff) drop-shadow(0 0 2px #fff);
+  }
+  /* Remove <th> borders at table edge. */
+  table.handshapes tr.head th { border-top-width: 0; }
+  table.handshapes tr:first-child th { border-bottom-width: 0; }
+  table.handshapes tr:first-child th:first-child,
+  table.handshapes tr:not(.head) th { border-left-width: 0; }
+  table.handshapes th:first-child { border-right-width: 0; }
+  /***************************************************************************/
 
-    table.handshapes {
-        border: 4px solid #000;
-        border-collapse: separate;
-        border-spacing: 3px;
-        caption-side: bottom;
-    }
-    table.handshapes th,
-    table.handshapes td {
-        font-size: 12px;
-        padding: 2px;
-        text-align: center;
-        min-width: 40px;
-    }
-    table.handshapes th:not(:empty) { background: #ddd; }
-    table.handshapes td        { vertical-align: top; }
-    table.handshapes td.middle { vertical-align: middle; }
-    span.handshape,
-    table.handshapes td:not(:empty) {
-        border-radius: 5px;
-        background: #ddf;
-    }
-    table.handshapes caption { margin: .5em; }
-    table.handshapes caption img { height: 3em; }
-    table.handshapes td img { vertical-align: top; }
-    span.handshape {
-      display: inline-block;
-      padding: 2px 4px;
-    }
-    img { height: 4em; }
+  /* SVG images are glyphs used in text. */
+  img[src$=".svg"] {
+    height: .8em;
+    vertical-align: baseline;
+  }
+  img[src$=".png"] {
+    height: 1.75em;
+    margin: -1em 0; /* image must not affect line height */
+    padding: 0 .0625em;
+    bottom: calc(1rem - .375em);
+    position: relative;
+    vertical-align: baseline;
+  }
+  /* Link styles (underline images and text). */
+  a:hover { text-decoration-thickness: .1em; }
+  a:hover img { box-shadow: 0 .1em 0 0 currentColor; }
+
+  sub, sup { line-height: 0; } /* don't affect line height */
+  :target {
+    background: #ffc;
+    box-shadow:
+      0 0   .5rem  #ffc, 0 0 .5rem  #ffc,
+      0 0   .25rem #ffc, 0 0 .25rem #ffc, 0 0 .25rem #ffc,
+      0 0 0 .25rem #f90;
+  }
+  ::selection {
+    text-shadow: none;
+    background: #00f6;
+    color: #fff;
+  }
+  a[href^="lexicon.html#="] { font-variant: small-caps; }
+
+  /* Style classes. */
+  .vertical { writing-mode: vertical-rl; }
+  p.hanging, .hanging p {
+    margin: 0;
+    text-indent: -1.5rem;
+    padding-left: 1.5rem;
+  }
+</style>
 
 
-    a[href^="http://teckensprakslexikon.su.se"] {
-        font-variant: small-caps;
-    }
-  </style>
-</head>
-<body>
-  <main>
+<h1 id=top>Inventering av handformer</h1>
 
-    <h1>Inventering av handformer</h1>
+<p>Detta är ett försök till en kort inventering av handformer i svenskt
+  teckenspråk. Alla handformer är tagna ifrån videor
+  i <a href="lexicon.html"><i>Svenskt teckenspråkslexikon</i></a> (utom i de
+  fall då något annat sägs i texten), medan transkriptionssymbolerna kommer
+  ifrån <a href="intro.html#referenser">samma källor som introartikeln använder
+  sig av</a>.
 
-    <p>Detta är ett försök till en kort inventering av handformer i svenskt
-    teckenspråk. Alla handformer är tagna
-    ur <a href="intro.html#referenser">samma källor som introartikeln använder
-    sig av</a>, utom i de fall då något annat sägs i texten.
+<p>De handformer som skiljer sig från varandra endast genom spretning är nedan
+  placerade i samma tabellcell, med den samlade handformen överst och den
+  spretade nedanför.
 
-    <section>
-      <h1>Slutna handformer</h1>
 
-      <p>Tummen har kontakt med en eller fler fingertoppar i dessa handformer.
+<table class=handshapes>
+  <caption>
+    <nobr id=fn1><sup>1</sup> klohand <img src="pic/x/klohanden-3.png"
+      ><img src="pic/x/bojda-sprethanden-1.png"> (􌤥)</nobr>
+    <nobr id=fn2><sup>2</sup> E-hand <img src="pic/x/e-handen-1.png"> (􌥇)</nobr>
+    <nobr id=fn3><sup>3</sup> <a href="#amerikansk-t-hand"><i>amerikansk T-hand</i> (􌤦)</a></nobr>
+    <nobr id=fn4><sup>4</sup> böjd tumhand <img src="pic/x/tumhanden-2.png"> (􌤧)</nobr>
+    <nobr id=fn5><sup>5</sup> måtthand <img src="pic/x/matthanden-2.png"> (􌥋)</nobr>
+    <nobr id=fn6><sup>6</sup> transkriberas <i>lillfinger</i> (􌤱)
+      eller <a href="#liten-o-hand"><i>liten O-hand</i> (􌤎)</a> i lexikonet</nobr>
+  </caption>
+  <tr class=head>
+    <th colspan=2 rowspan=2></th>
+    <td rowspan=32></td>
+    <th colspan=4 style="padding-bottom:.5em">utsträckta fingrar</th>
+    <td rowspan=32></td>
+    <th colspan=5 style="padding-bottom:.5em">vinklade fingrar</th>
+    <td rowspan=32></td>
+    <th colspan=5 style="padding-bottom:.5em">böjda fingrar</th>
+    <td rowspan=32></td>
+  <tr class=head>
+    <!-- flat -->
+    <th><span class=vertical>invikt</span></th>
+    <th><span class=vertical>sido-<br>kontakt</span></th>
+    <th><span class=vertical>utsträckt</span></th>
+    <th><span class=vertical>motställd</span></th>
+    <!-- vinklad -->
+    <th><span class=vertical>invikt</span></th>
+    <th><span class=vertical>sido-<br>kontakt</span></th>
+    <th><span class=vertical>utsträckt</span></th>
+    <th><span class=vertical>motställd</span></th>
+    <th><span class=vertical>spets-<br>kontakt</span></th>
+    <!-- böjd -->
+    <th><span class=vertical>invikt</span></th>
+    <th><span class=vertical>sido-<br>kontakt</span></th>
+    <th><span class=vertical>utsträckt</span></th>
+    <th><span class=vertical>motställd</span></th>
+    <th><span class=vertical>spets-<br>kontakt</span></th>
+  <tr><td colspan=99></td>
+  <tr>
+    <th rowspan=2 colspan=2>alla fingrar</th>
+    <!-- flat -->
+    <td><img src="pic/x/d-handen-1.png">􌦫</td>
+    <td><img src="pic/x/flata-handen-2.png">􌤢</td>
+    <td><img src="pic/x/flata-handen-1.png">􌤢</td>
+    <td><img src="pic/x/flata-tumhanden-1.png">􌥂</td>
+    <!-- vinklad -->
+    <td></td>
+    <td><img src="pic/x/vinkelhanden-1.png">􌤣</td>
+    <td><img src="pic/x/vinkelhanden-2.png">􌤣</td>
+    <td><img src="pic/x/tumvinkelhanden-1.png">􌥄</td>
+    <td rowspan=2><img src="pic/x/a-handen-1.png">􌤤</td>
+    <!-- böjd -->
+    <td></td>
+    <td></td>
+    <td><img src="pic/x/s-handen-2.png">􌥅</td>
+    <td><img src="pic/x/s-handen-1.png">􌥅</td>
+    <td rowspan=2><img src="pic/x/o-handen-1.png">􌥆</td>
+  <tr>
+    <!-- flat -->
+    <td><img src="pic/x/4-handen-1.png">􌦪</td>
+    <td></td>
+    <td><img src="pic/x/sprethanden-1.png">􌥃</td>
+    <td><img src="pic/x/sprethanden-3.png">􌥃</td>
+    <!-- vinklad -->
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><a href="#vinklad-sprethand">vinklad<br>spret-<br>hand</a>􌥂</td>
+    <!-- böjd -->
+    <td><img src="pic/x/bojda-4-handen-2.png">􌦪</td>
+    <td></td>
+    <td><img src="pic/x/klohanden-2.png">􌤥</td>
+    <td><img src="pic/x/klohanden-1.png"><a href=#fn1 style="margin-right:-.1em">1</a>􌤥</td>
+  <tr><td colspan=99></td>
+  <tr>
+    <th colspan=2>knuten hand</th>
+    <!-- flat -->
+    <td><img src="pic/x/knutna-handen-1.png"><a href=#fn2>2</a>􌤦</td>
+    <td><img src="pic/x/knutna-handen-2.png"><a href=#fn3>3</a>􌤦</td>
+    <td><img src="pic/x/tumhanden-1.png"><a href=#fn4>4</a>􌤧</td>
+    <td><img src="pic/x/q-handen-1.png">􌦭</td>
+    <!-- vinklad -->
+    <td colspan=5></td>
+    <!-- böjd -->
+    <td colspan=5></td>
+  <tr><td colspan=99></td>
+  <tr>
+    <th colspan=2>pekfinger</th>
+    <!-- flat -->
+    <td><img src="pic/x/pekfingret-1.png">􌥈</td>
+    <td></td>
+    <td><img src="pic/x/l-handen-1.png">􌤨</td>
+    <td><a href="#pekfingertumhand">pek-<br>finger-<br>tumhand</a>􌤨</td>
+    <!-- vinklad -->
+    <td><img src="pic/x/vinklade-pekfingret.png">􌥈</td>
+    <td><img src="pic/x/t-handen-1.png">􌥊</td>
+    <td><img src="pic/x/t-handen-2.png">􌥊</td>
+    <td><img src="pic/x/raka-matthanden-1.png">􌥉</td>
+    <td><img src="pic/x/nyphanden-1.png">􌤩</td>
+    <!-- böjd -->
+    <td><img src="pic/x/krokfingret-1.png">􌤪</td>
+    <td><img src="pic/x/hallhanden-1.png">􌤫</td>
+    <td><img src="pic/x/matthanden-3.png">􌥋</td>
+    <td><img src="pic/x/matthanden-1.png"><a href="#fn5">5</a>􌥋</td>
+    <td><img src="pic/x/nyphanden-2.png">􌤩</td>
+  <tr><td colspan=99></td>
+  <tr>
+    <th colspan=2>långfinger</th>
+    <!-- flat -->
+    <td><img src="pic/x/langfingret-1.png">􌤬</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <!-- vinklad -->
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <!-- böjd -->
+    <td><img src="pic/x/kroklangfinger-1.png">􌤬</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  <tr><td colspan=99></td>
+  <tr>
+    <th rowspan=4 colspan=2>pek- och<br>långfinger</th>
+    <!-- flat -->
+    <td><img src="pic/x/n-handen-1.png">􌥌</td>
+    <td></td>
+    <td class=middle><a href="#pistolhand">pistol-<br>hand</a>􌥌</td>
+    <td></td>
+    <!-- vinklad -->
+    <td><img src="pic/x/vinklade-n-handen-1.png">􌥌</td>
+    <td></td>
+    <td><img src="pic/x/vinklade-n-handen-2.png">􌥌</td>
+    <td><img src="pic/x/lilla-matthanden-1.png"><img src=pic/h-lilla-matthanden.svg></td>
+    <td rowspan=2><img src="pic/x/lilla-o-handen-2.png">􌤎</td>
+    <!-- böjd -->
+    <td><img src="pic/x/dubbelkroken-2.png">􌤽</td>
+    <td><a href="#liten-hallhand">liten<br>håll-<br>hand</a>􌤎</td>
+    <td></td>
+    <td></td>
+    <td rowspan=2><img src="pic/x/lilla-o-handen-1.png">􌤎</td>
+  <tr>
+    <!-- flat -->
+    <td><img src="pic/x/v-handen-1.png">􌤭</td>
+    <td></td>
+    <td><img src="pic/x/tupphanden-1.png">􌤮</td>
+    <td></td>
+    <!-- vinklad -->
+    <td><img src="pic/x/vinklade-v-handen-1.png">􌤭</td>
+    <td></td>
+    <td></td>
+    <td><img src="pic/x/vinklade-tupphanden-1.png">􌤮</td>
+    <!-- böjd -->
+    <td><img src="pic/x/dubbelkroken-1.png">􌤽</td>
+    <td></td>
+    <td></td>
+    <td><img src="pic/x/bojda-tupphanden-1.png">􌤯</td>
+  <tr><td colspan=99></td>
+  <tr>
+    <!-- flat -->
+    <td></td>
+    <td></td>
+    <td><a href="#jasahand">jaså-<br>hand</a>􌤮</td>
+    <td></td>
+    <!-- vinklad -->
+    <td></td>
+    <td><img src="pic/x/k-handen-1.png">􌥎</td>
+    <td></td>
+    <td></td>
+    <td><a href="#annanhand">annan-<br>hand</a>􌤮</td>
+    <!-- böjd -->
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  <tr><td colspan=99></td>
+  <tr>
+    <th rowspan=2 colspan=2 style=min-width:3.8em>pek-,<br>lång- och<br>ringfinger</th>
+    <!-- flat -->
+    <td><img src="pic/x/m-handen-1.png">􌤿</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <!-- vinklad -->
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <!-- böjd -->
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  <tr>
+    <!-- flat -->
+    <td><img src="pic/x/w-handen-1.png">􌤰</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <!-- vinklad -->
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <!-- böjd -->
+    <td><img src="pic/x/bojda-w-handen.png">􌤰</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  <tr><td colspan=99></td>
+  <tr>
+    <th colspan=2>lillfinger</th>
+    <!-- flat -->
+    <td><img src="pic/x/lillfingret-1.png">􌤱</td>
+    <td></td>
+    <td><img src="pic/x/flyghanden-1.png">􌥑</td>
+    <td></td>
+    <!-- vinklad -->
+    <td><img src="pic/x/lillfingret-2.png">􌤱</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <!-- böjd -->
+    <td><a href="#kroklillfinger">krok-<br>lill-<br>finger</a>􌤱</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  <tr><td colspan=99></td>
+  <tr>
+    <th colspan=2>pek- och<br>lillfinger</th>
+    <!-- flat -->
+    <td><img src="pic/x/flyghanden-3.png">􌥑</td>
+    <td></td>
+    <td><img src="pic/x/flyghanden-2.png">􌥑</td>
+    <td></td>
+    <!-- vinklad -->
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <!-- böjd -->
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  <tr><td colspan=99></td>
+  <tr>
+    <th colspan=2 rowspan=2>stort<br>pekfinger</th>
+    <!-- flat -->
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <!-- vinklad -->
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <!-- böjd -->
+    <td></td>
+    <td><img src="pic/x/stora-nyphanden-5.png">􌦬</td>
+    <td></td>
+    <td></td>
+    <td><img src="pic/x/stora-nyphanden-3.png">􌤲</td>
+  <tr>
+    <!-- flat -->
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <!-- vinklad -->
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><img src="pic/x/stora-nyphanden-4.png">􌤲</td>
+    <td><img src="pic/x/stora-nyphanden-2.png">􌤲</td>
+    <!-- böjd -->
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><img src="pic/x/stora-nyphanden-1.png">􌤲</td>
+  <tr><td colspan=99></td>
+  <tr>
+    <th colspan=2>stort<br>långfinger</th>
+    <!-- flat -->
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <!-- vinklad -->
+    <td></td>
+    <td></td>
+    <td><img src="pic/x/stora-langfingret-1.png">􌥒</td>
+    <td><img src="pic/x/stora-langfingret-3.png">􌥒</td>
+    <td><img src="pic/x/runda-langfingret-2.png">􌥟</td>
+    <!-- böjd -->
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><img src="pic/x/stora-langfingret-2.png">􌥒</td>
+    <td><img src="pic/x/runda-langfingret-1.png">􌥟</td>
+  <tr><td colspan=99></td>
+  <tr>
+    <th colspan=2>stort lång-<br>och ringfinger</th>
+    <!-- flat -->
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <!-- vinklad -->
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><a href="#vinklad-u-hand">vinklad<br>U-hand</a>􌦱</td>
+    <!-- böjd -->
+    <td></td>
+    <td></td>
+    <td><img src="pic/x/flyghanden-2.png">􌦱</td>
+    <td></td>
+    <td><a href="#bojd-u-hand">böjd<br>U-hand</a>􌦱</td>
+  <tr><td colspan=99></td>
+  <tr>
+    <th colspan=2>pek- och<br>långfinger</th>
+    <!-- flat -->
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <!-- vinklad -->
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <!-- böjd -->
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><a href="#fn6">6</a><a href="#stor-liten-o-hand">stor<br>liten<br>O-hand</a>􌤎</td>
+  <tr><td colspan=99></td>
+</table>
 
-      <table class=handshapes>
-        <tr>
-          <th></th>
-          <th>4</th>
-          <th>2</th>
-          <th>1</th>
-          <th> </th>
-          <th>pek</th>
-          <th>lång</th>
-          <th>pek +<br>lång</th>
-        <tr>
-          <th>a-form</th>
-          <td><img src="pic/x/a-handen-1.png">
-            <!--img src="pic/hand/na-handen-1993.png">
-            <img src="pic/hand/na-handen.png"--></td>
-          <td><img src="pic/x/lilla-o-handen-2.png"></td>
-          <td><img src="pic/x/nyphanden-1.png"></td>
-          <td></td>
-          <td><img src="pic/x/stora-nyphanden-2.png"></td>
-          <td><img src="pic/x/runda-langfingret-2.png"></td>
-          <td class=middle><a href="#lamahanden">lama-<br>handen</a></td>
-        <tr>
-          <th>o-form</th>
-          <td><img src="pic/x/o-handen-1.png"></td>
-          <td><img src="pic/x/lilla-o-handen-1.png">
-            <!--img src="pic/hand/bojda-n-handen.png">
-            <img src="pic/hand/no-handen.png"--></td>
-          <td><img src="pic/x/nyphanden-2.png">
-            <!--img src="pic/hand/bojda-pekfingret.png">
-            <img src="pic/hand/lo-handen.png"--></td>
-          <td><img src="pic/x/stora-nyphanden-3.png"></td>
-          <td><img src="pic/x/stora-nyphanden-1.png"></td>
-          <td><img src="pic/x/runda-langfingret-1.png"></td>
-          <td></td>
-        <tr>
-          <th>håll-<br>hand</th>
-          <td></td>
-          <td></td>
-          <td><img src="pic/x/hallhanden-1.png"></td>
-          <td><img src="pic/x/stora-nyphanden-5.png"></td>
-          <td></td>
-          <td></td>
+
+<h1 id=udda>Udda handformer</h1>
+
+<p>Det finns ett par handformer som inte riktigt passar in i
+klassifikations­systemet som används i tabellen ovan, nämligen:
+
+<p><ul style=margin-left:2rem>
+  <li><i>X-hand</i> <img src="pic/x/x-handen-1.png"> (􌤳)
+  <li><a href="#dejthand"><i>dejthand</i> <img src="pic/x/dejthanden-1.png">
+    (􌥈)</a>
+  <li><a href="#runt-ringfinger"><i>runt ringfinger</i> (􌥟)</a>
+</ul>
+
+
+<h1 id=sortering>”Alfabetisk” ordning</h1>
+
+<p>Ett delmål med ovanstående tabell är att konstruera en logisk ”alfabetisk”
+ordning (sorteringsordning) för transkriptionssymbolerna. En sådan ordning bör,
+huvudsakligen vara samstämmig med de som använts av tidigare forskare, men bör
+också vara fonologisk och frekvensmässigt motiverad. Tidigare källor
+(<a href="intro.html#1977">Bergman 1977</a>, <a href="intro.html#1994">Wallin
+1994</a>, <a href="intro.html#2015a">Bergman & Björkstrand 2015</a>, etc.) har
+en i stora drag överensstämmande sorteringsordning, med mindre variationer
+sinsemellan. De börjar alla med de vanligaste handformerna (i grov
+frekvensordning), och placerar de ovanligaste handformerna sist.
+
+<p>Den tänkta sorteringsordning kan läsas ut i tabellen ovan, genom att gå från
+symbolgrupp till symbolgrupp (varje symbolgrupp är inom tjockare linjer) i
+vanlig läsordning (uppifrån och ned, från vänster till höger) och sedan inom
+varje grupp också läsa symbolerna i normal läsordning. Symboler som förekommer
+i fotnoter är upphöjda nedan. I de fall då en symbol upprepas, används bara
+första förekomsten av symbolen.
+
+<table style="margin:1em 1.5rem; font-size:80%">
+  <tr>
+    <td>
+      <table class=sorting>
+        <caption>Alla symboler i ”alfabetisk” ordning.</caption>
+        <tr><td>􌦫􌤢􌤢􌥂􌦪􌥃􌥃<td>􌤣􌤣􌥄􌥂􌤤<td>􌥅􌥅􌦪􌤥􌤥<sup>􌤥</sup>􌥆</tr>
+        <tr><td>􌤦<sup>􌥇</sup>􌤦<sup>􌤦</sup>􌤧<sup>􌤧</sup>􌦭<td><td></tr>
+        <tr><td>􌥈􌤨<td>􌥈􌥊􌥊􌥉􌤩<td>􌤪􌤫􌥋􌥋<sup>􌥋</sup>􌤩</tr>
+        <tr><td>􌤬<td><td>􌤬</tr>
+        <tr><td>􌥌􌥌􌤭􌤮<td>􌥌􌥌<img src=pic/h-lilla-matthanden.svg>􌤭􌤮􌤎<td>􌤽􌤎􌤽􌤯􌤎</tr>
+        <tr><td>􌤮<td>􌥎􌤮<td></tr>
+        <tr><td>􌤿􌤰<td><td>􌤰</tr>
+        <tr><td>􌤱􌥑<td>􌤱<td>􌤱</tr>
+        <tr><td>􌥑􌥑<td><td></tr>
+        <tr><td><td>􌤲􌤲<td>􌦬􌤲􌤲</tr>
+        <tr><td><td>􌥒􌥒􌥟<td>􌥒􌥟</tr>
+        <tr><td><td>􌦱<td>􌦱􌦱</tr>
+        <tr><td><td><td>􌤎<sup>􌤱􌤎</sup></tr>
+        <tr><td colspan=3>􌤳􌥈􌥟</tr>
       </table>
-
-      <p>
-
-      <table style="border-collapse:collapse">
-        <tr>
-          <td style="border:4px solid black">
-            <table class=handshapes style="display:inline-table;border:0">
-              <tr>
-                <th> <br> </th>
-                <th>1</th>
-                <th>2</th>
-                <th>4</th>
-              <tr>
-                <th>a-form</th>
-                <td><img src="pic/x/nyphanden-1.png"></td>
-                <td><img src="pic/x/lilla-o-handen-2.png"></td>
-                <td><img src="pic/x/a-handen-1.png">
-                  <!--img src="pic/hand/na-handen-1993.png">
-                  <img src="pic/hand/na-handen.png"--></td>
-              <tr>
-                <th>o-form</th>
-                <td><img src="pic/x/nyphanden-2.png">
-                  <!--img src="pic/hand/bojda-pekfingret.png">
-                  <img src="pic/hand/lo-handen.png"--></td>
-                <td><img src="pic/x/lilla-o-handen-1.png">
-                  <!--img src="pic/hand/bojda-n-handen.png">
-                  <img src="pic/hand/no-handen.png"--></td>
-                <td><img src="pic/x/o-handen-1.png"></td>
-              <tr>
-                <th>håll-<br>hand</th>
-                <td></td>
-                <td></td>
-                <td><img src="pic/x/hallhanden-1.png"></td>
-            </table>
-          <td style="border:4px solid black">
-            <table class=handshapes style="display:inline-table;border:0">
-              <tr>
-                <th>pek<br>samlad</th>
-                <th>pek</th>
-                <th>lång</th>
-                <th>pek +<br>lång</th>
-              <tr>
-                <td></td>
-                <td><img src="pic/x/stora-nyphanden-2.png"></td>
-                <td><img src="pic/x/runda-langfingret-2.png"></td>
-                <td class=middle><a href="#lamahanden">lama-<br>handen</a></td>
-              <tr>
-                <td><img src="pic/x/stora-nyphanden-3.png"></td>
-                <td><img src="pic/x/stora-nyphanden-1.png"></td>
-                <td><img src="pic/x/runda-langfingret-1.png"></td>
-                <td></td>
-              <tr>
-                <td><img src="pic/x/stora-nyphanden-5.png"></td>
-                <td></td>
-                <td></td>
-            </table>
+    <td style="font-size:1rem"> ➡ 
+    <td>
+      <table class=sorting>
+        <caption>Med upprepningar<br>borttagna.</caption>
+        <tr><td>􌦫􌤢􌥂􌦪􌥃<td>􌤣􌥄􌤤<td>􌥅􌤥􌥆</tr>
+        <tr><td>􌤦<sup>􌥇</sup>􌤧􌦭<td><td></tr>
+        <tr><td>􌥈􌤨<td>􌥊􌥉􌤩<td>􌤪􌤫􌥋</tr>
+        <tr><td>􌤬<td><td></tr>
+        <tr><td>􌥌􌤭􌤮<td><img src=pic/h-lilla-matthanden.svg>􌤎<td>􌤽􌤯</tr>
+        <tr><td><td>􌥎<td></tr>
+        <tr><td>􌤿􌤰<td><td></tr>
+        <tr><td>􌤱􌥑<td><td></tr>
+        <tr><td>​<td><td></tr>
+        <tr><td><td>􌤲<td>􌦬</tr>
+        <tr><td><td>􌥒􌥟<td></tr>
+        <tr><td><td>􌦱<td></tr>
+        <tr><td>​<td><td></tr>
+        <tr><td colspan=3>􌤳</tr>
       </table>
-    </section>
+</table>
 
-    <section>
-      <h1>Öppna och knutna handformer</h1>
+<p>Om du använder en andra symboler (som till exempel symboler
+  ifrån <a href="intro.html#1989">Hedberg 1989</a>
+  eller <a href="intro.html#1994">Wallin 1994</a>) infoga dem i ditt alfabet
+  baserat på var de skulle hamnat i den fonetiska tabellen ovan.
 
-      <p>I dessa handformer har tummen inte kontakt med andra fingertoppar
-      (kontakt med knutna fingrar, eller fingrar som hålls in mot handflatan av
-      tummen räknas inte).
 
-      <table class=handshapes>
-        <caption>
-          <b>Varianter</b> –
-          <span class=handshape>
-            1: <img src="pic/x/tumhanden-2.png">
-          </span>
-          <span class=handshape>
-            2: <img src="pic/x/bojda-sprethanden-1.png">
-            <img src="pic/x/klohanden-3.png">
-          </span>
-          <span class=handshape>
-            3: <img src="pic/x/matthanden-2.png">
-          </span>
-        </caption>
-        <tr>
-          <th colspan=2></th>
-          <th colspan=4>tumme invikt</th>
-          <th colspan=4>tumme parallel ut från handflata</th>
-          <th colspan=4>tumme vinkelrät mot handflata</th>
-          <th colspan=4>tumme parallel med fingrar</th>
-        <tr>
-          <th colspan=2></th>
-          <th>flat<th>vinklad<th>böjd<th>knuten</th>
-          <th>flat<th>vinklad<th>böjd<th>knuten</th>
-          <th>flat<th>vinklad<th>böjd<th>knuten</th>
-          <th>flat<th>vinklad<th>böjd<th>knuten</th>
-        <tr>
-          <th rowspan=2>4</th>
-          <th>samlad</th>
-          <td><img src="pic/x/d-handen-1.png"></td>
-          <td></td>
-          <td></td>
-          <td rowspan=2><img src="pic/x/e-handen-1.png"></td>
-          <td><img src="pic/x/flata-handen-1.png"></td>
-          <td><img src="pic/x/vinkelhanden-2.png"></td>
-          <td><img src="pic/x/s-handen-2.png"></td>
-          <td rowspan=10><img src="pic/x/tumhanden-1.png"><span style="position:absolute;margin-left:-.75em">1</span>
-            <!--img src="pic/x/tumhanden-2.png"--></td>
-          <td><img src="pic/x/flata-tumhanden-1.png"></td>
-          <td><img src="pic/x/tumvinkelhanden-1.png"></td>
-          <td><img src="pic/x/s-handen-1.png"></td>
-          <td rowspan=10><img src="pic/x/q-handen-1.png"></td>
-          <td><img src="pic/x/flata-handen-2.png"></td>
-          <td><img src="pic/x/vinkelhanden-1.png"></td>
-          <td></td>
-          <td rowspan=10><img src="pic/x/knutna-handen-2.png"></td>
-        <tr>
-          <th>spretad</th>
-          <td><img src="pic/x/4-handen-1.png"></td>
-          <td></td>
-          <td><img src="pic/x/bojda-4-handen-2.png"></td>
-          <!--td-->
-          <td><img src="pic/x/sprethanden-1.png"></td>
-          <td></td>
-          <td><img src="pic/x/klohanden-2.png"></td>
-          <!--td-->
-          <td><img src="pic/x/sprethanden-3.png"></td>
-          <td class=middle><a href="#manethanden">manet-<br>hand</a></td>
-          <td><!--img src="pic/x/bojda-sprethanden-1.png"-->
-            <img src="pic/x/klohanden-1.png"><span style="margin-left:.2em">2</span>
-            <!--img src="pic/x/klohanden-3.png"--></td>
-          <!--td-->
-          <td></td>
-          <td></td>
-          <td></td>
-          <!--td-->
-        <tr>
-          <th rowspan=3>2</th>
-          <th>samlad</th>
-          <td><img src="pic/x/n-handen-1.png"></td>
-          <td><img src="pic/x/vinklade-n-handen-1.png"></td>
-          <td><img src="pic/x/dubbelkroken-2.png"></td>
-          <!--td-->
-          <td rowspan=8><img src="pic/x/knutna-handen-1.png"></td>
-          <td class=middle><a href="#pistolhanden">pistol-<br>hand</a></td>
-          <td><img src="pic/x/vinklade-n-handen-2.png"></td>
-          <td></td>
-          <!--td-->
-          <td></td>
-          <td><img src="pic/x/lilla-matthanden-1.png"></td>
-          <td></td>
-          <!--td-->
-          <td></td>
-          <td></td>
-          <td></td>
-          <!--td-->
-        <tr>
-          <th>spretad</th>
-          <td><img src="pic/x/v-handen-1.png"></td>
-          <td><img src="pic/x/vinklade-v-handen-1.png"></td>
-          <td><img src="pic/x/dubbelkroken-1.png"></td>
-          <!--td-->
-          <td><img src="pic/x/tupphanden-1.png"></td>
-          <td></td>
-          <td></td>
-          <!--td-->
-          <td></td>
-          <td><img src="pic/x/vinklade-tupphanden-1.png"></td>
-          <td><img src="pic/x/bojda-tupphanden-1.png"></td>
-          <!--td-->
-          <td></td>
-          <td></td>
-          <td></td>
-          <!--td-->
-        <tr>
-          <th>flyghand</th>
-          <td><img src="pic/x/flyghanden-3.png"></td>
-          <td></td>
-          <td></td>
-          <!--td-->
-          <td><img src="pic/x/flyghanden-2.png"></td>
-          <td></td>
-          <td></td>
-          <!--td-->
-          <td></td>
-          <td></td>
-          <td></td>
-          <!--td-->
-          <td></td>
-          <td></td>
-          <td></td>
-          <!--td-->
-        <tr>
-          <th rowspan=3>1</th>
-          <th>pekfinger</th>
-          <td><img src="pic/x/pekfingret-1.png"></td>
-          <td><img src="pic/x/vinklade-pekfingret.png"></td>
-          <td><img src="pic/x/krokfingret-1.png"></td>
-          <!--td-->
-          <td><img src="pic/x/l-handen-1.png"></td>
-          <td><img src="pic/x/t-handen-2.png"></td>
-          <td><img src="pic/x/matthanden-3.png"></td>
-          <!--td-->
-          <td></td>
-          <td><img src="pic/x/raka-matthanden-1.png"></td>
-          <td><img src="pic/x/matthanden-1.png"><span style="margin-left:.15em">3</span>
-            <!--img src="pic/x/matthanden-2.png"--></td>
-          <!--td-->
-          <td></td>
-          <td><img src="pic/x/t-handen-1.png"></td>
-          <td></td>
-          <!--td-->
-        <tr>
-          <th>lillfinger</th>
-          <td><img src="pic/x/lillfingret-1.png"></td>
-          <td><img src="pic/x/lillfingret-2.png"></td>
-          <td></td>
-          <!--td-->
-          <td><img src="pic/x/flyghanden-1.png"></td>
-          <td></td>
-          <td></td>
-          <!--td-->
-          <td></td>
-          <td></td>
-          <td></td>
-          <!--td-->
-          <td></td>
-          <td></td>
-          <td></td>
-          <!--td-->
-        <tr>
-          <th>ringfinger</th>
-          <td><img src="pic/x/langfingret-1.png"></td>
-          <td></td>
-          <td></td>
-          <!--td-->
-          <td></td>
-          <td></td>
-          <td></td>
-          <!--td-->
-          <td></td>
-          <td></td>
-          <td></td>
-          <!--td-->
-          <td></td>
-          <td></td>
-          <td></td>
-          <!--td-->
-        <tr>
-          <th rowspan=2>3</th>
-          <th>samlad</th>
-          <td><img src="pic/x/m-handen-1.png"></td>
-          <td></td>
-          <td></td>
-          <!--td-->
-          <td></td>
-          <td></td>
-          <td></td>
-          <!--td-->
-          <td></td>
-          <td></td>
-          <td></td>
-          <!--td-->
-          <td></td>
-          <td></td>
-          <td></td>
-          <!--td-->
-        <tr>
-          <th>spretad</th>
-          <td><img src="pic/x/w-handen-1.png"></td>
-          <td></td>
-          <td><img src="pic/x/bojda-w-handen.png"></td>
-          <!--td-->
-          <td></td>
-          <td></td>
-          <td></td>
-          <!--td-->
-          <td></td>
-          <td></td>
-          <td></td>
-          <!--td-->
-          <td></td>
-          <td></td>
-          <td></td>
-          <!--td-->
-        <tr>
-          <th colspan=2></th>
-          <th>flat<th>vinklad<th>böjd<th>knuten</th>
-          <th>flat<th>vinklad<th>böjd<th>knuten</th>
-          <th>flat<th>vinklad<th>böjd<th>knuten</th>
-          <th>flat<th>vinklad<th>böjd<th>knuten</th>
-        <tr>
-          <th colspan=2></th>
-          <th colspan=4>tumme invikt</th>
-          <th colspan=4>tumme vinkelrät mot handflata</th>
-          <th colspan=4>tumme parallel ut från handflata</th>
-          <th colspan=4>tumme parallel med fingrar</th>
-      </table>
-    </section>
+<h1 id=odokumenterat>Odokumenterade handformer</h1>
 
-    <section>
-      <h1>Udda handformer</h1>
-      <img src="pic/x/stora-langfingret-1.png">
-      <img src="pic/x/stora-langfingret-2.png">
-      <img src="pic/x/stora-langfingret-3.png">
-      <img src="pic/x/stora-nyphanden-4.png">
-      <img src="pic/x/x-handen-1.png">
-      <img src="pic/x/k-handen-1.png">
-      <span style="display:inline-block;text-align:center"><a href="#annanhanden">annan-<br>handen</a></span>
-      <span style="display:inline-block;text-align:center"><a href="#jasåhanden">jaså-<br>handen</a></span>
-    </section>
+<p>Här följer en lista med handformer som jag sett användas i svenskt
+  teckenspråk, men som inte finns beskrivna i
+  teckenspråks­transkriptions­litteraturen. De flesta av dessa har jag hittat
+  i <a href="lexicon.html"><i>Svenskt teckenspråkslexikon</i></a>, men några
+  har jag funnit på andra sätt.
 
-    <section>
-      <h1>Fotnoter</h1>
+<div class=hanging>
+  <p id=amerikansk-t-hand><b>amerikansk T-hand</b> – Som <i>E-hand</i>
+    <img src=pic/x/e-handen-1.png> (􌥇) bortsett ifrån att tummen inte ligger
+    helt under de andra fingrarna, utan istället sticker ut mellan pek- och
+    långfinger. Tummen har, med andra ord,
+    <a href="#sidokontakt">sidokontakt</a> med pek- och långfinger.
+    Transkriberas i lexikonet med <i>knuten hand</i> (􌤦).
+    Se: <a href="lexicon.html#=23108,=17946,=24237">klitoris, Togo, aldrig i
+    livet</a>.
 
-      <div class=hanging>
-        <p id="annanhanden"><b>annanhanden</b> – Som K-handen men med kontakt
-        ytterst på långfingret. Förekommer i
-        tecknet <a href="https://teckensprakslexikon.su.se/ord/04333"
-        style="font-variant:small-caps">annan, annat</a>.
+  <p id=annanhand><b>annanhand</b> – Som <i>K-hand</i>
+    <img src=pic/x/k-handen-1.png> (􌥎) bortsett ifrån att kontakten mellan
+    tumme och långfinger inte sker på långfingrets mitt, utan längre ut mot
+    spetsen av långfingret. Transkriberas i lexikonet med <i>K-hand</i> (􌥎).
+    Se: <a href="lexicon.html#=04333">annan/<wbr>annat</a>.
 
-        <p id="bojda-w-handen"><b>böjda W-handen</b> – Förekommer bland annat i
-        tecknet <a href="http://teckensprakslexikon.su.se/ord/01376">för tre
-        veckor sedan</a>.
+  <p id=dejthand><b>dejthand</b> <img src="pic/x/dejthanden-1.png"> – Som
+    <i>pekfinger</i> <img src=pic/x/pekfingret-1.png> (􌥈) bortsett ifrån att
+    lång-, ring- och lillfinger inte är knutna, utan de är böjda och har
+    kontakt med tummen som i <i>O-hand</i> <img src=pic/x/o-handen-1.png> (􌥆).
+    Transkriberas i lexikonet med <i>pekfinger</i> (􌥈). Handformen är inlånad
+    från ASL. Se: <a href="lexicon.html#=07291">date/<wbr>dejt</a>.
 
-        <p id="dejthanden"><b>dejthanden</b> – Rakt pekfinger, men de övriga
-        fingrarna är inte knutna utan har samma form som i O-handen.
+  <p id=liten-hallhand><b>hållhand, liten</b> – Som <i>hållhand</i>
+    <img src="pic/x/hallhanden-1.png"> (􌤫) bortsett ifrån att långfingret
+    ligger intill pekfingret, och har samma böjning. Transkriberas i lexikonet
+    med <i>liten O-hand</i> (􌤎). Se: <a href="lexicon.html#=04057,=04058">pil,
+    pilbåge</a>.
 
-        <p id="jasåhanden"><b>jasåhanden</b> –
-        Som <img src="pic/x/stora-langfingret-1.png"> fast med lill- och
-        ringfingret knutet. Tumme, pek- och långfinger är alla utsträckta i tre
-        olika riktningar (om högerhanden är framåtriktad vänstervriden så pekar
-        tummen uppåt, pekfingret framåt och långfingret till vänster).
-        Förekommer i tecken
-        som <a href="http://teckensprakslexikon.su.se/ord/04324">jaså</a>.
+  <p id=ily-hand><b>ILY-hand</b> <img src="pic/x/flyghanden-2.png"> – En
+    variant av <a href="#u-hand"><i>U-hand</i> (􌦱)</a> i vilken tummen inte har
+    kontakt med lång- och ringfingerspetsarna, utan är istället utsträckt som i
+    <i>L-hand</i> <img src="pic/x/l-handen-1.png"> (􌤨), och de mellersta
+    fingrarna (lång- och ringfinger) är <a href="#bojd">böjda</a> eller
+    <a href="#knuten">knutna</a>. Kan alternativt tolkas som en variant
+    av <i>flyghand</i> (􌥑) i vilken pekfinger och tumme är utsträckta.
+    Transkriberas i lexikonet ibland med <i>flyghand</i> (􌥑), ibland
+    med <a href="#u-hand"><i>U-hand</i> (􌦱)</a>. Handformen används också i
+    ASL, och kombinerar där de första bokstäverna orden ”I Love You” ifrån det
+    amerikanska handalfabetet: I <img src="pic/x/lillfingret-1.png">, L
+    <img src="pic/x/l-handen-1.png"> och Y <img src="pic/x/flyghanden-1.png">.
+    Se: <a href="lexicon.html#=16061,=23328">Winnipeg Jets, itsLearning</a>.
 
-        <p id="kroklillfingret"><b><a href="lexicon.html#*􌥫*%20-*􌤢*%20*􌤱*">kroklillfingret</a></b>
-        (kallas i lexikon bara ’lillfingrar […] hakade i varandra’) – Ser ut
-        som lillfingret, fast böjt.
+  <p id=jasahand><b>jasåhand</b> – Som <i>stort långfinger</i>
+    <img src="pic/x/stora-langfingret-1.png"> (􌥒) bortsett ifrån att lill- och
+    ringfinger inte är utsträckta, utan knutna, och tumme, pek- och långfinger
+    är utsträckta i varsin riktning, vinkelrätt mot varandra (med tumme och
+    pekfinger utsträckt och långfinger vinklat). – I fysik (och matematik)
+    finns en minnesregel för koordinatsystem (kallad ”högerhandsregeln”) som
+    använder sig av den här handformen, så jag har ibland kallat
+    den <i>fysikerhand</i>. Transkriberas i lexikonet med <i>tupphand</i> (􌤮)
+    eller <i>liten O-hand</i> (􌤎). Se: <a href="lexicon.html#=04324,=14587">jaså,
+    peg/<wbr>pegga</a>.
 
-        <p id="kroklångfingret"><b><a href="lexicon.html#*􌤬􌤬*􌥫*">kroklångfingret</a></b>
-        (kallas i lexikon ’böjda långfingret’ med eller utan citattecken runt
-        ’böjda’ – detta namn är mindre lämpligt eftersom Wallin (1994) använder
-        samma namn för en annan handform) – Ser ut som R-handen, fast
-        långfingret är böjt.
+  <p id=kroklillfinger><b>kroklillfinger</b> – Som <i>lillfinger</i>
+    <img src=pic/x/lillfingret-1.png> (􌤱) men med fingret böjt istället för
+    utsträckt. Lillfingret verkar bli böjt i
+    <a href="lexicon.html#*􌤱*􌥫*">tecken med <i>lillfinger</i> och
+    <i>hakning</i></a>. Transkriberas i lexikonet med <i>lillfinger</i> (􌤱).
+    Se: <a href="lexicon.html#=17906">Shanghai</a>.
 
-        <p id="lamahanden"><b>lamahanden</b> – Ingår i
-        tecknet <a href="http://teckensprakslexikon.su.se/ord/15602">lama</a>.
-        Handform inlånad från ASL. Transkriberas med <i>flyghanden</i> i
-        lexikon. En handform där lill- och långfinger är utsträckta och tummen
-        tillsammans med lång och ringfinger bildar en a-handsform. (Som en
-        lama med uppstickande öron.)
+  <p id=kroklangfinger><b>kroklångfinger</b>
+    <img src="pic/x/kroklangfinger-1.png"> – Som <i>långfinger</i>
+    <img src=pic/x/langfingret-1.png> (􌤬) men fingret är böjt istället för
+    utsträckt. Långfingret verkar bli böjt i
+    <a href="lexicon.html#*􌤬*􌥫*">tecken med <i>långfinger</i> och
+    <i>hakning</i></a>. Transkriberas i lexikonet med <i>långfinger</i> (􌤬).
+    Se: <a href="lexicon.html#=06212,=06213,=06585">Filipstad, Värmland</a>.
 
-        <p id="lill- och ringfingret"><b><a href="lexicon.html#16775,16966,16781">lill- och
-        ringfingret</a></b> (kallas i lexikon för ’lill- och ringfingret’,
-        transkriberas <small>􌤱</small> eller <small>􌤎</small>) – Ser ut som
-        lilla O-handen, men med ring- och lillfingrarna utsträckta (som i stora
-        nyphanden). Förekommer i namnet på flera finska orter i lexikon:
-        <a href="https://teckensprakslexikon.su.se/ord/16775" style="font-variant:small-caps">Siuntio/<wbr>Sjundeå</a>;
-        <a href="https://teckensprakslexikon.su.se/ord/16966" style="font-variant:small-caps">Tampere/<wbr>Tammerfors</a>;
-        <a href="https://teckensprakslexikon.su.se/ord/16781" style="font-variant:small-caps">Tampere/<wbr>Tammerfors</a>.
+  <p id=liten-o-hand><b>O-hand, liten</b> – Har tre varianter:
+    <a href="#vinklad-liten-o-hand"><i>vinklad liten O-hand</i>
+    <img src="pic/x/lilla-o-handen-2.png"></a>,
+    <a href="#bojd-liten-o-hand"><i>böjd liten O-hand</i>
+    <img src="pic/x/lilla-o-handen-1.png"></a> och
+    <a href="#stor-liten-o-hand"><i>stor liten O-hand</i></a> (i vilken ring-
+    och lillfinger är utsträckta och spretade). Lexikonet gör ingen skillnad
+    mellan de olika varianterna och transkriberar alla på samma sätt,
+    som <i>liten O-hand</i> (􌤎). <a href="intro.html#1994">Wallin (1994)</a>
+    kallar den vinklade varianten för <i>NA-hand</i>
+    <img src="pic/x/lilla-o-handen-2.png">
+    <nobr>(<img src="pic/h-lilla-a-handen.svg">)</nobr> och den böjda varianten
+    för <i>NO-hand</i> <img src="pic/x/lilla-o-handen-1.png">
+    <nobr>(<img src="pic/h-bojda-n-handen.svg">).</nobr>
 
-        <p id="manethanden"><b>manethanden</b> – Ingår i
-        tecknet <a href="http://teckensprakslexikon.su.se/ord/17271">manet</a>.
-        Skulle också med fördel kunna kallas <i>vinklade sprethanden</i>.
+  <p id=bojd-liten-o-hand><b>O-hand, böjd liten</b>
+    <img src="pic/x/lilla-o-handen-1.png"> – En variant av
+    <a href="#liten-o-hand"><i>liten O-hand</i> (􌤎)</a> i vilken fingrarna är
+    böjda (inte <a href="#vinklad-liten-o-hand">vinklade</a>). Förekommer
+    i <a href="intro.html#1994">Wallin (1994)</a> och kallas där <i>NO-hand</i>
+    <img src="pic/x/lilla-o-handen-1.png">
+    <nobr>(<img src="pic/h-bojda-n-handen.svg">).</nobr> Lexikonet gör ingen
+    skillnad mellan de olika varianterna och transkriberar alla på samma sätt,
+    som <a href="#liten-o-hand"><i>liten O-hand</i> (􌤎)</a>.
+    Se: <a href="lexicon.html#=01840,=04046,=04048">bär, gulp/<wbr>uschiamej,
+    fisa</a>.
 
-        <p id="pistolhanden"><b>pistolhanden</b> – Ser ut som tupphanden, fast
-        med pek- och långfinger sida vid sida som i N-handen (N-handen med
-        tummen stickande rakt ut, parallelt med handflatan). En av mina lärare
-        beskrev att det var denna handform man använde i avbildande tecken för
-        att gestalta en pistol.
-      </div>
+  <p id=stor-liten-o-hand><b>O-hand, stor liten</b> – Som
+    <a href="#bojd-liten-o-hand"><i>böjd liten O-hand</i>
+    <img src="pic/x/lilla-o-handen-1.png"> (􌤎)</a> bortsett ifrån att de passiva
+    fingrarna (ring- och lillfinger) inte är knutna, utan utsträckta och
+    spretade på samma sätt som i <i>stor nyphand</i>
+    <img src="pic/x/stora-nyphanden-1.png"> (􌤲). Kallas i lexikonets
+    teckenbeskrivningar <i>lill- och ringfingret</i>, och transkriberas i
+    lexikonet med <i>lillfinger</i> (􌤱) eller <i>liten O-hand</i> (􌤎).
+    Handformen är inlånad från finskt teckenspråk, och förekommer i lexikon
+    endast i namnet några finska orter. (Teoretiskt sett borde det kunna finnas
+    både en <a href="#bojd"><i>böjd</i></a> och
+    en <a href="#vinklad"><i>vinklad</i></a> variant av den här handformen, men
+    hittills har jag bara observerat den i böjd variant.)
+    Se: <a href="lexicon.html#=16775,=16781,=16966">Siuntio/<wbr>Sjundeå,
+    Tammerfors/<wbr>Tampere</a>.
 
-    </section>
-  </main>
-</body>
-</html>
+  <p id=vinklad-liten-o-hand><b>O-hand, vinklad liten</b>
+    <img src="pic/x/lilla-o-handen-2.png"> – En variant av
+    <a href="#liten-o-hand"><i>liten O-hand</i> (􌤎)</a> i vilken fingrarna är
+    vinklade (inte <a href="#bojd-liten-o-hand">böjda</a>). Förekommer i
+    <a href="intro.html#1994">Wallin (1994)</a> och kallas där <i>NA-hand</i>
+    <img src="pic/x/lilla-o-handen-2.png">
+    <nobr>(<img src="pic/h-lilla-a-handen.svg">).</nobr> Lexikonet gör ingen
+    skillnad mellan de olika varianterna och transkriberar alla på samma sätt,
+    som <a href="#liten-o-hand"><i>liten O-hand</i> (􌤎)</a>.
+    Se: <a href="lexicon.html#=04013,=04047,=24378">ägg, blodprov, träskor</a>
+
+  <p id=pekfingertumhand><b>pekfingertumhand</b> – Som <i>pekfinger</i>
+    <img src="pic/x/pekfingret-1.png"> (􌥈) eller <i>L-hand</i>
+    <img src="pic/x/l-handen-1.png"> (􌤨) men med tummen motställd som i <i>flat
+    tumhand</i> <img src="pic/x/flata-tumhanden-1.png"> (􌥂). Transkriberas i
+    lexikonet med <i>L-hand</i> (􌤨). Se: <a href="lexicon.html#=12633">mindre
+    än eller lika med</a>.
+
+  <p id=pistolhand><b>pistolhand</b> – Som <i>tupphand</i>
+    <img src="pic/x/tupphanden-1.png"> (􌤮), fast med pek- och långfinger
+    samlade (intill varandra) som i <i>N-hand</i>
+    <img src="pic/x/n-handen-1.png"> (􌥌), eller (beskrivet på ett annat sätt)
+    som <i>N-hand</i> <img src="pic/x/n-handen-1.png"> (􌥌) med tummen utsträckt
+    som i <i>L-hand</i> <img src="pic/x/l-handen-1.png"> (􌤨). Transkriberas i
+    lexikonet med <i>N-hand</i> (􌥌).
+    Se: <a href="lexicon.html#=07510,=19896">cowboy, vilda västern</a>.
+
+  <p id=runt-ringfinger><b>ringfinger, runt</b> – Som <i>runt långfinger</i>
+    <img src="pic/x/runda-langfingret-1.png"> (􌥟) bortsett ifrån att
+    ringfingret är <a href="#aktiv">aktivt</a> istället för att långfingret.
+    Transkriberas i lexikonet med <i>runt långfinger</i> (􌥟). Handformen är
+    inlånad från internationellt teckenspråk, och förekommer i lexikon endast i
+    namnet på en ukrainsk ort. Se: <a href="lexicon.html#=20424">Mykolaiv</a>.
+
+  <p id=vinklad-sprethand><b>sprethand, vinklad</b> - Som <i>tumvinkelhand</i>
+    <img src="pic/x/tumvinkelhanden-1.png"> (􌥄) men med spretade fingrar, eller
+    (beskrivet på ett annat sätt) som <i>sprethand</i>
+    <img src="pic/x/sprethanden-1.png"> (􌥃) med vinklade
+    fingrar och motställd tumme. Transkriberas i lexikonet med <i>flat
+    tumhand</i> (􌥂). Se: <a href="lexicon.html#=17271">manet</a>.
+
+  <p id=u-hand><b>U-hand</b> – Har tre varianter:
+    <a href="#vinklad-u-hand"><i>vinklad U-hand</i></a> (de mellersta fingrarna
+    är <i>vinklade</i> och har <a href="#spetskontakt">spetskontakt</a> med
+    tummen), <a href="#bojd-u-hand"><i>böjd U-hand</i></a> (de mellersta
+    fingrarna är <i>böjda</i> och har spetskontakt med tummen) och
+    <a href="#ily-hand"><i>ILY-hand</i></a> (tummen är utsträckt och de
+    mellersta fingrar är böjda utan spetskontakt). Ser ut som <i>flyghand</i>
+    <img src="pic/x/flyghanden-3.png"> (􌥑) bortsett ifrån att de mellersta
+    fingrarna (lång- och ringfinger) är vinklade/<wbr>böjda istället för
+    knutna, och att tummens position varierar. Lexikonet gör ingen skillnad
+    mellan de olika varianterna utan transkriberar alla som <i>U-hand</i> (􌦱)
+    sedan november 2018 (då transkriptionssymbolen ”􌦱” introducerades), innan
+    dess transkriberades den som <i>flyghand</i> (􌥑). Handformen är inlånad
+    från ASL.
+
+  <p id=bojd-u-hand><b>U-hand, böjd</b> – En variant av
+    <a href="#u-hand"><i>U-hand</i> (􌦱)</a> i vilken de mellersta fingrarna
+    (lång- och ringfinger) är böjda (inte <a href="#vinklad">vinklade</a>) och
+    har spetskontakt med tummen. Lexikonet gör ingen skillnad på de olika
+    varianterna utan transkriberar alla på samma sätt, som
+    <a href="#u-hand"><i>U-hand</i> (􌦱)</a>.
+    Se: <a href="lexicon.html#=09747,=16233">Kazakstan</a>.
+
+  <p id=vinklad-u-hand><b>U-hand, vinklad</b> – En variant av
+    <a href="#u-hand"><i>U-hand</i> (􌦱)</a> i vilken de mellersta fingrarna
+    (lång- och ringfinger) är vinklade (inte <a href="#bojd">böjda</a>) och har
+    spetskontakt med tummen. Lexikonet gör ingen skillnad på de olika
+    varianterna utan transkriberar alla på samma sätt, som
+    <a href="#u-hand"><i>U-hand</i> (􌦱)</a>.
+    Se: <a href="lexicon.html#=15602,=16004">lama, Bolivia</a>.
+
+  <p id=bojd-w-hand><b>W-hand, böjd</b> <img src="pic/x/bojda-w-handen.png"> –
+    Som <i>W-hand</i> <img src="pic/x/w-handen-1.png"> (􌤰) men fingrarna är
+    böjda istället för utsträckta. Transkriberas i lexikonet med <i>W-hand</i>
+    (􌤰).
+    Se: <a href="lexicon.html#=01351,=01363,=01376,=01851,=07387,=16053,=24188">om
+    tre veckor, var tredje vecka, tre veckor, för tre veckor sedan, Washington
+    Capitals, Seoul</a>.
+
+  <p id=x-tumhand><b>X-tumhand</b> – Som <i>X-hand</i>
+    <img src="pic/x/x-handen-1.png"> (􌤳) bortsett ifrån att tummen inte är
+    invikt, utan motställd som i <i>flat tumhand</i>
+    <img src="pic/x/flata-tumhanden-1.png"> (􌥂). Transkriberas i lexikonet
+    med <i>X-hand</i> (􌤳). Se: <a href="lexicon.html#=19066">SsangYong</a>.
+</div>
+
+
+<h1 id=termer>Termer</h1>
+
+<div class=hanging>
+  <p id=aktiv><b>aktiv</b> – Aktiva fingrar (<a href="intro.html#1978">Battison
+    1978</a> kallar dessa ”selected”) uppvisar en större formvariation
+    än <a href="#passiv">passiva</a> fingrar. Fingrar som
+    är <a href="#bojd">böjda</a> eller <a href="#vinklad">vinklade</a> eller
+    har (<a href="#spetskontakt">spets-</a>
+    eller <a href="#sidokontakt">sido-</a>) kontakt med tummen är alltid
+    aktiva. Utsträckta fingrar är passiva i de <i>stora</i>
+    handformerna <img src="pic/x/stora-langfingret-1.png"
+    ><img src="pic/x/stora-nyphanden-1.png"
+    ><img src="pic/x/runda-langfingret-1.png"> (där ett eller flera andra böjda
+    eller vinklade fingrar är aktiva) men aktiva i övriga
+    handformer <img src="pic/x/pekfingret-1.png"
+    ><img src="pic/x/v-handen-1.png" ><img src="pic/x/n-handen-1.png"
+    ><img src="pic/x/flata-handen-2.png">. Se: <a href="#finger">finger</a>.
+
+  <p id=bojd><b>böjd</b> <img src="pic/x/s-handen-1.png"
+    ><img src="pic/x/krokfingret-1.png" ><img src="pic/x/dubbelkroken-1.png"
+    ><img src="pic/x/dubbelkroken-2.png"> – Ett böjt finger har en böjning i de
+    två yttre knogarna. Den inre knogen saknar vanligtvis böjning, utom i
+    handformer med <a href="#spetskontakt">spetskontakt
+    <img src="pic/x/o-handen-1.png" ><img src="pic/x/nyphanden-2.png"
+    ><img src="pic/x/lilla-o-handen-1.png"></a>.
+    Se: <a href="#finger">finger</a>.
+
+  <p id=finger><b>finger</b> – Varje finger (utom tummen) i en handform kan
+    vara antingen <a href="#passiv">passivt</a> eller
+    <a href="#aktiv">aktivt</a>. När två eller fler (passiva eller aktiva)
+    fingrar intill varandra är utsträckta är de antingen
+    <a href="#samlad">samlade <img src="pic/x/flata-handen-1.png"
+    ><img src="pic/x/n-handen-1.png" ><img src="pic/x/stora-nyphanden-3.png"></a>
+    eller <a href="#spretad">spretade <img src="pic/x/sprethanden-1.png"
+    ><img src="pic/x/v-handen-1.png" ><img src="pic/x/stora-nyphanden-1.png"></a>.
+    Formen hos varje enskilt finger kan beskrivas som antingen
+    <a href="#utstrackt-finger">utsträckt
+    <img src="pic/x/pekfingret-1.png"></a>, <a href="#vinklad">vinklat
+    <img src="pic/x/vinklade-pekfingret.png"></a>, <a href="#bojd">böjt
+    <img src="pic/x/krokfingret-1.png"></a> eller <a href="#knuten">knutet
+    <img src="pic/x/knutna-handen-1.png"></a>. Fingrar kan dessutom ha antingen
+    <a href="#spetskontakt">sido- <img src="pic/x/t-handen-1.png"></a> eller
+    <a href="#spetskontakt">spetskontakt <img src="pic/x/nyphanden-1.png"></a>
+    med <a href="#tumme">tummen</a>. (Tummen räknas aldrig som ett finger).
+
+  <p id=knuten><b>knuten</b> <img src="pic/x/knutna-handen-1.png"> – Ett knutet
+    finger är böjt i alla knogarna. Se: <a href="#finger">finger</a>.
+
+  <p id=invikt><b>invikt</b> <img src="pic/x/pekfingret-1.png"
+    ><img src="pic/x/knutna-handen-1.png" ><img src="pic/x/d-handen-1.png"
+    ><img src="pic/x/e-handen-1.png"> – En invikt tumme ligger över handflata
+    eller knutna fingrar. Tummen betraktas som <i>invikt</i> oavsett om den
+    ligger ovanpå andra fingrar eller mot handflatan.
+    Se: <a href="#tumme">tumme</a>.
+
+  <p id=liten><b>liten</b> <img src="pic/x/lilla-matthanden-1.png"
+    ><img src="pic/x/lilla-o-handen-2.png"
+    ><img src="pic/x/lilla-o-handen-1.png"> – I en <i>liten</i> handform är pek-
+    och långfingret aktiva. (Notera särskilt att
+    <a href="#stor"><i>stor</i></a> och <i>liten</i> inte är motsatser, se
+    <a href="#stor-liten-o-hand"><i>stor liten O-hand</i></a>.)
+
+  <p id=motställd><b>motställd</b> <img src="pic/x/raka-matthanden-1.png"
+    ><img src="pic/x/flata-tumhanden-1.png"> – En motställd tumme är vinkelrät
+    mot handflatan. Tummens böjning imiterar fingrarnas, så att om fingrarna är
+    vinklade hålls tummen rak <img src="pic/x/raka-matthanden-1.png"
+    ><img src="pic/x/tumvinkelhanden-1.png">, men om fingrarna är böjda så antar
+    även tummen en böjd form <img src="pic/x/matthanden-1.png"
+    ><img src="pic/x/s-handen-1.png">. (Termen lånad
+    från <a href="intro.html#1994">Wallin 1994</a>.)
+    Se: <a href="#tumme">tumme</a>.
+
+  <p id=passiv><b>passiv</b> – Passiva fingrar
+    (<a href="intro.html#1978">Battison 1978</a> kallar dessa ”unselected”) har
+    färre former än <a href="#aktiv">aktiva</a>. <a href="#knuten">Knutna</a>
+    fingrar är alltid passiva <img src="pic/x/lillfingret-1.png"
+    ><img src="pic/x/pekfingret-1.png" ><img src="pic/x/n-handen-1.png"
+    ><img src="pic/x/v-handen-1.png">. <a href="#utstrackt-finger">Utsträckta</a>
+    fingrar är passiva när de förekommer i en handform utan knutna fingrar som
+    har minst ett <a href="#bojd">böjt</a> eller <a href="#vinklad">vinklat</a>
+    finger (oavsett tumkontakt) <img src="pic/x/stora-langfingret-1.png"
+    ><img src="pic/x/stora-nyphanden-1.png"
+    ><img src="pic/x/stora-nyphanden-3.png">
+    <nobr><img src="pic/x/stora-nyphanden-5.png">.</nobr> Handformer med
+    utsträckta passiva fingrar kallas <a href="#stor"><i>stora</i></a>.
+    Se: <a href="#finger">finger</a>.
+
+  <p id=samlad><b>samlad</b> <img src="pic/x/flata-handen-2.png"
+    ><img src="pic/x/vinkelhanden-1.png" ><img src="pic/x/s-handen-1.png"> –
+    Samlade fingrar innebär att fingrarna ligger intill varandra och nuddar
+    varandras sidor (i motsats till <a href="#spretad">spretade
+    <img src="pic/x/sprethanden-1.png"></a>). Handformer som bara har ett
+    aktivt finger (<i>pekfingret</i> <img src="pic/x/pekfingret-1.png">,
+    <i>långfingret</i> <img src="pic/x/langfingret-1.png">,
+    <i>lillfingret</i> <img src="pic/x/lillfingret-1.png">, etc) eller där de
+    aktiva fingrarna inte är intill varandra (<i>flyghand</i>
+    <img src="pic/x/flyghanden-3.png">) är alltid samlade. Om en handform har
+    <a href="#spetskontakt">spetskontakt</a> med tummen, men inte är
+    <a href="#stor"><i>stor</i></a> så är den också alltid <i>samlad</i>.
+
+  <p id=sidokontakt><b>sidokontakt</b> <img src="pic/x/flata-handen-2.png"
+    ><img src="pic/x/knutna-handen-2.png" ><img src="pic/x/hallhanden-1.png"
+    ><img src="pic/x/t-handen-1.png" ><img src="pic/x/k-handen-1.png"> – En
+    tumme med sidokontakt nuddar sidan av ett annat finger. Storleken på
+    kontaktytan mellan tumme och annat fingret varierar mer än i handformer
+    med <i>spetskontakt</i>, och involverar vanligtvis inte (enbart) tummens
+    spets. Se: <a href="#tumme">tumme</a>.
+
+  <p id=spetskontakt><b>spetskontakt</b> <img src="pic/x/a-handen-1.png"
+    ><img src="pic/x/o-handen-1.png" ><img src="pic/x/nyphanden-1.png"
+    ><img src="pic/x/lilla-o-handen-1.png"> – En tumme med spetskontakt är
+    vinkelrät mot handflatan, och tumspetsen har kontakt med en eller flera
+    fingerspetsar. Tummens böjning imiterar fingrarnas, så att om fingrarna är
+    vinklade hålls tummen rak, men om fingrarna är böjda så antar även tummen
+    en böjd form. Notera: I en handform med spetskontakt är fingrarna
+    alltid <a href="#samlad">samlade</a>. Se: <a href="#tumme">tumme</a>.
+
+  <p id=spretad><b>spretad</b> <img src="pic/x/sprethanden-1.png"
+    ><img src="pic/x/klohanden-1.png"> – Spretade fingrar innebär att fingrarna
+    hålls ifrån varandra och har inte sidokontakt (i motsats
+    till <a href="#samlad">samlade <img src="pic/x/flata-handen-2.png"></a>
+    fingrar). En handform som har <a href="#spetskontakt">spetskontakt</a> med
+    tummen kan inte vara spretad om den inte också
+    är <a href="#stor"><i>stor</i></a>. Se: <a href="#finger">finger</a>.
+
+  <p id=stor><b>stor</b> <img src="pic/x/stora-nyphanden-1.png"
+    ><img src="pic/x/stora-nyphanden-3.png"
+    ><img src="pic/x/stora-langfingret-1.png"
+    ><img src="pic/x/stora-nyphanden-5.png"> – I en <i>stor</i> handform är de
+    <a href="#passiv">passiva</a> fingrarna i handformen utsträckta
+    <img src="pic/x/stora-nyphanden-1.png"
+    ><img src="pic/x/stora-nyphanden-3.png"> (istället för knutna
+    <img src="pic/x/nyphanden-2.png">) och de <a href="#aktiv">aktiva</a>
+    fingrarna är antingen
+    <a href="#bojd">böjda <img src="pic/x/stora-nyphanden-1.png"></a> eller
+    <a href="#vinklad">vinklade <img src="pic/x/stora-nyphanden-4.png"></a>
+    (med eller utan tumkontakt). Stora handformer (liksom alla handformer med
+    utsträckta fingrar) kan vara antingen
+    <a href="#samlad">samlade <img src="pic/x/stora-nyphanden-3.png"></a> eller
+    <a href="#spretad">spretade <img src="pic/x/stora-nyphanden-1.png"></a>.
+    (Notera särskilt att <i>stor</i> och <a href="#liten"><i>liten</i></a> inte
+    är motsatser, se <a href="#stor-liten-o-hand"><i>stor liten
+    O-hand</i></a>.)
+
+  <p id=tumme><b>tumme</b> – Tummen kan vara <a href="#invikt">invikt
+    <img src="pic/x/d-handen-1.png" ><img src="pic/x/knutna-handen-1.png"></a>,
+    <a href="#motställd">motställd <img src="pic/x/flata-tumhanden-1.png"
+    ><img src="pic/x/q-handen-1.png"></a> eller
+    <a href="#utstrackt-tumme">utsträckt <img src="pic/x/flata-handen-1.png"
+    ><img src="pic/x/tumhanden-1.png"></a>. Dessutom kan tummen ha
+    antingen <a href="#sidokontakt">sido-
+    <img src="pic/x/flata-handen-2.png" ><img src="pic/x/knutna-handen-2.png"
+    ><img src="pic/x/vinkelhanden-1.png" ><img src="pic/x/hallhanden-1.png"
+    ><img src="pic/x/k-handen-1.png"></a> eller
+    <a href="#spetskontakt">spetskontakt <img src="pic/x/nyphanden-1.png"
+    ><img src="pic/x/o-handen-1.png"
+    ><img src="pic/x/stora-nyphanden-1.png"></a> med
+    <a href="#fingrar">fingrarna</a>. (Tummen räknas aldrig som ett finger).
+    För tummens positioner har jag använt vedertagna termer då jag kunnat
+    (”motställd” och ”invikt” kommer från <a href="intro.html#1994">Wallin
+    1994</a>) men jag har bara kunnat hitta några få allmänt använda termer i
+    svenskspråkig teckenspråkslitteratur, de övriga termerna är således mina
+    egna.
+
+  <p id=utstrackt-finger><b>utsträckt</b> (om finger)
+    <img src="pic/x/d-handen-1.png" ><img src="pic/x/4-handen-1.png"
+    ><img src="pic/x/pekfingret-1.png" ><img src="pic/x/n-handen-1.png"
+    ><img src="pic/x/v-handen-1.png"> – Ett utsträckt finger hålls rakt i
+    samtliga knogar, och kan därför inte ha spetskontakt med tummen. (I andra
+    källor används ibland termen ”rak”, men jag undviker den här efter som den
+    också kan användas för att beskriva ett <a href="#vinklad">vinklat</a>
+    finger.) Se: <a href="#finger">finger</a>.
+
+  <p id=utstrackt-tumme><b>utsträckt</b> (om tumme)
+    <img src="pic/x/l-handen-1.png" ><img src="pic/x/flata-handen-1.png"
+    ><img src="pic/x/tumhanden-2.png"> – En utsträckt tumme befinner sig i samma
+    plan som handflatan. Den är rak i samtliga fall, utom i en av varianterna
+    av <i>tumhand</i>. Se: <a href="#tumme">tumme</a>.
+
+  <p id=vinklad><b>vinklad</b> <img src="pic/x/vinkelhanden-1.png"
+    ><img src="pic/x/vinklade-pekfingret.png"
+    ><img src="pic/x/vinklade-v-handen-1.png"> – Ett vinklat finger har en
+    böjning i den inre knogen, men hålls rak i de två yttre. (I andra källor
+    används ibland termen ”rak”, men jag undviker den här efter som den också
+    kan användas för att beskriva ett <a href="#utstrackt-finger">utsträckt</a>
+    finger.) Se: <a href="#finger">finger</a>.
+</div>
+
+<footer style="margin:1.5em">© 2018–2023 zrajm, Uppsala.</footer>
+
+<!--[eof]-->
