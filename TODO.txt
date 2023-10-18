@@ -1017,7 +1017,7 @@
      + ALL <details> opened
 
    Mouseover text should clearly state what will happen upon the next click.
-* [1/15] List of handshapes (handform.html)
+* [2/15] List of handshapes (handform.html)
 ** TODO Simplify image names & dir structure
 ** TODO Add rudimentary frequency statistics
    Use statistics on hand shape occurrence for the primary hand from the
@@ -1032,7 +1032,8 @@
 ** TODO Add image for "jasåhand"
 ** TODO Add image for "annanhand"
 ** TODO Add image for "kroklillfinger"
-** TODO Add image for "vinklad U-hand"
+** DONE Add image for "vinklad U-hand"
+   CLOSED: [2023-10-18 Wed 10:28]
 ** TODO Add image for "böjd U-hand"
 ** TODO Add image for "stor liten O-hand"
 ** TODO ILY-handen/flyghanden
