@@ -729,7 +729,10 @@
    + Verb–noun pairs – HETA(02892) / NAMN(02890)
      (Many of these differing only in repetition.)
    + Close-to-synonym – HETA(02892) / KALLAS(07923)
-* Transcription intro article
+* Transcription intro article (intro.html)
+** TODO 'Svenskt teckenspråkslexikon' should always be italic in text
+** TODO Include info on Reimer (2015)
+   Especially information on where contact is made is interesting!
 ** [4/10] Add missing quotes for position table
 *** DONE Add info from Bergman (1977)
     CLOSED: [2018-12-23 Sun 07:43]
