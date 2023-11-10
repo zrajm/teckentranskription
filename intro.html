@@ -20,12 +20,13 @@ a[href^="http://teckensprakslexikon.su.se/ord/"], i.sign {
 }
 .hflip {
   display: inline-block;
-  transform: scale(-1,1);
+  transform: scaleX(-1);
   text-indent: 0;
 }
 span.vflip {
   display: inline-block;
   transform: scale(1,-1);
+  background: red;
 }
 span.abs {
   position: absolute;
@@ -287,13 +288,15 @@ section.symbol-list {
   line-height: 1.25;
   /* column */
   columns: 8em; gap: .5em; column-rule: var(--border);
-  & h1, & p { break-inside: avoid }
   & h1 {
     &:first-child { margin-top: 0 }
     margin: .5em 0 .25em 0;
+    break-inside: avoid;
     break-after: avoid; /* works in Chrome (119), not FF (117) */
   }
   & p {
+    break-inside: avoid;
+    &:last-child { break-before: avoid } /* works in Chrome (119), not FF (117) */
     margin: 0 !important;
     /* hanging indent */
     padding-left: 1.25em; text-indent: -1.25em !important; & > * { text-indent: 0 }
@@ -5350,10 +5353,9 @@ figure.inline-tables {
               riktning), medan <i>slås</i> (􌥱) fungerar annorlunda.
 
               <table class=border-example>
-                <caption><sup><b>*</b></sup> Attityden
-                  är <i>uppåtvriden</i> (􌥓􌤸) för detta ord i källan, men i
-                  tabellen ovan har jag tagit mig friheten att rätta
-                  misstaget.
+                <caption><sup><b>⁎⁎∗</b></sup> Attityden är <i>uppåtvriden</i>
+                  (􌥓􌤸) för detta ord i källan, men i tabellen ovan har jag
+                  tagit mig friheten att rätta misstaget.
                 </caption>
                 <tr>
                   <td>􌥈􌤵􌤷<mark>􌥱<span class=abs style="margin-top:.6em;margin-left:-.55em">􌥣</span></mark>
@@ -5369,7 +5371,7 @@ figure.inline-tables {
                   <td>s140
                 <tr>
                   <td>􌤔􌤢􌥓􌥙􌤟􌥧<span class="abs vflip" style="margin-top:-.3em;margin-left:-.55em">􌥲</span>􌤟􌥠􌥈􌤵􌤷<mark>􌥱<span class=abs style="margin-top:.6em;margin-left:-.55em">􌥣</span></mark>
-                  <td><i class=sign>hon</i><sup><b>*</b></sup>
+                  <td><i class=sign>hon</i><sup><b>⁎</b></sup>
                   <td>s140
                 <tr>
                   <td>􌥔􌤸􌥅􌥅􌥓􌥙􌥫􌥠􌤭􌤵􌤶<mark>􌥱<span class=abs style="margin-top:.5em;margin-left:-.55em">􌦃</span></mark>
@@ -6012,84 +6014,160 @@ figure.inline-tables {
 
         <p>Denna bok beskriver transkriptionssymboler avsedda för tecknad
         svenska (som <i>inte</i> är samma sak som svenskt teckenspråk).
+        (<span class=FIXME>Verifiera detta påstående, ange källa/sida
+        här</span>)
 
-        <p><p class=FIXME>Tabell över handformer ska vara likadan här som i
-        källorna nedan
-
-        <section>
+        <section class=symbol-list>
           <h1>Lägen</h1>
+          <p><b>􌤆</b> ansiktet
+          <p><b>􌤂</b> övre ansiktet
+          <p><b>􌥞</b> nedre ansiktet
+          <p><b style="transform:scaleX(1.75)">􌤃</b> hjässan
+          <p><b style="transform:scaleX(.625)">􌤃</b> pannan
+          <p><b>􌤇</b> örat
+          <p><b>􌤊</b> kinden
+          <p><b>􌤅</b> näsan
+          <p><b>􌤌</b> munnen
+          <p><b>􌤛</b> hakan
+          <p><b style="display:inline-block;transform:scaleY(.7);margin:0 -.1em;position:relative;top:.1em">􌤞</b> halsen
+          <p><b>􌥀</b> vänster axel
+          <p><b>􌤡</b> höger axel
+          <p><b>􌤓</b> bröstet
+          <p><b>􌤕</b> vänster sida
+          <p><b>􌤔</b> höger sida
+          <p><b>􌥜</b> armen
+          <p><b style="transform:scaleX(1.75)">􌤖</b> magen
 
-          <table class=symbols>
-            <tr><td>􌤆<td>􌤂<td>􌥞<td>􌤀<td>􌤃<td>􌤇<td>􌤊<td>􌤼<td>􌤌<td>􌤛<td>􌤞<td>􌥀
-              <td>􌤡<td>􌥜<td>􌤓<td>􌤕<td>􌤔<td>􌤖
-          </table>
-
-          <p>Symboler för <i>hjässan</i> (􌤃), <i>näsan</i> (􌤼)
-          och <i>halsen</i> (􌤞) har små grafiska skillnader gentemot de
-          symboler som används idag, medan symboler för <i>ögat</i>
-          (􌤅), <i>nacken</i> (􌤜), <i>höfterna</i> (􌤗), <i>över-</i> (􌤑)
-          och <i>underarmen</i> (􌤒) och <i>benet</i> (􌤚) saknas helt.
-
-          <p>I skrift skiljs <i>över-</i> och <i>underarmen</i> åt genom
-          att <i>underarmen</i> skrivs med efterföljande attitydsymboler (􌥜􌥔􌥙),
-          och <i>överarmen</i> skrivs utan dessa (􌥜).
-        </section>
-
-        <section>
           <h1>Handformer</h1>
+          <p><b>􌤢</b> flata handen
+          <p><b>􌥅</b> S-handen
+          <p><b>􌥃</b> spretade handen
+          <p><b>􌤥</b> klohanden
+          <p><b>􌤣</b> vinklade handen
+          <p><b>􌤤</b> slutna handen
+          <p><b>􌥆</b> O-handen 
+          <p><b>􌤦</b> knutna handen 
+          <p><b>􌥈</b> pekfingret
+          <p><b>􌥌</b> N-handen
+          <p><b>􌤭</b> V-handen
+          <p><b><span class=hflip>􌤪</span></b> krokfingret
+          <p><b>􌤽</b> dubbelkroken
+          <p><b>􌤧</b> tummen
+          <p><b>􌤱</b> lillfingret
+          <p><b>􌥑</b> flyghanden
+          <p><b>􌤿</b> M-handen
+          <p><b>􌥊</b> T-handen
+          <p><b>􌤮</b> tupphanden
+          <p><b>􌥋</b> måtthanden
+          <p><b>􌤩</b> nyphanden
+          <p><b>􌤲</b> stora nyphanden
 
-          <table class=symbols>
-            <tr><td>􌤢<td>􌥃<td>􌥅<td>􌤥<td>􌥆<td>􌤣<td>􌤤<td>􌤦<td>􌤧<td>􌥈
-              <td><span class=hflip>􌤪</span><td>􌤱<td>􌥌<td>􌤭<td>􌤽<td>􌥑<td>􌤿<td>􌤮
-              <td>􌥊<td>􌥋<td>􌤩<td>􌤲
-          </table>
+          <h1>Attitydriktning</h1>
+          <p><b>􌥓</b> vänster
+          <p><b>􌥔</b> höger
+          <p><b>􌤴</b> fram
+          <p><b>􌥕</b> in
+          <p><b>􌤵</b> upp
+          <p><b>􌥖</b> ner
 
-          <p>Symbolen för <i>krokfingret</i> (<span class=hflip>􌤪</span>) är en
-          spegelvänd relativt den symbol som används idag (􌤪).
-        </section>
+          <h1>Attitydvridning</h1>
+          <p><b style="margin-left:.25em">􌤶</b> vänster
+          <p><b style="margin-left:.25em">􌥗</b> höger
+          <p><b style="margin-left:.25em">􌤷</b> fram
+          <p><b style="margin-left:.25em">􌥘</b> in
+          <p><b style="margin-left:.25em">􌤸</b> upp
+          <p><b style="margin-left:.25em">􌥙</b> ner
 
-        <section>
-          <h1>Attityder</h1>
-
-          <table class=symbols>
-            <tr><td>􌥓􌤶<td>􌥔􌥗<td>􌤴􌤷<td>􌥕􌥘<td>􌤵􌤸<td>􌥖􌥙
-          </table>
-
-          <p>Symbolerna ser redan från början ut som de gör i idag.
-        </section>
-
-        <section>
           <h1>Rörelseriktningar</h1>
+          <p><b>􌥢</b> vänster
+          <p><b>􌥣</b> höger
+          <p><b>􌥤</b> vänster-höger
+          <p><b>􌦃</b> fram
+          <p><b>􌦄</b> in 
+          <p><b>􌥥</b> fram-in
+          <p><b>􌥦</b> upp
+          <p><b>􌥧</b> ner
+          <p><b>􌥨</b> upp-ner
 
-          <table class=symbols>
-            <tr><td>􌥢<td>􌥣<td>􌥤<td>􌦃<td>􌦄<td>􌥥<td>􌥦<td>􌥧<td>􌥨
-          </table>
-        </section>
-
-        <section>
           <h1>Rörelsearter</h1>
+          <p><b>􌥱</b> slås
+          <p><b style="transform:scaleX(-1.5)">􌥲</b> vrides
+          <p><b>􌥳</b> spelar
+          <p><b style="transform:scaleX(1.5)">􌥯</b> båge
+          <p><b>􌥰</b> cirkel
+          <p><b>􌦆</b> förändring
 
-          <table class=symbols>
-            <tr><td>􌥯<td>􌥰<td>􌥱<td>􌥲<td>􌦆<td>􌥳
-          </table>
-        </section>
-
-        <section>
           <h1>Interaktionsarter</h1>
+          <p><b>􌦇</b> växelvis
+          <p><b>􌦅</b> konvergerande
+          <p><b>􌥹</b> divergerande
+          <p><b>􌥫</b> hakning
+          <p><b>􌥭</b> mottagning
+          <p><b>􌦎</b> kors
+          <p><b>􌥮</b> vinkel
+          <p><b>􌤟</b> kontakt
+          <p><b><sup>⁕</sup></b> upprepad kontakt
 
-          <table class=symbols>
-            <tr><td>􌥹<td>􌦅<td>􌦎<td>􌥫<td>􌥭<td>􌥮<td>􌦇<td>􌤟
-          </table>
-
-          <p>Plus en symbol för något som kallas <i>iterativ</i>
-          eller <i>upprepad kontakt</i>, som påminner om en asterisk till
-          utseendet.
+          <h1>Övriga symboler</h1>
+          <p><b>􌥻</b> upprepad rörelse
+          <p><b>􌥠</b> signemgräns
+          <p><b>􌥠</b><b style="display:inline-block;width:0;position:relative;left:-.625em;transform:rotate(-60deg);">:</b> upprepat signem
         </section>
 
         <section>
-          <h1>Relationssymboler</h1>
+          <h1>Skillnader</h1>
 
-          <p>Inga. (◌􌤺, ◌􌥛, ◌􌤻, ◌􌤹 och ◌􌥚 lyser här helt med sin frånvaro).
+          <ul style="margin:1em 2em">
+            <li>En separat symbol används för <i>iterativ kontakt</i>
+              eller <i>upprepad kontakt</i>. Symbolen ser ut som en asterisk
+              med åtta strålar (symbolens exakta form är svår att urskilja i
+              bokens något luddiga tryck) här används <sup>⁕</sup>.
+
+            <li>I skrift skiljs <i>överarmen</i> och <i>underarmen</i> åt genom
+              att <i>underarmen</i> skrivs med efterföljande attitydsymboler
+              (􌥜􌥔􌥙), och <i>överarmen</i> skrivs utan dessa (􌥜).
+
+            <li><a href="#relation">Relationssymbolerna</a> (◌􌤺 ◌􌥛 ◌􌤻 ◌􌤹 och
+              ◌􌥚) lyser här helt med sin frånvaro.
+
+            <li>Symbolerna för <i>ögat</i> (􌤅), <i>nacken</i> (􌤜),
+              <i>höfterna</i> (􌤗), <i>överarmen</i> (􌤑) och <i>underarmen</i>
+              (􌤒) och <i>benet</i> (􌤚) saknas helt.
+
+            <li>Symbolen för <i>hjässan</i>
+              (<span style="display:inline-block;transform:scaleX(1.75);margin:0 .2em">􌤃</span>)
+              ser inte ut som dagens symbol (􌤀) utan liknar en horisontellt
+              utdragen version av dagens <i>pannan</i> (􌤃).
+
+            <li>Symbolen för <i>vrides</i>
+              (<span style="display:inline-block;transform:scaleX(-1.5);margin:0 .2em">􌥲</span>)
+              är en spegelvänd och horisontellt utdragen jämfört med dagens
+              symbol (􌥲).
+
+            <li>Symbolen för <i>magen</i>
+              (<span style="display:inline-block;transform:scaleX(1.75);margin:0 .2em">􌤖</span>)
+              är horisontellt utdragen jämfört med dagens symbol (􌤖).
+
+            <li>Symbolen för <i>pannan</i>
+              (<span style="display:inline-block;transform:scaleX(.625);margin:0 -.1em">􌤃</span>)
+              ser ut som en horisontellt ihoptryckt version av dagens symbol
+              (􌤃).
+
+            <li>Symbolen för <i>näsan</i> (􌤅) ser ut inte ut som dagens symbol
+              (􌤼) utan ser ut som dagens symbol för <i>ögat</i> (någon symbol
+              för <i>ögat</i> finns inte här).
+
+            <li>Symbolen för <i>halsen</i>
+              (<span style="display:inline-block;transform:scaleY(.7);margin:0 -.1em;position:relative;top:.1em">􌤞</span>)
+              är kortare än dagens symbol (􌤞).
+
+            <li>Symbolen för <i>båge</i>
+              (<span style="display:inline-block;transform:scaleX(1.5);margin:0 .2em">􌥯</span>)
+              är horisontellt utdragen jämfört med dagens symbol (􌥯).
+
+            <li>Symbolen för <i>krokfingret</i> (<span class=hflip>􌤪</span>) är
+              spegelvänd relativt den symbol som används idag (􌤪).
+          </ul>
         </section>
       </section>
 
@@ -6203,13 +6281,17 @@ figure.inline-tables {
           <ul style="margin:1em 2em">
             <li>Nya symboler för <i>ögat</i> (􌤅), <i>nacken</i> (􌤜),
               <i>höften</i> (􌤙) och <i>överarmen</i> (􌤑) läggs till.
+
             <li><i>Underarmen</i> saknar fortfarande egen symbol och skrivs
               istället med <i>armen</i> (􌥜) följt av attitydsymboler (􌥜􌥔􌥙).
+
             <li>Symbolerna för <i>hjässan</i> (􌤀) och <i>näsan</i> (􌤼) antar
               den form de har idag.
-            <li>Symbolen för <i>krokfingret</i> (<span class=hflip>􌤪</span>) var
-              spegelvänd i förhållande till den vi använder idag (􌤪).
-            <li>Symbolen för <i>strör</i> (􌥴) var hade en prick under sig.
+
+            <li>Symbolen för <i>krokfingret</i> (<span class=hflip>􌤪</span>)
+              var spegelvänd i förhållande till den vi använder idag (􌤪).
+
+            <li>Symbolen för <i>strör</i> (􌥴) hade en prick under sig.
           </ul>
         </section>
       </section>

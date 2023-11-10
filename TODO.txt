@@ -730,6 +730,11 @@
      (Many of these differing only in repetition.)
    + Close-to-synonym – HETA(02892) / KALLAS(07923)
 * Transcription intro article (intro.html)
+** TODO Add all original sources, make all source references link to page
+   Add a `pdf/` directory with all source articles, and each link in the
+   article should refer to them, with page number.
+** TODO History section: Add images from PDFs with all reference tables
+   There should be 'screenshots' from all PDF.
 ** TODO 'Svenskt teckenspråkslexikon' should always be italic in text
 ** TODO Include info on Reimer (2015)
    Especially information on where contact is made is interesting!
