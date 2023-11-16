@@ -350,6 +350,12 @@ figure.inline-tables {
     vertical-align: top;
     text-align: center;
   }
+  img.glyph {
+    height: .8em;
+    margin: 0 .075em;
+    transform: translateY(.05em);
+  }
+  table.examples td:last-child { text-align: right }
   </style>
 </head>
 <body lang=sv>
@@ -6382,7 +6388,7 @@ figure.inline-tables {
             <p><b>􌤃</b> pannan
             <p><b>􌤇</b> sidan av huvudet, örat
             <p><b>􌤅</b> ögat
-            <p><b>􌤊</b> kinden
+            <p class=blue><b style="transform:scale(1.2,.8) translateY(.1em)">􌤊</b> kinden
             <p class=blue><b style="transform:scale(.7,1.5) translateY(-.1em)">􌤼</b> näsan (idag 􌤼)
             <p><b>􌤌</b> munnen
             <p><b>􌤛</b> hakan
@@ -6408,7 +6414,7 @@ figure.inline-tables {
             <p><b>􌤥</b> klohanden
             <p><b>􌥆</b> O-handen
             <p><b>􌤦</b> knutna handen
-            <p><b>􌤫</b> hållhanden 
+            <p><b>􌤫</b> hållhanden
             <p><b>􌥇</b> E-handen
             <p><b>􌤧</b> tummen
             <p><b>􌥈</b> pekfingret
@@ -6507,6 +6513,17 @@ figure.inline-tables {
         <section>
           <h1>Skillnader</h1>
 
+          <p>Liksom tidigare källor staplar <a href="#1989">Hedberg (1989)</a>
+            rörelsesymboler ovanpå varandra – det vill säga, istället för att
+            skriva rörelsesymboler från vänster till höger så skrivs de ofta
+            (men inte alltid!) uppifrån och ned. Framförallt skrivs kontakt (􌤟)
+            ofta separat (utan andra symboler under). Jag spekulerar att
+            rörelsesymboler under varandra är tänkta att utföras simultant, och
+            de skrivna från vänster till höger är tänkta att utföras i efter
+            varandra. (<span class=FIXME>Bekräfta hur detta faktiskt funkar,
+            både här och i tidigare källor. [Finns det någon källa som
+            beskriver hur detta funkar?]</span>)
+
           <ul style="margin:1em 2em">
             <li>Introducerar ny rörelse <i>vinkar</i> (􌥺).
 
@@ -6526,8 +6543,12 @@ figure.inline-tables {
 
             <li>Symbolen för <i>halsen</i> (􌤞) sträcks ut till fullhöjd.
 
-            <li>Symbolen <i>vrids</i> antar sin <b>􌥲</b> slutgiltiga form (och
-              är inte längre spegelvänd).
+            <li>Symbolen för <i>kinden</i> (<span style="display:inline-block;
+              transform:scale(1.2,.8) translateY(.1em)">􌤊</span>) är kortare än
+              symbolen som används idag (􌤊).
+
+            <li>Symbolen <i>vrids</i> (􌥲) antar sin slutgiltiga form (och är
+              inte längre spegelvänd).
           </ul>
 
           <p>Hedberg använder också några egna förenklande
@@ -6545,7 +6566,7 @@ figure.inline-tables {
               kallad <i>sagittal</i> cirkelrörelse (􌦰 ersätter 􌥰􌥾 􌥰􌦊 􌥰􌦋).
 
             <li>Riktningen till rörelsearten <i>vrids</i> (􌥲) skrivs på ett
-              nytt mindre tvetydigt sätt, där
+              annat, mindre tvetydigt sätt, här än i andra källar
               <a href=#attityd><u>vridnings</u>symbolerna för attityd</a>
               (􌥲􌤶 􌥲􌥗 􌥲􌤷 􌥲􌥘 􌥲􌤸 􌥲􌥙) används istället för de sedvanliga
               <a href=#riktning><u>riktnings</u>symbolerna för handexterna
@@ -6594,42 +6615,79 @@ figure.inline-tables {
         <section>
           <h1>Transkriberade persontecken</h1>
 
-          <p class=FIXME> Snygga till tabellerna
+          <p>Av tekniska skäl har Hedbergs transkriptioner modifierats något i
+          tabellerna nedan. Det betyder att dagens konventioner används för
+          följande:
+
+          <ul style="margin:1em 2em">
+            <li>Simultant artikulerade rörelser (symboler som Hedberg placerar
+              vertikalt, uppifrån och ned) har här placerats horisontellt (från
+              vänster till höger) utom i de fall då de är en specifikation
+              till <i>vrids</i> (􌥲) eller <i>slås</i> (􌥱).
+
+            <li>Rörelsesymboler som Hedberg placerar horisontellt separeras med
+              artikulationsgruppseparatorn (􌥼).
+
+            <li>När en symbol har ett något annat utseende än idag används
+              dagens symbol – till exempel <i>kinden</i> (􌤊) – utom då symbolen
+              inte har någon modern motsvarighet – som <i>vinklade
+              pekfingret</i> (<img class=glyph
+              src=pic/h-vinklade-pekfingret.svg>) eller <i>horisontell
+              relation</i> (<span style="display:inline-block; text-indent:0;
+              transform:scaleY(.5) translateY(-.7em)">ı</span>).
+          </ul>
+
+          <p>Hedbergs förbättrade specifikation av riktning för <i>vrids</i>
+          (􌥲) – som använder <i>vridnings-</i> (􌥲􌤶 􌥲􌥗 􌥲􌤷 􌥲􌥘 􌥲􌤸 􌥲􌥙) istället
+          för <i>riktningssymboler</i> (􌥲􌦈 􌥲􌥽 􌥲􌥾 􌥲􌦊 􌥲􌥿 􌥲􌦀) – har bevarats.
+
+          <p><p class=FIXME>Snygga till tabellerna
 
           <figure class=inline-tables>
-            <table>
+            <table class=examples>
               <caption>Transkription av <i>vrids</i>.</caption>
               <tr><th>Tecken                           <th>Översättning         <th>Sida
-              <tr><td colspan=3 class=FIXME>GÅ IGENOM SIDA 1–18!!
-              <!--FIXME: följande borde använda vinklade pekfingret istf 􌥈-->
-              <tr><td>􌤔􌥈􌥓􌥘􌥘􌤟􌦀<mark>􌥲􌥙</mark>􌥠􌤔􌤥􌥓􌥘􌤟􌥧􌤟􌥧􌤟 <td>Iris Adolfsson       <td>18
-              <tr><td>􌤃􌦫􌥓􌥘􌤟<mark>􌥲􌤷</mark>􌤟            <td>Signe Lagerstedts    <td>18
-              <tr><td>􌤔􌤣􌥓􌥘􌤟􌦀<mark>􌥲􌥙</mark>            <td>Karl Flodin          <td>22
-              <tr><td>􌤜􌤢􌥓􌤷􌤟<mark>􌥲􌥘</mark>􌤟            <td>Rut Brinkman         <td>22
-              <!--FIXME: följande är approximation av originalets transkription -->
-              <tr><td>􌤓􌥂􌥓􌥘􌤟􌦀􌦆􌥆􌥦<mark>􌥲􌥙</mark>􌥧􌦆􌥃      <td>Karl Sandström       <td>24
-              <!--FIXME: följande är approximation av originalets transkription -->
+              <tr><td>􌤔<img class=glyph src=pic/h-vinklade-pekfingret.svg>􌥓􌥘􌥘􌤟􌥧􌥼<mark>􌥲􌥙</mark>􌥠􌤔􌤥􌥓􌥘􌤟􌥼􌥧􌥼􌤟􌥼􌥧􌥼􌤟 <td>Iris Adolfsson       <td>18
+              <tr><td>􌤃􌦫􌥓􌥘􌤟􌥼<mark>􌥲􌤷</mark>􌥼􌤟          <td>Signe Lagerstedt     <td>18
+              <tr><td>􌤔􌤣􌥓􌥘􌤟􌦀􌥼<mark>􌥲􌥙</mark>           <td>Karl Flodin<sup><a href="#fn1">[1]</a></sup> <td>22
+              <tr><td>􌤜􌤢􌥓􌤷􌤟􌥼<mark>􌥲􌥘</mark>􌥼􌤟          <td>Rut Brinkman         <td>22
+              <tr><td>􌤓􌥂􌥓􌥘􌤟􌦀􌦆􌥆􌥼􌥦<mark>􌥲􌥙</mark>􌥼􌥧􌦆􌥃    <td>Karl Sandström       <td>24
               <tr><td>􌤇􌤫􌥓􌤷􌤟<mark>􌥲􌥙</mark>             <td>Åke Persson          <td>28
-              <!--FIXME: följande är approximation av originalets transkription -->
-              <tr><td>􌤑􌥈􌥓􌥙􌤟􌥧<mark>􌥲􌥘</mark>􌤟           <td>Sigurd Åkerström     <td>35
-              <!--FIXME: följande är approximation av originalets transkription -->
-              <tr><td>􌤊􌥈􌤵􌤶􌤟<mark>􌥲􌥾</mark>􌥻            <td>Irma Petterssons (<mark>undantag!</mark>) <td>35
-              <tr><td>􌤃􌤭􌥓􌥘􌤟<mark>􌥲􌤷</mark>􌤟            <td>Erik                 <td>39
+              <tr><td>􌤑􌥈􌥓􌥙􌤟􌥼􌥧<mark>􌥲􌥘</mark>􌥼􌤟         <td>Sigurd Åkerström     <td>35
+              <tr><td>􌤊<img class=glyph src="pic/h-bojda-pekfingret.svg">􌤵􌤶􌤟<mark>􌥲􌥾</mark>􌥼􌥻            <td>Irma Pettersson<sup><a href="#fn2">[2]</a></sup> <td>35
+              <tr><td>􌤃􌤭􌥓􌥘􌤟􌥼<mark>􌥲􌤷</mark>􌥼􌤟          <td>Erik                 <td>39
               <tr><td>􌤲􌤴􌤶<mark>􌥲􌥙</mark>􌦆􌤤􌦆􌤿           <td>Per-Anders Malmström <td>41
-              <tr><td colspan=3 class=FIXME>FORTS PÅ SIDAN 43 OCH FRAMÅT!!
+              <tr><td>􌤃<span style="display:inline-block;transform:scaleY(.5) translateY(-.7em)">ı</span>􌥈􌥓􌥙􌤟<mark>􌥲􌥘</mark>􌥼􌥻􌥠􌤊<img class=glyph src="pic/h-bojda-pekfingret.svg">􌤵􌤶􌤟􌦰     <td>Stig Johansson       <td>43
+              <tr><td>􌤃􌤭􌥓􌥘􌤟􌥼<mark>􌥲􌤷</mark>􌥼􌤟            <td>Christina Johansson   <td>47
+              <tr><td>􌤔<img class=glyph src=pic/h-vinklade-pekfingret.svg>􌥓􌥘􌤟􌥧􌥼<mark>􌥲􌥙</mark>􌥠􌤑􌤰􌥓􌥘􌤟􌥧􌥣􌥼􌤟􌥦􌥣<td>Gunnar Brahn          <td>49
+              <tr><td>􌤔􌤣􌥓􌥘􌤟􌥧􌥼<mark>􌥲􌥙</mark>􌥠􌤊􌤢􌤵􌤶􌤟􌥧   <td>Karl Flodin          <td>49
+              <tr><td>􌤔<img class=glyph src=pic/h-vinklade-pekfingret.svg>􌥓􌥘􌤟􌥧<mark>􌥲􌥙</mark>􌥠􌤀􌤢􌥓􌥙􌤟􌦄  <td>Emma Söderberg          <td>51
+              <tr><td>􌤓􌥔􌥙􌤧􌤧􌥓􌥙􌤟􌥦􌥹􌥼<mark>􌥲􌥘</mark>􌥼􌤟􌥼􌥧􌥼􌤟􌥼􌥧􌥼􌤟  <td>Wally Lindberg          <td>54
             </table>
-            <table>
+            <table class=examples>
               <caption>Transkription av <i>slås</i>.</caption>
               <tr><th>Tecken                      <th>Översättning        <th>Sida
-              <!--FIXME: följande är approximation av originalets transkription -->
+              <tr><td>􌥊􌤴􌤶<mark>􌥱􌥿</mark>􌦆􌤲        <td>Tomas Hedberg       <td>2
+              <tr><td>􌤇􌤥􌤵􌤶<mark>􌥱􌦋</mark>􌥼􌥻       <td>Gunnar Fondelius    <td>10
               <tr><td>􌤌􌤹􌤨􌥓􌥘􌤟􌥠􌤓􌤨􌥓􌥘􌥣<mark>􌥱􌦌</mark> <td>Britta Wirsén       <td>25
-              <!--FIXME: följande är approximation av originalets transkription -->
               <tr><td>􌤓􌥋􌥓􌥘􌥣<mark>􌥱􌦌</mark>        <td>–                   <td>25
-              <!--FIXME: följande är approximation av originalets transkription -->
               <tr><td>􌤓􌤮􌥓􌥘􌥣<mark>􌥱􌦌</mark>        <td>Jörgen Christensen  <td>31
-              <tr><td>􌤃􌤩􌥓􌥙􌤟􌥣<mark>􌥱􌥿</mark>􌦆􌤨􌥣􌦆􌤩  <td>Birgit Svensson     <td>34
+              <tr><td>􌤃􌤩􌥓􌥙􌤟􌥼􌥣<mark>􌥱􌥿</mark>􌦆􌤨􌥼􌥣􌦆􌤩  <td>Birgit Svensson     <td>34
               <tr><td>􌤨􌥓􌥘<mark>􌥱􌦀</mark>􌦆􌤲        <td>Tore Pettersson     <td>41
             </table>
+            <figcaption>
+              <div class=hanging style=margin:1em>
+                <p id=fn1><sup>[1]</sup> Den här transkriptionen tycks sakna
+                ett andra segment, som beskrivs i text och illustrationer,
+                gissningsvis skulle den fulla transkriptionen vara:
+                􌤔􌤣􌥓􌥘􌤟􌦀􌥲􌥙􌥠􌤊􌤢􌤵􌤶􌤟􌦀
+
+                <p id=fn2><sup>[2]</sup> Vridningen specificeras här med en
+                attitydriktningssymbol (en pil), istället för en vridningsymbol
+                – kanske skulle detta ha transkriberats <i>slås framåt</i> (􌥱􌥾)
+                istället?
+              </div>
+            </figcaption>
           </figure>
         </section>
       </section>
