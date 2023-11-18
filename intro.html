@@ -302,7 +302,7 @@ table.symbols {
     padding-left: 1.25em; text-indent: -1.25em !important; & > * { text-indent: 0 }
     & > b:first-child {
       display: inline-block;
-      width: 1em;
+      min-width: 1em;
       text-align: center;
     }
   }
@@ -6226,7 +6226,7 @@ figure.inline-tables {
             <p><b>􌤔</b> höger sida av bröstet
             <p><b>􌤡</b> axeln
             <p class=yellow><b>􌤘</b> höften
-            <p><b>􌤖</b> magen, mellan­gärdet
+            <p class=red><b>􌤖</b> magen, mellan­gärdet
             <p><b>􌥜</b> armen
             <p class=yellow><b>􌤑</b> överarmen
             <p><b>􌤚</b> benet
@@ -6323,9 +6323,10 @@ figure.inline-tables {
             <p><b>􌥻</b> upprepad artikulation
             <p><b>􌥠</b> sammansatt tecken
           </section>
-        <figcaption style="text-align:center">
+        <figcaption style="text-align:center;line-height:1.5">
           <span class="legend yellow"></span> = Ny symbol.  
-          <span class="legend blue"></span> = Symbolen skiljer sig från dagens.
+          <span class="legend red"></span> = Ändrad symbol.  
+          <br><span class="legend blue"></span> = Symbolen skiljer sig från dagens.
         </figcaption>
       </figure>
 
@@ -6346,8 +6347,16 @@ figure.inline-tables {
               händernas placering relativt varandra. (<span class=FIXME>Ge
               exempel</span>)
 
+            <li>Symbolen för <i>vänster axel</i> (􌥀) – som introducerades
+              i <a href="#1977">Bergman (1977)</a> – lyser här med sin
+              frånvaro. – Den återintroduceras senare i <a href="#1993">Bergman
+              & Björkstrand (1993)</a>.
+
             <li>Symboler för <i>ögat</i> (􌤅), <i>nacken</i> (􌤜),
               <i>höften</i> (􌤘) och <i>överarmen</i> (􌤑) läggs till.
+
+            <li>Symbolen för <i>magen, mellangärdet</i> (􌤖) antar här den
+              smalare form som den har idag.
 
             <li>Symbolen för <i>näsan</i> (<span style="display:inline-block;
               transform:scale(.7,1.5) translateY(-.1em); margin: 0
@@ -6392,13 +6401,13 @@ figure.inline-tables {
             <p class=blue><b style="transform:scale(.7,1.5) translateY(-.1em)">􌤼</b> näsan (idag 􌤼)
             <p><b>􌤌</b> munnen
             <p><b>􌤛</b> hakan
-            <p><b>􌤞</b> halsen
+            <p class=red><b>􌤞</b> halsen
             <p><b>􌤓</b> bröstet
             <p><b>􌤕</b> vänster sida av bröstet
             <p><b>􌤔</b> höger sida av bröstet
             <p><b>􌤡</b> axeln
             <p><b>􌤘</b> höften
-            <p><b>􌤖</b> magen, mellangärdet
+            <p class=blue><b style="transform:scaleX(1.75)">􌤖</b> magen (idag 􌤖)
             <p><b>􌥜</b> armen
             <p><b>􌤑</b> överarmen
             <p><b>􌤚</b> benet
@@ -6502,11 +6511,12 @@ figure.inline-tables {
             <p><b>􌥻</b> upprepad artikulation
             <p><b>􌥠</b> sammansatt tecken
           </section>
-        <figcaption style="text-align:center">
-          <span class="legend yellow"></span> = Ny symbol.  
-          <span class="legend blue"></span> = Symbolen skiljer sig från dagens.
-          <br><sup><b>∗</b></sup>Symbolerna för vridning <i>upp/ner</i>
-          omkastade i originalet (s.61).
+        <figcaption style="text-align:center;line-height:1.5">
+          <sup><b>∗</b></sup>Symbolerna för vridning <i>upp/ner</i>
+          är omkastade i originalet (s.61).
+          <br><span class="legend yellow"></span> = Ny symbol.  
+          <span class="legend red"></span> = Ändrad symbol.  
+          <br><span class="legend blue"></span> = Symbolen skiljer sig från dagens.
         </figcaption>
       </figure>
 
@@ -6541,7 +6551,14 @@ figure.inline-tables {
             <li>Symbolen för <i>krokfingret</i> (<span class=hflip>􌤪</span>)
               var spegelvänd i förhållande till den vi använder idag (􌤪).
 
-            <li>Symbolen för <i>halsen</i> (􌤞) sträcks ut till fullhöjd.
+            <li>Symbolen för <i>halsen</i> (􌤞) sträcks ut till fullhöjd
+              (tidigare hade den samma höjd som en liten bokstav, men nu får
+              den samma höjd som en stor bokstav).
+
+            <li>Symbolen för <i>magen</i> (<span style="display:inline-block;
+              transform:scaleX(1.75); margin:0 .2em">􌤖</span>) återgår här till
+              den horisontellt utdragna versionen jämfört med dagens symbol
+              (􌤖).
 
             <li>Symbolen för <i>kinden</i> (<span style="display:inline-block;
               transform:scale(1.2,.8) translateY(.1em)">􌤊</span>) är kortare än
@@ -6696,131 +6713,205 @@ figure.inline-tables {
         <h1>Bergman & Björkstrand (1993) – <i>Kompendium i
           teckentranskription</i></h1>
 
-        <p class=FIXME>Lägg till saknad information.
+        <figure>
+          <section class=symbol-list>
+            <h1>Lägen</h1>
+            <p><b>􌤀</b> hjässan
+            <p><b>􌤆</b> ansiktet, i huvudhöjd
+            <p><b>􌤂</b> övre delen av ansiktet
+            <p><b>􌥞</b> nedre delen av ansiktet
+            <p><b>􌤃</b> pannan
+            <p><b>􌤅</b> ögat
+            <p class=red><b>􌤼</b> näsan
+            <p><b>􌤇</b> sidan av huvudet, örat
+            <p class=red><b>􌤊</b> kinden
+            <p><b>􌤌</b> munnen
+            <p><b>􌤛</b> hakan
+            <p><b>􌤜</b> nacken
+            <p><b>􌤞</b> halsen
+            <p class=yellow><b>􌥀</b> axeln, vänster
+            <p><b>􌤡</b> axeln, höger
+            <p><b>􌤑</b> överarmen
+            <p class=yellow><b>􌤒</b> underarmen
+            <p><b>􌥜</b> armen
+            <p><b>􌤓</b> bröstet
+            <p><b>􌤔</b> höger sida av bröstet
+            <p><b>􌤕</b> vänster sida av bröstet
+            <p class=red><b>􌤖</b> magen, mellangärdet
+            <p><b>􌤘</b> höften
+            <p><b>􌤚</b> benet
 
-        <section class=symbol-list>
-          <h1>Lägen</h1>
-          <p class=FIXME>Jämför med originalet
-          <p><b>􌤀</b> hjässan
-          <p><b>􌤆</b> ansiktet, i huvudhöjd
-          <p><b>􌤂</b> övre delen av ansiktet
-          <p><b>􌥞</b> nedre delen av ansiktet
-          <p><b>􌤃</b> panna
-          <p><b>􌤅</b> ögat
-          <p><b>􌤼</b> näsan
-          <p><b>􌤇</b> sidan av huvudet, örat
-          <p><b>􌤊</b> kinden
-          <p><b>􌤌</b> munnen
-          <p><b>􌤛</b> hakan
-          <p><b>􌤜</b> nacken
-          <p><b>􌤞</b> halsen
-          <p><b>􌥀</b> axeln, vänster
-          <p><b>􌤡</b> axeln, höger
-          <p><b>􌤑</b> överarmen
-          <p><b>􌤒</b> underarmen
-          <p><b>􌥜</b> armen
-          <p><b>􌤓</b> bröstet
-          <p><b>􌤔</b> höger sida av bröstet
-          <p><b>􌤕</b> vänster sida av bröstet
-          <p><b>􌤖</b> magen, mellangärdet<br>(är bredare)
-          <p><b>􌤘</b> höften
-          <p><b>􌤚</b> benet
+            <h1>Handformer</h1>
+            <p><b>􌤢</b> flata handen
+            <p><b>􌦫</b> D-handen
+            <p><b>􌥃</b> sprethanden
+            <p><b>􌦪</b> 4-handen
+            <p><b>􌥂</b> flata tumhanden
+            <p><b>􌤣</b> vinkelhanden
+            <p><b>􌥄</b> tumvinkelhanden
+            <p><b>􌤤</b> A-handen
+            <p><b>􌥅</b> S-handen
+            <p><b>􌤥</b> klohanden
+            <p><b>􌥆</b> O-handen
+            <p><b>􌤦</b> knutna handen
+            <p><b>􌥇</b> E-handen
+            <p><b>􌤧</b> tummen
+            <p><b><img src=pic/h-vinklade-pekfingret.svg style="height:.8em"></b> vinklade pekfingret
+            <p><b>􌥈</b> pekfingret
+            <p><b>􌤨</b> L-handen
+            <p><b>􌥉</b> raka måtthanden
+            <p><b>􌤩</b> nyphanden
+            <p><b>􌥊</b> T-handen
+            <p class=blue><b><span class=hflip>􌤪</span></b> krokfingret (idag 􌤪)
+            <p><b>􌥋</b> måtthanden
+            <p class=green><b><img src=pic/h-bojda-pekfingret.svg style="height:.8em"></b> böjda pekfingret
+            <p><b>􌤫</b> hållhanden
+            <p><b>􌥌</b> N-handen
+            <p class=yellow><b><img src=pic/h-vinklade-n-handen.svg style="height:.8em"></b> vinklade N-handen
+            <p class=red><b>􌤎</b> NA-handen
+            <p class=green><b><img src=pic/h-bojda-n-handen.svg style="height:.8em"></b> böjda N-handen
+            <p><b>􌤭</b> V-handen
+            <p><b>􌤮</b> tupphanden
+            <p><b>􌥎</b> K-handen
+            <p><b>􌤽</b> dubbelkroken
+            <p><b>􌤯</b> böjda tupphanden
+            <p><b>􌤿</b> M-handen
+            <p><b>􌤰</b> W-handen
+            <p><b>􌤱</b> lillfingret
+            <p><b>􌥑</b> flyghanden
+            <p><b>􌤲</b> stora nyphanden
+            <p><b>􌥒</b> stora långfingret
+            <p class=red><b>􌥟</b> runda långfingret
+            <p><b>􌤬</b> långfingret
 
-          <h1>Handformer</h1>
-          <p><b>􌤢</b> flata handen
-          <p><b>􌦫</b> D-handen
-          <p><b>􌥃</b> sprethanden
-          <p><b>􌦪</b> 4-handen
-          <p><b>􌥂</b> flata tumhanden
-          <p><b>􌤣</b> vinkelhanden
-          <p><b>􌥄</b> tumvinkel­handen
-          <p><b>􌤤</b> A-handen
-          <p><b>􌥅</b> S-handen
-          <p><b>􌤥</b> klohanden
-          <p><b>􌥆</b> O-handen
-          <p><b>􌤦</b> knutna handen
-          <p><b>􌥇</b> E-handen
-          <p><b>􌤧</b> tummen
-          <p><b><img src=pic/h-vinklade-pekfingret.svg style="height:.8em"></b> vinklade pekfingret
-          <p><b>􌥈</b> pekfingret
-          <p><b>􌤨</b> L-handen
-          <p><b>􌥉</b> raka måtthanden
-          <p><b>􌤩</b> nyphanden
-          <p><b>􌥊</b> T-handen
-          <p><b><span class=hflip>􌤪</span></b> krokfingret (idag 􌤪)
-          <p><b>􌥋</b> måtthanden
-          <p><b><img src=pic/h-bojda-pekfingret.svg style="height:.8em"></b> böjda pekfingret
-          <p><b>􌤫</b> hållhanden
-          <p><b>􌥌</b> N-handen
-          <p><b><img src=pic/h-vinklade-n-handen.svg style="height:.8em"></b> vinklade N-handen
-          <p><b>􌤎</b> NA-handen
-          <p><b><img src=pic/h-bojda-n-handen.svg style="height:.8em"></b> böjda N-handen
-          <p><b>􌤭</b> V-handen
-          <p><b>􌤮</b> tupphanden
-          <p><b>􌥎</b> K-handen
-          <p><b>􌤽</b> dubbelkroken
-          <p><b>􌤯</b> böjda tupphanden
-          <p><b>􌤿</b> M-handen
-          <p><b>􌤰</b> W-handen
-          <p><b>􌤱</b> lillfingret
-          <p><b>􌥑</b> flyghanden
-          <p><b>􌤲</b> stora nyphanden
-          <p><b>􌥒</b> stora långfingret
-          <p><b>􌥟</b> runda långfingret
-          <p><b>􌤬</b> långfingret
+            <h1>Attitydriktning</h1>
+            <p><b>􌥓</b> vänster
+            <p><b>􌥔</b> höger
+            <p><b>􌤴</b> fram
+            <p><b>􌥕</b> in
+            <p><b>􌤵</b> upp
+            <p><b>􌥖</b> ner
 
-          <h1>Rörelseriktningar</h1>
-          <p class=FIXME>Jämför med originalet
-          <p><b>􌥢</b> vänster
-          <p><b>􌥣</b> höger
-          <p><b>􌥤</b> vänster–höger
-          <p><b>􌦃</b> fram
-          <p><b>􌦄</b> in
-          <p><b>􌥥</b> fram–in
-          <p><b>􌥦</b> upp
-          <p><b>􌥧</b> ner
-          <p><b>􌥨</b> upp–ner
+            <h1>Attitydvridning</h1>
+            <p><b style="margin-left:.25em">􌤶</b> vänster
+            <p><b style="margin-left:.25em">􌥗</b> höger
+            <p><b style="margin-left:.25em">􌤷</b> fram
+            <p><b style="margin-left:.25em">􌥘</b> in
+            <p><b style="margin-left:.25em">􌤸</b> upp
+            <p><b style="margin-left:.25em">􌥙</b> ner
 
-          <h1>Interaktionsarter</h1>
-          <p class=FIXME>Jämför med originalet
-          <p><b>􌦇</b> växelvis
-          <p><b>􌦅</b> konvergerar
-          <p><b>􌥹</b> divergerar
-          <p><b>􌥬</b> byte
-          <p><b>􌦎</b> kors
-          <p><b>􌥮</b> vinkel
-          <p><b>􌥫</b> hakning
-          <p><b>􌥭</b> entré
-          <p><b>􌤟</b> kontakt
+            <h1>Rörelseriktningar</h1>
+            <p><b>􌥢</b> vänster
+            <p><b>􌥣</b> höger
+            <p><b>􌥤</b> vänster-höger
+            <p><b>􌦃</b> fram
+            <p><b>􌦄</b> in
+            <p><b>􌥥</b> fram-in
+            <p><b>􌥦</b> upp
+            <p><b>􌥧</b> ner
+            <p><b>􌥨</b> upp-ner
 
-          <h1>Rörelsearter</h1>
-          <p class=FIXME>Jämför med originalet
-          <p><b>􌥯</b> båge
-          <p><b>􌥰</b> cirkel
-          <p><b>􌥲</b> vrids
-          <p><b>􌥱</b> slås
-          <p><b>􌥳</b> spelar
-          <p><b>􌦆</b> förändras
-          <p><b>􌥴</b> strör
-          <p><b>􌥺</b> vinkar
+            <h1>Interaktionsarter</h1>
+            <p><b>􌦇</b> växelvis
+            <p class=blue><b>􌦅</b> konvergerar
+            <p class=blue><b>􌥹</b> divergerar
+            <p><b>􌥬</b> byte
+            <p><b>􌦎</b> kors
+            <p><b>􌥮</b> vinkel
+            <p><b>􌥫</b> hakning
+            <p><b>􌥭</b> entré
+            <p><b>􌤟</b> kontakt
 
-          <h1>Övriga symboler</h1>
-          <p class=FIXME>Jämför med originalet
-          <p><b>◌􌥚</b>
-          <p><b>◌􌤹</b>
-          <p><b>◌􌤻</b>
-          <p><b>◌􌥛</b>
-          <p><b>◌􌤺</b>
-          <p><b>􌥻</b> upprepad artikulation
-          <p><b>􌥠</b> sammansatt tecken
-          <p><b>􌥼</b> markerar sekventiell artikulation
-        </section>
+            <h1>Rörelsearter</h1>
+            <p><b>􌥯</b> båge
+            <p class=yellow><b>􌥰</b> cirkel
+            <p><b>􌥲</b> vrids
+            <p><b>􌥱</b> slås
+            <p><b>􌥳</b> spelar
+            <p><b>􌦆</b> förändras
+            <p><b>􌥴</b> strör
+            <p><b>􌥺</b> vinkar
+
+            <h1>Övriga symboler</h1>
+            <p class=yellow>följande: <b>◌􌥚◌􌤹◌􌤻◌􌥛◌􌤺</b> visar höger hands
+              placering relativt den vänstra handen eller annan kroppsdel
+            <p><b>􌥻</b> upprepad artikulation
+            <p><b>􌥠</b> sammansatt tecken
+            <p class=yellow><b>􌥼</b> markerar sekventiell artikulation
+          </section>
+        <figcaption style="text-align:center;line-height:1.5">
+          <span class="legend yellow"></span> = Ny symbol.  
+          <span class="legend red"></span> = Ändrad symbol.  
+          <span class="legend green"></span> = Nytt namn.  
+          <br><span class="legend blue"></span> = Symbolen skiljer sig från dagens.
+        </figcaption>
+      </figure>
 
         <h1>Skillnader</h1>
 
           <ul style="margin:1em 2em">
+            <li>Introducerar symbolen <i>sekventiell separator</i> (􌥼).
+              Tidigare skiljdes transkriptionen simultana och sekventiella
+              rörelser åt genom att simultant utförda rörelser skrevs under
+              varandra, medan sekventiella rörelser skrevs från vänster till
+              höger. I och med denna ändring skrivs nu istället
+              <i>simultana</i> artikulationer <i>från vänster till höger</i>
+              och artikulationer som utförs i sekvens separeras med
+              en <i>sekventiell separator</i> (􌥼). (Jag har inte läst någon
+              motivering till denna ändring, men det tidigare sättet att skriva
+              simultana rörelser resulterade i att rörelsesymbolerna staplades
+              på hög, vilket försvårar läsningen och gör dem svåra att få plats
+              med på en rad. <span class=FIXME>Hitta dokumenterad orsak till
+              ändringen.</span>)
+
+            <li>Introducerar de relationssymboler som används idag (◌􌥚 ◌􌤹 ◌􌤻 ◌􌥛
+              och ◌􌤺), vilka ersätter de tidigare använda <i>horisontell
+              relation</i> (<b>ı</b>) och <i>vertikal relation</i> (<b>–</b>).
+
+            <li>Det nya artikulationsstället <i>underarmen</i> (􌤒)
+              introduceras.
+
+            <li>Symbolen för <i>cirkel</i> (􌥰) återgår till tidigare utseende
+              (den förenklade varianten som används av <a href="#1989">Hedberg
+              1989</a> används inte längre här).
+
+            <li>Symbolen för <i>näsan</i> (􌤼) antar den plattare form den har
+              idag (tidigare hade den samma höjd som en liten bokstav, men nu
+              blir den något plattare – kanske för att den ska skilja sig mer
+              ifrån <i>nyphanden</i> [􌤩]?).
+
+            <li>Symbolen för <i>kinden</i> (􌤊) sträcks ut till fullhöjd
+              (tidigare hade den samma höjd som en liten bokstav, men nu får
+              den samma höjd som en stor bokstav).
+
+            <li>Symbolen för <i>magen, mellangärdet</i> (􌤖) blev smalare och
+              antog den vidd den har idag.
+
+            <li>Introducerar handformen <i>vinklade N-handen</i>
+              (<img class=glyph src=pic/h-vinklade-n-handen.svg
+              style="height:.8em">).
+
+            <li>Tidigare <i>NO-handen</i> (<img class=glyph
+              src=pic/h-bojda-n-handen.svg>) kallas nu istället <i>böjda
+              N-handen</i>, men transkriberas med samma symbol som tidigare.
+
+            <li>Tidigare <i>LO-handen</i> (<img class=glyph
+              src=pic/h-bojda-pekfingret.svg>) kallas nu istället <i>böjda
+              pekfingret</i>, men transkriberas med samma symbol som tidigare.
+
+            <li>Tidigare <i>NA-handen</i> (<img class=glyph
+              src=pic/h-lilla-a-handen.svg>) transkriberas nu med en ny symbol
+              (􌤎), men kallas även fortsättningsvis för <i>NA-handen</i>.
+
             <li>Symbolen för <i>krokfingret</i> (<span class=hflip>􌤪</span>)
               var spegelvänd i förhållande till den vi använder idag (􌤪).
+
+            <li><i>Runda långfingret</i> (􌥟) fick den form den har idag.
+
+            <li><i>Vinklade tupphanden</i> (<img class=glyph
+              src=pic/h-vinklade-tupphanden.svg>) som introducerades
+              av <a href="#1989">Hedberg (1989)</a> lyser här med sin frånvaro
+              (och dyker inte upp i senare källor heller).
           </ul>
       </section>
 
