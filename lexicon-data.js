@@ -1,4 +1,4 @@
-let lexiconDate=new Date("2024-07-15T06:00:49Z")
+let lexiconDate=new Date("2024-07-22T06:00:47Z")
 let lexiconTags=["/bokstavering",
 "/språkvetenskap",
 "/geografi/orter/sverige",
@@ -12886,7 +12886,7 @@ let lexicon=[
 ["12845","􌤴􌤸􌤢􌤢􌤴􌤸􌥶􌦆􌤣􌥼􌥻􌥠􌤢􌥔􌤸􌤤􌥖􌤶􌤟􌥼􌥦􌦆􌥃􌥠􌤢􌥔􌤸􌤢􌤴􌤶􌤟􌥼􌥻","väntevärdesriktig",8,15],
 ["12846","􌤤􌤵􌤷􌥣􌥦􌦆􌥂􌥼􌥻","växa (om kurva)",8,15],
 ["12847","􌥃􌥔􌥘􌥃􌤵􌥘􌤟􌥦","växa (om kurva)",8,15],
-["12848","􌤴􌥗􌥃􌥃􌤴􌤶􌥹􌦉","växa (om kurva)",8,15],
+["12848","􌤴􌥗􌥃􌥃􌤴􌤶􌥹􌦉􌥯􌥿","växa (om kurva)",8,15],
 ["12849","􌤢􌤺􌤴􌥙􌤢􌤴􌥙􌤟􌥼􌦃􌥦","växa (om kurva)",8,15],
 ["12850","#(x)􌥠􌥞􌤭􌤵􌥘􌦑","x i kvadrat","x upphöjt till två",0,8,15],
 ["12851","#(x)􌥠􌥞􌤭􌤵􌤷􌦑","x i kvadrat","x upphöjt till två",0,8,15,3],
@@ -15489,7 +15489,7 @@ let lexicon=[
 ["15520","􌤓􌤢􌥓􌥘􌤟􌥼􌥵􌥱􌥾􌥲􌦀􌥠􌥆􌤵􌤷􌥵􌥱􌥾􌦆􌤿","tycker inte om"],
 ["15521","􌤢􌥔􌤸􌥈􌥓􌤸􌤟􌥣􌥠􌤴􌤸􌤢􌤢􌤴􌤸􌥧","namnsdag"],
 ["15522","􌤬􌤴􌥙􌥵􌥼􌥻","resten"],
-["15524","􌤴􌥗􌥃􌥃􌤴􌤶􌥹􌦉","bredd",189],
+["15524","􌤴􌥗􌤢􌤢􌤴􌤶􌥹􌦉","bredd",189],
 ["15525","#(gas)","gas",0],
 ["15526","#(gas)􌥠􌤴􌥙􌤭􌤭􌤴􌥙􌥲􌦂􌥼􌥻","gasgrill",0],
 ["15527","􌤣􌤵􌤶􌥦","höjd",189],
