@@ -823,15 +823,6 @@
 *** TODO Filter for positions with contact (according to Bergman 1977)
 ** TODO Move HTML comment FIXMEs into TODO file
 ** TODO Remove <hr> from article
-** TODO Transcriptions should be clearly marked
-   In text where only one or two single transcription symbols are used it is
-   sometimes not very clear what's going on, since the use of transcription is
-   not clearly indicated. An obvious fix would be to always circumscribe
-   transcriptions with eg […]. (This is prolly not needed in tables & figures,
-   but only in the main text.)
-
-   Currently this is pretty inconsistently done, using (…) in some parts of the
-   text, […] in some, and no indicator at all in some parts.
 ** TODO Check intro of each chapter
 *** TODO Does it align with document goal?
 *** TODO Does it tie in with chapter name?
@@ -1224,6 +1215,16 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE Intro: Transcriptions should be clearly marked
+   CLOSED: [2024-10-30 Wed 17:10]
+   In text where only one or two single transcription symbols are used it is
+   sometimes not very clear what's going on, since the use of transcription is
+   not clearly indicated. An obvious fix would be to always circumscribe
+   transcriptions with eg […]. (This is prolly not needed in tables & figures,
+   but only in the main text.)
+
+   Currently this is pretty inconsistently done, using (…) in some parts of the
+   text, […] in some, and no indicator at all in some parts.
 ** DONE Lexicon: Rounded corners in main search field
    CLOSED: [2023-02-20 Mon 00:10]
    This seems to be used nowadays to indicate a search field, so let's do this
