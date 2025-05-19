@@ -373,10 +373,11 @@ function parseQuery(queryStr) {
     // Test if single entry 'e' (list of strings) match query (<q>). Return
     // true on match, false otherwise.
     function searchEntry(q, e) {
-      let x = Array.isArray(q)
-        ? q[q.or ? 'some' : 'every'](q => searchEntry(q, e))    // subquery
-        : e.some(f => ((f[0] === '/') === q.tag) && q.test(f))  // base case
-      return q.not ? !x : x
+      return (
+        Array.isArray(q)
+          ? q[q.or ? 'some' : 'every'](q => searchEntry(q, e))    // subquery
+          : e.some(f => ((f[0] === '/') === q.tag) && q.test(f))  // base case
+      ) === !!q.not
     }
     function flat(q) {
       return q.reduce(
