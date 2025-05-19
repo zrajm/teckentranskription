@@ -1,4 +1,4 @@
-let lexiconDate=new Date("2025-05-12T06:00:34Z")
+let lexiconDate=new Date("2025-05-19T06:00:34Z")
 let lexiconTags=["/bokstavering",
 "/språkvetenskap",
 "/ovanligt tecken",
@@ -3251,7 +3251,7 @@ let lexicon=[
 ["02936","􌤢􌥔􌤸􌥈􌤴􌥙􌤟􌥱􌦉","orientering",93],
 ["02937","#(klor)","klor",0,31],
 ["02938","􌤂􌤵􌤷􌥅􌥅􌤵􌤷􌥹􌦉􌥯􌦀","banderoll"],
-["02939","􌥅􌥔􌤸􌦑􌦩􌤨􌤴􌤶􌦨􌥼􌥻","gevär"],
+["02939","􌥅􌥔􌤸􌦑􌥼􌦩􌤨􌤴􌤶􌦨􌥼􌥻","gevär"],
 ["02940","􌥅􌤻􌥔􌤸􌥈􌤴􌤶􌦨􌥼􌥻","vapen"],
 ["02941","􌤢􌥔􌥙􌥈􌤴􌤸􌥤","vibrator",66],
 ["02942","#(barfota)","barfota",0],
@@ -7975,7 +7975,7 @@ let lexicon=[
 ["07781","􌤢􌥔􌤸􌥈􌤴􌤸􌤟􌥱􌦉","kompass",93,66],
 ["07782","􌤩􌤵􌤷􌥵􌦆􌤨􌥼􌥻􌥠􌤵􌥗􌥅􌥅􌤵􌤶􌥹􌦉􌥼􌦃􌥼􌦅","digitalbox",8],
 ["07783","􌤢􌥔􌤸􌥈􌤴􌤸􌤟􌥱􌦉","orientering",93],
-["07784","􌤢􌤻􌥔􌤸􌤨􌤴􌤶􌦨􌥼􌥻","vapen"],
+["07784","􌥅􌥔􌤸􌦑􌥼􌦩􌤨􌤴􌤶􌦨􌥼􌥻","vapen"],
 ["07785","􌤂􌥆􌤵􌤶􌥲􌦊􌦆􌥃","smart"],
 ["07786","􌥈􌤴􌤸􌥤","vibrator",66],
 ["07787","#(disney)􌥠􌤢􌥔􌤸􌤢􌤴􌤸􌥢􌥡","Disneyland",213,0,142],
