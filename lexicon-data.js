@@ -1,4 +1,4 @@
-let lexiconDate=new Date("2025-08-25T06:00:35Z")
+let lexiconDate=new Date("2025-09-01T06:00:36Z")
 let lexiconTags=["/bokstavering",
 "/språkvetenskap",
 "/ovanligt tecken",
@@ -475,7 +475,6 @@ let lexicon=[
 ["00109","􌤛􌥚􌦪􌥓􌥙􌤟􌥣􌥳","njuta"],
 ["00110","􌤛􌥚􌤢􌥓􌥙􌥦􌥼􌤟","få nog","trött på",9],
 ["00111","􌤛􌤢􌥓􌥙􌤟􌥠􌤓􌤢􌥓􌥙􌤟","dotter",56],
-["00112","􌤛􌦫􌤴􌤶􌥱􌥿􌥼􌤟","för säkerhets skull",9],
 ["00113","􌤛􌥚􌥅􌤴􌤸􌥰􌦋","igelkott",70,45,2],
 ["00114","􌤛􌦫􌤵􌤶􌤟􌥼􌦃","mode"],
 ["00115","#(te)􌥠􌥔􌥘􌤫􌤫􌥓􌥘􌤟􌥼􌥱􌦀","tesked",0,20,101],
@@ -22095,7 +22094,8 @@ let lexicon=[
 ["26690","􌤴􌥙􌥈􌥈􌤴􌥙􌤟􌥼􌥹􌦉􌥼􌥧􌥼􌦅􌥼􌤟","schabrak",23],
 ["26691","􌥔􌥘􌤦􌤦􌥓􌥘􌦃􌥲􌦀􌥠􌥖􌤷􌤢􌤢􌥖􌤷􌥵􌥼􌥻","driva","drivning",23],
 ["26692","􌤖􌤺􌤴􌥙􌤧􌤧􌤴􌥙􌤟􌥼􌥻","driva","drivning",23],
-["26693","􌤦􌤹􌥔􌥘􌥈􌤵􌤷􌤟􌥱􌦉􌥠􌤢􌤹􌥔􌥘􌤽􌤴􌥙􌤟􌥼􌦃􌥯􌥿","tidshoppning",23]].map(e=>{
+["26693","􌤦􌤹􌥔􌥘􌥈􌤵􌤷􌤟􌥱􌦉􌥠􌤢􌤹􌥔􌥘􌤽􌤴􌥙􌤟􌥼􌦃􌥯􌥿","tidshoppning",23],
+["26954","􌤛􌦫􌤴􌤶􌥱􌥿􌥼􌤟","för säkerhets skull",9]].map(e=>{
 	let c=0
 	return[...e.map((v,i)=>i<3||isNaN(v)?v:lexiconTags[c++,v]),...(c?['/'+c]:[])]
 })
