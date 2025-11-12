@@ -377,7 +377,7 @@ function parseQuery(queryStr) {
         Array.isArray(q)
           ? q[q.or ? 'some' : 'every'](q => searchEntry(q, e))    // subquery
           : e.some(f => ((f[0] === '/') === q.tag) && q.test(f))  // base case
-      ) === !!q.not
+      ) !== q.not
     }
     function flat(q) {
       return q.reduce(

@@ -1215,6 +1215,12 @@
    that character in an overlay (in lower right corner?). There should an image
    of the handshape, or an animation of the finger/hand movements etc.
 * Finished
+** DONE AND and OR operators are reversed             :BUG:
+   CLOSED: [2025-11-12 Wed 14:10]
+   (GitHub issue #3)
+   The error bug was introduced in commit '466d1529' (in May 19, 2025) meaning
+   that this bug has been for almost six months! -- But I have gotten no bug
+   reports, and I found it myself accidentally, is anyone using this page?
 ** DONE Intro: Transcriptions should be clearly marked
    CLOSED: [2024-10-30 Wed 17:10]
    In text where only one or two single transcription symbols are used it is
