@@ -401,18 +401,11 @@ function parseQuery(queryStr) {
     ' ': s => { query.addTerm(() => finalizeTerm(s)) },
     '"': (s, c) => { s.quote = c; return s },
     "'": (s, c) => { s.quote = c; return s },
-    'QUOTED': (s, c) => {
-      if (c === s.quote) {
+    STR: (s, c) => {
+      if (c === s.quote) {       // quote ends
         delete s.quote
-      } else {
-        s.regex = (s.regex || '') + escape(c)
-        s.plain = (s.plain || '') + c
-        s.wordEnd   = wordCharRe.test(c)
-        s.wordBeg ??= s.wordEnd
+        return s
       }
-      return s
-    },
-    'UNQUOTED': (s, c) => {
       if (!s.regex) {            // before word
         if (c === '-') {         //  '-' negated
           s.not = !s.not
@@ -426,16 +419,23 @@ function parseQuery(queryStr) {
           return s
         }
       }
-      s.regex = (s.regex || '') + (charClass[c] || escape(c))
-      s.plain = (s.plain || '') + c
-      s.wordEnd   = !!charClass[c] || wordCharRe.test(c)
-      s.wordBeg ??= s.wordEnd
+      if (s.quote) {
+        s.regex = (s.regex || '') + (charClass[c] || escape(c))
+        s.plain = (s.plain || '') + c
+        s.wordEnd   = !!charClass[c] || wordCharRe.test(c)
+        s.wordBeg ??= s.wordEnd
+      } else {
+        s.regex = (s.regex || '') + escape(c)
+        s.plain = (s.plain || '') + c
+        s.wordEnd   = wordCharRe.test(c)
+        s.wordBeg ??= s.wordEnd
+      }
       return s
     },
   }
   let state = {} // contains: 'plain', 'regex', 'field', 'not', 'tag', 'quote'
   for (let c of queryStr.normalize()) {  // process char-by-char in FSA
-    state = fsa[state.quote ? 'QUOTED' : fsa[c] ? c : 'UNQUOTED'](state, c) || {}
+    state = fsa[(state.quote || !fsa[c]) ? 'STR' : c](state, c) || {}
   }
   return query.addTerm(() => finalizeTerm(state)).get()
 }
