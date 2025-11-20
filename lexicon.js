@@ -242,28 +242,22 @@ for (let c of '􌥯􌦶􌥰􌥱􌥲􌥹􌦅') { charClass[c] = `${c}[􌦈􌥽�
 for (let c of '􌥓􌥔􌤴􌥕􌤵􌥖') { charClass[c] = `${c}[􌤶􌥗􌤷􌥘􌤸􌥙]?` }
 for (let c of '􌤶􌥗􌤷􌥘􌤸􌥙') { charClass[c] = `[􌥓􌥔􌤴􌥕􌤵􌥖]?${c}` }
 
-function finalizeTerm(state) {
-  'use strict'
-  const {
-    plain = '',
-    regex = '',
-    field = false,
-    not = false,
-    tag = false,
-    wordBeg, wordEnd,
-  } = state
+function finalizeTerm({
+  plain = '',
+  regex = '',
+  field = false,
+  not = false,
+  tag = false,
+  wordBeg, wordEnd,
+}) {
   function wordRegex(regex) {
     const noWord = '[ 􌥠,:!?/.’()[\\]&+–-]'
     return (wordBeg ? `(^|${noWord})` : '()')
       + `(${regex})`
       + (wordEnd ? `(?=${noWord}|$)` : '')
   }
-  return {
-    regex: regex
-      ? RegExp(field ? `^${regex}$` : wordRegex(regex), 'ui')
-      : null,
-    plain, not, tag,
-  }
+  regex = regex ? RegExp(field ? `^${regex}$` : wordRegex(regex), 'ui') : null
+  return { regex, plain, not, tag }
 }
 
 // Parse user's query string, return QUERY object with following root methods:
@@ -287,23 +281,16 @@ function finalizeTerm(state) {
 function parseQuery(queryStr) {
   'use strict'
   let query = (() => {
-    function p(x) {
-      return x.split(' ').reduce((a, p) => { a[p] = true; return a }, [])
-    }
-    function and_() { return p('') }
-    function or_() { return p('or') }
-    function or() { return p('or own') }
-    function nor() { return p('or own not') }
+    const and_ = x => Object.assign([], {                                })
+    const or_  = x => Object.assign([], { or: true                       })
+    const or   = x => Object.assign([], { or: true, own: true            })
+    const nor  = x => Object.assign([], { or: true, own: true, not: true })
 
-    let q = [[]]  // query stack
-    add(or_())
-    add(and_())
-
-    function add(x) {  // add new parenthesis
+    function add(q, x) {  // add new parenthesis
       q[q.length - 1].push(x)
       if (Array.isArray(x)) { q.push(x) }
     }
-    function end() {   // end parenthesis
+    function end(q) {   // end parenthesis
       let z = q.pop()          // pop last paren on stack
       let p = q[q.length - 1]  // parent paren
       // Cleanup: Remove empty parens, and parens around single terms.
@@ -330,7 +317,7 @@ function parseQuery(queryStr) {
         }
       })
     }
-    function wrap() {  // wrap query in extra paren
+    function wrap(q) {  // wrap query in extra paren
       if (Array.isArray(q[0])) {
         q[0].own = true
         q.unshift([q[0]])
@@ -339,8 +326,8 @@ function parseQuery(queryStr) {
         q.unshift([q[0]])
       }
     }
-    function done() {
-      while (q.length > 1) { end() }  // trim all remaining parens
+    function done(q) {
+      while (q.length > 1) { end(q) }  // trim all remaining parens
 
       // FIXME: Why is this necessary? Can this be handled by end()?
       if (q[0].length === 1 && Array.isArray(q[0][0])) {
@@ -352,22 +339,28 @@ function parseQuery(queryStr) {
       }
     }
 
+    let q = [[]]  // query stack
+    add(q, or_())
+    add(q, and_())
+
     function addParen(not) {
-      add(not ? nor() : or())
-      add(and_())
+      add(q, not ? nor() : or())
+      add(q, and_())
     }
     function endParen() {
-      while (q.length > 1 && !q[q.length - 1].own) { end() }  // trim all parens
-      if (q.length === 1) { wrap() }
-      end()
+      while (q.length > 1 && !q[q.length - 1].own) { end(q) }  // trim all parens
+      if (q.length === 1) { wrap(q) }
+      end(q)
     }
     function orParen() {
-      end()
-      add(and_())
+      end(q)
+      add(q, and_())
     }
-    function addTerm(cb) {
-      const { regex, plain, not, tag } = cb()
-      if (regex) { add(Object.assign(regex, { not, plain, tag })) }
+    function addTerm(func) {
+      const { regex, plain, not, tag } = func()
+      if (regex) {
+        add(q, Object.assign(regex, { not, plain, tag }))
+      }
       return this
     }
     // Test if single entry 'e' (list of strings) match query (<q>). Return
@@ -384,7 +377,7 @@ function parseQuery(queryStr) {
         (a, q) => a.concat(Array.isArray(q) ? flat(q) : q.source), [])
     }
     function get() {
-      done()
+      done(q)
       let x = q[q.length - 1]
       return Object.assign(x, {
         // NOTE: Keep negated terms in hilite() (since '-(-a,-b)' match 'a b').
