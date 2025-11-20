@@ -406,6 +406,8 @@ function parseQuery(queryStr) {
         delete s.quote
         return s
       }
+      s.regex ??= ''
+      s.plain ??= ''
       if (!s.regex) {            // before word
         if (c === '-') {         //  '-' negated
           s.not = !s.not
@@ -415,21 +417,14 @@ function parseQuery(queryStr) {
           return s
         } else if (c === '/') {  //  '/' match tag field
           s.tag = true           //    (also register as char)
-          s.regex = (s.regex || '') + '/?'
+          s.regex += '/?'
           return s
         }
       }
-      if (s.quote) {
-        s.regex = (s.regex || '') + (charClass[c] || escape(c))
-        s.plain = (s.plain || '') + c
-        s.wordEnd   = !!charClass[c] || wordCharRe.test(c)
-        s.wordBeg ??= s.wordEnd
-      } else {
-        s.regex = (s.regex || '') + escape(c)
-        s.plain = (s.plain || '') + c
-        s.wordEnd   = wordCharRe.test(c)
-        s.wordBeg ??= s.wordEnd
-      }
+      s.regex    += (s.quote && charClass[c]) || escape(c)
+      s.plain    += c
+      s.wordEnd   = (s.quote && charClass[c]) || wordCharRe.test(c)
+      s.wordBeg ??= s.wordEnd
       return s
     },
   }
