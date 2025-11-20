@@ -402,29 +402,18 @@ function parseQuery(queryStr) {
     '"': (s, c) => { s.quote = c; return s },
     "'": (s, c) => { s.quote = c; return s },
     STR: (s, c) => {
-      if (c === s.quote) {       // quote ends
-        delete s.quote
-        return s
-      }
-      s.regex ??= ''
-      s.plain ??= ''
-      if (!s.regex) {            // before word
-        if (c === '-') {         //  '-' negated
-          s.not = !s.not
-          return s
-        } else if (c === '=') {  //  '=' match whole field
-          s.field = true
-          return s
-        } else if (c === '/') {  //  '/' match tag field
-          s.tag = true           //    (also register as char)
-          s.regex += '/?'
-          return s
+      if (c === s.quote) { delete s.quote; return s }     // quote ends
+      s.regex ??= ''; s.plain ??= ''
+      if (!s.regex) {                                     // before word
+        switch (c) {
+        case '-': s.not = !s.not; return s                //   '-' negated
+        case '=': s.field = true; return s                //   '=' whole field
+        case '/': s.tag = true; s.regex += '/?'; return s //   '/' tag field
         }
       }
-      s.regex    += (s.quote && charClass[c]) || escape(c)
-      s.plain    += c
-      s.wordEnd   = (s.quote && charClass[c]) || wordCharRe.test(c)
-      s.wordBeg ??= s.wordEnd
+      s.plain                += c
+      s.regex                += s.quote && charClass[c] || escape(c)
+      s.wordBeg ??= s.wordEnd = s.quote && charClass[c] || wordCharRe.test(c)
       return s
     },
   }
