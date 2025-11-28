@@ -286,9 +286,11 @@ function parseQuery(queryStr) {
     const or   = x => Object.assign([], { or: true, own: true            })
     const nor  = x => Object.assign([], { or: true, own: true, not: true })
 
-    function add(q, x) {  // add new parenthesis
-      q[q.length - 1].push(x)
-      if (Array.isArray(x)) { q.push(x) }
+    function add(q, ...xs) {  // add new parenthesis
+      for (const x of xs) {
+        q[q.length - 1].push(x)
+        if (Array.isArray(x)) { q.push(x) }
+      }
     }
     function end(q) {   // end parenthesis
       let z = q.pop()          // pop last paren on stack
@@ -340,12 +342,10 @@ function parseQuery(queryStr) {
     }
 
     let q = [[]]  // query stack
-    add(q, or_())
-    add(q, and_())
+    add(q, or_(), and_())
 
     function addParen(not) {
-      add(q, not ? nor() : or())
-      add(q, and_())
+      add(q, not ? nor() : or(), and_())
     }
     function endParen() {
       while (q.length > 1 && !q[q.length - 1].own) { end(q) }  // trim all parens
